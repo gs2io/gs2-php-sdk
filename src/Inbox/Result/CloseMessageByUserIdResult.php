@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Inbox\Model\AcquireAction;
 use Gs2\Inbox\Model\Message;
 
+/**
+ * Result of closeMessageByUserId: Mark a previously opened message as unread
+ *
+ * @see https://docs.gs2.io/api_reference/inbox/sdk/#closemessagebyuserid
+ */
 class CloseMessageByUserIdResult implements IResult {
-    /** @var Message */
+    /** @var Message Message */
     private $item;
 
+    /** @return Message|null Message */
 	public function getItem(): ?Message {
 		return $this->item;
 	}
 
+    /** @param Message|null $item Message */
 	public function setItem(?Message $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Message|null $item Message
+     * @return CloseMessageByUserIdResult
+     */
 	public function withItem(?Message $item): CloseMessageByUserIdResult {
 		$this->item = $item;
 		return $this;

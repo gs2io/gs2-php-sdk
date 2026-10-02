@@ -20,18 +20,29 @@ namespace Gs2\MegaField\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\MegaField\Model\LayerModel;
 
+/**
+ * Result of getLayerModel: Get Layer Model
+ *
+ * @see https://docs.gs2.io/api_reference/mega_field/sdk/#getlayermodel
+ */
 class GetLayerModelResult implements IResult {
-    /** @var LayerModel */
+    /** @var LayerModel Layer Model */
     private $item;
 
+    /** @return LayerModel|null Layer Model */
 	public function getItem(): ?LayerModel {
 		return $this->item;
 	}
 
+    /** @param LayerModel|null $item Layer Model */
 	public function setItem(?LayerModel $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param LayerModel|null $item Layer Model
+     * @return GetLayerModelResult
+     */
 	public function withItem(?LayerModel $item): GetLayerModelResult {
 		$this->item = $item;
 		return $this;

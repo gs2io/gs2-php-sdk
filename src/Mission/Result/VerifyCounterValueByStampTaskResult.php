@@ -21,33 +21,50 @@ use Gs2\Core\Model\IResult;
 use Gs2\Mission\Model\ScopedValue;
 use Gs2\Mission\Model\Counter;
 
+/**
+ * Result of verifyCounterValueByStampTask: Execute counter value verification as a verify action within a distributed transaction (verify task)
+ *
+ * @see https://docs.gs2.io/api_reference/mission/stamp_sheet/#gs2missionverifycountervaluebyuserid
+ */
 class VerifyCounterValueByStampTaskResult implements IResult {
-    /** @var Counter */
+    /** @var Counter Counter */
     private $item;
-    /** @var string */
+    /** @var string Context recording the execution results of verification actions */
     private $newContextStack;
 
+    /** @return Counter|null Counter */
 	public function getItem(): ?Counter {
 		return $this->item;
 	}
 
+    /** @param Counter|null $item Counter */
 	public function setItem(?Counter $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Counter|null $item Counter
+     * @return VerifyCounterValueByStampTaskResult
+     */
 	public function withItem(?Counter $item): VerifyCounterValueByStampTaskResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null Context recording the execution results of verification actions */
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
+    /** @param string|null $newContextStack Context recording the execution results of verification actions */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
+    /**
+     * @param string|null $newContextStack Context recording the execution results of verification actions
+     * @return VerifyCounterValueByStampTaskResult
+     */
 	public function withNewContextStack(?string $newContextStack): VerifyCounterValueByStampTaskResult {
 		$this->newContextStack = $newContextStack;
 		return $this;

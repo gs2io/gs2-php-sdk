@@ -20,73 +20,108 @@ namespace Gs2\Log\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Consume Action Execution Log Aggregation
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#executestamptasklogcount
+ */
 class ExecuteStampTaskLogCount implements IModel {
 	/**
-     * @var string
+     * @var string Microservice Type
 	 */
 	private $service;
 	/**
-     * @var string
+     * @var string Microservice Method
 	 */
 	private $method;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var string
+     * @var string Consume Action
 	 */
 	private $action;
 	/**
-     * @var int
+     * @var int Count
 	 */
 	private $count;
+    /** @return string|null Microservice Type */
 	public function getService(): ?string {
 		return $this->service;
 	}
+    /** @param string|null $service Microservice Type */
 	public function setService(?string $service) {
 		$this->service = $service;
 	}
+    /**
+     * @param string|null $service Microservice Type
+     * @return ExecuteStampTaskLogCount
+     */
 	public function withService(?string $service): ExecuteStampTaskLogCount {
 		$this->service = $service;
 		return $this;
 	}
+    /** @return string|null Microservice Method */
 	public function getMethod(): ?string {
 		return $this->method;
 	}
+    /** @param string|null $method Microservice Method */
 	public function setMethod(?string $method) {
 		$this->method = $method;
 	}
+    /**
+     * @param string|null $method Microservice Method
+     * @return ExecuteStampTaskLogCount
+     */
 	public function withMethod(?string $method): ExecuteStampTaskLogCount {
 		$this->method = $method;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return ExecuteStampTaskLogCount
+     */
 	public function withUserId(?string $userId): ExecuteStampTaskLogCount {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Consume Action */
 	public function getAction(): ?string {
 		return $this->action;
 	}
+    /** @param string|null $action Consume Action */
 	public function setAction(?string $action) {
 		$this->action = $action;
 	}
+    /**
+     * @param string|null $action Consume Action
+     * @return ExecuteStampTaskLogCount
+     */
 	public function withAction(?string $action): ExecuteStampTaskLogCount {
 		$this->action = $action;
 		return $this;
 	}
+    /** @return int|null Count */
 	public function getCount(): ?int {
 		return $this->count;
 	}
+    /** @param int|null $count Count */
 	public function setCount(?int $count) {
 		$this->count = $count;
 	}
+    /**
+     * @param int|null $count Count
+     * @return ExecuteStampTaskLogCount
+     */
 	public function withCount(?int $count): ExecuteStampTaskLogCount {
 		$this->count = $count;
 		return $this;

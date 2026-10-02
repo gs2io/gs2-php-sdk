@@ -20,115 +20,168 @@ namespace Gs2\Friend\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Profile
+ *
+ * @see https://docs.gs2.io/api_reference/friend/sdk/#profile
+ */
 class Profile implements IModel {
 	/**
-     * @var string
+     * @var string Profile GRN
 	 */
 	private $profileId;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var string
+     * @var string Public profile
 	 */
 	private $publicProfile;
 	/**
-     * @var string
+     * @var string Profile for followers
 	 */
 	private $followerProfile;
 	/**
-     * @var string
+     * @var string Profile for friends
 	 */
 	private $friendProfile;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Profile GRN */
 	public function getProfileId(): ?string {
 		return $this->profileId;
 	}
+    /** @param string|null $profileId Profile GRN */
 	public function setProfileId(?string $profileId) {
 		$this->profileId = $profileId;
 	}
+    /**
+     * @param string|null $profileId Profile GRN
+     * @return Profile
+     */
 	public function withProfileId(?string $profileId): Profile {
 		$this->profileId = $profileId;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return Profile
+     */
 	public function withUserId(?string $userId): Profile {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Public profile */
 	public function getPublicProfile(): ?string {
 		return $this->publicProfile;
 	}
+    /** @param string|null $publicProfile Public profile */
 	public function setPublicProfile(?string $publicProfile) {
 		$this->publicProfile = $publicProfile;
 	}
+    /**
+     * @param string|null $publicProfile Public profile
+     * @return Profile
+     */
 	public function withPublicProfile(?string $publicProfile): Profile {
 		$this->publicProfile = $publicProfile;
 		return $this;
 	}
+    /** @return string|null Profile for followers */
 	public function getFollowerProfile(): ?string {
 		return $this->followerProfile;
 	}
+    /** @param string|null $followerProfile Profile for followers */
 	public function setFollowerProfile(?string $followerProfile) {
 		$this->followerProfile = $followerProfile;
 	}
+    /**
+     * @param string|null $followerProfile Profile for followers
+     * @return Profile
+     */
 	public function withFollowerProfile(?string $followerProfile): Profile {
 		$this->followerProfile = $followerProfile;
 		return $this;
 	}
+    /** @return string|null Profile for friends */
 	public function getFriendProfile(): ?string {
 		return $this->friendProfile;
 	}
+    /** @param string|null $friendProfile Profile for friends */
 	public function setFriendProfile(?string $friendProfile) {
 		$this->friendProfile = $friendProfile;
 	}
+    /**
+     * @param string|null $friendProfile Profile for friends
+     * @return Profile
+     */
 	public function withFriendProfile(?string $friendProfile): Profile {
 		$this->friendProfile = $friendProfile;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return Profile
+     */
 	public function withCreatedAt(?int $createdAt): Profile {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return Profile
+     */
 	public function withUpdatedAt(?int $updatedAt): Profile {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return Profile
+     */
 	public function withRevision(?int $revision): Profile {
 		$this->revision = $revision;
 		return $this;

@@ -20,18 +20,29 @@ namespace Gs2\Dictionary\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Dictionary\Model\EntryModelMaster;
 
+/**
+ * Result of deleteEntryModelMaster: Delete Entry Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/dictionary/sdk/#deleteentrymodelmaster
+ */
 class DeleteEntryModelMasterResult implements IResult {
-    /** @var EntryModelMaster */
+    /** @var EntryModelMaster Entry Model Master deleted */
     private $item;
 
+    /** @return EntryModelMaster|null Entry Model Master deleted */
 	public function getItem(): ?EntryModelMaster {
 		return $this->item;
 	}
 
+    /** @param EntryModelMaster|null $item Entry Model Master deleted */
 	public function setItem(?EntryModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param EntryModelMaster|null $item Entry Model Master deleted
+     * @return DeleteEntryModelMasterResult
+     */
 	public function withItem(?EntryModelMaster $item): DeleteEntryModelMasterResult {
 		$this->item = $item;
 		return $this;

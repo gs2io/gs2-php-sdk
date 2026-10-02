@@ -20,39 +20,62 @@ namespace Gs2\News\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\News\Model\LogSetting;
 
+/**
+ * Request for updateNamespace: Update Namespace
+ *
+ * @see https://docs.gs2.io/api_reference/news/sdk/#updatenamespace
+ */
 class UpdateNamespaceRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var LogSetting */
+    /** @var LogSetting Log Output Setting */
     private $logSetting;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UpdateNamespaceRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UpdateNamespaceRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return UpdateNamespaceRequest
+     */
 	public function withDescription(?string $description): UpdateNamespaceRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return LogSetting|null Log Output Setting */
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
+    /** @param LogSetting|null $logSetting Log Output Setting */
 	public function setLogSetting(?LogSetting $logSetting) {
 		$this->logSetting = $logSetting;
 	}
+    /**
+     * @param LogSetting|null $logSetting Log Output Setting
+     * @return UpdateNamespaceRequest
+     */
 	public function withLogSetting(?LogSetting $logSetting): UpdateNamespaceRequest {
 		$this->logSetting = $logSetting;
 		return $this;

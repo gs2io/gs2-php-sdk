@@ -20,39 +20,62 @@ namespace Gs2\Deploy\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Deploy\Model\GitHubCheckoutSetting;
 
+/**
+ * Request for createStackFromGitHub: Create Stack from GitHub
+ *
+ * @see https://docs.gs2.io/api_reference/deploy/sdk/#createstackfromgithub
+ */
 class CreateStackFromGitHubRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Stack name */
     private $name;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var GitHubCheckoutSetting */
+    /** @var GitHubCheckoutSetting Setup to check out template file from GitHub */
     private $checkoutSetting;
+    /** @return string|null Stack name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Stack name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Stack name
+     * @return CreateStackFromGitHubRequest
+     */
 	public function withName(?string $name): CreateStackFromGitHubRequest {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return CreateStackFromGitHubRequest
+     */
 	public function withDescription(?string $description): CreateStackFromGitHubRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return GitHubCheckoutSetting|null Setup to check out template file from GitHub */
 	public function getCheckoutSetting(): ?GitHubCheckoutSetting {
 		return $this->checkoutSetting;
 	}
+    /** @param GitHubCheckoutSetting|null $checkoutSetting Setup to check out template file from GitHub */
 	public function setCheckoutSetting(?GitHubCheckoutSetting $checkoutSetting) {
 		$this->checkoutSetting = $checkoutSetting;
 	}
+    /**
+     * @param GitHubCheckoutSetting|null $checkoutSetting Setup to check out template file from GitHub
+     * @return CreateStackFromGitHubRequest
+     */
 	public function withCheckoutSetting(?GitHubCheckoutSetting $checkoutSetting): CreateStackFromGitHubRequest {
 		$this->checkoutSetting = $checkoutSetting;
 		return $this;

@@ -19,48 +19,71 @@ namespace Gs2\Auth\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of federation: User ID Federation
+ *
+ * @see https://docs.gs2.io/api_reference/auth/sdk/#federation
+ */
 class FederationResult implements IResult {
-    /** @var string */
+    /** @var string Access token */
     private $token;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var int */
+    /** @var int Expiration time */
     private $expire;
 
+    /** @return string|null Access token */
 	public function getToken(): ?string {
 		return $this->token;
 	}
 
+    /** @param string|null $token Access token */
 	public function setToken(?string $token) {
 		$this->token = $token;
 	}
 
+    /**
+     * @param string|null $token Access token
+     * @return FederationResult
+     */
 	public function withToken(?string $token): FederationResult {
 		$this->token = $token;
 		return $this;
 	}
 
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
 
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
 
+    /**
+     * @param string|null $userId User ID
+     * @return FederationResult
+     */
 	public function withUserId(?string $userId): FederationResult {
 		$this->userId = $userId;
 		return $this;
 	}
 
+    /** @return int|null Expiration time */
 	public function getExpire(): ?int {
 		return $this->expire;
 	}
 
+    /** @param int|null $expire Expiration time */
 	public function setExpire(?int $expire) {
 		$this->expire = $expire;
 	}
 
+    /**
+     * @param int|null $expire Expiration time
+     * @return FederationResult
+     */
 	public function withExpire(?int $expire): FederationResult {
 		$this->expire = $expire;
 		return $this;

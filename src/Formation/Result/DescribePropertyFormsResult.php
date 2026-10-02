@@ -21,33 +21,50 @@ use Gs2\Core\Model\IResult;
 use Gs2\Formation\Model\Slot;
 use Gs2\Formation\Model\PropertyForm;
 
+/**
+ * Result of describePropertyForms: List Property Forms
+ *
+ * @see https://docs.gs2.io/api_reference/formation/sdk/#describepropertyforms
+ */
 class DescribePropertyFormsResult implements IResult {
-    /** @var array */
+    /** @var array List of PropertyForm */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of PropertyForm */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of PropertyForm */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of PropertyForm
+     * @return DescribePropertyFormsResult
+     */
 	public function withItems(?array $items): DescribePropertyFormsResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribePropertyFormsResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribePropertyFormsResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

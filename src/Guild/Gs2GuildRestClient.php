@@ -6501,25 +6501,22 @@ class DeleteIgnoreUserByGuildNameTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 Guild API クライアント
+ * GS2-Guild API client
  *
- * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/guild/sdk/
  */
 class Gs2GuildRestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#describenamespaces
      */
     public function describeNamespacesAsync(
             DescribeNamespacesRequest $request
@@ -6533,8 +6530,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#describenamespaces
      */
     public function describeNamespaces (
             DescribeNamespacesRequest $request
@@ -6545,8 +6545,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#createnamespace
      */
     public function createNamespaceAsync(
             CreateNamespaceRequest $request
@@ -6560,8 +6563,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#createnamespace
      */
     public function createNamespace (
             CreateNamespaceRequest $request
@@ -6572,8 +6578,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#getnamespacestatus
      */
     public function getNamespaceStatusAsync(
             GetNamespaceStatusRequest $request
@@ -6587,8 +6596,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#getnamespacestatus
      */
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
@@ -6599,8 +6611,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#getnamespace
      */
     public function getNamespaceAsync(
             GetNamespaceRequest $request
@@ -6614,8 +6629,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#getnamespace
      */
     public function getNamespace (
             GetNamespaceRequest $request
@@ -6626,8 +6644,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#updatenamespace
      */
     public function updateNamespaceAsync(
             UpdateNamespaceRequest $request
@@ -6641,8 +6662,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#updatenamespace
      */
     public function updateNamespace (
             UpdateNamespaceRequest $request
@@ -6653,8 +6677,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#deletenamespace
      */
     public function deleteNamespaceAsync(
             DeleteNamespaceRequest $request
@@ -6668,8 +6695,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#deletenamespace
      */
     public function deleteNamespace (
             DeleteNamespaceRequest $request
@@ -6680,8 +6710,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#getserviceversion
      */
     public function getServiceVersionAsync(
             GetServiceVersionRequest $request
@@ -6695,8 +6728,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return GetServiceVersionResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#getserviceversion
      */
     public function getServiceVersion (
             GetServiceVersionRequest $request
@@ -6707,8 +6743,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserIdAsync(
             DumpUserDataByUserIdRequest $request
@@ -6722,8 +6761,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return DumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserId (
             DumpUserDataByUserIdRequest $request
@@ -6734,8 +6776,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserIdAsync(
             CheckDumpUserDataByUserIdRequest $request
@@ -6749,8 +6794,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return CheckDumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserId (
             CheckDumpUserDataByUserIdRequest $request
@@ -6761,8 +6809,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserIdAsync(
             CleanUserDataByUserIdRequest $request
@@ -6776,8 +6827,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return CleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserId (
             CleanUserDataByUserIdRequest $request
@@ -6788,8 +6842,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserIdAsync(
             CheckCleanUserDataByUserIdRequest $request
@@ -6803,8 +6860,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return CheckCleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserId (
             CheckCleanUserDataByUserIdRequest $request
@@ -6815,8 +6875,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserIdAsync(
             PrepareImportUserDataByUserIdRequest $request
@@ -6830,8 +6893,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PrepareImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserId (
             PrepareImportUserDataByUserIdRequest $request
@@ -6842,8 +6908,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserIdAsync(
             ImportUserDataByUserIdRequest $request
@@ -6857,8 +6926,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return ImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserId (
             ImportUserDataByUserIdRequest $request
@@ -6869,8 +6941,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserIdAsync(
             CheckImportUserDataByUserIdRequest $request
@@ -6884,8 +6959,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return CheckImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserId (
             CheckImportUserDataByUserIdRequest $request
@@ -6896,8 +6974,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Guild Model Masters
+     *
      * @param DescribeGuildModelMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#describeguildmodelmasters
      */
     public function describeGuildModelMastersAsync(
             DescribeGuildModelMastersRequest $request
@@ -6911,8 +6992,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Guild Model Masters
+     *
      * @param DescribeGuildModelMastersRequest $request
      * @return DescribeGuildModelMastersResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#describeguildmodelmasters
      */
     public function describeGuildModelMasters (
             DescribeGuildModelMastersRequest $request
@@ -6923,8 +7007,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Guild Model Master
+     *
      * @param CreateGuildModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#createguildmodelmaster
      */
     public function createGuildModelMasterAsync(
             CreateGuildModelMasterRequest $request
@@ -6938,8 +7025,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Guild Model Master
+     *
      * @param CreateGuildModelMasterRequest $request
      * @return CreateGuildModelMasterResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#createguildmodelmaster
      */
     public function createGuildModelMaster (
             CreateGuildModelMasterRequest $request
@@ -6950,8 +7040,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Guild Model Master
+     *
      * @param GetGuildModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#getguildmodelmaster
      */
     public function getGuildModelMasterAsync(
             GetGuildModelMasterRequest $request
@@ -6965,8 +7058,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Guild Model Master
+     *
      * @param GetGuildModelMasterRequest $request
      * @return GetGuildModelMasterResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#getguildmodelmaster
      */
     public function getGuildModelMaster (
             GetGuildModelMasterRequest $request
@@ -6977,8 +7073,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Guild Model Master
+     *
      * @param UpdateGuildModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#updateguildmodelmaster
      */
     public function updateGuildModelMasterAsync(
             UpdateGuildModelMasterRequest $request
@@ -6992,8 +7091,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Guild Model Master
+     *
      * @param UpdateGuildModelMasterRequest $request
      * @return UpdateGuildModelMasterResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#updateguildmodelmaster
      */
     public function updateGuildModelMaster (
             UpdateGuildModelMasterRequest $request
@@ -7004,8 +7106,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Guild Model Master
+     *
      * @param DeleteGuildModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#deleteguildmodelmaster
      */
     public function deleteGuildModelMasterAsync(
             DeleteGuildModelMasterRequest $request
@@ -7019,8 +7124,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Guild Model Master
+     *
      * @param DeleteGuildModelMasterRequest $request
      * @return DeleteGuildModelMasterResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#deleteguildmodelmaster
      */
     public function deleteGuildModelMaster (
             DeleteGuildModelMasterRequest $request
@@ -7031,8 +7139,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Guild Models
+     *
      * @param DescribeGuildModelsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#describeguildmodels
      */
     public function describeGuildModelsAsync(
             DescribeGuildModelsRequest $request
@@ -7046,8 +7157,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Guild Models
+     *
      * @param DescribeGuildModelsRequest $request
      * @return DescribeGuildModelsResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#describeguildmodels
      */
     public function describeGuildModels (
             DescribeGuildModelsRequest $request
@@ -7058,8 +7172,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Guild Model
+     *
      * @param GetGuildModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#getguildmodel
      */
     public function getGuildModelAsync(
             GetGuildModelRequest $request
@@ -7073,8 +7190,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Guild Model
+     *
      * @param GetGuildModelRequest $request
      * @return GetGuildModelResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#getguildmodel
      */
     public function getGuildModel (
             GetGuildModelRequest $request
@@ -7085,8 +7205,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Search Guilds
+     *
      * @param SearchGuildsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#searchguilds
      */
     public function searchGuildsAsync(
             SearchGuildsRequest $request
@@ -7100,8 +7223,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Search Guilds
+     *
      * @param SearchGuildsRequest $request
      * @return SearchGuildsResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#searchguilds
      */
     public function searchGuilds (
             SearchGuildsRequest $request
@@ -7112,8 +7238,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Search Guilds by User ID
+     *
      * @param SearchGuildsByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#searchguildsbyuserid
      */
     public function searchGuildsByUserIdAsync(
             SearchGuildsByUserIdRequest $request
@@ -7127,8 +7256,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Search Guilds by User ID
+     *
      * @param SearchGuildsByUserIdRequest $request
      * @return SearchGuildsByUserIdResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#searchguildsbyuserid
      */
     public function searchGuildsByUserId (
             SearchGuildsByUserIdRequest $request
@@ -7139,8 +7271,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Guild
+     *
      * @param CreateGuildRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#createguild
      */
     public function createGuildAsync(
             CreateGuildRequest $request
@@ -7154,8 +7289,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Guild
+     *
      * @param CreateGuildRequest $request
      * @return CreateGuildResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#createguild
      */
     public function createGuild (
             CreateGuildRequest $request
@@ -7166,8 +7304,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Guild by User ID
+     *
      * @param CreateGuildByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#createguildbyuserid
      */
     public function createGuildByUserIdAsync(
             CreateGuildByUserIdRequest $request
@@ -7181,8 +7322,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Guild by User ID
+     *
      * @param CreateGuildByUserIdRequest $request
      * @return CreateGuildByUserIdResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#createguildbyuserid
      */
     public function createGuildByUserId (
             CreateGuildByUserIdRequest $request
@@ -7193,8 +7337,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Guild
+     *
      * @param GetGuildRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#getguild
      */
     public function getGuildAsync(
             GetGuildRequest $request
@@ -7208,8 +7355,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Guild
+     *
      * @param GetGuildRequest $request
      * @return GetGuildResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#getguild
      */
     public function getGuild (
             GetGuildRequest $request
@@ -7220,8 +7370,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Guild by User ID
+     *
      * @param GetGuildByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#getguildbyuserid
      */
     public function getGuildByUserIdAsync(
             GetGuildByUserIdRequest $request
@@ -7235,8 +7388,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Guild by User ID
+     *
      * @param GetGuildByUserIdRequest $request
      * @return GetGuildByUserIdResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#getguildbyuserid
      */
     public function getGuildByUserId (
             GetGuildByUserIdRequest $request
@@ -7247,8 +7403,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Guild
+     *
      * @param UpdateGuildRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#updateguild
      */
     public function updateGuildAsync(
             UpdateGuildRequest $request
@@ -7262,8 +7421,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Guild
+     *
      * @param UpdateGuildRequest $request
      * @return UpdateGuildResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#updateguild
      */
     public function updateGuild (
             UpdateGuildRequest $request
@@ -7274,8 +7436,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Guild by specifying a Guild name
+     *
      * @param UpdateGuildByGuildNameRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#updateguildbyguildname
      */
     public function updateGuildByGuildNameAsync(
             UpdateGuildByGuildNameRequest $request
@@ -7289,8 +7454,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Guild by specifying a Guild name
+     *
      * @param UpdateGuildByGuildNameRequest $request
      * @return UpdateGuildByGuildNameResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#updateguildbyguildname
      */
     public function updateGuildByGuildName (
             UpdateGuildByGuildNameRequest $request
@@ -7301,8 +7469,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Expel member
+     *
      * @param DeleteMemberRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#deletemember
      */
     public function deleteMemberAsync(
             DeleteMemberRequest $request
@@ -7316,8 +7487,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Expel member
+     *
      * @param DeleteMemberRequest $request
      * @return DeleteMemberResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#deletemember
      */
     public function deleteMember (
             DeleteMemberRequest $request
@@ -7328,8 +7502,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Expel member by specifying a Guild name
+     *
      * @param DeleteMemberByGuildNameRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#deletememberbyguildname
      */
     public function deleteMemberByGuildNameAsync(
             DeleteMemberByGuildNameRequest $request
@@ -7343,8 +7520,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Expel member by specifying a Guild name
+     *
      * @param DeleteMemberByGuildNameRequest $request
      * @return DeleteMemberByGuildNameResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#deletememberbyguildname
      */
     public function deleteMemberByGuildName (
             DeleteMemberByGuildNameRequest $request
@@ -7355,8 +7535,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update member role
+     *
      * @param UpdateMemberRoleRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#updatememberrole
      */
     public function updateMemberRoleAsync(
             UpdateMemberRoleRequest $request
@@ -7370,8 +7553,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update member role
+     *
      * @param UpdateMemberRoleRequest $request
      * @return UpdateMemberRoleResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#updatememberrole
      */
     public function updateMemberRole (
             UpdateMemberRoleRequest $request
@@ -7382,8 +7568,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update member role by specifying a Guild name
+     *
      * @param UpdateMemberRoleByGuildNameRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#updatememberrolebyguildname
      */
     public function updateMemberRoleByGuildNameAsync(
             UpdateMemberRoleByGuildNameRequest $request
@@ -7397,8 +7586,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update member role by specifying a Guild name
+     *
      * @param UpdateMemberRoleByGuildNameRequest $request
      * @return UpdateMemberRoleByGuildNameResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#updatememberrolebyguildname
      */
     public function updateMemberRoleByGuildName (
             UpdateMemberRoleByGuildNameRequest $request
@@ -7409,8 +7601,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update member role in bulk
+     *
      * @param BatchUpdateMemberRoleRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#batchupdatememberrole
      */
     public function batchUpdateMemberRoleAsync(
             BatchUpdateMemberRoleRequest $request
@@ -7424,8 +7619,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update member role in bulk
+     *
      * @param BatchUpdateMemberRoleRequest $request
      * @return BatchUpdateMemberRoleResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#batchupdatememberrole
      */
     public function batchUpdateMemberRole (
             BatchUpdateMemberRoleRequest $request
@@ -7436,8 +7634,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update member role in bulk by specifying a Guild name
+     *
      * @param BatchUpdateMemberRoleByGuildNameRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#batchupdatememberrolebyguildname
      */
     public function batchUpdateMemberRoleByGuildNameAsync(
             BatchUpdateMemberRoleByGuildNameRequest $request
@@ -7451,8 +7652,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update member role in bulk by specifying a Guild name
+     *
      * @param BatchUpdateMemberRoleByGuildNameRequest $request
      * @return BatchUpdateMemberRoleByGuildNameResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#batchupdatememberrolebyguildname
      */
     public function batchUpdateMemberRoleByGuildName (
             BatchUpdateMemberRoleByGuildNameRequest $request
@@ -7463,8 +7667,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Guild
+     *
      * @param DeleteGuildRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#deleteguild
      */
     public function deleteGuildAsync(
             DeleteGuildRequest $request
@@ -7478,8 +7685,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Guild
+     *
      * @param DeleteGuildRequest $request
      * @return DeleteGuildResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#deleteguild
      */
     public function deleteGuild (
             DeleteGuildRequest $request
@@ -7490,8 +7700,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Guild by specifying a Guild name
+     *
      * @param DeleteGuildByGuildNameRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#deleteguildbyguildname
      */
     public function deleteGuildByGuildNameAsync(
             DeleteGuildByGuildNameRequest $request
@@ -7505,8 +7718,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Guild by specifying a Guild name
+     *
      * @param DeleteGuildByGuildNameRequest $request
      * @return DeleteGuildByGuildNameResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#deleteguildbyguildname
      */
     public function deleteGuildByGuildName (
             DeleteGuildByGuildNameRequest $request
@@ -7517,8 +7733,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Add the maximum number of members by specifying a Guild name
+     *
      * @param IncreaseMaximumCurrentMaximumMemberCountByGuildNameRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#increasemaximumcurrentmaximummembercountbyguildname
      */
     public function increaseMaximumCurrentMaximumMemberCountByGuildNameAsync(
             IncreaseMaximumCurrentMaximumMemberCountByGuildNameRequest $request
@@ -7532,8 +7751,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Add the maximum number of members by specifying a Guild name
+     *
      * @param IncreaseMaximumCurrentMaximumMemberCountByGuildNameRequest $request
      * @return IncreaseMaximumCurrentMaximumMemberCountByGuildNameResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#increasemaximumcurrentmaximummembercountbyguildname
      */
     public function increaseMaximumCurrentMaximumMemberCountByGuildName (
             IncreaseMaximumCurrentMaximumMemberCountByGuildNameRequest $request
@@ -7544,8 +7766,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Decrease the maximum number of members
+     *
      * @param DecreaseMaximumCurrentMaximumMemberCountRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#decreasemaximumcurrentmaximummembercount
      */
     public function decreaseMaximumCurrentMaximumMemberCountAsync(
             DecreaseMaximumCurrentMaximumMemberCountRequest $request
@@ -7559,8 +7784,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Decrease the maximum number of members
+     *
      * @param DecreaseMaximumCurrentMaximumMemberCountRequest $request
      * @return DecreaseMaximumCurrentMaximumMemberCountResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#decreasemaximumcurrentmaximummembercount
      */
     public function decreaseMaximumCurrentMaximumMemberCount (
             DecreaseMaximumCurrentMaximumMemberCountRequest $request
@@ -7571,8 +7799,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Decrease the maximum number of members by specifying a Guild name
+     *
      * @param DecreaseMaximumCurrentMaximumMemberCountByGuildNameRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#decreasemaximumcurrentmaximummembercountbyguildname
      */
     public function decreaseMaximumCurrentMaximumMemberCountByGuildNameAsync(
             DecreaseMaximumCurrentMaximumMemberCountByGuildNameRequest $request
@@ -7586,8 +7817,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Decrease the maximum number of members by specifying a Guild name
+     *
      * @param DecreaseMaximumCurrentMaximumMemberCountByGuildNameRequest $request
      * @return DecreaseMaximumCurrentMaximumMemberCountByGuildNameResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#decreasemaximumcurrentmaximummembercountbyguildname
      */
     public function decreaseMaximumCurrentMaximumMemberCountByGuildName (
             DecreaseMaximumCurrentMaximumMemberCountByGuildNameRequest $request
@@ -7598,8 +7832,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the maximum number of guild members
+     *
      * @param VerifyCurrentMaximumMemberCountRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#verifycurrentmaximummembercount
      */
     public function verifyCurrentMaximumMemberCountAsync(
             VerifyCurrentMaximumMemberCountRequest $request
@@ -7613,8 +7850,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the maximum number of guild members
+     *
      * @param VerifyCurrentMaximumMemberCountRequest $request
      * @return VerifyCurrentMaximumMemberCountResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#verifycurrentmaximummembercount
      */
     public function verifyCurrentMaximumMemberCount (
             VerifyCurrentMaximumMemberCountRequest $request
@@ -7625,8 +7865,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the maximum number of guild members by specifying a Guild name
+     *
      * @param VerifyCurrentMaximumMemberCountByGuildNameRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#verifycurrentmaximummembercountbyguildname
      */
     public function verifyCurrentMaximumMemberCountByGuildNameAsync(
             VerifyCurrentMaximumMemberCountByGuildNameRequest $request
@@ -7640,8 +7883,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the maximum number of guild members by specifying a Guild name
+     *
      * @param VerifyCurrentMaximumMemberCountByGuildNameRequest $request
      * @return VerifyCurrentMaximumMemberCountByGuildNameResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#verifycurrentmaximummembercountbyguildname
      */
     public function verifyCurrentMaximumMemberCountByGuildName (
             VerifyCurrentMaximumMemberCountByGuildNameRequest $request
@@ -7652,8 +7898,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify if guild members include user ID
+     *
      * @param VerifyIncludeMemberRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#verifyincludemember
      */
     public function verifyIncludeMemberAsync(
             VerifyIncludeMemberRequest $request
@@ -7667,8 +7916,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify if guild members include user ID
+     *
      * @param VerifyIncludeMemberRequest $request
      * @return VerifyIncludeMemberResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#verifyincludemember
      */
     public function verifyIncludeMember (
             VerifyIncludeMemberRequest $request
@@ -7679,8 +7931,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify if guild members include user ID by User ID
+     *
      * @param VerifyIncludeMemberByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#verifyincludememberbyuserid
      */
     public function verifyIncludeMemberByUserIdAsync(
             VerifyIncludeMemberByUserIdRequest $request
@@ -7694,8 +7949,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify if guild members include user ID by User ID
+     *
      * @param VerifyIncludeMemberByUserIdRequest $request
      * @return VerifyIncludeMemberByUserIdResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#verifyincludememberbyuserid
      */
     public function verifyIncludeMemberByUserId (
             VerifyIncludeMemberByUserIdRequest $request
@@ -7706,8 +7964,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Set the maximum number of guild members by specifying a Guild name
+     *
      * @param SetMaximumCurrentMaximumMemberCountByGuildNameRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#setmaximumcurrentmaximummembercountbyguildname
      */
     public function setMaximumCurrentMaximumMemberCountByGuildNameAsync(
             SetMaximumCurrentMaximumMemberCountByGuildNameRequest $request
@@ -7721,8 +7982,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Set the maximum number of guild members by specifying a Guild name
+     *
      * @param SetMaximumCurrentMaximumMemberCountByGuildNameRequest $request
      * @return SetMaximumCurrentMaximumMemberCountByGuildNameResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#setmaximumcurrentmaximummembercountbyguildname
      */
     public function setMaximumCurrentMaximumMemberCountByGuildName (
             SetMaximumCurrentMaximumMemberCountByGuildNameRequest $request
@@ -7733,8 +7997,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get an access token to act as a guild user
+     *
      * @param AssumeRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#assume
      */
     public function assumeAsync(
             AssumeRequest $request
@@ -7748,8 +8015,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get an access token to act as a guild user
+     *
      * @param AssumeRequest $request
      * @return AssumeResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#assume
      */
     public function assume (
             AssumeRequest $request
@@ -7760,8 +8030,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get an access token to act as a guild user by specifying the user ID
+     *
      * @param AssumeByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#assumebyuserid
      */
     public function assumeByUserIdAsync(
             AssumeByUserIdRequest $request
@@ -7775,8 +8048,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get an access token to act as a guild user by specifying the user ID
+     *
      * @param AssumeByUserIdRequest $request
      * @return AssumeByUserIdResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#assumebyuserid
      */
     public function assumeByUserId (
             AssumeByUserIdRequest $request
@@ -7787,8 +8063,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute addition of the maximum number of members as an acquire action
+     *
      * @param IncreaseMaximumCurrentMaximumMemberCountByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/stamp_sheet/#gs2guildincreasemaximumcurrentmaximummembercountbyguildname
      */
     public function increaseMaximumCurrentMaximumMemberCountByStampSheetAsync(
             IncreaseMaximumCurrentMaximumMemberCountByStampSheetRequest $request
@@ -7802,8 +8081,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute addition of the maximum number of members as an acquire action
+     *
      * @param IncreaseMaximumCurrentMaximumMemberCountByStampSheetRequest $request
      * @return IncreaseMaximumCurrentMaximumMemberCountByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/guild/stamp_sheet/#gs2guildincreasemaximumcurrentmaximummembercountbyguildname
      */
     public function increaseMaximumCurrentMaximumMemberCountByStampSheet (
             IncreaseMaximumCurrentMaximumMemberCountByStampSheetRequest $request
@@ -7814,8 +8096,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute subtraction of the maximum number of members as a consume action
+     *
      * @param DecreaseMaximumCurrentMaximumMemberCountByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/stamp_sheet/#gs2guilddecreasemaximumcurrentmaximummembercountbyguildname
      */
     public function decreaseMaximumCurrentMaximumMemberCountByStampTaskAsync(
             DecreaseMaximumCurrentMaximumMemberCountByStampTaskRequest $request
@@ -7829,8 +8114,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute subtraction of the maximum number of members as a consume action
+     *
      * @param DecreaseMaximumCurrentMaximumMemberCountByStampTaskRequest $request
      * @return DecreaseMaximumCurrentMaximumMemberCountByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/guild/stamp_sheet/#gs2guilddecreasemaximumcurrentmaximummembercountbyguildname
      */
     public function decreaseMaximumCurrentMaximumMemberCountByStampTask (
             DecreaseMaximumCurrentMaximumMemberCountByStampTaskRequest $request
@@ -7841,8 +8129,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute setting the maximum number of members as an acquire action
+     *
      * @param SetMaximumCurrentMaximumMemberCountByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/stamp_sheet/#gs2guildsetmaximumcurrentmaximummembercountbyguildname
      */
     public function setMaximumCurrentMaximumMemberCountByStampSheetAsync(
             SetMaximumCurrentMaximumMemberCountByStampSheetRequest $request
@@ -7856,8 +8147,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute setting the maximum number of members as an acquire action
+     *
      * @param SetMaximumCurrentMaximumMemberCountByStampSheetRequest $request
      * @return SetMaximumCurrentMaximumMemberCountByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/guild/stamp_sheet/#gs2guildsetmaximumcurrentmaximummembercountbyguildname
      */
     public function setMaximumCurrentMaximumMemberCountByStampSheet (
             SetMaximumCurrentMaximumMemberCountByStampSheetRequest $request
@@ -7868,8 +8162,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute verification of the maximum number of guild members as a verify action
+     *
      * @param VerifyCurrentMaximumMemberCountByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/stamp_sheet/#gs2guildverifycurrentmaximummembercountbyguildname
      */
     public function verifyCurrentMaximumMemberCountByStampTaskAsync(
             VerifyCurrentMaximumMemberCountByStampTaskRequest $request
@@ -7883,8 +8180,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute verification of the maximum number of guild members as a verify action
+     *
      * @param VerifyCurrentMaximumMemberCountByStampTaskRequest $request
      * @return VerifyCurrentMaximumMemberCountByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/guild/stamp_sheet/#gs2guildverifycurrentmaximummembercountbyguildname
      */
     public function verifyCurrentMaximumMemberCountByStampTask (
             VerifyCurrentMaximumMemberCountByStampTaskRequest $request
@@ -7895,8 +8195,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute verification of whether the guild members include the user ID as a verify action
+     *
      * @param VerifyIncludeMemberByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/stamp_sheet/#gs2guildverifyincludememberbyuserid
      */
     public function verifyIncludeMemberByStampTaskAsync(
             VerifyIncludeMemberByStampTaskRequest $request
@@ -7910,8 +8213,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute verification of whether the guild members include the user ID as a verify action
+     *
      * @param VerifyIncludeMemberByStampTaskRequest $request
      * @return VerifyIncludeMemberByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/guild/stamp_sheet/#gs2guildverifyincludememberbyuserid
      */
     public function verifyIncludeMemberByStampTask (
             VerifyIncludeMemberByStampTaskRequest $request
@@ -7922,8 +8228,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List joined Guilds
+     *
      * @param DescribeJoinedGuildsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#describejoinedguilds
      */
     public function describeJoinedGuildsAsync(
             DescribeJoinedGuildsRequest $request
@@ -7937,8 +8246,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List joined Guilds
+     *
      * @param DescribeJoinedGuildsRequest $request
      * @return DescribeJoinedGuildsResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#describejoinedguilds
      */
     public function describeJoinedGuilds (
             DescribeJoinedGuildsRequest $request
@@ -7949,8 +8261,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List joined Guilds by User ID
+     *
      * @param DescribeJoinedGuildsByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#describejoinedguildsbyuserid
      */
     public function describeJoinedGuildsByUserIdAsync(
             DescribeJoinedGuildsByUserIdRequest $request
@@ -7964,8 +8279,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List joined Guilds by User ID
+     *
      * @param DescribeJoinedGuildsByUserIdRequest $request
      * @return DescribeJoinedGuildsByUserIdResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#describejoinedguildsbyuserid
      */
     public function describeJoinedGuildsByUserId (
             DescribeJoinedGuildsByUserIdRequest $request
@@ -7976,8 +8294,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Joining Guild
+     *
      * @param GetJoinedGuildRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#getjoinedguild
      */
     public function getJoinedGuildAsync(
             GetJoinedGuildRequest $request
@@ -7991,8 +8312,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Joining Guild
+     *
      * @param GetJoinedGuildRequest $request
      * @return GetJoinedGuildResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#getjoinedguild
      */
     public function getJoinedGuild (
             GetJoinedGuildRequest $request
@@ -8003,8 +8327,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Joining Guild by User ID
+     *
      * @param GetJoinedGuildByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#getjoinedguildbyuserid
      */
     public function getJoinedGuildByUserIdAsync(
             GetJoinedGuildByUserIdRequest $request
@@ -8018,8 +8345,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Joining Guild by User ID
+     *
      * @param GetJoinedGuildByUserIdRequest $request
      * @return GetJoinedGuildByUserIdResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#getjoinedguildbyuserid
      */
     public function getJoinedGuildByUserId (
             GetJoinedGuildByUserIdRequest $request
@@ -8030,8 +8360,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update member metadata
+     *
      * @param UpdateMemberMetadataRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#updatemembermetadata
      */
     public function updateMemberMetadataAsync(
             UpdateMemberMetadataRequest $request
@@ -8045,8 +8378,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update member metadata
+     *
      * @param UpdateMemberMetadataRequest $request
      * @return UpdateMemberMetadataResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#updatemembermetadata
      */
     public function updateMemberMetadata (
             UpdateMemberMetadataRequest $request
@@ -8057,8 +8393,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update member metadata by User ID
+     *
      * @param UpdateMemberMetadataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#updatemembermetadatabyuserid
      */
     public function updateMemberMetadataByUserIdAsync(
             UpdateMemberMetadataByUserIdRequest $request
@@ -8072,8 +8411,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update member metadata by User ID
+     *
      * @param UpdateMemberMetadataByUserIdRequest $request
      * @return UpdateMemberMetadataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#updatemembermetadatabyuserid
      */
     public function updateMemberMetadataByUserId (
             UpdateMemberMetadataByUserIdRequest $request
@@ -8084,8 +8426,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Withdrawal from the Guild
+     *
      * @param WithdrawalRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#withdrawal
      */
     public function withdrawalAsync(
             WithdrawalRequest $request
@@ -8099,8 +8444,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Withdrawal from the Guild
+     *
      * @param WithdrawalRequest $request
      * @return WithdrawalResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#withdrawal
      */
     public function withdrawal (
             WithdrawalRequest $request
@@ -8111,8 +8459,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Withdrawal from the Guild by specifying the user ID
+     *
      * @param WithdrawalByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#withdrawalbyuserid
      */
     public function withdrawalByUserIdAsync(
             WithdrawalByUserIdRequest $request
@@ -8126,8 +8477,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Withdrawal from the Guild by specifying the user ID
+     *
      * @param WithdrawalByUserIdRequest $request
      * @return WithdrawalByUserIdResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#withdrawalbyuserid
      */
     public function withdrawalByUserId (
             WithdrawalByUserIdRequest $request
@@ -8138,8 +8492,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get last activity date and time of guild master
+     *
      * @param GetLastGuildMasterActivityRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#getlastguildmasteractivity
      */
     public function getLastGuildMasterActivityAsync(
             GetLastGuildMasterActivityRequest $request
@@ -8153,8 +8510,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get last activity date and time of guild master
+     *
      * @param GetLastGuildMasterActivityRequest $request
      * @return GetLastGuildMasterActivityResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#getlastguildmasteractivity
      */
     public function getLastGuildMasterActivity (
             GetLastGuildMasterActivityRequest $request
@@ -8165,8 +8525,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get last activity date and time of guild master by specifying a Guild name
+     *
      * @param GetLastGuildMasterActivityByGuildNameRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#getlastguildmasteractivitybyguildname
      */
     public function getLastGuildMasterActivityByGuildNameAsync(
             GetLastGuildMasterActivityByGuildNameRequest $request
@@ -8180,8 +8543,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get last activity date and time of guild master by specifying a Guild name
+     *
      * @param GetLastGuildMasterActivityByGuildNameRequest $request
      * @return GetLastGuildMasterActivityByGuildNameResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#getlastguildmasteractivitybyguildname
      */
     public function getLastGuildMasterActivityByGuildName (
             GetLastGuildMasterActivityByGuildNameRequest $request
@@ -8192,8 +8558,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Promote the most senior guild member to guild master if the guild master has not logged in for a certain period of time
+     *
      * @param PromoteSeniorMemberRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#promoteseniormember
      */
     public function promoteSeniorMemberAsync(
             PromoteSeniorMemberRequest $request
@@ -8207,8 +8576,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Promote the most senior guild member to guild master if the guild master has not logged in for a certain period of time
+     *
      * @param PromoteSeniorMemberRequest $request
      * @return PromoteSeniorMemberResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#promoteseniormember
      */
     public function promoteSeniorMember (
             PromoteSeniorMemberRequest $request
@@ -8219,8 +8591,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Replace an inactive guild master with the longest-serving member by guild name
+     *
      * @param PromoteSeniorMemberByGuildNameRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#promoteseniormemberbyguildname
      */
     public function promoteSeniorMemberByGuildNameAsync(
             PromoteSeniorMemberByGuildNameRequest $request
@@ -8234,8 +8609,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Replace an inactive guild master with the longest-serving member by guild name
+     *
      * @param PromoteSeniorMemberByGuildNameRequest $request
      * @return PromoteSeniorMemberByGuildNameResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#promoteseniormemberbyguildname
      */
     public function promoteSeniorMemberByGuildName (
             PromoteSeniorMemberByGuildNameRequest $request
@@ -8246,8 +8624,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Guild Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#exportmaster
      */
     public function exportMasterAsync(
             ExportMasterRequest $request
@@ -8261,8 +8642,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Guild Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return ExportMasterResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#exportmaster
      */
     public function exportMaster (
             ExportMasterRequest $request
@@ -8273,8 +8657,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Guild Model master data
+     *
      * @param GetCurrentGuildMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#getcurrentguildmaster
      */
     public function getCurrentGuildMasterAsync(
             GetCurrentGuildMasterRequest $request
@@ -8288,8 +8675,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Guild Model master data
+     *
      * @param GetCurrentGuildMasterRequest $request
      * @return GetCurrentGuildMasterResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#getcurrentguildmaster
      */
     public function getCurrentGuildMaster (
             GetCurrentGuildMasterRequest $request
@@ -8300,8 +8690,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Currently Active Master Data (3-phase version)
+     *
      * @param PreUpdateCurrentGuildMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#preupdatecurrentguildmaster
      */
     public function preUpdateCurrentGuildMasterAsync(
             PreUpdateCurrentGuildMasterRequest $request
@@ -8315,8 +8708,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Currently Active Master Data (3-phase version)
+     *
      * @param PreUpdateCurrentGuildMasterRequest $request
      * @return PreUpdateCurrentGuildMasterResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#preupdatecurrentguildmaster
      */
     public function preUpdateCurrentGuildMaster (
             PreUpdateCurrentGuildMasterRequest $request
@@ -8327,8 +8723,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Guild Model master data
+     *
      * @param UpdateCurrentGuildMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#updatecurrentguildmaster
      */
     public function updateCurrentGuildMasterAsync(
             UpdateCurrentGuildMasterRequest $request
@@ -8342,8 +8741,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Guild Model master data
+     *
      * @param UpdateCurrentGuildMasterRequest $request
      * @return UpdateCurrentGuildMasterResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#updatecurrentguildmaster
      */
     public function updateCurrentGuildMaster (
             UpdateCurrentGuildMasterRequest $request
@@ -8354,8 +8756,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update the currently active guild settings from GitHub
+     *
      * @param UpdateCurrentGuildMasterFromGitHubRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#updatecurrentguildmasterfromgithub
      */
     public function updateCurrentGuildMasterFromGitHubAsync(
             UpdateCurrentGuildMasterFromGitHubRequest $request
@@ -8369,8 +8774,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update the currently active guild settings from GitHub
+     *
      * @param UpdateCurrentGuildMasterFromGitHubRequest $request
      * @return UpdateCurrentGuildMasterFromGitHubResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#updatecurrentguildmasterfromgithub
      */
     public function updateCurrentGuildMasterFromGitHub (
             UpdateCurrentGuildMasterFromGitHubRequest $request
@@ -8381,8 +8789,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Received Join Requests
+     *
      * @param DescribeReceiveRequestsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#describereceiverequests
      */
     public function describeReceiveRequestsAsync(
             DescribeReceiveRequestsRequest $request
@@ -8396,8 +8807,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Received Join Requests
+     *
      * @param DescribeReceiveRequestsRequest $request
      * @return DescribeReceiveRequestsResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#describereceiverequests
      */
     public function describeReceiveRequests (
             DescribeReceiveRequestsRequest $request
@@ -8408,8 +8822,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Received Join Requests by specifying a Guild name
+     *
      * @param DescribeReceiveRequestsByGuildNameRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#describereceiverequestsbyguildname
      */
     public function describeReceiveRequestsByGuildNameAsync(
             DescribeReceiveRequestsByGuildNameRequest $request
@@ -8423,8 +8840,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Received Join Requests by specifying a Guild name
+     *
      * @param DescribeReceiveRequestsByGuildNameRequest $request
      * @return DescribeReceiveRequestsByGuildNameResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#describereceiverequestsbyguildname
      */
     public function describeReceiveRequestsByGuildName (
             DescribeReceiveRequestsByGuildNameRequest $request
@@ -8435,8 +8855,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Received Join Request
+     *
      * @param GetReceiveRequestRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#getreceiverequest
      */
     public function getReceiveRequestAsync(
             GetReceiveRequestRequest $request
@@ -8450,8 +8873,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Received Join Request
+     *
      * @param GetReceiveRequestRequest $request
      * @return GetReceiveRequestResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#getreceiverequest
      */
     public function getReceiveRequest (
             GetReceiveRequestRequest $request
@@ -8462,8 +8888,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Received Join Request by specifying a Guild name
+     *
      * @param GetReceiveRequestByGuildNameRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#getreceiverequestbyguildname
      */
     public function getReceiveRequestByGuildNameAsync(
             GetReceiveRequestByGuildNameRequest $request
@@ -8477,8 +8906,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Received Join Request by specifying a Guild name
+     *
      * @param GetReceiveRequestByGuildNameRequest $request
      * @return GetReceiveRequestByGuildNameResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#getreceiverequestbyguildname
      */
     public function getReceiveRequestByGuildName (
             GetReceiveRequestByGuildNameRequest $request
@@ -8489,8 +8921,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Accept join request
+     *
      * @param AcceptRequestRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#acceptrequest
      */
     public function acceptRequestAsync(
             AcceptRequestRequest $request
@@ -8504,8 +8939,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Accept join request
+     *
      * @param AcceptRequestRequest $request
      * @return AcceptRequestResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#acceptrequest
      */
     public function acceptRequest (
             AcceptRequestRequest $request
@@ -8516,8 +8954,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Accept join request by specifying a Guild name
+     *
      * @param AcceptRequestByGuildNameRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#acceptrequestbyguildname
      */
     public function acceptRequestByGuildNameAsync(
             AcceptRequestByGuildNameRequest $request
@@ -8531,8 +8972,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Accept join request by specifying a Guild name
+     *
      * @param AcceptRequestByGuildNameRequest $request
      * @return AcceptRequestByGuildNameResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#acceptrequestbyguildname
      */
     public function acceptRequestByGuildName (
             AcceptRequestByGuildNameRequest $request
@@ -8543,8 +8987,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Reject join request
+     *
      * @param RejectRequestRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#rejectrequest
      */
     public function rejectRequestAsync(
             RejectRequestRequest $request
@@ -8558,8 +9005,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Reject join request
+     *
      * @param RejectRequestRequest $request
      * @return RejectRequestResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#rejectrequest
      */
     public function rejectRequest (
             RejectRequestRequest $request
@@ -8570,8 +9020,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Reject join request by specifying a Guild name
+     *
      * @param RejectRequestByGuildNameRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#rejectrequestbyguildname
      */
     public function rejectRequestByGuildNameAsync(
             RejectRequestByGuildNameRequest $request
@@ -8585,8 +9038,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Reject join request by specifying a Guild name
+     *
      * @param RejectRequestByGuildNameRequest $request
      * @return RejectRequestByGuildNameResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#rejectrequestbyguildname
      */
     public function rejectRequestByGuildName (
             RejectRequestByGuildNameRequest $request
@@ -8597,8 +9053,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Sent Join Requests
+     *
      * @param DescribeSendRequestsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#describesendrequests
      */
     public function describeSendRequestsAsync(
             DescribeSendRequestsRequest $request
@@ -8612,8 +9071,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Sent Join Requests
+     *
      * @param DescribeSendRequestsRequest $request
      * @return DescribeSendRequestsResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#describesendrequests
      */
     public function describeSendRequests (
             DescribeSendRequestsRequest $request
@@ -8624,8 +9086,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Sent Join Requests by User ID
+     *
      * @param DescribeSendRequestsByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#describesendrequestsbyuserid
      */
     public function describeSendRequestsByUserIdAsync(
             DescribeSendRequestsByUserIdRequest $request
@@ -8639,8 +9104,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Sent Join Requests by User ID
+     *
      * @param DescribeSendRequestsByUserIdRequest $request
      * @return DescribeSendRequestsByUserIdResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#describesendrequestsbyuserid
      */
     public function describeSendRequestsByUserId (
             DescribeSendRequestsByUserIdRequest $request
@@ -8651,8 +9119,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Sent Join Request
+     *
      * @param GetSendRequestRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#getsendrequest
      */
     public function getSendRequestAsync(
             GetSendRequestRequest $request
@@ -8666,8 +9137,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Sent Join Request
+     *
      * @param GetSendRequestRequest $request
      * @return GetSendRequestResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#getsendrequest
      */
     public function getSendRequest (
             GetSendRequestRequest $request
@@ -8678,8 +9152,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Sent Join Request by User ID
+     *
      * @param GetSendRequestByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#getsendrequestbyuserid
      */
     public function getSendRequestByUserIdAsync(
             GetSendRequestByUserIdRequest $request
@@ -8693,8 +9170,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Sent Join Request by User ID
+     *
      * @param GetSendRequestByUserIdRequest $request
      * @return GetSendRequestByUserIdResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#getsendrequestbyuserid
      */
     public function getSendRequestByUserId (
             GetSendRequestByUserIdRequest $request
@@ -8705,8 +9185,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Send a join request
+     *
      * @param SendRequestRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#sendrequest
      */
     public function sendRequestAsync(
             SendRequestRequest $request
@@ -8720,8 +9203,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Send a join request
+     *
      * @param SendRequestRequest $request
      * @return SendRequestResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#sendrequest
      */
     public function sendRequest (
             SendRequestRequest $request
@@ -8732,8 +9218,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Send a join request by specifying the user ID
+     *
      * @param SendRequestByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#sendrequestbyuserid
      */
     public function sendRequestByUserIdAsync(
             SendRequestByUserIdRequest $request
@@ -8747,8 +9236,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Send a join request by specifying the user ID
+     *
      * @param SendRequestByUserIdRequest $request
      * @return SendRequestByUserIdResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#sendrequestbyuserid
      */
     public function sendRequestByUserId (
             SendRequestByUserIdRequest $request
@@ -8759,8 +9251,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Cancel a sent join request
+     *
      * @param DeleteRequestRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#deleterequest
      */
     public function deleteRequestAsync(
             DeleteRequestRequest $request
@@ -8774,8 +9269,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Cancel a sent join request
+     *
      * @param DeleteRequestRequest $request
      * @return DeleteRequestResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#deleterequest
      */
     public function deleteRequest (
             DeleteRequestRequest $request
@@ -8786,8 +9284,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Cancel a sent join request by User ID
+     *
      * @param DeleteRequestByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#deleterequestbyuserid
      */
     public function deleteRequestByUserIdAsync(
             DeleteRequestByUserIdRequest $request
@@ -8801,8 +9302,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Cancel a sent join request by User ID
+     *
      * @param DeleteRequestByUserIdRequest $request
      * @return DeleteRequestByUserIdResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#deleterequestbyuserid
      */
     public function deleteRequestByUserId (
             DeleteRequestByUserIdRequest $request
@@ -8813,8 +9317,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List User IDs that refuse to participate
+     *
      * @param DescribeIgnoreUsersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#describeignoreusers
      */
     public function describeIgnoreUsersAsync(
             DescribeIgnoreUsersRequest $request
@@ -8828,8 +9335,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List User IDs that refuse to participate
+     *
      * @param DescribeIgnoreUsersRequest $request
      * @return DescribeIgnoreUsersResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#describeignoreusers
      */
     public function describeIgnoreUsers (
             DescribeIgnoreUsersRequest $request
@@ -8840,8 +9350,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List User IDs that refuse to participate by specifying a Guild name
+     *
      * @param DescribeIgnoreUsersByGuildNameRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#describeignoreusersbyguildname
      */
     public function describeIgnoreUsersByGuildNameAsync(
             DescribeIgnoreUsersByGuildNameRequest $request
@@ -8855,8 +9368,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List User IDs that refuse to participate by specifying a Guild name
+     *
      * @param DescribeIgnoreUsersByGuildNameRequest $request
      * @return DescribeIgnoreUsersByGuildNameResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#describeignoreusersbyguildname
      */
     public function describeIgnoreUsersByGuildName (
             DescribeIgnoreUsersByGuildNameRequest $request
@@ -8867,8 +9383,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get User ID that refuse to participate
+     *
      * @param GetIgnoreUserRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#getignoreuser
      */
     public function getIgnoreUserAsync(
             GetIgnoreUserRequest $request
@@ -8882,8 +9401,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get User ID that refuse to participate
+     *
      * @param GetIgnoreUserRequest $request
      * @return GetIgnoreUserResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#getignoreuser
      */
     public function getIgnoreUser (
             GetIgnoreUserRequest $request
@@ -8894,8 +9416,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get User ID that refuse to participate by specifying a Guild name
+     *
      * @param GetIgnoreUserByGuildNameRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#getignoreuserbyguildname
      */
     public function getIgnoreUserByGuildNameAsync(
             GetIgnoreUserByGuildNameRequest $request
@@ -8909,8 +9434,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get User ID that refuse to participate by specifying a Guild name
+     *
      * @param GetIgnoreUserByGuildNameRequest $request
      * @return GetIgnoreUserByGuildNameResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#getignoreuserbyguildname
      */
     public function getIgnoreUserByGuildName (
             GetIgnoreUserByGuildNameRequest $request
@@ -8921,8 +9449,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Add User ID that refuse to participate
+     *
      * @param AddIgnoreUserRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#addignoreuser
      */
     public function addIgnoreUserAsync(
             AddIgnoreUserRequest $request
@@ -8936,8 +9467,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Add User ID that refuse to participate
+     *
      * @param AddIgnoreUserRequest $request
      * @return AddIgnoreUserResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#addignoreuser
      */
     public function addIgnoreUser (
             AddIgnoreUserRequest $request
@@ -8948,8 +9482,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Add User ID that refuse to participate by specifying a Guild name
+     *
      * @param AddIgnoreUserByGuildNameRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#addignoreuserbyguildname
      */
     public function addIgnoreUserByGuildNameAsync(
             AddIgnoreUserByGuildNameRequest $request
@@ -8963,8 +9500,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Add User ID that refuse to participate by specifying a Guild name
+     *
      * @param AddIgnoreUserByGuildNameRequest $request
      * @return AddIgnoreUserByGuildNameResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#addignoreuserbyguildname
      */
     public function addIgnoreUserByGuildName (
             AddIgnoreUserByGuildNameRequest $request
@@ -8975,8 +9515,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete User ID that refuse to participate
+     *
      * @param DeleteIgnoreUserRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#deleteignoreuser
      */
     public function deleteIgnoreUserAsync(
             DeleteIgnoreUserRequest $request
@@ -8990,8 +9533,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete User ID that refuse to participate
+     *
      * @param DeleteIgnoreUserRequest $request
      * @return DeleteIgnoreUserResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#deleteignoreuser
      */
     public function deleteIgnoreUser (
             DeleteIgnoreUserRequest $request
@@ -9002,8 +9548,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete User ID that refuse to participate by specifying a Guild name
+     *
      * @param DeleteIgnoreUserByGuildNameRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#deleteignoreuserbyguildname
      */
     public function deleteIgnoreUserByGuildNameAsync(
             DeleteIgnoreUserByGuildNameRequest $request
@@ -9017,8 +9566,11 @@ class Gs2GuildRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete User ID that refuse to participate by specifying a Guild name
+     *
      * @param DeleteIgnoreUserByGuildNameRequest $request
      * @return DeleteIgnoreUserByGuildNameResult
+     * @see https://docs.gs2.io/api_reference/guild/sdk/#deleteignoreuserbyguildname
      */
     public function deleteIgnoreUserByGuildName (
             DeleteIgnoreUserByGuildNameRequest $request

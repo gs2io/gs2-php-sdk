@@ -19,41 +19,64 @@ namespace Gs2\JobQueue\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for deleteJob: Delete job
+ *
+ * @see https://docs.gs2.io/api_reference/job_queue/sdk/#deletejob
+ */
 class DeleteJobRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Job Name */
     private $jobName;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DeleteJobRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DeleteJobRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return DeleteJobRequest
+     */
 	public function withAccessToken(?string $accessToken): DeleteJobRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Job Name */
 	public function getJobName(): ?string {
 		return $this->jobName;
 	}
+    /** @param string|null $jobName Job Name */
 	public function setJobName(?string $jobName) {
 		$this->jobName = $jobName;
 	}
+    /**
+     * @param string|null $jobName Job Name
+     * @return DeleteJobRequest
+     */
 	public function withJobName(?string $jobName): DeleteJobRequest {
 		$this->jobName = $jobName;
 		return $this;

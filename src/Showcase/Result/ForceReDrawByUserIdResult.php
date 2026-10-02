@@ -23,18 +23,29 @@ use Gs2\Showcase\Model\ConsumeAction;
 use Gs2\Showcase\Model\AcquireAction;
 use Gs2\Showcase\Model\RandomDisplayItem;
 
+/**
+ * Result of forceReDrawByUserId: Re-draw the contents of the Random Showcase by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/showcase/sdk/#forceredrawbyuserid
+ */
 class ForceReDrawByUserIdResult implements IResult {
-    /** @var array */
+    /** @var array List of Random Displayed Items */
     private $items;
 
+    /** @return array|null List of Random Displayed Items */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Random Displayed Items */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Random Displayed Items
+     * @return ForceReDrawByUserIdResult
+     */
 	public function withItems(?array $items): ForceReDrawByUserIdResult {
 		$this->items = $items;
 		return $this;

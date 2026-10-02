@@ -20,18 +20,29 @@ namespace Gs2\SerialKey\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\SerialKey\Model\CampaignModelMaster;
 
+/**
+ * Result of updateCampaignModelMaster: Update Campaign Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/serial_key/sdk/#updatecampaignmodelmaster
+ */
 class UpdateCampaignModelMasterResult implements IResult {
-    /** @var CampaignModelMaster */
+    /** @var CampaignModelMaster Campaign Model Master updated */
     private $item;
 
+    /** @return CampaignModelMaster|null Campaign Model Master updated */
 	public function getItem(): ?CampaignModelMaster {
 		return $this->item;
 	}
 
+    /** @param CampaignModelMaster|null $item Campaign Model Master updated */
 	public function setItem(?CampaignModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CampaignModelMaster|null $item Campaign Model Master updated
+     * @return UpdateCampaignModelMasterResult
+     */
 	public function withItem(?CampaignModelMaster $item): UpdateCampaignModelMasterResult {
 		$this->item = $item;
 		return $this;

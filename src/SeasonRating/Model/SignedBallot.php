@@ -20,31 +20,48 @@ namespace Gs2\SeasonRating\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Signed Ballot
+ *
+ * @see https://docs.gs2.io/api_reference/season_rating/sdk/#signedballot
+ */
 class SignedBallot implements IModel {
 	/**
-     * @var string
+     * @var string Body
 	 */
 	private $body;
 	/**
-     * @var string
+     * @var string Signature
 	 */
 	private $signature;
+    /** @return string|null Body */
 	public function getBody(): ?string {
 		return $this->body;
 	}
+    /** @param string|null $body Body */
 	public function setBody(?string $body) {
 		$this->body = $body;
 	}
+    /**
+     * @param string|null $body Body
+     * @return SignedBallot
+     */
 	public function withBody(?string $body): SignedBallot {
 		$this->body = $body;
 		return $this;
 	}
+    /** @return string|null Signature */
 	public function getSignature(): ?string {
 		return $this->signature;
 	}
+    /** @param string|null $signature Signature */
 	public function setSignature(?string $signature) {
 		$this->signature = $signature;
 	}
+    /**
+     * @param string|null $signature Signature
+     * @return SignedBallot
+     */
 	public function withSignature(?string $signature): SignedBallot {
 		$this->signature = $signature;
 		return $this;

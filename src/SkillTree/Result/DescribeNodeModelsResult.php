@@ -23,18 +23,29 @@ use Gs2\SkillTree\Model\ConsumeAction;
 use Gs2\SkillTree\Model\AcquireAction;
 use Gs2\SkillTree\Model\NodeModel;
 
+/**
+ * Result of describeNodeModels: List Node Models
+ *
+ * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#describenodemodels
+ */
 class DescribeNodeModelsResult implements IResult {
-    /** @var array */
+    /** @var array List of Node Models */
     private $items;
 
+    /** @return array|null List of Node Models */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Node Models */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Node Models
+     * @return DescribeNodeModelsResult
+     */
 	public function withItems(?array $items): DescribeNodeModelsResult {
 		$this->items = $items;
 		return $this;

@@ -19,135 +19,206 @@ namespace Gs2\Log\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for countExecuteStampTaskLog: Get aggregate results of consume action execution logs
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#countexecutestamptasklog
+ */
 class CountExecuteStampTaskLogRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var bool */
+    /** @var bool Classify by microservice type */
     private $service;
-    /** @var bool */
+    /** @var bool Classify by microservice method */
     private $method;
-    /** @var bool */
+    /** @var bool Classify by user ID */
     private $userId;
-    /** @var bool */
+    /** @var bool Classify by acquire actions */
     private $action;
-    /** @var int */
+    /** @var int Search range start date and time */
     private $begin;
-    /** @var int */
+    /** @var int Search range end date and time */
     private $end;
-    /** @var bool */
+    /** @var bool Search logs for periods longer than 7 days */
     private $longTerm;
-    /** @var string */
+    /** @var string Token specifying the position from which to start acquiring data */
     private $pageToken;
-    /** @var int */
+    /** @var int Number of data items to retrieve */
     private $limit;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return CountExecuteStampTaskLogRequest
+     */
 	public function withNamespaceName(?string $namespaceName): CountExecuteStampTaskLogRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return bool|null Classify by microservice type */
 	public function getService(): ?bool {
 		return $this->service;
 	}
+    /** @param bool|null $service Classify by microservice type */
 	public function setService(?bool $service) {
 		$this->service = $service;
 	}
+    /**
+     * @param bool|null $service Classify by microservice type
+     * @return CountExecuteStampTaskLogRequest
+     */
 	public function withService(?bool $service): CountExecuteStampTaskLogRequest {
 		$this->service = $service;
 		return $this;
 	}
+    /** @return bool|null Classify by microservice method */
 	public function getMethod(): ?bool {
 		return $this->method;
 	}
+    /** @param bool|null $method Classify by microservice method */
 	public function setMethod(?bool $method) {
 		$this->method = $method;
 	}
+    /**
+     * @param bool|null $method Classify by microservice method
+     * @return CountExecuteStampTaskLogRequest
+     */
 	public function withMethod(?bool $method): CountExecuteStampTaskLogRequest {
 		$this->method = $method;
 		return $this;
 	}
+    /** @return bool|null Classify by user ID */
 	public function getUserId(): ?bool {
 		return $this->userId;
 	}
+    /** @param bool|null $userId Classify by user ID */
 	public function setUserId(?bool $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param bool|null $userId Classify by user ID
+     * @return CountExecuteStampTaskLogRequest
+     */
 	public function withUserId(?bool $userId): CountExecuteStampTaskLogRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return bool|null Classify by acquire actions */
 	public function getAction(): ?bool {
 		return $this->action;
 	}
+    /** @param bool|null $action Classify by acquire actions */
 	public function setAction(?bool $action) {
 		$this->action = $action;
 	}
+    /**
+     * @param bool|null $action Classify by acquire actions
+     * @return CountExecuteStampTaskLogRequest
+     */
 	public function withAction(?bool $action): CountExecuteStampTaskLogRequest {
 		$this->action = $action;
 		return $this;
 	}
+    /** @return int|null Search range start date and time */
 	public function getBegin(): ?int {
 		return $this->begin;
 	}
+    /** @param int|null $begin Search range start date and time */
 	public function setBegin(?int $begin) {
 		$this->begin = $begin;
 	}
+    /**
+     * @param int|null $begin Search range start date and time
+     * @return CountExecuteStampTaskLogRequest
+     */
 	public function withBegin(?int $begin): CountExecuteStampTaskLogRequest {
 		$this->begin = $begin;
 		return $this;
 	}
+    /** @return int|null Search range end date and time */
 	public function getEnd(): ?int {
 		return $this->end;
 	}
+    /** @param int|null $end Search range end date and time */
 	public function setEnd(?int $end) {
 		$this->end = $end;
 	}
+    /**
+     * @param int|null $end Search range end date and time
+     * @return CountExecuteStampTaskLogRequest
+     */
 	public function withEnd(?int $end): CountExecuteStampTaskLogRequest {
 		$this->end = $end;
 		return $this;
 	}
+    /** @return bool|null Search logs for periods longer than 7 days */
 	public function getLongTerm(): ?bool {
 		return $this->longTerm;
 	}
+    /** @param bool|null $longTerm Search logs for periods longer than 7 days */
 	public function setLongTerm(?bool $longTerm) {
 		$this->longTerm = $longTerm;
 	}
+    /**
+     * @param bool|null $longTerm Search logs for periods longer than 7 days
+     * @return CountExecuteStampTaskLogRequest
+     */
 	public function withLongTerm(?bool $longTerm): CountExecuteStampTaskLogRequest {
 		$this->longTerm = $longTerm;
 		return $this;
 	}
+    /** @return string|null Token specifying the position from which to start acquiring data */
 	public function getPageToken(): ?string {
 		return $this->pageToken;
 	}
+    /** @param string|null $pageToken Token specifying the position from which to start acquiring data */
 	public function setPageToken(?string $pageToken) {
 		$this->pageToken = $pageToken;
 	}
+    /**
+     * @param string|null $pageToken Token specifying the position from which to start acquiring data
+     * @return CountExecuteStampTaskLogRequest
+     */
 	public function withPageToken(?string $pageToken): CountExecuteStampTaskLogRequest {
 		$this->pageToken = $pageToken;
 		return $this;
 	}
+    /** @return int|null Number of data items to retrieve */
 	public function getLimit(): ?int {
 		return $this->limit;
 	}
+    /** @param int|null $limit Number of data items to retrieve */
 	public function setLimit(?int $limit) {
 		$this->limit = $limit;
 	}
+    /**
+     * @param int|null $limit Number of data items to retrieve
+     * @return CountExecuteStampTaskLogRequest
+     */
 	public function withLimit(?int $limit): CountExecuteStampTaskLogRequest {
 		$this->limit = $limit;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return CountExecuteStampTaskLogRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): CountExecuteStampTaskLogRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

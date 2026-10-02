@@ -20,143 +20,208 @@ namespace Gs2\SerialKey\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Serial Code
+ *
+ * @see https://docs.gs2.io/api_reference/serial_key/sdk/#serialkey
+ */
 class SerialKey implements IModel {
 	/**
-     * @var string
+     * @var string Serial Key GRN
 	 */
 	private $serialKeyId;
 	/**
-     * @var string
+     * @var string Campaign name
 	 */
 	private $campaignModelName;
 	/**
-     * @var string
+     * @var string Serial Code
 	 */
 	private $code;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var string
+     * @var string Status
 	 */
 	private $status;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $usedUserId;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Used at
 	 */
 	private $usedAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Serial Key GRN */
 	public function getSerialKeyId(): ?string {
 		return $this->serialKeyId;
 	}
+    /** @param string|null $serialKeyId Serial Key GRN */
 	public function setSerialKeyId(?string $serialKeyId) {
 		$this->serialKeyId = $serialKeyId;
 	}
+    /**
+     * @param string|null $serialKeyId Serial Key GRN
+     * @return SerialKey
+     */
 	public function withSerialKeyId(?string $serialKeyId): SerialKey {
 		$this->serialKeyId = $serialKeyId;
 		return $this;
 	}
+    /** @return string|null Campaign name */
 	public function getCampaignModelName(): ?string {
 		return $this->campaignModelName;
 	}
+    /** @param string|null $campaignModelName Campaign name */
 	public function setCampaignModelName(?string $campaignModelName) {
 		$this->campaignModelName = $campaignModelName;
 	}
+    /**
+     * @param string|null $campaignModelName Campaign name
+     * @return SerialKey
+     */
 	public function withCampaignModelName(?string $campaignModelName): SerialKey {
 		$this->campaignModelName = $campaignModelName;
 		return $this;
 	}
+    /** @return string|null Serial Code */
 	public function getCode(): ?string {
 		return $this->code;
 	}
+    /** @param string|null $code Serial Code */
 	public function setCode(?string $code) {
 		$this->code = $code;
 	}
+    /**
+     * @param string|null $code Serial Code
+     * @return SerialKey
+     */
 	public function withCode(?string $code): SerialKey {
 		$this->code = $code;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return SerialKey
+     */
 	public function withMetadata(?string $metadata): SerialKey {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return string|null Status */
 	public function getStatus(): ?string {
 		return $this->status;
 	}
+    /** @param string|null $status Status */
 	public function setStatus(?string $status) {
 		$this->status = $status;
 	}
+    /**
+     * @param string|null $status Status
+     * @return SerialKey
+     */
 	public function withStatus(?string $status): SerialKey {
 		$this->status = $status;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUsedUserId(): ?string {
 		return $this->usedUserId;
 	}
+    /** @param string|null $usedUserId User ID */
 	public function setUsedUserId(?string $usedUserId) {
 		$this->usedUserId = $usedUserId;
 	}
+    /**
+     * @param string|null $usedUserId User ID
+     * @return SerialKey
+     */
 	public function withUsedUserId(?string $usedUserId): SerialKey {
 		$this->usedUserId = $usedUserId;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return SerialKey
+     */
 	public function withCreatedAt(?int $createdAt): SerialKey {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Used at */
 	public function getUsedAt(): ?int {
 		return $this->usedAt;
 	}
+    /** @param int|null $usedAt Used at */
 	public function setUsedAt(?int $usedAt) {
 		$this->usedAt = $usedAt;
 	}
+    /**
+     * @param int|null $usedAt Used at
+     * @return SerialKey
+     */
 	public function withUsedAt(?int $usedAt): SerialKey {
 		$this->usedAt = $usedAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return SerialKey
+     */
 	public function withUpdatedAt(?int $updatedAt): SerialKey {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return SerialKey
+     */
 	public function withRevision(?int $revision): SerialKey {
 		$this->revision = $revision;
 		return $this;

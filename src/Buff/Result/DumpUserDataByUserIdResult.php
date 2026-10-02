@@ -19,6 +19,11 @@ namespace Gs2\Buff\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of dumpUserDataByUserId: Dump data associated with the specified user ID
+ *
+ * @see https://docs.gs2.io/api_reference/buff/sdk/#dumpuserdatabyuserid
+ */
 class DumpUserDataByUserIdResult implements IResult {
 
     public static function fromJson(?array $data): ?DumpUserDataByUserIdResult {

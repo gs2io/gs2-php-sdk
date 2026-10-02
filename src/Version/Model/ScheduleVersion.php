@@ -20,59 +20,88 @@ namespace Gs2\Version\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Version that switches in chronological order
+ *
+ * @see https://docs.gs2.io/api_reference/version/sdk/#scheduleversion
+ */
 class ScheduleVersion implements IModel {
 	/**
-     * @var Version
+     * @var Version Current Version
 	 */
 	private $currentVersion;
 	/**
-     * @var Version
+     * @var Version Version that prompts for version upgrade
 	 */
 	private $warningVersion;
 	/**
-     * @var Version
+     * @var Version Version that is determined to be an error by the version check
 	 */
 	private $errorVersion;
 	/**
-     * @var string
+     * @var string GS2-Schedule event GRN that enables version check
 	 */
 	private $scheduleEventId;
+    /** @return Version|null Current Version */
 	public function getCurrentVersion(): ?Version {
 		return $this->currentVersion;
 	}
+    /** @param Version|null $currentVersion Current Version */
 	public function setCurrentVersion(?Version $currentVersion) {
 		$this->currentVersion = $currentVersion;
 	}
+    /**
+     * @param Version|null $currentVersion Current Version
+     * @return ScheduleVersion
+     */
 	public function withCurrentVersion(?Version $currentVersion): ScheduleVersion {
 		$this->currentVersion = $currentVersion;
 		return $this;
 	}
+    /** @return Version|null Version that prompts for version upgrade */
 	public function getWarningVersion(): ?Version {
 		return $this->warningVersion;
 	}
+    /** @param Version|null $warningVersion Version that prompts for version upgrade */
 	public function setWarningVersion(?Version $warningVersion) {
 		$this->warningVersion = $warningVersion;
 	}
+    /**
+     * @param Version|null $warningVersion Version that prompts for version upgrade
+     * @return ScheduleVersion
+     */
 	public function withWarningVersion(?Version $warningVersion): ScheduleVersion {
 		$this->warningVersion = $warningVersion;
 		return $this;
 	}
+    /** @return Version|null Version that is determined to be an error by the version check */
 	public function getErrorVersion(): ?Version {
 		return $this->errorVersion;
 	}
+    /** @param Version|null $errorVersion Version that is determined to be an error by the version check */
 	public function setErrorVersion(?Version $errorVersion) {
 		$this->errorVersion = $errorVersion;
 	}
+    /**
+     * @param Version|null $errorVersion Version that is determined to be an error by the version check
+     * @return ScheduleVersion
+     */
 	public function withErrorVersion(?Version $errorVersion): ScheduleVersion {
 		$this->errorVersion = $errorVersion;
 		return $this;
 	}
+    /** @return string|null GS2-Schedule event GRN that enables version check */
 	public function getScheduleEventId(): ?string {
 		return $this->scheduleEventId;
 	}
+    /** @param string|null $scheduleEventId GS2-Schedule event GRN that enables version check */
 	public function setScheduleEventId(?string $scheduleEventId) {
 		$this->scheduleEventId = $scheduleEventId;
 	}
+    /**
+     * @param string|null $scheduleEventId GS2-Schedule event GRN that enables version check
+     * @return ScheduleVersion
+     */
 	public function withScheduleEventId(?string $scheduleEventId): ScheduleVersion {
 		$this->scheduleEventId = $scheduleEventId;
 		return $this;

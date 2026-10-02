@@ -22,18 +22,29 @@ use Gs2\Enchant\Model\RarityParameterCountModel;
 use Gs2\Enchant\Model\RarityParameterValueModel;
 use Gs2\Enchant\Model\RarityParameterModelMaster;
 
+/**
+ * Result of deleteRarityParameterModelMaster: Delete Rarity Parameter Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/enchant/sdk/#deleterarityparametermodelmaster
+ */
 class DeleteRarityParameterModelMasterResult implements IResult {
-    /** @var RarityParameterModelMaster */
+    /** @var RarityParameterModelMaster Rarity Parameter Model Master deleted */
     private $item;
 
+    /** @return RarityParameterModelMaster|null Rarity Parameter Model Master deleted */
 	public function getItem(): ?RarityParameterModelMaster {
 		return $this->item;
 	}
 
+    /** @param RarityParameterModelMaster|null $item Rarity Parameter Model Master deleted */
 	public function setItem(?RarityParameterModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param RarityParameterModelMaster|null $item Rarity Parameter Model Master deleted
+     * @return DeleteRarityParameterModelMasterResult
+     */
 	public function withItem(?RarityParameterModelMaster $item): DeleteRarityParameterModelMasterResult {
 		$this->item = $item;
 		return $this;

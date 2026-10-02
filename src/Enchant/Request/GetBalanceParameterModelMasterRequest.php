@@ -19,27 +19,44 @@ namespace Gs2\Enchant\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getBalanceParameterModelMaster: Get Balance Parameter Model Master Data
+ *
+ * @see https://docs.gs2.io/api_reference/enchant/sdk/#getbalanceparametermodelmaster
+ */
 class GetBalanceParameterModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Balance Parameter Model name */
     private $parameterName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetBalanceParameterModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetBalanceParameterModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Balance Parameter Model name */
 	public function getParameterName(): ?string {
 		return $this->parameterName;
 	}
+    /** @param string|null $parameterName Balance Parameter Model name */
 	public function setParameterName(?string $parameterName) {
 		$this->parameterName = $parameterName;
 	}
+    /**
+     * @param string|null $parameterName Balance Parameter Model name
+     * @return GetBalanceParameterModelMasterRequest
+     */
 	public function withParameterName(?string $parameterName): GetBalanceParameterModelMasterRequest {
 		$this->parameterName = $parameterName;
 		return $this;

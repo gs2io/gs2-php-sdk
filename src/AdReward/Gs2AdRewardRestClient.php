@@ -1457,25 +1457,22 @@ class AcquirePointByStampSheetTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 AdReward API クライアント
+ * GS2-AdReward API client
  *
- * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/ad_reward/sdk/
  */
 class Gs2AdRewardRestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#describenamespaces
      */
     public function describeNamespacesAsync(
             DescribeNamespacesRequest $request
@@ -1489,8 +1486,11 @@ class Gs2AdRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
+     * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#describenamespaces
      */
     public function describeNamespaces (
             DescribeNamespacesRequest $request
@@ -1501,8 +1501,11 @@ class Gs2AdRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#createnamespace
      */
     public function createNamespaceAsync(
             CreateNamespaceRequest $request
@@ -1516,8 +1519,11 @@ class Gs2AdRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#createnamespace
      */
     public function createNamespace (
             CreateNamespaceRequest $request
@@ -1528,8 +1534,11 @@ class Gs2AdRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#getnamespacestatus
      */
     public function getNamespaceStatusAsync(
             GetNamespaceStatusRequest $request
@@ -1543,8 +1552,11 @@ class Gs2AdRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
+     * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#getnamespacestatus
      */
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
@@ -1555,8 +1567,11 @@ class Gs2AdRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#getnamespace
      */
     public function getNamespaceAsync(
             GetNamespaceRequest $request
@@ -1570,8 +1585,11 @@ class Gs2AdRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
+     * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#getnamespace
      */
     public function getNamespace (
             GetNamespaceRequest $request
@@ -1582,8 +1600,11 @@ class Gs2AdRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#updatenamespace
      */
     public function updateNamespaceAsync(
             UpdateNamespaceRequest $request
@@ -1597,8 +1618,11 @@ class Gs2AdRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#updatenamespace
      */
     public function updateNamespace (
             UpdateNamespaceRequest $request
@@ -1609,8 +1633,11 @@ class Gs2AdRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#deletenamespace
      */
     public function deleteNamespaceAsync(
             DeleteNamespaceRequest $request
@@ -1624,8 +1651,11 @@ class Gs2AdRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
+     * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#deletenamespace
      */
     public function deleteNamespace (
             DeleteNamespaceRequest $request
@@ -1636,8 +1666,11 @@ class Gs2AdRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get microservice version
+     *
      * @param GetServiceVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#getserviceversion
      */
     public function getServiceVersionAsync(
             GetServiceVersionRequest $request
@@ -1651,8 +1684,11 @@ class Gs2AdRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get microservice version
+     *
      * @param GetServiceVersionRequest $request
      * @return GetServiceVersionResult
+     * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#getserviceversion
      */
     public function getServiceVersion (
             GetServiceVersionRequest $request
@@ -1663,8 +1699,11 @@ class Gs2AdRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserIdAsync(
             DumpUserDataByUserIdRequest $request
@@ -1678,8 +1717,11 @@ class Gs2AdRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return DumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserId (
             DumpUserDataByUserIdRequest $request
@@ -1690,8 +1732,11 @@ class Gs2AdRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserIdAsync(
             CheckDumpUserDataByUserIdRequest $request
@@ -1705,8 +1750,11 @@ class Gs2AdRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return CheckDumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserId (
             CheckDumpUserDataByUserIdRequest $request
@@ -1717,8 +1765,11 @@ class Gs2AdRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserIdAsync(
             CleanUserDataByUserIdRequest $request
@@ -1732,8 +1783,11 @@ class Gs2AdRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return CleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserId (
             CleanUserDataByUserIdRequest $request
@@ -1744,8 +1798,11 @@ class Gs2AdRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserIdAsync(
             CheckCleanUserDataByUserIdRequest $request
@@ -1759,8 +1816,11 @@ class Gs2AdRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return CheckCleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserId (
             CheckCleanUserDataByUserIdRequest $request
@@ -1771,8 +1831,11 @@ class Gs2AdRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserIdAsync(
             PrepareImportUserDataByUserIdRequest $request
@@ -1786,8 +1849,11 @@ class Gs2AdRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PrepareImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserId (
             PrepareImportUserDataByUserIdRequest $request
@@ -1798,8 +1864,11 @@ class Gs2AdRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserIdAsync(
             ImportUserDataByUserIdRequest $request
@@ -1813,8 +1882,11 @@ class Gs2AdRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return ImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserId (
             ImportUserDataByUserIdRequest $request
@@ -1825,8 +1897,11 @@ class Gs2AdRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserIdAsync(
             CheckImportUserDataByUserIdRequest $request
@@ -1840,8 +1915,11 @@ class Gs2AdRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return CheckImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserId (
             CheckImportUserDataByUserIdRequest $request
@@ -1852,8 +1930,11 @@ class Gs2AdRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get current Point Status
+     *
      * @param GetPointRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#getpoint
      */
     public function getPointAsync(
             GetPointRequest $request
@@ -1867,8 +1948,11 @@ class Gs2AdRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get current Point Status
+     *
      * @param GetPointRequest $request
      * @return GetPointResult
+     * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#getpoint
      */
     public function getPoint (
             GetPointRequest $request
@@ -1879,8 +1963,11 @@ class Gs2AdRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Point status by User ID
+     *
      * @param GetPointByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#getpointbyuserid
      */
     public function getPointByUserIdAsync(
             GetPointByUserIdRequest $request
@@ -1894,8 +1981,11 @@ class Gs2AdRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Point status by User ID
+     *
      * @param GetPointByUserIdRequest $request
      * @return GetPointByUserIdResult
+     * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#getpointbyuserid
      */
     public function getPointByUserId (
             GetPointByUserIdRequest $request
@@ -1906,8 +1996,11 @@ class Gs2AdRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Acquire Point by User ID
+     *
      * @param AcquirePointByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#acquirepointbyuserid
      */
     public function acquirePointByUserIdAsync(
             AcquirePointByUserIdRequest $request
@@ -1921,8 +2014,11 @@ class Gs2AdRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Acquire Point by User ID
+     *
      * @param AcquirePointByUserIdRequest $request
      * @return AcquirePointByUserIdResult
+     * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#acquirepointbyuserid
      */
     public function acquirePointByUserId (
             AcquirePointByUserIdRequest $request
@@ -1933,8 +2029,11 @@ class Gs2AdRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Consume Points
+     *
      * @param ConsumePointRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#consumepoint
      */
     public function consumePointAsync(
             ConsumePointRequest $request
@@ -1948,8 +2047,11 @@ class Gs2AdRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Consume Points
+     *
      * @param ConsumePointRequest $request
      * @return ConsumePointResult
+     * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#consumepoint
      */
     public function consumePoint (
             ConsumePointRequest $request
@@ -1960,8 +2062,11 @@ class Gs2AdRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Consume Point by User ID
+     *
      * @param ConsumePointByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#consumepointbyuserid
      */
     public function consumePointByUserIdAsync(
             ConsumePointByUserIdRequest $request
@@ -1975,8 +2080,11 @@ class Gs2AdRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Consume Point by User ID
+     *
      * @param ConsumePointByUserIdRequest $request
      * @return ConsumePointByUserIdResult
+     * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#consumepointbyuserid
      */
     public function consumePointByUserId (
             ConsumePointByUserIdRequest $request
@@ -1987,8 +2095,11 @@ class Gs2AdRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Points by User ID
+     *
      * @param DeletePointByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#deletepointbyuserid
      */
     public function deletePointByUserIdAsync(
             DeletePointByUserIdRequest $request
@@ -2002,8 +2113,11 @@ class Gs2AdRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Points by User ID
+     *
      * @param DeletePointByUserIdRequest $request
      * @return DeletePointByUserIdResult
+     * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#deletepointbyuserid
      */
     public function deletePointByUserId (
             DeletePointByUserIdRequest $request
@@ -2014,8 +2128,11 @@ class Gs2AdRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Consume Point Consume Action
+     *
      * @param ConsumePointByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ad_reward/stamp_sheet/#gs2adrewardconsumepointbyuserid
      */
     public function consumePointByStampTaskAsync(
             ConsumePointByStampTaskRequest $request
@@ -2029,8 +2146,11 @@ class Gs2AdRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Consume Point Consume Action
+     *
      * @param ConsumePointByStampTaskRequest $request
      * @return ConsumePointByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/ad_reward/stamp_sheet/#gs2adrewardconsumepointbyuserid
      */
     public function consumePointByStampTask (
             ConsumePointByStampTaskRequest $request
@@ -2041,8 +2161,11 @@ class Gs2AdRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Acquire Point Acquire Action
+     *
      * @param AcquirePointByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ad_reward/stamp_sheet/#gs2adrewardacquirepointbyuserid
      */
     public function acquirePointByStampSheetAsync(
             AcquirePointByStampSheetRequest $request
@@ -2056,8 +2179,11 @@ class Gs2AdRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Acquire Point Acquire Action
+     *
      * @param AcquirePointByStampSheetRequest $request
      * @return AcquirePointByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/ad_reward/stamp_sheet/#gs2adrewardacquirepointbyuserid
      */
     public function acquirePointByStampSheet (
             AcquirePointByStampSheetRequest $request

@@ -20,33 +20,50 @@ namespace Gs2\Chat\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Chat\Model\Message;
 
+/**
+ * Result of describeLatestMessagesByUserId: List latest Messages by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/chat/sdk/#describelatestmessagesbyuserid
+ */
 class DescribeLatestMessagesByUserIdResult implements IResult {
-    /** @var array */
+    /** @var array List of Messages */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Messages */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Messages */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Messages
+     * @return DescribeLatestMessagesByUserIdResult
+     */
 	public function withItems(?array $items): DescribeLatestMessagesByUserIdResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeLatestMessagesByUserIdResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeLatestMessagesByUserIdResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

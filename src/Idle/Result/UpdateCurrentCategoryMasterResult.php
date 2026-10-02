@@ -20,18 +20,29 @@ namespace Gs2\Idle\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Idle\Model\CurrentCategoryMaster;
 
+/**
+ * Result of updateCurrentCategoryMaster: Update currently active Category Model master data
+ *
+ * @see https://docs.gs2.io/api_reference/idle/sdk/#updatecurrentcategorymaster
+ */
 class UpdateCurrentCategoryMasterResult implements IResult {
-    /** @var CurrentCategoryMaster */
+    /** @var CurrentCategoryMaster Updated master data of the currently active Category Models */
     private $item;
 
+    /** @return CurrentCategoryMaster|null Updated master data of the currently active Category Models */
 	public function getItem(): ?CurrentCategoryMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentCategoryMaster|null $item Updated master data of the currently active Category Models */
 	public function setItem(?CurrentCategoryMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentCategoryMaster|null $item Updated master data of the currently active Category Models
+     * @return UpdateCurrentCategoryMasterResult
+     */
 	public function withItem(?CurrentCategoryMaster $item): UpdateCurrentCategoryMasterResult {
 		$this->item = $item;
 		return $this;

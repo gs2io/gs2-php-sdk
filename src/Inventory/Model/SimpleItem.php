@@ -20,73 +20,108 @@ namespace Gs2\Inventory\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Simple Item
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#simpleitem
+ */
 class SimpleItem implements IModel {
 	/**
-     * @var string
+     * @var string Simple Item GRN
 	 */
 	private $itemId;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var string
+     * @var string Simple Item Model Name
 	 */
 	private $itemName;
 	/**
-     * @var int
+     * @var int Quantity in Possession
 	 */
 	private $count;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Simple Item GRN */
 	public function getItemId(): ?string {
 		return $this->itemId;
 	}
+    /** @param string|null $itemId Simple Item GRN */
 	public function setItemId(?string $itemId) {
 		$this->itemId = $itemId;
 	}
+    /**
+     * @param string|null $itemId Simple Item GRN
+     * @return SimpleItem
+     */
 	public function withItemId(?string $itemId): SimpleItem {
 		$this->itemId = $itemId;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return SimpleItem
+     */
 	public function withUserId(?string $userId): SimpleItem {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Simple Item Model Name */
 	public function getItemName(): ?string {
 		return $this->itemName;
 	}
+    /** @param string|null $itemName Simple Item Model Name */
 	public function setItemName(?string $itemName) {
 		$this->itemName = $itemName;
 	}
+    /**
+     * @param string|null $itemName Simple Item Model Name
+     * @return SimpleItem
+     */
 	public function withItemName(?string $itemName): SimpleItem {
 		$this->itemName = $itemName;
 		return $this;
 	}
+    /** @return int|null Quantity in Possession */
 	public function getCount(): ?int {
 		return $this->count;
 	}
+    /** @param int|null $count Quantity in Possession */
 	public function setCount(?int $count) {
 		$this->count = $count;
 	}
+    /**
+     * @param int|null $count Quantity in Possession
+     * @return SimpleItem
+     */
 	public function withCount(?int $count): SimpleItem {
 		$this->count = $count;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return SimpleItem
+     */
 	public function withRevision(?int $revision): SimpleItem {
 		$this->revision = $revision;
 		return $this;

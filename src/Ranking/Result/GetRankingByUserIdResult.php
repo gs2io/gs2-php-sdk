@@ -20,18 +20,29 @@ namespace Gs2\Ranking\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Ranking\Model\Ranking;
 
+/**
+ * Result of getRankingByUserId: Get ranking by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/ranking/sdk/#getrankingbyuserid
+ */
 class GetRankingByUserIdResult implements IResult {
-    /** @var Ranking */
+    /** @var Ranking Ranking */
     private $item;
 
+    /** @return Ranking|null Ranking */
 	public function getItem(): ?Ranking {
 		return $this->item;
 	}
 
+    /** @param Ranking|null $item Ranking */
 	public function setItem(?Ranking $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Ranking|null $item Ranking
+     * @return GetRankingByUserIdResult
+     */
 	public function withItem(?Ranking $item): GetRankingByUserIdResult {
 		$this->item = $item;
 		return $this;

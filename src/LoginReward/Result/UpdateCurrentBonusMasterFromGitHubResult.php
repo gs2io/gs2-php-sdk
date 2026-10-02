@@ -20,18 +20,29 @@ namespace Gs2\LoginReward\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\LoginReward\Model\CurrentBonusMaster;
 
+/**
+ * Result of updateCurrentBonusMasterFromGitHub: Update currently active Login Bonus Model master data from GitHub
+ *
+ * @see https://docs.gs2.io/api_reference/login_reward/sdk/#updatecurrentbonusmasterfromgithub
+ */
 class UpdateCurrentBonusMasterFromGitHubResult implements IResult {
-    /** @var CurrentBonusMaster */
+    /** @var CurrentBonusMaster Updated master data of the currently active Login Bonus Models */
     private $item;
 
+    /** @return CurrentBonusMaster|null Updated master data of the currently active Login Bonus Models */
 	public function getItem(): ?CurrentBonusMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentBonusMaster|null $item Updated master data of the currently active Login Bonus Models */
 	public function setItem(?CurrentBonusMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentBonusMaster|null $item Updated master data of the currently active Login Bonus Models
+     * @return UpdateCurrentBonusMasterFromGitHubResult
+     */
 	public function withItem(?CurrentBonusMaster $item): UpdateCurrentBonusMasterFromGitHubResult {
 		$this->item = $item;
 		return $this;

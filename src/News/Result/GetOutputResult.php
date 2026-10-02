@@ -20,18 +20,29 @@ namespace Gs2\News\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\News\Model\Output;
 
+/**
+ * Result of getOutput: Get output of content generation progress
+ *
+ * @see https://docs.gs2.io/api_reference/news/sdk/#getoutput
+ */
 class GetOutputResult implements IResult {
-    /** @var Output */
+    /** @var Output Output */
     private $item;
 
+    /** @return Output|null Output */
 	public function getItem(): ?Output {
 		return $this->item;
 	}
 
+    /** @param Output|null $item Output */
 	public function setItem(?Output $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Output|null $item Output
+     * @return GetOutputResult
+     */
 	public function withItem(?Output $item): GetOutputResult {
 		$this->item = $item;
 		return $this;

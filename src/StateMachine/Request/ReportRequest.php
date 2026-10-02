@@ -22,53 +22,82 @@ use Gs2\StateMachine\Model\ChangeStateEvent;
 use Gs2\StateMachine\Model\EmitEvent;
 use Gs2\StateMachine\Model\Event;
 
+/**
+ * Request for report: Report multiple events to the state machine
+ *
+ * @see https://docs.gs2.io/api_reference/state_machine/sdk/#report
+ */
 class ReportRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Status name */
     private $statusName;
-    /** @var array */
+    /** @var array List of events */
     private $events;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return ReportRequest
+     */
 	public function withNamespaceName(?string $namespaceName): ReportRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return ReportRequest
+     */
 	public function withAccessToken(?string $accessToken): ReportRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Status name */
 	public function getStatusName(): ?string {
 		return $this->statusName;
 	}
+    /** @param string|null $statusName Status name */
 	public function setStatusName(?string $statusName) {
 		$this->statusName = $statusName;
 	}
+    /**
+     * @param string|null $statusName Status name
+     * @return ReportRequest
+     */
 	public function withStatusName(?string $statusName): ReportRequest {
 		$this->statusName = $statusName;
 		return $this;
 	}
+    /** @return array|null List of events */
 	public function getEvents(): ?array {
 		return $this->events;
 	}
+    /** @param array|null $events List of events */
 	public function setEvents(?array $events) {
 		$this->events = $events;
 	}
+    /**
+     * @param array|null $events List of events
+     * @return ReportRequest
+     */
 	public function withEvents(?array $events): ReportRequest {
 		$this->events = $events;
 		return $this;

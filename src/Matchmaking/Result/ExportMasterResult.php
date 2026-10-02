@@ -20,18 +20,29 @@ namespace Gs2\Matchmaking\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Matchmaking\Model\CurrentModelMaster;
 
+/**
+ * Result of exportMaster: Export Model Master in a master data format that can be activated
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#exportmaster
+ */
 class ExportMasterResult implements IResult {
-    /** @var CurrentModelMaster */
+    /** @var CurrentModelMaster Models master data that can be activated */
     private $item;
 
+    /** @return CurrentModelMaster|null Models master data that can be activated */
 	public function getItem(): ?CurrentModelMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentModelMaster|null $item Models master data that can be activated */
 	public function setItem(?CurrentModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentModelMaster|null $item Models master data that can be activated
+     * @return ExportMasterResult
+     */
 	public function withItem(?CurrentModelMaster $item): ExportMasterResult {
 		$this->item = $item;
 		return $this;

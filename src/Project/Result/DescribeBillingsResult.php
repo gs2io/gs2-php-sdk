@@ -20,18 +20,25 @@ namespace Gs2\Project\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Project\Model\Billing;
 
+/** Result of describeBillings: Get list of usage status */
 class DescribeBillingsResult implements IResult {
-    /** @var array */
+    /** @var array List of Usages */
     private $items;
 
+    /** @return array|null List of Usages */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Usages */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Usages
+     * @return DescribeBillingsResult
+     */
 	public function withItems(?array $items): DescribeBillingsResult {
 		$this->items = $items;
 		return $this;

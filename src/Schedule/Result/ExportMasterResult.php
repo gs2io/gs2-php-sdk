@@ -20,18 +20,29 @@ namespace Gs2\Schedule\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Schedule\Model\CurrentEventMaster;
 
+/**
+ * Result of exportMaster: Export Model Master in a master data format that can be activated
+ *
+ * @see https://docs.gs2.io/api_reference/schedule/sdk/#exportmaster
+ */
 class ExportMasterResult implements IResult {
-    /** @var CurrentEventMaster */
+    /** @var CurrentEventMaster master data that can be activated */
     private $item;
 
+    /** @return CurrentEventMaster|null master data that can be activated */
 	public function getItem(): ?CurrentEventMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentEventMaster|null $item master data that can be activated */
 	public function setItem(?CurrentEventMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentEventMaster|null $item master data that can be activated
+     * @return ExportMasterResult
+     */
 	public function withItem(?CurrentEventMaster $item): ExportMasterResult {
 		$this->item = $item;
 		return $this;

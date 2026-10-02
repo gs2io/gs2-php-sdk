@@ -19,27 +19,44 @@ namespace Gs2\Limit\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for deleteByStampSheet: Execute Counter deletion as an acquire action
+ *
+ * @see https://docs.gs2.io/api_reference/limit/stamp_sheet/#gs2limitdeletecounterbyuserid
+ */
 class DeleteByStampSheetRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Transaction */
     private $stampSheet;
-    /** @var string */
+    /** @var string Encryption Key GRN */
     private $keyId;
+    /** @return string|null Transaction */
 	public function getStampSheet(): ?string {
 		return $this->stampSheet;
 	}
+    /** @param string|null $stampSheet Transaction */
 	public function setStampSheet(?string $stampSheet) {
 		$this->stampSheet = $stampSheet;
 	}
+    /**
+     * @param string|null $stampSheet Transaction
+     * @return DeleteByStampSheetRequest
+     */
 	public function withStampSheet(?string $stampSheet): DeleteByStampSheetRequest {
 		$this->stampSheet = $stampSheet;
 		return $this;
 	}
+    /** @return string|null Encryption Key GRN */
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
+    /** @param string|null $keyId Encryption Key GRN */
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
+    /**
+     * @param string|null $keyId Encryption Key GRN
+     * @return DeleteByStampSheetRequest
+     */
 	public function withKeyId(?string $keyId): DeleteByStampSheetRequest {
 		$this->keyId = $keyId;
 		return $this;

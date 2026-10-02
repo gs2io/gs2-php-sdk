@@ -19,51 +19,80 @@ namespace Gs2\Dictionary\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getEntryWithSignature: Get Entry with cryptographic signature
+ *
+ * @see https://docs.gs2.io/api_reference/dictionary/sdk/#getentrywithsignature
+ */
 class GetEntryWithSignatureRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Entry Model name */
     private $entryModelName;
-    /** @var string */
+    /** @var string Encryption Key GRN */
     private $keyId;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetEntryWithSignatureRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetEntryWithSignatureRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return GetEntryWithSignatureRequest
+     */
 	public function withAccessToken(?string $accessToken): GetEntryWithSignatureRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Entry Model name */
 	public function getEntryModelName(): ?string {
 		return $this->entryModelName;
 	}
+    /** @param string|null $entryModelName Entry Model name */
 	public function setEntryModelName(?string $entryModelName) {
 		$this->entryModelName = $entryModelName;
 	}
+    /**
+     * @param string|null $entryModelName Entry Model name
+     * @return GetEntryWithSignatureRequest
+     */
 	public function withEntryModelName(?string $entryModelName): GetEntryWithSignatureRequest {
 		$this->entryModelName = $entryModelName;
 		return $this;
 	}
+    /** @return string|null Encryption Key GRN */
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
+    /** @param string|null $keyId Encryption Key GRN */
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
+    /**
+     * @param string|null $keyId Encryption Key GRN
+     * @return GetEntryWithSignatureRequest
+     */
 	public function withKeyId(?string $keyId): GetEntryWithSignatureRequest {
 		$this->keyId = $keyId;
 		return $this;

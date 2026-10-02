@@ -20,18 +20,29 @@ namespace Gs2\LoginReward\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\LoginReward\Model\CurrentBonusMaster;
 
+/**
+ * Result of exportMaster: Export Login Bonus Model Master in a master data format that can be activated
+ *
+ * @see https://docs.gs2.io/api_reference/login_reward/sdk/#exportmaster
+ */
 class ExportMasterResult implements IResult {
-    /** @var CurrentBonusMaster */
+    /** @var CurrentBonusMaster Login Bonus Model master data that can be activated */
     private $item;
 
+    /** @return CurrentBonusMaster|null Login Bonus Model master data that can be activated */
 	public function getItem(): ?CurrentBonusMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentBonusMaster|null $item Login Bonus Model master data that can be activated */
 	public function setItem(?CurrentBonusMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentBonusMaster|null $item Login Bonus Model master data that can be activated
+     * @return ExportMasterResult
+     */
 	public function withItem(?CurrentBonusMaster $item): ExportMasterResult {
 		$this->item = $item;
 		return $this;

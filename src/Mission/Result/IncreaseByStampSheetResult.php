@@ -22,33 +22,50 @@ use Gs2\Mission\Model\ScopedValue;
 use Gs2\Mission\Model\Counter;
 use Gs2\Mission\Model\Complete;
 
+/**
+ * Result of increaseByStampSheet: Execute counter addition as an acquire action within a distributed transaction
+ *
+ * @see https://docs.gs2.io/api_reference/mission/stamp_sheet/#gs2missionincreasecounterbyuserid
+ */
 class IncreaseByStampSheetResult implements IResult {
-    /** @var Counter */
+    /** @var Counter Counter after counter addition */
     private $item;
-    /** @var array */
+    /** @var array List of updated Completion Statuses */
     private $changedCompletes;
 
+    /** @return Counter|null Counter after counter addition */
 	public function getItem(): ?Counter {
 		return $this->item;
 	}
 
+    /** @param Counter|null $item Counter after counter addition */
 	public function setItem(?Counter $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Counter|null $item Counter after counter addition
+     * @return IncreaseByStampSheetResult
+     */
 	public function withItem(?Counter $item): IncreaseByStampSheetResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return array|null List of updated Completion Statuses */
 	public function getChangedCompletes(): ?array {
 		return $this->changedCompletes;
 	}
 
+    /** @param array|null $changedCompletes List of updated Completion Statuses */
 	public function setChangedCompletes(?array $changedCompletes) {
 		$this->changedCompletes = $changedCompletes;
 	}
 
+    /**
+     * @param array|null $changedCompletes List of updated Completion Statuses
+     * @return IncreaseByStampSheetResult
+     */
 	public function withChangedCompletes(?array $changedCompletes): IncreaseByStampSheetResult {
 		$this->changedCompletes = $changedCompletes;
 		return $this;

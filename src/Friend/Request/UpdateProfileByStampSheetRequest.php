@@ -19,27 +19,44 @@ namespace Gs2\Friend\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for updateProfileByStampSheet: Update profile via transaction
+ *
+ * @see https://docs.gs2.io/api_reference/friend/stamp_sheet/#gs2friendupdateprofilebyuserid
+ */
 class UpdateProfileByStampSheetRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Transaction */
     private $stampSheet;
-    /** @var string */
+    /** @var string Encryption Key GRN */
     private $keyId;
+    /** @return string|null Transaction */
 	public function getStampSheet(): ?string {
 		return $this->stampSheet;
 	}
+    /** @param string|null $stampSheet Transaction */
 	public function setStampSheet(?string $stampSheet) {
 		$this->stampSheet = $stampSheet;
 	}
+    /**
+     * @param string|null $stampSheet Transaction
+     * @return UpdateProfileByStampSheetRequest
+     */
 	public function withStampSheet(?string $stampSheet): UpdateProfileByStampSheetRequest {
 		$this->stampSheet = $stampSheet;
 		return $this;
 	}
+    /** @return string|null Encryption Key GRN */
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
+    /** @param string|null $keyId Encryption Key GRN */
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
+    /**
+     * @param string|null $keyId Encryption Key GRN
+     * @return UpdateProfileByStampSheetRequest
+     */
 	public function withKeyId(?string $keyId): UpdateProfileByStampSheetRequest {
 		$this->keyId = $keyId;
 		return $this;

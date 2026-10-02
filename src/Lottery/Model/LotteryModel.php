@@ -20,101 +20,148 @@ namespace Gs2\Lottery\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Lottery Model
+ *
+ * @see https://docs.gs2.io/api_reference/lottery/sdk/#lotterymodel
+ */
 class LotteryModel implements IModel {
 	/**
-     * @var string
+     * @var string Lottery Model GRN
 	 */
 	private $lotteryModelId;
 	/**
-     * @var string
+     * @var string Lottery Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var string
+     * @var string Drawing Mode
 	 */
 	private $mode;
 	/**
-     * @var string
+     * @var string Prize Table Selection Method
 	 */
 	private $method;
 	/**
-     * @var string
+     * @var string Prize Table Name
 	 */
 	private $prizeTableName;
 	/**
-     * @var string
+     * @var string GS2-Script script GRN to determine the Prize Table
 	 */
 	private $choicePrizeTableScriptId;
+    /** @return string|null Lottery Model GRN */
 	public function getLotteryModelId(): ?string {
 		return $this->lotteryModelId;
 	}
+    /** @param string|null $lotteryModelId Lottery Model GRN */
 	public function setLotteryModelId(?string $lotteryModelId) {
 		$this->lotteryModelId = $lotteryModelId;
 	}
+    /**
+     * @param string|null $lotteryModelId Lottery Model GRN
+     * @return LotteryModel
+     */
 	public function withLotteryModelId(?string $lotteryModelId): LotteryModel {
 		$this->lotteryModelId = $lotteryModelId;
 		return $this;
 	}
+    /** @return string|null Lottery Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Lottery Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Lottery Model name
+     * @return LotteryModel
+     */
 	public function withName(?string $name): LotteryModel {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return LotteryModel
+     */
 	public function withMetadata(?string $metadata): LotteryModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return string|null Drawing Mode */
 	public function getMode(): ?string {
 		return $this->mode;
 	}
+    /** @param string|null $mode Drawing Mode */
 	public function setMode(?string $mode) {
 		$this->mode = $mode;
 	}
+    /**
+     * @param string|null $mode Drawing Mode
+     * @return LotteryModel
+     */
 	public function withMode(?string $mode): LotteryModel {
 		$this->mode = $mode;
 		return $this;
 	}
+    /** @return string|null Prize Table Selection Method */
 	public function getMethod(): ?string {
 		return $this->method;
 	}
+    /** @param string|null $method Prize Table Selection Method */
 	public function setMethod(?string $method) {
 		$this->method = $method;
 	}
+    /**
+     * @param string|null $method Prize Table Selection Method
+     * @return LotteryModel
+     */
 	public function withMethod(?string $method): LotteryModel {
 		$this->method = $method;
 		return $this;
 	}
+    /** @return string|null Prize Table Name */
 	public function getPrizeTableName(): ?string {
 		return $this->prizeTableName;
 	}
+    /** @param string|null $prizeTableName Prize Table Name */
 	public function setPrizeTableName(?string $prizeTableName) {
 		$this->prizeTableName = $prizeTableName;
 	}
+    /**
+     * @param string|null $prizeTableName Prize Table Name
+     * @return LotteryModel
+     */
 	public function withPrizeTableName(?string $prizeTableName): LotteryModel {
 		$this->prizeTableName = $prizeTableName;
 		return $this;
 	}
+    /** @return string|null GS2-Script script GRN to determine the Prize Table */
 	public function getChoicePrizeTableScriptId(): ?string {
 		return $this->choicePrizeTableScriptId;
 	}
+    /** @param string|null $choicePrizeTableScriptId GS2-Script script GRN to determine the Prize Table */
 	public function setChoicePrizeTableScriptId(?string $choicePrizeTableScriptId) {
 		$this->choicePrizeTableScriptId = $choicePrizeTableScriptId;
 	}
+    /**
+     * @param string|null $choicePrizeTableScriptId GS2-Script script GRN to determine the Prize Table
+     * @return LotteryModel
+     */
 	public function withChoicePrizeTableScriptId(?string $choicePrizeTableScriptId): LotteryModel {
 		$this->choicePrizeTableScriptId = $choicePrizeTableScriptId;
 		return $this;

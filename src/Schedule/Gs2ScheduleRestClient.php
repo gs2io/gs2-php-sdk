@@ -3108,25 +3108,22 @@ class UpdateCurrentEventMasterFromGitHubTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 Schedule API クライアント
+ * GS2-Schedule API client
  *
- * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/schedule/sdk/
  */
 class Gs2ScheduleRestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#describenamespaces
      */
     public function describeNamespacesAsync(
             DescribeNamespacesRequest $request
@@ -3140,8 +3137,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#describenamespaces
      */
     public function describeNamespaces (
             DescribeNamespacesRequest $request
@@ -3152,8 +3152,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#createnamespace
      */
     public function createNamespaceAsync(
             CreateNamespaceRequest $request
@@ -3167,8 +3170,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#createnamespace
      */
     public function createNamespace (
             CreateNamespaceRequest $request
@@ -3179,8 +3185,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#getnamespacestatus
      */
     public function getNamespaceStatusAsync(
             GetNamespaceStatusRequest $request
@@ -3194,8 +3203,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#getnamespacestatus
      */
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
@@ -3206,8 +3218,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#getnamespace
      */
     public function getNamespaceAsync(
             GetNamespaceRequest $request
@@ -3221,8 +3236,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#getnamespace
      */
     public function getNamespace (
             GetNamespaceRequest $request
@@ -3233,8 +3251,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#updatenamespace
      */
     public function updateNamespaceAsync(
             UpdateNamespaceRequest $request
@@ -3248,8 +3269,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#updatenamespace
      */
     public function updateNamespace (
             UpdateNamespaceRequest $request
@@ -3260,8 +3284,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#deletenamespace
      */
     public function deleteNamespaceAsync(
             DeleteNamespaceRequest $request
@@ -3275,8 +3302,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#deletenamespace
      */
     public function deleteNamespace (
             DeleteNamespaceRequest $request
@@ -3287,8 +3317,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#getserviceversion
      */
     public function getServiceVersionAsync(
             GetServiceVersionRequest $request
@@ -3302,8 +3335,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return GetServiceVersionResult
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#getserviceversion
      */
     public function getServiceVersion (
             GetServiceVersionRequest $request
@@ -3314,8 +3350,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserIdAsync(
             DumpUserDataByUserIdRequest $request
@@ -3329,8 +3368,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return DumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserId (
             DumpUserDataByUserIdRequest $request
@@ -3341,8 +3383,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserIdAsync(
             CheckDumpUserDataByUserIdRequest $request
@@ -3356,8 +3401,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return CheckDumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserId (
             CheckDumpUserDataByUserIdRequest $request
@@ -3368,8 +3416,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserIdAsync(
             CleanUserDataByUserIdRequest $request
@@ -3383,8 +3434,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return CleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserId (
             CleanUserDataByUserIdRequest $request
@@ -3395,8 +3449,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the clean of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserIdAsync(
             CheckCleanUserDataByUserIdRequest $request
@@ -3410,8 +3467,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the clean of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return CheckCleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserId (
             CheckCleanUserDataByUserIdRequest $request
@@ -3422,8 +3482,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserIdAsync(
             PrepareImportUserDataByUserIdRequest $request
@@ -3437,8 +3500,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PrepareImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserId (
             PrepareImportUserDataByUserIdRequest $request
@@ -3449,8 +3515,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserIdAsync(
             ImportUserDataByUserIdRequest $request
@@ -3464,8 +3533,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return ImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserId (
             ImportUserDataByUserIdRequest $request
@@ -3476,8 +3548,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserIdAsync(
             CheckImportUserDataByUserIdRequest $request
@@ -3491,8 +3566,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return CheckImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserId (
             CheckImportUserDataByUserIdRequest $request
@@ -3503,8 +3581,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Event Masters
+     *
      * @param DescribeEventMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#describeeventmasters
      */
     public function describeEventMastersAsync(
             DescribeEventMastersRequest $request
@@ -3518,8 +3599,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Event Masters
+     *
      * @param DescribeEventMastersRequest $request
      * @return DescribeEventMastersResult
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#describeeventmasters
      */
     public function describeEventMasters (
             DescribeEventMastersRequest $request
@@ -3530,8 +3614,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Event Master
+     *
      * @param CreateEventMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#createeventmaster
      */
     public function createEventMasterAsync(
             CreateEventMasterRequest $request
@@ -3545,8 +3632,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Event Master
+     *
      * @param CreateEventMasterRequest $request
      * @return CreateEventMasterResult
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#createeventmaster
      */
     public function createEventMaster (
             CreateEventMasterRequest $request
@@ -3557,8 +3647,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Event Master
+     *
      * @param GetEventMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#geteventmaster
      */
     public function getEventMasterAsync(
             GetEventMasterRequest $request
@@ -3572,8 +3665,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Event Master
+     *
      * @param GetEventMasterRequest $request
      * @return GetEventMasterResult
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#geteventmaster
      */
     public function getEventMaster (
             GetEventMasterRequest $request
@@ -3584,8 +3680,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Event Master
+     *
      * @param UpdateEventMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#updateeventmaster
      */
     public function updateEventMasterAsync(
             UpdateEventMasterRequest $request
@@ -3599,8 +3698,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Event Master
+     *
      * @param UpdateEventMasterRequest $request
      * @return UpdateEventMasterResult
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#updateeventmaster
      */
     public function updateEventMaster (
             UpdateEventMasterRequest $request
@@ -3611,8 +3713,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Event Master
+     *
      * @param DeleteEventMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#deleteeventmaster
      */
     public function deleteEventMasterAsync(
             DeleteEventMasterRequest $request
@@ -3626,8 +3731,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Event Master
+     *
      * @param DeleteEventMasterRequest $request
      * @return DeleteEventMasterResult
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#deleteeventmaster
      */
     public function deleteEventMaster (
             DeleteEventMasterRequest $request
@@ -3638,8 +3746,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Triggers
+     *
      * @param DescribeTriggersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#describetriggers
      */
     public function describeTriggersAsync(
             DescribeTriggersRequest $request
@@ -3653,8 +3764,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Triggers
+     *
      * @param DescribeTriggersRequest $request
      * @return DescribeTriggersResult
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#describetriggers
      */
     public function describeTriggers (
             DescribeTriggersRequest $request
@@ -3665,8 +3779,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Triggers by User ID
+     *
      * @param DescribeTriggersByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#describetriggersbyuserid
      */
     public function describeTriggersByUserIdAsync(
             DescribeTriggersByUserIdRequest $request
@@ -3680,8 +3797,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Triggers by User ID
+     *
      * @param DescribeTriggersByUserIdRequest $request
      * @return DescribeTriggersByUserIdResult
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#describetriggersbyuserid
      */
     public function describeTriggersByUserId (
             DescribeTriggersByUserIdRequest $request
@@ -3692,8 +3812,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get trigger
+     *
      * @param GetTriggerRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#gettrigger
      */
     public function getTriggerAsync(
             GetTriggerRequest $request
@@ -3707,8 +3830,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get trigger
+     *
      * @param GetTriggerRequest $request
      * @return GetTriggerResult
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#gettrigger
      */
     public function getTrigger (
             GetTriggerRequest $request
@@ -3719,8 +3845,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Trigger by User ID
+     *
      * @param GetTriggerByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#gettriggerbyuserid
      */
     public function getTriggerByUserIdAsync(
             GetTriggerByUserIdRequest $request
@@ -3734,8 +3863,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Trigger by User ID
+     *
      * @param GetTriggerByUserIdRequest $request
      * @return GetTriggerByUserIdResult
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#gettriggerbyuserid
      */
     public function getTriggerByUserId (
             GetTriggerByUserIdRequest $request
@@ -3746,8 +3878,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the Trigger by User ID
+     *
      * @param TriggerByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#triggerbyuserid
      */
     public function triggerByUserIdAsync(
             TriggerByUserIdRequest $request
@@ -3761,8 +3896,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the Trigger by User ID
+     *
      * @param TriggerByUserIdRequest $request
      * @return TriggerByUserIdResult
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#triggerbyuserid
      */
     public function triggerByUserId (
             TriggerByUserIdRequest $request
@@ -3773,8 +3911,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Extend the period of a trigger by User ID
+     *
      * @param ExtendTriggerByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#extendtriggerbyuserid
      */
     public function extendTriggerByUserIdAsync(
             ExtendTriggerByUserIdRequest $request
@@ -3788,8 +3929,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Extend the period of a trigger by User ID
+     *
      * @param ExtendTriggerByUserIdRequest $request
      * @return ExtendTriggerByUserIdResult
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#extendtriggerbyuserid
      */
     public function extendTriggerByUserId (
             ExtendTriggerByUserIdRequest $request
@@ -3800,8 +3944,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute trigger as acquire action
+     *
      * @param TriggerByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/schedule/stamp_sheet/#gs2scheduletriggerbyuserid
      */
     public function triggerByStampSheetAsync(
             TriggerByStampSheetRequest $request
@@ -3815,8 +3962,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute trigger as acquire action
+     *
      * @param TriggerByStampSheetRequest $request
      * @return TriggerByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/schedule/stamp_sheet/#gs2scheduletriggerbyuserid
      */
     public function triggerByStampSheet (
             TriggerByStampSheetRequest $request
@@ -3827,8 +3977,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Extend the period of a trigger as an acquire action
+     *
      * @param ExtendTriggerByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/schedule/stamp_sheet/#gs2scheduleextendtriggerbyuserid
      */
     public function extendTriggerByStampSheetAsync(
             ExtendTriggerByStampSheetRequest $request
@@ -3842,8 +3995,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Extend the period of a trigger as an acquire action
+     *
      * @param ExtendTriggerByStampSheetRequest $request
      * @return ExtendTriggerByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/schedule/stamp_sheet/#gs2scheduleextendtriggerbyuserid
      */
     public function extendTriggerByStampSheet (
             ExtendTriggerByStampSheetRequest $request
@@ -3854,8 +4010,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Trigger
+     *
      * @param DeleteTriggerRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#deletetrigger
      */
     public function deleteTriggerAsync(
             DeleteTriggerRequest $request
@@ -3869,8 +4028,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Trigger
+     *
      * @param DeleteTriggerRequest $request
      * @return DeleteTriggerResult
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#deletetrigger
      */
     public function deleteTrigger (
             DeleteTriggerRequest $request
@@ -3881,8 +4043,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Trigger by User ID
+     *
      * @param DeleteTriggerByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#deletetriggerbyuserid
      */
     public function deleteTriggerByUserIdAsync(
             DeleteTriggerByUserIdRequest $request
@@ -3896,8 +4061,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Trigger by User ID
+     *
      * @param DeleteTriggerByUserIdRequest $request
      * @return DeleteTriggerByUserIdResult
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#deletetriggerbyuserid
      */
     public function deleteTriggerByUserId (
             DeleteTriggerByUserIdRequest $request
@@ -3908,8 +4076,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the elapsed time since the trigger was pulled
+     *
      * @param VerifyTriggerRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#verifytrigger
      */
     public function verifyTriggerAsync(
             VerifyTriggerRequest $request
@@ -3923,8 +4094,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the elapsed time since the trigger was pulled
+     *
      * @param VerifyTriggerRequest $request
      * @return VerifyTriggerResult
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#verifytrigger
      */
     public function verifyTrigger (
             VerifyTriggerRequest $request
@@ -3935,8 +4109,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the elapsed time since the Trigger was pulled by User ID
+     *
      * @param VerifyTriggerByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#verifytriggerbyuserid
      */
     public function verifyTriggerByUserIdAsync(
             VerifyTriggerByUserIdRequest $request
@@ -3950,8 +4127,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the elapsed time since the Trigger was pulled by User ID
+     *
      * @param VerifyTriggerByUserIdRequest $request
      * @return VerifyTriggerByUserIdResult
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#verifytriggerbyuserid
      */
     public function verifyTriggerByUserId (
             VerifyTriggerByUserIdRequest $request
@@ -3962,8 +4142,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute trigger as consume action
+     *
      * @param DeleteTriggerByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/schedule/stamp_sheet/#gs2scheduledeletetriggerbyuserid
      */
     public function deleteTriggerByStampTaskAsync(
             DeleteTriggerByStampTaskRequest $request
@@ -3977,8 +4160,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute trigger as consume action
+     *
      * @param DeleteTriggerByStampTaskRequest $request
      * @return DeleteTriggerByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/schedule/stamp_sheet/#gs2scheduledeletetriggerbyuserid
      */
     public function deleteTriggerByStampTask (
             DeleteTriggerByStampTaskRequest $request
@@ -3989,8 +4175,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute trigger as verify action to verify the elapsed time since the trigger was pulled
+     *
      * @param VerifyTriggerByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/schedule/stamp_sheet/#gs2scheduleverifytriggerbyuserid
      */
     public function verifyTriggerByStampTaskAsync(
             VerifyTriggerByStampTaskRequest $request
@@ -4004,8 +4193,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute trigger as verify action to verify the elapsed time since the trigger was pulled
+     *
      * @param VerifyTriggerByStampTaskRequest $request
      * @return VerifyTriggerByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/schedule/stamp_sheet/#gs2scheduleverifytriggerbyuserid
      */
     public function verifyTriggerByStampTask (
             VerifyTriggerByStampTaskRequest $request
@@ -4016,8 +4208,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Events
+     *
      * @param DescribeEventsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#describeevents
      */
     public function describeEventsAsync(
             DescribeEventsRequest $request
@@ -4031,8 +4226,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Events
+     *
      * @param DescribeEventsRequest $request
      * @return DescribeEventsResult
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#describeevents
      */
     public function describeEvents (
             DescribeEventsRequest $request
@@ -4043,8 +4241,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Events by User ID
+     *
      * @param DescribeEventsByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#describeeventsbyuserid
      */
     public function describeEventsByUserIdAsync(
             DescribeEventsByUserIdRequest $request
@@ -4058,8 +4259,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Events by User ID
+     *
      * @param DescribeEventsByUserIdRequest $request
      * @return DescribeEventsByUserIdResult
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#describeeventsbyuserid
      */
     public function describeEventsByUserId (
             DescribeEventsByUserIdRequest $request
@@ -4070,8 +4274,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Events
+     *
      * @param DescribeRawEventsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#describerawevents
      */
     public function describeRawEventsAsync(
             DescribeRawEventsRequest $request
@@ -4085,8 +4292,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Events
+     *
      * @param DescribeRawEventsRequest $request
      * @return DescribeRawEventsResult
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#describerawevents
      */
     public function describeRawEvents (
             DescribeRawEventsRequest $request
@@ -4097,8 +4307,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Event
+     *
      * @param GetEventRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#getevent
      */
     public function getEventAsync(
             GetEventRequest $request
@@ -4112,8 +4325,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Event
+     *
      * @param GetEventRequest $request
      * @return GetEventResult
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#getevent
      */
     public function getEvent (
             GetEventRequest $request
@@ -4124,8 +4340,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Event by User ID
+     *
      * @param GetEventByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#geteventbyuserid
      */
     public function getEventByUserIdAsync(
             GetEventByUserIdRequest $request
@@ -4139,8 +4358,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Event by User ID
+     *
      * @param GetEventByUserIdRequest $request
      * @return GetEventByUserIdResult
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#geteventbyuserid
      */
     public function getEventByUserId (
             GetEventByUserIdRequest $request
@@ -4151,8 +4373,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Event
+     *
      * @param GetRawEventRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#getrawevent
      */
     public function getRawEventAsync(
             GetRawEventRequest $request
@@ -4166,8 +4391,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Event
+     *
      * @param GetRawEventRequest $request
      * @return GetRawEventResult
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#getrawevent
      */
     public function getRawEvent (
             GetRawEventRequest $request
@@ -4178,8 +4406,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify if it is the event period
+     *
      * @param VerifyEventRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#verifyevent
      */
     public function verifyEventAsync(
             VerifyEventRequest $request
@@ -4193,8 +4424,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify if it is the event period
+     *
      * @param VerifyEventRequest $request
      * @return VerifyEventResult
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#verifyevent
      */
     public function verifyEvent (
             VerifyEventRequest $request
@@ -4205,8 +4439,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify whether the Event is active by User ID
+     *
      * @param VerifyEventByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#verifyeventbyuserid
      */
     public function verifyEventByUserIdAsync(
             VerifyEventByUserIdRequest $request
@@ -4220,8 +4457,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify whether the Event is active by User ID
+     *
      * @param VerifyEventByUserIdRequest $request
      * @return VerifyEventByUserIdResult
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#verifyeventbyuserid
      */
     public function verifyEventByUserId (
             VerifyEventByUserIdRequest $request
@@ -4232,8 +4472,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute verification of whether it is the event period as a verify action
+     *
      * @param VerifyEventByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/schedule/stamp_sheet/#gs2scheduleverifyeventbyuserid
      */
     public function verifyEventByStampTaskAsync(
             VerifyEventByStampTaskRequest $request
@@ -4247,8 +4490,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute verification of whether it is the event period as a verify action
+     *
      * @param VerifyEventByStampTaskRequest $request
      * @return VerifyEventByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/schedule/stamp_sheet/#gs2scheduleverifyeventbyuserid
      */
     public function verifyEventByStampTask (
             VerifyEventByStampTaskRequest $request
@@ -4259,8 +4505,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#exportmaster
      */
     public function exportMasterAsync(
             ExportMasterRequest $request
@@ -4274,8 +4523,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return ExportMasterResult
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#exportmaster
      */
     public function exportMaster (
             ExportMasterRequest $request
@@ -4286,8 +4538,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Event master data
+     *
      * @param GetCurrentEventMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#getcurrenteventmaster
      */
     public function getCurrentEventMasterAsync(
             GetCurrentEventMasterRequest $request
@@ -4301,8 +4556,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Event master data
+     *
      * @param GetCurrentEventMasterRequest $request
      * @return GetCurrentEventMasterResult
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#getcurrenteventmaster
      */
     public function getCurrentEventMaster (
             GetCurrentEventMasterRequest $request
@@ -4313,8 +4571,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Event master data (3-phase version)
+     *
      * @param PreUpdateCurrentEventMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#preupdatecurrenteventmaster
      */
     public function preUpdateCurrentEventMasterAsync(
             PreUpdateCurrentEventMasterRequest $request
@@ -4328,8 +4589,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Event master data (3-phase version)
+     *
      * @param PreUpdateCurrentEventMasterRequest $request
      * @return PreUpdateCurrentEventMasterResult
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#preupdatecurrenteventmaster
      */
     public function preUpdateCurrentEventMaster (
             PreUpdateCurrentEventMasterRequest $request
@@ -4340,8 +4604,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Event master data
+     *
      * @param UpdateCurrentEventMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#updatecurrenteventmaster
      */
     public function updateCurrentEventMasterAsync(
             UpdateCurrentEventMasterRequest $request
@@ -4355,8 +4622,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Event master data
+     *
      * @param UpdateCurrentEventMasterRequest $request
      * @return UpdateCurrentEventMasterResult
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#updatecurrenteventmaster
      */
     public function updateCurrentEventMaster (
             UpdateCurrentEventMasterRequest $request
@@ -4367,8 +4637,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Event master data from GitHub
+     *
      * @param UpdateCurrentEventMasterFromGitHubRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#updatecurrenteventmasterfromgithub
      */
     public function updateCurrentEventMasterFromGitHubAsync(
             UpdateCurrentEventMasterFromGitHubRequest $request
@@ -4382,8 +4655,11 @@ class Gs2ScheduleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Event master data from GitHub
+     *
      * @param UpdateCurrentEventMasterFromGitHubRequest $request
      * @return UpdateCurrentEventMasterFromGitHubResult
+     * @see https://docs.gs2.io/api_reference/schedule/sdk/#updatecurrenteventmasterfromgithub
      */
     public function updateCurrentEventMasterFromGitHub (
             UpdateCurrentEventMasterFromGitHubRequest $request

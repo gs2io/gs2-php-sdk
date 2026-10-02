@@ -19,63 +19,98 @@ namespace Gs2\Limit\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getCounterByUserId: Get a Counter by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/limit/sdk/#getcounterbyuserid
+ */
 class GetCounterByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Usage Limit Model Name */
     private $limitName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Counter Name */
     private $counterName;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetCounterByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetCounterByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Usage Limit Model Name */
 	public function getLimitName(): ?string {
 		return $this->limitName;
 	}
+    /** @param string|null $limitName Usage Limit Model Name */
 	public function setLimitName(?string $limitName) {
 		$this->limitName = $limitName;
 	}
+    /**
+     * @param string|null $limitName Usage Limit Model Name
+     * @return GetCounterByUserIdRequest
+     */
 	public function withLimitName(?string $limitName): GetCounterByUserIdRequest {
 		$this->limitName = $limitName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return GetCounterByUserIdRequest
+     */
 	public function withUserId(?string $userId): GetCounterByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Counter Name */
 	public function getCounterName(): ?string {
 		return $this->counterName;
 	}
+    /** @param string|null $counterName Counter Name */
 	public function setCounterName(?string $counterName) {
 		$this->counterName = $counterName;
 	}
+    /**
+     * @param string|null $counterName Counter Name
+     * @return GetCounterByUserIdRequest
+     */
 	public function withCounterName(?string $counterName): GetCounterByUserIdRequest {
 		$this->counterName = $counterName;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return GetCounterByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): GetCounterByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

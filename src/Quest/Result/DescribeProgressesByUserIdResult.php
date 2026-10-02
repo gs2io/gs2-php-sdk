@@ -21,33 +21,50 @@ use Gs2\Core\Model\IResult;
 use Gs2\Quest\Model\Reward;
 use Gs2\Quest\Model\Progress;
 
+/**
+ * Result of describeProgressesByUserId: List Quest Progress
+ *
+ * @see https://docs.gs2.io/api_reference/quest/sdk/#describeprogressesbyuserid
+ */
 class DescribeProgressesByUserIdResult implements IResult {
-    /** @var array */
+    /** @var array List of Quest Progresses */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Quest Progresses */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Quest Progresses */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Quest Progresses
+     * @return DescribeProgressesByUserIdResult
+     */
 	public function withItems(?array $items): DescribeProgressesByUserIdResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeProgressesByUserIdResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeProgressesByUserIdResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

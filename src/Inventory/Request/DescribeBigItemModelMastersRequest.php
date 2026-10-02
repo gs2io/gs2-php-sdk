@@ -19,63 +19,98 @@ namespace Gs2\Inventory\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for describeBigItemModelMasters: List Big Item Model Masters
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#describebigitemmodelmasters
+ */
 class DescribeBigItemModelMastersRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Big Inventory Model name */
     private $inventoryName;
-    /** @var string */
+    /** @var string Filter by Big Item Model name prefix */
     private $namePrefix;
-    /** @var string */
+    /** @var string Token specifying the position from which to start acquiring data */
     private $pageToken;
-    /** @var int */
+    /** @var int Number of data items to retrieve */
     private $limit;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DescribeBigItemModelMastersRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DescribeBigItemModelMastersRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Big Inventory Model name */
 	public function getInventoryName(): ?string {
 		return $this->inventoryName;
 	}
+    /** @param string|null $inventoryName Big Inventory Model name */
 	public function setInventoryName(?string $inventoryName) {
 		$this->inventoryName = $inventoryName;
 	}
+    /**
+     * @param string|null $inventoryName Big Inventory Model name
+     * @return DescribeBigItemModelMastersRequest
+     */
 	public function withInventoryName(?string $inventoryName): DescribeBigItemModelMastersRequest {
 		$this->inventoryName = $inventoryName;
 		return $this;
 	}
+    /** @return string|null Filter by Big Item Model name prefix */
 	public function getNamePrefix(): ?string {
 		return $this->namePrefix;
 	}
+    /** @param string|null $namePrefix Filter by Big Item Model name prefix */
 	public function setNamePrefix(?string $namePrefix) {
 		$this->namePrefix = $namePrefix;
 	}
+    /**
+     * @param string|null $namePrefix Filter by Big Item Model name prefix
+     * @return DescribeBigItemModelMastersRequest
+     */
 	public function withNamePrefix(?string $namePrefix): DescribeBigItemModelMastersRequest {
 		$this->namePrefix = $namePrefix;
 		return $this;
 	}
+    /** @return string|null Token specifying the position from which to start acquiring data */
 	public function getPageToken(): ?string {
 		return $this->pageToken;
 	}
+    /** @param string|null $pageToken Token specifying the position from which to start acquiring data */
 	public function setPageToken(?string $pageToken) {
 		$this->pageToken = $pageToken;
 	}
+    /**
+     * @param string|null $pageToken Token specifying the position from which to start acquiring data
+     * @return DescribeBigItemModelMastersRequest
+     */
 	public function withPageToken(?string $pageToken): DescribeBigItemModelMastersRequest {
 		$this->pageToken = $pageToken;
 		return $this;
 	}
+    /** @return int|null Number of data items to retrieve */
 	public function getLimit(): ?int {
 		return $this->limit;
 	}
+    /** @param int|null $limit Number of data items to retrieve */
 	public function setLimit(?int $limit) {
 		$this->limit = $limit;
 	}
+    /**
+     * @param int|null $limit Number of data items to retrieve
+     * @return DescribeBigItemModelMastersRequest
+     */
 	public function withLimit(?int $limit): DescribeBigItemModelMastersRequest {
 		$this->limit = $limit;
 		return $this;

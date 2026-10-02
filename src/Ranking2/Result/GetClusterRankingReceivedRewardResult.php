@@ -20,18 +20,29 @@ namespace Gs2\Ranking2\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Ranking2\Model\ClusterRankingReceivedReward;
 
+/**
+ * Result of getClusterRankingReceivedReward: Get Cluster Ranking Reward Received History
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/sdk/#getclusterrankingreceivedreward
+ */
 class GetClusterRankingReceivedRewardResult implements IResult {
-    /** @var ClusterRankingReceivedReward */
+    /** @var ClusterRankingReceivedReward Cluster Ranking Reward Received History */
     private $item;
 
+    /** @return ClusterRankingReceivedReward|null Cluster Ranking Reward Received History */
 	public function getItem(): ?ClusterRankingReceivedReward {
 		return $this->item;
 	}
 
+    /** @param ClusterRankingReceivedReward|null $item Cluster Ranking Reward Received History */
 	public function setItem(?ClusterRankingReceivedReward $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param ClusterRankingReceivedReward|null $item Cluster Ranking Reward Received History
+     * @return GetClusterRankingReceivedRewardResult
+     */
 	public function withItem(?ClusterRankingReceivedReward $item): GetClusterRankingReceivedRewardResult {
 		$this->item = $item;
 		return $this;

@@ -19,53 +19,82 @@ namespace Gs2\Friend\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for unregisterBlackListByUserId: Remove a user from the blacklist by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/friend/sdk/#unregisterblacklistbyuserid
+ */
 class UnregisterBlackListByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string User ID */
     private $targetUserId;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UnregisterBlackListByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UnregisterBlackListByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return UnregisterBlackListByUserIdRequest
+     */
 	public function withUserId(?string $userId): UnregisterBlackListByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getTargetUserId(): ?string {
 		return $this->targetUserId;
 	}
+    /** @param string|null $targetUserId User ID */
 	public function setTargetUserId(?string $targetUserId) {
 		$this->targetUserId = $targetUserId;
 	}
+    /**
+     * @param string|null $targetUserId User ID
+     * @return UnregisterBlackListByUserIdRequest
+     */
 	public function withTargetUserId(?string $targetUserId): UnregisterBlackListByUserIdRequest {
 		$this->targetUserId = $targetUserId;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return UnregisterBlackListByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): UnregisterBlackListByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

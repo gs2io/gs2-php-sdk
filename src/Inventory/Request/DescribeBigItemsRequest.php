@@ -19,63 +19,98 @@ namespace Gs2\Inventory\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for describeBigItems: List Big Items
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#describebigitems
+ */
 class DescribeBigItemsRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Big Inventory Model name */
     private $inventoryName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Token specifying the position from which to start acquiring data */
     private $pageToken;
-    /** @var int */
+    /** @var int Number of data items to retrieve */
     private $limit;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DescribeBigItemsRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DescribeBigItemsRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Big Inventory Model name */
 	public function getInventoryName(): ?string {
 		return $this->inventoryName;
 	}
+    /** @param string|null $inventoryName Big Inventory Model name */
 	public function setInventoryName(?string $inventoryName) {
 		$this->inventoryName = $inventoryName;
 	}
+    /**
+     * @param string|null $inventoryName Big Inventory Model name
+     * @return DescribeBigItemsRequest
+     */
 	public function withInventoryName(?string $inventoryName): DescribeBigItemsRequest {
 		$this->inventoryName = $inventoryName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return DescribeBigItemsRequest
+     */
 	public function withAccessToken(?string $accessToken): DescribeBigItemsRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Token specifying the position from which to start acquiring data */
 	public function getPageToken(): ?string {
 		return $this->pageToken;
 	}
+    /** @param string|null $pageToken Token specifying the position from which to start acquiring data */
 	public function setPageToken(?string $pageToken) {
 		$this->pageToken = $pageToken;
 	}
+    /**
+     * @param string|null $pageToken Token specifying the position from which to start acquiring data
+     * @return DescribeBigItemsRequest
+     */
 	public function withPageToken(?string $pageToken): DescribeBigItemsRequest {
 		$this->pageToken = $pageToken;
 		return $this;
 	}
+    /** @return int|null Number of data items to retrieve */
 	public function getLimit(): ?int {
 		return $this->limit;
 	}
+    /** @param int|null $limit Number of data items to retrieve */
 	public function setLimit(?int $limit) {
 		$this->limit = $limit;
 	}
+    /**
+     * @param int|null $limit Number of data items to retrieve
+     * @return DescribeBigItemsRequest
+     */
 	public function withLimit(?int $limit): DescribeBigItemsRequest {
 		$this->limit = $limit;
 		return $this;

@@ -19,27 +19,44 @@ namespace Gs2\Matchmaking\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for deleteGathering: Delete Gathering
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#deletegathering
+ */
 class DeleteGatheringRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Gathering name */
     private $gatheringName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DeleteGatheringRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DeleteGatheringRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Gathering name */
 	public function getGatheringName(): ?string {
 		return $this->gatheringName;
 	}
+    /** @param string|null $gatheringName Gathering name */
 	public function setGatheringName(?string $gatheringName) {
 		$this->gatheringName = $gatheringName;
 	}
+    /**
+     * @param string|null $gatheringName Gathering name
+     * @return DeleteGatheringRequest
+     */
 	public function withGatheringName(?string $gatheringName): DeleteGatheringRequest {
 		$this->gatheringName = $gatheringName;
 		return $this;

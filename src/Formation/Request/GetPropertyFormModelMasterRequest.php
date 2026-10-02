@@ -19,27 +19,44 @@ namespace Gs2\Formation\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getPropertyFormModelMaster: Get Property Form Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/formation/sdk/#getpropertyformmodelmaster
+ */
 class GetPropertyFormModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Property Form Model name */
     private $propertyFormModelName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetPropertyFormModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetPropertyFormModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Property Form Model name */
 	public function getPropertyFormModelName(): ?string {
 		return $this->propertyFormModelName;
 	}
+    /** @param string|null $propertyFormModelName Property Form Model name */
 	public function setPropertyFormModelName(?string $propertyFormModelName) {
 		$this->propertyFormModelName = $propertyFormModelName;
 	}
+    /**
+     * @param string|null $propertyFormModelName Property Form Model name
+     * @return GetPropertyFormModelMasterRequest
+     */
 	public function withPropertyFormModelName(?string $propertyFormModelName): GetPropertyFormModelMasterRequest {
 		$this->propertyFormModelName = $propertyFormModelName;
 		return $this;

@@ -22,33 +22,50 @@ use Gs2\Lottery\Model\AcquireAction;
 use Gs2\Lottery\Model\Prize;
 use Gs2\Lottery\Model\PrizeTableMaster;
 
+/**
+ * Result of describePrizeTableMasters: List Prize Table Masters
+ *
+ * @see https://docs.gs2.io/api_reference/lottery/sdk/#describeprizetablemasters
+ */
 class DescribePrizeTableMastersResult implements IResult {
-    /** @var array */
+    /** @var array List of Prize Tables */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Prize Tables */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Prize Tables */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Prize Tables
+     * @return DescribePrizeTableMastersResult
+     */
 	public function withItems(?array $items): DescribePrizeTableMastersResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribePrizeTableMastersResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribePrizeTableMastersResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

@@ -20,17 +20,28 @@ namespace Gs2\Money2\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Content of Apple App Store
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#appleappstorecontent
+ */
 class AppleAppStoreContent implements IModel {
 	/**
-     * @var string
+     * @var string Product ID
 	 */
 	private $productId;
+    /** @return string|null Product ID */
 	public function getProductId(): ?string {
 		return $this->productId;
 	}
+    /** @param string|null $productId Product ID */
 	public function setProductId(?string $productId) {
 		$this->productId = $productId;
 	}
+    /**
+     * @param string|null $productId Product ID
+     * @return AppleAppStoreContent
+     */
 	public function withProductId(?string $productId): AppleAppStoreContent {
 		$this->productId = $productId;
 		return $this;

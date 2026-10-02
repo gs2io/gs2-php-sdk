@@ -19,63 +19,98 @@ namespace Gs2\Guild\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for describeReceiveRequestsByGuildName: List Received Join Requests by specifying a Guild name
+ *
+ * @see https://docs.gs2.io/api_reference/guild/sdk/#describereceiverequestsbyguildname
+ */
 class DescribeReceiveRequestsByGuildNameRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Guild Model name */
     private $guildModelName;
-    /** @var string */
+    /** @var string Guild name */
     private $guildName;
-    /** @var string */
+    /** @var string Token specifying the position from which to start acquiring data */
     private $pageToken;
-    /** @var int */
+    /** @var int Number of data items to retrieve */
     private $limit;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DescribeReceiveRequestsByGuildNameRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DescribeReceiveRequestsByGuildNameRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Guild Model name */
 	public function getGuildModelName(): ?string {
 		return $this->guildModelName;
 	}
+    /** @param string|null $guildModelName Guild Model name */
 	public function setGuildModelName(?string $guildModelName) {
 		$this->guildModelName = $guildModelName;
 	}
+    /**
+     * @param string|null $guildModelName Guild Model name
+     * @return DescribeReceiveRequestsByGuildNameRequest
+     */
 	public function withGuildModelName(?string $guildModelName): DescribeReceiveRequestsByGuildNameRequest {
 		$this->guildModelName = $guildModelName;
 		return $this;
 	}
+    /** @return string|null Guild name */
 	public function getGuildName(): ?string {
 		return $this->guildName;
 	}
+    /** @param string|null $guildName Guild name */
 	public function setGuildName(?string $guildName) {
 		$this->guildName = $guildName;
 	}
+    /**
+     * @param string|null $guildName Guild name
+     * @return DescribeReceiveRequestsByGuildNameRequest
+     */
 	public function withGuildName(?string $guildName): DescribeReceiveRequestsByGuildNameRequest {
 		$this->guildName = $guildName;
 		return $this;
 	}
+    /** @return string|null Token specifying the position from which to start acquiring data */
 	public function getPageToken(): ?string {
 		return $this->pageToken;
 	}
+    /** @param string|null $pageToken Token specifying the position from which to start acquiring data */
 	public function setPageToken(?string $pageToken) {
 		$this->pageToken = $pageToken;
 	}
+    /**
+     * @param string|null $pageToken Token specifying the position from which to start acquiring data
+     * @return DescribeReceiveRequestsByGuildNameRequest
+     */
 	public function withPageToken(?string $pageToken): DescribeReceiveRequestsByGuildNameRequest {
 		$this->pageToken = $pageToken;
 		return $this;
 	}
+    /** @return int|null Number of data items to retrieve */
 	public function getLimit(): ?int {
 		return $this->limit;
 	}
+    /** @param int|null $limit Number of data items to retrieve */
 	public function setLimit(?int $limit) {
 		$this->limit = $limit;
 	}
+    /**
+     * @param int|null $limit Number of data items to retrieve
+     * @return DescribeReceiveRequestsByGuildNameRequest
+     */
 	public function withLimit(?int $limit): DescribeReceiveRequestsByGuildNameRequest {
 		$this->limit = $limit;
 		return $this;

@@ -24,18 +24,29 @@ use Gs2\Quest\Model\VerifyAction;
 use Gs2\Quest\Model\ConsumeAction;
 use Gs2\Quest\Model\QuestModelMaster;
 
+/**
+ * Result of deleteQuestModelMaster: Delete Quest Model master
+ *
+ * @see https://docs.gs2.io/api_reference/quest/sdk/#deletequestmodelmaster
+ */
 class DeleteQuestModelMasterResult implements IResult {
-    /** @var QuestModelMaster */
+    /** @var QuestModelMaster Quest Model Master deleted */
     private $item;
 
+    /** @return QuestModelMaster|null Quest Model Master deleted */
 	public function getItem(): ?QuestModelMaster {
 		return $this->item;
 	}
 
+    /** @param QuestModelMaster|null $item Quest Model Master deleted */
 	public function setItem(?QuestModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param QuestModelMaster|null $item Quest Model Master deleted
+     * @return DeleteQuestModelMasterResult
+     */
 	public function withItem(?QuestModelMaster $item): DeleteQuestModelMasterResult {
 		$this->item = $item;
 		return $this;

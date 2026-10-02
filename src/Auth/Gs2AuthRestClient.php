@@ -350,25 +350,22 @@ class GetServiceVersionTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 Auth API クライアント
+ * GS2-Auth API client
  *
- * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/auth/sdk/
  */
 class Gs2AuthRestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * Log in to GS2 by User ID
+     *
      * @param LoginRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/auth/sdk/#login
      */
     public function loginAsync(
             LoginRequest $request
@@ -382,8 +379,11 @@ class Gs2AuthRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Log in to GS2 by User ID
+     *
      * @param LoginRequest $request
      * @return LoginResult
+     * @see https://docs.gs2.io/api_reference/auth/sdk/#login
      */
     public function login (
             LoginRequest $request
@@ -394,8 +394,11 @@ class Gs2AuthRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Login with Account Authentication
+     *
      * @param LoginBySignatureRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/auth/sdk/#loginbysignature
      */
     public function loginBySignatureAsync(
             LoginBySignatureRequest $request
@@ -409,8 +412,11 @@ class Gs2AuthRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Login with Account Authentication
+     *
      * @param LoginBySignatureRequest $request
      * @return LoginBySignatureResult
+     * @see https://docs.gs2.io/api_reference/auth/sdk/#loginbysignature
      */
     public function loginBySignature (
             LoginBySignatureRequest $request
@@ -421,8 +427,11 @@ class Gs2AuthRestClient extends AbstractGs2Client {
     }
 
     /**
+     * User ID Federation
+     *
      * @param FederationRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/auth/sdk/#federation
      */
     public function federationAsync(
             FederationRequest $request
@@ -436,8 +445,11 @@ class Gs2AuthRestClient extends AbstractGs2Client {
     }
 
     /**
+     * User ID Federation
+     *
      * @param FederationRequest $request
      * @return FederationResult
+     * @see https://docs.gs2.io/api_reference/auth/sdk/#federation
      */
     public function federation (
             FederationRequest $request
@@ -448,8 +460,11 @@ class Gs2AuthRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Issue a time offset token usable with the specified user ID
+     *
      * @param IssueTimeOffsetTokenByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/auth/sdk/#issuetimeoffsettokenbyuserid
      */
     public function issueTimeOffsetTokenByUserIdAsync(
             IssueTimeOffsetTokenByUserIdRequest $request
@@ -463,8 +478,11 @@ class Gs2AuthRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Issue a time offset token usable with the specified user ID
+     *
      * @param IssueTimeOffsetTokenByUserIdRequest $request
      * @return IssueTimeOffsetTokenByUserIdResult
+     * @see https://docs.gs2.io/api_reference/auth/sdk/#issuetimeoffsettokenbyuserid
      */
     public function issueTimeOffsetTokenByUserId (
             IssueTimeOffsetTokenByUserIdRequest $request
@@ -475,8 +493,11 @@ class Gs2AuthRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get microservice version
+     *
      * @param GetServiceVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/auth/sdk/#getserviceversion
      */
     public function getServiceVersionAsync(
             GetServiceVersionRequest $request
@@ -490,8 +511,11 @@ class Gs2AuthRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get microservice version
+     *
      * @param GetServiceVersionRequest $request
      * @return GetServiceVersionResult
+     * @see https://docs.gs2.io/api_reference/auth/sdk/#getserviceversion
      */
     public function getServiceVersion (
             GetServiceVersionRequest $request

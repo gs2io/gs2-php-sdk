@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Enchant\Model\RarityParameterValue;
 use Gs2\Enchant\Model\RarityParameterStatus;
 
+/**
+ * Result of verifyRarityParameterStatusByUserId: Verify rarity parameter by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/enchant/sdk/#verifyrarityparameterstatusbyuserid
+ */
 class VerifyRarityParameterStatusByUserIdResult implements IResult {
-    /** @var RarityParameterStatus */
+    /** @var RarityParameterStatus Rarity Parameter Status */
     private $item;
 
+    /** @return RarityParameterStatus|null Rarity Parameter Status */
 	public function getItem(): ?RarityParameterStatus {
 		return $this->item;
 	}
 
+    /** @param RarityParameterStatus|null $item Rarity Parameter Status */
 	public function setItem(?RarityParameterStatus $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param RarityParameterStatus|null $item Rarity Parameter Status
+     * @return VerifyRarityParameterStatusByUserIdResult
+     */
 	public function withItem(?RarityParameterStatus $item): VerifyRarityParameterStatusByUserIdResult {
 		$this->item = $item;
 		return $this;

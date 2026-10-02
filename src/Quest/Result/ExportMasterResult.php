@@ -20,18 +20,29 @@ namespace Gs2\Quest\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Quest\Model\CurrentQuestMaster;
 
+/**
+ * Result of exportMaster: Export Quest Model Master in a master data format that can be activated
+ *
+ * @see https://docs.gs2.io/api_reference/quest/sdk/#exportmaster
+ */
 class ExportMasterResult implements IResult {
-    /** @var CurrentQuestMaster */
+    /** @var CurrentQuestMaster master data that can be activated */
     private $item;
 
+    /** @return CurrentQuestMaster|null master data that can be activated */
 	public function getItem(): ?CurrentQuestMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentQuestMaster|null $item master data that can be activated */
 	public function setItem(?CurrentQuestMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentQuestMaster|null $item master data that can be activated
+     * @return ExportMasterResult
+     */
 	public function withItem(?CurrentQuestMaster $item): ExportMasterResult {
 		$this->item = $item;
 		return $this;

@@ -21,33 +21,50 @@ use Gs2\Core\Model\IResult;
 use Gs2\Exchange\Model\Config;
 use Gs2\Exchange\Model\Await;
 
+/**
+ * Result of deleteAwaitByStampTask: Delete Exchange Await as a consume action
+ *
+ * @see https://docs.gs2.io/api_reference/exchange/stamp_sheet/#gs2exchangedeleteawaitbyuserid
+ */
 class DeleteAwaitByStampTaskResult implements IResult {
-    /** @var Await */
+    /** @var Await Exchange Await */
     private $item;
-    /** @var string */
+    /** @var string Context recording the execution results of Consume Actions */
     private $newContextStack;
 
+    /** @return Await|null Exchange Await */
 	public function getItem(): ?Await {
 		return $this->item;
 	}
 
+    /** @param Await|null $item Exchange Await */
 	public function setItem(?Await $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Await|null $item Exchange Await
+     * @return DeleteAwaitByStampTaskResult
+     */
 	public function withItem(?Await $item): DeleteAwaitByStampTaskResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null Context recording the execution results of Consume Actions */
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
+    /** @param string|null $newContextStack Context recording the execution results of Consume Actions */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
+    /**
+     * @param string|null $newContextStack Context recording the execution results of Consume Actions
+     * @return DeleteAwaitByStampTaskResult
+     */
 	public function withNewContextStack(?string $newContextStack): DeleteAwaitByStampTaskResult {
 		$this->newContextStack = $newContextStack;
 		return $this;

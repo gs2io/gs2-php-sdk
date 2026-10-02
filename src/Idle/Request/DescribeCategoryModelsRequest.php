@@ -19,15 +19,26 @@ namespace Gs2\Idle\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for describeCategoryModels: List Category Models
+ *
+ * @see https://docs.gs2.io/api_reference/idle/sdk/#describecategorymodels
+ */
 class DescribeCategoryModelsRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DescribeCategoryModelsRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DescribeCategoryModelsRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;

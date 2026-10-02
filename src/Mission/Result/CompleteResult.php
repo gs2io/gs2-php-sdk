@@ -23,108 +23,155 @@ use Gs2\Core\Model\ConsumeActionResult as CoreConsumeActionResult;
 use Gs2\Core\Model\AcquireActionResult as CoreAcquireActionResult;
 use Gs2\Core\Model\TransactionResult as CoreTransactionResult;
 
+/**
+ * Result of complete: Issue transactions to receive rewards for mission accomplishment
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#complete-1
+ */
 class CompleteResult implements IResult {
-    /** @var string */
+    /** @var string Issued transaction ID */
     private $transactionId;
-    /** @var string */
+    /** @var string Stamp sheet to receive rewards for mission accomplishment */
     private $stampSheet;
-    /** @var string */
+    /** @var string Cryptographic key GRN used for stamp sheet signature calculations */
     private $stampSheetEncryptionKeyId;
-    /** @var bool */
+    /** @var bool Whether automatic transaction execution is enabled */
     private $autoRunStampSheet;
-    /** @var bool */
+    /** @var bool Whether to commit the transaction atomically */
     private $atomicCommit;
-    /** @var string */
+    /** @var string Issued transaction */
     private $transaction;
-    /** @var CoreTransactionResult */
+    /** @var CoreTransactionResult Transaction Execution Result */
     private $transactionResult;
 
+    /** @return string|null Issued transaction ID */
 	public function getTransactionId(): ?string {
 		return $this->transactionId;
 	}
 
+    /** @param string|null $transactionId Issued transaction ID */
 	public function setTransactionId(?string $transactionId) {
 		$this->transactionId = $transactionId;
 	}
 
+    /**
+     * @param string|null $transactionId Issued transaction ID
+     * @return CompleteResult
+     */
 	public function withTransactionId(?string $transactionId): CompleteResult {
 		$this->transactionId = $transactionId;
 		return $this;
 	}
 
+    /** @return string|null Stamp sheet to receive rewards for mission accomplishment */
 	public function getStampSheet(): ?string {
 		return $this->stampSheet;
 	}
 
+    /** @param string|null $stampSheet Stamp sheet to receive rewards for mission accomplishment */
 	public function setStampSheet(?string $stampSheet) {
 		$this->stampSheet = $stampSheet;
 	}
 
+    /**
+     * @param string|null $stampSheet Stamp sheet to receive rewards for mission accomplishment
+     * @return CompleteResult
+     */
 	public function withStampSheet(?string $stampSheet): CompleteResult {
 		$this->stampSheet = $stampSheet;
 		return $this;
 	}
 
+    /** @return string|null Cryptographic key GRN used for stamp sheet signature calculations */
 	public function getStampSheetEncryptionKeyId(): ?string {
 		return $this->stampSheetEncryptionKeyId;
 	}
 
+    /** @param string|null $stampSheetEncryptionKeyId Cryptographic key GRN used for stamp sheet signature calculations */
 	public function setStampSheetEncryptionKeyId(?string $stampSheetEncryptionKeyId) {
 		$this->stampSheetEncryptionKeyId = $stampSheetEncryptionKeyId;
 	}
 
+    /**
+     * @param string|null $stampSheetEncryptionKeyId Cryptographic key GRN used for stamp sheet signature calculations
+     * @return CompleteResult
+     */
 	public function withStampSheetEncryptionKeyId(?string $stampSheetEncryptionKeyId): CompleteResult {
 		$this->stampSheetEncryptionKeyId = $stampSheetEncryptionKeyId;
 		return $this;
 	}
 
+    /** @return bool|null Whether automatic transaction execution is enabled */
 	public function getAutoRunStampSheet(): ?bool {
 		return $this->autoRunStampSheet;
 	}
 
+    /** @param bool|null $autoRunStampSheet Whether automatic transaction execution is enabled */
 	public function setAutoRunStampSheet(?bool $autoRunStampSheet) {
 		$this->autoRunStampSheet = $autoRunStampSheet;
 	}
 
+    /**
+     * @param bool|null $autoRunStampSheet Whether automatic transaction execution is enabled
+     * @return CompleteResult
+     */
 	public function withAutoRunStampSheet(?bool $autoRunStampSheet): CompleteResult {
 		$this->autoRunStampSheet = $autoRunStampSheet;
 		return $this;
 	}
 
+    /** @return bool|null Whether to commit the transaction atomically */
 	public function getAtomicCommit(): ?bool {
 		return $this->atomicCommit;
 	}
 
+    /** @param bool|null $atomicCommit Whether to commit the transaction atomically */
 	public function setAtomicCommit(?bool $atomicCommit) {
 		$this->atomicCommit = $atomicCommit;
 	}
 
+    /**
+     * @param bool|null $atomicCommit Whether to commit the transaction atomically
+     * @return CompleteResult
+     */
 	public function withAtomicCommit(?bool $atomicCommit): CompleteResult {
 		$this->atomicCommit = $atomicCommit;
 		return $this;
 	}
 
+    /** @return string|null Issued transaction */
 	public function getTransaction(): ?string {
 		return $this->transaction;
 	}
 
+    /** @param string|null $transaction Issued transaction */
 	public function setTransaction(?string $transaction) {
 		$this->transaction = $transaction;
 	}
 
+    /**
+     * @param string|null $transaction Issued transaction
+     * @return CompleteResult
+     */
 	public function withTransaction(?string $transaction): CompleteResult {
 		$this->transaction = $transaction;
 		return $this;
 	}
 
+    /** @return CoreTransactionResult|null Transaction Execution Result */
 	public function getTransactionResult(): ?CoreTransactionResult {
 		return $this->transactionResult;
 	}
 
+    /** @param CoreTransactionResult|null $transactionResult Transaction Execution Result */
 	public function setTransactionResult(?CoreTransactionResult $transactionResult) {
 		$this->transactionResult = $transactionResult;
 	}
 
+    /**
+     * @param CoreTransactionResult|null $transactionResult Transaction Execution Result
+     * @return CompleteResult
+     */
 	public function withTransactionResult(?CoreTransactionResult $transactionResult): CompleteResult {
 		$this->transactionResult = $transactionResult;
 		return $this;

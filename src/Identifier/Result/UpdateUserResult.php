@@ -20,18 +20,29 @@ namespace Gs2\Identifier\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Identifier\Model\User;
 
+/**
+ * Result of updateUser: Update user
+ *
+ * @see https://docs.gs2.io/api_reference/identifier/sdk/#updateuser
+ */
 class UpdateUserResult implements IResult {
-    /** @var User */
+    /** @var User Users after update */
     private $item;
 
+    /** @return User|null Users after update */
 	public function getItem(): ?User {
 		return $this->item;
 	}
 
+    /** @param User|null $item Users after update */
 	public function setItem(?User $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param User|null $item Users after update
+     * @return UpdateUserResult
+     */
 	public function withItem(?User $item): UpdateUserResult {
 		$this->item = $item;
 		return $this;

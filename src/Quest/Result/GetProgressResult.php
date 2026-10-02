@@ -27,48 +27,71 @@ use Gs2\Quest\Model\ConsumeAction;
 use Gs2\Quest\Model\QuestModel;
 use Gs2\Quest\Model\QuestGroupModel;
 
+/**
+ * Result of getProgress: Get quest progress
+ *
+ * @see https://docs.gs2.io/api_reference/quest/sdk/#getprogress
+ */
 class GetProgressResult implements IResult {
-    /** @var Progress */
+    /** @var Progress Quest Progress */
     private $item;
-    /** @var QuestGroupModel */
+    /** @var QuestGroupModel Quest Group Model */
     private $questGroup;
-    /** @var QuestModel */
+    /** @var QuestModel Quest Model */
     private $quest;
 
+    /** @return Progress|null Quest Progress */
 	public function getItem(): ?Progress {
 		return $this->item;
 	}
 
+    /** @param Progress|null $item Quest Progress */
 	public function setItem(?Progress $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Progress|null $item Quest Progress
+     * @return GetProgressResult
+     */
 	public function withItem(?Progress $item): GetProgressResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return QuestGroupModel|null Quest Group Model */
 	public function getQuestGroup(): ?QuestGroupModel {
 		return $this->questGroup;
 	}
 
+    /** @param QuestGroupModel|null $questGroup Quest Group Model */
 	public function setQuestGroup(?QuestGroupModel $questGroup) {
 		$this->questGroup = $questGroup;
 	}
 
+    /**
+     * @param QuestGroupModel|null $questGroup Quest Group Model
+     * @return GetProgressResult
+     */
 	public function withQuestGroup(?QuestGroupModel $questGroup): GetProgressResult {
 		$this->questGroup = $questGroup;
 		return $this;
 	}
 
+    /** @return QuestModel|null Quest Model */
 	public function getQuest(): ?QuestModel {
 		return $this->quest;
 	}
 
+    /** @param QuestModel|null $quest Quest Model */
 	public function setQuest(?QuestModel $quest) {
 		$this->quest = $quest;
 	}
 
+    /**
+     * @param QuestModel|null $quest Quest Model
+     * @return GetProgressResult
+     */
 	public function withQuest(?QuestModel $quest): GetProgressResult {
 		$this->quest = $quest;
 		return $this;

@@ -23,18 +23,29 @@ use Gs2\Enchant\Model\TransactionSettingV2;
 use Gs2\Enchant\Model\LogSetting;
 use Gs2\Enchant\Model\Namespace_;
 
+/**
+ * Result of createNamespace: Create Namespace
+ *
+ * @see https://docs.gs2.io/api_reference/enchant/sdk/#createnamespace
+ */
 class CreateNamespaceResult implements IResult {
-    /** @var Namespace_ */
+    /** @var Namespace_ Namespace created */
     private $item;
 
+    /** @return Namespace_|null Namespace created */
 	public function getItem(): ?Namespace_ {
 		return $this->item;
 	}
 
+    /** @param Namespace_|null $item Namespace created */
 	public function setItem(?Namespace_ $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Namespace_|null $item Namespace created
+     * @return CreateNamespaceResult
+     */
 	public function withItem(?Namespace_ $item): CreateNamespaceResult {
 		$this->item = $item;
 		return $this;

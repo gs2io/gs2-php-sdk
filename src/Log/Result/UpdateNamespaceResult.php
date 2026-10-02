@@ -20,18 +20,29 @@ namespace Gs2\Log\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Log\Model\Namespace_;
 
+/**
+ * Result of updateNamespace: Update Namespace
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#updatenamespace
+ */
 class UpdateNamespaceResult implements IResult {
-    /** @var Namespace_ */
+    /** @var Namespace_ Updated Namespace */
     private $item;
 
+    /** @return Namespace_|null Updated Namespace */
 	public function getItem(): ?Namespace_ {
 		return $this->item;
 	}
 
+    /** @param Namespace_|null $item Updated Namespace */
 	public function setItem(?Namespace_ $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Namespace_|null $item Updated Namespace
+     * @return UpdateNamespaceResult
+     */
 	public function withItem(?Namespace_ $item): UpdateNamespaceResult {
 		$this->item = $item;
 		return $this;

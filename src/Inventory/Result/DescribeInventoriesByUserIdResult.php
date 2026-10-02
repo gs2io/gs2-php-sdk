@@ -20,33 +20,50 @@ namespace Gs2\Inventory\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Inventory\Model\Inventory;
 
+/**
+ * Result of describeInventoriesByUserId: List Inventories by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#describeinventoriesbyuserid
+ */
 class DescribeInventoriesByUserIdResult implements IResult {
-    /** @var array */
+    /** @var array List of Inventories */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Inventories */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Inventories */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Inventories
+     * @return DescribeInventoriesByUserIdResult
+     */
 	public function withItems(?array $items): DescribeInventoriesByUserIdResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeInventoriesByUserIdResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeInventoriesByUserIdResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

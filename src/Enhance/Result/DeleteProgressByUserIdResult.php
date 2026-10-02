@@ -20,18 +20,29 @@ namespace Gs2\Enhance\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Enhance\Model\Progress;
 
+/**
+ * Result of deleteProgressByUserId: Delete running enhancement by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/enhance/sdk/#deleteprogressbyuserid
+ */
 class DeleteProgressByUserIdResult implements IResult {
-    /** @var Progress */
+    /** @var Progress Progress information for enhancement */
     private $item;
 
+    /** @return Progress|null Progress information for enhancement */
 	public function getItem(): ?Progress {
 		return $this->item;
 	}
 
+    /** @param Progress|null $item Progress information for enhancement */
 	public function setItem(?Progress $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Progress|null $item Progress information for enhancement
+     * @return DeleteProgressByUserIdResult
+     */
 	public function withItem(?Progress $item): DeleteProgressByUserIdResult {
 		$this->item = $item;
 		return $this;

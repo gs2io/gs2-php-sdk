@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Inventory\Model\ItemModel;
 use Gs2\Inventory\Model\InventoryModel;
 
+/**
+ * Result of getInventoryModel: Get Inventory Model
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#getinventorymodel
+ */
 class GetInventoryModelResult implements IResult {
-    /** @var InventoryModel */
+    /** @var InventoryModel Inventory Model */
     private $item;
 
+    /** @return InventoryModel|null Inventory Model */
 	public function getItem(): ?InventoryModel {
 		return $this->item;
 	}
 
+    /** @param InventoryModel|null $item Inventory Model */
 	public function setItem(?InventoryModel $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param InventoryModel|null $item Inventory Model
+     * @return GetInventoryModelResult
+     */
 	public function withItem(?InventoryModel $item): GetInventoryModelResult {
 		$this->item = $item;
 		return $this;

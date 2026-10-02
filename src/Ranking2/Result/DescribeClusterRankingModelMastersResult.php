@@ -22,33 +22,50 @@ use Gs2\Ranking2\Model\AcquireAction;
 use Gs2\Ranking2\Model\RankingReward;
 use Gs2\Ranking2\Model\ClusterRankingModelMaster;
 
+/**
+ * Result of describeClusterRankingModelMasters: List Cluster Ranking Model Masters
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/sdk/#describeclusterrankingmodelmasters
+ */
 class DescribeClusterRankingModelMastersResult implements IResult {
-    /** @var array */
+    /** @var array List of Cluster Ranking Model Masters */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Cluster Ranking Model Masters */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Cluster Ranking Model Masters */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Cluster Ranking Model Masters
+     * @return DescribeClusterRankingModelMastersResult
+     */
 	public function withItems(?array $items): DescribeClusterRankingModelMastersResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeClusterRankingModelMastersResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeClusterRankingModelMastersResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

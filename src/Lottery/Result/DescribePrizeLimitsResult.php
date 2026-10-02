@@ -20,33 +20,50 @@ namespace Gs2\Lottery\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Lottery\Model\PrizeLimit;
 
+/**
+ * Result of describePrizeLimits: List Prize Limits
+ *
+ * @see https://docs.gs2.io/api_reference/lottery/sdk/#describeprizelimits
+ */
 class DescribePrizeLimitsResult implements IResult {
-    /** @var array */
+    /** @var array List of Prize Limits */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Prize Limits */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Prize Limits */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Prize Limits
+     * @return DescribePrizeLimitsResult
+     */
 	public function withItems(?array $items): DescribePrizeLimitsResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribePrizeLimitsResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribePrizeLimitsResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

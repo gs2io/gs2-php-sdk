@@ -19,39 +19,62 @@ namespace Gs2\Money2\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getWallet: Get Wallet
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#getwallet
+ */
 class GetWalletRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var int */
+    /** @var int Slot Number */
     private $slot;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetWalletRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetWalletRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return GetWalletRequest
+     */
 	public function withAccessToken(?string $accessToken): GetWalletRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return int|null Slot Number */
 	public function getSlot(): ?int {
 		return $this->slot;
 	}
+    /** @param int|null $slot Slot Number */
 	public function setSlot(?int $slot) {
 		$this->slot = $slot;
 	}
+    /**
+     * @param int|null $slot Slot Number
+     * @return GetWalletRequest
+     */
 	public function withSlot(?int $slot): GetWalletRequest {
 		$this->slot = $slot;
 		return $this;

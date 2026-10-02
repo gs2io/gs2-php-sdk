@@ -20,18 +20,29 @@ namespace Gs2\Grade\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Grade\Model\CurrentGradeMaster;
 
+/**
+ * Result of exportMaster: Export Grade Model Master in a master data format that can be activated
+ *
+ * @see https://docs.gs2.io/api_reference/grade/sdk/#exportmaster
+ */
 class ExportMasterResult implements IResult {
-    /** @var CurrentGradeMaster */
+    /** @var CurrentGradeMaster Grade Model master data that can be activated */
     private $item;
 
+    /** @return CurrentGradeMaster|null Grade Model master data that can be activated */
 	public function getItem(): ?CurrentGradeMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentGradeMaster|null $item Grade Model master data that can be activated */
 	public function setItem(?CurrentGradeMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentGradeMaster|null $item Grade Model master data that can be activated
+     * @return ExportMasterResult
+     */
 	public function withItem(?CurrentGradeMaster $item): ExportMasterResult {
 		$this->item = $item;
 		return $this;

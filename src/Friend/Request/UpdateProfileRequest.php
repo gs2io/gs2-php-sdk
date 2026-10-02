@@ -19,65 +19,100 @@ namespace Gs2\Friend\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for updateProfile: Update profile
+ *
+ * @see https://docs.gs2.io/api_reference/friend/sdk/#updateprofile
+ */
 class UpdateProfileRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Public profile */
     private $publicProfile;
-    /** @var string */
+    /** @var string Profile for followers */
     private $followerProfile;
-    /** @var string */
+    /** @var string Profile for friends */
     private $friendProfile;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UpdateProfileRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UpdateProfileRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return UpdateProfileRequest
+     */
 	public function withAccessToken(?string $accessToken): UpdateProfileRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Public profile */
 	public function getPublicProfile(): ?string {
 		return $this->publicProfile;
 	}
+    /** @param string|null $publicProfile Public profile */
 	public function setPublicProfile(?string $publicProfile) {
 		$this->publicProfile = $publicProfile;
 	}
+    /**
+     * @param string|null $publicProfile Public profile
+     * @return UpdateProfileRequest
+     */
 	public function withPublicProfile(?string $publicProfile): UpdateProfileRequest {
 		$this->publicProfile = $publicProfile;
 		return $this;
 	}
+    /** @return string|null Profile for followers */
 	public function getFollowerProfile(): ?string {
 		return $this->followerProfile;
 	}
+    /** @param string|null $followerProfile Profile for followers */
 	public function setFollowerProfile(?string $followerProfile) {
 		$this->followerProfile = $followerProfile;
 	}
+    /**
+     * @param string|null $followerProfile Profile for followers
+     * @return UpdateProfileRequest
+     */
 	public function withFollowerProfile(?string $followerProfile): UpdateProfileRequest {
 		$this->followerProfile = $followerProfile;
 		return $this;
 	}
+    /** @return string|null Profile for friends */
 	public function getFriendProfile(): ?string {
 		return $this->friendProfile;
 	}
+    /** @param string|null $friendProfile Profile for friends */
 	public function setFriendProfile(?string $friendProfile) {
 		$this->friendProfile = $friendProfile;
 	}
+    /**
+     * @param string|null $friendProfile Profile for friends
+     * @return UpdateProfileRequest
+     */
 	public function withFriendProfile(?string $friendProfile): UpdateProfileRequest {
 		$this->friendProfile = $friendProfile;
 		return $this;

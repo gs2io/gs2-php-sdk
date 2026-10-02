@@ -20,18 +20,29 @@ namespace Gs2\Schedule\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Schedule\Model\Trigger;
 
+/**
+ * Result of getTriggerByUserId: Get Trigger by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/schedule/sdk/#gettriggerbyuserid
+ */
 class GetTriggerByUserIdResult implements IResult {
-    /** @var Trigger */
+    /** @var Trigger Trigger */
     private $item;
 
+    /** @return Trigger|null Trigger */
 	public function getItem(): ?Trigger {
 		return $this->item;
 	}
 
+    /** @param Trigger|null $item Trigger */
 	public function setItem(?Trigger $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Trigger|null $item Trigger
+     * @return GetTriggerByUserIdResult
+     */
 	public function withItem(?Trigger $item): GetTriggerByUserIdResult {
 		$this->item = $item;
 		return $this;

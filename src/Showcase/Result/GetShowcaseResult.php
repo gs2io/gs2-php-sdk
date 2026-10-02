@@ -26,18 +26,29 @@ use Gs2\Showcase\Model\SalesItemGroup;
 use Gs2\Showcase\Model\DisplayItem;
 use Gs2\Showcase\Model\Showcase;
 
+/**
+ * Result of getShowcase: Get Showcase
+ *
+ * @see https://docs.gs2.io/api_reference/showcase/sdk/#getshowcase
+ */
 class GetShowcaseResult implements IResult {
-    /** @var Showcase */
+    /** @var Showcase Showcase */
     private $item;
 
+    /** @return Showcase|null Showcase */
 	public function getItem(): ?Showcase {
 		return $this->item;
 	}
 
+    /** @param Showcase|null $item Showcase */
 	public function setItem(?Showcase $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Showcase|null $item Showcase
+     * @return GetShowcaseResult
+     */
 	public function withItem(?Showcase $item): GetShowcaseResult {
 		$this->item = $item;
 		return $this;

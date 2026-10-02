@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Version\Model\Version;
 use Gs2\Version\Model\AcceptVersion;
 
+/**
+ * Result of reject: Reject current version
+ *
+ * @see https://docs.gs2.io/api_reference/version/sdk/#reject
+ */
 class RejectResult implements IResult {
-    /** @var AcceptVersion */
+    /** @var AcceptVersion Rejected Version */
     private $item;
 
+    /** @return AcceptVersion|null Rejected Version */
 	public function getItem(): ?AcceptVersion {
 		return $this->item;
 	}
 
+    /** @param AcceptVersion|null $item Rejected Version */
 	public function setItem(?AcceptVersion $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param AcceptVersion|null $item Rejected Version
+     * @return RejectResult
+     */
 	public function withItem(?AcceptVersion $item): RejectResult {
 		$this->item = $item;
 		return $this;

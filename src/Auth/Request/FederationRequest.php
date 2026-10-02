@@ -19,63 +19,98 @@ namespace Gs2\Auth\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for federation: User ID Federation
+ *
+ * @see https://docs.gs2.io/api_reference/auth/sdk/#federation
+ */
 class FederationRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Federation original user ID */
     private $originalUserId;
-    /** @var string */
+    /** @var string Federated user ID */
     private $userId;
-    /** @var string */
+    /** @var string Policy document */
     private $policyDocument;
-    /** @var int */
+    /** @var int Time offset from the current time (number of seconds relative to the current time) */
     private $timeOffset;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
+    /** @return string|null Federation original user ID */
 	public function getOriginalUserId(): ?string {
 		return $this->originalUserId;
 	}
+    /** @param string|null $originalUserId Federation original user ID */
 	public function setOriginalUserId(?string $originalUserId) {
 		$this->originalUserId = $originalUserId;
 	}
+    /**
+     * @param string|null $originalUserId Federation original user ID
+     * @return FederationRequest
+     */
 	public function withOriginalUserId(?string $originalUserId): FederationRequest {
 		$this->originalUserId = $originalUserId;
 		return $this;
 	}
+    /** @return string|null Federated user ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId Federated user ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId Federated user ID
+     * @return FederationRequest
+     */
 	public function withUserId(?string $userId): FederationRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Policy document */
 	public function getPolicyDocument(): ?string {
 		return $this->policyDocument;
 	}
+    /** @param string|null $policyDocument Policy document */
 	public function setPolicyDocument(?string $policyDocument) {
 		$this->policyDocument = $policyDocument;
 	}
+    /**
+     * @param string|null $policyDocument Policy document
+     * @return FederationRequest
+     */
 	public function withPolicyDocument(?string $policyDocument): FederationRequest {
 		$this->policyDocument = $policyDocument;
 		return $this;
 	}
+    /** @return int|null Time offset from the current time (number of seconds relative to the current time) */
 	public function getTimeOffset(): ?int {
 		return $this->timeOffset;
 	}
+    /** @param int|null $timeOffset Time offset from the current time (number of seconds relative to the current time) */
 	public function setTimeOffset(?int $timeOffset) {
 		$this->timeOffset = $timeOffset;
 	}
+    /**
+     * @param int|null $timeOffset Time offset from the current time (number of seconds relative to the current time)
+     * @return FederationRequest
+     */
 	public function withTimeOffset(?int $timeOffset): FederationRequest {
 		$this->timeOffset = $timeOffset;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return FederationRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): FederationRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

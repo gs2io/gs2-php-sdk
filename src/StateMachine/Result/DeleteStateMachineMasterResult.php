@@ -20,18 +20,29 @@ namespace Gs2\StateMachine\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\StateMachine\Model\StateMachineMaster;
 
+/**
+ * Result of deleteStateMachineMaster: Delete State Machine Master
+ *
+ * @see https://docs.gs2.io/api_reference/state_machine/sdk/#deletestatemachinemaster
+ */
 class DeleteStateMachineMasterResult implements IResult {
-    /** @var StateMachineMaster */
+    /** @var StateMachineMaster State Machine Master deleted */
     private $item;
 
+    /** @return StateMachineMaster|null State Machine Master deleted */
 	public function getItem(): ?StateMachineMaster {
 		return $this->item;
 	}
 
+    /** @param StateMachineMaster|null $item State Machine Master deleted */
 	public function setItem(?StateMachineMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param StateMachineMaster|null $item State Machine Master deleted
+     * @return DeleteStateMachineMasterResult
+     */
 	public function withItem(?StateMachineMaster $item): DeleteStateMachineMasterResult {
 		$this->item = $item;
 		return $this;

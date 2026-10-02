@@ -20,87 +20,124 @@ namespace Gs2\Project\Model;
 use Gs2\Core\Model\IModel;
 
 
+/** Error log that occurred during import processing */
 class ImportErrorLog implements IModel {
 	/**
-     * @var string
+     * @var string Import User Data Error Log GRN
 	 */
 	private $dumpProgressId;
 	/**
-     * @var string
+     * @var string Log name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Microservice name
 	 */
 	private $microserviceName;
 	/**
-     * @var string
+     * @var string Error message
 	 */
 	private $message;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Import User Data Error Log GRN */
 	public function getDumpProgressId(): ?string {
 		return $this->dumpProgressId;
 	}
+    /** @param string|null $dumpProgressId Import User Data Error Log GRN */
 	public function setDumpProgressId(?string $dumpProgressId) {
 		$this->dumpProgressId = $dumpProgressId;
 	}
+    /**
+     * @param string|null $dumpProgressId Import User Data Error Log GRN
+     * @return ImportErrorLog
+     */
 	public function withDumpProgressId(?string $dumpProgressId): ImportErrorLog {
 		$this->dumpProgressId = $dumpProgressId;
 		return $this;
 	}
+    /** @return string|null Log name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Log name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Log name
+     * @return ImportErrorLog
+     */
 	public function withName(?string $name): ImportErrorLog {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Microservice name */
 	public function getMicroserviceName(): ?string {
 		return $this->microserviceName;
 	}
+    /** @param string|null $microserviceName Microservice name */
 	public function setMicroserviceName(?string $microserviceName) {
 		$this->microserviceName = $microserviceName;
 	}
+    /**
+     * @param string|null $microserviceName Microservice name
+     * @return ImportErrorLog
+     */
 	public function withMicroserviceName(?string $microserviceName): ImportErrorLog {
 		$this->microserviceName = $microserviceName;
 		return $this;
 	}
+    /** @return string|null Error message */
 	public function getMessage(): ?string {
 		return $this->message;
 	}
+    /** @param string|null $message Error message */
 	public function setMessage(?string $message) {
 		$this->message = $message;
 	}
+    /**
+     * @param string|null $message Error message
+     * @return ImportErrorLog
+     */
 	public function withMessage(?string $message): ImportErrorLog {
 		$this->message = $message;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return ImportErrorLog
+     */
 	public function withCreatedAt(?int $createdAt): ImportErrorLog {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return ImportErrorLog
+     */
 	public function withRevision(?int $revision): ImportErrorLog {
 		$this->revision = $revision;
 		return $this;

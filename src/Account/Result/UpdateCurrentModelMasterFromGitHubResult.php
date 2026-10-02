@@ -20,18 +20,29 @@ namespace Gs2\Account\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Account\Model\CurrentModelMaster;
 
+/**
+ * Result of updateCurrentModelMasterFromGitHub: Update master data of the currently active Takeover Type Models from GitHub
+ *
+ * @see https://docs.gs2.io/api_reference/account/sdk/#updatecurrentmodelmasterfromgithub
+ */
 class UpdateCurrentModelMasterFromGitHubResult implements IResult {
-    /** @var CurrentModelMaster */
+    /** @var CurrentModelMaster Updated master data of the currently active Takeover Type Models */
     private $item;
 
+    /** @return CurrentModelMaster|null Updated master data of the currently active Takeover Type Models */
 	public function getItem(): ?CurrentModelMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentModelMaster|null $item Updated master data of the currently active Takeover Type Models */
 	public function setItem(?CurrentModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentModelMaster|null $item Updated master data of the currently active Takeover Type Models
+     * @return UpdateCurrentModelMasterFromGitHubResult
+     */
 	public function withItem(?CurrentModelMaster $item): UpdateCurrentModelMasterFromGitHubResult {
 		$this->item = $item;
 		return $this;

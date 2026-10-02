@@ -20,31 +20,48 @@ namespace Gs2\Account\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Scope Value
+ *
+ * @see https://docs.gs2.io/api_reference/account/sdk/#scopevalue
+ */
 class ScopeValue implements IModel {
 	/**
-     * @var string
+     * @var string Name
 	 */
 	private $key;
 	/**
-     * @var string
+     * @var string Value
 	 */
 	private $value;
+    /** @return string|null Name */
 	public function getKey(): ?string {
 		return $this->key;
 	}
+    /** @param string|null $key Name */
 	public function setKey(?string $key) {
 		$this->key = $key;
 	}
+    /**
+     * @param string|null $key Name
+     * @return ScopeValue
+     */
 	public function withKey(?string $key): ScopeValue {
 		$this->key = $key;
 		return $this;
 	}
+    /** @return string|null Value */
 	public function getValue(): ?string {
 		return $this->value;
 	}
+    /** @param string|null $value Value */
 	public function setValue(?string $value) {
 		$this->value = $value;
 	}
+    /**
+     * @param string|null $value Value
+     * @return ScopeValue
+     */
 	public function withValue(?string $value): ScopeValue {
 		$this->value = $value;
 		return $this;

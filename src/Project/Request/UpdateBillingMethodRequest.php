@@ -19,39 +19,58 @@ namespace Gs2\Project\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/** Request for updateBillingMethod: Update payment method */
 class UpdateBillingMethodRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Signed in to the account token. */
     private $accountToken;
-    /** @var string */
+    /** @var string Name */
     private $billingMethodName;
-    /** @var string */
+    /** @var string Description */
     private $description;
+    /** @return string|null Signed in to the account token. */
 	public function getAccountToken(): ?string {
 		return $this->accountToken;
 	}
+    /** @param string|null $accountToken Signed in to the account token. */
 	public function setAccountToken(?string $accountToken) {
 		$this->accountToken = $accountToken;
 	}
+    /**
+     * @param string|null $accountToken Signed in to the account token.
+     * @return UpdateBillingMethodRequest
+     */
 	public function withAccountToken(?string $accountToken): UpdateBillingMethodRequest {
 		$this->accountToken = $accountToken;
 		return $this;
 	}
+    /** @return string|null Name */
 	public function getBillingMethodName(): ?string {
 		return $this->billingMethodName;
 	}
+    /** @param string|null $billingMethodName Name */
 	public function setBillingMethodName(?string $billingMethodName) {
 		$this->billingMethodName = $billingMethodName;
 	}
+    /**
+     * @param string|null $billingMethodName Name
+     * @return UpdateBillingMethodRequest
+     */
 	public function withBillingMethodName(?string $billingMethodName): UpdateBillingMethodRequest {
 		$this->billingMethodName = $billingMethodName;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return UpdateBillingMethodRequest
+     */
 	public function withDescription(?string $description): UpdateBillingMethodRequest {
 		$this->description = $description;
 		return $this;

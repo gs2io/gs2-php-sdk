@@ -20,18 +20,29 @@ namespace Gs2\Formation\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Formation\Model\CurrentFormMaster;
 
+/**
+ * Result of updateCurrentFormMasterFromGitHub: Update currently active Form Model master data from GitHub
+ *
+ * @see https://docs.gs2.io/api_reference/formation/sdk/#updatecurrentformmasterfromgithub
+ */
 class UpdateCurrentFormMasterFromGitHubResult implements IResult {
-    /** @var CurrentFormMaster */
+    /** @var CurrentFormMaster Updated master data of the currently active Form Models */
     private $item;
 
+    /** @return CurrentFormMaster|null Updated master data of the currently active Form Models */
 	public function getItem(): ?CurrentFormMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentFormMaster|null $item Updated master data of the currently active Form Models */
 	public function setItem(?CurrentFormMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentFormMaster|null $item Updated master data of the currently active Form Models
+     * @return UpdateCurrentFormMasterFromGitHubResult
+     */
 	public function withItem(?CurrentFormMaster $item): UpdateCurrentFormMasterFromGitHubResult {
 		$this->item = $item;
 		return $this;

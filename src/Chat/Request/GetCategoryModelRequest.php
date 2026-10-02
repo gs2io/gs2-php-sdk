@@ -19,27 +19,44 @@ namespace Gs2\Chat\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getCategoryModel: Get Message Category Model
+ *
+ * @see https://docs.gs2.io/api_reference/chat/sdk/#getcategorymodel
+ */
 class GetCategoryModelRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var int */
+    /** @var int Category */
     private $category;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetCategoryModelRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetCategoryModelRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return int|null Category */
 	public function getCategory(): ?int {
 		return $this->category;
 	}
+    /** @param int|null $category Category */
 	public function setCategory(?int $category) {
 		$this->category = $category;
 	}
+    /**
+     * @param int|null $category Category
+     * @return GetCategoryModelRequest
+     */
 	public function withCategory(?int $category): GetCategoryModelRequest {
 		$this->category = $category;
 		return $this;

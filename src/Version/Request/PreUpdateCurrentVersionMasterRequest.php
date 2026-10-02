@@ -19,15 +19,26 @@ namespace Gs2\Version\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for preUpdateCurrentVersionMaster: Update currently active Version Model master data (3-phase version)
+ *
+ * @see https://docs.gs2.io/api_reference/version/sdk/#preupdatecurrentversionmaster
+ */
 class PreUpdateCurrentVersionMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return PreUpdateCurrentVersionMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): PreUpdateCurrentVersionMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;

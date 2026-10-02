@@ -27,9 +27,9 @@ abstract class Gs2Exception extends RuntimeException {
 	protected $errors = [];
 
     /**
-     * コンストラクタ
+     * Constructor
      *
-     * @param string|array $message エラーリスト
+     * @param string|array $message List of errors
      */
     function __construct(string $message) {
         parent::__construct($message);
@@ -53,9 +53,9 @@ abstract class Gs2Exception extends RuntimeException {
 	}
 
     /**
-     * エラーリストを取得する
+     * Get the list of errors
      *
-     * @return RequestError[] エラーリスト
+     * @return RequestError[] List of errors
      */
 	function getErrors(): array {
 		return $this->errors;

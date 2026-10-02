@@ -20,33 +20,50 @@ namespace Gs2\Inventory\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Inventory\Model\SimpleInventoryModelMaster;
 
+/**
+ * Result of describeSimpleInventoryModelMasters: List Simple Inventory Model Masters
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#describesimpleinventorymodelmasters
+ */
 class DescribeSimpleInventoryModelMastersResult implements IResult {
-    /** @var array */
+    /** @var array List of Simple Inventory Model Masters */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Simple Inventory Model Masters */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Simple Inventory Model Masters */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Simple Inventory Model Masters
+     * @return DescribeSimpleInventoryModelMastersResult
+     */
 	public function withItems(?array $items): DescribeSimpleInventoryModelMastersResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeSimpleInventoryModelMastersResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeSimpleInventoryModelMastersResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

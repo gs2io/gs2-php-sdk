@@ -20,59 +20,88 @@ namespace Gs2\Distributor\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * User Data Entry
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#userdataentry
+ */
 class UserDataEntry implements IModel {
 	/**
-     * @var string
+     * @var string Service
 	 */
 	private $service;
 	/**
-     * @var string
+     * @var string Namespace name
 	 */
 	private $namespaceName;
 	/**
-     * @var string
+     * @var string Kind
 	 */
 	private $kind;
 	/**
-     * @var string
+     * @var string Payload
 	 */
 	private $payload;
+    /** @return string|null Service */
 	public function getService(): ?string {
 		return $this->service;
 	}
+    /** @param string|null $service Service */
 	public function setService(?string $service) {
 		$this->service = $service;
 	}
+    /**
+     * @param string|null $service Service
+     * @return UserDataEntry
+     */
 	public function withService(?string $service): UserDataEntry {
 		$this->service = $service;
 		return $this;
 	}
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UserDataEntry
+     */
 	public function withNamespaceName(?string $namespaceName): UserDataEntry {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Kind */
 	public function getKind(): ?string {
 		return $this->kind;
 	}
+    /** @param string|null $kind Kind */
 	public function setKind(?string $kind) {
 		$this->kind = $kind;
 	}
+    /**
+     * @param string|null $kind Kind
+     * @return UserDataEntry
+     */
 	public function withKind(?string $kind): UserDataEntry {
 		$this->kind = $kind;
 		return $this;
 	}
+    /** @return string|null Payload */
 	public function getPayload(): ?string {
 		return $this->payload;
 	}
+    /** @param string|null $payload Payload */
 	public function setPayload(?string $payload) {
 		$this->payload = $payload;
 	}
+    /**
+     * @param string|null $payload Payload
+     * @return UserDataEntry
+     */
 	public function withPayload(?string $payload): UserDataEntry {
 		$this->payload = $payload;
 		return $this;

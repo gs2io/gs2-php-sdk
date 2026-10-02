@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Inbox\Model\AcquireAction;
 use Gs2\Inbox\Model\Message;
 
+/**
+ * Result of sendMessageByUserId: Send a message by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/inbox/sdk/#sendmessagebyuserid
+ */
 class SendMessageByUserIdResult implements IResult {
-    /** @var Message */
+    /** @var Message Message created */
     private $item;
 
+    /** @return Message|null Message created */
 	public function getItem(): ?Message {
 		return $this->item;
 	}
 
+    /** @param Message|null $item Message created */
 	public function setItem(?Message $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Message|null $item Message created
+     * @return SendMessageByUserIdResult
+     */
 	public function withItem(?Message $item): SendMessageByUserIdResult {
 		$this->item = $item;
 		return $this;

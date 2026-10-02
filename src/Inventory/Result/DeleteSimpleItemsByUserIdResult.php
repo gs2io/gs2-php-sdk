@@ -19,6 +19,11 @@ namespace Gs2\Inventory\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of deleteSimpleItemsByUserId: Delete simple item possession quantities
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#deletesimpleitemsbyuserid
+ */
 class DeleteSimpleItemsByUserIdResult implements IResult {
 
     public static function fromJson(?array $data): ?DeleteSimpleItemsByUserIdResult {

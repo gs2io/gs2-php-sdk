@@ -19,41 +19,64 @@ namespace Gs2\Dictionary\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for addLikes: Add likes
+ *
+ * @see https://docs.gs2.io/api_reference/dictionary/sdk/#addlikes
+ */
 class AddLikesRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var array */
+    /** @var array List of Entry Model names */
     private $entryModelNames;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return AddLikesRequest
+     */
 	public function withNamespaceName(?string $namespaceName): AddLikesRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return AddLikesRequest
+     */
 	public function withAccessToken(?string $accessToken): AddLikesRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return array|null List of Entry Model names */
 	public function getEntryModelNames(): ?array {
 		return $this->entryModelNames;
 	}
+    /** @param array|null $entryModelNames List of Entry Model names */
 	public function setEntryModelNames(?array $entryModelNames) {
 		$this->entryModelNames = $entryModelNames;
 	}
+    /**
+     * @param array|null $entryModelNames List of Entry Model names
+     * @return AddLikesRequest
+     */
 	public function withEntryModelNames(?array $entryModelNames): AddLikesRequest {
 		$this->entryModelNames = $entryModelNames;
 		return $this;

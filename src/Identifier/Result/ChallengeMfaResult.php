@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Identifier\Model\TwoFactorAuthenticationSetting;
 use Gs2\Identifier\Model\Password;
 
+/**
+ * Result of challengeMfa: Verify MFA
+ *
+ * @see https://docs.gs2.io/api_reference/identifier/sdk/#challengemfa
+ */
 class ChallengeMfaResult implements IResult {
-    /** @var Password */
+    /** @var Password Password updated */
     private $item;
 
+    /** @return Password|null Password updated */
 	public function getItem(): ?Password {
 		return $this->item;
 	}
 
+    /** @param Password|null $item Password updated */
 	public function setItem(?Password $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Password|null $item Password updated
+     * @return ChallengeMfaResult
+     */
 	public function withItem(?Password $item): ChallengeMfaResult {
 		$this->item = $item;
 		return $this;

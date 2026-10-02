@@ -20,18 +20,29 @@ namespace Gs2\Experience\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Experience\Model\Status;
 
+/**
+ * Result of verifyRankCapByUserId: Verify rank cap by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/experience/sdk/#verifyrankcapbyuserid
+ */
 class VerifyRankCapByUserIdResult implements IResult {
-    /** @var Status */
+    /** @var Status Status updated */
     private $item;
 
+    /** @return Status|null Status updated */
 	public function getItem(): ?Status {
 		return $this->item;
 	}
 
+    /** @param Status|null $item Status updated */
 	public function setItem(?Status $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Status|null $item Status updated
+     * @return VerifyRankCapByUserIdResult
+     */
 	public function withItem(?Status $item): VerifyRankCapByUserIdResult {
 		$this->item = $item;
 		return $this;

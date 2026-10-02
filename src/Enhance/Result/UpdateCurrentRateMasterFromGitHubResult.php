@@ -20,18 +20,29 @@ namespace Gs2\Enhance\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Enhance\Model\CurrentRateMaster;
 
+/**
+ * Result of updateCurrentRateMasterFromGitHub: Update currently active Rate Model master data from GitHub
+ *
+ * @see https://docs.gs2.io/api_reference/enhance/sdk/#updatecurrentratemasterfromgithub
+ */
 class UpdateCurrentRateMasterFromGitHubResult implements IResult {
-    /** @var CurrentRateMaster */
+    /** @var CurrentRateMaster Updated master data of the currently active Rate Models */
     private $item;
 
+    /** @return CurrentRateMaster|null Updated master data of the currently active Rate Models */
 	public function getItem(): ?CurrentRateMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentRateMaster|null $item Updated master data of the currently active Rate Models */
 	public function setItem(?CurrentRateMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentRateMaster|null $item Updated master data of the currently active Rate Models
+     * @return UpdateCurrentRateMasterFromGitHubResult
+     */
 	public function withItem(?CurrentRateMaster $item): UpdateCurrentRateMasterFromGitHubResult {
 		$this->item = $item;
 		return $this;

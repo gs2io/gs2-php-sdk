@@ -19,27 +19,44 @@ namespace Gs2\MegaField\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getAreaModelMaster: Get Area Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/mega_field/sdk/#getareamodelmaster
+ */
 class GetAreaModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Area Model name */
     private $areaModelName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetAreaModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetAreaModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Area Model name */
 	public function getAreaModelName(): ?string {
 		return $this->areaModelName;
 	}
+    /** @param string|null $areaModelName Area Model name */
 	public function setAreaModelName(?string $areaModelName) {
 		$this->areaModelName = $areaModelName;
 	}
+    /**
+     * @param string|null $areaModelName Area Model name
+     * @return GetAreaModelMasterRequest
+     */
 	public function withAreaModelName(?string $areaModelName): GetAreaModelMasterRequest {
 		$this->areaModelName = $areaModelName;
 		return $this;

@@ -19,27 +19,44 @@ namespace Gs2\Experience\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for subExperienceByStampTask: Execute the subtraction of experience as a consume action
+ *
+ * @see https://docs.gs2.io/api_reference/experience/stamp_sheet/#gs2experiencesubexperiencebyuserid
+ */
 class SubExperienceByStampTaskRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Consume Action */
     private $stampTask;
-    /** @var string */
+    /** @var string Encryption Key GRN */
     private $keyId;
+    /** @return string|null Consume Action */
 	public function getStampTask(): ?string {
 		return $this->stampTask;
 	}
+    /** @param string|null $stampTask Consume Action */
 	public function setStampTask(?string $stampTask) {
 		$this->stampTask = $stampTask;
 	}
+    /**
+     * @param string|null $stampTask Consume Action
+     * @return SubExperienceByStampTaskRequest
+     */
 	public function withStampTask(?string $stampTask): SubExperienceByStampTaskRequest {
 		$this->stampTask = $stampTask;
 		return $this;
 	}
+    /** @return string|null Encryption Key GRN */
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
+    /** @param string|null $keyId Encryption Key GRN */
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
+    /**
+     * @param string|null $keyId Encryption Key GRN
+     * @return SubExperienceByStampTaskRequest
+     */
 	public function withKeyId(?string $keyId): SubExperienceByStampTaskRequest {
 		$this->keyId = $keyId;
 		return $this;

@@ -20,31 +20,48 @@ namespace Gs2\Log\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Facet Value Count
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#facetvaluecount
+ */
 class FacetValueCount implements IModel {
 	/**
-     * @var string
+     * @var string Facet Value
 	 */
 	private $value;
 	/**
-     * @var int
+     * @var int Count of logs with this value
 	 */
 	private $count;
+    /** @return string|null Facet Value */
 	public function getValue(): ?string {
 		return $this->value;
 	}
+    /** @param string|null $value Facet Value */
 	public function setValue(?string $value) {
 		$this->value = $value;
 	}
+    /**
+     * @param string|null $value Facet Value
+     * @return FacetValueCount
+     */
 	public function withValue(?string $value): FacetValueCount {
 		$this->value = $value;
 		return $this;
 	}
+    /** @return int|null Count of logs with this value */
 	public function getCount(): ?int {
 		return $this->count;
 	}
+    /** @param int|null $count Count of logs with this value */
 	public function setCount(?int $count) {
 		$this->count = $count;
 	}
+    /**
+     * @param int|null $count Count of logs with this value
+     * @return FacetValueCount
+     */
 	public function withCount(?int $count): FacetValueCount {
 		$this->count = $count;
 		return $this;

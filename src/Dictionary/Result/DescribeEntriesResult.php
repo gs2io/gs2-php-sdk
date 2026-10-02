@@ -20,33 +20,50 @@ namespace Gs2\Dictionary\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Dictionary\Model\Entry;
 
+/**
+ * Result of describeEntries: List Entries
+ *
+ * @see https://docs.gs2.io/api_reference/dictionary/sdk/#describeentries
+ */
 class DescribeEntriesResult implements IResult {
-    /** @var array */
+    /** @var array List of Entries */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Entries */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Entries */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Entries
+     * @return DescribeEntriesResult
+     */
 	public function withItems(?array $items): DescribeEntriesResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeEntriesResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeEntriesResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

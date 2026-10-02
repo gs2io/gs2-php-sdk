@@ -1879,25 +1879,22 @@ class SendMobileNotificationByUserIdTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 Gateway API クライアント
+ * GS2-Gateway API client
  *
- * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/gateway/sdk/
  */
 class Gs2GatewayRestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#describenamespaces
      */
     public function describeNamespacesAsync(
             DescribeNamespacesRequest $request
@@ -1911,8 +1908,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#describenamespaces
      */
     public function describeNamespaces (
             DescribeNamespacesRequest $request
@@ -1923,8 +1923,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#createnamespace
      */
     public function createNamespaceAsync(
             CreateNamespaceRequest $request
@@ -1938,8 +1941,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#createnamespace
      */
     public function createNamespace (
             CreateNamespaceRequest $request
@@ -1950,8 +1956,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#getnamespacestatus
      */
     public function getNamespaceStatusAsync(
             GetNamespaceStatusRequest $request
@@ -1965,8 +1974,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#getnamespacestatus
      */
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
@@ -1977,8 +1989,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#getnamespace
      */
     public function getNamespaceAsync(
             GetNamespaceRequest $request
@@ -1992,8 +2007,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#getnamespace
      */
     public function getNamespace (
             GetNamespaceRequest $request
@@ -2004,8 +2022,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#updatenamespace
      */
     public function updateNamespaceAsync(
             UpdateNamespaceRequest $request
@@ -2019,8 +2040,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#updatenamespace
      */
     public function updateNamespace (
             UpdateNamespaceRequest $request
@@ -2031,8 +2055,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#deletenamespace
      */
     public function deleteNamespaceAsync(
             DeleteNamespaceRequest $request
@@ -2046,8 +2073,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#deletenamespace
      */
     public function deleteNamespace (
             DeleteNamespaceRequest $request
@@ -2058,8 +2088,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get microservice version
+     *
      * @param GetServiceVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#getserviceversion
      */
     public function getServiceVersionAsync(
             GetServiceVersionRequest $request
@@ -2073,8 +2106,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get microservice version
+     *
      * @param GetServiceVersionRequest $request
      * @return GetServiceVersionResult
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#getserviceversion
      */
     public function getServiceVersion (
             GetServiceVersionRequest $request
@@ -2085,8 +2121,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserIdAsync(
             DumpUserDataByUserIdRequest $request
@@ -2100,8 +2139,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return DumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserId (
             DumpUserDataByUserIdRequest $request
@@ -2112,8 +2154,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserIdAsync(
             CheckDumpUserDataByUserIdRequest $request
@@ -2127,8 +2172,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return CheckDumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserId (
             CheckDumpUserDataByUserIdRequest $request
@@ -2139,8 +2187,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserIdAsync(
             CleanUserDataByUserIdRequest $request
@@ -2154,8 +2205,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return CleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserId (
             CleanUserDataByUserIdRequest $request
@@ -2166,8 +2220,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserIdAsync(
             CheckCleanUserDataByUserIdRequest $request
@@ -2181,8 +2238,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return CheckCleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserId (
             CheckCleanUserDataByUserIdRequest $request
@@ -2193,8 +2253,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserIdAsync(
             PrepareImportUserDataByUserIdRequest $request
@@ -2208,8 +2271,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PrepareImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserId (
             PrepareImportUserDataByUserIdRequest $request
@@ -2220,8 +2286,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserIdAsync(
             ImportUserDataByUserIdRequest $request
@@ -2235,8 +2304,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return ImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserId (
             ImportUserDataByUserIdRequest $request
@@ -2247,8 +2319,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserIdAsync(
             CheckImportUserDataByUserIdRequest $request
@@ -2262,8 +2337,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return CheckImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserId (
             CheckImportUserDataByUserIdRequest $request
@@ -2274,8 +2352,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List WebSocket sessions
+     *
      * @param DescribeWebSocketSessionsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#describewebsocketsessions
      */
     public function describeWebSocketSessionsAsync(
             DescribeWebSocketSessionsRequest $request
@@ -2289,8 +2370,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List WebSocket sessions
+     *
      * @param DescribeWebSocketSessionsRequest $request
      * @return DescribeWebSocketSessionsResult
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#describewebsocketsessions
      */
     public function describeWebSocketSessions (
             DescribeWebSocketSessionsRequest $request
@@ -2301,8 +2385,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List WebSocket sessions by User ID
+     *
      * @param DescribeWebSocketSessionsByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#describewebsocketsessionsbyuserid
      */
     public function describeWebSocketSessionsByUserIdAsync(
             DescribeWebSocketSessionsByUserIdRequest $request
@@ -2316,8 +2403,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List WebSocket sessions by User ID
+     *
      * @param DescribeWebSocketSessionsByUserIdRequest $request
      * @return DescribeWebSocketSessionsByUserIdResult
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#describewebsocketsessionsbyuserid
      */
     public function describeWebSocketSessionsByUserId (
             DescribeWebSocketSessionsByUserIdRequest $request
@@ -2328,8 +2418,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Set user ID for WebSocket session
+     *
      * @param SetUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#setuserid
      */
     public function setUserIdAsync(
             SetUserIdRequest $request
@@ -2343,8 +2436,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Set user ID for WebSocket session
+     *
      * @param SetUserIdRequest $request
      * @return SetUserIdResult
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#setuserid
      */
     public function setUserId (
             SetUserIdRequest $request
@@ -2355,8 +2451,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Set user ID for WebSocket session by User ID
+     *
      * @param SetUserIdByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#setuseridbyuserid
      */
     public function setUserIdByUserIdAsync(
             SetUserIdByUserIdRequest $request
@@ -2370,8 +2469,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Set user ID for WebSocket session by User ID
+     *
      * @param SetUserIdByUserIdRequest $request
      * @return SetUserIdByUserIdResult
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#setuseridbyuserid
      */
     public function setUserIdByUserId (
             SetUserIdByUserIdRequest $request
@@ -2382,8 +2484,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Send notification
+     *
      * @param SendNotificationRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#sendnotification
      */
     public function sendNotificationAsync(
             SendNotificationRequest $request
@@ -2397,8 +2502,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Send notification
+     *
      * @param SendNotificationRequest $request
      * @return SendNotificationResult
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#sendnotification
      */
     public function sendNotification (
             SendNotificationRequest $request
@@ -2409,8 +2517,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Disconnect WebSocket sessions by User ID
+     *
      * @param DisconnectByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#disconnectbyuserid
      */
     public function disconnectByUserIdAsync(
             DisconnectByUserIdRequest $request
@@ -2424,8 +2535,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Disconnect WebSocket sessions by User ID
+     *
      * @param DisconnectByUserIdRequest $request
      * @return DisconnectByUserIdResult
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#disconnectbyuserid
      */
     public function disconnectByUserId (
             DisconnectByUserIdRequest $request
@@ -2436,8 +2550,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Disconnect all WebSocket sessions
+     *
      * @param DisconnectAllRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#disconnectall
      */
     public function disconnectAllAsync(
             DisconnectAllRequest $request
@@ -2451,8 +2568,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Disconnect all WebSocket sessions
+     *
      * @param DisconnectAllRequest $request
      * @return DisconnectAllResult
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#disconnectall
      */
     public function disconnectAll (
             DisconnectAllRequest $request
@@ -2463,8 +2583,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Set Firebase device token
+     *
      * @param SetFirebaseTokenRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#setfirebasetoken
      */
     public function setFirebaseTokenAsync(
             SetFirebaseTokenRequest $request
@@ -2478,8 +2601,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Set Firebase device token
+     *
      * @param SetFirebaseTokenRequest $request
      * @return SetFirebaseTokenResult
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#setfirebasetoken
      */
     public function setFirebaseToken (
             SetFirebaseTokenRequest $request
@@ -2490,8 +2616,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Set Firebase device token by User ID
+     *
      * @param SetFirebaseTokenByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#setfirebasetokenbyuserid
      */
     public function setFirebaseTokenByUserIdAsync(
             SetFirebaseTokenByUserIdRequest $request
@@ -2505,8 +2634,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Set Firebase device token by User ID
+     *
      * @param SetFirebaseTokenByUserIdRequest $request
      * @return SetFirebaseTokenByUserIdResult
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#setfirebasetokenbyuserid
      */
     public function setFirebaseTokenByUserId (
             SetFirebaseTokenByUserIdRequest $request
@@ -2517,8 +2649,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Firebase device token
+     *
      * @param GetFirebaseTokenRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#getfirebasetoken
      */
     public function getFirebaseTokenAsync(
             GetFirebaseTokenRequest $request
@@ -2532,8 +2667,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Firebase device token
+     *
      * @param GetFirebaseTokenRequest $request
      * @return GetFirebaseTokenResult
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#getfirebasetoken
      */
     public function getFirebaseToken (
             GetFirebaseTokenRequest $request
@@ -2544,8 +2682,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Firebase device token by User ID
+     *
      * @param GetFirebaseTokenByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#getfirebasetokenbyuserid
      */
     public function getFirebaseTokenByUserIdAsync(
             GetFirebaseTokenByUserIdRequest $request
@@ -2559,8 +2700,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Firebase device token by User ID
+     *
      * @param GetFirebaseTokenByUserIdRequest $request
      * @return GetFirebaseTokenByUserIdResult
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#getfirebasetokenbyuserid
      */
     public function getFirebaseTokenByUserId (
             GetFirebaseTokenByUserIdRequest $request
@@ -2571,8 +2715,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Firebase device token
+     *
      * @param DeleteFirebaseTokenRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#deletefirebasetoken
      */
     public function deleteFirebaseTokenAsync(
             DeleteFirebaseTokenRequest $request
@@ -2586,8 +2733,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Firebase device token
+     *
      * @param DeleteFirebaseTokenRequest $request
      * @return DeleteFirebaseTokenResult
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#deletefirebasetoken
      */
     public function deleteFirebaseToken (
             DeleteFirebaseTokenRequest $request
@@ -2598,8 +2748,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Firebase device token by User ID
+     *
      * @param DeleteFirebaseTokenByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#deletefirebasetokenbyuserid
      */
     public function deleteFirebaseTokenByUserIdAsync(
             DeleteFirebaseTokenByUserIdRequest $request
@@ -2613,8 +2766,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Firebase device token by User ID
+     *
      * @param DeleteFirebaseTokenByUserIdRequest $request
      * @return DeleteFirebaseTokenByUserIdResult
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#deletefirebasetokenbyuserid
      */
     public function deleteFirebaseTokenByUserId (
             DeleteFirebaseTokenByUserIdRequest $request
@@ -2625,8 +2781,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Send mobile push notification
+     *
      * @param SendMobileNotificationByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#sendmobilenotificationbyuserid
      */
     public function sendMobileNotificationByUserIdAsync(
             SendMobileNotificationByUserIdRequest $request
@@ -2640,8 +2799,11 @@ class Gs2GatewayRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Send mobile push notification
+     *
      * @param SendMobileNotificationByUserIdRequest $request
      * @return SendMobileNotificationByUserIdResult
+     * @see https://docs.gs2.io/api_reference/gateway/sdk/#sendmobilenotificationbyuserid
      */
     public function sendMobileNotificationByUserId (
             SendMobileNotificationByUserIdRequest $request

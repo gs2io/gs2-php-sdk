@@ -19,18 +19,29 @@ namespace Gs2\MegaField\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of nearUserIdsFromSystem: Fetch list of nearby user IDs
+ *
+ * @see https://docs.gs2.io/api_reference/mega_field/sdk/#nearuseridsfromsystem
+ */
 class NearUserIdsFromSystemResult implements IResult {
-    /** @var array */
+    /** @var array List of nearby user IDs */
     private $items;
 
+    /** @return array|null List of nearby user IDs */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of nearby user IDs */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of nearby user IDs
+     * @return NearUserIdsFromSystemResult
+     */
 	public function withItems(?array $items): NearUserIdsFromSystemResult {
 		$this->items = $items;
 		return $this;

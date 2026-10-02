@@ -1140,25 +1140,22 @@ class InvokeByStampSheetTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 Script API クライアント
+ * GS2-Script API client
  *
- * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/script/sdk/
  */
 class Gs2ScriptRestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/script/sdk/#describenamespaces
      */
     public function describeNamespacesAsync(
             DescribeNamespacesRequest $request
@@ -1172,8 +1169,11 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
+     * @see https://docs.gs2.io/api_reference/script/sdk/#describenamespaces
      */
     public function describeNamespaces (
             DescribeNamespacesRequest $request
@@ -1184,8 +1184,11 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/script/sdk/#createnamespace
      */
     public function createNamespaceAsync(
             CreateNamespaceRequest $request
@@ -1199,8 +1202,11 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/script/sdk/#createnamespace
      */
     public function createNamespace (
             CreateNamespaceRequest $request
@@ -1211,8 +1217,11 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/script/sdk/#getnamespacestatus
      */
     public function getNamespaceStatusAsync(
             GetNamespaceStatusRequest $request
@@ -1226,8 +1235,11 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
+     * @see https://docs.gs2.io/api_reference/script/sdk/#getnamespacestatus
      */
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
@@ -1238,8 +1250,11 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/script/sdk/#getnamespace
      */
     public function getNamespaceAsync(
             GetNamespaceRequest $request
@@ -1253,8 +1268,11 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
+     * @see https://docs.gs2.io/api_reference/script/sdk/#getnamespace
      */
     public function getNamespace (
             GetNamespaceRequest $request
@@ -1265,8 +1283,11 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/script/sdk/#updatenamespace
      */
     public function updateNamespaceAsync(
             UpdateNamespaceRequest $request
@@ -1280,8 +1301,11 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/script/sdk/#updatenamespace
      */
     public function updateNamespace (
             UpdateNamespaceRequest $request
@@ -1292,8 +1316,11 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/script/sdk/#deletenamespace
      */
     public function deleteNamespaceAsync(
             DeleteNamespaceRequest $request
@@ -1307,8 +1334,11 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
+     * @see https://docs.gs2.io/api_reference/script/sdk/#deletenamespace
      */
     public function deleteNamespace (
             DeleteNamespaceRequest $request
@@ -1319,8 +1349,11 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/script/sdk/#getserviceversion
      */
     public function getServiceVersionAsync(
             GetServiceVersionRequest $request
@@ -1334,8 +1367,11 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return GetServiceVersionResult
+     * @see https://docs.gs2.io/api_reference/script/sdk/#getserviceversion
      */
     public function getServiceVersion (
             GetServiceVersionRequest $request
@@ -1346,8 +1382,11 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Scripts
+     *
      * @param DescribeScriptsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/script/sdk/#describescripts
      */
     public function describeScriptsAsync(
             DescribeScriptsRequest $request
@@ -1361,8 +1400,11 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Scripts
+     *
      * @param DescribeScriptsRequest $request
      * @return DescribeScriptsResult
+     * @see https://docs.gs2.io/api_reference/script/sdk/#describescripts
      */
     public function describeScripts (
             DescribeScriptsRequest $request
@@ -1373,8 +1415,11 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create script
+     *
      * @param CreateScriptRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/script/sdk/#createscript
      */
     public function createScriptAsync(
             CreateScriptRequest $request
@@ -1388,8 +1433,11 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create script
+     *
      * @param CreateScriptRequest $request
      * @return CreateScriptResult
+     * @see https://docs.gs2.io/api_reference/script/sdk/#createscript
      */
     public function createScript (
             CreateScriptRequest $request
@@ -1400,8 +1448,11 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create script from code in the GitHub repository
+     *
      * @param CreateScriptFromGitHubRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/script/sdk/#createscriptfromgithub
      */
     public function createScriptFromGitHubAsync(
             CreateScriptFromGitHubRequest $request
@@ -1415,8 +1466,11 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create script from code in the GitHub repository
+     *
      * @param CreateScriptFromGitHubRequest $request
      * @return CreateScriptFromGitHubResult
+     * @see https://docs.gs2.io/api_reference/script/sdk/#createscriptfromgithub
      */
     public function createScriptFromGitHub (
             CreateScriptFromGitHubRequest $request
@@ -1427,8 +1481,11 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Script
+     *
      * @param GetScriptRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/script/sdk/#getscript
      */
     public function getScriptAsync(
             GetScriptRequest $request
@@ -1442,8 +1499,11 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Script
+     *
      * @param GetScriptRequest $request
      * @return GetScriptResult
+     * @see https://docs.gs2.io/api_reference/script/sdk/#getscript
      */
     public function getScript (
             GetScriptRequest $request
@@ -1454,8 +1514,11 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Script
+     *
      * @param UpdateScriptRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/script/sdk/#updatescript
      */
     public function updateScriptAsync(
             UpdateScriptRequest $request
@@ -1469,8 +1532,11 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Script
+     *
      * @param UpdateScriptRequest $request
      * @return UpdateScriptResult
+     * @see https://docs.gs2.io/api_reference/script/sdk/#updatescript
      */
     public function updateScript (
             UpdateScriptRequest $request
@@ -1481,8 +1547,11 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update scripts using GitHub as a data source
+     *
      * @param UpdateScriptFromGitHubRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/script/sdk/#updatescriptfromgithub
      */
     public function updateScriptFromGitHubAsync(
             UpdateScriptFromGitHubRequest $request
@@ -1496,8 +1565,11 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update scripts using GitHub as a data source
+     *
      * @param UpdateScriptFromGitHubRequest $request
      * @return UpdateScriptFromGitHubResult
+     * @see https://docs.gs2.io/api_reference/script/sdk/#updatescriptfromgithub
      */
     public function updateScriptFromGitHub (
             UpdateScriptFromGitHubRequest $request
@@ -1508,8 +1580,11 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Script
+     *
      * @param DeleteScriptRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/script/sdk/#deletescript
      */
     public function deleteScriptAsync(
             DeleteScriptRequest $request
@@ -1523,8 +1598,11 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Script
+     *
      * @param DeleteScriptRequest $request
      * @return DeleteScriptResult
+     * @see https://docs.gs2.io/api_reference/script/sdk/#deletescript
      */
     public function deleteScript (
             DeleteScriptRequest $request
@@ -1535,8 +1613,11 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the script
+     *
      * @param InvokeScriptRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/script/sdk/#invokescript
      */
     public function invokeScriptAsync(
             InvokeScriptRequest $request
@@ -1550,8 +1631,11 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the script
+     *
      * @param InvokeScriptRequest $request
      * @return InvokeScriptResult
+     * @see https://docs.gs2.io/api_reference/script/sdk/#invokescript
      */
     public function invokeScript (
             InvokeScriptRequest $request
@@ -1562,8 +1646,11 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute Script
+     *
      * @param DebugInvokeRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/script/sdk/#debuginvoke
      */
     public function debugInvokeAsync(
             DebugInvokeRequest $request
@@ -1577,8 +1664,11 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute Script
+     *
      * @param DebugInvokeRequest $request
      * @return DebugInvokeResult
+     * @see https://docs.gs2.io/api_reference/script/sdk/#debuginvoke
      */
     public function debugInvoke (
             DebugInvokeRequest $request
@@ -1589,8 +1679,11 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the script as an Acquire Action
+     *
      * @param InvokeByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/script/stamp_sheet/#gs2scriptinvokescript
      */
     public function invokeByStampSheetAsync(
             InvokeByStampSheetRequest $request
@@ -1604,8 +1697,11 @@ class Gs2ScriptRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the script as an Acquire Action
+     *
      * @param InvokeByStampSheetRequest $request
      * @return InvokeByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/script/stamp_sheet/#gs2scriptinvokescript
      */
     public function invokeByStampSheet (
             InvokeByStampSheetRequest $request

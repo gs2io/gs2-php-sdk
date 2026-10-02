@@ -20,31 +20,48 @@ namespace Gs2\Ranking\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Calculated At
+ *
+ * @see https://docs.gs2.io/api_reference/ranking/sdk/#calculatedat
+ */
 class CalculatedAt implements IModel {
 	/**
-     * @var string
+     * @var string Category Name
 	 */
 	private $categoryName;
 	/**
-     * @var int
+     * @var int Calculated At
 	 */
 	private $calculatedAt;
+    /** @return string|null Category Name */
 	public function getCategoryName(): ?string {
 		return $this->categoryName;
 	}
+    /** @param string|null $categoryName Category Name */
 	public function setCategoryName(?string $categoryName) {
 		$this->categoryName = $categoryName;
 	}
+    /**
+     * @param string|null $categoryName Category Name
+     * @return CalculatedAt
+     */
 	public function withCategoryName(?string $categoryName): CalculatedAt {
 		$this->categoryName = $categoryName;
 		return $this;
 	}
+    /** @return int|null Calculated At */
 	public function getCalculatedAt(): ?int {
 		return $this->calculatedAt;
 	}
+    /** @param int|null $calculatedAt Calculated At */
 	public function setCalculatedAt(?int $calculatedAt) {
 		$this->calculatedAt = $calculatedAt;
 	}
+    /**
+     * @param int|null $calculatedAt Calculated At
+     * @return CalculatedAt
+     */
 	public function withCalculatedAt(?int $calculatedAt): CalculatedAt {
 		$this->calculatedAt = $calculatedAt;
 		return $this;

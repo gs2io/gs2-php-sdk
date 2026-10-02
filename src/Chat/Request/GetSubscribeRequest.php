@@ -19,39 +19,62 @@ namespace Gs2\Chat\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getSubscribe: Get Room Subscription
+ *
+ * @see https://docs.gs2.io/api_reference/chat/sdk/#getsubscribe
+ */
 class GetSubscribeRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Room name to subscribe to */
     private $roomName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetSubscribeRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetSubscribeRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Room name to subscribe to */
 	public function getRoomName(): ?string {
 		return $this->roomName;
 	}
+    /** @param string|null $roomName Room name to subscribe to */
 	public function setRoomName(?string $roomName) {
 		$this->roomName = $roomName;
 	}
+    /**
+     * @param string|null $roomName Room name to subscribe to
+     * @return GetSubscribeRequest
+     */
 	public function withRoomName(?string $roomName): GetSubscribeRequest {
 		$this->roomName = $roomName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return GetSubscribeRequest
+     */
 	public function withAccessToken(?string $accessToken): GetSubscribeRequest {
 		$this->accessToken = $accessToken;
 		return $this;

@@ -1949,25 +1949,22 @@ class RevertRecordReceiptByStampSheetTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 Money API クライアント
+ * GS2-Money API client
  *
- * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/money/sdk/
  */
 class Gs2MoneyRestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money/sdk/#describenamespaces
      */
     public function describeNamespacesAsync(
             DescribeNamespacesRequest $request
@@ -1981,8 +1978,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
+     * @see https://docs.gs2.io/api_reference/money/sdk/#describenamespaces
      */
     public function describeNamespaces (
             DescribeNamespacesRequest $request
@@ -1993,8 +1993,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money/sdk/#createnamespace
      */
     public function createNamespaceAsync(
             CreateNamespaceRequest $request
@@ -2008,8 +2011,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/money/sdk/#createnamespace
      */
     public function createNamespace (
             CreateNamespaceRequest $request
@@ -2020,8 +2026,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money/sdk/#getnamespacestatus
      */
     public function getNamespaceStatusAsync(
             GetNamespaceStatusRequest $request
@@ -2035,8 +2044,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
+     * @see https://docs.gs2.io/api_reference/money/sdk/#getnamespacestatus
      */
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
@@ -2047,8 +2059,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money/sdk/#getnamespace
      */
     public function getNamespaceAsync(
             GetNamespaceRequest $request
@@ -2062,8 +2077,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
+     * @see https://docs.gs2.io/api_reference/money/sdk/#getnamespace
      */
     public function getNamespace (
             GetNamespaceRequest $request
@@ -2074,8 +2092,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money/sdk/#updatenamespace
      */
     public function updateNamespaceAsync(
             UpdateNamespaceRequest $request
@@ -2089,8 +2110,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/money/sdk/#updatenamespace
      */
     public function updateNamespace (
             UpdateNamespaceRequest $request
@@ -2101,8 +2125,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money/sdk/#deletenamespace
      */
     public function deleteNamespaceAsync(
             DeleteNamespaceRequest $request
@@ -2116,8 +2143,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
+     * @see https://docs.gs2.io/api_reference/money/sdk/#deletenamespace
      */
     public function deleteNamespace (
             DeleteNamespaceRequest $request
@@ -2128,8 +2158,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money/sdk/#getserviceversion
      */
     public function getServiceVersionAsync(
             GetServiceVersionRequest $request
@@ -2143,8 +2176,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return GetServiceVersionResult
+     * @see https://docs.gs2.io/api_reference/money/sdk/#getserviceversion
      */
     public function getServiceVersion (
             GetServiceVersionRequest $request
@@ -2155,8 +2191,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserIdAsync(
             DumpUserDataByUserIdRequest $request
@@ -2170,8 +2209,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return DumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/money/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserId (
             DumpUserDataByUserIdRequest $request
@@ -2182,8 +2224,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserIdAsync(
             CheckDumpUserDataByUserIdRequest $request
@@ -2197,8 +2242,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return CheckDumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/money/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserId (
             CheckDumpUserDataByUserIdRequest $request
@@ -2209,8 +2257,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserIdAsync(
             CleanUserDataByUserIdRequest $request
@@ -2224,8 +2275,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return CleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/money/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserId (
             CleanUserDataByUserIdRequest $request
@@ -2236,8 +2290,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserIdAsync(
             CheckCleanUserDataByUserIdRequest $request
@@ -2251,8 +2308,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return CheckCleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/money/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserId (
             CheckCleanUserDataByUserIdRequest $request
@@ -2263,8 +2323,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserIdAsync(
             PrepareImportUserDataByUserIdRequest $request
@@ -2278,8 +2341,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PrepareImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/money/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserId (
             PrepareImportUserDataByUserIdRequest $request
@@ -2290,8 +2356,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserIdAsync(
             ImportUserDataByUserIdRequest $request
@@ -2305,8 +2374,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return ImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/money/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserId (
             ImportUserDataByUserIdRequest $request
@@ -2317,8 +2389,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserIdAsync(
             CheckImportUserDataByUserIdRequest $request
@@ -2332,8 +2407,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return CheckImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/money/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserId (
             CheckImportUserDataByUserIdRequest $request
@@ -2344,8 +2422,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List wallets
+     *
      * @param DescribeWalletsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money/sdk/#describewallets
      */
     public function describeWalletsAsync(
             DescribeWalletsRequest $request
@@ -2359,8 +2440,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List wallets
+     *
      * @param DescribeWalletsRequest $request
      * @return DescribeWalletsResult
+     * @see https://docs.gs2.io/api_reference/money/sdk/#describewallets
      */
     public function describeWallets (
             DescribeWalletsRequest $request
@@ -2371,8 +2455,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Wallets by User ID
+     *
      * @param DescribeWalletsByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money/sdk/#describewalletsbyuserid
      */
     public function describeWalletsByUserIdAsync(
             DescribeWalletsByUserIdRequest $request
@@ -2386,8 +2473,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Wallets by User ID
+     *
      * @param DescribeWalletsByUserIdRequest $request
      * @return DescribeWalletsByUserIdResult
+     * @see https://docs.gs2.io/api_reference/money/sdk/#describewalletsbyuserid
      */
     public function describeWalletsByUserId (
             DescribeWalletsByUserIdRequest $request
@@ -2398,8 +2488,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Wallet
+     *
      * @param GetWalletRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money/sdk/#getwallet
      */
     public function getWalletAsync(
             GetWalletRequest $request
@@ -2413,8 +2506,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Wallet
+     *
      * @param GetWalletRequest $request
      * @return GetWalletResult
+     * @see https://docs.gs2.io/api_reference/money/sdk/#getwallet
      */
     public function getWallet (
             GetWalletRequest $request
@@ -2425,8 +2521,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Wallet by User ID
+     *
      * @param GetWalletByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money/sdk/#getwalletbyuserid
      */
     public function getWalletByUserIdAsync(
             GetWalletByUserIdRequest $request
@@ -2440,8 +2539,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Wallet by User ID
+     *
      * @param GetWalletByUserIdRequest $request
      * @return GetWalletByUserIdResult
+     * @see https://docs.gs2.io/api_reference/money/sdk/#getwalletbyuserid
      */
     public function getWalletByUserId (
             GetWalletByUserIdRequest $request
@@ -2452,8 +2554,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Deposit balance to Wallet by User ID
+     *
      * @param DepositByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money/sdk/#depositbyuserid
      */
     public function depositByUserIdAsync(
             DepositByUserIdRequest $request
@@ -2467,8 +2572,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Deposit balance to Wallet by User ID
+     *
      * @param DepositByUserIdRequest $request
      * @return DepositByUserIdResult
+     * @see https://docs.gs2.io/api_reference/money/sdk/#depositbyuserid
      */
     public function depositByUserId (
             DepositByUserIdRequest $request
@@ -2479,8 +2587,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Consume balance from wallet
+     *
      * @param WithdrawRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money/sdk/#withdraw
      */
     public function withdrawAsync(
             WithdrawRequest $request
@@ -2494,8 +2605,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Consume balance from wallet
+     *
      * @param WithdrawRequest $request
      * @return WithdrawResult
+     * @see https://docs.gs2.io/api_reference/money/sdk/#withdraw
      */
     public function withdraw (
             WithdrawRequest $request
@@ -2506,8 +2620,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Consume balance from Wallet by User ID
+     *
      * @param WithdrawByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money/sdk/#withdrawbyuserid
      */
     public function withdrawByUserIdAsync(
             WithdrawByUserIdRequest $request
@@ -2521,8 +2638,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Consume balance from Wallet by User ID
+     *
      * @param WithdrawByUserIdRequest $request
      * @return WithdrawByUserIdResult
+     * @see https://docs.gs2.io/api_reference/money/sdk/#withdrawbyuserid
      */
     public function withdrawByUserId (
             WithdrawByUserIdRequest $request
@@ -2533,8 +2653,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute balance addition to wallet as an acquire action
+     *
      * @param DepositByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money/stamp_sheet/#gs2moneydepositbyuserid
      */
     public function depositByStampSheetAsync(
             DepositByStampSheetRequest $request
@@ -2548,8 +2671,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute balance addition to wallet as an acquire action
+     *
      * @param DepositByStampSheetRequest $request
      * @return DepositByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/money/stamp_sheet/#gs2moneydepositbyuserid
      */
     public function depositByStampSheet (
             DepositByStampSheetRequest $request
@@ -2560,8 +2686,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute balance consumption from wallet as a consume action
+     *
      * @param WithdrawByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money/stamp_sheet/#gs2moneywithdrawbyuserid
      */
     public function withdrawByStampTaskAsync(
             WithdrawByStampTaskRequest $request
@@ -2575,8 +2704,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute balance consumption from wallet as a consume action
+     *
      * @param WithdrawByStampTaskRequest $request
      * @return WithdrawByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/money/stamp_sheet/#gs2moneywithdrawbyuserid
      */
     public function withdrawByStampTask (
             WithdrawByStampTaskRequest $request
@@ -2587,8 +2719,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List receipts
+     *
      * @param DescribeReceiptsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money/sdk/#describereceipts
      */
     public function describeReceiptsAsync(
             DescribeReceiptsRequest $request
@@ -2602,8 +2737,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List receipts
+     *
      * @param DescribeReceiptsRequest $request
      * @return DescribeReceiptsResult
+     * @see https://docs.gs2.io/api_reference/money/sdk/#describereceipts
      */
     public function describeReceipts (
             DescribeReceiptsRequest $request
@@ -2614,8 +2752,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get receipt by specifying user ID and transaction ID
+     *
      * @param GetByUserIdAndTransactionIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money/sdk/#getbyuseridandtransactionid
      */
     public function getByUserIdAndTransactionIdAsync(
             GetByUserIdAndTransactionIdRequest $request
@@ -2629,8 +2770,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get receipt by specifying user ID and transaction ID
+     *
      * @param GetByUserIdAndTransactionIdRequest $request
      * @return GetByUserIdAndTransactionIdResult
+     * @see https://docs.gs2.io/api_reference/money/sdk/#getbyuseridandtransactionid
      */
     public function getByUserIdAndTransactionId (
             GetByUserIdAndTransactionIdRequest $request
@@ -2641,8 +2785,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Record receipt
+     *
      * @param RecordReceiptRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money/sdk/#recordreceipt
      */
     public function recordReceiptAsync(
             RecordReceiptRequest $request
@@ -2656,8 +2803,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Record receipt
+     *
      * @param RecordReceiptRequest $request
      * @return RecordReceiptResult
+     * @see https://docs.gs2.io/api_reference/money/sdk/#recordreceipt
      */
     public function recordReceipt (
             RecordReceiptRequest $request
@@ -2668,8 +2818,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete receipt record by User ID
+     *
      * @param RevertRecordReceiptRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money/sdk/#revertrecordreceipt
      */
     public function revertRecordReceiptAsync(
             RevertRecordReceiptRequest $request
@@ -2683,8 +2836,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete receipt record by User ID
+     *
      * @param RevertRecordReceiptRequest $request
      * @return RevertRecordReceiptResult
+     * @see https://docs.gs2.io/api_reference/money/sdk/#revertrecordreceipt
      */
     public function revertRecordReceipt (
             RevertRecordReceiptRequest $request
@@ -2695,8 +2851,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute receipt recording as a consume action
+     *
      * @param RecordReceiptByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money/stamp_sheet/#gs2moneyrecordreceipt
      */
     public function recordReceiptByStampTaskAsync(
             RecordReceiptByStampTaskRequest $request
@@ -2710,8 +2869,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute receipt recording as a consume action
+     *
      * @param RecordReceiptByStampTaskRequest $request
      * @return RecordReceiptByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/money/stamp_sheet/#gs2moneyrecordreceipt
      */
     public function recordReceiptByStampTask (
             RecordReceiptByStampTaskRequest $request
@@ -2722,8 +2884,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute receipt recording deletion as an acquire action
+     *
      * @param RevertRecordReceiptByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money/stamp_sheet/#gs2moneyrevertrecordreceipt
      */
     public function revertRecordReceiptByStampSheetAsync(
             RevertRecordReceiptByStampSheetRequest $request
@@ -2737,8 +2902,11 @@ class Gs2MoneyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute receipt recording deletion as an acquire action
+     *
      * @param RevertRecordReceiptByStampSheetRequest $request
      * @return RevertRecordReceiptByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/money/stamp_sheet/#gs2moneyrevertrecordreceipt
      */
     public function revertRecordReceiptByStampSheet (
             RevertRecordReceiptByStampSheetRequest $request

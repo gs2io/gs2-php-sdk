@@ -19,63 +19,98 @@ namespace Gs2\Formation\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getPropertyFormByUserId: Get Property Form by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/formation/sdk/#getpropertyformbyuserid
+ */
 class GetPropertyFormByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Property Form Model name */
     private $propertyFormModelName;
-    /** @var string */
+    /** @var string Property ID */
     private $propertyId;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetPropertyFormByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetPropertyFormByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return GetPropertyFormByUserIdRequest
+     */
 	public function withUserId(?string $userId): GetPropertyFormByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Property Form Model name */
 	public function getPropertyFormModelName(): ?string {
 		return $this->propertyFormModelName;
 	}
+    /** @param string|null $propertyFormModelName Property Form Model name */
 	public function setPropertyFormModelName(?string $propertyFormModelName) {
 		$this->propertyFormModelName = $propertyFormModelName;
 	}
+    /**
+     * @param string|null $propertyFormModelName Property Form Model name
+     * @return GetPropertyFormByUserIdRequest
+     */
 	public function withPropertyFormModelName(?string $propertyFormModelName): GetPropertyFormByUserIdRequest {
 		$this->propertyFormModelName = $propertyFormModelName;
 		return $this;
 	}
+    /** @return string|null Property ID */
 	public function getPropertyId(): ?string {
 		return $this->propertyId;
 	}
+    /** @param string|null $propertyId Property ID */
 	public function setPropertyId(?string $propertyId) {
 		$this->propertyId = $propertyId;
 	}
+    /**
+     * @param string|null $propertyId Property ID
+     * @return GetPropertyFormByUserIdRequest
+     */
 	public function withPropertyId(?string $propertyId): GetPropertyFormByUserIdRequest {
 		$this->propertyId = $propertyId;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return GetPropertyFormByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): GetPropertyFormByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

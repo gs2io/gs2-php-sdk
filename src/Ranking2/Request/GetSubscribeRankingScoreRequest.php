@@ -19,51 +19,80 @@ namespace Gs2\Ranking2\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getSubscribeRankingScore: Get Subscribe Ranking Score
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/sdk/#getsubscriberankingscore
+ */
 class GetSubscribeRankingScoreRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Subscribe Ranking Model name */
     private $rankingName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var int */
+    /** @var int Season */
     private $season;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetSubscribeRankingScoreRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetSubscribeRankingScoreRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Subscribe Ranking Model name */
 	public function getRankingName(): ?string {
 		return $this->rankingName;
 	}
+    /** @param string|null $rankingName Subscribe Ranking Model name */
 	public function setRankingName(?string $rankingName) {
 		$this->rankingName = $rankingName;
 	}
+    /**
+     * @param string|null $rankingName Subscribe Ranking Model name
+     * @return GetSubscribeRankingScoreRequest
+     */
 	public function withRankingName(?string $rankingName): GetSubscribeRankingScoreRequest {
 		$this->rankingName = $rankingName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return GetSubscribeRankingScoreRequest
+     */
 	public function withAccessToken(?string $accessToken): GetSubscribeRankingScoreRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return int|null Season */
 	public function getSeason(): ?int {
 		return $this->season;
 	}
+    /** @param int|null $season Season */
 	public function setSeason(?int $season) {
 		$this->season = $season;
 	}
+    /**
+     * @param int|null $season Season
+     * @return GetSubscribeRankingScoreRequest
+     */
 	public function withSeason(?int $season): GetSubscribeRankingScoreRequest {
 		$this->season = $season;
 		return $this;

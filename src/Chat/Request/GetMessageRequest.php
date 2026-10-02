@@ -19,63 +19,98 @@ namespace Gs2\Chat\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getMessage: Get Message
+ *
+ * @see https://docs.gs2.io/api_reference/chat/sdk/#getmessage
+ */
 class GetMessageRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Room name */
     private $roomName;
-    /** @var string */
+    /** @var string Message name */
     private $messageName;
-    /** @var string */
+    /** @var string Password */
     private $password;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetMessageRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetMessageRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Room name */
 	public function getRoomName(): ?string {
 		return $this->roomName;
 	}
+    /** @param string|null $roomName Room name */
 	public function setRoomName(?string $roomName) {
 		$this->roomName = $roomName;
 	}
+    /**
+     * @param string|null $roomName Room name
+     * @return GetMessageRequest
+     */
 	public function withRoomName(?string $roomName): GetMessageRequest {
 		$this->roomName = $roomName;
 		return $this;
 	}
+    /** @return string|null Message name */
 	public function getMessageName(): ?string {
 		return $this->messageName;
 	}
+    /** @param string|null $messageName Message name */
 	public function setMessageName(?string $messageName) {
 		$this->messageName = $messageName;
 	}
+    /**
+     * @param string|null $messageName Message name
+     * @return GetMessageRequest
+     */
 	public function withMessageName(?string $messageName): GetMessageRequest {
 		$this->messageName = $messageName;
 		return $this;
 	}
+    /** @return string|null Password */
 	public function getPassword(): ?string {
 		return $this->password;
 	}
+    /** @param string|null $password Password */
 	public function setPassword(?string $password) {
 		$this->password = $password;
 	}
+    /**
+     * @param string|null $password Password
+     * @return GetMessageRequest
+     */
 	public function withPassword(?string $password): GetMessageRequest {
 		$this->password = $password;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return GetMessageRequest
+     */
 	public function withAccessToken(?string $accessToken): GetMessageRequest {
 		$this->accessToken = $accessToken;
 		return $this;

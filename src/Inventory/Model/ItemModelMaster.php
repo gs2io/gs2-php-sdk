@@ -20,157 +20,228 @@ namespace Gs2\Inventory\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Item Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#itemmodelmaster
+ */
 class ItemModelMaster implements IModel {
 	/**
-     * @var string
+     * @var string Item Model Master GRN
 	 */
 	private $itemModelId;
 	/**
-     * @var string
+     * @var string Inventory Model Name
 	 */
 	private $inventoryName;
 	/**
-     * @var string
+     * @var string Item Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Description
 	 */
 	private $description;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var int
+     * @var int Maximum Stackable Quantity
 	 */
 	private $stackingLimit;
 	/**
-     * @var bool
+     * @var bool Allow Multiple Stacks
 	 */
 	private $allowMultipleStacks;
 	/**
-     * @var int
+     * @var int Display Order
 	 */
 	private $sortValue;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Item Model Master GRN */
 	public function getItemModelId(): ?string {
 		return $this->itemModelId;
 	}
+    /** @param string|null $itemModelId Item Model Master GRN */
 	public function setItemModelId(?string $itemModelId) {
 		$this->itemModelId = $itemModelId;
 	}
+    /**
+     * @param string|null $itemModelId Item Model Master GRN
+     * @return ItemModelMaster
+     */
 	public function withItemModelId(?string $itemModelId): ItemModelMaster {
 		$this->itemModelId = $itemModelId;
 		return $this;
 	}
+    /** @return string|null Inventory Model Name */
 	public function getInventoryName(): ?string {
 		return $this->inventoryName;
 	}
+    /** @param string|null $inventoryName Inventory Model Name */
 	public function setInventoryName(?string $inventoryName) {
 		$this->inventoryName = $inventoryName;
 	}
+    /**
+     * @param string|null $inventoryName Inventory Model Name
+     * @return ItemModelMaster
+     */
 	public function withInventoryName(?string $inventoryName): ItemModelMaster {
 		$this->inventoryName = $inventoryName;
 		return $this;
 	}
+    /** @return string|null Item Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Item Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Item Model name
+     * @return ItemModelMaster
+     */
 	public function withName(?string $name): ItemModelMaster {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return ItemModelMaster
+     */
 	public function withDescription(?string $description): ItemModelMaster {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return ItemModelMaster
+     */
 	public function withMetadata(?string $metadata): ItemModelMaster {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return int|null Maximum Stackable Quantity */
 	public function getStackingLimit(): ?int {
 		return $this->stackingLimit;
 	}
+    /** @param int|null $stackingLimit Maximum Stackable Quantity */
 	public function setStackingLimit(?int $stackingLimit) {
 		$this->stackingLimit = $stackingLimit;
 	}
+    /**
+     * @param int|null $stackingLimit Maximum Stackable Quantity
+     * @return ItemModelMaster
+     */
 	public function withStackingLimit(?int $stackingLimit): ItemModelMaster {
 		$this->stackingLimit = $stackingLimit;
 		return $this;
 	}
+    /** @return bool|null Allow Multiple Stacks */
 	public function getAllowMultipleStacks(): ?bool {
 		return $this->allowMultipleStacks;
 	}
+    /** @param bool|null $allowMultipleStacks Allow Multiple Stacks */
 	public function setAllowMultipleStacks(?bool $allowMultipleStacks) {
 		$this->allowMultipleStacks = $allowMultipleStacks;
 	}
+    /**
+     * @param bool|null $allowMultipleStacks Allow Multiple Stacks
+     * @return ItemModelMaster
+     */
 	public function withAllowMultipleStacks(?bool $allowMultipleStacks): ItemModelMaster {
 		$this->allowMultipleStacks = $allowMultipleStacks;
 		return $this;
 	}
+    /** @return int|null Display Order */
 	public function getSortValue(): ?int {
 		return $this->sortValue;
 	}
+    /** @param int|null $sortValue Display Order */
 	public function setSortValue(?int $sortValue) {
 		$this->sortValue = $sortValue;
 	}
+    /**
+     * @param int|null $sortValue Display Order
+     * @return ItemModelMaster
+     */
 	public function withSortValue(?int $sortValue): ItemModelMaster {
 		$this->sortValue = $sortValue;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return ItemModelMaster
+     */
 	public function withCreatedAt(?int $createdAt): ItemModelMaster {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return ItemModelMaster
+     */
 	public function withUpdatedAt(?int $updatedAt): ItemModelMaster {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return ItemModelMaster
+     */
 	public function withRevision(?int $revision): ItemModelMaster {
 		$this->revision = $revision;
 		return $this;

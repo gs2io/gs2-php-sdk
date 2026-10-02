@@ -20,59 +20,88 @@ namespace Gs2\SerialKey\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Campaign Model
+ *
+ * @see https://docs.gs2.io/api_reference/serial_key/sdk/#campaignmodel
+ */
 class CampaignModel implements IModel {
 	/**
-     * @var string
+     * @var string GRN of the Campaign Model
 	 */
 	private $campaignId;
 	/**
-     * @var string
+     * @var string Campaign Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var bool
+     * @var bool Whether to allow redemption with campaign code
 	 */
 	private $enableCampaignCode;
+    /** @return string|null GRN of the Campaign Model */
 	public function getCampaignId(): ?string {
 		return $this->campaignId;
 	}
+    /** @param string|null $campaignId GRN of the Campaign Model */
 	public function setCampaignId(?string $campaignId) {
 		$this->campaignId = $campaignId;
 	}
+    /**
+     * @param string|null $campaignId GRN of the Campaign Model
+     * @return CampaignModel
+     */
 	public function withCampaignId(?string $campaignId): CampaignModel {
 		$this->campaignId = $campaignId;
 		return $this;
 	}
+    /** @return string|null Campaign Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Campaign Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Campaign Model name
+     * @return CampaignModel
+     */
 	public function withName(?string $name): CampaignModel {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return CampaignModel
+     */
 	public function withMetadata(?string $metadata): CampaignModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return bool|null Whether to allow redemption with campaign code */
 	public function getEnableCampaignCode(): ?bool {
 		return $this->enableCampaignCode;
 	}
+    /** @param bool|null $enableCampaignCode Whether to allow redemption with campaign code */
 	public function setEnableCampaignCode(?bool $enableCampaignCode) {
 		$this->enableCampaignCode = $enableCampaignCode;
 	}
+    /**
+     * @param bool|null $enableCampaignCode Whether to allow redemption with campaign code
+     * @return CampaignModel
+     */
 	public function withEnableCampaignCode(?bool $enableCampaignCode): CampaignModel {
 		$this->enableCampaignCode = $enableCampaignCode;
 		return $this;

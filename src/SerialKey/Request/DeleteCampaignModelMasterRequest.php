@@ -19,27 +19,44 @@ namespace Gs2\SerialKey\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for deleteCampaignModelMaster: Delete Campaign Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/serial_key/sdk/#deletecampaignmodelmaster
+ */
 class DeleteCampaignModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Campaign Model name */
     private $campaignModelName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DeleteCampaignModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DeleteCampaignModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Campaign Model name */
 	public function getCampaignModelName(): ?string {
 		return $this->campaignModelName;
 	}
+    /** @param string|null $campaignModelName Campaign Model name */
 	public function setCampaignModelName(?string $campaignModelName) {
 		$this->campaignModelName = $campaignModelName;
 	}
+    /**
+     * @param string|null $campaignModelName Campaign Model name
+     * @return DeleteCampaignModelMasterRequest
+     */
 	public function withCampaignModelName(?string $campaignModelName): DeleteCampaignModelMasterRequest {
 		$this->campaignModelName = $campaignModelName;
 		return $this;

@@ -19,15 +19,22 @@ namespace Gs2\Project\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/** Request for verify: Activate GS2 account */
 class VerifyRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Token used for activation */
     private $verifyToken;
+    /** @return string|null Token used for activation */
 	public function getVerifyToken(): ?string {
 		return $this->verifyToken;
 	}
+    /** @param string|null $verifyToken Token used for activation */
 	public function setVerifyToken(?string $verifyToken) {
 		$this->verifyToken = $verifyToken;
 	}
+    /**
+     * @param string|null $verifyToken Token used for activation
+     * @return VerifyRequest
+     */
 	public function withVerifyToken(?string $verifyToken): VerifyRequest {
 		$this->verifyToken = $verifyToken;
 		return $this;

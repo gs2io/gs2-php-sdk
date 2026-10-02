@@ -20,59 +20,88 @@ namespace Gs2\Experience\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Reward Addition Table
+ *
+ * @see https://docs.gs2.io/api_reference/experience/sdk/#acquireactionrate
+ */
 class AcquireActionRate implements IModel {
 	/**
-     * @var string
+     * @var string Reward addition table name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Reward addition table type
 	 */
 	private $mode;
 	/**
-     * @var array
+     * @var array Amount added per rank (multiplier)
 	 */
 	private $rates;
 	/**
-     * @var array
+     * @var array Amount added per rank (multiplier)
 	 */
 	private $bigRates;
+    /** @return string|null Reward addition table name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Reward addition table name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Reward addition table name
+     * @return AcquireActionRate
+     */
 	public function withName(?string $name): AcquireActionRate {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Reward addition table type */
 	public function getMode(): ?string {
 		return $this->mode;
 	}
+    /** @param string|null $mode Reward addition table type */
 	public function setMode(?string $mode) {
 		$this->mode = $mode;
 	}
+    /**
+     * @param string|null $mode Reward addition table type
+     * @return AcquireActionRate
+     */
 	public function withMode(?string $mode): AcquireActionRate {
 		$this->mode = $mode;
 		return $this;
 	}
+    /** @return array|null Amount added per rank (multiplier) */
 	public function getRates(): ?array {
 		return $this->rates;
 	}
+    /** @param array|null $rates Amount added per rank (multiplier) */
 	public function setRates(?array $rates) {
 		$this->rates = $rates;
 	}
+    /**
+     * @param array|null $rates Amount added per rank (multiplier)
+     * @return AcquireActionRate
+     */
 	public function withRates(?array $rates): AcquireActionRate {
 		$this->rates = $rates;
 		return $this;
 	}
+    /** @return array|null Amount added per rank (multiplier) */
 	public function getBigRates(): ?array {
 		return $this->bigRates;
 	}
+    /** @param array|null $bigRates Amount added per rank (multiplier) */
 	public function setBigRates(?array $bigRates) {
 		$this->bigRates = $bigRates;
 	}
+    /**
+     * @param array|null $bigRates Amount added per rank (multiplier)
+     * @return AcquireActionRate
+     */
 	public function withBigRates(?array $bigRates): AcquireActionRate {
 		$this->bigRates = $bigRates;
 		return $this;

@@ -20,45 +20,68 @@ namespace Gs2\StateMachine\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Change state event
+ *
+ * @see https://docs.gs2.io/api_reference/state_machine/sdk/#changestateevent
+ */
 class ChangeStateEvent implements IModel {
 	/**
-     * @var string
+     * @var string Task name
 	 */
 	private $taskName;
 	/**
-     * @var string
+     * @var string Hash
 	 */
 	private $hash;
 	/**
-     * @var int
+     * @var int Timestamp
 	 */
 	private $timestamp;
+    /** @return string|null Task name */
 	public function getTaskName(): ?string {
 		return $this->taskName;
 	}
+    /** @param string|null $taskName Task name */
 	public function setTaskName(?string $taskName) {
 		$this->taskName = $taskName;
 	}
+    /**
+     * @param string|null $taskName Task name
+     * @return ChangeStateEvent
+     */
 	public function withTaskName(?string $taskName): ChangeStateEvent {
 		$this->taskName = $taskName;
 		return $this;
 	}
+    /** @return string|null Hash */
 	public function getHash(): ?string {
 		return $this->hash;
 	}
+    /** @param string|null $hash Hash */
 	public function setHash(?string $hash) {
 		$this->hash = $hash;
 	}
+    /**
+     * @param string|null $hash Hash
+     * @return ChangeStateEvent
+     */
 	public function withHash(?string $hash): ChangeStateEvent {
 		$this->hash = $hash;
 		return $this;
 	}
+    /** @return int|null Timestamp */
 	public function getTimestamp(): ?int {
 		return $this->timestamp;
 	}
+    /** @param int|null $timestamp Timestamp */
 	public function setTimestamp(?int $timestamp) {
 		$this->timestamp = $timestamp;
 	}
+    /**
+     * @param int|null $timestamp Timestamp
+     * @return ChangeStateEvent
+     */
 	public function withTimestamp(?int $timestamp): ChangeStateEvent {
 		$this->timestamp = $timestamp;
 		return $this;

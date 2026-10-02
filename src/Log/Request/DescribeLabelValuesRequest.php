@@ -19,63 +19,98 @@ namespace Gs2\Log\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for describeLabelValues: Get list of label values for a specific metric
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#describelabelvalues
+ */
 class DescribeLabelValuesRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Metric name to filter by */
     private $metricName;
-    /** @var string */
+    /** @var string Filter by label name prefix */
     private $labelNamePrefix;
-    /** @var string */
+    /** @var string Token specifying the position from which to start acquiring data */
     private $pageToken;
-    /** @var int */
+    /** @var int Number of data items to retrieve */
     private $limit;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DescribeLabelValuesRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DescribeLabelValuesRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Metric name to filter by */
 	public function getMetricName(): ?string {
 		return $this->metricName;
 	}
+    /** @param string|null $metricName Metric name to filter by */
 	public function setMetricName(?string $metricName) {
 		$this->metricName = $metricName;
 	}
+    /**
+     * @param string|null $metricName Metric name to filter by
+     * @return DescribeLabelValuesRequest
+     */
 	public function withMetricName(?string $metricName): DescribeLabelValuesRequest {
 		$this->metricName = $metricName;
 		return $this;
 	}
+    /** @return string|null Filter by label name prefix */
 	public function getLabelNamePrefix(): ?string {
 		return $this->labelNamePrefix;
 	}
+    /** @param string|null $labelNamePrefix Filter by label name prefix */
 	public function setLabelNamePrefix(?string $labelNamePrefix) {
 		$this->labelNamePrefix = $labelNamePrefix;
 	}
+    /**
+     * @param string|null $labelNamePrefix Filter by label name prefix
+     * @return DescribeLabelValuesRequest
+     */
 	public function withLabelNamePrefix(?string $labelNamePrefix): DescribeLabelValuesRequest {
 		$this->labelNamePrefix = $labelNamePrefix;
 		return $this;
 	}
+    /** @return string|null Token specifying the position from which to start acquiring data */
 	public function getPageToken(): ?string {
 		return $this->pageToken;
 	}
+    /** @param string|null $pageToken Token specifying the position from which to start acquiring data */
 	public function setPageToken(?string $pageToken) {
 		$this->pageToken = $pageToken;
 	}
+    /**
+     * @param string|null $pageToken Token specifying the position from which to start acquiring data
+     * @return DescribeLabelValuesRequest
+     */
 	public function withPageToken(?string $pageToken): DescribeLabelValuesRequest {
 		$this->pageToken = $pageToken;
 		return $this;
 	}
+    /** @return int|null Number of data items to retrieve */
 	public function getLimit(): ?int {
 		return $this->limit;
 	}
+    /** @param int|null $limit Number of data items to retrieve */
 	public function setLimit(?int $limit) {
 		$this->limit = $limit;
 	}
+    /**
+     * @param int|null $limit Number of data items to retrieve
+     * @return DescribeLabelValuesRequest
+     */
 	public function withLimit(?int $limit): DescribeLabelValuesRequest {
 		$this->limit = $limit;
 		return $this;

@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Inbox\Model\AcquireAction;
 use Gs2\Inbox\Model\Message;
 
+/**
+ * Result of getMessage: Get Message
+ *
+ * @see https://docs.gs2.io/api_reference/inbox/sdk/#getmessage
+ */
 class GetMessageResult implements IResult {
-    /** @var Message */
+    /** @var Message Message */
     private $item;
 
+    /** @return Message|null Message */
 	public function getItem(): ?Message {
 		return $this->item;
 	}
 
+    /** @param Message|null $item Message */
 	public function setItem(?Message $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Message|null $item Message
+     * @return GetMessageResult
+     */
 	public function withItem(?Message $item): GetMessageResult {
 		$this->item = $item;
 		return $this;

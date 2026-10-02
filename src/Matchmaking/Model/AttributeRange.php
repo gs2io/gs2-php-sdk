@@ -20,45 +20,68 @@ namespace Gs2\Matchmaking\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Attribute Range
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#attributerange
+ */
 class AttributeRange implements IModel {
 	/**
-     * @var string
+     * @var string Attribute Name
 	 */
 	private $name;
 	/**
-     * @var int
+     * @var int Minimum Attribute Value
 	 */
 	private $min;
 	/**
-     * @var int
+     * @var int Maximum Attribute Value
 	 */
 	private $max;
+    /** @return string|null Attribute Name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Attribute Name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Attribute Name
+     * @return AttributeRange
+     */
 	public function withName(?string $name): AttributeRange {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return int|null Minimum Attribute Value */
 	public function getMin(): ?int {
 		return $this->min;
 	}
+    /** @param int|null $min Minimum Attribute Value */
 	public function setMin(?int $min) {
 		$this->min = $min;
 	}
+    /**
+     * @param int|null $min Minimum Attribute Value
+     * @return AttributeRange
+     */
 	public function withMin(?int $min): AttributeRange {
 		$this->min = $min;
 		return $this;
 	}
+    /** @return int|null Maximum Attribute Value */
 	public function getMax(): ?int {
 		return $this->max;
 	}
+    /** @param int|null $max Maximum Attribute Value */
 	public function setMax(?int $max) {
 		$this->max = $max;
 	}
+    /**
+     * @param int|null $max Maximum Attribute Value
+     * @return AttributeRange
+     */
 	public function withMax(?int $max): AttributeRange {
 		$this->max = $max;
 		return $this;

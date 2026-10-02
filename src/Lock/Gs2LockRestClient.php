@@ -928,25 +928,22 @@ class DeleteMutexByUserIdTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 Lock API クライアント
+ * GS2-Lock API client
  *
- * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/lock/sdk/
  */
 class Gs2LockRestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lock/sdk/#describenamespaces
      */
     public function describeNamespacesAsync(
             DescribeNamespacesRequest $request
@@ -960,8 +957,11 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
+     * @see https://docs.gs2.io/api_reference/lock/sdk/#describenamespaces
      */
     public function describeNamespaces (
             DescribeNamespacesRequest $request
@@ -972,8 +972,11 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lock/sdk/#createnamespace
      */
     public function createNamespaceAsync(
             CreateNamespaceRequest $request
@@ -987,8 +990,11 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/lock/sdk/#createnamespace
      */
     public function createNamespace (
             CreateNamespaceRequest $request
@@ -999,8 +1005,11 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lock/sdk/#getnamespacestatus
      */
     public function getNamespaceStatusAsync(
             GetNamespaceStatusRequest $request
@@ -1014,8 +1023,11 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
+     * @see https://docs.gs2.io/api_reference/lock/sdk/#getnamespacestatus
      */
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
@@ -1026,8 +1038,11 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lock/sdk/#getnamespace
      */
     public function getNamespaceAsync(
             GetNamespaceRequest $request
@@ -1041,8 +1056,11 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
+     * @see https://docs.gs2.io/api_reference/lock/sdk/#getnamespace
      */
     public function getNamespace (
             GetNamespaceRequest $request
@@ -1053,8 +1071,11 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lock/sdk/#updatenamespace
      */
     public function updateNamespaceAsync(
             UpdateNamespaceRequest $request
@@ -1068,8 +1089,11 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/lock/sdk/#updatenamespace
      */
     public function updateNamespace (
             UpdateNamespaceRequest $request
@@ -1080,8 +1104,11 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lock/sdk/#deletenamespace
      */
     public function deleteNamespaceAsync(
             DeleteNamespaceRequest $request
@@ -1095,8 +1122,11 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
+     * @see https://docs.gs2.io/api_reference/lock/sdk/#deletenamespace
      */
     public function deleteNamespace (
             DeleteNamespaceRequest $request
@@ -1107,8 +1137,11 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lock/sdk/#getserviceversion
      */
     public function getServiceVersionAsync(
             GetServiceVersionRequest $request
@@ -1122,8 +1155,11 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return GetServiceVersionResult
+     * @see https://docs.gs2.io/api_reference/lock/sdk/#getserviceversion
      */
     public function getServiceVersion (
             GetServiceVersionRequest $request
@@ -1134,8 +1170,11 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Acquire Mutex
+     *
      * @param LockRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lock/sdk/#lock
      */
     public function lockAsync(
             LockRequest $request
@@ -1149,8 +1188,11 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Acquire Mutex
+     *
      * @param LockRequest $request
      * @return LockResult
+     * @see https://docs.gs2.io/api_reference/lock/sdk/#lock
      */
     public function lock (
             LockRequest $request
@@ -1161,8 +1203,11 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Acquire Mutex by User ID
+     *
      * @param LockByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lock/sdk/#lockbyuserid
      */
     public function lockByUserIdAsync(
             LockByUserIdRequest $request
@@ -1176,8 +1221,11 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Acquire Mutex by User ID
+     *
      * @param LockByUserIdRequest $request
      * @return LockByUserIdResult
+     * @see https://docs.gs2.io/api_reference/lock/sdk/#lockbyuserid
      */
     public function lockByUserId (
             LockByUserIdRequest $request
@@ -1188,8 +1236,11 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Release Mutex
+     *
      * @param UnlockRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lock/sdk/#unlock
      */
     public function unlockAsync(
             UnlockRequest $request
@@ -1203,8 +1254,11 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Release Mutex
+     *
      * @param UnlockRequest $request
      * @return UnlockResult
+     * @see https://docs.gs2.io/api_reference/lock/sdk/#unlock
      */
     public function unlock (
             UnlockRequest $request
@@ -1215,8 +1269,11 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Release Mutex by User ID
+     *
      * @param UnlockByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lock/sdk/#unlockbyuserid
      */
     public function unlockByUserIdAsync(
             UnlockByUserIdRequest $request
@@ -1230,8 +1287,11 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Release Mutex by User ID
+     *
      * @param UnlockByUserIdRequest $request
      * @return UnlockByUserIdResult
+     * @see https://docs.gs2.io/api_reference/lock/sdk/#unlockbyuserid
      */
     public function unlockByUserId (
             UnlockByUserIdRequest $request
@@ -1242,8 +1302,11 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Mutex status
+     *
      * @param GetMutexRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lock/sdk/#getmutex
      */
     public function getMutexAsync(
             GetMutexRequest $request
@@ -1257,8 +1320,11 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Mutex status
+     *
      * @param GetMutexRequest $request
      * @return GetMutexResult
+     * @see https://docs.gs2.io/api_reference/lock/sdk/#getmutex
      */
     public function getMutex (
             GetMutexRequest $request
@@ -1269,8 +1335,11 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Mutex status by User ID
+     *
      * @param GetMutexByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lock/sdk/#getmutexbyuserid
      */
     public function getMutexByUserIdAsync(
             GetMutexByUserIdRequest $request
@@ -1284,8 +1353,11 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Mutex status by User ID
+     *
      * @param GetMutexByUserIdRequest $request
      * @return GetMutexByUserIdResult
+     * @see https://docs.gs2.io/api_reference/lock/sdk/#getmutexbyuserid
      */
     public function getMutexByUserId (
             GetMutexByUserIdRequest $request
@@ -1296,8 +1368,11 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Mutex
+     *
      * @param DeleteMutexByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lock/sdk/#deletemutexbyuserid
      */
     public function deleteMutexByUserIdAsync(
             DeleteMutexByUserIdRequest $request
@@ -1311,8 +1386,11 @@ class Gs2LockRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Mutex
+     *
      * @param DeleteMutexByUserIdRequest $request
      * @return DeleteMutexByUserIdResult
+     * @see https://docs.gs2.io/api_reference/lock/sdk/#deletemutexbyuserid
      */
     public function deleteMutexByUserId (
             DeleteMutexByUserIdRequest $request

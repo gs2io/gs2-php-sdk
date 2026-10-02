@@ -19,51 +19,80 @@ namespace Gs2\Lottery\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for describePrizeLimits: List Prize Limits
+ *
+ * @see https://docs.gs2.io/api_reference/lottery/sdk/#describeprizelimits
+ */
 class DescribePrizeLimitsRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Prize Table name */
     private $prizeTableName;
-    /** @var string */
+    /** @var string Token specifying the position from which to start acquiring data */
     private $pageToken;
-    /** @var int */
+    /** @var int Number of data items to retrieve */
     private $limit;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DescribePrizeLimitsRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DescribePrizeLimitsRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Prize Table name */
 	public function getPrizeTableName(): ?string {
 		return $this->prizeTableName;
 	}
+    /** @param string|null $prizeTableName Prize Table name */
 	public function setPrizeTableName(?string $prizeTableName) {
 		$this->prizeTableName = $prizeTableName;
 	}
+    /**
+     * @param string|null $prizeTableName Prize Table name
+     * @return DescribePrizeLimitsRequest
+     */
 	public function withPrizeTableName(?string $prizeTableName): DescribePrizeLimitsRequest {
 		$this->prizeTableName = $prizeTableName;
 		return $this;
 	}
+    /** @return string|null Token specifying the position from which to start acquiring data */
 	public function getPageToken(): ?string {
 		return $this->pageToken;
 	}
+    /** @param string|null $pageToken Token specifying the position from which to start acquiring data */
 	public function setPageToken(?string $pageToken) {
 		$this->pageToken = $pageToken;
 	}
+    /**
+     * @param string|null $pageToken Token specifying the position from which to start acquiring data
+     * @return DescribePrizeLimitsRequest
+     */
 	public function withPageToken(?string $pageToken): DescribePrizeLimitsRequest {
 		$this->pageToken = $pageToken;
 		return $this;
 	}
+    /** @return int|null Number of data items to retrieve */
 	public function getLimit(): ?int {
 		return $this->limit;
 	}
+    /** @param int|null $limit Number of data items to retrieve */
 	public function setLimit(?int $limit) {
 		$this->limit = $limit;
 	}
+    /**
+     * @param int|null $limit Number of data items to retrieve
+     * @return DescribePrizeLimitsRequest
+     */
 	public function withLimit(?int $limit): DescribePrizeLimitsRequest {
 		$this->limit = $limit;
 		return $this;

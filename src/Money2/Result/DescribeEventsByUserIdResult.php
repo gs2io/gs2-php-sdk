@@ -28,33 +28,50 @@ use Gs2\Money2\Model\WithdrawEvent;
 use Gs2\Money2\Model\RefundEvent;
 use Gs2\Money2\Model\Event;
 
+/**
+ * Result of describeEventsByUserId: List Events
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#describeeventsbyuserid
+ */
 class DescribeEventsByUserIdResult implements IResult {
-    /** @var array */
+    /** @var array List of Events */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Events */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Events */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Events
+     * @return DescribeEventsByUserIdResult
+     */
 	public function withItems(?array $items): DescribeEventsByUserIdResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeEventsByUserIdResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeEventsByUserIdResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

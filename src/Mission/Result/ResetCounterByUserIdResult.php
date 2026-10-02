@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Mission\Model\ScopedValue;
 use Gs2\Mission\Model\Counter;
 
+/**
+ * Result of resetCounterByUserId: Reset counter by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#resetcounterbyuserid
+ */
 class ResetCounterByUserIdResult implements IResult {
-    /** @var Counter */
+    /** @var Counter Counter deleted */
     private $item;
 
+    /** @return Counter|null Counter deleted */
 	public function getItem(): ?Counter {
 		return $this->item;
 	}
 
+    /** @param Counter|null $item Counter deleted */
 	public function setItem(?Counter $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Counter|null $item Counter deleted
+     * @return ResetCounterByUserIdResult
+     */
 	public function withItem(?Counter $item): ResetCounterByUserIdResult {
 		$this->item = $item;
 		return $this;

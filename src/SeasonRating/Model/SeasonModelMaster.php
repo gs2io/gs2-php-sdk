@@ -20,143 +20,208 @@ namespace Gs2\SeasonRating\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Season Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/season_rating/sdk/#seasonmodelmaster
+ */
 class SeasonModelMaster implements IModel {
 	/**
-     * @var string
+     * @var string Season Model Master GRN
 	 */
 	private $seasonModelId;
 	/**
-     * @var string
+     * @var string Season Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var string
+     * @var string Description
 	 */
 	private $description;
 	/**
-     * @var array
+     * @var array List of Tier Models
 	 */
 	private $tiers;
 	/**
-     * @var string
+     * @var string Experience Model ID
 	 */
 	private $experienceModelId;
 	/**
-     * @var string
+     * @var string Challenge Period Event ID
 	 */
 	private $challengePeriodEventId;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Season Model Master GRN */
 	public function getSeasonModelId(): ?string {
 		return $this->seasonModelId;
 	}
+    /** @param string|null $seasonModelId Season Model Master GRN */
 	public function setSeasonModelId(?string $seasonModelId) {
 		$this->seasonModelId = $seasonModelId;
 	}
+    /**
+     * @param string|null $seasonModelId Season Model Master GRN
+     * @return SeasonModelMaster
+     */
 	public function withSeasonModelId(?string $seasonModelId): SeasonModelMaster {
 		$this->seasonModelId = $seasonModelId;
 		return $this;
 	}
+    /** @return string|null Season Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Season Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Season Model name
+     * @return SeasonModelMaster
+     */
 	public function withName(?string $name): SeasonModelMaster {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return SeasonModelMaster
+     */
 	public function withMetadata(?string $metadata): SeasonModelMaster {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return SeasonModelMaster
+     */
 	public function withDescription(?string $description): SeasonModelMaster {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return array|null List of Tier Models */
 	public function getTiers(): ?array {
 		return $this->tiers;
 	}
+    /** @param array|null $tiers List of Tier Models */
 	public function setTiers(?array $tiers) {
 		$this->tiers = $tiers;
 	}
+    /**
+     * @param array|null $tiers List of Tier Models
+     * @return SeasonModelMaster
+     */
 	public function withTiers(?array $tiers): SeasonModelMaster {
 		$this->tiers = $tiers;
 		return $this;
 	}
+    /** @return string|null Experience Model ID */
 	public function getExperienceModelId(): ?string {
 		return $this->experienceModelId;
 	}
+    /** @param string|null $experienceModelId Experience Model ID */
 	public function setExperienceModelId(?string $experienceModelId) {
 		$this->experienceModelId = $experienceModelId;
 	}
+    /**
+     * @param string|null $experienceModelId Experience Model ID
+     * @return SeasonModelMaster
+     */
 	public function withExperienceModelId(?string $experienceModelId): SeasonModelMaster {
 		$this->experienceModelId = $experienceModelId;
 		return $this;
 	}
+    /** @return string|null Challenge Period Event ID */
 	public function getChallengePeriodEventId(): ?string {
 		return $this->challengePeriodEventId;
 	}
+    /** @param string|null $challengePeriodEventId Challenge Period Event ID */
 	public function setChallengePeriodEventId(?string $challengePeriodEventId) {
 		$this->challengePeriodEventId = $challengePeriodEventId;
 	}
+    /**
+     * @param string|null $challengePeriodEventId Challenge Period Event ID
+     * @return SeasonModelMaster
+     */
 	public function withChallengePeriodEventId(?string $challengePeriodEventId): SeasonModelMaster {
 		$this->challengePeriodEventId = $challengePeriodEventId;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return SeasonModelMaster
+     */
 	public function withCreatedAt(?int $createdAt): SeasonModelMaster {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return SeasonModelMaster
+     */
 	public function withUpdatedAt(?int $updatedAt): SeasonModelMaster {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return SeasonModelMaster
+     */
 	public function withRevision(?int $revision): SeasonModelMaster {
 		$this->revision = $revision;
 		return $this;

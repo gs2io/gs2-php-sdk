@@ -19,6 +19,11 @@ namespace Gs2\Grade\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of verifyGradeUpMaterial: Verify grade up material
+ *
+ * @see https://docs.gs2.io/api_reference/grade/sdk/#verifygradeupmaterial
+ */
 class VerifyGradeUpMaterialResult implements IResult {
 
     public static function fromJson(?array $data): ?VerifyGradeUpMaterialResult {

@@ -19,87 +19,134 @@ namespace Gs2\Ranking2\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for describeGlobalRankingsByUserId: List Global Rankings by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/sdk/#describeglobalrankingsbyuserid
+ */
 class DescribeGlobalRankingsByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Global Ranking Model name */
     private $rankingName;
-    /** @var int */
+    /** @var int Season */
     private $season;
-    /** @var string */
+    /** @var string Token specifying the position from which to start acquiring data */
     private $pageToken;
-    /** @var int */
+    /** @var int Number of data items to retrieve */
     private $limit;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DescribeGlobalRankingsByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DescribeGlobalRankingsByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return DescribeGlobalRankingsByUserIdRequest
+     */
 	public function withUserId(?string $userId): DescribeGlobalRankingsByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Global Ranking Model name */
 	public function getRankingName(): ?string {
 		return $this->rankingName;
 	}
+    /** @param string|null $rankingName Global Ranking Model name */
 	public function setRankingName(?string $rankingName) {
 		$this->rankingName = $rankingName;
 	}
+    /**
+     * @param string|null $rankingName Global Ranking Model name
+     * @return DescribeGlobalRankingsByUserIdRequest
+     */
 	public function withRankingName(?string $rankingName): DescribeGlobalRankingsByUserIdRequest {
 		$this->rankingName = $rankingName;
 		return $this;
 	}
+    /** @return int|null Season */
 	public function getSeason(): ?int {
 		return $this->season;
 	}
+    /** @param int|null $season Season */
 	public function setSeason(?int $season) {
 		$this->season = $season;
 	}
+    /**
+     * @param int|null $season Season
+     * @return DescribeGlobalRankingsByUserIdRequest
+     */
 	public function withSeason(?int $season): DescribeGlobalRankingsByUserIdRequest {
 		$this->season = $season;
 		return $this;
 	}
+    /** @return string|null Token specifying the position from which to start acquiring data */
 	public function getPageToken(): ?string {
 		return $this->pageToken;
 	}
+    /** @param string|null $pageToken Token specifying the position from which to start acquiring data */
 	public function setPageToken(?string $pageToken) {
 		$this->pageToken = $pageToken;
 	}
+    /**
+     * @param string|null $pageToken Token specifying the position from which to start acquiring data
+     * @return DescribeGlobalRankingsByUserIdRequest
+     */
 	public function withPageToken(?string $pageToken): DescribeGlobalRankingsByUserIdRequest {
 		$this->pageToken = $pageToken;
 		return $this;
 	}
+    /** @return int|null Number of data items to retrieve */
 	public function getLimit(): ?int {
 		return $this->limit;
 	}
+    /** @param int|null $limit Number of data items to retrieve */
 	public function setLimit(?int $limit) {
 		$this->limit = $limit;
 	}
+    /**
+     * @param int|null $limit Number of data items to retrieve
+     * @return DescribeGlobalRankingsByUserIdRequest
+     */
 	public function withLimit(?int $limit): DescribeGlobalRankingsByUserIdRequest {
 		$this->limit = $limit;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return DescribeGlobalRankingsByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): DescribeGlobalRankingsByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

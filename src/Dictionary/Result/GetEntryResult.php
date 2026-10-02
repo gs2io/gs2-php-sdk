@@ -20,18 +20,29 @@ namespace Gs2\Dictionary\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Dictionary\Model\Entry;
 
+/**
+ * Result of getEntry: Get an Entry
+ *
+ * @see https://docs.gs2.io/api_reference/dictionary/sdk/#getentry
+ */
 class GetEntryResult implements IResult {
-    /** @var Entry */
+    /** @var Entry Entry */
     private $item;
 
+    /** @return Entry|null Entry */
 	public function getItem(): ?Entry {
 		return $this->item;
 	}
 
+    /** @param Entry|null $item Entry */
 	public function setItem(?Entry $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Entry|null $item Entry
+     * @return GetEntryResult
+     */
 	public function withItem(?Entry $item): GetEntryResult {
 		$this->item = $item;
 		return $this;

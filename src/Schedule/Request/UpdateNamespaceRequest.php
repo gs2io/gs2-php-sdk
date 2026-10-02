@@ -22,72 +22,105 @@ use Gs2\Schedule\Model\TransactionSetting;
 use Gs2\Schedule\Model\TransactionSettingV2;
 use Gs2\Schedule\Model\LogSetting;
 
+/**
+ * Request for updateNamespace: Update Namespace
+ *
+ * @see https://docs.gs2.io/api_reference/schedule/sdk/#updatenamespace
+ */
 class UpdateNamespaceRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var TransactionSetting */
+    /** @var TransactionSetting Transaction Setting */
     private $transactionSetting;
-    /** @var TransactionSettingV2 */
+    /** @var TransactionSettingV2 Transaction Setting (V2) */
     private $transactionSettingV2;
-    /** @var LogSetting */
+    /** @var LogSetting Log Setting */
     private $logSetting;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UpdateNamespaceRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UpdateNamespaceRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return UpdateNamespaceRequest
+     */
 	public function withDescription(?string $description): UpdateNamespaceRequest {
 		$this->description = $description;
 		return $this;
 	}
     /**
+     * @return TransactionSetting|null Transaction Setting
      * @deprecated
      */
 	public function getTransactionSetting(): ?TransactionSetting {
 		return $this->transactionSetting;
 	}
     /**
+     * @param TransactionSetting|null $transactionSetting Transaction Setting
      * @deprecated
      */
 	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
 		$this->transactionSetting = $transactionSetting;
 	}
     /**
+     * @param TransactionSetting|null $transactionSetting Transaction Setting
+     * @return UpdateNamespaceRequest
      * @deprecated
      */
 	public function withTransactionSetting(?TransactionSetting $transactionSetting): UpdateNamespaceRequest {
 		$this->transactionSetting = $transactionSetting;
 		return $this;
 	}
+    /** @return TransactionSettingV2|null Transaction Setting (V2) */
 	public function getTransactionSettingV2(): ?TransactionSettingV2 {
 		return $this->transactionSettingV2;
 	}
+    /** @param TransactionSettingV2|null $transactionSettingV2 Transaction Setting (V2) */
 	public function setTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2) {
 		$this->transactionSettingV2 = $transactionSettingV2;
 	}
+    /**
+     * @param TransactionSettingV2|null $transactionSettingV2 Transaction Setting (V2)
+     * @return UpdateNamespaceRequest
+     */
 	public function withTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2): UpdateNamespaceRequest {
 		$this->transactionSettingV2 = $transactionSettingV2;
 		return $this;
 	}
+    /** @return LogSetting|null Log Setting */
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
+    /** @param LogSetting|null $logSetting Log Setting */
 	public function setLogSetting(?LogSetting $logSetting) {
 		$this->logSetting = $logSetting;
 	}
+    /**
+     * @param LogSetting|null $logSetting Log Setting
+     * @return UpdateNamespaceRequest
+     */
 	public function withLogSetting(?LogSetting $logSetting): UpdateNamespaceRequest {
 		$this->logSetting = $logSetting;
 		return $this;

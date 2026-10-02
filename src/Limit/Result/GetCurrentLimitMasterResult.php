@@ -20,18 +20,29 @@ namespace Gs2\Limit\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Limit\Model\CurrentLimitMaster;
 
+/**
+ * Result of getCurrentLimitMaster: Get currently active Usage Limit Model master data
+ *
+ * @see https://docs.gs2.io/api_reference/limit/sdk/#getcurrentlimitmaster
+ */
 class GetCurrentLimitMasterResult implements IResult {
-    /** @var CurrentLimitMaster */
+    /** @var CurrentLimitMaster Currently active Usage Limit Model master data */
     private $item;
 
+    /** @return CurrentLimitMaster|null Currently active Usage Limit Model master data */
 	public function getItem(): ?CurrentLimitMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentLimitMaster|null $item Currently active Usage Limit Model master data */
 	public function setItem(?CurrentLimitMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentLimitMaster|null $item Currently active Usage Limit Model master data
+     * @return GetCurrentLimitMasterResult
+     */
 	public function withItem(?CurrentLimitMaster $item): GetCurrentLimitMasterResult {
 		$this->item = $item;
 		return $this;

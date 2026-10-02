@@ -19,75 +19,116 @@ namespace Gs2\Friend\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for describeFriendsByUserId: List Friends by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/friend/sdk/#describefriendsbyuserid
+ */
 class DescribeFriendsByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var bool */
+    /** @var bool Whether to include profile information in the result */
     private $withProfile;
-    /** @var string */
+    /** @var string Token specifying the position from which to start acquiring data */
     private $pageToken;
-    /** @var int */
+    /** @var int Number of data items to retrieve */
     private $limit;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DescribeFriendsByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DescribeFriendsByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return DescribeFriendsByUserIdRequest
+     */
 	public function withUserId(?string $userId): DescribeFriendsByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return bool|null Whether to include profile information in the result */
 	public function getWithProfile(): ?bool {
 		return $this->withProfile;
 	}
+    /** @param bool|null $withProfile Whether to include profile information in the result */
 	public function setWithProfile(?bool $withProfile) {
 		$this->withProfile = $withProfile;
 	}
+    /**
+     * @param bool|null $withProfile Whether to include profile information in the result
+     * @return DescribeFriendsByUserIdRequest
+     */
 	public function withWithProfile(?bool $withProfile): DescribeFriendsByUserIdRequest {
 		$this->withProfile = $withProfile;
 		return $this;
 	}
+    /** @return string|null Token specifying the position from which to start acquiring data */
 	public function getPageToken(): ?string {
 		return $this->pageToken;
 	}
+    /** @param string|null $pageToken Token specifying the position from which to start acquiring data */
 	public function setPageToken(?string $pageToken) {
 		$this->pageToken = $pageToken;
 	}
+    /**
+     * @param string|null $pageToken Token specifying the position from which to start acquiring data
+     * @return DescribeFriendsByUserIdRequest
+     */
 	public function withPageToken(?string $pageToken): DescribeFriendsByUserIdRequest {
 		$this->pageToken = $pageToken;
 		return $this;
 	}
+    /** @return int|null Number of data items to retrieve */
 	public function getLimit(): ?int {
 		return $this->limit;
 	}
+    /** @param int|null $limit Number of data items to retrieve */
 	public function setLimit(?int $limit) {
 		$this->limit = $limit;
 	}
+    /**
+     * @param int|null $limit Number of data items to retrieve
+     * @return DescribeFriendsByUserIdRequest
+     */
 	public function withLimit(?int $limit): DescribeFriendsByUserIdRequest {
 		$this->limit = $limit;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return DescribeFriendsByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): DescribeFriendsByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

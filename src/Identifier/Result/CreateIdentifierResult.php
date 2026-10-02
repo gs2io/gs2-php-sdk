@@ -20,33 +20,50 @@ namespace Gs2\Identifier\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Identifier\Model\Identifier;
 
+/**
+ * Result of createIdentifier: Create Credential
+ *
+ * @see https://docs.gs2.io/api_reference/identifier/sdk/#createidentifier
+ */
 class CreateIdentifierResult implements IResult {
-    /** @var Identifier */
+    /** @var Identifier Created Credential */
     private $item;
-    /** @var string */
+    /** @var string Client Secret */
     private $clientSecret;
 
+    /** @return Identifier|null Created Credential */
 	public function getItem(): ?Identifier {
 		return $this->item;
 	}
 
+    /** @param Identifier|null $item Created Credential */
 	public function setItem(?Identifier $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Identifier|null $item Created Credential
+     * @return CreateIdentifierResult
+     */
 	public function withItem(?Identifier $item): CreateIdentifierResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null Client Secret */
 	public function getClientSecret(): ?string {
 		return $this->clientSecret;
 	}
 
+    /** @param string|null $clientSecret Client Secret */
 	public function setClientSecret(?string $clientSecret) {
 		$this->clientSecret = $clientSecret;
 	}
 
+    /**
+     * @param string|null $clientSecret Client Secret
+     * @return CreateIdentifierResult
+     */
 	public function withClientSecret(?string $clientSecret): CreateIdentifierResult {
 		$this->clientSecret = $clientSecret;
 		return $this;

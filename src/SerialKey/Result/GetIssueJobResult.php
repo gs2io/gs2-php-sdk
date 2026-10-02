@@ -20,18 +20,29 @@ namespace Gs2\SerialKey\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\SerialKey\Model\IssueJob;
 
+/**
+ * Result of getIssueJob: Get Serial Code Issuance Job
+ *
+ * @see https://docs.gs2.io/api_reference/serial_key/sdk/#getissuejob
+ */
 class GetIssueJobResult implements IResult {
-    /** @var IssueJob */
+    /** @var IssueJob Serial Code Issuance Job */
     private $item;
 
+    /** @return IssueJob|null Serial Code Issuance Job */
 	public function getItem(): ?IssueJob {
 		return $this->item;
 	}
 
+    /** @param IssueJob|null $item Serial Code Issuance Job */
 	public function setItem(?IssueJob $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param IssueJob|null $item Serial Code Issuance Job
+     * @return GetIssueJobResult
+     */
 	public function withItem(?IssueJob $item): GetIssueJobResult {
 		$this->item = $item;
 		return $this;

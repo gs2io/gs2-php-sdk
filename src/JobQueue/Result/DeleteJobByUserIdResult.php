@@ -20,18 +20,29 @@ namespace Gs2\JobQueue\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\JobQueue\Model\Job;
 
+/**
+ * Result of deleteJobByUserId: Delete a job by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/job_queue/sdk/#deletejobbyuserid
+ */
 class DeleteJobByUserIdResult implements IResult {
-    /** @var Job */
+    /** @var Job Job deleted */
     private $item;
 
+    /** @return Job|null Job deleted */
 	public function getItem(): ?Job {
 		return $this->item;
 	}
 
+    /** @param Job|null $item Job deleted */
 	public function setItem(?Job $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Job|null $item Job deleted
+     * @return DeleteJobByUserIdResult
+     */
 	public function withItem(?Job $item): DeleteJobByUserIdResult {
 		$this->item = $item;
 		return $this;

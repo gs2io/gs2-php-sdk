@@ -20,18 +20,29 @@ namespace Gs2\Inbox\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Inbox\Model\CurrentMessageMaster;
 
+/**
+ * Result of exportMaster: Export Global Message Master in a master data format that can be activated
+ *
+ * @see https://docs.gs2.io/api_reference/inbox/sdk/#exportmaster
+ */
 class ExportMasterResult implements IResult {
-    /** @var CurrentMessageMaster */
+    /** @var CurrentMessageMaster Global Message master data that can be activated */
     private $item;
 
+    /** @return CurrentMessageMaster|null Global Message master data that can be activated */
 	public function getItem(): ?CurrentMessageMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentMessageMaster|null $item Global Message master data that can be activated */
 	public function setItem(?CurrentMessageMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentMessageMaster|null $item Global Message master data that can be activated
+     * @return ExportMasterResult
+     */
 	public function withItem(?CurrentMessageMaster $item): ExportMasterResult {
 		$this->item = $item;
 		return $this;

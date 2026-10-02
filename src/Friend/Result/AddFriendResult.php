@@ -20,18 +20,29 @@ namespace Gs2\Friend\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Friend\Model\FriendUser;
 
+/**
+ * Result of addFriend: Add friend
+ *
+ * @see https://docs.gs2.io/api_reference/friend/sdk/#addfriend
+ */
 class AddFriendResult implements IResult {
-    /** @var FriendUser */
+    /** @var FriendUser Added Friend */
     private $item;
 
+    /** @return FriendUser|null Added Friend */
 	public function getItem(): ?FriendUser {
 		return $this->item;
 	}
 
+    /** @param FriendUser|null $item Added Friend */
 	public function setItem(?FriendUser $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param FriendUser|null $item Added Friend
+     * @return AddFriendResult
+     */
 	public function withItem(?FriendUser $item): AddFriendResult {
 		$this->item = $item;
 		return $this;

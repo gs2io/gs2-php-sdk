@@ -19,18 +19,25 @@ namespace Gs2\Project\Result;
 
 use Gs2\Core\Model\IResult;
 
+/** Result of getDumpUserData: Start dump user data */
 class GetDumpUserDataResult implements IResult {
-    /** @var string */
+    /** @var string URL of dump data */
     private $url;
 
+    /** @return string|null URL of dump data */
 	public function getUrl(): ?string {
 		return $this->url;
 	}
 
+    /** @param string|null $url URL of dump data */
 	public function setUrl(?string $url) {
 		$this->url = $url;
 	}
 
+    /**
+     * @param string|null $url URL of dump data
+     * @return GetDumpUserDataResult
+     */
 	public function withUrl(?string $url): GetDumpUserDataResult {
 		$this->url = $url;
 		return $this;

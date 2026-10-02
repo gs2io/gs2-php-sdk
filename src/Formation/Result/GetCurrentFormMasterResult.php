@@ -20,18 +20,29 @@ namespace Gs2\Formation\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Formation\Model\CurrentFormMaster;
 
+/**
+ * Result of getCurrentFormMaster: Get currently active Form Model master data
+ *
+ * @see https://docs.gs2.io/api_reference/formation/sdk/#getcurrentformmaster
+ */
 class GetCurrentFormMasterResult implements IResult {
-    /** @var CurrentFormMaster */
+    /** @var CurrentFormMaster Currently active Form Model master data */
     private $item;
 
+    /** @return CurrentFormMaster|null Currently active Form Model master data */
 	public function getItem(): ?CurrentFormMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentFormMaster|null $item Currently active Form Model master data */
 	public function setItem(?CurrentFormMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentFormMaster|null $item Currently active Form Model master data
+     * @return GetCurrentFormMasterResult
+     */
 	public function withItem(?CurrentFormMaster $item): GetCurrentFormMasterResult {
 		$this->item = $item;
 		return $this;

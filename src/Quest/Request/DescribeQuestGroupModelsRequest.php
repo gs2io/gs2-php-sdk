@@ -19,15 +19,26 @@ namespace Gs2\Quest\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for describeQuestGroupModels: List Quest Groups
+ *
+ * @see https://docs.gs2.io/api_reference/quest/sdk/#describequestgroupmodels
+ */
 class DescribeQuestGroupModelsRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DescribeQuestGroupModelsRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DescribeQuestGroupModelsRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;

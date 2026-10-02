@@ -20,33 +20,50 @@ namespace Gs2\Log\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Log\Model\Insight;
 
+/**
+ * Result of describeInsights: List GS2-Insight instances
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#describeinsights
+ */
 class DescribeInsightsResult implements IResult {
-    /** @var array */
+    /** @var array List of GS2-Insights */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of GS2-Insights */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of GS2-Insights */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of GS2-Insights
+     * @return DescribeInsightsResult
+     */
 	public function withItems(?array $items): DescribeInsightsResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeInsightsResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeInsightsResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

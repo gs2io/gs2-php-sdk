@@ -19,27 +19,40 @@ namespace Gs2\Project\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/** Request for getProjectToken: Issue project tokens */
 class GetProjectTokenRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Project Name */
     private $projectName;
-    /** @var string */
+    /** @var string Signed in to the account token. */
     private $accountToken;
+    /** @return string|null Project Name */
 	public function getProjectName(): ?string {
 		return $this->projectName;
 	}
+    /** @param string|null $projectName Project Name */
 	public function setProjectName(?string $projectName) {
 		$this->projectName = $projectName;
 	}
+    /**
+     * @param string|null $projectName Project Name
+     * @return GetProjectTokenRequest
+     */
 	public function withProjectName(?string $projectName): GetProjectTokenRequest {
 		$this->projectName = $projectName;
 		return $this;
 	}
+    /** @return string|null Signed in to the account token. */
 	public function getAccountToken(): ?string {
 		return $this->accountToken;
 	}
+    /** @param string|null $accountToken Signed in to the account token. */
 	public function setAccountToken(?string $accountToken) {
 		$this->accountToken = $accountToken;
 	}
+    /**
+     * @param string|null $accountToken Signed in to the account token.
+     * @return GetProjectTokenRequest
+     */
 	public function withAccountToken(?string $accountToken): GetProjectTokenRequest {
 		$this->accountToken = $accountToken;
 		return $this;

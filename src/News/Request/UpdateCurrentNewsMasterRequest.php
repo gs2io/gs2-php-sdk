@@ -19,27 +19,44 @@ namespace Gs2\News\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for updateCurrentNewsMaster: Update currently available notices
+ *
+ * @see https://docs.gs2.io/api_reference/news/sdk/#updatecurrentnewsmaster
+ */
 class UpdateCurrentNewsMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Token received in preparation for upload */
     private $uploadToken;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UpdateCurrentNewsMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UpdateCurrentNewsMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Token received in preparation for upload */
 	public function getUploadToken(): ?string {
 		return $this->uploadToken;
 	}
+    /** @param string|null $uploadToken Token received in preparation for upload */
 	public function setUploadToken(?string $uploadToken) {
 		$this->uploadToken = $uploadToken;
 	}
+    /**
+     * @param string|null $uploadToken Token received in preparation for upload
+     * @return UpdateCurrentNewsMasterRequest
+     */
 	public function withUploadToken(?string $uploadToken): UpdateCurrentNewsMasterRequest {
 		$this->uploadToken = $uploadToken;
 		return $this;

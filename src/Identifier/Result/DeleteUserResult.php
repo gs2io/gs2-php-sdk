@@ -20,18 +20,29 @@ namespace Gs2\Identifier\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Identifier\Model\User;
 
+/**
+ * Result of deleteUser: Delete user
+ *
+ * @see https://docs.gs2.io/api_reference/identifier/sdk/#deleteuser
+ */
 class DeleteUserResult implements IResult {
-    /** @var User */
+    /** @var User User deleted */
     private $item;
 
+    /** @return User|null User deleted */
 	public function getItem(): ?User {
 		return $this->item;
 	}
 
+    /** @param User|null $item User deleted */
 	public function setItem(?User $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param User|null $item User deleted
+     * @return DeleteUserResult
+     */
 	public function withItem(?User $item): DeleteUserResult {
 		$this->item = $item;
 		return $this;

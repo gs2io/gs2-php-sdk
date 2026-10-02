@@ -19,18 +19,29 @@ namespace Gs2\Idle\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of getServiceVersion: Get microservice version
+ *
+ * @see https://docs.gs2.io/api_reference/idle/sdk/#getserviceversion
+ */
 class GetServiceVersionResult implements IResult {
-    /** @var string */
+    /** @var string Version */
     private $item;
 
+    /** @return string|null Version */
 	public function getItem(): ?string {
 		return $this->item;
 	}
 
+    /** @param string|null $item Version */
 	public function setItem(?string $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param string|null $item Version
+     * @return GetServiceVersionResult
+     */
 	public function withItem(?string $item): GetServiceVersionResult {
 		$this->item = $item;
 		return $this;

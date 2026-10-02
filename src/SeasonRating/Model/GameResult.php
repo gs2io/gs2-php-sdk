@@ -20,31 +20,48 @@ namespace Gs2\SeasonRating\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Match Result
+ *
+ * @see https://docs.gs2.io/api_reference/season_rating/sdk/#gameresult
+ */
 class GameResult implements IModel {
 	/**
-     * @var int
+     * @var int Rank
 	 */
 	private $rank;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
+    /** @return int|null Rank */
 	public function getRank(): ?int {
 		return $this->rank;
 	}
+    /** @param int|null $rank Rank */
 	public function setRank(?int $rank) {
 		$this->rank = $rank;
 	}
+    /**
+     * @param int|null $rank Rank
+     * @return GameResult
+     */
 	public function withRank(?int $rank): GameResult {
 		$this->rank = $rank;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return GameResult
+     */
 	public function withUserId(?string $userId): GameResult {
 		$this->userId = $userId;
 		return $this;

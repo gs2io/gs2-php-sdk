@@ -20,18 +20,29 @@ namespace Gs2\Grade\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Grade\Model\Status;
 
+/**
+ * Result of verifyGrade: Verify grade
+ *
+ * @see https://docs.gs2.io/api_reference/grade/sdk/#verifygrade
+ */
 class VerifyGradeResult implements IResult {
-    /** @var Status */
+    /** @var Status Status deleted */
     private $item;
 
+    /** @return Status|null Status deleted */
 	public function getItem(): ?Status {
 		return $this->item;
 	}
 
+    /** @param Status|null $item Status deleted */
 	public function setItem(?Status $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Status|null $item Status deleted
+     * @return VerifyGradeResult
+     */
 	public function withItem(?Status $item): VerifyGradeResult {
 		$this->item = $item;
 		return $this;

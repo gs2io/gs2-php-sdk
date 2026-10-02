@@ -20,33 +20,50 @@ namespace Gs2\Ranking2\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Ranking2\Model\ClusterRankingScore;
 
+/**
+ * Result of describeClusterRankingScores: List Cluster Ranking Scores
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/sdk/#describeclusterrankingscores
+ */
 class DescribeClusterRankingScoresResult implements IResult {
-    /** @var array */
+    /** @var array List of Cluster Ranking Scores */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Cluster Ranking Scores */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Cluster Ranking Scores */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Cluster Ranking Scores
+     * @return DescribeClusterRankingScoresResult
+     */
 	public function withItems(?array $items): DescribeClusterRankingScoresResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeClusterRankingScoresResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeClusterRankingScoresResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

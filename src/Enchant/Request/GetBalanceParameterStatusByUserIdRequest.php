@@ -19,63 +19,98 @@ namespace Gs2\Enchant\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getBalanceParameterStatusByUserId: Get Balance Parameter Status by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/enchant/sdk/#getbalanceparameterstatusbyuserid
+ */
 class GetBalanceParameterStatusByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Balance Parameter Model name */
     private $parameterName;
-    /** @var string */
+    /** @var string Property ID of the resource that owns the parameter */
     private $propertyId;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetBalanceParameterStatusByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetBalanceParameterStatusByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return GetBalanceParameterStatusByUserIdRequest
+     */
 	public function withUserId(?string $userId): GetBalanceParameterStatusByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Balance Parameter Model name */
 	public function getParameterName(): ?string {
 		return $this->parameterName;
 	}
+    /** @param string|null $parameterName Balance Parameter Model name */
 	public function setParameterName(?string $parameterName) {
 		$this->parameterName = $parameterName;
 	}
+    /**
+     * @param string|null $parameterName Balance Parameter Model name
+     * @return GetBalanceParameterStatusByUserIdRequest
+     */
 	public function withParameterName(?string $parameterName): GetBalanceParameterStatusByUserIdRequest {
 		$this->parameterName = $parameterName;
 		return $this;
 	}
+    /** @return string|null Property ID of the resource that owns the parameter */
 	public function getPropertyId(): ?string {
 		return $this->propertyId;
 	}
+    /** @param string|null $propertyId Property ID of the resource that owns the parameter */
 	public function setPropertyId(?string $propertyId) {
 		$this->propertyId = $propertyId;
 	}
+    /**
+     * @param string|null $propertyId Property ID of the resource that owns the parameter
+     * @return GetBalanceParameterStatusByUserIdRequest
+     */
 	public function withPropertyId(?string $propertyId): GetBalanceParameterStatusByUserIdRequest {
 		$this->propertyId = $propertyId;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return GetBalanceParameterStatusByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): GetBalanceParameterStatusByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

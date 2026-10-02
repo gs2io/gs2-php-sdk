@@ -19,53 +19,82 @@ namespace Gs2\Account\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for removeBan: Remove the Account Ban Status for a Game Player Account
+ *
+ * @see https://docs.gs2.io/api_reference/account/sdk/#removeban
+ */
 class RemoveBanRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Ban status name */
     private $banStatusName;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return RemoveBanRequest
+     */
 	public function withNamespaceName(?string $namespaceName): RemoveBanRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return RemoveBanRequest
+     */
 	public function withUserId(?string $userId): RemoveBanRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Ban status name */
 	public function getBanStatusName(): ?string {
 		return $this->banStatusName;
 	}
+    /** @param string|null $banStatusName Ban status name */
 	public function setBanStatusName(?string $banStatusName) {
 		$this->banStatusName = $banStatusName;
 	}
+    /**
+     * @param string|null $banStatusName Ban status name
+     * @return RemoveBanRequest
+     */
 	public function withBanStatusName(?string $banStatusName): RemoveBanRequest {
 		$this->banStatusName = $banStatusName;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return RemoveBanRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): RemoveBanRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

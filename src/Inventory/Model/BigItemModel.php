@@ -20,45 +20,68 @@ namespace Gs2\Inventory\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Big Item Model
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#bigitemmodel
+ */
 class BigItemModel implements IModel {
 	/**
-     * @var string
+     * @var string Big Item Model GRN
 	 */
 	private $itemModelId;
 	/**
-     * @var string
+     * @var string Big Item Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
+    /** @return string|null Big Item Model GRN */
 	public function getItemModelId(): ?string {
 		return $this->itemModelId;
 	}
+    /** @param string|null $itemModelId Big Item Model GRN */
 	public function setItemModelId(?string $itemModelId) {
 		$this->itemModelId = $itemModelId;
 	}
+    /**
+     * @param string|null $itemModelId Big Item Model GRN
+     * @return BigItemModel
+     */
 	public function withItemModelId(?string $itemModelId): BigItemModel {
 		$this->itemModelId = $itemModelId;
 		return $this;
 	}
+    /** @return string|null Big Item Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Big Item Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Big Item Model name
+     * @return BigItemModel
+     */
 	public function withName(?string $name): BigItemModel {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return BigItemModel
+     */
 	public function withMetadata(?string $metadata): BigItemModel {
 		$this->metadata = $metadata;
 		return $this;

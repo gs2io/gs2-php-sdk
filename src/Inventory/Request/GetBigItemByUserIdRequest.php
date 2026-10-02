@@ -19,63 +19,98 @@ namespace Gs2\Inventory\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getBigItemByUserId: Get a Big Item by specifying the user ID
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#getbigitembyuserid
+ */
 class GetBigItemByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Big Inventory Model name */
     private $inventoryName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Big Item Model Name */
     private $itemName;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetBigItemByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetBigItemByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Big Inventory Model name */
 	public function getInventoryName(): ?string {
 		return $this->inventoryName;
 	}
+    /** @param string|null $inventoryName Big Inventory Model name */
 	public function setInventoryName(?string $inventoryName) {
 		$this->inventoryName = $inventoryName;
 	}
+    /**
+     * @param string|null $inventoryName Big Inventory Model name
+     * @return GetBigItemByUserIdRequest
+     */
 	public function withInventoryName(?string $inventoryName): GetBigItemByUserIdRequest {
 		$this->inventoryName = $inventoryName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return GetBigItemByUserIdRequest
+     */
 	public function withUserId(?string $userId): GetBigItemByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Big Item Model Name */
 	public function getItemName(): ?string {
 		return $this->itemName;
 	}
+    /** @param string|null $itemName Big Item Model Name */
 	public function setItemName(?string $itemName) {
 		$this->itemName = $itemName;
 	}
+    /**
+     * @param string|null $itemName Big Item Model Name
+     * @return GetBigItemByUserIdRequest
+     */
 	public function withItemName(?string $itemName): GetBigItemByUserIdRequest {
 		$this->itemName = $itemName;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return GetBigItemByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): GetBigItemByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

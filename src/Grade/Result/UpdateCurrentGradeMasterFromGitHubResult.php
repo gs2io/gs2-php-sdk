@@ -20,18 +20,29 @@ namespace Gs2\Grade\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Grade\Model\CurrentGradeMaster;
 
+/**
+ * Result of updateCurrentGradeMasterFromGitHub: Update currently active Grade Model master data from GitHub
+ *
+ * @see https://docs.gs2.io/api_reference/grade/sdk/#updatecurrentgrademasterfromgithub
+ */
 class UpdateCurrentGradeMasterFromGitHubResult implements IResult {
-    /** @var CurrentGradeMaster */
+    /** @var CurrentGradeMaster Updated master data of the currently active Grade Models */
     private $item;
 
+    /** @return CurrentGradeMaster|null Updated master data of the currently active Grade Models */
 	public function getItem(): ?CurrentGradeMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentGradeMaster|null $item Updated master data of the currently active Grade Models */
 	public function setItem(?CurrentGradeMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentGradeMaster|null $item Updated master data of the currently active Grade Models
+     * @return UpdateCurrentGradeMasterFromGitHubResult
+     */
 	public function withItem(?CurrentGradeMaster $item): UpdateCurrentGradeMasterFromGitHubResult {
 		$this->item = $item;
 		return $this;

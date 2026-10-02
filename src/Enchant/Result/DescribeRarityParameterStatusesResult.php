@@ -21,33 +21,50 @@ use Gs2\Core\Model\IResult;
 use Gs2\Enchant\Model\RarityParameterValue;
 use Gs2\Enchant\Model\RarityParameterStatus;
 
+/**
+ * Result of describeRarityParameterStatuses: List Rarity Parameter Statuses
+ *
+ * @see https://docs.gs2.io/api_reference/enchant/sdk/#describerarityparameterstatuses
+ */
 class DescribeRarityParameterStatusesResult implements IResult {
-    /** @var array */
+    /** @var array List of Rarity Parameter Models */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Rarity Parameter Models */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Rarity Parameter Models */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Rarity Parameter Models
+     * @return DescribeRarityParameterStatusesResult
+     */
 	public function withItems(?array $items): DescribeRarityParameterStatusesResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeRarityParameterStatusesResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeRarityParameterStatusesResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

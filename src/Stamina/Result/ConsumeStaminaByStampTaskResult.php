@@ -24,48 +24,71 @@ use Gs2\Stamina\Model\RecoverIntervalTable;
 use Gs2\Stamina\Model\RecoverValueTable;
 use Gs2\Stamina\Model\StaminaModel;
 
+/**
+ * Result of consumeStaminaByStampTask: Execute stamina consumption as a consume action
+ *
+ * @see https://docs.gs2.io/api_reference/stamina/stamp_sheet/#gs2staminaconsumestaminabyuserid
+ */
 class ConsumeStaminaByStampTaskResult implements IResult {
-    /** @var Stamina */
+    /** @var Stamina Stamina */
     private $item;
-    /** @var StaminaModel */
+    /** @var StaminaModel Stamina Model */
     private $staminaModel;
-    /** @var string */
+    /** @var string Context recording the execution results of Consume Actions */
     private $newContextStack;
 
+    /** @return Stamina|null Stamina */
 	public function getItem(): ?Stamina {
 		return $this->item;
 	}
 
+    /** @param Stamina|null $item Stamina */
 	public function setItem(?Stamina $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Stamina|null $item Stamina
+     * @return ConsumeStaminaByStampTaskResult
+     */
 	public function withItem(?Stamina $item): ConsumeStaminaByStampTaskResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return StaminaModel|null Stamina Model */
 	public function getStaminaModel(): ?StaminaModel {
 		return $this->staminaModel;
 	}
 
+    /** @param StaminaModel|null $staminaModel Stamina Model */
 	public function setStaminaModel(?StaminaModel $staminaModel) {
 		$this->staminaModel = $staminaModel;
 	}
 
+    /**
+     * @param StaminaModel|null $staminaModel Stamina Model
+     * @return ConsumeStaminaByStampTaskResult
+     */
 	public function withStaminaModel(?StaminaModel $staminaModel): ConsumeStaminaByStampTaskResult {
 		$this->staminaModel = $staminaModel;
 		return $this;
 	}
 
+    /** @return string|null Context recording the execution results of Consume Actions */
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
+    /** @param string|null $newContextStack Context recording the execution results of Consume Actions */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
+    /**
+     * @param string|null $newContextStack Context recording the execution results of Consume Actions
+     * @return ConsumeStaminaByStampTaskResult
+     */
 	public function withNewContextStack(?string $newContextStack): ConsumeStaminaByStampTaskResult {
 		$this->newContextStack = $newContextStack;
 		return $this;

@@ -20,18 +20,29 @@ namespace Gs2\Stamina\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Stamina\Model\RecoverIntervalTableMaster;
 
+/**
+ * Result of deleteRecoverIntervalTableMaster: Delete Recovery Interval Table Master
+ *
+ * @see https://docs.gs2.io/api_reference/stamina/sdk/#deleterecoverintervaltablemaster
+ */
 class DeleteRecoverIntervalTableMasterResult implements IResult {
-    /** @var RecoverIntervalTableMaster */
+    /** @var RecoverIntervalTableMaster Recovery Interval Table Master deleted */
     private $item;
 
+    /** @return RecoverIntervalTableMaster|null Recovery Interval Table Master deleted */
 	public function getItem(): ?RecoverIntervalTableMaster {
 		return $this->item;
 	}
 
+    /** @param RecoverIntervalTableMaster|null $item Recovery Interval Table Master deleted */
 	public function setItem(?RecoverIntervalTableMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param RecoverIntervalTableMaster|null $item Recovery Interval Table Master deleted
+     * @return DeleteRecoverIntervalTableMasterResult
+     */
 	public function withItem(?RecoverIntervalTableMaster $item): DeleteRecoverIntervalTableMasterResult {
 		$this->item = $item;
 		return $this;

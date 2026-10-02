@@ -23,132 +23,195 @@ use Gs2\StateMachine\Model\TransactionSettingV2;
 use Gs2\StateMachine\Model\ScriptSetting;
 use Gs2\StateMachine\Model\LogSetting;
 
+/**
+ * Request for updateNamespace: Update Namespace
+ *
+ * @see https://docs.gs2.io/api_reference/state_machine/sdk/#updatenamespace
+ */
 class UpdateNamespaceRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var string */
+    /** @var string Whether to support speculative execution */
     private $supportSpeculativeExecution;
-    /** @var TransactionSetting */
+    /** @var TransactionSetting Transaction Settings */
     private $transactionSetting;
-    /** @var TransactionSettingV2 */
+    /** @var TransactionSettingV2 Transaction Setting (V2) */
     private $transactionSettingV2;
-    /** @var ScriptSetting */
+    /** @var ScriptSetting Script setting to execute when starting the state machine */
     private $startScript;
-    /** @var ScriptSetting */
+    /** @var ScriptSetting Script setting to execute when the state machine is successfully completed */
     private $passScript;
-    /** @var ScriptSetting */
+    /** @var ScriptSetting Script setting to execute when the state machine fails */
     private $errorScript;
-    /** @var int */
+    /** @var int Lowest version of the state machine */
     private $lowestStateMachineVersion;
-    /** @var LogSetting */
+    /** @var LogSetting Log Output Setting */
     private $logSetting;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UpdateNamespaceRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UpdateNamespaceRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return UpdateNamespaceRequest
+     */
 	public function withDescription(?string $description): UpdateNamespaceRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Whether to support speculative execution */
 	public function getSupportSpeculativeExecution(): ?string {
 		return $this->supportSpeculativeExecution;
 	}
+    /** @param string|null $supportSpeculativeExecution Whether to support speculative execution */
 	public function setSupportSpeculativeExecution(?string $supportSpeculativeExecution) {
 		$this->supportSpeculativeExecution = $supportSpeculativeExecution;
 	}
+    /**
+     * @param string|null $supportSpeculativeExecution Whether to support speculative execution
+     * @return UpdateNamespaceRequest
+     */
 	public function withSupportSpeculativeExecution(?string $supportSpeculativeExecution): UpdateNamespaceRequest {
 		$this->supportSpeculativeExecution = $supportSpeculativeExecution;
 		return $this;
 	}
     /**
+     * @return TransactionSetting|null Transaction Settings
      * @deprecated
      */
 	public function getTransactionSetting(): ?TransactionSetting {
 		return $this->transactionSetting;
 	}
     /**
+     * @param TransactionSetting|null $transactionSetting Transaction Settings
      * @deprecated
      */
 	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
 		$this->transactionSetting = $transactionSetting;
 	}
     /**
+     * @param TransactionSetting|null $transactionSetting Transaction Settings
+     * @return UpdateNamespaceRequest
      * @deprecated
      */
 	public function withTransactionSetting(?TransactionSetting $transactionSetting): UpdateNamespaceRequest {
 		$this->transactionSetting = $transactionSetting;
 		return $this;
 	}
+    /** @return TransactionSettingV2|null Transaction Setting (V2) */
 	public function getTransactionSettingV2(): ?TransactionSettingV2 {
 		return $this->transactionSettingV2;
 	}
+    /** @param TransactionSettingV2|null $transactionSettingV2 Transaction Setting (V2) */
 	public function setTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2) {
 		$this->transactionSettingV2 = $transactionSettingV2;
 	}
+    /**
+     * @param TransactionSettingV2|null $transactionSettingV2 Transaction Setting (V2)
+     * @return UpdateNamespaceRequest
+     */
 	public function withTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2): UpdateNamespaceRequest {
 		$this->transactionSettingV2 = $transactionSettingV2;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to execute when starting the state machine */
 	public function getStartScript(): ?ScriptSetting {
 		return $this->startScript;
 	}
+    /** @param ScriptSetting|null $startScript Script setting to execute when starting the state machine */
 	public function setStartScript(?ScriptSetting $startScript) {
 		$this->startScript = $startScript;
 	}
+    /**
+     * @param ScriptSetting|null $startScript Script setting to execute when starting the state machine
+     * @return UpdateNamespaceRequest
+     */
 	public function withStartScript(?ScriptSetting $startScript): UpdateNamespaceRequest {
 		$this->startScript = $startScript;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to execute when the state machine is successfully completed */
 	public function getPassScript(): ?ScriptSetting {
 		return $this->passScript;
 	}
+    /** @param ScriptSetting|null $passScript Script setting to execute when the state machine is successfully completed */
 	public function setPassScript(?ScriptSetting $passScript) {
 		$this->passScript = $passScript;
 	}
+    /**
+     * @param ScriptSetting|null $passScript Script setting to execute when the state machine is successfully completed
+     * @return UpdateNamespaceRequest
+     */
 	public function withPassScript(?ScriptSetting $passScript): UpdateNamespaceRequest {
 		$this->passScript = $passScript;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to execute when the state machine fails */
 	public function getErrorScript(): ?ScriptSetting {
 		return $this->errorScript;
 	}
+    /** @param ScriptSetting|null $errorScript Script setting to execute when the state machine fails */
 	public function setErrorScript(?ScriptSetting $errorScript) {
 		$this->errorScript = $errorScript;
 	}
+    /**
+     * @param ScriptSetting|null $errorScript Script setting to execute when the state machine fails
+     * @return UpdateNamespaceRequest
+     */
 	public function withErrorScript(?ScriptSetting $errorScript): UpdateNamespaceRequest {
 		$this->errorScript = $errorScript;
 		return $this;
 	}
+    /** @return int|null Lowest version of the state machine */
 	public function getLowestStateMachineVersion(): ?int {
 		return $this->lowestStateMachineVersion;
 	}
+    /** @param int|null $lowestStateMachineVersion Lowest version of the state machine */
 	public function setLowestStateMachineVersion(?int $lowestStateMachineVersion) {
 		$this->lowestStateMachineVersion = $lowestStateMachineVersion;
 	}
+    /**
+     * @param int|null $lowestStateMachineVersion Lowest version of the state machine
+     * @return UpdateNamespaceRequest
+     */
 	public function withLowestStateMachineVersion(?int $lowestStateMachineVersion): UpdateNamespaceRequest {
 		$this->lowestStateMachineVersion = $lowestStateMachineVersion;
 		return $this;
 	}
+    /** @return LogSetting|null Log Output Setting */
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
+    /** @param LogSetting|null $logSetting Log Output Setting */
 	public function setLogSetting(?LogSetting $logSetting) {
 		$this->logSetting = $logSetting;
 	}
+    /**
+     * @param LogSetting|null $logSetting Log Output Setting
+     * @return UpdateNamespaceRequest
+     */
 	public function withLogSetting(?LogSetting $logSetting): UpdateNamespaceRequest {
 		$this->logSetting = $logSetting;
 		return $this;

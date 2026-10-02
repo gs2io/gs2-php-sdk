@@ -19,27 +19,44 @@ namespace Gs2\Enchant\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getRarityParameterModelMaster: Get Rarity Parameter Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/enchant/sdk/#getrarityparametermodelmaster
+ */
 class GetRarityParameterModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Rarity Parameter Model name */
     private $parameterName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetRarityParameterModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetRarityParameterModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Rarity Parameter Model name */
 	public function getParameterName(): ?string {
 		return $this->parameterName;
 	}
+    /** @param string|null $parameterName Rarity Parameter Model name */
 	public function setParameterName(?string $parameterName) {
 		$this->parameterName = $parameterName;
 	}
+    /**
+     * @param string|null $parameterName Rarity Parameter Model name
+     * @return GetRarityParameterModelMasterRequest
+     */
 	public function withParameterName(?string $parameterName): GetRarityParameterModelMasterRequest {
 		$this->parameterName = $parameterName;
 		return $this;

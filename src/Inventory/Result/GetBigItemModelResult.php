@@ -20,18 +20,29 @@ namespace Gs2\Inventory\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Inventory\Model\BigItemModel;
 
+/**
+ * Result of getBigItemModel: Get Big Item Model
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#getbigitemmodel
+ */
 class GetBigItemModelResult implements IResult {
     /** @var BigItemModel */
     private $item;
 
+    /** @return BigItemModel|null */
 	public function getItem(): ?BigItemModel {
 		return $this->item;
 	}
 
+    /** @param BigItemModel|null $item */
 	public function setItem(?BigItemModel $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param BigItemModel|null $item
+     * @return GetBigItemModelResult
+     */
 	public function withItem(?BigItemModel $item): GetBigItemModelResult {
 		$this->item = $item;
 		return $this;

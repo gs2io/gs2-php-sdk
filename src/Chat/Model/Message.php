@@ -20,115 +20,168 @@ namespace Gs2\Chat\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Message
+ *
+ * @see https://docs.gs2.io/api_reference/chat/sdk/#message
+ */
 class Message implements IModel {
 	/**
-     * @var string
+     * @var string Message GRN
 	 */
 	private $messageId;
 	/**
-     * @var string
+     * @var string Room name
 	 */
 	private $roomName;
 	/**
-     * @var string
+     * @var string Message name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var int
+     * @var int Category number for classifying messages
 	 */
 	private $category;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Message GRN */
 	public function getMessageId(): ?string {
 		return $this->messageId;
 	}
+    /** @param string|null $messageId Message GRN */
 	public function setMessageId(?string $messageId) {
 		$this->messageId = $messageId;
 	}
+    /**
+     * @param string|null $messageId Message GRN
+     * @return Message
+     */
 	public function withMessageId(?string $messageId): Message {
 		$this->messageId = $messageId;
 		return $this;
 	}
+    /** @return string|null Room name */
 	public function getRoomName(): ?string {
 		return $this->roomName;
 	}
+    /** @param string|null $roomName Room name */
 	public function setRoomName(?string $roomName) {
 		$this->roomName = $roomName;
 	}
+    /**
+     * @param string|null $roomName Room name
+     * @return Message
+     */
 	public function withRoomName(?string $roomName): Message {
 		$this->roomName = $roomName;
 		return $this;
 	}
+    /** @return string|null Message name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Message name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Message name
+     * @return Message
+     */
 	public function withName(?string $name): Message {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return Message
+     */
 	public function withUserId(?string $userId): Message {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return int|null Category number for classifying messages */
 	public function getCategory(): ?int {
 		return $this->category;
 	}
+    /** @param int|null $category Category number for classifying messages */
 	public function setCategory(?int $category) {
 		$this->category = $category;
 	}
+    /**
+     * @param int|null $category Category number for classifying messages
+     * @return Message
+     */
 	public function withCategory(?int $category): Message {
 		$this->category = $category;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return Message
+     */
 	public function withMetadata(?string $metadata): Message {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return Message
+     */
 	public function withCreatedAt(?int $createdAt): Message {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return Message
+     */
 	public function withRevision(?int $revision): Message {
 		$this->revision = $revision;
 		return $this;

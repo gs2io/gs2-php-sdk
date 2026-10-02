@@ -19,53 +19,82 @@ namespace Gs2\Chat\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for unsubscribeByUserId: Unsubscribe from a subscription by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/chat/sdk/#unsubscribebyuserid
+ */
 class UnsubscribeByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Room name to unsubscribe from */
     private $roomName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UnsubscribeByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UnsubscribeByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Room name to unsubscribe from */
 	public function getRoomName(): ?string {
 		return $this->roomName;
 	}
+    /** @param string|null $roomName Room name to unsubscribe from */
 	public function setRoomName(?string $roomName) {
 		$this->roomName = $roomName;
 	}
+    /**
+     * @param string|null $roomName Room name to unsubscribe from
+     * @return UnsubscribeByUserIdRequest
+     */
 	public function withRoomName(?string $roomName): UnsubscribeByUserIdRequest {
 		$this->roomName = $roomName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return UnsubscribeByUserIdRequest
+     */
 	public function withUserId(?string $userId): UnsubscribeByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return UnsubscribeByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): UnsubscribeByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

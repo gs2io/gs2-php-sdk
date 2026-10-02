@@ -19,27 +19,44 @@ namespace Gs2\Enhance\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getRateModel: Get Enhancement Rate Model
+ *
+ * @see https://docs.gs2.io/api_reference/enhance/sdk/#getratemodel
+ */
 class GetRateModelRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Enhancement Rate Model name */
     private $rateName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetRateModelRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetRateModelRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Enhancement Rate Model name */
 	public function getRateName(): ?string {
 		return $this->rateName;
 	}
+    /** @param string|null $rateName Enhancement Rate Model name */
 	public function setRateName(?string $rateName) {
 		$this->rateName = $rateName;
 	}
+    /**
+     * @param string|null $rateName Enhancement Rate Model name
+     * @return GetRateModelRequest
+     */
 	public function withRateName(?string $rateName): GetRateModelRequest {
 		$this->rateName = $rateName;
 		return $this;

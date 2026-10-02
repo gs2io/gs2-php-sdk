@@ -20,59 +20,88 @@ namespace Gs2\Formation\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Form Model
+ *
+ * @see https://docs.gs2.io/api_reference/formation/sdk/#formmodel
+ */
 class FormModel implements IModel {
 	/**
-     * @var string
+     * @var string Form Model GRN
 	 */
 	private $formModelId;
 	/**
-     * @var string
+     * @var string Form Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var array
+     * @var array List of Slot Model
 	 */
 	private $slots;
+    /** @return string|null Form Model GRN */
 	public function getFormModelId(): ?string {
 		return $this->formModelId;
 	}
+    /** @param string|null $formModelId Form Model GRN */
 	public function setFormModelId(?string $formModelId) {
 		$this->formModelId = $formModelId;
 	}
+    /**
+     * @param string|null $formModelId Form Model GRN
+     * @return FormModel
+     */
 	public function withFormModelId(?string $formModelId): FormModel {
 		$this->formModelId = $formModelId;
 		return $this;
 	}
+    /** @return string|null Form Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Form Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Form Model name
+     * @return FormModel
+     */
 	public function withName(?string $name): FormModel {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return FormModel
+     */
 	public function withMetadata(?string $metadata): FormModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return array|null List of Slot Model */
 	public function getSlots(): ?array {
 		return $this->slots;
 	}
+    /** @param array|null $slots List of Slot Model */
 	public function setSlots(?array $slots) {
 		$this->slots = $slots;
 	}
+    /**
+     * @param array|null $slots List of Slot Model
+     * @return FormModel
+     */
 	public function withSlots(?array $slots): FormModel {
 		$this->slots = $slots;
 		return $this;

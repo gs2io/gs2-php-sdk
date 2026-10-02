@@ -19,53 +19,82 @@ namespace Gs2\Account\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for updateTimeOffset: Update the correction value for the current time of the game player's Account
+ *
+ * @see https://docs.gs2.io/api_reference/account/sdk/#updatetimeoffset
+ */
 class UpdateTimeOffsetRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var int */
+    /** @var int Time offset from the current time (number of seconds relative to the current time) */
     private $timeOffset;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UpdateTimeOffsetRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UpdateTimeOffsetRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return UpdateTimeOffsetRequest
+     */
 	public function withUserId(?string $userId): UpdateTimeOffsetRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return int|null Time offset from the current time (number of seconds relative to the current time) */
 	public function getTimeOffset(): ?int {
 		return $this->timeOffset;
 	}
+    /** @param int|null $timeOffset Time offset from the current time (number of seconds relative to the current time) */
 	public function setTimeOffset(?int $timeOffset) {
 		$this->timeOffset = $timeOffset;
 	}
+    /**
+     * @param int|null $timeOffset Time offset from the current time (number of seconds relative to the current time)
+     * @return UpdateTimeOffsetRequest
+     */
 	public function withTimeOffset(?int $timeOffset): UpdateTimeOffsetRequest {
 		$this->timeOffset = $timeOffset;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return UpdateTimeOffsetRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): UpdateTimeOffsetRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

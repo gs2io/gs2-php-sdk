@@ -23,84 +23,123 @@ use Gs2\LoginReward\Model\TransactionSettingV2;
 use Gs2\LoginReward\Model\ScriptSetting;
 use Gs2\LoginReward\Model\LogSetting;
 
+/**
+ * Request for updateNamespace: Update Namespace
+ *
+ * @see https://docs.gs2.io/api_reference/login_reward/sdk/#updatenamespace
+ */
 class UpdateNamespaceRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var TransactionSetting */
+    /** @var TransactionSetting Transaction Settings */
     private $transactionSetting;
-    /** @var TransactionSettingV2 */
+    /** @var TransactionSettingV2 Transaction Setting (V2) */
     private $transactionSettingV2;
-    /** @var ScriptSetting */
+    /** @var ScriptSetting Script setting to be executed when receiving rewards */
     private $receiveScript;
-    /** @var LogSetting */
+    /** @var LogSetting Log Output Setting */
     private $logSetting;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UpdateNamespaceRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UpdateNamespaceRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return UpdateNamespaceRequest
+     */
 	public function withDescription(?string $description): UpdateNamespaceRequest {
 		$this->description = $description;
 		return $this;
 	}
     /**
+     * @return TransactionSetting|null Transaction Settings
      * @deprecated
      */
 	public function getTransactionSetting(): ?TransactionSetting {
 		return $this->transactionSetting;
 	}
     /**
+     * @param TransactionSetting|null $transactionSetting Transaction Settings
      * @deprecated
      */
 	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
 		$this->transactionSetting = $transactionSetting;
 	}
     /**
+     * @param TransactionSetting|null $transactionSetting Transaction Settings
+     * @return UpdateNamespaceRequest
      * @deprecated
      */
 	public function withTransactionSetting(?TransactionSetting $transactionSetting): UpdateNamespaceRequest {
 		$this->transactionSetting = $transactionSetting;
 		return $this;
 	}
+    /** @return TransactionSettingV2|null Transaction Setting (V2) */
 	public function getTransactionSettingV2(): ?TransactionSettingV2 {
 		return $this->transactionSettingV2;
 	}
+    /** @param TransactionSettingV2|null $transactionSettingV2 Transaction Setting (V2) */
 	public function setTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2) {
 		$this->transactionSettingV2 = $transactionSettingV2;
 	}
+    /**
+     * @param TransactionSettingV2|null $transactionSettingV2 Transaction Setting (V2)
+     * @return UpdateNamespaceRequest
+     */
 	public function withTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2): UpdateNamespaceRequest {
 		$this->transactionSettingV2 = $transactionSettingV2;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to be executed when receiving rewards */
 	public function getReceiveScript(): ?ScriptSetting {
 		return $this->receiveScript;
 	}
+    /** @param ScriptSetting|null $receiveScript Script setting to be executed when receiving rewards */
 	public function setReceiveScript(?ScriptSetting $receiveScript) {
 		$this->receiveScript = $receiveScript;
 	}
+    /**
+     * @param ScriptSetting|null $receiveScript Script setting to be executed when receiving rewards
+     * @return UpdateNamespaceRequest
+     */
 	public function withReceiveScript(?ScriptSetting $receiveScript): UpdateNamespaceRequest {
 		$this->receiveScript = $receiveScript;
 		return $this;
 	}
+    /** @return LogSetting|null Log Output Setting */
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
+    /** @param LogSetting|null $logSetting Log Output Setting */
 	public function setLogSetting(?LogSetting $logSetting) {
 		$this->logSetting = $logSetting;
 	}
+    /**
+     * @param LogSetting|null $logSetting Log Output Setting
+     * @return UpdateNamespaceRequest
+     */
 	public function withLogSetting(?LogSetting $logSetting): UpdateNamespaceRequest {
 		$this->logSetting = $logSetting;
 		return $this;

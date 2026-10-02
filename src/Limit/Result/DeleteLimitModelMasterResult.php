@@ -20,18 +20,29 @@ namespace Gs2\Limit\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Limit\Model\LimitModelMaster;
 
+/**
+ * Result of deleteLimitModelMaster: Delete Usage Limit Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/limit/sdk/#deletelimitmodelmaster
+ */
 class DeleteLimitModelMasterResult implements IResult {
-    /** @var LimitModelMaster */
+    /** @var LimitModelMaster Usage Limit Model Master deleted */
     private $item;
 
+    /** @return LimitModelMaster|null Usage Limit Model Master deleted */
 	public function getItem(): ?LimitModelMaster {
 		return $this->item;
 	}
 
+    /** @param LimitModelMaster|null $item Usage Limit Model Master deleted */
 	public function setItem(?LimitModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param LimitModelMaster|null $item Usage Limit Model Master deleted
+     * @return DeleteLimitModelMasterResult
+     */
 	public function withItem(?LimitModelMaster $item): DeleteLimitModelMasterResult {
 		$this->item = $item;
 		return $this;

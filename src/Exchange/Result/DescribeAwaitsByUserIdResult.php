@@ -21,33 +21,50 @@ use Gs2\Core\Model\IResult;
 use Gs2\Exchange\Model\Config;
 use Gs2\Exchange\Model\Await;
 
+/**
+ * Result of describeAwaitsByUserId: List Exchange Awaits by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/exchange/sdk/#describeawaitsbyuserid
+ */
 class DescribeAwaitsByUserIdResult implements IResult {
-    /** @var array */
+    /** @var array List of Exchange Awaits */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Exchange Awaits */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Exchange Awaits */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Exchange Awaits
+     * @return DescribeAwaitsByUserIdResult
+     */
 	public function withItems(?array $items): DescribeAwaitsByUserIdResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeAwaitsByUserIdResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeAwaitsByUserIdResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

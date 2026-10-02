@@ -23,33 +23,50 @@ use Gs2\Formation\Model\PropertyForm;
 use Gs2\Formation\Model\SlotModel;
 use Gs2\Formation\Model\PropertyFormModel;
 
+/**
+ * Result of getPropertyFormByUserId: Get Property Form by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/formation/sdk/#getpropertyformbyuserid
+ */
 class GetPropertyFormByUserIdResult implements IResult {
-    /** @var PropertyForm */
+    /** @var PropertyForm PropertyForm */
     private $item;
-    /** @var PropertyFormModel */
+    /** @var PropertyFormModel Form Model */
     private $propertyFormModel;
 
+    /** @return PropertyForm|null PropertyForm */
 	public function getItem(): ?PropertyForm {
 		return $this->item;
 	}
 
+    /** @param PropertyForm|null $item PropertyForm */
 	public function setItem(?PropertyForm $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param PropertyForm|null $item PropertyForm
+     * @return GetPropertyFormByUserIdResult
+     */
 	public function withItem(?PropertyForm $item): GetPropertyFormByUserIdResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return PropertyFormModel|null Form Model */
 	public function getPropertyFormModel(): ?PropertyFormModel {
 		return $this->propertyFormModel;
 	}
 
+    /** @param PropertyFormModel|null $propertyFormModel Form Model */
 	public function setPropertyFormModel(?PropertyFormModel $propertyFormModel) {
 		$this->propertyFormModel = $propertyFormModel;
 	}
 
+    /**
+     * @param PropertyFormModel|null $propertyFormModel Form Model
+     * @return GetPropertyFormByUserIdResult
+     */
 	public function withPropertyFormModel(?PropertyFormModel $propertyFormModel): GetPropertyFormByUserIdResult {
 		$this->propertyFormModel = $propertyFormModel;
 		return $this;

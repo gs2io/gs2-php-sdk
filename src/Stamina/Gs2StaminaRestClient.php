@@ -5550,25 +5550,22 @@ class VerifyStaminaOverflowValueByStampTaskTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 Stamina API クライアント
+ * GS2-Stamina API client
  *
- * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/stamina/sdk/
  */
 class Gs2StaminaRestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#describenamespaces
      */
     public function describeNamespacesAsync(
             DescribeNamespacesRequest $request
@@ -5582,8 +5579,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#describenamespaces
      */
     public function describeNamespaces (
             DescribeNamespacesRequest $request
@@ -5594,8 +5594,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#createnamespace
      */
     public function createNamespaceAsync(
             CreateNamespaceRequest $request
@@ -5609,8 +5612,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#createnamespace
      */
     public function createNamespace (
             CreateNamespaceRequest $request
@@ -5621,8 +5627,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#getnamespacestatus
      */
     public function getNamespaceStatusAsync(
             GetNamespaceStatusRequest $request
@@ -5636,8 +5645,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#getnamespacestatus
      */
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
@@ -5648,8 +5660,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#getnamespace
      */
     public function getNamespaceAsync(
             GetNamespaceRequest $request
@@ -5663,8 +5678,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#getnamespace
      */
     public function getNamespace (
             GetNamespaceRequest $request
@@ -5675,8 +5693,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#updatenamespace
      */
     public function updateNamespaceAsync(
             UpdateNamespaceRequest $request
@@ -5690,8 +5711,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#updatenamespace
      */
     public function updateNamespace (
             UpdateNamespaceRequest $request
@@ -5702,8 +5726,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#deletenamespace
      */
     public function deleteNamespaceAsync(
             DeleteNamespaceRequest $request
@@ -5717,8 +5744,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#deletenamespace
      */
     public function deleteNamespace (
             DeleteNamespaceRequest $request
@@ -5729,8 +5759,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#getserviceversion
      */
     public function getServiceVersionAsync(
             GetServiceVersionRequest $request
@@ -5744,8 +5777,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return GetServiceVersionResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#getserviceversion
      */
     public function getServiceVersion (
             GetServiceVersionRequest $request
@@ -5756,8 +5792,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserIdAsync(
             DumpUserDataByUserIdRequest $request
@@ -5771,8 +5810,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return DumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserId (
             DumpUserDataByUserIdRequest $request
@@ -5783,8 +5825,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserIdAsync(
             CheckDumpUserDataByUserIdRequest $request
@@ -5798,8 +5843,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return CheckDumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserId (
             CheckDumpUserDataByUserIdRequest $request
@@ -5810,8 +5858,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserIdAsync(
             CleanUserDataByUserIdRequest $request
@@ -5825,8 +5876,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return CleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserId (
             CleanUserDataByUserIdRequest $request
@@ -5837,8 +5891,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the clean of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserIdAsync(
             CheckCleanUserDataByUserIdRequest $request
@@ -5852,8 +5909,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the clean of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return CheckCleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserId (
             CheckCleanUserDataByUserIdRequest $request
@@ -5864,8 +5924,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserIdAsync(
             PrepareImportUserDataByUserIdRequest $request
@@ -5879,8 +5942,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PrepareImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserId (
             PrepareImportUserDataByUserIdRequest $request
@@ -5891,8 +5957,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserIdAsync(
             ImportUserDataByUserIdRequest $request
@@ -5906,8 +5975,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return ImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserId (
             ImportUserDataByUserIdRequest $request
@@ -5918,8 +5990,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserIdAsync(
             CheckImportUserDataByUserIdRequest $request
@@ -5933,8 +6008,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return CheckImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserId (
             CheckImportUserDataByUserIdRequest $request
@@ -5945,8 +6023,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Stamina Model Masters
+     *
      * @param DescribeStaminaModelMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#describestaminamodelmasters
      */
     public function describeStaminaModelMastersAsync(
             DescribeStaminaModelMastersRequest $request
@@ -5960,8 +6041,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Stamina Model Masters
+     *
      * @param DescribeStaminaModelMastersRequest $request
      * @return DescribeStaminaModelMastersResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#describestaminamodelmasters
      */
     public function describeStaminaModelMasters (
             DescribeStaminaModelMastersRequest $request
@@ -5972,8 +6056,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Stamina Model Master
+     *
      * @param CreateStaminaModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#createstaminamodelmaster
      */
     public function createStaminaModelMasterAsync(
             CreateStaminaModelMasterRequest $request
@@ -5987,8 +6074,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Stamina Model Master
+     *
      * @param CreateStaminaModelMasterRequest $request
      * @return CreateStaminaModelMasterResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#createstaminamodelmaster
      */
     public function createStaminaModelMaster (
             CreateStaminaModelMasterRequest $request
@@ -5999,8 +6089,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Stamina Model Master
+     *
      * @param GetStaminaModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#getstaminamodelmaster
      */
     public function getStaminaModelMasterAsync(
             GetStaminaModelMasterRequest $request
@@ -6014,8 +6107,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Stamina Model Master
+     *
      * @param GetStaminaModelMasterRequest $request
      * @return GetStaminaModelMasterResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#getstaminamodelmaster
      */
     public function getStaminaModelMaster (
             GetStaminaModelMasterRequest $request
@@ -6026,8 +6122,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Stamina Model Master
+     *
      * @param UpdateStaminaModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#updatestaminamodelmaster
      */
     public function updateStaminaModelMasterAsync(
             UpdateStaminaModelMasterRequest $request
@@ -6041,8 +6140,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Stamina Model Master
+     *
      * @param UpdateStaminaModelMasterRequest $request
      * @return UpdateStaminaModelMasterResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#updatestaminamodelmaster
      */
     public function updateStaminaModelMaster (
             UpdateStaminaModelMasterRequest $request
@@ -6053,8 +6155,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Stamina Model Master
+     *
      * @param DeleteStaminaModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#deletestaminamodelmaster
      */
     public function deleteStaminaModelMasterAsync(
             DeleteStaminaModelMasterRequest $request
@@ -6068,8 +6173,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Stamina Model Master
+     *
      * @param DeleteStaminaModelMasterRequest $request
      * @return DeleteStaminaModelMasterResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#deletestaminamodelmaster
      */
     public function deleteStaminaModelMaster (
             DeleteStaminaModelMasterRequest $request
@@ -6080,8 +6188,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Maximum Stamina Table Masters
+     *
      * @param DescribeMaxStaminaTableMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#describemaxstaminatablemasters
      */
     public function describeMaxStaminaTableMastersAsync(
             DescribeMaxStaminaTableMastersRequest $request
@@ -6095,8 +6206,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Maximum Stamina Table Masters
+     *
      * @param DescribeMaxStaminaTableMastersRequest $request
      * @return DescribeMaxStaminaTableMastersResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#describemaxstaminatablemasters
      */
     public function describeMaxStaminaTableMasters (
             DescribeMaxStaminaTableMastersRequest $request
@@ -6107,8 +6221,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Maximum Stamina Table Master
+     *
      * @param CreateMaxStaminaTableMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#createmaxstaminatablemaster
      */
     public function createMaxStaminaTableMasterAsync(
             CreateMaxStaminaTableMasterRequest $request
@@ -6122,8 +6239,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Maximum Stamina Table Master
+     *
      * @param CreateMaxStaminaTableMasterRequest $request
      * @return CreateMaxStaminaTableMasterResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#createmaxstaminatablemaster
      */
     public function createMaxStaminaTableMaster (
             CreateMaxStaminaTableMasterRequest $request
@@ -6134,8 +6254,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Maximum Stamina Table Master
+     *
      * @param GetMaxStaminaTableMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#getmaxstaminatablemaster
      */
     public function getMaxStaminaTableMasterAsync(
             GetMaxStaminaTableMasterRequest $request
@@ -6149,8 +6272,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Maximum Stamina Table Master
+     *
      * @param GetMaxStaminaTableMasterRequest $request
      * @return GetMaxStaminaTableMasterResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#getmaxstaminatablemaster
      */
     public function getMaxStaminaTableMaster (
             GetMaxStaminaTableMasterRequest $request
@@ -6161,8 +6287,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Maximum Stamina Table Master
+     *
      * @param UpdateMaxStaminaTableMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#updatemaxstaminatablemaster
      */
     public function updateMaxStaminaTableMasterAsync(
             UpdateMaxStaminaTableMasterRequest $request
@@ -6176,8 +6305,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Maximum Stamina Table Master
+     *
      * @param UpdateMaxStaminaTableMasterRequest $request
      * @return UpdateMaxStaminaTableMasterResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#updatemaxstaminatablemaster
      */
     public function updateMaxStaminaTableMaster (
             UpdateMaxStaminaTableMasterRequest $request
@@ -6188,8 +6320,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Maximum Stamina Table Master
+     *
      * @param DeleteMaxStaminaTableMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#deletemaxstaminatablemaster
      */
     public function deleteMaxStaminaTableMasterAsync(
             DeleteMaxStaminaTableMasterRequest $request
@@ -6203,8 +6338,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Maximum Stamina Table Master
+     *
      * @param DeleteMaxStaminaTableMasterRequest $request
      * @return DeleteMaxStaminaTableMasterResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#deletemaxstaminatablemaster
      */
     public function deleteMaxStaminaTableMaster (
             DeleteMaxStaminaTableMasterRequest $request
@@ -6215,8 +6353,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Recovery Interval Table Masters
+     *
      * @param DescribeRecoverIntervalTableMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#describerecoverintervaltablemasters
      */
     public function describeRecoverIntervalTableMastersAsync(
             DescribeRecoverIntervalTableMastersRequest $request
@@ -6230,8 +6371,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Recovery Interval Table Masters
+     *
      * @param DescribeRecoverIntervalTableMastersRequest $request
      * @return DescribeRecoverIntervalTableMastersResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#describerecoverintervaltablemasters
      */
     public function describeRecoverIntervalTableMasters (
             DescribeRecoverIntervalTableMastersRequest $request
@@ -6242,8 +6386,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Recovery Interval Table Master
+     *
      * @param CreateRecoverIntervalTableMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#createrecoverintervaltablemaster
      */
     public function createRecoverIntervalTableMasterAsync(
             CreateRecoverIntervalTableMasterRequest $request
@@ -6257,8 +6404,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Recovery Interval Table Master
+     *
      * @param CreateRecoverIntervalTableMasterRequest $request
      * @return CreateRecoverIntervalTableMasterResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#createrecoverintervaltablemaster
      */
     public function createRecoverIntervalTableMaster (
             CreateRecoverIntervalTableMasterRequest $request
@@ -6269,8 +6419,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Recovery Interval Table Master
+     *
      * @param GetRecoverIntervalTableMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#getrecoverintervaltablemaster
      */
     public function getRecoverIntervalTableMasterAsync(
             GetRecoverIntervalTableMasterRequest $request
@@ -6284,8 +6437,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Recovery Interval Table Master
+     *
      * @param GetRecoverIntervalTableMasterRequest $request
      * @return GetRecoverIntervalTableMasterResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#getrecoverintervaltablemaster
      */
     public function getRecoverIntervalTableMaster (
             GetRecoverIntervalTableMasterRequest $request
@@ -6296,8 +6452,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Recovery Interval Table Master
+     *
      * @param UpdateRecoverIntervalTableMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#updaterecoverintervaltablemaster
      */
     public function updateRecoverIntervalTableMasterAsync(
             UpdateRecoverIntervalTableMasterRequest $request
@@ -6311,8 +6470,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Recovery Interval Table Master
+     *
      * @param UpdateRecoverIntervalTableMasterRequest $request
      * @return UpdateRecoverIntervalTableMasterResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#updaterecoverintervaltablemaster
      */
     public function updateRecoverIntervalTableMaster (
             UpdateRecoverIntervalTableMasterRequest $request
@@ -6323,8 +6485,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Recovery Interval Table Master
+     *
      * @param DeleteRecoverIntervalTableMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#deleterecoverintervaltablemaster
      */
     public function deleteRecoverIntervalTableMasterAsync(
             DeleteRecoverIntervalTableMasterRequest $request
@@ -6338,8 +6503,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Recovery Interval Table Master
+     *
      * @param DeleteRecoverIntervalTableMasterRequest $request
      * @return DeleteRecoverIntervalTableMasterResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#deleterecoverintervaltablemaster
      */
     public function deleteRecoverIntervalTableMaster (
             DeleteRecoverIntervalTableMasterRequest $request
@@ -6350,8 +6518,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Stamina Recovery Amount Table Masters
+     *
      * @param DescribeRecoverValueTableMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#describerecovervaluetablemasters
      */
     public function describeRecoverValueTableMastersAsync(
             DescribeRecoverValueTableMastersRequest $request
@@ -6365,8 +6536,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Stamina Recovery Amount Table Masters
+     *
      * @param DescribeRecoverValueTableMastersRequest $request
      * @return DescribeRecoverValueTableMastersResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#describerecovervaluetablemasters
      */
     public function describeRecoverValueTableMasters (
             DescribeRecoverValueTableMastersRequest $request
@@ -6377,8 +6551,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Stamina Recovery Amount Table Master
+     *
      * @param CreateRecoverValueTableMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#createrecovervaluetablemaster
      */
     public function createRecoverValueTableMasterAsync(
             CreateRecoverValueTableMasterRequest $request
@@ -6392,8 +6569,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Stamina Recovery Amount Table Master
+     *
      * @param CreateRecoverValueTableMasterRequest $request
      * @return CreateRecoverValueTableMasterResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#createrecovervaluetablemaster
      */
     public function createRecoverValueTableMaster (
             CreateRecoverValueTableMasterRequest $request
@@ -6404,8 +6584,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Stamina Recovery Amount Table Master
+     *
      * @param GetRecoverValueTableMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#getrecovervaluetablemaster
      */
     public function getRecoverValueTableMasterAsync(
             GetRecoverValueTableMasterRequest $request
@@ -6419,8 +6602,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Stamina Recovery Amount Table Master
+     *
      * @param GetRecoverValueTableMasterRequest $request
      * @return GetRecoverValueTableMasterResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#getrecovervaluetablemaster
      */
     public function getRecoverValueTableMaster (
             GetRecoverValueTableMasterRequest $request
@@ -6431,8 +6617,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Stamina Recovery Amount Table Master
+     *
      * @param UpdateRecoverValueTableMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#updaterecovervaluetablemaster
      */
     public function updateRecoverValueTableMasterAsync(
             UpdateRecoverValueTableMasterRequest $request
@@ -6446,8 +6635,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Stamina Recovery Amount Table Master
+     *
      * @param UpdateRecoverValueTableMasterRequest $request
      * @return UpdateRecoverValueTableMasterResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#updaterecovervaluetablemaster
      */
     public function updateRecoverValueTableMaster (
             UpdateRecoverValueTableMasterRequest $request
@@ -6458,8 +6650,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Stamina Recovery Amount Table Master
+     *
      * @param DeleteRecoverValueTableMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#deleterecovervaluetablemaster
      */
     public function deleteRecoverValueTableMasterAsync(
             DeleteRecoverValueTableMasterRequest $request
@@ -6473,8 +6668,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Stamina Recovery Amount Table Master
+     *
      * @param DeleteRecoverValueTableMasterRequest $request
      * @return DeleteRecoverValueTableMasterResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#deleterecovervaluetablemaster
      */
     public function deleteRecoverValueTableMaster (
             DeleteRecoverValueTableMasterRequest $request
@@ -6485,8 +6683,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Stamina Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#exportmaster
      */
     public function exportMasterAsync(
             ExportMasterRequest $request
@@ -6500,8 +6701,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Stamina Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return ExportMasterResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#exportmaster
      */
     public function exportMaster (
             ExportMasterRequest $request
@@ -6512,8 +6716,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Stamina Model master data
+     *
      * @param GetCurrentStaminaMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#getcurrentstaminamaster
      */
     public function getCurrentStaminaMasterAsync(
             GetCurrentStaminaMasterRequest $request
@@ -6527,8 +6734,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Stamina Model master data
+     *
      * @param GetCurrentStaminaMasterRequest $request
      * @return GetCurrentStaminaMasterResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#getcurrentstaminamaster
      */
     public function getCurrentStaminaMaster (
             GetCurrentStaminaMasterRequest $request
@@ -6539,8 +6749,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Stamina Model master data (3-phase version)
+     *
      * @param PreUpdateCurrentStaminaMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#preupdatecurrentstaminamaster
      */
     public function preUpdateCurrentStaminaMasterAsync(
             PreUpdateCurrentStaminaMasterRequest $request
@@ -6554,8 +6767,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Stamina Model master data (3-phase version)
+     *
      * @param PreUpdateCurrentStaminaMasterRequest $request
      * @return PreUpdateCurrentStaminaMasterResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#preupdatecurrentstaminamaster
      */
     public function preUpdateCurrentStaminaMaster (
             PreUpdateCurrentStaminaMasterRequest $request
@@ -6566,8 +6782,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Stamina Model master data
+     *
      * @param UpdateCurrentStaminaMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#updatecurrentstaminamaster
      */
     public function updateCurrentStaminaMasterAsync(
             UpdateCurrentStaminaMasterRequest $request
@@ -6581,8 +6800,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Stamina Model master data
+     *
      * @param UpdateCurrentStaminaMasterRequest $request
      * @return UpdateCurrentStaminaMasterResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#updatecurrentstaminamaster
      */
     public function updateCurrentStaminaMaster (
             UpdateCurrentStaminaMasterRequest $request
@@ -6593,8 +6815,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Stamina Model master data from GitHub
+     *
      * @param UpdateCurrentStaminaMasterFromGitHubRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#updatecurrentstaminamasterfromgithub
      */
     public function updateCurrentStaminaMasterFromGitHubAsync(
             UpdateCurrentStaminaMasterFromGitHubRequest $request
@@ -6608,8 +6833,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Stamina Model master data from GitHub
+     *
      * @param UpdateCurrentStaminaMasterFromGitHubRequest $request
      * @return UpdateCurrentStaminaMasterFromGitHubResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#updatecurrentstaminamasterfromgithub
      */
     public function updateCurrentStaminaMasterFromGitHub (
             UpdateCurrentStaminaMasterFromGitHubRequest $request
@@ -6620,8 +6848,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Stamina Models
+     *
      * @param DescribeStaminaModelsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#describestaminamodels
      */
     public function describeStaminaModelsAsync(
             DescribeStaminaModelsRequest $request
@@ -6635,8 +6866,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Stamina Models
+     *
      * @param DescribeStaminaModelsRequest $request
      * @return DescribeStaminaModelsResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#describestaminamodels
      */
     public function describeStaminaModels (
             DescribeStaminaModelsRequest $request
@@ -6647,8 +6881,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Stamina Model
+     *
      * @param GetStaminaModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#getstaminamodel
      */
     public function getStaminaModelAsync(
             GetStaminaModelRequest $request
@@ -6662,8 +6899,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Stamina Model
+     *
      * @param GetStaminaModelRequest $request
      * @return GetStaminaModelResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#getstaminamodel
      */
     public function getStaminaModel (
             GetStaminaModelRequest $request
@@ -6674,8 +6914,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Stamina
+     *
      * @param DescribeStaminasRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#describestaminas
      */
     public function describeStaminasAsync(
             DescribeStaminasRequest $request
@@ -6689,8 +6932,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Stamina
+     *
      * @param DescribeStaminasRequest $request
      * @return DescribeStaminasResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#describestaminas
      */
     public function describeStaminas (
             DescribeStaminasRequest $request
@@ -6701,8 +6947,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Stamina list by User ID
+     *
      * @param DescribeStaminasByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#describestaminasbyuserid
      */
     public function describeStaminasByUserIdAsync(
             DescribeStaminasByUserIdRequest $request
@@ -6716,8 +6965,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Stamina list by User ID
+     *
      * @param DescribeStaminasByUserIdRequest $request
      * @return DescribeStaminasByUserIdResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#describestaminasbyuserid
      */
     public function describeStaminasByUserId (
             DescribeStaminasByUserIdRequest $request
@@ -6728,8 +6980,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Stamina
+     *
      * @param GetStaminaRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#getstamina
      */
     public function getStaminaAsync(
             GetStaminaRequest $request
@@ -6743,8 +6998,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Stamina
+     *
      * @param GetStaminaRequest $request
      * @return GetStaminaResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#getstamina
      */
     public function getStamina (
             GetStaminaRequest $request
@@ -6755,8 +7013,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Stamina by User ID
+     *
      * @param GetStaminaByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#getstaminabyuserid
      */
     public function getStaminaByUserIdAsync(
             GetStaminaByUserIdRequest $request
@@ -6770,8 +7031,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Stamina by User ID
+     *
      * @param GetStaminaByUserIdRequest $request
      * @return GetStaminaByUserIdResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#getstaminabyuserid
      */
     public function getStaminaByUserId (
             GetStaminaByUserIdRequest $request
@@ -6782,8 +7046,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create and update Stamina by User ID
+     *
      * @param UpdateStaminaByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#updatestaminabyuserid
      */
     public function updateStaminaByUserIdAsync(
             UpdateStaminaByUserIdRequest $request
@@ -6797,8 +7064,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create and update Stamina by User ID
+     *
      * @param UpdateStaminaByUserIdRequest $request
      * @return UpdateStaminaByUserIdResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#updatestaminabyuserid
      */
     public function updateStaminaByUserId (
             UpdateStaminaByUserIdRequest $request
@@ -6809,8 +7079,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Consume Stamina
+     *
      * @param ConsumeStaminaRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#consumestamina
      */
     public function consumeStaminaAsync(
             ConsumeStaminaRequest $request
@@ -6824,8 +7097,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Consume Stamina
+     *
      * @param ConsumeStaminaRequest $request
      * @return ConsumeStaminaResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#consumestamina
      */
     public function consumeStamina (
             ConsumeStaminaRequest $request
@@ -6836,8 +7112,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Consume Stamina by User ID
+     *
      * @param ConsumeStaminaByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#consumestaminabyuserid
      */
     public function consumeStaminaByUserIdAsync(
             ConsumeStaminaByUserIdRequest $request
@@ -6851,8 +7130,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Consume Stamina by User ID
+     *
      * @param ConsumeStaminaByUserIdRequest $request
      * @return ConsumeStaminaByUserIdResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#consumestaminabyuserid
      */
     public function consumeStaminaByUserId (
             ConsumeStaminaByUserIdRequest $request
@@ -6863,8 +7145,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Apply the natural recovery amount of the current stamina
+     *
      * @param ApplyStaminaRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#applystamina
      */
     public function applyStaminaAsync(
             ApplyStaminaRequest $request
@@ -6878,8 +7163,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Apply the natural recovery amount of the current stamina
+     *
      * @param ApplyStaminaRequest $request
      * @return ApplyStaminaResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#applystamina
      */
     public function applyStamina (
             ApplyStaminaRequest $request
@@ -6890,8 +7178,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Apply the natural recovery amount of the current stamina by specifying the user ID
+     *
      * @param ApplyStaminaByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#applystaminabyuserid
      */
     public function applyStaminaByUserIdAsync(
             ApplyStaminaByUserIdRequest $request
@@ -6905,8 +7196,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Apply the natural recovery amount of the current stamina by specifying the user ID
+     *
      * @param ApplyStaminaByUserIdRequest $request
      * @return ApplyStaminaByUserIdResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#applystaminabyuserid
      */
     public function applyStaminaByUserId (
             ApplyStaminaByUserIdRequest $request
@@ -6917,8 +7211,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Recover Stamina by User ID
+     *
      * @param RecoverStaminaByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#recoverstaminabyuserid
      */
     public function recoverStaminaByUserIdAsync(
             RecoverStaminaByUserIdRequest $request
@@ -6932,8 +7229,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Recover Stamina by User ID
+     *
      * @param RecoverStaminaByUserIdRequest $request
      * @return RecoverStaminaByUserIdResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#recoverstaminabyuserid
      */
     public function recoverStaminaByUserId (
             RecoverStaminaByUserIdRequest $request
@@ -6944,8 +7244,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Add the maximum value of stamina by specifying the user ID
+     *
      * @param RaiseMaxValueByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#raisemaxvaluebyuserid
      */
     public function raiseMaxValueByUserIdAsync(
             RaiseMaxValueByUserIdRequest $request
@@ -6959,8 +7262,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Add the maximum value of stamina by specifying the user ID
+     *
      * @param RaiseMaxValueByUserIdRequest $request
      * @return RaiseMaxValueByUserIdResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#raisemaxvaluebyuserid
      */
     public function raiseMaxValueByUserId (
             RaiseMaxValueByUserIdRequest $request
@@ -6971,8 +7277,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Subtract the maximum value of stamina
+     *
      * @param DecreaseMaxValueRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#decreasemaxvalue
      */
     public function decreaseMaxValueAsync(
             DecreaseMaxValueRequest $request
@@ -6986,8 +7295,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Subtract the maximum value of stamina
+     *
      * @param DecreaseMaxValueRequest $request
      * @return DecreaseMaxValueResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#decreasemaxvalue
      */
     public function decreaseMaxValue (
             DecreaseMaxValueRequest $request
@@ -6998,8 +7310,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Subtract the maximum value of stamina by specifying the user ID
+     *
      * @param DecreaseMaxValueByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#decreasemaxvaluebyuserid
      */
     public function decreaseMaxValueByUserIdAsync(
             DecreaseMaxValueByUserIdRequest $request
@@ -7013,8 +7328,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Subtract the maximum value of stamina by specifying the user ID
+     *
      * @param DecreaseMaxValueByUserIdRequest $request
      * @return DecreaseMaxValueByUserIdResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#decreasemaxvaluebyuserid
      */
     public function decreaseMaxValueByUserId (
             DecreaseMaxValueByUserIdRequest $request
@@ -7025,8 +7343,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update the maximum value of stamina by User ID
+     *
      * @param SetMaxValueByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#setmaxvaluebyuserid
      */
     public function setMaxValueByUserIdAsync(
             SetMaxValueByUserIdRequest $request
@@ -7040,8 +7361,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update the maximum value of stamina by User ID
+     *
      * @param SetMaxValueByUserIdRequest $request
      * @return SetMaxValueByUserIdResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#setmaxvaluebyuserid
      */
     public function setMaxValueByUserId (
             SetMaxValueByUserIdRequest $request
@@ -7052,8 +7376,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update stamina recovery interval (minutes) by User ID
+     *
      * @param SetRecoverIntervalByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#setrecoverintervalbyuserid
      */
     public function setRecoverIntervalByUserIdAsync(
             SetRecoverIntervalByUserIdRequest $request
@@ -7067,8 +7394,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update stamina recovery interval (minutes) by User ID
+     *
      * @param SetRecoverIntervalByUserIdRequest $request
      * @return SetRecoverIntervalByUserIdResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#setrecoverintervalbyuserid
      */
     public function setRecoverIntervalByUserId (
             SetRecoverIntervalByUserIdRequest $request
@@ -7079,8 +7409,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Set the amount of stamina recovery by specifying the user ID
+     *
      * @param SetRecoverValueByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#setrecovervaluebyuserid
      */
     public function setRecoverValueByUserIdAsync(
             SetRecoverValueByUserIdRequest $request
@@ -7094,8 +7427,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Set the amount of stamina recovery by specifying the user ID
+     *
      * @param SetRecoverValueByUserIdRequest $request
      * @return SetRecoverValueByUserIdResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#setrecovervaluebyuserid
      */
     public function setRecoverValueByUserId (
             SetRecoverValueByUserIdRequest $request
@@ -7106,8 +7442,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update maximum stamina using GS2-Experience status
+     *
      * @param SetMaxValueByStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#setmaxvaluebystatus
      */
     public function setMaxValueByStatusAsync(
             SetMaxValueByStatusRequest $request
@@ -7121,8 +7460,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update maximum stamina using GS2-Experience status
+     *
      * @param SetMaxValueByStatusRequest $request
      * @return SetMaxValueByStatusResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#setmaxvaluebystatus
      */
     public function setMaxValueByStatus (
             SetMaxValueByStatusRequest $request
@@ -7133,8 +7475,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update stamina recovery interval using GS2-Experience status
+     *
      * @param SetRecoverIntervalByStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#setrecoverintervalbystatus
      */
     public function setRecoverIntervalByStatusAsync(
             SetRecoverIntervalByStatusRequest $request
@@ -7148,8 +7493,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update stamina recovery interval using GS2-Experience status
+     *
      * @param SetRecoverIntervalByStatusRequest $request
      * @return SetRecoverIntervalByStatusResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#setrecoverintervalbystatus
      */
     public function setRecoverIntervalByStatus (
             SetRecoverIntervalByStatusRequest $request
@@ -7160,8 +7508,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update stamina recovery amount using GS2-Experience status
+     *
      * @param SetRecoverValueByStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#setrecovervaluebystatus
      */
     public function setRecoverValueByStatusAsync(
             SetRecoverValueByStatusRequest $request
@@ -7175,8 +7526,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update stamina recovery amount using GS2-Experience status
+     *
      * @param SetRecoverValueByStatusRequest $request
      * @return SetRecoverValueByStatusResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#setrecovervaluebystatus
      */
     public function setRecoverValueByStatus (
             SetRecoverValueByStatusRequest $request
@@ -7187,8 +7541,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Stamina by User ID
+     *
      * @param DeleteStaminaByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#deletestaminabyuserid
      */
     public function deleteStaminaByUserIdAsync(
             DeleteStaminaByUserIdRequest $request
@@ -7202,8 +7559,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Stamina by User ID
+     *
      * @param DeleteStaminaByUserIdRequest $request
      * @return DeleteStaminaByUserIdResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#deletestaminabyuserid
      */
     public function deleteStaminaByUserId (
             DeleteStaminaByUserIdRequest $request
@@ -7214,8 +7574,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the value of the current stamina
+     *
      * @param VerifyStaminaValueRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#verifystaminavalue
      */
     public function verifyStaminaValueAsync(
             VerifyStaminaValueRequest $request
@@ -7229,8 +7592,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the value of the current stamina
+     *
      * @param VerifyStaminaValueRequest $request
      * @return VerifyStaminaValueResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#verifystaminavalue
      */
     public function verifyStaminaValue (
             VerifyStaminaValueRequest $request
@@ -7241,8 +7607,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the value of the current Stamina by User ID
+     *
      * @param VerifyStaminaValueByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#verifystaminavaluebyuserid
      */
     public function verifyStaminaValueByUserIdAsync(
             VerifyStaminaValueByUserIdRequest $request
@@ -7256,8 +7625,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the value of the current Stamina by User ID
+     *
      * @param VerifyStaminaValueByUserIdRequest $request
      * @return VerifyStaminaValueByUserIdResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#verifystaminavaluebyuserid
      */
     public function verifyStaminaValueByUserId (
             VerifyStaminaValueByUserIdRequest $request
@@ -7268,8 +7640,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the value of the max stamina
+     *
      * @param VerifyStaminaMaxValueRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#verifystaminamaxvalue
      */
     public function verifyStaminaMaxValueAsync(
             VerifyStaminaMaxValueRequest $request
@@ -7283,8 +7658,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the value of the max stamina
+     *
      * @param VerifyStaminaMaxValueRequest $request
      * @return VerifyStaminaMaxValueResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#verifystaminamaxvalue
      */
     public function verifyStaminaMaxValue (
             VerifyStaminaMaxValueRequest $request
@@ -7295,8 +7673,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the value of the max stamina by User ID
+     *
      * @param VerifyStaminaMaxValueByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#verifystaminamaxvaluebyuserid
      */
     public function verifyStaminaMaxValueByUserIdAsync(
             VerifyStaminaMaxValueByUserIdRequest $request
@@ -7310,8 +7691,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the value of the max stamina by User ID
+     *
      * @param VerifyStaminaMaxValueByUserIdRequest $request
      * @return VerifyStaminaMaxValueByUserIdResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#verifystaminamaxvaluebyuserid
      */
     public function verifyStaminaMaxValueByUserId (
             VerifyStaminaMaxValueByUserIdRequest $request
@@ -7322,8 +7706,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the value of the recovery interval minutes
+     *
      * @param VerifyStaminaRecoverIntervalMinutesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#verifystaminarecoverintervalminutes
      */
     public function verifyStaminaRecoverIntervalMinutesAsync(
             VerifyStaminaRecoverIntervalMinutesRequest $request
@@ -7337,8 +7724,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the value of the recovery interval minutes
+     *
      * @param VerifyStaminaRecoverIntervalMinutesRequest $request
      * @return VerifyStaminaRecoverIntervalMinutesResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#verifystaminarecoverintervalminutes
      */
     public function verifyStaminaRecoverIntervalMinutes (
             VerifyStaminaRecoverIntervalMinutesRequest $request
@@ -7349,8 +7739,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the value of the recovery interval minutes by User ID
+     *
      * @param VerifyStaminaRecoverIntervalMinutesByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#verifystaminarecoverintervalminutesbyuserid
      */
     public function verifyStaminaRecoverIntervalMinutesByUserIdAsync(
             VerifyStaminaRecoverIntervalMinutesByUserIdRequest $request
@@ -7364,8 +7757,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the value of the recovery interval minutes by User ID
+     *
      * @param VerifyStaminaRecoverIntervalMinutesByUserIdRequest $request
      * @return VerifyStaminaRecoverIntervalMinutesByUserIdResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#verifystaminarecoverintervalminutesbyuserid
      */
     public function verifyStaminaRecoverIntervalMinutesByUserId (
             VerifyStaminaRecoverIntervalMinutesByUserIdRequest $request
@@ -7376,8 +7772,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the value of the recovery value
+     *
      * @param VerifyStaminaRecoverValueRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#verifystaminarecovervalue
      */
     public function verifyStaminaRecoverValueAsync(
             VerifyStaminaRecoverValueRequest $request
@@ -7391,8 +7790,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the value of the recovery value
+     *
      * @param VerifyStaminaRecoverValueRequest $request
      * @return VerifyStaminaRecoverValueResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#verifystaminarecovervalue
      */
     public function verifyStaminaRecoverValue (
             VerifyStaminaRecoverValueRequest $request
@@ -7403,8 +7805,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the value of the recovery value by User ID
+     *
      * @param VerifyStaminaRecoverValueByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#verifystaminarecovervaluebyuserid
      */
     public function verifyStaminaRecoverValueByUserIdAsync(
             VerifyStaminaRecoverValueByUserIdRequest $request
@@ -7418,8 +7823,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the value of the recovery value by User ID
+     *
      * @param VerifyStaminaRecoverValueByUserIdRequest $request
      * @return VerifyStaminaRecoverValueByUserIdResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#verifystaminarecovervaluebyuserid
      */
     public function verifyStaminaRecoverValueByUserId (
             VerifyStaminaRecoverValueByUserIdRequest $request
@@ -7430,8 +7838,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the value of the overflow value
+     *
      * @param VerifyStaminaOverflowValueRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#verifystaminaoverflowvalue
      */
     public function verifyStaminaOverflowValueAsync(
             VerifyStaminaOverflowValueRequest $request
@@ -7445,8 +7856,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the value of the overflow value
+     *
      * @param VerifyStaminaOverflowValueRequest $request
      * @return VerifyStaminaOverflowValueResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#verifystaminaoverflowvalue
      */
     public function verifyStaminaOverflowValue (
             VerifyStaminaOverflowValueRequest $request
@@ -7457,8 +7871,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the value of the overflow value by User ID
+     *
      * @param VerifyStaminaOverflowValueByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#verifystaminaoverflowvaluebyuserid
      */
     public function verifyStaminaOverflowValueByUserIdAsync(
             VerifyStaminaOverflowValueByUserIdRequest $request
@@ -7472,8 +7889,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the value of the overflow value by User ID
+     *
      * @param VerifyStaminaOverflowValueByUserIdRequest $request
      * @return VerifyStaminaOverflowValueByUserIdResult
+     * @see https://docs.gs2.io/api_reference/stamina/sdk/#verifystaminaoverflowvaluebyuserid
      */
     public function verifyStaminaOverflowValueByUserId (
             VerifyStaminaOverflowValueByUserIdRequest $request
@@ -7484,8 +7904,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute stamina recovery as an acquire action
+     *
      * @param RecoverStaminaByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/stamp_sheet/#gs2staminarecoverstaminabyuserid
      */
     public function recoverStaminaByStampSheetAsync(
             RecoverStaminaByStampSheetRequest $request
@@ -7499,8 +7922,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute stamina recovery as an acquire action
+     *
      * @param RecoverStaminaByStampSheetRequest $request
      * @return RecoverStaminaByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/stamina/stamp_sheet/#gs2staminarecoverstaminabyuserid
      */
     public function recoverStaminaByStampSheet (
             RecoverStaminaByStampSheetRequest $request
@@ -7511,8 +7937,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute stamina maximum value addition as an acquire action
+     *
      * @param RaiseMaxValueByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/stamp_sheet/#gs2staminaraisemaxvaluebyuserid
      */
     public function raiseMaxValueByStampSheetAsync(
             RaiseMaxValueByStampSheetRequest $request
@@ -7526,8 +7955,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute stamina maximum value addition as an acquire action
+     *
      * @param RaiseMaxValueByStampSheetRequest $request
      * @return RaiseMaxValueByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/stamina/stamp_sheet/#gs2staminaraisemaxvaluebyuserid
      */
     public function raiseMaxValueByStampSheet (
             RaiseMaxValueByStampSheetRequest $request
@@ -7538,8 +7970,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute stamina maximum value subtraction as a consume action
+     *
      * @param DecreaseMaxValueByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/stamp_sheet/#gs2staminadecreasemaxvaluebyuserid
      */
     public function decreaseMaxValueByStampTaskAsync(
             DecreaseMaxValueByStampTaskRequest $request
@@ -7553,8 +7988,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute stamina maximum value subtraction as a consume action
+     *
      * @param DecreaseMaxValueByStampTaskRequest $request
      * @return DecreaseMaxValueByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/stamina/stamp_sheet/#gs2staminadecreasemaxvaluebyuserid
      */
     public function decreaseMaxValueByStampTask (
             DecreaseMaxValueByStampTaskRequest $request
@@ -7565,8 +8003,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute maximum stamina value update as an acquire action
+     *
      * @param SetMaxValueByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/stamp_sheet/#gs2staminasetmaxvaluebyuserid
      */
     public function setMaxValueByStampSheetAsync(
             SetMaxValueByStampSheetRequest $request
@@ -7580,8 +8021,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute maximum stamina value update as an acquire action
+     *
      * @param SetMaxValueByStampSheetRequest $request
      * @return SetMaxValueByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/stamina/stamp_sheet/#gs2staminasetmaxvaluebyuserid
      */
     public function setMaxValueByStampSheet (
             SetMaxValueByStampSheetRequest $request
@@ -7592,8 +8036,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute stamina recovery interval update as an acquire action
+     *
      * @param SetRecoverIntervalByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/stamp_sheet/#gs2staminasetrecoverintervalbyuserid
      */
     public function setRecoverIntervalByStampSheetAsync(
             SetRecoverIntervalByStampSheetRequest $request
@@ -7607,8 +8054,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute stamina recovery interval update as an acquire action
+     *
      * @param SetRecoverIntervalByStampSheetRequest $request
      * @return SetRecoverIntervalByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/stamina/stamp_sheet/#gs2staminasetrecoverintervalbyuserid
      */
     public function setRecoverIntervalByStampSheet (
             SetRecoverIntervalByStampSheetRequest $request
@@ -7619,8 +8069,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute stamina recovery amount update as an acquire action
+     *
      * @param SetRecoverValueByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/stamp_sheet/#gs2staminasetrecovervaluebyuserid
      */
     public function setRecoverValueByStampSheetAsync(
             SetRecoverValueByStampSheetRequest $request
@@ -7634,8 +8087,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute stamina recovery amount update as an acquire action
+     *
      * @param SetRecoverValueByStampSheetRequest $request
      * @return SetRecoverValueByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/stamina/stamp_sheet/#gs2staminasetrecovervaluebyuserid
      */
     public function setRecoverValueByStampSheet (
             SetRecoverValueByStampSheetRequest $request
@@ -7646,8 +8102,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute stamina consumption as a consume action
+     *
      * @param ConsumeStaminaByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/stamp_sheet/#gs2staminaconsumestaminabyuserid
      */
     public function consumeStaminaByStampTaskAsync(
             ConsumeStaminaByStampTaskRequest $request
@@ -7661,8 +8120,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute stamina consumption as a consume action
+     *
      * @param ConsumeStaminaByStampTaskRequest $request
      * @return ConsumeStaminaByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/stamina/stamp_sheet/#gs2staminaconsumestaminabyuserid
      */
     public function consumeStaminaByStampTask (
             ConsumeStaminaByStampTaskRequest $request
@@ -7673,8 +8135,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the current value of stamina as a verification action
+     *
      * @param VerifyStaminaValueByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/stamp_sheet/#gs2staminaverifystaminavaluebyuserid
      */
     public function verifyStaminaValueByStampTaskAsync(
             VerifyStaminaValueByStampTaskRequest $request
@@ -7688,8 +8153,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the current value of stamina as a verification action
+     *
      * @param VerifyStaminaValueByStampTaskRequest $request
      * @return VerifyStaminaValueByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/stamina/stamp_sheet/#gs2staminaverifystaminavaluebyuserid
      */
     public function verifyStaminaValueByStampTask (
             VerifyStaminaValueByStampTaskRequest $request
@@ -7700,8 +8168,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the max value of stamina as a verification action
+     *
      * @param VerifyStaminaMaxValueByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/stamp_sheet/#gs2staminaverifystaminamaxvaluebyuserid
      */
     public function verifyStaminaMaxValueByStampTaskAsync(
             VerifyStaminaMaxValueByStampTaskRequest $request
@@ -7715,8 +8186,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the max value of stamina as a verification action
+     *
      * @param VerifyStaminaMaxValueByStampTaskRequest $request
      * @return VerifyStaminaMaxValueByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/stamina/stamp_sheet/#gs2staminaverifystaminamaxvaluebyuserid
      */
     public function verifyStaminaMaxValueByStampTask (
             VerifyStaminaMaxValueByStampTaskRequest $request
@@ -7727,8 +8201,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the recovery interval minutes of stamina as a verification action
+     *
      * @param VerifyStaminaRecoverIntervalMinutesByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/stamp_sheet/#gs2staminaverifystaminarecoverintervalminutesbyuserid
      */
     public function verifyStaminaRecoverIntervalMinutesByStampTaskAsync(
             VerifyStaminaRecoverIntervalMinutesByStampTaskRequest $request
@@ -7742,8 +8219,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the recovery interval minutes of stamina as a verification action
+     *
      * @param VerifyStaminaRecoverIntervalMinutesByStampTaskRequest $request
      * @return VerifyStaminaRecoverIntervalMinutesByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/stamina/stamp_sheet/#gs2staminaverifystaminarecoverintervalminutesbyuserid
      */
     public function verifyStaminaRecoverIntervalMinutesByStampTask (
             VerifyStaminaRecoverIntervalMinutesByStampTaskRequest $request
@@ -7754,8 +8234,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the recovery value of stamina as a verification action
+     *
      * @param VerifyStaminaRecoverValueByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/stamp_sheet/#gs2staminaverifystaminarecovervaluebyuserid
      */
     public function verifyStaminaRecoverValueByStampTaskAsync(
             VerifyStaminaRecoverValueByStampTaskRequest $request
@@ -7769,8 +8252,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the recovery value of stamina as a verification action
+     *
      * @param VerifyStaminaRecoverValueByStampTaskRequest $request
      * @return VerifyStaminaRecoverValueByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/stamina/stamp_sheet/#gs2staminaverifystaminarecovervaluebyuserid
      */
     public function verifyStaminaRecoverValueByStampTask (
             VerifyStaminaRecoverValueByStampTaskRequest $request
@@ -7781,8 +8267,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the overflow value of stamina as a verification action
+     *
      * @param VerifyStaminaOverflowValueByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/stamina/stamp_sheet/#gs2staminaverifystaminaoverflowvaluebyuserid
      */
     public function verifyStaminaOverflowValueByStampTaskAsync(
             VerifyStaminaOverflowValueByStampTaskRequest $request
@@ -7796,8 +8285,11 @@ class Gs2StaminaRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the overflow value of stamina as a verification action
+     *
      * @param VerifyStaminaOverflowValueByStampTaskRequest $request
      * @return VerifyStaminaOverflowValueByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/stamina/stamp_sheet/#gs2staminaverifystaminaoverflowvaluebyuserid
      */
     public function verifyStaminaOverflowValueByStampTask (
             VerifyStaminaOverflowValueByStampTaskRequest $request

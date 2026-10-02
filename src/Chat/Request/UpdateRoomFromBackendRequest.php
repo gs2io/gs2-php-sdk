@@ -19,89 +19,136 @@ namespace Gs2\Chat\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for updateRoomFromBackend: Update Room from Backend
+ *
+ * @see https://docs.gs2.io/api_reference/chat/sdk/#updateroomfrombackend
+ */
 class UpdateRoomFromBackendRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Room name */
     private $roomName;
-    /** @var string */
+    /** @var string Metadata */
     private $metadata;
-    /** @var string */
+    /** @var string Password required to access the room */
     private $password;
-    /** @var array */
+    /** @var array List of user IDs with access to the room */
     private $whiteListUserIds;
-    /** @var string */
+    /** @var string Owner User ID */
     private $userId;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UpdateRoomFromBackendRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UpdateRoomFromBackendRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Room name */
 	public function getRoomName(): ?string {
 		return $this->roomName;
 	}
+    /** @param string|null $roomName Room name */
 	public function setRoomName(?string $roomName) {
 		$this->roomName = $roomName;
 	}
+    /**
+     * @param string|null $roomName Room name
+     * @return UpdateRoomFromBackendRequest
+     */
 	public function withRoomName(?string $roomName): UpdateRoomFromBackendRequest {
 		$this->roomName = $roomName;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return UpdateRoomFromBackendRequest
+     */
 	public function withMetadata(?string $metadata): UpdateRoomFromBackendRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return string|null Password required to access the room */
 	public function getPassword(): ?string {
 		return $this->password;
 	}
+    /** @param string|null $password Password required to access the room */
 	public function setPassword(?string $password) {
 		$this->password = $password;
 	}
+    /**
+     * @param string|null $password Password required to access the room
+     * @return UpdateRoomFromBackendRequest
+     */
 	public function withPassword(?string $password): UpdateRoomFromBackendRequest {
 		$this->password = $password;
 		return $this;
 	}
+    /** @return array|null List of user IDs with access to the room */
 	public function getWhiteListUserIds(): ?array {
 		return $this->whiteListUserIds;
 	}
+    /** @param array|null $whiteListUserIds List of user IDs with access to the room */
 	public function setWhiteListUserIds(?array $whiteListUserIds) {
 		$this->whiteListUserIds = $whiteListUserIds;
 	}
+    /**
+     * @param array|null $whiteListUserIds List of user IDs with access to the room
+     * @return UpdateRoomFromBackendRequest
+     */
 	public function withWhiteListUserIds(?array $whiteListUserIds): UpdateRoomFromBackendRequest {
 		$this->whiteListUserIds = $whiteListUserIds;
 		return $this;
 	}
+    /** @return string|null Owner User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId Owner User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId Owner User ID
+     * @return UpdateRoomFromBackendRequest
+     */
 	public function withUserId(?string $userId): UpdateRoomFromBackendRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return UpdateRoomFromBackendRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): UpdateRoomFromBackendRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

@@ -19,39 +19,58 @@ namespace Gs2\Distributor\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/** Request for runStampSheet: Execute acquire action of transaction */
 class RunStampSheetRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Transaction */
     private $stampSheet;
-    /** @var string */
+    /** @var string Encryption Key GRN */
     private $keyId;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return RunStampSheetRequest
+     */
 	public function withNamespaceName(?string $namespaceName): RunStampSheetRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Transaction */
 	public function getStampSheet(): ?string {
 		return $this->stampSheet;
 	}
+    /** @param string|null $stampSheet Transaction */
 	public function setStampSheet(?string $stampSheet) {
 		$this->stampSheet = $stampSheet;
 	}
+    /**
+     * @param string|null $stampSheet Transaction
+     * @return RunStampSheetRequest
+     */
 	public function withStampSheet(?string $stampSheet): RunStampSheetRequest {
 		$this->stampSheet = $stampSheet;
 		return $this;
 	}
+    /** @return string|null Encryption Key GRN */
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
+    /** @param string|null $keyId Encryption Key GRN */
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
+    /**
+     * @param string|null $keyId Encryption Key GRN
+     * @return RunStampSheetRequest
+     */
 	public function withKeyId(?string $keyId): RunStampSheetRequest {
 		$this->keyId = $keyId;
 		return $this;

@@ -20,18 +20,29 @@ namespace Gs2\Schedule\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Schedule\Model\Trigger;
 
+/**
+ * Result of extendTriggerByStampSheet: Extend the period of a trigger as an acquire action
+ *
+ * @see https://docs.gs2.io/api_reference/schedule/stamp_sheet/#gs2scheduleextendtriggerbyuserid
+ */
 class ExtendTriggerByStampSheetResult implements IResult {
-    /** @var Trigger */
+    /** @var Trigger Pulled Trigger */
     private $item;
 
+    /** @return Trigger|null Pulled Trigger */
 	public function getItem(): ?Trigger {
 		return $this->item;
 	}
 
+    /** @param Trigger|null $item Pulled Trigger */
 	public function setItem(?Trigger $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Trigger|null $item Pulled Trigger
+     * @return ExtendTriggerByStampSheetResult
+     */
 	public function withItem(?Trigger $item): ExtendTriggerByStampSheetResult {
 		$this->item = $item;
 		return $this;

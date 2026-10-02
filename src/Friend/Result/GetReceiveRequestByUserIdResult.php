@@ -20,18 +20,29 @@ namespace Gs2\Friend\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Friend\Model\FriendRequest;
 
+/**
+ * Result of getReceiveRequestByUserId: Get a received friend request by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/friend/sdk/#getreceiverequestbyuserid
+ */
 class GetReceiveRequestByUserIdResult implements IResult {
-    /** @var FriendRequest */
+    /** @var FriendRequest Friend request */
     private $item;
 
+    /** @return FriendRequest|null Friend request */
 	public function getItem(): ?FriendRequest {
 		return $this->item;
 	}
 
+    /** @param FriendRequest|null $item Friend request */
 	public function setItem(?FriendRequest $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param FriendRequest|null $item Friend request
+     * @return GetReceiveRequestByUserIdResult
+     */
 	public function withItem(?FriendRequest $item): GetReceiveRequestByUserIdResult {
 		$this->item = $item;
 		return $this;

@@ -20,18 +20,29 @@ namespace Gs2\SkillTree\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\SkillTree\Model\Status;
 
+/**
+ * Result of markRestrainByUserId: Revert a node to unreleased state by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#markrestrainbyuserid
+ */
 class MarkRestrainByUserIdResult implements IResult {
-    /** @var Status */
+    /** @var Status Status */
     private $item;
 
+    /** @return Status|null Status */
 	public function getItem(): ?Status {
 		return $this->item;
 	}
 
+    /** @param Status|null $item Status */
 	public function setItem(?Status $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Status|null $item Status
+     * @return MarkRestrainByUserIdResult
+     */
 	public function withItem(?Status $item): MarkRestrainByUserIdResult {
 		$this->item = $item;
 		return $this;

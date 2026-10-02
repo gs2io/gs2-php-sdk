@@ -19,33 +19,50 @@ namespace Gs2\Version\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of preUpdateCurrentVersionMaster: Update currently active Version Model master data (3-phase version)
+ *
+ * @see https://docs.gs2.io/api_reference/version/sdk/#preupdatecurrentversionmaster
+ */
 class PreUpdateCurrentVersionMasterResult implements IResult {
-    /** @var string */
+    /** @var string Token used to reflect results after upload */
     private $uploadToken;
-    /** @var string */
+    /** @var string URL used to upload */
     private $uploadUrl;
 
+    /** @return string|null Token used to reflect results after upload */
 	public function getUploadToken(): ?string {
 		return $this->uploadToken;
 	}
 
+    /** @param string|null $uploadToken Token used to reflect results after upload */
 	public function setUploadToken(?string $uploadToken) {
 		$this->uploadToken = $uploadToken;
 	}
 
+    /**
+     * @param string|null $uploadToken Token used to reflect results after upload
+     * @return PreUpdateCurrentVersionMasterResult
+     */
 	public function withUploadToken(?string $uploadToken): PreUpdateCurrentVersionMasterResult {
 		$this->uploadToken = $uploadToken;
 		return $this;
 	}
 
+    /** @return string|null URL used to upload */
 	public function getUploadUrl(): ?string {
 		return $this->uploadUrl;
 	}
 
+    /** @param string|null $uploadUrl URL used to upload */
 	public function setUploadUrl(?string $uploadUrl) {
 		$this->uploadUrl = $uploadUrl;
 	}
 
+    /**
+     * @param string|null $uploadUrl URL used to upload
+     * @return PreUpdateCurrentVersionMasterResult
+     */
 	public function withUploadUrl(?string $uploadUrl): PreUpdateCurrentVersionMasterResult {
 		$this->uploadUrl = $uploadUrl;
 		return $this;

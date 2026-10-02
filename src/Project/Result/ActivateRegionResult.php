@@ -21,18 +21,25 @@ use Gs2\Core\Model\IResult;
 use Gs2\Project\Model\Gs2Region;
 use Gs2\Project\Model\Project;
 
+/** Result of activateRegion: Activate region */
 class ActivateRegionResult implements IResult {
-    /** @var Project */
+    /** @var Project Project updated */
     private $item;
 
+    /** @return Project|null Project updated */
 	public function getItem(): ?Project {
 		return $this->item;
 	}
 
+    /** @param Project|null $item Project updated */
 	public function setItem(?Project $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Project|null $item Project updated
+     * @return ActivateRegionResult
+     */
 	public function withItem(?Project $item): ActivateRegionResult {
 		$this->item = $item;
 		return $this;

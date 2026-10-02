@@ -21,33 +21,50 @@ use Gs2\Core\Model\IResult;
 use Gs2\Showcase\Model\DisplayItemMaster;
 use Gs2\Showcase\Model\ShowcaseMaster;
 
+/**
+ * Result of describeShowcaseMasters: List Showcase Masters
+ *
+ * @see https://docs.gs2.io/api_reference/showcase/sdk/#describeshowcasemasters
+ */
 class DescribeShowcaseMastersResult implements IResult {
-    /** @var array */
+    /** @var array List of Showcase Masters */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Showcase Masters */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Showcase Masters */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Showcase Masters
+     * @return DescribeShowcaseMastersResult
+     */
 	public function withItems(?array $items): DescribeShowcaseMastersResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeShowcaseMastersResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeShowcaseMastersResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

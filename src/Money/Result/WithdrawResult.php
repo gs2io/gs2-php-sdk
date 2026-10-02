@@ -21,33 +21,50 @@ use Gs2\Core\Model\IResult;
 use Gs2\Money\Model\WalletDetail;
 use Gs2\Money\Model\Wallet;
 
+/**
+ * Result of withdraw: Consume balance from wallet
+ *
+ * @see https://docs.gs2.io/api_reference/money/sdk/#withdraw
+ */
 class WithdrawResult implements IResult {
-    /** @var Wallet */
+    /** @var Wallet Post-withdraw Wallet */
     private $item;
-    /** @var float */
+    /** @var float Price of currency consumed */
     private $price;
 
+    /** @return Wallet|null Post-withdraw Wallet */
 	public function getItem(): ?Wallet {
 		return $this->item;
 	}
 
+    /** @param Wallet|null $item Post-withdraw Wallet */
 	public function setItem(?Wallet $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Wallet|null $item Post-withdraw Wallet
+     * @return WithdrawResult
+     */
 	public function withItem(?Wallet $item): WithdrawResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return float|null Price of currency consumed */
 	public function getPrice(): ?float {
 		return $this->price;
 	}
 
+    /** @param float|null $price Price of currency consumed */
 	public function setPrice(?float $price) {
 		$this->price = $price;
 	}
 
+    /**
+     * @param float|null $price Price of currency consumed
+     * @return WithdrawResult
+     */
 	public function withPrice(?float $price): WithdrawResult {
 		$this->price = $price;
 		return $this;

@@ -20,41 +20,64 @@ namespace Gs2\Distributor\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Distributor\Model\Config;
 
+/**
+ * Request for setTransactionDefaultConfigByUserId: Set the default value of Config to be specified for the Transaction Issuance API by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#settransactiondefaultconfigbyuserid
+ */
 class SetTransactionDefaultConfigByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var array */
+    /** @var array Configuration values applied to transaction placeholders */
     private $config;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return SetTransactionDefaultConfigByUserIdRequest
+     */
 	public function withUserId(?string $userId): SetTransactionDefaultConfigByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return array|null Configuration values applied to transaction placeholders */
 	public function getConfig(): ?array {
 		return $this->config;
 	}
+    /** @param array|null $config Configuration values applied to transaction placeholders */
 	public function setConfig(?array $config) {
 		$this->config = $config;
 	}
+    /**
+     * @param array|null $config Configuration values applied to transaction placeholders
+     * @return SetTransactionDefaultConfigByUserIdRequest
+     */
 	public function withConfig(?array $config): SetTransactionDefaultConfigByUserIdRequest {
 		$this->config = $config;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return SetTransactionDefaultConfigByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): SetTransactionDefaultConfigByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

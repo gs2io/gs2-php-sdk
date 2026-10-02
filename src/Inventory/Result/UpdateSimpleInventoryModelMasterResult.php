@@ -20,18 +20,29 @@ namespace Gs2\Inventory\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Inventory\Model\SimpleInventoryModelMaster;
 
+/**
+ * Result of updateSimpleInventoryModelMaster: Update Simple Inventory Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#updatesimpleinventorymodelmaster
+ */
 class UpdateSimpleInventoryModelMasterResult implements IResult {
-    /** @var SimpleInventoryModelMaster */
+    /** @var SimpleInventoryModelMaster Simple Inventory Model Master updated */
     private $item;
 
+    /** @return SimpleInventoryModelMaster|null Simple Inventory Model Master updated */
 	public function getItem(): ?SimpleInventoryModelMaster {
 		return $this->item;
 	}
 
+    /** @param SimpleInventoryModelMaster|null $item Simple Inventory Model Master updated */
 	public function setItem(?SimpleInventoryModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param SimpleInventoryModelMaster|null $item Simple Inventory Model Master updated
+     * @return UpdateSimpleInventoryModelMasterResult
+     */
 	public function withItem(?SimpleInventoryModelMaster $item): UpdateSimpleInventoryModelMasterResult {
 		$this->item = $item;
 		return $this;

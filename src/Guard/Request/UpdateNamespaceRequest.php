@@ -20,39 +20,62 @@ namespace Gs2\Guard\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Guard\Model\BlockingPolicyModel;
 
+/**
+ * Request for updateNamespace: Update Namespace
+ *
+ * @see https://docs.gs2.io/api_reference/guard/sdk/#updatenamespace
+ */
 class UpdateNamespaceRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var BlockingPolicyModel */
+    /** @var BlockingPolicyModel Blocking Policy */
     private $blockingPolicy;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UpdateNamespaceRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UpdateNamespaceRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return UpdateNamespaceRequest
+     */
 	public function withDescription(?string $description): UpdateNamespaceRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return BlockingPolicyModel|null Blocking Policy */
 	public function getBlockingPolicy(): ?BlockingPolicyModel {
 		return $this->blockingPolicy;
 	}
+    /** @param BlockingPolicyModel|null $blockingPolicy Blocking Policy */
 	public function setBlockingPolicy(?BlockingPolicyModel $blockingPolicy) {
 		$this->blockingPolicy = $blockingPolicy;
 	}
+    /**
+     * @param BlockingPolicyModel|null $blockingPolicy Blocking Policy
+     * @return UpdateNamespaceRequest
+     */
 	public function withBlockingPolicy(?BlockingPolicyModel $blockingPolicy): UpdateNamespaceRequest {
 		$this->blockingPolicy = $blockingPolicy;
 		return $this;

@@ -20,33 +20,50 @@ namespace Gs2\Mission\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Mission\Model\MissionGroupModelMaster;
 
+/**
+ * Result of describeMissionGroupModelMasters: List Mission Group Model Masters
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#describemissiongroupmodelmasters
+ */
 class DescribeMissionGroupModelMastersResult implements IResult {
-    /** @var array */
+    /** @var array List of Mission Group Model Master */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Mission Group Model Master */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Mission Group Model Master */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Mission Group Model Master
+     * @return DescribeMissionGroupModelMastersResult
+     */
 	public function withItems(?array $items): DescribeMissionGroupModelMastersResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeMissionGroupModelMastersResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeMissionGroupModelMastersResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

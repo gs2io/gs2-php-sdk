@@ -20,65 +20,100 @@ namespace Gs2\Mission\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Mission\Model\ScopedValue;
 
+/**
+ * Request for setCounterByUserId: Set counter by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#setcounterbyuserid
+ */
 class SetCounterByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Counter Model name */
     private $counterName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var array */
+    /** @var array List of values to be set */
     private $values;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return SetCounterByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): SetCounterByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Counter Model name */
 	public function getCounterName(): ?string {
 		return $this->counterName;
 	}
+    /** @param string|null $counterName Counter Model name */
 	public function setCounterName(?string $counterName) {
 		$this->counterName = $counterName;
 	}
+    /**
+     * @param string|null $counterName Counter Model name
+     * @return SetCounterByUserIdRequest
+     */
 	public function withCounterName(?string $counterName): SetCounterByUserIdRequest {
 		$this->counterName = $counterName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return SetCounterByUserIdRequest
+     */
 	public function withUserId(?string $userId): SetCounterByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return array|null List of values to be set */
 	public function getValues(): ?array {
 		return $this->values;
 	}
+    /** @param array|null $values List of values to be set */
 	public function setValues(?array $values) {
 		$this->values = $values;
 	}
+    /**
+     * @param array|null $values List of values to be set
+     * @return SetCounterByUserIdRequest
+     */
 	public function withValues(?array $values): SetCounterByUserIdRequest {
 		$this->values = $values;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return SetCounterByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): SetCounterByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

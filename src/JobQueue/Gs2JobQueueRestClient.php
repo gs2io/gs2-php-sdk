@@ -1638,25 +1638,22 @@ class GetJobResultByUserIdTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 JobQueue API クライアント
+ * GS2-JobQueue API client
  *
- * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/job_queue/sdk/
  */
 class Gs2JobQueueRestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/job_queue/sdk/#describenamespaces
      */
     public function describeNamespacesAsync(
             DescribeNamespacesRequest $request
@@ -1670,8 +1667,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
+     * @see https://docs.gs2.io/api_reference/job_queue/sdk/#describenamespaces
      */
     public function describeNamespaces (
             DescribeNamespacesRequest $request
@@ -1682,8 +1682,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/job_queue/sdk/#createnamespace
      */
     public function createNamespaceAsync(
             CreateNamespaceRequest $request
@@ -1697,8 +1700,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/job_queue/sdk/#createnamespace
      */
     public function createNamespace (
             CreateNamespaceRequest $request
@@ -1709,8 +1715,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/job_queue/sdk/#getnamespacestatus
      */
     public function getNamespaceStatusAsync(
             GetNamespaceStatusRequest $request
@@ -1724,8 +1733,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
+     * @see https://docs.gs2.io/api_reference/job_queue/sdk/#getnamespacestatus
      */
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
@@ -1736,8 +1748,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/job_queue/sdk/#getnamespace
      */
     public function getNamespaceAsync(
             GetNamespaceRequest $request
@@ -1751,8 +1766,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
+     * @see https://docs.gs2.io/api_reference/job_queue/sdk/#getnamespace
      */
     public function getNamespace (
             GetNamespaceRequest $request
@@ -1763,8 +1781,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/job_queue/sdk/#updatenamespace
      */
     public function updateNamespaceAsync(
             UpdateNamespaceRequest $request
@@ -1778,8 +1799,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/job_queue/sdk/#updatenamespace
      */
     public function updateNamespace (
             UpdateNamespaceRequest $request
@@ -1790,8 +1814,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/job_queue/sdk/#deletenamespace
      */
     public function deleteNamespaceAsync(
             DeleteNamespaceRequest $request
@@ -1805,8 +1832,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
+     * @see https://docs.gs2.io/api_reference/job_queue/sdk/#deletenamespace
      */
     public function deleteNamespace (
             DeleteNamespaceRequest $request
@@ -1817,8 +1847,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/job_queue/sdk/#getserviceversion
      */
     public function getServiceVersionAsync(
             GetServiceVersionRequest $request
@@ -1832,8 +1865,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return GetServiceVersionResult
+     * @see https://docs.gs2.io/api_reference/job_queue/sdk/#getserviceversion
      */
     public function getServiceVersion (
             GetServiceVersionRequest $request
@@ -1844,8 +1880,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/job_queue/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserIdAsync(
             DumpUserDataByUserIdRequest $request
@@ -1859,8 +1898,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return DumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/job_queue/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserId (
             DumpUserDataByUserIdRequest $request
@@ -1871,8 +1913,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/job_queue/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserIdAsync(
             CheckDumpUserDataByUserIdRequest $request
@@ -1886,8 +1931,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return CheckDumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/job_queue/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserId (
             CheckDumpUserDataByUserIdRequest $request
@@ -1898,8 +1946,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/job_queue/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserIdAsync(
             CleanUserDataByUserIdRequest $request
@@ -1913,8 +1964,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return CleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/job_queue/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserId (
             CleanUserDataByUserIdRequest $request
@@ -1925,8 +1979,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/job_queue/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserIdAsync(
             CheckCleanUserDataByUserIdRequest $request
@@ -1940,8 +1997,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return CheckCleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/job_queue/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserId (
             CheckCleanUserDataByUserIdRequest $request
@@ -1952,8 +2012,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/job_queue/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserIdAsync(
             PrepareImportUserDataByUserIdRequest $request
@@ -1967,8 +2030,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PrepareImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/job_queue/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserId (
             PrepareImportUserDataByUserIdRequest $request
@@ -1979,8 +2045,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/job_queue/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserIdAsync(
             ImportUserDataByUserIdRequest $request
@@ -1994,8 +2063,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return ImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/job_queue/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserId (
             ImportUserDataByUserIdRequest $request
@@ -2006,8 +2078,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/job_queue/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserIdAsync(
             CheckImportUserDataByUserIdRequest $request
@@ -2021,8 +2096,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return CheckImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/job_queue/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserId (
             CheckImportUserDataByUserIdRequest $request
@@ -2033,8 +2111,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Jobs
+     *
      * @param DescribeJobsByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/job_queue/sdk/#describejobsbyuserid
      */
     public function describeJobsByUserIdAsync(
             DescribeJobsByUserIdRequest $request
@@ -2048,8 +2129,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Jobs
+     *
      * @param DescribeJobsByUserIdRequest $request
      * @return DescribeJobsByUserIdResult
+     * @see https://docs.gs2.io/api_reference/job_queue/sdk/#describejobsbyuserid
      */
     public function describeJobsByUserId (
             DescribeJobsByUserIdRequest $request
@@ -2060,8 +2144,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Job
+     *
      * @param GetJobByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/job_queue/sdk/#getjobbyuserid
      */
     public function getJobByUserIdAsync(
             GetJobByUserIdRequest $request
@@ -2075,8 +2162,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Job
+     *
      * @param GetJobByUserIdRequest $request
      * @return GetJobByUserIdResult
+     * @see https://docs.gs2.io/api_reference/job_queue/sdk/#getjobbyuserid
      */
     public function getJobByUserId (
             GetJobByUserIdRequest $request
@@ -2087,8 +2177,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Register jobs by User ID
+     *
      * @param PushByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/job_queue/sdk/#pushbyuserid
      */
     public function pushByUserIdAsync(
             PushByUserIdRequest $request
@@ -2102,8 +2195,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Register jobs by User ID
+     *
      * @param PushByUserIdRequest $request
      * @return PushByUserIdResult
+     * @see https://docs.gs2.io/api_reference/job_queue/sdk/#pushbyuserid
      */
     public function pushByUserId (
             PushByUserIdRequest $request
@@ -2114,8 +2210,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute Job
+     *
      * @param RunRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/job_queue/sdk/#run
      */
     public function runAsync(
             RunRequest $request
@@ -2129,8 +2228,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute Job
+     *
      * @param RunRequest $request
      * @return RunResult
+     * @see https://docs.gs2.io/api_reference/job_queue/sdk/#run
      */
     public function run (
             RunRequest $request
@@ -2141,8 +2243,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute a job by User ID
+     *
      * @param RunByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/job_queue/sdk/#runbyuserid
      */
     public function runByUserIdAsync(
             RunByUserIdRequest $request
@@ -2156,8 +2261,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute a job by User ID
+     *
      * @param RunByUserIdRequest $request
      * @return RunByUserIdResult
+     * @see https://docs.gs2.io/api_reference/job_queue/sdk/#runbyuserid
      */
     public function runByUserId (
             RunByUserIdRequest $request
@@ -2168,8 +2276,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete job
+     *
      * @param DeleteJobRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/job_queue/sdk/#deletejob
      */
     public function deleteJobAsync(
             DeleteJobRequest $request
@@ -2183,8 +2294,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete job
+     *
      * @param DeleteJobRequest $request
      * @return DeleteJobResult
+     * @see https://docs.gs2.io/api_reference/job_queue/sdk/#deletejob
      */
     public function deleteJob (
             DeleteJobRequest $request
@@ -2195,8 +2309,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete a job by User ID
+     *
      * @param DeleteJobByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/job_queue/sdk/#deletejobbyuserid
      */
     public function deleteJobByUserIdAsync(
             DeleteJobByUserIdRequest $request
@@ -2210,8 +2327,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete a job by User ID
+     *
      * @param DeleteJobByUserIdRequest $request
      * @return DeleteJobByUserIdResult
+     * @see https://docs.gs2.io/api_reference/job_queue/sdk/#deletejobbyuserid
      */
     public function deleteJobByUserId (
             DeleteJobByUserIdRequest $request
@@ -2222,8 +2342,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute job registration as an acquire action
+     *
      * @param PushByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/job_queue/stamp_sheet/#gs2jobqueuepushbyuserid
      */
     public function pushByStampSheetAsync(
             PushByStampSheetRequest $request
@@ -2237,8 +2360,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute job registration as an acquire action
+     *
      * @param PushByStampSheetRequest $request
      * @return PushByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/job_queue/stamp_sheet/#gs2jobqueuepushbyuserid
      */
     public function pushByStampSheet (
             PushByStampSheetRequest $request
@@ -2249,8 +2375,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute job deletion as a consume action
+     *
      * @param DeleteByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/job_queue/stamp_sheet/#gs2jobqueuedeletejobbyuserid
      */
     public function deleteByStampTaskAsync(
             DeleteByStampTaskRequest $request
@@ -2264,8 +2393,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute job deletion as a consume action
+     *
      * @param DeleteByStampTaskRequest $request
      * @return DeleteByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/job_queue/stamp_sheet/#gs2jobqueuedeletejobbyuserid
      */
     public function deleteByStampTask (
             DeleteByStampTaskRequest $request
@@ -2276,8 +2408,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Job Execution Result
+     *
      * @param GetJobResultRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/job_queue/sdk/#getjobresult
      */
     public function getJobResultAsync(
             GetJobResultRequest $request
@@ -2291,8 +2426,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Job Execution Result
+     *
      * @param GetJobResultRequest $request
      * @return GetJobResultResult
+     * @see https://docs.gs2.io/api_reference/job_queue/sdk/#getjobresult
      */
     public function getJobResult (
             GetJobResultRequest $request
@@ -2303,8 +2441,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get job execution result by User ID
+     *
      * @param GetJobResultByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/job_queue/sdk/#getjobresultbyuserid
      */
     public function getJobResultByUserIdAsync(
             GetJobResultByUserIdRequest $request
@@ -2318,8 +2459,11 @@ class Gs2JobQueueRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get job execution result by User ID
+     *
      * @param GetJobResultByUserIdRequest $request
      * @return GetJobResultByUserIdResult
+     * @see https://docs.gs2.io/api_reference/job_queue/sdk/#getjobresultbyuserid
      */
     public function getJobResultByUserId (
             GetJobResultByUserIdRequest $request

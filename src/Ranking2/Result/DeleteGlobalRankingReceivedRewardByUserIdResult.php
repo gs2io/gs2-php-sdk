@@ -20,18 +20,29 @@ namespace Gs2\Ranking2\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Ranking2\Model\GlobalRankingReceivedReward;
 
+/**
+ * Result of deleteGlobalRankingReceivedRewardByUserId: Delete Global Ranking Reward Received History specifying User ID
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/sdk/#deleteglobalrankingreceivedrewardbyuserid
+ */
 class DeleteGlobalRankingReceivedRewardByUserIdResult implements IResult {
-    /** @var GlobalRankingReceivedReward */
+    /** @var GlobalRankingReceivedReward Global Ranking Reward Received History deleted */
     private $item;
 
+    /** @return GlobalRankingReceivedReward|null Global Ranking Reward Received History deleted */
 	public function getItem(): ?GlobalRankingReceivedReward {
 		return $this->item;
 	}
 
+    /** @param GlobalRankingReceivedReward|null $item Global Ranking Reward Received History deleted */
 	public function setItem(?GlobalRankingReceivedReward $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param GlobalRankingReceivedReward|null $item Global Ranking Reward Received History deleted
+     * @return DeleteGlobalRankingReceivedRewardByUserIdResult
+     */
 	public function withItem(?GlobalRankingReceivedReward $item): DeleteGlobalRankingReceivedRewardByUserIdResult {
 		$this->item = $item;
 		return $this;

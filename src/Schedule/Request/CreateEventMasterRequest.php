@@ -20,122 +20,173 @@ namespace Gs2\Schedule\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Schedule\Model\RepeatSetting;
 
+/**
+ * Request for createEventMaster: Create Event Master
+ *
+ * @see https://docs.gs2.io/api_reference/schedule/sdk/#createeventmaster
+ */
 class CreateEventMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Event name */
     private $name;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var string */
+    /** @var string Metadata */
     private $metadata;
-    /** @var string */
+    /** @var string Schedule Type */
     private $scheduleType;
-    /** @var int */
+    /** @var int Absolute Begin */
     private $absoluteBegin;
-    /** @var int */
+    /** @var int Absolute End */
     private $absoluteEnd;
-    /** @var string */
+    /** @var string Type of repetition */
     private $repeatType;
-    /** @var int */
+    /** @var int Event repeat start date (If the value exceeds the days of the month, it is treated as the last day.) */
     private $repeatBeginDayOfMonth;
-    /** @var int */
+    /** @var int Event repeat end date (If the value exceeds the days of the month, it is treated as the last day.) */
     private $repeatEndDayOfMonth;
-    /** @var string */
+    /** @var string Repeat start day of event */
     private $repeatBeginDayOfWeek;
-    /** @var string */
+    /** @var string Repeat event end day of the week */
     private $repeatEndDayOfWeek;
-    /** @var int */
+    /** @var int Event repetition start time (in hours) */
     private $repeatBeginHour;
-    /** @var int */
+    /** @var int Event repetition end time (in hours) */
     private $repeatEndHour;
-    /** @var string */
+    /** @var string Event start trigger name */
     private $relativeTriggerName;
-    /** @var RepeatSetting */
+    /** @var RepeatSetting Repeat Setting */
     private $repeatSetting;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return CreateEventMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): CreateEventMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Event name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Event name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Event name
+     * @return CreateEventMasterRequest
+     */
 	public function withName(?string $name): CreateEventMasterRequest {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return CreateEventMasterRequest
+     */
 	public function withDescription(?string $description): CreateEventMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return CreateEventMasterRequest
+     */
 	public function withMetadata(?string $metadata): CreateEventMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return string|null Schedule Type */
 	public function getScheduleType(): ?string {
 		return $this->scheduleType;
 	}
+    /** @param string|null $scheduleType Schedule Type */
 	public function setScheduleType(?string $scheduleType) {
 		$this->scheduleType = $scheduleType;
 	}
+    /**
+     * @param string|null $scheduleType Schedule Type
+     * @return CreateEventMasterRequest
+     */
 	public function withScheduleType(?string $scheduleType): CreateEventMasterRequest {
 		$this->scheduleType = $scheduleType;
 		return $this;
 	}
+    /** @return int|null Absolute Begin */
 	public function getAbsoluteBegin(): ?int {
 		return $this->absoluteBegin;
 	}
+    /** @param int|null $absoluteBegin Absolute Begin */
 	public function setAbsoluteBegin(?int $absoluteBegin) {
 		$this->absoluteBegin = $absoluteBegin;
 	}
+    /**
+     * @param int|null $absoluteBegin Absolute Begin
+     * @return CreateEventMasterRequest
+     */
 	public function withAbsoluteBegin(?int $absoluteBegin): CreateEventMasterRequest {
 		$this->absoluteBegin = $absoluteBegin;
 		return $this;
 	}
+    /** @return int|null Absolute End */
 	public function getAbsoluteEnd(): ?int {
 		return $this->absoluteEnd;
 	}
+    /** @param int|null $absoluteEnd Absolute End */
 	public function setAbsoluteEnd(?int $absoluteEnd) {
 		$this->absoluteEnd = $absoluteEnd;
 	}
+    /**
+     * @param int|null $absoluteEnd Absolute End
+     * @return CreateEventMasterRequest
+     */
 	public function withAbsoluteEnd(?int $absoluteEnd): CreateEventMasterRequest {
 		$this->absoluteEnd = $absoluteEnd;
 		return $this;
 	}
     /**
+     * @return string|null Type of repetition
      * @deprecated
      */
 	public function getRepeatType(): ?string {
 		return $this->repeatType;
 	}
     /**
+     * @param string|null $repeatType Type of repetition
      * @deprecated
      */
 	public function setRepeatType(?string $repeatType) {
 		$this->repeatType = $repeatType;
 	}
     /**
+     * @param string|null $repeatType Type of repetition
+     * @return CreateEventMasterRequest
      * @deprecated
      */
 	public function withRepeatType(?string $repeatType): CreateEventMasterRequest {
@@ -143,18 +194,22 @@ class CreateEventMasterRequest extends Gs2BasicRequest {
 		return $this;
 	}
     /**
+     * @return int|null Event repeat start date (If the value exceeds the days of the month, it is treated as the last day.)
      * @deprecated
      */
 	public function getRepeatBeginDayOfMonth(): ?int {
 		return $this->repeatBeginDayOfMonth;
 	}
     /**
+     * @param int|null $repeatBeginDayOfMonth Event repeat start date (If the value exceeds the days of the month, it is treated as the last day.)
      * @deprecated
      */
 	public function setRepeatBeginDayOfMonth(?int $repeatBeginDayOfMonth) {
 		$this->repeatBeginDayOfMonth = $repeatBeginDayOfMonth;
 	}
     /**
+     * @param int|null $repeatBeginDayOfMonth Event repeat start date (If the value exceeds the days of the month, it is treated as the last day.)
+     * @return CreateEventMasterRequest
      * @deprecated
      */
 	public function withRepeatBeginDayOfMonth(?int $repeatBeginDayOfMonth): CreateEventMasterRequest {
@@ -162,18 +217,22 @@ class CreateEventMasterRequest extends Gs2BasicRequest {
 		return $this;
 	}
     /**
+     * @return int|null Event repeat end date (If the value exceeds the days of the month, it is treated as the last day.)
      * @deprecated
      */
 	public function getRepeatEndDayOfMonth(): ?int {
 		return $this->repeatEndDayOfMonth;
 	}
     /**
+     * @param int|null $repeatEndDayOfMonth Event repeat end date (If the value exceeds the days of the month, it is treated as the last day.)
      * @deprecated
      */
 	public function setRepeatEndDayOfMonth(?int $repeatEndDayOfMonth) {
 		$this->repeatEndDayOfMonth = $repeatEndDayOfMonth;
 	}
     /**
+     * @param int|null $repeatEndDayOfMonth Event repeat end date (If the value exceeds the days of the month, it is treated as the last day.)
+     * @return CreateEventMasterRequest
      * @deprecated
      */
 	public function withRepeatEndDayOfMonth(?int $repeatEndDayOfMonth): CreateEventMasterRequest {
@@ -181,18 +240,22 @@ class CreateEventMasterRequest extends Gs2BasicRequest {
 		return $this;
 	}
     /**
+     * @return string|null Repeat start day of event
      * @deprecated
      */
 	public function getRepeatBeginDayOfWeek(): ?string {
 		return $this->repeatBeginDayOfWeek;
 	}
     /**
+     * @param string|null $repeatBeginDayOfWeek Repeat start day of event
      * @deprecated
      */
 	public function setRepeatBeginDayOfWeek(?string $repeatBeginDayOfWeek) {
 		$this->repeatBeginDayOfWeek = $repeatBeginDayOfWeek;
 	}
     /**
+     * @param string|null $repeatBeginDayOfWeek Repeat start day of event
+     * @return CreateEventMasterRequest
      * @deprecated
      */
 	public function withRepeatBeginDayOfWeek(?string $repeatBeginDayOfWeek): CreateEventMasterRequest {
@@ -200,18 +263,22 @@ class CreateEventMasterRequest extends Gs2BasicRequest {
 		return $this;
 	}
     /**
+     * @return string|null Repeat event end day of the week
      * @deprecated
      */
 	public function getRepeatEndDayOfWeek(): ?string {
 		return $this->repeatEndDayOfWeek;
 	}
     /**
+     * @param string|null $repeatEndDayOfWeek Repeat event end day of the week
      * @deprecated
      */
 	public function setRepeatEndDayOfWeek(?string $repeatEndDayOfWeek) {
 		$this->repeatEndDayOfWeek = $repeatEndDayOfWeek;
 	}
     /**
+     * @param string|null $repeatEndDayOfWeek Repeat event end day of the week
+     * @return CreateEventMasterRequest
      * @deprecated
      */
 	public function withRepeatEndDayOfWeek(?string $repeatEndDayOfWeek): CreateEventMasterRequest {
@@ -219,18 +286,22 @@ class CreateEventMasterRequest extends Gs2BasicRequest {
 		return $this;
 	}
     /**
+     * @return int|null Event repetition start time (in hours)
      * @deprecated
      */
 	public function getRepeatBeginHour(): ?int {
 		return $this->repeatBeginHour;
 	}
     /**
+     * @param int|null $repeatBeginHour Event repetition start time (in hours)
      * @deprecated
      */
 	public function setRepeatBeginHour(?int $repeatBeginHour) {
 		$this->repeatBeginHour = $repeatBeginHour;
 	}
     /**
+     * @param int|null $repeatBeginHour Event repetition start time (in hours)
+     * @return CreateEventMasterRequest
      * @deprecated
      */
 	public function withRepeatBeginHour(?int $repeatBeginHour): CreateEventMasterRequest {
@@ -238,40 +309,56 @@ class CreateEventMasterRequest extends Gs2BasicRequest {
 		return $this;
 	}
     /**
+     * @return int|null Event repetition end time (in hours)
      * @deprecated
      */
 	public function getRepeatEndHour(): ?int {
 		return $this->repeatEndHour;
 	}
     /**
+     * @param int|null $repeatEndHour Event repetition end time (in hours)
      * @deprecated
      */
 	public function setRepeatEndHour(?int $repeatEndHour) {
 		$this->repeatEndHour = $repeatEndHour;
 	}
     /**
+     * @param int|null $repeatEndHour Event repetition end time (in hours)
+     * @return CreateEventMasterRequest
      * @deprecated
      */
 	public function withRepeatEndHour(?int $repeatEndHour): CreateEventMasterRequest {
 		$this->repeatEndHour = $repeatEndHour;
 		return $this;
 	}
+    /** @return string|null Event start trigger name */
 	public function getRelativeTriggerName(): ?string {
 		return $this->relativeTriggerName;
 	}
+    /** @param string|null $relativeTriggerName Event start trigger name */
 	public function setRelativeTriggerName(?string $relativeTriggerName) {
 		$this->relativeTriggerName = $relativeTriggerName;
 	}
+    /**
+     * @param string|null $relativeTriggerName Event start trigger name
+     * @return CreateEventMasterRequest
+     */
 	public function withRelativeTriggerName(?string $relativeTriggerName): CreateEventMasterRequest {
 		$this->relativeTriggerName = $relativeTriggerName;
 		return $this;
 	}
+    /** @return RepeatSetting|null Repeat Setting */
 	public function getRepeatSetting(): ?RepeatSetting {
 		return $this->repeatSetting;
 	}
+    /** @param RepeatSetting|null $repeatSetting Repeat Setting */
 	public function setRepeatSetting(?RepeatSetting $repeatSetting) {
 		$this->repeatSetting = $repeatSetting;
 	}
+    /**
+     * @param RepeatSetting|null $repeatSetting Repeat Setting
+     * @return CreateEventMasterRequest
+     */
 	public function withRepeatSetting(?RepeatSetting $repeatSetting): CreateEventMasterRequest {
 		$this->repeatSetting = $repeatSetting;
 		return $this;

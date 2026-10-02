@@ -4627,7 +4627,7 @@ class GetStaminaNamespaceMetricsTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 Watch API クライアント
+ * GS2-Watch API client
  *
  * @author Game Server Services, Inc.
  *
@@ -4635,9 +4635,9 @@ class GetStaminaNamespaceMetricsTask extends Gs2RestSessionTask {
 class Gs2WatchRestClient extends AbstractGs2Client {
 
 	/**
-	 * コンストラクタ。
+	 * Constructor.
 	 *
-	 * @param Gs2RestSession $session セッション
+	 * @param Gs2RestSession $session Session
 	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);

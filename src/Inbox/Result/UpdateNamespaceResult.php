@@ -26,18 +26,29 @@ use Gs2\Inbox\Model\NotificationSetting;
 use Gs2\Inbox\Model\LogSetting;
 use Gs2\Inbox\Model\Namespace_;
 
+/**
+ * Result of updateNamespace: Update Namespace
+ *
+ * @see https://docs.gs2.io/api_reference/inbox/sdk/#updatenamespace
+ */
 class UpdateNamespaceResult implements IResult {
-    /** @var Namespace_ */
+    /** @var Namespace_ Namespace updated */
     private $item;
 
+    /** @return Namespace_|null Namespace updated */
 	public function getItem(): ?Namespace_ {
 		return $this->item;
 	}
 
+    /** @param Namespace_|null $item Namespace updated */
 	public function setItem(?Namespace_ $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Namespace_|null $item Namespace updated
+     * @return UpdateNamespaceResult
+     */
 	public function withItem(?Namespace_ $item): UpdateNamespaceResult {
 		$this->item = $item;
 		return $this;

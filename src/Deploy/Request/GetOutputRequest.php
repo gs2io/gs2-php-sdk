@@ -19,27 +19,44 @@ namespace Gs2\Deploy\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getOutput: Get Output
+ *
+ * @see https://docs.gs2.io/api_reference/deploy/sdk/#getoutput
+ */
 class GetOutputRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Stack name */
     private $stackName;
-    /** @var string */
+    /** @var string Output Name */
     private $outputName;
+    /** @return string|null Stack name */
 	public function getStackName(): ?string {
 		return $this->stackName;
 	}
+    /** @param string|null $stackName Stack name */
 	public function setStackName(?string $stackName) {
 		$this->stackName = $stackName;
 	}
+    /**
+     * @param string|null $stackName Stack name
+     * @return GetOutputRequest
+     */
 	public function withStackName(?string $stackName): GetOutputRequest {
 		$this->stackName = $stackName;
 		return $this;
 	}
+    /** @return string|null Output Name */
 	public function getOutputName(): ?string {
 		return $this->outputName;
 	}
+    /** @param string|null $outputName Output Name */
 	public function setOutputName(?string $outputName) {
 		$this->outputName = $outputName;
 	}
+    /**
+     * @param string|null $outputName Output Name
+     * @return GetOutputRequest
+     */
 	public function withOutputName(?string $outputName): GetOutputRequest {
 		$this->outputName = $outputName;
 		return $this;

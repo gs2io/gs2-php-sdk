@@ -19,101 +19,154 @@ namespace Gs2\Matchmaking\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for verifyIncludeParticipantByUserId: Verify if persistent gathering includes user ID by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#verifyincludeparticipantbyuserid
+ */
 class VerifyIncludeParticipantByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Season Model name */
     private $seasonName;
-    /** @var int */
+    /** @var int Season */
     private $season;
-    /** @var int */
+    /** @var int Tier */
     private $tier;
-    /** @var string */
+    /** @var string Season Gathering Name */
     private $seasonGatheringName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Type of verification */
     private $verifyType;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return VerifyIncludeParticipantByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): VerifyIncludeParticipantByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Season Model name */
 	public function getSeasonName(): ?string {
 		return $this->seasonName;
 	}
+    /** @param string|null $seasonName Season Model name */
 	public function setSeasonName(?string $seasonName) {
 		$this->seasonName = $seasonName;
 	}
+    /**
+     * @param string|null $seasonName Season Model name
+     * @return VerifyIncludeParticipantByUserIdRequest
+     */
 	public function withSeasonName(?string $seasonName): VerifyIncludeParticipantByUserIdRequest {
 		$this->seasonName = $seasonName;
 		return $this;
 	}
+    /** @return int|null Season */
 	public function getSeason(): ?int {
 		return $this->season;
 	}
+    /** @param int|null $season Season */
 	public function setSeason(?int $season) {
 		$this->season = $season;
 	}
+    /**
+     * @param int|null $season Season
+     * @return VerifyIncludeParticipantByUserIdRequest
+     */
 	public function withSeason(?int $season): VerifyIncludeParticipantByUserIdRequest {
 		$this->season = $season;
 		return $this;
 	}
+    /** @return int|null Tier */
 	public function getTier(): ?int {
 		return $this->tier;
 	}
+    /** @param int|null $tier Tier */
 	public function setTier(?int $tier) {
 		$this->tier = $tier;
 	}
+    /**
+     * @param int|null $tier Tier
+     * @return VerifyIncludeParticipantByUserIdRequest
+     */
 	public function withTier(?int $tier): VerifyIncludeParticipantByUserIdRequest {
 		$this->tier = $tier;
 		return $this;
 	}
+    /** @return string|null Season Gathering Name */
 	public function getSeasonGatheringName(): ?string {
 		return $this->seasonGatheringName;
 	}
+    /** @param string|null $seasonGatheringName Season Gathering Name */
 	public function setSeasonGatheringName(?string $seasonGatheringName) {
 		$this->seasonGatheringName = $seasonGatheringName;
 	}
+    /**
+     * @param string|null $seasonGatheringName Season Gathering Name
+     * @return VerifyIncludeParticipantByUserIdRequest
+     */
 	public function withSeasonGatheringName(?string $seasonGatheringName): VerifyIncludeParticipantByUserIdRequest {
 		$this->seasonGatheringName = $seasonGatheringName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return VerifyIncludeParticipantByUserIdRequest
+     */
 	public function withUserId(?string $userId): VerifyIncludeParticipantByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Type of verification */
 	public function getVerifyType(): ?string {
 		return $this->verifyType;
 	}
+    /** @param string|null $verifyType Type of verification */
 	public function setVerifyType(?string $verifyType) {
 		$this->verifyType = $verifyType;
 	}
+    /**
+     * @param string|null $verifyType Type of verification
+     * @return VerifyIncludeParticipantByUserIdRequest
+     */
 	public function withVerifyType(?string $verifyType): VerifyIncludeParticipantByUserIdRequest {
 		$this->verifyType = $verifyType;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return VerifyIncludeParticipantByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): VerifyIncludeParticipantByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

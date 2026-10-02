@@ -28,18 +28,29 @@ use Gs2\Money2\Model\WithdrawEvent;
 use Gs2\Money2\Model\RefundEvent;
 use Gs2\Money2\Model\Event;
 
+/**
+ * Result of getEventByTransactionId: Get Event by specifying transaction ID
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#geteventbytransactionid
+ */
 class GetEventByTransactionIdResult implements IResult {
-    /** @var Event */
+    /** @var Event Event */
     private $item;
 
+    /** @return Event|null Event */
 	public function getItem(): ?Event {
 		return $this->item;
 	}
 
+    /** @param Event|null $item Event */
 	public function setItem(?Event $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Event|null $item Event
+     * @return GetEventByTransactionIdResult
+     */
 	public function withItem(?Event $item): GetEventByTransactionIdResult {
 		$this->item = $item;
 		return $this;

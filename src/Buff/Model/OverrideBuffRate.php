@@ -20,31 +20,48 @@ namespace Gs2\Buff\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Buff application rate override model
+ *
+ * @see https://docs.gs2.io/api_reference/buff/sdk/#overridebuffrate
+ */
 class OverrideBuffRate implements IModel {
 	/**
-     * @var string
+     * @var string Buff Entry Model name
 	 */
 	private $name;
 	/**
-     * @var float
+     * @var float Rate
 	 */
 	private $rate;
+    /** @return string|null Buff Entry Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Buff Entry Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Buff Entry Model name
+     * @return OverrideBuffRate
+     */
 	public function withName(?string $name): OverrideBuffRate {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return float|null Rate */
 	public function getRate(): ?float {
 		return $this->rate;
 	}
+    /** @param float|null $rate Rate */
 	public function setRate(?float $rate) {
 		$this->rate = $rate;
 	}
+    /**
+     * @param float|null $rate Rate
+     * @return OverrideBuffRate
+     */
 	public function withRate(?float $rate): OverrideBuffRate {
 		$this->rate = $rate;
 		return $this;

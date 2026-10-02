@@ -20,31 +20,48 @@ namespace Gs2\Log\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Timeseries Metadata
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#timeseriesmetadata
+ */
 class TimeseriesMetadata implements IModel {
 	/**
-     * @var array
+     * @var array List of series keys in the data
 	 */
 	private $keys;
 	/**
-     * @var array
+     * @var array Field(s) used for grouping
 	 */
 	private $groupBy;
+    /** @return array|null List of series keys in the data */
 	public function getKeys(): ?array {
 		return $this->keys;
 	}
+    /** @param array|null $keys List of series keys in the data */
 	public function setKeys(?array $keys) {
 		$this->keys = $keys;
 	}
+    /**
+     * @param array|null $keys List of series keys in the data
+     * @return TimeseriesMetadata
+     */
 	public function withKeys(?array $keys): TimeseriesMetadata {
 		$this->keys = $keys;
 		return $this;
 	}
+    /** @return array|null Field(s) used for grouping */
 	public function getGroupBy(): ?array {
 		return $this->groupBy;
 	}
+    /** @param array|null $groupBy Field(s) used for grouping */
 	public function setGroupBy(?array $groupBy) {
 		$this->groupBy = $groupBy;
 	}
+    /**
+     * @param array|null $groupBy Field(s) used for grouping
+     * @return TimeseriesMetadata
+     */
 	public function withGroupBy(?array $groupBy): TimeseriesMetadata {
 		$this->groupBy = $groupBy;
 		return $this;

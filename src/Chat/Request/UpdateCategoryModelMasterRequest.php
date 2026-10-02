@@ -19,51 +19,80 @@ namespace Gs2\Chat\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for updateCategoryModelMaster: Update Message Category Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/chat/sdk/#updatecategorymodelmaster
+ */
 class UpdateCategoryModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var int */
+    /** @var int Category */
     private $category;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var string */
+    /** @var string Reject posts made using player access tokens */
     private $rejectAccessTokenPost;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UpdateCategoryModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UpdateCategoryModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return int|null Category */
 	public function getCategory(): ?int {
 		return $this->category;
 	}
+    /** @param int|null $category Category */
 	public function setCategory(?int $category) {
 		$this->category = $category;
 	}
+    /**
+     * @param int|null $category Category
+     * @return UpdateCategoryModelMasterRequest
+     */
 	public function withCategory(?int $category): UpdateCategoryModelMasterRequest {
 		$this->category = $category;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return UpdateCategoryModelMasterRequest
+     */
 	public function withDescription(?string $description): UpdateCategoryModelMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Reject posts made using player access tokens */
 	public function getRejectAccessTokenPost(): ?string {
 		return $this->rejectAccessTokenPost;
 	}
+    /** @param string|null $rejectAccessTokenPost Reject posts made using player access tokens */
 	public function setRejectAccessTokenPost(?string $rejectAccessTokenPost) {
 		$this->rejectAccessTokenPost = $rejectAccessTokenPost;
 	}
+    /**
+     * @param string|null $rejectAccessTokenPost Reject posts made using player access tokens
+     * @return UpdateCategoryModelMasterRequest
+     */
 	public function withRejectAccessTokenPost(?string $rejectAccessTokenPost): UpdateCategoryModelMasterRequest {
 		$this->rejectAccessTokenPost = $rejectAccessTokenPost;
 		return $this;

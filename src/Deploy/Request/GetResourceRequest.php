@@ -19,27 +19,44 @@ namespace Gs2\Deploy\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getResource: Get Resource
+ *
+ * @see https://docs.gs2.io/api_reference/deploy/sdk/#getresource
+ */
 class GetResourceRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Stack name */
     private $stackName;
-    /** @var string */
+    /** @var string Resource name */
     private $resourceName;
+    /** @return string|null Stack name */
 	public function getStackName(): ?string {
 		return $this->stackName;
 	}
+    /** @param string|null $stackName Stack name */
 	public function setStackName(?string $stackName) {
 		$this->stackName = $stackName;
 	}
+    /**
+     * @param string|null $stackName Stack name
+     * @return GetResourceRequest
+     */
 	public function withStackName(?string $stackName): GetResourceRequest {
 		$this->stackName = $stackName;
 		return $this;
 	}
+    /** @return string|null Resource name */
 	public function getResourceName(): ?string {
 		return $this->resourceName;
 	}
+    /** @param string|null $resourceName Resource name */
 	public function setResourceName(?string $resourceName) {
 		$this->resourceName = $resourceName;
 	}
+    /**
+     * @param string|null $resourceName Resource name
+     * @return GetResourceRequest
+     */
 	public function withResourceName(?string $resourceName): GetResourceRequest {
 		$this->resourceName = $resourceName;
 		return $this;

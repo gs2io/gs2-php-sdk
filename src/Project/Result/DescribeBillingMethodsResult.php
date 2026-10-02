@@ -20,33 +20,46 @@ namespace Gs2\Project\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Project\Model\BillingMethod;
 
+/** Result of describeBillingMethods: Get list of payment methods */
 class DescribeBillingMethodsResult implements IResult {
-    /** @var array */
+    /** @var array List of Payment Methods */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Payment Methods */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Payment Methods */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Payment Methods
+     * @return DescribeBillingMethodsResult
+     */
 	public function withItems(?array $items): DescribeBillingMethodsResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeBillingMethodsResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeBillingMethodsResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

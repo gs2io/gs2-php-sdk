@@ -20,18 +20,29 @@ namespace Gs2\Matchmaking\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Matchmaking\Model\SeasonGathering;
 
+/**
+ * Result of deleteSeasonGathering: Delete Season Gathering
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#deleteseasongathering
+ */
 class DeleteSeasonGatheringResult implements IResult {
-    /** @var SeasonGathering */
+    /** @var SeasonGathering Season Gathering deleted */
     private $item;
 
+    /** @return SeasonGathering|null Season Gathering deleted */
 	public function getItem(): ?SeasonGathering {
 		return $this->item;
 	}
 
+    /** @param SeasonGathering|null $item Season Gathering deleted */
 	public function setItem(?SeasonGathering $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param SeasonGathering|null $item Season Gathering deleted
+     * @return DeleteSeasonGatheringResult
+     */
 	public function withItem(?SeasonGathering $item): DeleteSeasonGatheringResult {
 		$this->item = $item;
 		return $this;

@@ -20,171 +20,248 @@ namespace Gs2\Money2\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Subscription purchase information
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#subscribetransaction
+ */
 class SubscribeTransaction implements IModel {
 	/**
-     * @var string
+     * @var string Subscription Transaction GRN
 	 */
 	private $subscribeTransactionId;
 	/**
-     * @var string
+     * @var string Store Subscription Content Model name
 	 */
 	private $contentName;
 	/**
-     * @var string
+     * @var string Transaction ID
 	 */
 	private $transactionId;
 	/**
-     * @var string
+     * @var string Store
 	 */
 	private $store;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var string
+     * @var string Status
 	 */
 	private $statusDetail;
 	/**
-     * @var int
+     * @var int Expiration time
 	 */
 	private $expiresAt;
 	/**
-     * @var int
+     * @var int Last time allocated to user
 	 */
 	private $lastAllocatedAt;
 	/**
-     * @var int
+     * @var int Last time taken over by user
 	 */
 	private $lastTakeOverAt;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Subscription Transaction GRN */
 	public function getSubscribeTransactionId(): ?string {
 		return $this->subscribeTransactionId;
 	}
+    /** @param string|null $subscribeTransactionId Subscription Transaction GRN */
 	public function setSubscribeTransactionId(?string $subscribeTransactionId) {
 		$this->subscribeTransactionId = $subscribeTransactionId;
 	}
+    /**
+     * @param string|null $subscribeTransactionId Subscription Transaction GRN
+     * @return SubscribeTransaction
+     */
 	public function withSubscribeTransactionId(?string $subscribeTransactionId): SubscribeTransaction {
 		$this->subscribeTransactionId = $subscribeTransactionId;
 		return $this;
 	}
+    /** @return string|null Store Subscription Content Model name */
 	public function getContentName(): ?string {
 		return $this->contentName;
 	}
+    /** @param string|null $contentName Store Subscription Content Model name */
 	public function setContentName(?string $contentName) {
 		$this->contentName = $contentName;
 	}
+    /**
+     * @param string|null $contentName Store Subscription Content Model name
+     * @return SubscribeTransaction
+     */
 	public function withContentName(?string $contentName): SubscribeTransaction {
 		$this->contentName = $contentName;
 		return $this;
 	}
+    /** @return string|null Transaction ID */
 	public function getTransactionId(): ?string {
 		return $this->transactionId;
 	}
+    /** @param string|null $transactionId Transaction ID */
 	public function setTransactionId(?string $transactionId) {
 		$this->transactionId = $transactionId;
 	}
+    /**
+     * @param string|null $transactionId Transaction ID
+     * @return SubscribeTransaction
+     */
 	public function withTransactionId(?string $transactionId): SubscribeTransaction {
 		$this->transactionId = $transactionId;
 		return $this;
 	}
+    /** @return string|null Store */
 	public function getStore(): ?string {
 		return $this->store;
 	}
+    /** @param string|null $store Store */
 	public function setStore(?string $store) {
 		$this->store = $store;
 	}
+    /**
+     * @param string|null $store Store
+     * @return SubscribeTransaction
+     */
 	public function withStore(?string $store): SubscribeTransaction {
 		$this->store = $store;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return SubscribeTransaction
+     */
 	public function withUserId(?string $userId): SubscribeTransaction {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Status */
 	public function getStatusDetail(): ?string {
 		return $this->statusDetail;
 	}
+    /** @param string|null $statusDetail Status */
 	public function setStatusDetail(?string $statusDetail) {
 		$this->statusDetail = $statusDetail;
 	}
+    /**
+     * @param string|null $statusDetail Status
+     * @return SubscribeTransaction
+     */
 	public function withStatusDetail(?string $statusDetail): SubscribeTransaction {
 		$this->statusDetail = $statusDetail;
 		return $this;
 	}
+    /** @return int|null Expiration time */
 	public function getExpiresAt(): ?int {
 		return $this->expiresAt;
 	}
+    /** @param int|null $expiresAt Expiration time */
 	public function setExpiresAt(?int $expiresAt) {
 		$this->expiresAt = $expiresAt;
 	}
+    /**
+     * @param int|null $expiresAt Expiration time
+     * @return SubscribeTransaction
+     */
 	public function withExpiresAt(?int $expiresAt): SubscribeTransaction {
 		$this->expiresAt = $expiresAt;
 		return $this;
 	}
+    /** @return int|null Last time allocated to user */
 	public function getLastAllocatedAt(): ?int {
 		return $this->lastAllocatedAt;
 	}
+    /** @param int|null $lastAllocatedAt Last time allocated to user */
 	public function setLastAllocatedAt(?int $lastAllocatedAt) {
 		$this->lastAllocatedAt = $lastAllocatedAt;
 	}
+    /**
+     * @param int|null $lastAllocatedAt Last time allocated to user
+     * @return SubscribeTransaction
+     */
 	public function withLastAllocatedAt(?int $lastAllocatedAt): SubscribeTransaction {
 		$this->lastAllocatedAt = $lastAllocatedAt;
 		return $this;
 	}
+    /** @return int|null Last time taken over by user */
 	public function getLastTakeOverAt(): ?int {
 		return $this->lastTakeOverAt;
 	}
+    /** @param int|null $lastTakeOverAt Last time taken over by user */
 	public function setLastTakeOverAt(?int $lastTakeOverAt) {
 		$this->lastTakeOverAt = $lastTakeOverAt;
 	}
+    /**
+     * @param int|null $lastTakeOverAt Last time taken over by user
+     * @return SubscribeTransaction
+     */
 	public function withLastTakeOverAt(?int $lastTakeOverAt): SubscribeTransaction {
 		$this->lastTakeOverAt = $lastTakeOverAt;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return SubscribeTransaction
+     */
 	public function withCreatedAt(?int $createdAt): SubscribeTransaction {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return SubscribeTransaction
+     */
 	public function withUpdatedAt(?int $updatedAt): SubscribeTransaction {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return SubscribeTransaction
+     */
 	public function withRevision(?int $revision): SubscribeTransaction {
 		$this->revision = $revision;
 		return $this;

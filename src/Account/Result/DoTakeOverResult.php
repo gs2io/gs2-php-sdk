@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Account\Model\BanStatus;
 use Gs2\Account\Model\Account;
 
+/**
+ * Result of doTakeOver: Execute Account Takeover
+ *
+ * @see https://docs.gs2.io/api_reference/account/sdk/#dotakeover
+ */
 class DoTakeOverResult implements IResult {
-    /** @var Account */
+    /** @var Account Game Player Account */
     private $item;
 
+    /** @return Account|null Game Player Account */
 	public function getItem(): ?Account {
 		return $this->item;
 	}
 
+    /** @param Account|null $item Game Player Account */
 	public function setItem(?Account $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Account|null $item Game Player Account
+     * @return DoTakeOverResult
+     */
 	public function withItem(?Account $item): DoTakeOverResult {
 		$this->item = $item;
 		return $this;

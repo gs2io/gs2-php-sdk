@@ -19,15 +19,26 @@ namespace Gs2\Chat\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getCurrentModelMaster: Get currently active Message Category Model master data
+ *
+ * @see https://docs.gs2.io/api_reference/chat/sdk/#getcurrentmodelmaster
+ */
 class GetCurrentModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetCurrentModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetCurrentModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;

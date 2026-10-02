@@ -19,89 +19,136 @@ namespace Gs2\Schedule\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for triggerByUserId: Execute the Trigger by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/schedule/sdk/#triggerbyuserid
+ */
 class TriggerByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Trigger name */
     private $triggerName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Trigger Execution Policy */
     private $triggerStrategy;
-    /** @var int */
+    /** @var int Trigger expiration time (seconds) */
     private $ttl;
-    /** @var string */
+    /** @var string Event GRN */
     private $eventId;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return TriggerByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): TriggerByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Trigger name */
 	public function getTriggerName(): ?string {
 		return $this->triggerName;
 	}
+    /** @param string|null $triggerName Trigger name */
 	public function setTriggerName(?string $triggerName) {
 		$this->triggerName = $triggerName;
 	}
+    /**
+     * @param string|null $triggerName Trigger name
+     * @return TriggerByUserIdRequest
+     */
 	public function withTriggerName(?string $triggerName): TriggerByUserIdRequest {
 		$this->triggerName = $triggerName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return TriggerByUserIdRequest
+     */
 	public function withUserId(?string $userId): TriggerByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Trigger Execution Policy */
 	public function getTriggerStrategy(): ?string {
 		return $this->triggerStrategy;
 	}
+    /** @param string|null $triggerStrategy Trigger Execution Policy */
 	public function setTriggerStrategy(?string $triggerStrategy) {
 		$this->triggerStrategy = $triggerStrategy;
 	}
+    /**
+     * @param string|null $triggerStrategy Trigger Execution Policy
+     * @return TriggerByUserIdRequest
+     */
 	public function withTriggerStrategy(?string $triggerStrategy): TriggerByUserIdRequest {
 		$this->triggerStrategy = $triggerStrategy;
 		return $this;
 	}
+    /** @return int|null Trigger expiration time (seconds) */
 	public function getTtl(): ?int {
 		return $this->ttl;
 	}
+    /** @param int|null $ttl Trigger expiration time (seconds) */
 	public function setTtl(?int $ttl) {
 		$this->ttl = $ttl;
 	}
+    /**
+     * @param int|null $ttl Trigger expiration time (seconds)
+     * @return TriggerByUserIdRequest
+     */
 	public function withTtl(?int $ttl): TriggerByUserIdRequest {
 		$this->ttl = $ttl;
 		return $this;
 	}
+    /** @return string|null Event GRN */
 	public function getEventId(): ?string {
 		return $this->eventId;
 	}
+    /** @param string|null $eventId Event GRN */
 	public function setEventId(?string $eventId) {
 		$this->eventId = $eventId;
 	}
+    /**
+     * @param string|null $eventId Event GRN
+     * @return TriggerByUserIdRequest
+     */
 	public function withEventId(?string $eventId): TriggerByUserIdRequest {
 		$this->eventId = $eventId;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return TriggerByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): TriggerByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

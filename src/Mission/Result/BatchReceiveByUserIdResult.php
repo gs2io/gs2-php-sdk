@@ -20,18 +20,29 @@ namespace Gs2\Mission\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Mission\Model\Complete;
 
+/**
+ * Result of batchReceiveByUserId: Receive rewards for multiple mission tasks in bulk
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#batchreceivebyuserid
+ */
 class BatchReceiveByUserIdResult implements IResult {
-    /** @var Complete */
+    /** @var Complete Received Completion Status */
     private $item;
 
+    /** @return Complete|null Received Completion Status */
 	public function getItem(): ?Complete {
 		return $this->item;
 	}
 
+    /** @param Complete|null $item Received Completion Status */
 	public function setItem(?Complete $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Complete|null $item Received Completion Status
+     * @return BatchReceiveByUserIdResult
+     */
 	public function withItem(?Complete $item): BatchReceiveByUserIdResult {
 		$this->item = $item;
 		return $this;

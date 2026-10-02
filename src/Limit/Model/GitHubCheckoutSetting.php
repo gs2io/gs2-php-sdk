@@ -20,101 +20,148 @@ namespace Gs2\Limit\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Setting for checking out master data from GitHub
+ *
+ * @see https://docs.gs2.io/api_reference/limit/sdk/#githubcheckoutsetting
+ */
 class GitHubCheckoutSetting implements IModel {
 	/**
-     * @var string
+     * @var string GitHub API Key GRN
 	 */
 	private $apiKeyId;
 	/**
-     * @var string
+     * @var string Repository Name
 	 */
 	private $repositoryName;
 	/**
-     * @var string
+     * @var string Master data (JSON) file path
 	 */
 	private $sourcePath;
 	/**
-     * @var string
+     * @var string Source of code
 	 */
 	private $referenceType;
 	/**
-     * @var string
+     * @var string Commit hash
 	 */
 	private $commitHash;
 	/**
-     * @var string
+     * @var string Branch Name
 	 */
 	private $branchName;
 	/**
-     * @var string
+     * @var string Tag Name
 	 */
 	private $tagName;
+    /** @return string|null GitHub API Key GRN */
 	public function getApiKeyId(): ?string {
 		return $this->apiKeyId;
 	}
+    /** @param string|null $apiKeyId GitHub API Key GRN */
 	public function setApiKeyId(?string $apiKeyId) {
 		$this->apiKeyId = $apiKeyId;
 	}
+    /**
+     * @param string|null $apiKeyId GitHub API Key GRN
+     * @return GitHubCheckoutSetting
+     */
 	public function withApiKeyId(?string $apiKeyId): GitHubCheckoutSetting {
 		$this->apiKeyId = $apiKeyId;
 		return $this;
 	}
+    /** @return string|null Repository Name */
 	public function getRepositoryName(): ?string {
 		return $this->repositoryName;
 	}
+    /** @param string|null $repositoryName Repository Name */
 	public function setRepositoryName(?string $repositoryName) {
 		$this->repositoryName = $repositoryName;
 	}
+    /**
+     * @param string|null $repositoryName Repository Name
+     * @return GitHubCheckoutSetting
+     */
 	public function withRepositoryName(?string $repositoryName): GitHubCheckoutSetting {
 		$this->repositoryName = $repositoryName;
 		return $this;
 	}
+    /** @return string|null Master data (JSON) file path */
 	public function getSourcePath(): ?string {
 		return $this->sourcePath;
 	}
+    /** @param string|null $sourcePath Master data (JSON) file path */
 	public function setSourcePath(?string $sourcePath) {
 		$this->sourcePath = $sourcePath;
 	}
+    /**
+     * @param string|null $sourcePath Master data (JSON) file path
+     * @return GitHubCheckoutSetting
+     */
 	public function withSourcePath(?string $sourcePath): GitHubCheckoutSetting {
 		$this->sourcePath = $sourcePath;
 		return $this;
 	}
+    /** @return string|null Source of code */
 	public function getReferenceType(): ?string {
 		return $this->referenceType;
 	}
+    /** @param string|null $referenceType Source of code */
 	public function setReferenceType(?string $referenceType) {
 		$this->referenceType = $referenceType;
 	}
+    /**
+     * @param string|null $referenceType Source of code
+     * @return GitHubCheckoutSetting
+     */
 	public function withReferenceType(?string $referenceType): GitHubCheckoutSetting {
 		$this->referenceType = $referenceType;
 		return $this;
 	}
+    /** @return string|null Commit hash */
 	public function getCommitHash(): ?string {
 		return $this->commitHash;
 	}
+    /** @param string|null $commitHash Commit hash */
 	public function setCommitHash(?string $commitHash) {
 		$this->commitHash = $commitHash;
 	}
+    /**
+     * @param string|null $commitHash Commit hash
+     * @return GitHubCheckoutSetting
+     */
 	public function withCommitHash(?string $commitHash): GitHubCheckoutSetting {
 		$this->commitHash = $commitHash;
 		return $this;
 	}
+    /** @return string|null Branch Name */
 	public function getBranchName(): ?string {
 		return $this->branchName;
 	}
+    /** @param string|null $branchName Branch Name */
 	public function setBranchName(?string $branchName) {
 		$this->branchName = $branchName;
 	}
+    /**
+     * @param string|null $branchName Branch Name
+     * @return GitHubCheckoutSetting
+     */
 	public function withBranchName(?string $branchName): GitHubCheckoutSetting {
 		$this->branchName = $branchName;
 		return $this;
 	}
+    /** @return string|null Tag Name */
 	public function getTagName(): ?string {
 		return $this->tagName;
 	}
+    /** @param string|null $tagName Tag Name */
 	public function setTagName(?string $tagName) {
 		$this->tagName = $tagName;
 	}
+    /**
+     * @param string|null $tagName Tag Name
+     * @return GitHubCheckoutSetting
+     */
 	public function withTagName(?string $tagName): GitHubCheckoutSetting {
 		$this->tagName = $tagName;
 		return $this;

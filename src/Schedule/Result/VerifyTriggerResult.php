@@ -20,18 +20,29 @@ namespace Gs2\Schedule\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Schedule\Model\Trigger;
 
+/**
+ * Result of verifyTrigger: Verify the elapsed time since the trigger was pulled
+ *
+ * @see https://docs.gs2.io/api_reference/schedule/sdk/#verifytrigger
+ */
 class VerifyTriggerResult implements IResult {
-    /** @var Trigger */
+    /** @var Trigger Trigger */
     private $item;
 
+    /** @return Trigger|null Trigger */
 	public function getItem(): ?Trigger {
 		return $this->item;
 	}
 
+    /** @param Trigger|null $item Trigger */
 	public function setItem(?Trigger $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Trigger|null $item Trigger
+     * @return VerifyTriggerResult
+     */
 	public function withItem(?Trigger $item): VerifyTriggerResult {
 		$this->item = $item;
 		return $this;

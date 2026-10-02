@@ -20,18 +20,29 @@ namespace Gs2\Matchmaking\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Matchmaking\Model\SeasonModelMaster;
 
+/**
+ * Result of createSeasonModelMaster: Create Season Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#createseasonmodelmaster
+ */
 class CreateSeasonModelMasterResult implements IResult {
-    /** @var SeasonModelMaster */
+    /** @var SeasonModelMaster Season Model Master created */
     private $item;
 
+    /** @return SeasonModelMaster|null Season Model Master created */
 	public function getItem(): ?SeasonModelMaster {
 		return $this->item;
 	}
 
+    /** @param SeasonModelMaster|null $item Season Model Master created */
 	public function setItem(?SeasonModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param SeasonModelMaster|null $item Season Model Master created
+     * @return CreateSeasonModelMasterResult
+     */
 	public function withItem(?SeasonModelMaster $item): CreateSeasonModelMasterResult {
 		$this->item = $item;
 		return $this;

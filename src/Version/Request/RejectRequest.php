@@ -20,53 +20,82 @@ namespace Gs2\Version\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Version\Model\Version;
 
+/**
+ * Request for reject: Reject current version
+ *
+ * @see https://docs.gs2.io/api_reference/version/sdk/#reject
+ */
 class RejectRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Version Name */
     private $versionName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var Version */
+    /** @var Version Rejected Version */
     private $version;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return RejectRequest
+     */
 	public function withNamespaceName(?string $namespaceName): RejectRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Version Name */
 	public function getVersionName(): ?string {
 		return $this->versionName;
 	}
+    /** @param string|null $versionName Version Name */
 	public function setVersionName(?string $versionName) {
 		$this->versionName = $versionName;
 	}
+    /**
+     * @param string|null $versionName Version Name
+     * @return RejectRequest
+     */
 	public function withVersionName(?string $versionName): RejectRequest {
 		$this->versionName = $versionName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return RejectRequest
+     */
 	public function withAccessToken(?string $accessToken): RejectRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return Version|null Rejected Version */
 	public function getVersion(): ?Version {
 		return $this->version;
 	}
+    /** @param Version|null $version Rejected Version */
 	public function setVersion(?Version $version) {
 		$this->version = $version;
 	}
+    /**
+     * @param Version|null $version Rejected Version
+     * @return RejectRequest
+     */
 	public function withVersion(?Version $version): RejectRequest {
 		$this->version = $version;
 		return $this;

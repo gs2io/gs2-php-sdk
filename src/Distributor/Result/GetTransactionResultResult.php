@@ -23,18 +23,29 @@ use Gs2\Distributor\Model\ConsumeActionResult;
 use Gs2\Distributor\Model\AcquireActionResult;
 use Gs2\Distributor\Model\TransactionResult;
 
+/**
+ * Result of getTransactionResult: Get Transaction Result
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#gettransactionresult
+ */
 class GetTransactionResultResult implements IResult {
-    /** @var TransactionResult */
+    /** @var TransactionResult Transaction Execution Result */
     private $item;
 
+    /** @return TransactionResult|null Transaction Execution Result */
 	public function getItem(): ?TransactionResult {
 		return $this->item;
 	}
 
+    /** @param TransactionResult|null $item Transaction Execution Result */
 	public function setItem(?TransactionResult $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param TransactionResult|null $item Transaction Execution Result
+     * @return GetTransactionResultResult
+     */
 	public function withItem(?TransactionResult $item): GetTransactionResultResult {
 		$this->item = $item;
 		return $this;

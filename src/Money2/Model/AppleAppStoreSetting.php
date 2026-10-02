@@ -20,73 +20,108 @@ namespace Gs2\Money2\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Apple App Store Setting
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#appleappstoresetting
+ */
 class AppleAppStoreSetting implements IModel {
 	/**
-     * @var string
+     * @var string Apple App Store Bundle ID
 	 */
 	private $bundleId;
 	/**
-     * @var string
+     * @var string Shared secret key used to encrypt the receipt issued by AppStore Connect
 	 */
 	private $sharedSecretKey;
 	/**
-     * @var string
+     * @var string Issuer ID of in-app purchases registered with AppStore Connect
 	 */
 	private $issuerId;
 	/**
-     * @var string
+     * @var string Key ID registered with Apple
 	 */
 	private $keyId;
 	/**
-     * @var string
+     * @var string Private Key received from Apple
 	 */
 	private $privateKeyPem;
+    /** @return string|null Apple App Store Bundle ID */
 	public function getBundleId(): ?string {
 		return $this->bundleId;
 	}
+    /** @param string|null $bundleId Apple App Store Bundle ID */
 	public function setBundleId(?string $bundleId) {
 		$this->bundleId = $bundleId;
 	}
+    /**
+     * @param string|null $bundleId Apple App Store Bundle ID
+     * @return AppleAppStoreSetting
+     */
 	public function withBundleId(?string $bundleId): AppleAppStoreSetting {
 		$this->bundleId = $bundleId;
 		return $this;
 	}
+    /** @return string|null Shared secret key used to encrypt the receipt issued by AppStore Connect */
 	public function getSharedSecretKey(): ?string {
 		return $this->sharedSecretKey;
 	}
+    /** @param string|null $sharedSecretKey Shared secret key used to encrypt the receipt issued by AppStore Connect */
 	public function setSharedSecretKey(?string $sharedSecretKey) {
 		$this->sharedSecretKey = $sharedSecretKey;
 	}
+    /**
+     * @param string|null $sharedSecretKey Shared secret key used to encrypt the receipt issued by AppStore Connect
+     * @return AppleAppStoreSetting
+     */
 	public function withSharedSecretKey(?string $sharedSecretKey): AppleAppStoreSetting {
 		$this->sharedSecretKey = $sharedSecretKey;
 		return $this;
 	}
+    /** @return string|null Issuer ID of in-app purchases registered with AppStore Connect */
 	public function getIssuerId(): ?string {
 		return $this->issuerId;
 	}
+    /** @param string|null $issuerId Issuer ID of in-app purchases registered with AppStore Connect */
 	public function setIssuerId(?string $issuerId) {
 		$this->issuerId = $issuerId;
 	}
+    /**
+     * @param string|null $issuerId Issuer ID of in-app purchases registered with AppStore Connect
+     * @return AppleAppStoreSetting
+     */
 	public function withIssuerId(?string $issuerId): AppleAppStoreSetting {
 		$this->issuerId = $issuerId;
 		return $this;
 	}
+    /** @return string|null Key ID registered with Apple */
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
+    /** @param string|null $keyId Key ID registered with Apple */
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
+    /**
+     * @param string|null $keyId Key ID registered with Apple
+     * @return AppleAppStoreSetting
+     */
 	public function withKeyId(?string $keyId): AppleAppStoreSetting {
 		$this->keyId = $keyId;
 		return $this;
 	}
+    /** @return string|null Private Key received from Apple */
 	public function getPrivateKeyPem(): ?string {
 		return $this->privateKeyPem;
 	}
+    /** @param string|null $privateKeyPem Private Key received from Apple */
 	public function setPrivateKeyPem(?string $privateKeyPem) {
 		$this->privateKeyPem = $privateKeyPem;
 	}
+    /**
+     * @param string|null $privateKeyPem Private Key received from Apple
+     * @return AppleAppStoreSetting
+     */
 	public function withPrivateKeyPem(?string $privateKeyPem): AppleAppStoreSetting {
 		$this->privateKeyPem = $privateKeyPem;
 		return $this;

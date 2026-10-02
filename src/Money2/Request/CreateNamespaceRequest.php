@@ -29,204 +29,303 @@ use Gs2\Money2\Model\MobileNotificationMessage;
 use Gs2\Money2\Model\NotificationSetting;
 use Gs2\Money2\Model\LogSetting;
 
+/**
+ * Request for createNamespace: Create Namespace
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#createnamespace
+ */
 class CreateNamespaceRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $name;
-    /** @var string */
+    /** @var string Consumption priority */
     private $currencyUsagePriority;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var TransactionSetting */
+    /** @var TransactionSetting Transaction Setting */
     private $transactionSetting;
-    /** @var TransactionSettingV2 */
+    /** @var TransactionSettingV2 Transaction Setting (V2) */
     private $transactionSettingV2;
-    /** @var bool */
+    /** @var bool Share the free currency with different slots */
     private $sharedFreeCurrency;
-    /** @var PlatformSetting */
+    /** @var PlatformSetting Store platform settings */
     private $platformSetting;
-    /** @var ScriptSetting */
+    /** @var ScriptSetting Script setting to be executed when depositing wallet balance */
     private $depositBalanceScript;
-    /** @var ScriptSetting */
+    /** @var ScriptSetting Script setting to be executed when withdrawing wallet balance */
     private $withdrawBalanceScript;
-    /** @var ScriptSetting */
+    /** @var ScriptSetting Script setting to be executed when verifying a receipt */
     private $verifyReceiptScript;
-    /** @var string */
+    /** @var string GS2-Script script GRN to be executed when subscribing to a new contract (Not called when the user associated with the subscription is changed / Called when re-subscribing after contract expiration) */
     private $subscribeScript;
-    /** @var string */
+    /** @var string GS2-Script script GRN to be executed when renewing a contract */
     private $renewScript;
-    /** @var string */
+    /** @var string GS2-Script script GRN to be executed when unsubscribing from a contract (Not called when the user associated with the subscription is changed) */
     private $unsubscribeScript;
-    /** @var ScriptSetting */
+    /** @var ScriptSetting Script setting to be executed when changing the user associated with a subscription */
     private $takeOverScript;
-    /** @var NotificationSetting */
+    /** @var NotificationSetting Push notification when the subscription status changes */
     private $changeSubscriptionStatusNotification;
-    /** @var LogSetting */
+    /** @var LogSetting Log Output Setting */
     private $logSetting;
+    /** @return string|null Namespace name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Namespace name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Namespace name
+     * @return CreateNamespaceRequest
+     */
 	public function withName(?string $name): CreateNamespaceRequest {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Consumption priority */
 	public function getCurrencyUsagePriority(): ?string {
 		return $this->currencyUsagePriority;
 	}
+    /** @param string|null $currencyUsagePriority Consumption priority */
 	public function setCurrencyUsagePriority(?string $currencyUsagePriority) {
 		$this->currencyUsagePriority = $currencyUsagePriority;
 	}
+    /**
+     * @param string|null $currencyUsagePriority Consumption priority
+     * @return CreateNamespaceRequest
+     */
 	public function withCurrencyUsagePriority(?string $currencyUsagePriority): CreateNamespaceRequest {
 		$this->currencyUsagePriority = $currencyUsagePriority;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return CreateNamespaceRequest
+     */
 	public function withDescription(?string $description): CreateNamespaceRequest {
 		$this->description = $description;
 		return $this;
 	}
     /**
+     * @return TransactionSetting|null Transaction Setting
      * @deprecated
      */
 	public function getTransactionSetting(): ?TransactionSetting {
 		return $this->transactionSetting;
 	}
     /**
+     * @param TransactionSetting|null $transactionSetting Transaction Setting
      * @deprecated
      */
 	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
 		$this->transactionSetting = $transactionSetting;
 	}
     /**
+     * @param TransactionSetting|null $transactionSetting Transaction Setting
+     * @return CreateNamespaceRequest
      * @deprecated
      */
 	public function withTransactionSetting(?TransactionSetting $transactionSetting): CreateNamespaceRequest {
 		$this->transactionSetting = $transactionSetting;
 		return $this;
 	}
+    /** @return TransactionSettingV2|null Transaction Setting (V2) */
 	public function getTransactionSettingV2(): ?TransactionSettingV2 {
 		return $this->transactionSettingV2;
 	}
+    /** @param TransactionSettingV2|null $transactionSettingV2 Transaction Setting (V2) */
 	public function setTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2) {
 		$this->transactionSettingV2 = $transactionSettingV2;
 	}
+    /**
+     * @param TransactionSettingV2|null $transactionSettingV2 Transaction Setting (V2)
+     * @return CreateNamespaceRequest
+     */
 	public function withTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2): CreateNamespaceRequest {
 		$this->transactionSettingV2 = $transactionSettingV2;
 		return $this;
 	}
+    /** @return bool|null Share the free currency with different slots */
 	public function getSharedFreeCurrency(): ?bool {
 		return $this->sharedFreeCurrency;
 	}
+    /** @param bool|null $sharedFreeCurrency Share the free currency with different slots */
 	public function setSharedFreeCurrency(?bool $sharedFreeCurrency) {
 		$this->sharedFreeCurrency = $sharedFreeCurrency;
 	}
+    /**
+     * @param bool|null $sharedFreeCurrency Share the free currency with different slots
+     * @return CreateNamespaceRequest
+     */
 	public function withSharedFreeCurrency(?bool $sharedFreeCurrency): CreateNamespaceRequest {
 		$this->sharedFreeCurrency = $sharedFreeCurrency;
 		return $this;
 	}
+    /** @return PlatformSetting|null Store platform settings */
 	public function getPlatformSetting(): ?PlatformSetting {
 		return $this->platformSetting;
 	}
+    /** @param PlatformSetting|null $platformSetting Store platform settings */
 	public function setPlatformSetting(?PlatformSetting $platformSetting) {
 		$this->platformSetting = $platformSetting;
 	}
+    /**
+     * @param PlatformSetting|null $platformSetting Store platform settings
+     * @return CreateNamespaceRequest
+     */
 	public function withPlatformSetting(?PlatformSetting $platformSetting): CreateNamespaceRequest {
 		$this->platformSetting = $platformSetting;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to be executed when depositing wallet balance */
 	public function getDepositBalanceScript(): ?ScriptSetting {
 		return $this->depositBalanceScript;
 	}
+    /** @param ScriptSetting|null $depositBalanceScript Script setting to be executed when depositing wallet balance */
 	public function setDepositBalanceScript(?ScriptSetting $depositBalanceScript) {
 		$this->depositBalanceScript = $depositBalanceScript;
 	}
+    /**
+     * @param ScriptSetting|null $depositBalanceScript Script setting to be executed when depositing wallet balance
+     * @return CreateNamespaceRequest
+     */
 	public function withDepositBalanceScript(?ScriptSetting $depositBalanceScript): CreateNamespaceRequest {
 		$this->depositBalanceScript = $depositBalanceScript;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to be executed when withdrawing wallet balance */
 	public function getWithdrawBalanceScript(): ?ScriptSetting {
 		return $this->withdrawBalanceScript;
 	}
+    /** @param ScriptSetting|null $withdrawBalanceScript Script setting to be executed when withdrawing wallet balance */
 	public function setWithdrawBalanceScript(?ScriptSetting $withdrawBalanceScript) {
 		$this->withdrawBalanceScript = $withdrawBalanceScript;
 	}
+    /**
+     * @param ScriptSetting|null $withdrawBalanceScript Script setting to be executed when withdrawing wallet balance
+     * @return CreateNamespaceRequest
+     */
 	public function withWithdrawBalanceScript(?ScriptSetting $withdrawBalanceScript): CreateNamespaceRequest {
 		$this->withdrawBalanceScript = $withdrawBalanceScript;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to be executed when verifying a receipt */
 	public function getVerifyReceiptScript(): ?ScriptSetting {
 		return $this->verifyReceiptScript;
 	}
+    /** @param ScriptSetting|null $verifyReceiptScript Script setting to be executed when verifying a receipt */
 	public function setVerifyReceiptScript(?ScriptSetting $verifyReceiptScript) {
 		$this->verifyReceiptScript = $verifyReceiptScript;
 	}
+    /**
+     * @param ScriptSetting|null $verifyReceiptScript Script setting to be executed when verifying a receipt
+     * @return CreateNamespaceRequest
+     */
 	public function withVerifyReceiptScript(?ScriptSetting $verifyReceiptScript): CreateNamespaceRequest {
 		$this->verifyReceiptScript = $verifyReceiptScript;
 		return $this;
 	}
+    /** @return string|null GS2-Script script GRN to be executed when subscribing to a new contract (Not called when the user associated with the subscription is changed / Called when re-subscribing after contract expiration) */
 	public function getSubscribeScript(): ?string {
 		return $this->subscribeScript;
 	}
+    /** @param string|null $subscribeScript GS2-Script script GRN to be executed when subscribing to a new contract (Not called when the user associated with the subscription is changed / Called when re-subscribing after contract expiration) */
 	public function setSubscribeScript(?string $subscribeScript) {
 		$this->subscribeScript = $subscribeScript;
 	}
+    /**
+     * @param string|null $subscribeScript GS2-Script script GRN to be executed when subscribing to a new contract (Not called when the user associated with the subscription is changed / Called when re-subscribing after contract expiration)
+     * @return CreateNamespaceRequest
+     */
 	public function withSubscribeScript(?string $subscribeScript): CreateNamespaceRequest {
 		$this->subscribeScript = $subscribeScript;
 		return $this;
 	}
+    /** @return string|null GS2-Script script GRN to be executed when renewing a contract */
 	public function getRenewScript(): ?string {
 		return $this->renewScript;
 	}
+    /** @param string|null $renewScript GS2-Script script GRN to be executed when renewing a contract */
 	public function setRenewScript(?string $renewScript) {
 		$this->renewScript = $renewScript;
 	}
+    /**
+     * @param string|null $renewScript GS2-Script script GRN to be executed when renewing a contract
+     * @return CreateNamespaceRequest
+     */
 	public function withRenewScript(?string $renewScript): CreateNamespaceRequest {
 		$this->renewScript = $renewScript;
 		return $this;
 	}
+    /** @return string|null GS2-Script script GRN to be executed when unsubscribing from a contract (Not called when the user associated with the subscription is changed) */
 	public function getUnsubscribeScript(): ?string {
 		return $this->unsubscribeScript;
 	}
+    /** @param string|null $unsubscribeScript GS2-Script script GRN to be executed when unsubscribing from a contract (Not called when the user associated with the subscription is changed) */
 	public function setUnsubscribeScript(?string $unsubscribeScript) {
 		$this->unsubscribeScript = $unsubscribeScript;
 	}
+    /**
+     * @param string|null $unsubscribeScript GS2-Script script GRN to be executed when unsubscribing from a contract (Not called when the user associated with the subscription is changed)
+     * @return CreateNamespaceRequest
+     */
 	public function withUnsubscribeScript(?string $unsubscribeScript): CreateNamespaceRequest {
 		$this->unsubscribeScript = $unsubscribeScript;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to be executed when changing the user associated with a subscription */
 	public function getTakeOverScript(): ?ScriptSetting {
 		return $this->takeOverScript;
 	}
+    /** @param ScriptSetting|null $takeOverScript Script setting to be executed when changing the user associated with a subscription */
 	public function setTakeOverScript(?ScriptSetting $takeOverScript) {
 		$this->takeOverScript = $takeOverScript;
 	}
+    /**
+     * @param ScriptSetting|null $takeOverScript Script setting to be executed when changing the user associated with a subscription
+     * @return CreateNamespaceRequest
+     */
 	public function withTakeOverScript(?ScriptSetting $takeOverScript): CreateNamespaceRequest {
 		$this->takeOverScript = $takeOverScript;
 		return $this;
 	}
+    /** @return NotificationSetting|null Push notification when the subscription status changes */
 	public function getChangeSubscriptionStatusNotification(): ?NotificationSetting {
 		return $this->changeSubscriptionStatusNotification;
 	}
+    /** @param NotificationSetting|null $changeSubscriptionStatusNotification Push notification when the subscription status changes */
 	public function setChangeSubscriptionStatusNotification(?NotificationSetting $changeSubscriptionStatusNotification) {
 		$this->changeSubscriptionStatusNotification = $changeSubscriptionStatusNotification;
 	}
+    /**
+     * @param NotificationSetting|null $changeSubscriptionStatusNotification Push notification when the subscription status changes
+     * @return CreateNamespaceRequest
+     */
 	public function withChangeSubscriptionStatusNotification(?NotificationSetting $changeSubscriptionStatusNotification): CreateNamespaceRequest {
 		$this->changeSubscriptionStatusNotification = $changeSubscriptionStatusNotification;
 		return $this;
 	}
+    /** @return LogSetting|null Log Output Setting */
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
+    /** @param LogSetting|null $logSetting Log Output Setting */
 	public function setLogSetting(?LogSetting $logSetting) {
 		$this->logSetting = $logSetting;
 	}
+    /**
+     * @param LogSetting|null $logSetting Log Output Setting
+     * @return CreateNamespaceRequest
+     */
 	public function withLogSetting(?LogSetting $logSetting): CreateNamespaceRequest {
 		$this->logSetting = $logSetting;
 		return $this;

@@ -19,65 +19,100 @@ namespace Gs2\Ranking\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for putScore: Register score
+ *
+ * @see https://docs.gs2.io/api_reference/ranking/sdk/#putscore
+ */
 class PutScoreRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Category Model name */
     private $categoryName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var int */
+    /** @var int Score */
     private $score;
-    /** @var string */
+    /** @var string Metadata */
     private $metadata;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return PutScoreRequest
+     */
 	public function withNamespaceName(?string $namespaceName): PutScoreRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Category Model name */
 	public function getCategoryName(): ?string {
 		return $this->categoryName;
 	}
+    /** @param string|null $categoryName Category Model name */
 	public function setCategoryName(?string $categoryName) {
 		$this->categoryName = $categoryName;
 	}
+    /**
+     * @param string|null $categoryName Category Model name
+     * @return PutScoreRequest
+     */
 	public function withCategoryName(?string $categoryName): PutScoreRequest {
 		$this->categoryName = $categoryName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return PutScoreRequest
+     */
 	public function withAccessToken(?string $accessToken): PutScoreRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return int|null Score */
 	public function getScore(): ?int {
 		return $this->score;
 	}
+    /** @param int|null $score Score */
 	public function setScore(?int $score) {
 		$this->score = $score;
 	}
+    /**
+     * @param int|null $score Score
+     * @return PutScoreRequest
+     */
 	public function withScore(?int $score): PutScoreRequest {
 		$this->score = $score;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return PutScoreRequest
+     */
 	public function withMetadata(?string $metadata): PutScoreRequest {
 		$this->metadata = $metadata;
 		return $this;

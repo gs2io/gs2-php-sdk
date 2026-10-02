@@ -20,33 +20,50 @@ namespace Gs2\Experience\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Experience\Model\Status;
 
+/**
+ * Result of setRankCapByStampSheet: Execute the setting of rank cap as an acquire action
+ *
+ * @see https://docs.gs2.io/api_reference/experience/stamp_sheet/#gs2experiencesetrankcapbyuserid
+ */
 class SetRankCapByStampSheetResult implements IResult {
-    /** @var Status */
+    /** @var Status Status after update */
     private $item;
-    /** @var Status */
+    /** @var Status Status before update */
     private $old;
 
+    /** @return Status|null Status after update */
 	public function getItem(): ?Status {
 		return $this->item;
 	}
 
+    /** @param Status|null $item Status after update */
 	public function setItem(?Status $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Status|null $item Status after update
+     * @return SetRankCapByStampSheetResult
+     */
 	public function withItem(?Status $item): SetRankCapByStampSheetResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return Status|null Status before update */
 	public function getOld(): ?Status {
 		return $this->old;
 	}
 
+    /** @param Status|null $old Status before update */
 	public function setOld(?Status $old) {
 		$this->old = $old;
 	}
 
+    /**
+     * @param Status|null $old Status before update
+     * @return SetRankCapByStampSheetResult
+     */
 	public function withOld(?Status $old): SetRankCapByStampSheetResult {
 		$this->old = $old;
 		return $this;

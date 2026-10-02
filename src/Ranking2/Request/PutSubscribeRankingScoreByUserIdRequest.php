@@ -19,77 +19,118 @@ namespace Gs2\Ranking2\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for putSubscribeRankingScoreByUserId: Register Subscribe Ranking Score specifying User ID
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/sdk/#putsubscriberankingscorebyuserid
+ */
 class PutSubscribeRankingScoreByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Subscribe Ranking Model name */
     private $rankingName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var int */
+    /** @var int Score */
     private $score;
-    /** @var string */
+    /** @var string Metadata */
     private $metadata;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return PutSubscribeRankingScoreByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): PutSubscribeRankingScoreByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Subscribe Ranking Model name */
 	public function getRankingName(): ?string {
 		return $this->rankingName;
 	}
+    /** @param string|null $rankingName Subscribe Ranking Model name */
 	public function setRankingName(?string $rankingName) {
 		$this->rankingName = $rankingName;
 	}
+    /**
+     * @param string|null $rankingName Subscribe Ranking Model name
+     * @return PutSubscribeRankingScoreByUserIdRequest
+     */
 	public function withRankingName(?string $rankingName): PutSubscribeRankingScoreByUserIdRequest {
 		$this->rankingName = $rankingName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return PutSubscribeRankingScoreByUserIdRequest
+     */
 	public function withUserId(?string $userId): PutSubscribeRankingScoreByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return int|null Score */
 	public function getScore(): ?int {
 		return $this->score;
 	}
+    /** @param int|null $score Score */
 	public function setScore(?int $score) {
 		$this->score = $score;
 	}
+    /**
+     * @param int|null $score Score
+     * @return PutSubscribeRankingScoreByUserIdRequest
+     */
 	public function withScore(?int $score): PutSubscribeRankingScoreByUserIdRequest {
 		$this->score = $score;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return PutSubscribeRankingScoreByUserIdRequest
+     */
 	public function withMetadata(?string $metadata): PutSubscribeRankingScoreByUserIdRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return PutSubscribeRankingScoreByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): PutSubscribeRankingScoreByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

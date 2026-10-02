@@ -25,33 +25,50 @@ use Gs2\LoginReward\Model\VerifyAction;
 use Gs2\LoginReward\Model\ConsumeAction;
 use Gs2\LoginReward\Model\BonusModel;
 
+/**
+ * Result of deleteReceiveStatusByStampSheet: Execute reset of receive status as acquire action
+ *
+ * @see https://docs.gs2.io/api_reference/login_reward/stamp_sheet/#gs2loginrewarddeletereceivestatusbyuserid
+ */
 class DeleteReceiveStatusByStampSheetResult implements IResult {
-    /** @var ReceiveStatus */
+    /** @var ReceiveStatus Receive Status */
     private $item;
-    /** @var BonusModel */
+    /** @var BonusModel Login Bonus Model */
     private $bonusModel;
 
+    /** @return ReceiveStatus|null Receive Status */
 	public function getItem(): ?ReceiveStatus {
 		return $this->item;
 	}
 
+    /** @param ReceiveStatus|null $item Receive Status */
 	public function setItem(?ReceiveStatus $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param ReceiveStatus|null $item Receive Status
+     * @return DeleteReceiveStatusByStampSheetResult
+     */
 	public function withItem(?ReceiveStatus $item): DeleteReceiveStatusByStampSheetResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return BonusModel|null Login Bonus Model */
 	public function getBonusModel(): ?BonusModel {
 		return $this->bonusModel;
 	}
 
+    /** @param BonusModel|null $bonusModel Login Bonus Model */
 	public function setBonusModel(?BonusModel $bonusModel) {
 		$this->bonusModel = $bonusModel;
 	}
 
+    /**
+     * @param BonusModel|null $bonusModel Login Bonus Model
+     * @return DeleteReceiveStatusByStampSheetResult
+     */
 	public function withBonusModel(?BonusModel $bonusModel): DeleteReceiveStatusByStampSheetResult {
 		$this->bonusModel = $bonusModel;
 		return $this;

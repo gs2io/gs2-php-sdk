@@ -19,48 +19,71 @@ namespace Gs2\Guild\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of assume: Get an access token to act as a guild user
+ *
+ * @see https://docs.gs2.io/api_reference/guild/sdk/#assume
+ */
 class AssumeResult implements IResult {
-    /** @var string */
+    /** @var string Guild Access Token */
     private $token;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var int */
+    /** @var int Expiration time */
     private $expire;
 
+    /** @return string|null Guild Access Token */
 	public function getToken(): ?string {
 		return $this->token;
 	}
 
+    /** @param string|null $token Guild Access Token */
 	public function setToken(?string $token) {
 		$this->token = $token;
 	}
 
+    /**
+     * @param string|null $token Guild Access Token
+     * @return AssumeResult
+     */
 	public function withToken(?string $token): AssumeResult {
 		$this->token = $token;
 		return $this;
 	}
 
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
 
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
 
+    /**
+     * @param string|null $userId User ID
+     * @return AssumeResult
+     */
 	public function withUserId(?string $userId): AssumeResult {
 		$this->userId = $userId;
 		return $this;
 	}
 
+    /** @return int|null Expiration time */
 	public function getExpire(): ?int {
 		return $this->expire;
 	}
 
+    /** @param int|null $expire Expiration time */
 	public function setExpire(?int $expire) {
 		$this->expire = $expire;
 	}
 
+    /**
+     * @param int|null $expire Expiration time
+     * @return AssumeResult
+     */
 	public function withExpire(?int $expire): AssumeResult {
 		$this->expire = $expire;
 		return $this;

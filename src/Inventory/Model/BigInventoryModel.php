@@ -20,59 +20,88 @@ namespace Gs2\Inventory\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Big Inventory Model
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#biginventorymodel
+ */
 class BigInventoryModel implements IModel {
 	/**
-     * @var string
+     * @var string Big Inventory Model GRN
 	 */
 	private $inventoryModelId;
 	/**
-     * @var string
+     * @var string Big Inventory Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var array
+     * @var array List of Big Item Models
 	 */
 	private $bigItemModels;
+    /** @return string|null Big Inventory Model GRN */
 	public function getInventoryModelId(): ?string {
 		return $this->inventoryModelId;
 	}
+    /** @param string|null $inventoryModelId Big Inventory Model GRN */
 	public function setInventoryModelId(?string $inventoryModelId) {
 		$this->inventoryModelId = $inventoryModelId;
 	}
+    /**
+     * @param string|null $inventoryModelId Big Inventory Model GRN
+     * @return BigInventoryModel
+     */
 	public function withInventoryModelId(?string $inventoryModelId): BigInventoryModel {
 		$this->inventoryModelId = $inventoryModelId;
 		return $this;
 	}
+    /** @return string|null Big Inventory Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Big Inventory Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Big Inventory Model name
+     * @return BigInventoryModel
+     */
 	public function withName(?string $name): BigInventoryModel {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return BigInventoryModel
+     */
 	public function withMetadata(?string $metadata): BigInventoryModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return array|null List of Big Item Models */
 	public function getBigItemModels(): ?array {
 		return $this->bigItemModels;
 	}
+    /** @param array|null $bigItemModels List of Big Item Models */
 	public function setBigItemModels(?array $bigItemModels) {
 		$this->bigItemModels = $bigItemModels;
 	}
+    /**
+     * @param array|null $bigItemModels List of Big Item Models
+     * @return BigInventoryModel
+     */
 	public function withBigItemModels(?array $bigItemModels): BigInventoryModel {
 		$this->bigItemModels = $bigItemModels;
 		return $this;

@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Guild\Model\RoleModel;
 use Gs2\Guild\Model\GuildModelMaster;
 
+/**
+ * Result of createGuildModelMaster: Create Guild Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/guild/sdk/#createguildmodelmaster
+ */
 class CreateGuildModelMasterResult implements IResult {
-    /** @var GuildModelMaster */
+    /** @var GuildModelMaster Guild Model Master created */
     private $item;
 
+    /** @return GuildModelMaster|null Guild Model Master created */
 	public function getItem(): ?GuildModelMaster {
 		return $this->item;
 	}
 
+    /** @param GuildModelMaster|null $item Guild Model Master created */
 	public function setItem(?GuildModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param GuildModelMaster|null $item Guild Model Master created
+     * @return CreateGuildModelMasterResult
+     */
 	public function withItem(?GuildModelMaster $item): CreateGuildModelMasterResult {
 		$this->item = $item;
 		return $this;

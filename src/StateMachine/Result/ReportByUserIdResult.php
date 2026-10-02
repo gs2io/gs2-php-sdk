@@ -24,18 +24,29 @@ use Gs2\StateMachine\Model\StackEntry;
 use Gs2\StateMachine\Model\Variable;
 use Gs2\StateMachine\Model\Status;
 
+/**
+ * Result of reportByUserId: Report multiple events to the state machine by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/state_machine/sdk/#reportbyuserid
+ */
 class ReportByUserIdResult implements IResult {
-    /** @var Status */
+    /** @var Status Status of State Machine */
     private $item;
 
+    /** @return Status|null Status of State Machine */
 	public function getItem(): ?Status {
 		return $this->item;
 	}
 
+    /** @param Status|null $item Status of State Machine */
 	public function setItem(?Status $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Status|null $item Status of State Machine
+     * @return ReportByUserIdResult
+     */
 	public function withItem(?Status $item): ReportByUserIdResult {
 		$this->item = $item;
 		return $this;

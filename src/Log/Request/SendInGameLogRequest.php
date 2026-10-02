@@ -20,53 +20,82 @@ namespace Gs2\Log\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Log\Model\InGameLogTag;
 
+/**
+ * Request for sendInGameLog: Send in-game log
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#sendingamelog
+ */
 class SendInGameLogRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var array */
+    /** @var array Tags */
     private $tags;
-    /** @var string */
+    /** @var string Payload */
     private $payload;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return SendInGameLogRequest
+     */
 	public function withNamespaceName(?string $namespaceName): SendInGameLogRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return SendInGameLogRequest
+     */
 	public function withAccessToken(?string $accessToken): SendInGameLogRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return array|null Tags */
 	public function getTags(): ?array {
 		return $this->tags;
 	}
+    /** @param array|null $tags Tags */
 	public function setTags(?array $tags) {
 		$this->tags = $tags;
 	}
+    /**
+     * @param array|null $tags Tags
+     * @return SendInGameLogRequest
+     */
 	public function withTags(?array $tags): SendInGameLogRequest {
 		$this->tags = $tags;
 		return $this;
 	}
+    /** @return string|null Payload */
 	public function getPayload(): ?string {
 		return $this->payload;
 	}
+    /** @param string|null $payload Payload */
 	public function setPayload(?string $payload) {
 		$this->payload = $payload;
 	}
+    /**
+     * @param string|null $payload Payload
+     * @return SendInGameLogRequest
+     */
 	public function withPayload(?string $payload): SendInGameLogRequest {
 		$this->payload = $payload;
 		return $this;

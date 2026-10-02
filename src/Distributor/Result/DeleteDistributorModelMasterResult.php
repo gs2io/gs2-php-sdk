@@ -20,18 +20,29 @@ namespace Gs2\Distributor\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Distributor\Model\DistributorModelMaster;
 
+/**
+ * Result of deleteDistributorModelMaster: Delete Distributor Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#deletedistributormodelmaster
+ */
 class DeleteDistributorModelMasterResult implements IResult {
-    /** @var DistributorModelMaster */
+    /** @var DistributorModelMaster Distributor Model Master deleted */
     private $item;
 
+    /** @return DistributorModelMaster|null Distributor Model Master deleted */
 	public function getItem(): ?DistributorModelMaster {
 		return $this->item;
 	}
 
+    /** @param DistributorModelMaster|null $item Distributor Model Master deleted */
 	public function setItem(?DistributorModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param DistributorModelMaster|null $item Distributor Model Master deleted
+     * @return DeleteDistributorModelMasterResult
+     */
 	public function withItem(?DistributorModelMaster $item): DeleteDistributorModelMasterResult {
 		$this->item = $item;
 		return $this;

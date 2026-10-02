@@ -19,27 +19,44 @@ namespace Gs2\Limit\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getLimitModel: Get Usage Limit Model
+ *
+ * @see https://docs.gs2.io/api_reference/limit/sdk/#getlimitmodel
+ */
 class GetLimitModelRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Usage Limit Model name */
     private $limitName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetLimitModelRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetLimitModelRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Usage Limit Model name */
 	public function getLimitName(): ?string {
 		return $this->limitName;
 	}
+    /** @param string|null $limitName Usage Limit Model name */
 	public function setLimitName(?string $limitName) {
 		$this->limitName = $limitName;
 	}
+    /**
+     * @param string|null $limitName Usage Limit Model name
+     * @return GetLimitModelRequest
+     */
 	public function withLimitName(?string $limitName): GetLimitModelRequest {
 		$this->limitName = $limitName;
 		return $this;

@@ -19,39 +19,62 @@ namespace Gs2\Auth\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for login: Log in to GS2 by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/auth/sdk/#login
+ */
 class LoginRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var int */
+    /** @var int Time offset from the current time (number of seconds relative to the current time) */
     private $timeOffset;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return LoginRequest
+     */
 	public function withUserId(?string $userId): LoginRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return int|null Time offset from the current time (number of seconds relative to the current time) */
 	public function getTimeOffset(): ?int {
 		return $this->timeOffset;
 	}
+    /** @param int|null $timeOffset Time offset from the current time (number of seconds relative to the current time) */
 	public function setTimeOffset(?int $timeOffset) {
 		$this->timeOffset = $timeOffset;
 	}
+    /**
+     * @param int|null $timeOffset Time offset from the current time (number of seconds relative to the current time)
+     * @return LoginRequest
+     */
 	public function withTimeOffset(?int $timeOffset): LoginRequest {
 		$this->timeOffset = $timeOffset;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return LoginRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): LoginRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

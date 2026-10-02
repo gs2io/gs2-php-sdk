@@ -20,18 +20,29 @@ namespace Gs2\Log\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Log\Model\FacetModel;
 
+/**
+ * Result of updateFacetModel: Update Facet Model
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#updatefacetmodel
+ */
 class UpdateFacetModelResult implements IResult {
-    /** @var FacetModel */
+    /** @var FacetModel Updated Facet Model */
     private $item;
 
+    /** @return FacetModel|null Updated Facet Model */
 	public function getItem(): ?FacetModel {
 		return $this->item;
 	}
 
+    /** @param FacetModel|null $item Updated Facet Model */
 	public function setItem(?FacetModel $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param FacetModel|null $item Updated Facet Model
+     * @return UpdateFacetModelResult
+     */
 	public function withItem(?FacetModel $item): UpdateFacetModelResult {
 		$this->item = $item;
 		return $this;

@@ -24,18 +24,29 @@ use Gs2\Quest\Model\VerifyAction;
 use Gs2\Quest\Model\ConsumeAction;
 use Gs2\Quest\Model\QuestModelMaster;
 
+/**
+ * Result of createQuestModelMaster: Create Quest Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/quest/sdk/#createquestmodelmaster
+ */
 class CreateQuestModelMasterResult implements IResult {
-    /** @var QuestModelMaster */
+    /** @var QuestModelMaster Quest Model Master created */
     private $item;
 
+    /** @return QuestModelMaster|null Quest Model Master created */
 	public function getItem(): ?QuestModelMaster {
 		return $this->item;
 	}
 
+    /** @param QuestModelMaster|null $item Quest Model Master created */
 	public function setItem(?QuestModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param QuestModelMaster|null $item Quest Model Master created
+     * @return CreateQuestModelMasterResult
+     */
 	public function withItem(?QuestModelMaster $item): CreateQuestModelMasterResult {
 		$this->item = $item;
 		return $this;

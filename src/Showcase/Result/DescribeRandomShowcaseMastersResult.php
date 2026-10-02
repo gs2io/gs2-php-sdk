@@ -24,33 +24,50 @@ use Gs2\Showcase\Model\AcquireAction;
 use Gs2\Showcase\Model\RandomDisplayItemModel;
 use Gs2\Showcase\Model\RandomShowcaseMaster;
 
+/**
+ * Result of describeRandomShowcaseMasters: List Random Showcase Masters
+ *
+ * @see https://docs.gs2.io/api_reference/showcase/sdk/#describerandomshowcasemasters
+ */
 class DescribeRandomShowcaseMastersResult implements IResult {
-    /** @var array */
+    /** @var array List of Random Showcase Masters */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Random Showcase Masters */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Random Showcase Masters */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Random Showcase Masters
+     * @return DescribeRandomShowcaseMastersResult
+     */
 	public function withItems(?array $items): DescribeRandomShowcaseMastersResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeRandomShowcaseMastersResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeRandomShowcaseMastersResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

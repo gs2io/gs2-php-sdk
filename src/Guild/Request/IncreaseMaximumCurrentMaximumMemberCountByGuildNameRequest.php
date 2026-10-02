@@ -19,53 +19,82 @@ namespace Gs2\Guild\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for increaseMaximumCurrentMaximumMemberCountByGuildName: Add the maximum number of members by specifying a Guild name
+ *
+ * @see https://docs.gs2.io/api_reference/guild/sdk/#increasemaximumcurrentmaximummembercountbyguildname
+ */
 class IncreaseMaximumCurrentMaximumMemberCountByGuildNameRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Guild Model name */
     private $guildModelName;
-    /** @var string */
+    /** @var string Guild name */
     private $guildName;
-    /** @var int */
+    /** @var int Increase the maximum number of members */
     private $value;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return IncreaseMaximumCurrentMaximumMemberCountByGuildNameRequest
+     */
 	public function withNamespaceName(?string $namespaceName): IncreaseMaximumCurrentMaximumMemberCountByGuildNameRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Guild Model name */
 	public function getGuildModelName(): ?string {
 		return $this->guildModelName;
 	}
+    /** @param string|null $guildModelName Guild Model name */
 	public function setGuildModelName(?string $guildModelName) {
 		$this->guildModelName = $guildModelName;
 	}
+    /**
+     * @param string|null $guildModelName Guild Model name
+     * @return IncreaseMaximumCurrentMaximumMemberCountByGuildNameRequest
+     */
 	public function withGuildModelName(?string $guildModelName): IncreaseMaximumCurrentMaximumMemberCountByGuildNameRequest {
 		$this->guildModelName = $guildModelName;
 		return $this;
 	}
+    /** @return string|null Guild name */
 	public function getGuildName(): ?string {
 		return $this->guildName;
 	}
+    /** @param string|null $guildName Guild name */
 	public function setGuildName(?string $guildName) {
 		$this->guildName = $guildName;
 	}
+    /**
+     * @param string|null $guildName Guild name
+     * @return IncreaseMaximumCurrentMaximumMemberCountByGuildNameRequest
+     */
 	public function withGuildName(?string $guildName): IncreaseMaximumCurrentMaximumMemberCountByGuildNameRequest {
 		$this->guildName = $guildName;
 		return $this;
 	}
+    /** @return int|null Increase the maximum number of members */
 	public function getValue(): ?int {
 		return $this->value;
 	}
+    /** @param int|null $value Increase the maximum number of members */
 	public function setValue(?int $value) {
 		$this->value = $value;
 	}
+    /**
+     * @param int|null $value Increase the maximum number of members
+     * @return IncreaseMaximumCurrentMaximumMemberCountByGuildNameRequest
+     */
 	public function withValue(?int $value): IncreaseMaximumCurrentMaximumMemberCountByGuildNameRequest {
 		$this->value = $value;
 		return $this;

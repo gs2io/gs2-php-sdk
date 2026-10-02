@@ -23,33 +23,50 @@ use Gs2\Exchange\Model\ConsumeAction;
 use Gs2\Exchange\Model\AcquireAction;
 use Gs2\Exchange\Model\RateModelMaster;
 
+/**
+ * Result of describeRateModelMasters: List Exchange Rate Model Masters
+ *
+ * @see https://docs.gs2.io/api_reference/exchange/sdk/#describeratemodelmasters
+ */
 class DescribeRateModelMastersResult implements IResult {
-    /** @var array */
+    /** @var array List of Exchange Rate Model Master */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Exchange Rate Model Master */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Exchange Rate Model Master */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Exchange Rate Model Master
+     * @return DescribeRateModelMastersResult
+     */
 	public function withItems(?array $items): DescribeRateModelMastersResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeRateModelMastersResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeRateModelMastersResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

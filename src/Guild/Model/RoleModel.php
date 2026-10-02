@@ -20,45 +20,68 @@ namespace Gs2\Guild\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Role Model
+ *
+ * @see https://docs.gs2.io/api_reference/guild/sdk/#rolemodel
+ */
 class RoleModel implements IModel {
 	/**
-     * @var string
+     * @var string Role Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var string
+     * @var string Policy Document
 	 */
 	private $policyDocument;
+    /** @return string|null Role Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Role Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Role Model name
+     * @return RoleModel
+     */
 	public function withName(?string $name): RoleModel {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return RoleModel
+     */
 	public function withMetadata(?string $metadata): RoleModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return string|null Policy Document */
 	public function getPolicyDocument(): ?string {
 		return $this->policyDocument;
 	}
+    /** @param string|null $policyDocument Policy Document */
 	public function setPolicyDocument(?string $policyDocument) {
 		$this->policyDocument = $policyDocument;
 	}
+    /**
+     * @param string|null $policyDocument Policy Document
+     * @return RoleModel
+     */
 	public function withPolicyDocument(?string $policyDocument): RoleModel {
 		$this->policyDocument = $policyDocument;
 		return $this;

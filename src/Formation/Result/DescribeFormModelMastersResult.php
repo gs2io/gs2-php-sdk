@@ -21,33 +21,50 @@ use Gs2\Core\Model\IResult;
 use Gs2\Formation\Model\SlotModel;
 use Gs2\Formation\Model\FormModelMaster;
 
+/**
+ * Result of describeFormModelMasters: List Form Model Masters
+ *
+ * @see https://docs.gs2.io/api_reference/formation/sdk/#describeformmodelmasters
+ */
 class DescribeFormModelMastersResult implements IResult {
-    /** @var array */
+    /** @var array List of Form Model Master */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Form Model Master */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Form Model Master */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Form Model Master
+     * @return DescribeFormModelMastersResult
+     */
 	public function withItems(?array $items): DescribeFormModelMastersResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeFormModelMastersResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeFormModelMastersResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

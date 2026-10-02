@@ -24,33 +24,50 @@ use Gs2\Matchmaking\Model\Player;
 use Gs2\Matchmaking\Model\CapacityOfRole;
 use Gs2\Matchmaking\Model\Gathering;
 
+/**
+ * Result of doMatchmaking: Find a Gathering you can join and participate.
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#domatchmaking
+ */
 class DoMatchmakingResult implements IResult {
-    /** @var Gathering */
+    /** @var Gathering Participated Gatherings */
     private $item;
-    /** @var string */
+    /** @var string Token that preserves matchmaking status */
     private $matchmakingContextToken;
 
+    /** @return Gathering|null Participated Gatherings */
 	public function getItem(): ?Gathering {
 		return $this->item;
 	}
 
+    /** @param Gathering|null $item Participated Gatherings */
 	public function setItem(?Gathering $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Gathering|null $item Participated Gatherings
+     * @return DoMatchmakingResult
+     */
 	public function withItem(?Gathering $item): DoMatchmakingResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null Token that preserves matchmaking status */
 	public function getMatchmakingContextToken(): ?string {
 		return $this->matchmakingContextToken;
 	}
 
+    /** @param string|null $matchmakingContextToken Token that preserves matchmaking status */
 	public function setMatchmakingContextToken(?string $matchmakingContextToken) {
 		$this->matchmakingContextToken = $matchmakingContextToken;
 	}
 
+    /**
+     * @param string|null $matchmakingContextToken Token that preserves matchmaking status
+     * @return DoMatchmakingResult
+     */
 	public function withMatchmakingContextToken(?string $matchmakingContextToken): DoMatchmakingResult {
 		$this->matchmakingContextToken = $matchmakingContextToken;
 		return $this;

@@ -20,157 +20,228 @@ namespace Gs2\Lottery\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Lottery Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/lottery/sdk/#lotterymodelmaster
+ */
 class LotteryModelMaster implements IModel {
 	/**
-     * @var string
+     * @var string Lottery Model Master GRN
 	 */
 	private $lotteryModelId;
 	/**
-     * @var string
+     * @var string Lottery Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var string
+     * @var string Description
 	 */
 	private $description;
 	/**
-     * @var string
+     * @var string Drawing Mode
 	 */
 	private $mode;
 	/**
-     * @var string
+     * @var string Prize Table Selection Method
 	 */
 	private $method;
 	/**
-     * @var string
+     * @var string Prize Table Name
 	 */
 	private $prizeTableName;
 	/**
-     * @var string
+     * @var string GS2-Script script GRN to determine the Prize Table
 	 */
 	private $choicePrizeTableScriptId;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Lottery Model Master GRN */
 	public function getLotteryModelId(): ?string {
 		return $this->lotteryModelId;
 	}
+    /** @param string|null $lotteryModelId Lottery Model Master GRN */
 	public function setLotteryModelId(?string $lotteryModelId) {
 		$this->lotteryModelId = $lotteryModelId;
 	}
+    /**
+     * @param string|null $lotteryModelId Lottery Model Master GRN
+     * @return LotteryModelMaster
+     */
 	public function withLotteryModelId(?string $lotteryModelId): LotteryModelMaster {
 		$this->lotteryModelId = $lotteryModelId;
 		return $this;
 	}
+    /** @return string|null Lottery Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Lottery Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Lottery Model name
+     * @return LotteryModelMaster
+     */
 	public function withName(?string $name): LotteryModelMaster {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return LotteryModelMaster
+     */
 	public function withMetadata(?string $metadata): LotteryModelMaster {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return LotteryModelMaster
+     */
 	public function withDescription(?string $description): LotteryModelMaster {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Drawing Mode */
 	public function getMode(): ?string {
 		return $this->mode;
 	}
+    /** @param string|null $mode Drawing Mode */
 	public function setMode(?string $mode) {
 		$this->mode = $mode;
 	}
+    /**
+     * @param string|null $mode Drawing Mode
+     * @return LotteryModelMaster
+     */
 	public function withMode(?string $mode): LotteryModelMaster {
 		$this->mode = $mode;
 		return $this;
 	}
+    /** @return string|null Prize Table Selection Method */
 	public function getMethod(): ?string {
 		return $this->method;
 	}
+    /** @param string|null $method Prize Table Selection Method */
 	public function setMethod(?string $method) {
 		$this->method = $method;
 	}
+    /**
+     * @param string|null $method Prize Table Selection Method
+     * @return LotteryModelMaster
+     */
 	public function withMethod(?string $method): LotteryModelMaster {
 		$this->method = $method;
 		return $this;
 	}
+    /** @return string|null Prize Table Name */
 	public function getPrizeTableName(): ?string {
 		return $this->prizeTableName;
 	}
+    /** @param string|null $prizeTableName Prize Table Name */
 	public function setPrizeTableName(?string $prizeTableName) {
 		$this->prizeTableName = $prizeTableName;
 	}
+    /**
+     * @param string|null $prizeTableName Prize Table Name
+     * @return LotteryModelMaster
+     */
 	public function withPrizeTableName(?string $prizeTableName): LotteryModelMaster {
 		$this->prizeTableName = $prizeTableName;
 		return $this;
 	}
+    /** @return string|null GS2-Script script GRN to determine the Prize Table */
 	public function getChoicePrizeTableScriptId(): ?string {
 		return $this->choicePrizeTableScriptId;
 	}
+    /** @param string|null $choicePrizeTableScriptId GS2-Script script GRN to determine the Prize Table */
 	public function setChoicePrizeTableScriptId(?string $choicePrizeTableScriptId) {
 		$this->choicePrizeTableScriptId = $choicePrizeTableScriptId;
 	}
+    /**
+     * @param string|null $choicePrizeTableScriptId GS2-Script script GRN to determine the Prize Table
+     * @return LotteryModelMaster
+     */
 	public function withChoicePrizeTableScriptId(?string $choicePrizeTableScriptId): LotteryModelMaster {
 		$this->choicePrizeTableScriptId = $choicePrizeTableScriptId;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return LotteryModelMaster
+     */
 	public function withCreatedAt(?int $createdAt): LotteryModelMaster {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return LotteryModelMaster
+     */
 	public function withUpdatedAt(?int $updatedAt): LotteryModelMaster {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return LotteryModelMaster
+     */
 	public function withRevision(?int $revision): LotteryModelMaster {
 		$this->revision = $revision;
 		return $this;

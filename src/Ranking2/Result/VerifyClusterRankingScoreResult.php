@@ -20,18 +20,29 @@ namespace Gs2\Ranking2\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Ranking2\Model\ClusterRankingScore;
 
+/**
+ * Result of verifyClusterRankingScore: Verify the score of the cluster ranking
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/sdk/#verifyclusterrankingscore
+ */
 class VerifyClusterRankingScoreResult implements IResult {
-    /** @var ClusterRankingScore */
+    /** @var ClusterRankingScore Cluster Ranking Score */
     private $item;
 
+    /** @return ClusterRankingScore|null Cluster Ranking Score */
 	public function getItem(): ?ClusterRankingScore {
 		return $this->item;
 	}
 
+    /** @param ClusterRankingScore|null $item Cluster Ranking Score */
 	public function setItem(?ClusterRankingScore $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param ClusterRankingScore|null $item Cluster Ranking Score
+     * @return VerifyClusterRankingScoreResult
+     */
 	public function withItem(?ClusterRankingScore $item): VerifyClusterRankingScoreResult {
 		$this->item = $item;
 		return $this;

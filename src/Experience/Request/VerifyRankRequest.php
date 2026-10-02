@@ -19,89 +19,136 @@ namespace Gs2\Experience\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for verifyRank: Verify rank
+ *
+ * @see https://docs.gs2.io/api_reference/experience/sdk/#verifyrank
+ */
 class VerifyRankRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Experience Model name */
     private $experienceName;
-    /** @var string */
+    /** @var string Type of verification */
     private $verifyType;
-    /** @var string */
+    /** @var string Property ID */
     private $propertyId;
-    /** @var int */
+    /** @var int Current Rank */
     private $rankValue;
-    /** @var bool */
+    /** @var bool Whether to multiply the value used for verification when specifying the quantity */
     private $multiplyValueSpecifyingQuantity;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return VerifyRankRequest
+     */
 	public function withNamespaceName(?string $namespaceName): VerifyRankRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return VerifyRankRequest
+     */
 	public function withAccessToken(?string $accessToken): VerifyRankRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Experience Model name */
 	public function getExperienceName(): ?string {
 		return $this->experienceName;
 	}
+    /** @param string|null $experienceName Experience Model name */
 	public function setExperienceName(?string $experienceName) {
 		$this->experienceName = $experienceName;
 	}
+    /**
+     * @param string|null $experienceName Experience Model name
+     * @return VerifyRankRequest
+     */
 	public function withExperienceName(?string $experienceName): VerifyRankRequest {
 		$this->experienceName = $experienceName;
 		return $this;
 	}
+    /** @return string|null Type of verification */
 	public function getVerifyType(): ?string {
 		return $this->verifyType;
 	}
+    /** @param string|null $verifyType Type of verification */
 	public function setVerifyType(?string $verifyType) {
 		$this->verifyType = $verifyType;
 	}
+    /**
+     * @param string|null $verifyType Type of verification
+     * @return VerifyRankRequest
+     */
 	public function withVerifyType(?string $verifyType): VerifyRankRequest {
 		$this->verifyType = $verifyType;
 		return $this;
 	}
+    /** @return string|null Property ID */
 	public function getPropertyId(): ?string {
 		return $this->propertyId;
 	}
+    /** @param string|null $propertyId Property ID */
 	public function setPropertyId(?string $propertyId) {
 		$this->propertyId = $propertyId;
 	}
+    /**
+     * @param string|null $propertyId Property ID
+     * @return VerifyRankRequest
+     */
 	public function withPropertyId(?string $propertyId): VerifyRankRequest {
 		$this->propertyId = $propertyId;
 		return $this;
 	}
+    /** @return int|null Current Rank */
 	public function getRankValue(): ?int {
 		return $this->rankValue;
 	}
+    /** @param int|null $rankValue Current Rank */
 	public function setRankValue(?int $rankValue) {
 		$this->rankValue = $rankValue;
 	}
+    /**
+     * @param int|null $rankValue Current Rank
+     * @return VerifyRankRequest
+     */
 	public function withRankValue(?int $rankValue): VerifyRankRequest {
 		$this->rankValue = $rankValue;
 		return $this;
 	}
+    /** @return bool|null Whether to multiply the value used for verification when specifying the quantity */
 	public function getMultiplyValueSpecifyingQuantity(): ?bool {
 		return $this->multiplyValueSpecifyingQuantity;
 	}
+    /** @param bool|null $multiplyValueSpecifyingQuantity Whether to multiply the value used for verification when specifying the quantity */
 	public function setMultiplyValueSpecifyingQuantity(?bool $multiplyValueSpecifyingQuantity) {
 		$this->multiplyValueSpecifyingQuantity = $multiplyValueSpecifyingQuantity;
 	}
+    /**
+     * @param bool|null $multiplyValueSpecifyingQuantity Whether to multiply the value used for verification when specifying the quantity
+     * @return VerifyRankRequest
+     */
 	public function withMultiplyValueSpecifyingQuantity(?bool $multiplyValueSpecifyingQuantity): VerifyRankRequest {
 		$this->multiplyValueSpecifyingQuantity = $multiplyValueSpecifyingQuantity;
 		return $this;

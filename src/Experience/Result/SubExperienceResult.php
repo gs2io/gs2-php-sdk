@@ -20,18 +20,29 @@ namespace Gs2\Experience\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Experience\Model\Status;
 
+/**
+ * Result of subExperience: Subtract experience
+ *
+ * @see https://docs.gs2.io/api_reference/experience/sdk/#subexperience
+ */
 class SubExperienceResult implements IResult {
-    /** @var Status */
+    /** @var Status Status after subtraction */
     private $item;
 
+    /** @return Status|null Status after subtraction */
 	public function getItem(): ?Status {
 		return $this->item;
 	}
 
+    /** @param Status|null $item Status after subtraction */
 	public function setItem(?Status $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Status|null $item Status after subtraction
+     * @return SubExperienceResult
+     */
 	public function withItem(?Status $item): SubExperienceResult {
 		$this->item = $item;
 		return $this;

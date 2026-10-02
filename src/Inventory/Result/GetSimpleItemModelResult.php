@@ -20,18 +20,29 @@ namespace Gs2\Inventory\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Inventory\Model\SimpleItemModel;
 
+/**
+ * Result of getSimpleItemModel: Get Simple Item Model
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#getsimpleitemmodel
+ */
 class GetSimpleItemModelResult implements IResult {
     /** @var SimpleItemModel */
     private $item;
 
+    /** @return SimpleItemModel|null */
 	public function getItem(): ?SimpleItemModel {
 		return $this->item;
 	}
 
+    /** @param SimpleItemModel|null $item */
 	public function setItem(?SimpleItemModel $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param SimpleItemModel|null $item
+     * @return GetSimpleItemModelResult
+     */
 	public function withItem(?SimpleItemModel $item): GetSimpleItemModelResult {
 		$this->item = $item;
 		return $this;

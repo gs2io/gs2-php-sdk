@@ -19,27 +19,44 @@ namespace Gs2\Inbox\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for deleteGlobalMessageMaster: Delete messages for all users
+ *
+ * @see https://docs.gs2.io/api_reference/inbox/sdk/#deleteglobalmessagemaster
+ */
 class DeleteGlobalMessageMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Global Message name */
     private $globalMessageName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DeleteGlobalMessageMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DeleteGlobalMessageMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Global Message name */
 	public function getGlobalMessageName(): ?string {
 		return $this->globalMessageName;
 	}
+    /** @param string|null $globalMessageName Global Message name */
 	public function setGlobalMessageName(?string $globalMessageName) {
 		$this->globalMessageName = $globalMessageName;
 	}
+    /**
+     * @param string|null $globalMessageName Global Message name
+     * @return DeleteGlobalMessageMasterRequest
+     */
 	public function withGlobalMessageName(?string $globalMessageName): DeleteGlobalMessageMasterRequest {
 		$this->globalMessageName = $globalMessageName;
 		return $this;

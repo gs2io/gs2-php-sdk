@@ -19,39 +19,62 @@ namespace Gs2\Inventory\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for deleteItemModelMaster: Delete Item Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#deleteitemmodelmaster
+ */
 class DeleteItemModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Inventory Model name */
     private $inventoryName;
-    /** @var string */
+    /** @var string Item Model name */
     private $itemName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DeleteItemModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DeleteItemModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Inventory Model name */
 	public function getInventoryName(): ?string {
 		return $this->inventoryName;
 	}
+    /** @param string|null $inventoryName Inventory Model name */
 	public function setInventoryName(?string $inventoryName) {
 		$this->inventoryName = $inventoryName;
 	}
+    /**
+     * @param string|null $inventoryName Inventory Model name
+     * @return DeleteItemModelMasterRequest
+     */
 	public function withInventoryName(?string $inventoryName): DeleteItemModelMasterRequest {
 		$this->inventoryName = $inventoryName;
 		return $this;
 	}
+    /** @return string|null Item Model name */
 	public function getItemName(): ?string {
 		return $this->itemName;
 	}
+    /** @param string|null $itemName Item Model name */
 	public function setItemName(?string $itemName) {
 		$this->itemName = $itemName;
 	}
+    /**
+     * @param string|null $itemName Item Model name
+     * @return DeleteItemModelMasterRequest
+     */
 	public function withItemName(?string $itemName): DeleteItemModelMasterRequest {
 		$this->itemName = $itemName;
 		return $this;

@@ -19,27 +19,44 @@ namespace Gs2\Mission\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for revertReceiveByStampSheet: Revert mission reward receipt as an acquire action within a distributed transaction
+ *
+ * @see https://docs.gs2.io/api_reference/mission/stamp_sheet/#gs2missionrevertreceivebyuserid
+ */
 class RevertReceiveByStampSheetRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Transaction */
     private $stampSheet;
-    /** @var string */
+    /** @var string Encryption Key GRN */
     private $keyId;
+    /** @return string|null Transaction */
 	public function getStampSheet(): ?string {
 		return $this->stampSheet;
 	}
+    /** @param string|null $stampSheet Transaction */
 	public function setStampSheet(?string $stampSheet) {
 		$this->stampSheet = $stampSheet;
 	}
+    /**
+     * @param string|null $stampSheet Transaction
+     * @return RevertReceiveByStampSheetRequest
+     */
 	public function withStampSheet(?string $stampSheet): RevertReceiveByStampSheetRequest {
 		$this->stampSheet = $stampSheet;
 		return $this;
 	}
+    /** @return string|null Encryption Key GRN */
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
+    /** @param string|null $keyId Encryption Key GRN */
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
+    /**
+     * @param string|null $keyId Encryption Key GRN
+     * @return RevertReceiveByStampSheetRequest
+     */
 	public function withKeyId(?string $keyId): RevertReceiveByStampSheetRequest {
 		$this->keyId = $keyId;
 		return $this;

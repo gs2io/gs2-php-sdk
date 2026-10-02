@@ -20,31 +20,48 @@ namespace Gs2\Showcase\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Number of Random Displayed Item purchases
+ *
+ * @see https://docs.gs2.io/api_reference/showcase/sdk/#purchasecount
+ */
 class PurchaseCount implements IModel {
 	/**
-     * @var string
+     * @var string Number of Random Displayed Item purchases name
 	 */
 	private $name;
 	/**
-     * @var int
+     * @var int Purchase count
 	 */
 	private $count;
+    /** @return string|null Number of Random Displayed Item purchases name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Number of Random Displayed Item purchases name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Number of Random Displayed Item purchases name
+     * @return PurchaseCount
+     */
 	public function withName(?string $name): PurchaseCount {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return int|null Purchase count */
 	public function getCount(): ?int {
 		return $this->count;
 	}
+    /** @param int|null $count Purchase count */
 	public function setCount(?int $count) {
 		$this->count = $count;
 	}
+    /**
+     * @param int|null $count Purchase count
+     * @return PurchaseCount
+     */
 	public function withCount(?int $count): PurchaseCount {
 		$this->count = $count;
 		return $this;

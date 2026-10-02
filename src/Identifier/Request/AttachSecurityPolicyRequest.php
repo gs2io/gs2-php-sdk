@@ -19,27 +19,44 @@ namespace Gs2\Identifier\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for attachSecurityPolicy: Assign the Security Policy to a user
+ *
+ * @see https://docs.gs2.io/api_reference/identifier/sdk/#attachsecuritypolicy-1
+ */
 class AttachSecurityPolicyRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string GS2-Identifier User name */
     private $userName;
-    /** @var string */
+    /** @var string GRN of the Security Policy to assign */
     private $securityPolicyId;
+    /** @return string|null GS2-Identifier User name */
 	public function getUserName(): ?string {
 		return $this->userName;
 	}
+    /** @param string|null $userName GS2-Identifier User name */
 	public function setUserName(?string $userName) {
 		$this->userName = $userName;
 	}
+    /**
+     * @param string|null $userName GS2-Identifier User name
+     * @return AttachSecurityPolicyRequest
+     */
 	public function withUserName(?string $userName): AttachSecurityPolicyRequest {
 		$this->userName = $userName;
 		return $this;
 	}
+    /** @return string|null GRN of the Security Policy to assign */
 	public function getSecurityPolicyId(): ?string {
 		return $this->securityPolicyId;
 	}
+    /** @param string|null $securityPolicyId GRN of the Security Policy to assign */
 	public function setSecurityPolicyId(?string $securityPolicyId) {
 		$this->securityPolicyId = $securityPolicyId;
 	}
+    /**
+     * @param string|null $securityPolicyId GRN of the Security Policy to assign
+     * @return AttachSecurityPolicyRequest
+     */
 	public function withSecurityPolicyId(?string $securityPolicyId): AttachSecurityPolicyRequest {
 		$this->securityPolicyId = $securityPolicyId;
 		return $this;

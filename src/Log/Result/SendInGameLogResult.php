@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Log\Model\InGameLogTag;
 use Gs2\Log\Model\InGameLog;
 
+/**
+ * Result of sendInGameLog: Send in-game log
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#sendingamelog
+ */
 class SendInGameLogResult implements IResult {
-    /** @var InGameLog */
+    /** @var InGameLog In-game log */
     private $item;
 
+    /** @return InGameLog|null In-game log */
 	public function getItem(): ?InGameLog {
 		return $this->item;
 	}
 
+    /** @param InGameLog|null $item In-game log */
 	public function setItem(?InGameLog $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param InGameLog|null $item In-game log
+     * @return SendInGameLogResult
+     */
 	public function withItem(?InGameLog $item): SendInGameLogResult {
 		$this->item = $item;
 		return $this;

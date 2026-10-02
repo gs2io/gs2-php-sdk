@@ -20,18 +20,29 @@ namespace Gs2\Guild\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Guild\Model\CurrentGuildMaster;
 
+/**
+ * Result of getCurrentGuildMaster: Get currently active Guild Model master data
+ *
+ * @see https://docs.gs2.io/api_reference/guild/sdk/#getcurrentguildmaster
+ */
 class GetCurrentGuildMasterResult implements IResult {
-    /** @var CurrentGuildMaster */
+    /** @var CurrentGuildMaster Currently active Guild Model master data */
     private $item;
 
+    /** @return CurrentGuildMaster|null Currently active Guild Model master data */
 	public function getItem(): ?CurrentGuildMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentGuildMaster|null $item Currently active Guild Model master data */
 	public function setItem(?CurrentGuildMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentGuildMaster|null $item Currently active Guild Model master data
+     * @return GetCurrentGuildMasterResult
+     */
 	public function withItem(?CurrentGuildMaster $item): GetCurrentGuildMasterResult {
 		$this->item = $item;
 		return $this;

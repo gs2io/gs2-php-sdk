@@ -20,33 +20,50 @@ namespace Gs2\Key\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Key\Model\Key;
 
+/**
+ * Result of describeKeys: List Encryption Keys
+ *
+ * @see https://docs.gs2.io/api_reference/key/sdk/#describekeys
+ */
 class DescribeKeysResult implements IResult {
-    /** @var array */
+    /** @var array List of Encryption Keys */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Encryption Keys */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Encryption Keys */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Encryption Keys
+     * @return DescribeKeysResult
+     */
 	public function withItems(?array $items): DescribeKeysResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeKeysResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeKeysResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

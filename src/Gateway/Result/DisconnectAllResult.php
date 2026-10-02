@@ -19,6 +19,11 @@ namespace Gs2\Gateway\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of disconnectAll: Disconnect all WebSocket sessions
+ *
+ * @see https://docs.gs2.io/api_reference/gateway/sdk/#disconnectall
+ */
 class DisconnectAllResult implements IResult {
 
     public static function fromJson(?array $data): ?DisconnectAllResult {

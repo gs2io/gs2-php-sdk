@@ -20,129 +20,188 @@ namespace Gs2\Money2\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Wallet
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#wallet
+ */
 class Wallet implements IModel {
 	/**
-     * @var string
+     * @var string Wallet GRN
 	 */
 	private $walletId;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var int
+     * @var int Slot Number
 	 */
 	private $slot;
 	/**
-     * @var WalletSummary
+     * @var WalletSummary Wallet Status
 	 */
 	private $summary;
 	/**
-     * @var array
+     * @var array List of deposit transactions
 	 */
 	private $depositTransactions;
 	/**
-     * @var bool
+     * @var bool Share free currency
 	 */
 	private $sharedFreeCurrency;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Wallet GRN */
 	public function getWalletId(): ?string {
 		return $this->walletId;
 	}
+    /** @param string|null $walletId Wallet GRN */
 	public function setWalletId(?string $walletId) {
 		$this->walletId = $walletId;
 	}
+    /**
+     * @param string|null $walletId Wallet GRN
+     * @return Wallet
+     */
 	public function withWalletId(?string $walletId): Wallet {
 		$this->walletId = $walletId;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return Wallet
+     */
 	public function withUserId(?string $userId): Wallet {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return int|null Slot Number */
 	public function getSlot(): ?int {
 		return $this->slot;
 	}
+    /** @param int|null $slot Slot Number */
 	public function setSlot(?int $slot) {
 		$this->slot = $slot;
 	}
+    /**
+     * @param int|null $slot Slot Number
+     * @return Wallet
+     */
 	public function withSlot(?int $slot): Wallet {
 		$this->slot = $slot;
 		return $this;
 	}
+    /** @return WalletSummary|null Wallet Status */
 	public function getSummary(): ?WalletSummary {
 		return $this->summary;
 	}
+    /** @param WalletSummary|null $summary Wallet Status */
 	public function setSummary(?WalletSummary $summary) {
 		$this->summary = $summary;
 	}
+    /**
+     * @param WalletSummary|null $summary Wallet Status
+     * @return Wallet
+     */
 	public function withSummary(?WalletSummary $summary): Wallet {
 		$this->summary = $summary;
 		return $this;
 	}
+    /** @return array|null List of deposit transactions */
 	public function getDepositTransactions(): ?array {
 		return $this->depositTransactions;
 	}
+    /** @param array|null $depositTransactions List of deposit transactions */
 	public function setDepositTransactions(?array $depositTransactions) {
 		$this->depositTransactions = $depositTransactions;
 	}
+    /**
+     * @param array|null $depositTransactions List of deposit transactions
+     * @return Wallet
+     */
 	public function withDepositTransactions(?array $depositTransactions): Wallet {
 		$this->depositTransactions = $depositTransactions;
 		return $this;
 	}
+    /** @return bool|null Share free currency */
 	public function getSharedFreeCurrency(): ?bool {
 		return $this->sharedFreeCurrency;
 	}
+    /** @param bool|null $sharedFreeCurrency Share free currency */
 	public function setSharedFreeCurrency(?bool $sharedFreeCurrency) {
 		$this->sharedFreeCurrency = $sharedFreeCurrency;
 	}
+    /**
+     * @param bool|null $sharedFreeCurrency Share free currency
+     * @return Wallet
+     */
 	public function withSharedFreeCurrency(?bool $sharedFreeCurrency): Wallet {
 		$this->sharedFreeCurrency = $sharedFreeCurrency;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return Wallet
+     */
 	public function withCreatedAt(?int $createdAt): Wallet {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return Wallet
+     */
 	public function withUpdatedAt(?int $updatedAt): Wallet {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return Wallet
+     */
 	public function withRevision(?int $revision): Wallet {
 		$this->revision = $revision;
 		return $this;

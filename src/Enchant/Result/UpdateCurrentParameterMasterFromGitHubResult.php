@@ -20,18 +20,29 @@ namespace Gs2\Enchant\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Enchant\Model\CurrentParameterMaster;
 
+/**
+ * Result of updateCurrentParameterMasterFromGitHub: Updates currently active Parameter Model master data from GitHub
+ *
+ * @see https://docs.gs2.io/api_reference/enchant/sdk/#updatecurrentparametermasterfromgithub
+ */
 class UpdateCurrentParameterMasterFromGitHubResult implements IResult {
-    /** @var CurrentParameterMaster */
+    /** @var CurrentParameterMaster Updated master data of the currently active Parameter Models */
     private $item;
 
+    /** @return CurrentParameterMaster|null Updated master data of the currently active Parameter Models */
 	public function getItem(): ?CurrentParameterMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentParameterMaster|null $item Updated master data of the currently active Parameter Models */
 	public function setItem(?CurrentParameterMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentParameterMaster|null $item Updated master data of the currently active Parameter Models
+     * @return UpdateCurrentParameterMasterFromGitHubResult
+     */
 	public function withItem(?CurrentParameterMaster $item): UpdateCurrentParameterMasterFromGitHubResult {
 		$this->item = $item;
 		return $this;

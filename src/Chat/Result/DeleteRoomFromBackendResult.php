@@ -20,18 +20,29 @@ namespace Gs2\Chat\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Chat\Model\Room;
 
+/**
+ * Result of deleteRoomFromBackend: Delete Room from Backend
+ *
+ * @see https://docs.gs2.io/api_reference/chat/sdk/#deleteroomfrombackend
+ */
 class DeleteRoomFromBackendResult implements IResult {
-    /** @var Room */
+    /** @var Room Room deleted */
     private $item;
 
+    /** @return Room|null Room deleted */
 	public function getItem(): ?Room {
 		return $this->item;
 	}
 
+    /** @param Room|null $item Room deleted */
 	public function setItem(?Room $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Room|null $item Room deleted
+     * @return DeleteRoomFromBackendResult
+     */
 	public function withItem(?Room $item): DeleteRoomFromBackendResult {
 		$this->item = $item;
 		return $this;

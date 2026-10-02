@@ -24,18 +24,29 @@ use Gs2\Showcase\Model\AcquireAction;
 use Gs2\Showcase\Model\RandomDisplayItemModel;
 use Gs2\Showcase\Model\RandomShowcaseMaster;
 
+/**
+ * Result of getRandomShowcaseMaster: Get Random Showcase Master
+ *
+ * @see https://docs.gs2.io/api_reference/showcase/sdk/#getrandomshowcasemaster
+ */
 class GetRandomShowcaseMasterResult implements IResult {
-    /** @var RandomShowcaseMaster */
+    /** @var RandomShowcaseMaster Random Showcase Master */
     private $item;
 
+    /** @return RandomShowcaseMaster|null Random Showcase Master */
 	public function getItem(): ?RandomShowcaseMaster {
 		return $this->item;
 	}
 
+    /** @param RandomShowcaseMaster|null $item Random Showcase Master */
 	public function setItem(?RandomShowcaseMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param RandomShowcaseMaster|null $item Random Showcase Master
+     * @return GetRandomShowcaseMasterResult
+     */
 	public function withItem(?RandomShowcaseMaster $item): GetRandomShowcaseMasterResult {
 		$this->item = $item;
 		return $this;

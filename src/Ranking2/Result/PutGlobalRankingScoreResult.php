@@ -20,18 +20,29 @@ namespace Gs2\Ranking2\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Ranking2\Model\GlobalRankingScore;
 
+/**
+ * Result of putGlobalRankingScore: Register Global Ranking Score
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/sdk/#putglobalrankingscore
+ */
 class PutGlobalRankingScoreResult implements IResult {
-    /** @var GlobalRankingScore */
+    /** @var GlobalRankingScore Registered Global Ranking Score */
     private $item;
 
+    /** @return GlobalRankingScore|null Registered Global Ranking Score */
 	public function getItem(): ?GlobalRankingScore {
 		return $this->item;
 	}
 
+    /** @param GlobalRankingScore|null $item Registered Global Ranking Score */
 	public function setItem(?GlobalRankingScore $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param GlobalRankingScore|null $item Registered Global Ranking Score
+     * @return PutGlobalRankingScoreResult
+     */
 	public function withItem(?GlobalRankingScore $item): PutGlobalRankingScoreResult {
 		$this->item = $item;
 		return $this;

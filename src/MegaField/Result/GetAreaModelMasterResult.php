@@ -20,18 +20,29 @@ namespace Gs2\MegaField\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\MegaField\Model\AreaModelMaster;
 
+/**
+ * Result of getAreaModelMaster: Get Area Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/mega_field/sdk/#getareamodelmaster
+ */
 class GetAreaModelMasterResult implements IResult {
-    /** @var AreaModelMaster */
+    /** @var AreaModelMaster Area Model Master */
     private $item;
 
+    /** @return AreaModelMaster|null Area Model Master */
 	public function getItem(): ?AreaModelMaster {
 		return $this->item;
 	}
 
+    /** @param AreaModelMaster|null $item Area Model Master */
 	public function setItem(?AreaModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param AreaModelMaster|null $item Area Model Master
+     * @return GetAreaModelMasterResult
+     */
 	public function withItem(?AreaModelMaster $item): GetAreaModelMasterResult {
 		$this->item = $item;
 		return $this;

@@ -23,48 +23,71 @@ use Gs2\Version\Model\ScheduleVersion;
 use Gs2\Version\Model\VersionModel;
 use Gs2\Version\Model\Status;
 
+/**
+ * Result of checkVersionByUserId: Check Version by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/version/sdk/#checkversionbyuserid
+ */
 class CheckVersionByUserIdResult implements IResult {
-    /** @var string */
+    /** @var string Signed in to the project token. */
     private $projectToken;
-    /** @var array */
+    /** @var array Version Verification Results List of Warnings */
     private $warnings;
-    /** @var array */
+    /** @var array Version Verification Results List of errors */
     private $errors;
 
+    /** @return string|null Signed in to the project token. */
 	public function getProjectToken(): ?string {
 		return $this->projectToken;
 	}
 
+    /** @param string|null $projectToken Signed in to the project token. */
 	public function setProjectToken(?string $projectToken) {
 		$this->projectToken = $projectToken;
 	}
 
+    /**
+     * @param string|null $projectToken Signed in to the project token.
+     * @return CheckVersionByUserIdResult
+     */
 	public function withProjectToken(?string $projectToken): CheckVersionByUserIdResult {
 		$this->projectToken = $projectToken;
 		return $this;
 	}
 
+    /** @return array|null Version Verification Results List of Warnings */
 	public function getWarnings(): ?array {
 		return $this->warnings;
 	}
 
+    /** @param array|null $warnings Version Verification Results List of Warnings */
 	public function setWarnings(?array $warnings) {
 		$this->warnings = $warnings;
 	}
 
+    /**
+     * @param array|null $warnings Version Verification Results List of Warnings
+     * @return CheckVersionByUserIdResult
+     */
 	public function withWarnings(?array $warnings): CheckVersionByUserIdResult {
 		$this->warnings = $warnings;
 		return $this;
 	}
 
+    /** @return array|null Version Verification Results List of errors */
 	public function getErrors(): ?array {
 		return $this->errors;
 	}
 
+    /** @param array|null $errors Version Verification Results List of errors */
 	public function setErrors(?array $errors) {
 		$this->errors = $errors;
 	}
 
+    /**
+     * @param array|null $errors Version Verification Results List of errors
+     * @return CheckVersionByUserIdResult
+     */
 	public function withErrors(?array $errors): CheckVersionByUserIdResult {
 		$this->errors = $errors;
 		return $this;

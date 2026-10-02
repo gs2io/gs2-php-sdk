@@ -19,51 +19,80 @@ namespace Gs2\Ranking2\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getSubscribe: Get Subscribe Target User ID
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/sdk/#getsubscribe
+ */
 class GetSubscribeRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Subscribe Ranking Model name */
     private $rankingName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Subscribe Target User ID */
     private $targetUserId;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetSubscribeRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetSubscribeRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Subscribe Ranking Model name */
 	public function getRankingName(): ?string {
 		return $this->rankingName;
 	}
+    /** @param string|null $rankingName Subscribe Ranking Model name */
 	public function setRankingName(?string $rankingName) {
 		$this->rankingName = $rankingName;
 	}
+    /**
+     * @param string|null $rankingName Subscribe Ranking Model name
+     * @return GetSubscribeRequest
+     */
 	public function withRankingName(?string $rankingName): GetSubscribeRequest {
 		$this->rankingName = $rankingName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return GetSubscribeRequest
+     */
 	public function withAccessToken(?string $accessToken): GetSubscribeRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Subscribe Target User ID */
 	public function getTargetUserId(): ?string {
 		return $this->targetUserId;
 	}
+    /** @param string|null $targetUserId Subscribe Target User ID */
 	public function setTargetUserId(?string $targetUserId) {
 		$this->targetUserId = $targetUserId;
 	}
+    /**
+     * @param string|null $targetUserId Subscribe Target User ID
+     * @return GetSubscribeRequest
+     */
 	public function withTargetUserId(?string $targetUserId): GetSubscribeRequest {
 		$this->targetUserId = $targetUserId;
 		return $this;

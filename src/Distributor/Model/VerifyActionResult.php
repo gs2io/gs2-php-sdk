@@ -20,59 +20,88 @@ namespace Gs2\Distributor\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Verify Action execution result
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#verifyactionresult
+ */
 class VerifyActionResult implements IModel {
 	/**
-     * @var string
+     * @var string Type of Verify Action
 	 */
 	private $action;
 	/**
-     * @var string
+     * @var string JSON string of the request used when executing the action
 	 */
 	private $verifyRequest;
 	/**
-     * @var int
+     * @var int Status code
 	 */
 	private $statusCode;
 	/**
-     * @var string
+     * @var string Result content
 	 */
 	private $verifyResult;
+    /** @return string|null Type of Verify Action */
 	public function getAction(): ?string {
 		return $this->action;
 	}
+    /** @param string|null $action Type of Verify Action */
 	public function setAction(?string $action) {
 		$this->action = $action;
 	}
+    /**
+     * @param string|null $action Type of Verify Action
+     * @return VerifyActionResult
+     */
 	public function withAction(?string $action): VerifyActionResult {
 		$this->action = $action;
 		return $this;
 	}
+    /** @return string|null JSON string of the request used when executing the action */
 	public function getVerifyRequest(): ?string {
 		return $this->verifyRequest;
 	}
+    /** @param string|null $verifyRequest JSON string of the request used when executing the action */
 	public function setVerifyRequest(?string $verifyRequest) {
 		$this->verifyRequest = $verifyRequest;
 	}
+    /**
+     * @param string|null $verifyRequest JSON string of the request used when executing the action
+     * @return VerifyActionResult
+     */
 	public function withVerifyRequest(?string $verifyRequest): VerifyActionResult {
 		$this->verifyRequest = $verifyRequest;
 		return $this;
 	}
+    /** @return int|null Status code */
 	public function getStatusCode(): ?int {
 		return $this->statusCode;
 	}
+    /** @param int|null $statusCode Status code */
 	public function setStatusCode(?int $statusCode) {
 		$this->statusCode = $statusCode;
 	}
+    /**
+     * @param int|null $statusCode Status code
+     * @return VerifyActionResult
+     */
 	public function withStatusCode(?int $statusCode): VerifyActionResult {
 		$this->statusCode = $statusCode;
 		return $this;
 	}
+    /** @return string|null Result content */
 	public function getVerifyResult(): ?string {
 		return $this->verifyResult;
 	}
+    /** @param string|null $verifyResult Result content */
 	public function setVerifyResult(?string $verifyResult) {
 		$this->verifyResult = $verifyResult;
 	}
+    /**
+     * @param string|null $verifyResult Result content
+     * @return VerifyActionResult
+     */
 	public function withVerifyResult(?string $verifyResult): VerifyActionResult {
 		$this->verifyResult = $verifyResult;
 		return $this;

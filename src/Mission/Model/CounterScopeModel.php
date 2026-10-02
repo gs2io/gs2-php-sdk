@@ -20,129 +20,188 @@ namespace Gs2\Mission\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Counter Reset Timing Model
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#counterscopemodel
+ */
 class CounterScopeModel implements IModel {
 	/**
-     * @var string
+     * @var string Scope type
 	 */
 	private $scopeType;
 	/**
-     * @var string
+     * @var string Reset timing
 	 */
 	private $resetType;
 	/**
-     * @var int
+     * @var int Date to reset
 	 */
 	private $resetDayOfMonth;
 	/**
-     * @var string
+     * @var string Day of the week to reset
 	 */
 	private $resetDayOfWeek;
 	/**
-     * @var int
+     * @var int Hour of Reset
 	 */
 	private $resetHour;
 	/**
-     * @var string
+     * @var string Condition Name
 	 */
 	private $conditionName;
 	/**
-     * @var VerifyAction
+     * @var VerifyAction Condition
 	 */
 	private $condition;
 	/**
-     * @var int
+     * @var int Base date and time for counting elapsed days
 	 */
 	private $anchorTimestamp;
 	/**
-     * @var int
+     * @var int Number of days to reset
 	 */
 	private $days;
+    /** @return string|null Scope type */
 	public function getScopeType(): ?string {
 		return $this->scopeType;
 	}
+    /** @param string|null $scopeType Scope type */
 	public function setScopeType(?string $scopeType) {
 		$this->scopeType = $scopeType;
 	}
+    /**
+     * @param string|null $scopeType Scope type
+     * @return CounterScopeModel
+     */
 	public function withScopeType(?string $scopeType): CounterScopeModel {
 		$this->scopeType = $scopeType;
 		return $this;
 	}
+    /** @return string|null Reset timing */
 	public function getResetType(): ?string {
 		return $this->resetType;
 	}
+    /** @param string|null $resetType Reset timing */
 	public function setResetType(?string $resetType) {
 		$this->resetType = $resetType;
 	}
+    /**
+     * @param string|null $resetType Reset timing
+     * @return CounterScopeModel
+     */
 	public function withResetType(?string $resetType): CounterScopeModel {
 		$this->resetType = $resetType;
 		return $this;
 	}
+    /** @return int|null Date to reset */
 	public function getResetDayOfMonth(): ?int {
 		return $this->resetDayOfMonth;
 	}
+    /** @param int|null $resetDayOfMonth Date to reset */
 	public function setResetDayOfMonth(?int $resetDayOfMonth) {
 		$this->resetDayOfMonth = $resetDayOfMonth;
 	}
+    /**
+     * @param int|null $resetDayOfMonth Date to reset
+     * @return CounterScopeModel
+     */
 	public function withResetDayOfMonth(?int $resetDayOfMonth): CounterScopeModel {
 		$this->resetDayOfMonth = $resetDayOfMonth;
 		return $this;
 	}
+    /** @return string|null Day of the week to reset */
 	public function getResetDayOfWeek(): ?string {
 		return $this->resetDayOfWeek;
 	}
+    /** @param string|null $resetDayOfWeek Day of the week to reset */
 	public function setResetDayOfWeek(?string $resetDayOfWeek) {
 		$this->resetDayOfWeek = $resetDayOfWeek;
 	}
+    /**
+     * @param string|null $resetDayOfWeek Day of the week to reset
+     * @return CounterScopeModel
+     */
 	public function withResetDayOfWeek(?string $resetDayOfWeek): CounterScopeModel {
 		$this->resetDayOfWeek = $resetDayOfWeek;
 		return $this;
 	}
+    /** @return int|null Hour of Reset */
 	public function getResetHour(): ?int {
 		return $this->resetHour;
 	}
+    /** @param int|null $resetHour Hour of Reset */
 	public function setResetHour(?int $resetHour) {
 		$this->resetHour = $resetHour;
 	}
+    /**
+     * @param int|null $resetHour Hour of Reset
+     * @return CounterScopeModel
+     */
 	public function withResetHour(?int $resetHour): CounterScopeModel {
 		$this->resetHour = $resetHour;
 		return $this;
 	}
+    /** @return string|null Condition Name */
 	public function getConditionName(): ?string {
 		return $this->conditionName;
 	}
+    /** @param string|null $conditionName Condition Name */
 	public function setConditionName(?string $conditionName) {
 		$this->conditionName = $conditionName;
 	}
+    /**
+     * @param string|null $conditionName Condition Name
+     * @return CounterScopeModel
+     */
 	public function withConditionName(?string $conditionName): CounterScopeModel {
 		$this->conditionName = $conditionName;
 		return $this;
 	}
+    /** @return VerifyAction|null Condition */
 	public function getCondition(): ?VerifyAction {
 		return $this->condition;
 	}
+    /** @param VerifyAction|null $condition Condition */
 	public function setCondition(?VerifyAction $condition) {
 		$this->condition = $condition;
 	}
+    /**
+     * @param VerifyAction|null $condition Condition
+     * @return CounterScopeModel
+     */
 	public function withCondition(?VerifyAction $condition): CounterScopeModel {
 		$this->condition = $condition;
 		return $this;
 	}
+    /** @return int|null Base date and time for counting elapsed days */
 	public function getAnchorTimestamp(): ?int {
 		return $this->anchorTimestamp;
 	}
+    /** @param int|null $anchorTimestamp Base date and time for counting elapsed days */
 	public function setAnchorTimestamp(?int $anchorTimestamp) {
 		$this->anchorTimestamp = $anchorTimestamp;
 	}
+    /**
+     * @param int|null $anchorTimestamp Base date and time for counting elapsed days
+     * @return CounterScopeModel
+     */
 	public function withAnchorTimestamp(?int $anchorTimestamp): CounterScopeModel {
 		$this->anchorTimestamp = $anchorTimestamp;
 		return $this;
 	}
+    /** @return int|null Number of days to reset */
 	public function getDays(): ?int {
 		return $this->days;
 	}
+    /** @param int|null $days Number of days to reset */
 	public function setDays(?int $days) {
 		$this->days = $days;
 	}
+    /**
+     * @param int|null $days Number of days to reset
+     * @return CounterScopeModel
+     */
 	public function withDays(?int $days): CounterScopeModel {
 		$this->days = $days;
 		return $this;

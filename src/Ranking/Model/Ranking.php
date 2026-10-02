@@ -20,101 +20,148 @@ namespace Gs2\Ranking\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Ranking
+ *
+ * @see https://docs.gs2.io/api_reference/ranking/sdk/#ranking
+ */
 class Ranking implements IModel {
 	/**
-     * @var int
+     * @var int Rank
 	 */
 	private $rank;
 	/**
-     * @var int
+     * @var int Index
 	 */
 	private $index;
 	/**
-     * @var string
+     * @var string Category Model name
 	 */
 	private $categoryName;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var int
+     * @var int Score
 	 */
 	private $score;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
+    /** @return int|null Rank */
 	public function getRank(): ?int {
 		return $this->rank;
 	}
+    /** @param int|null $rank Rank */
 	public function setRank(?int $rank) {
 		$this->rank = $rank;
 	}
+    /**
+     * @param int|null $rank Rank
+     * @return Ranking
+     */
 	public function withRank(?int $rank): Ranking {
 		$this->rank = $rank;
 		return $this;
 	}
+    /** @return int|null Index */
 	public function getIndex(): ?int {
 		return $this->index;
 	}
+    /** @param int|null $index Index */
 	public function setIndex(?int $index) {
 		$this->index = $index;
 	}
+    /**
+     * @param int|null $index Index
+     * @return Ranking
+     */
 	public function withIndex(?int $index): Ranking {
 		$this->index = $index;
 		return $this;
 	}
+    /** @return string|null Category Model name */
 	public function getCategoryName(): ?string {
 		return $this->categoryName;
 	}
+    /** @param string|null $categoryName Category Model name */
 	public function setCategoryName(?string $categoryName) {
 		$this->categoryName = $categoryName;
 	}
+    /**
+     * @param string|null $categoryName Category Model name
+     * @return Ranking
+     */
 	public function withCategoryName(?string $categoryName): Ranking {
 		$this->categoryName = $categoryName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return Ranking
+     */
 	public function withUserId(?string $userId): Ranking {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return int|null Score */
 	public function getScore(): ?int {
 		return $this->score;
 	}
+    /** @param int|null $score Score */
 	public function setScore(?int $score) {
 		$this->score = $score;
 	}
+    /**
+     * @param int|null $score Score
+     * @return Ranking
+     */
 	public function withScore(?int $score): Ranking {
 		$this->score = $score;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return Ranking
+     */
 	public function withMetadata(?string $metadata): Ranking {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return Ranking
+     */
 	public function withCreatedAt(?int $createdAt): Ranking {
 		$this->createdAt = $createdAt;
 		return $this;

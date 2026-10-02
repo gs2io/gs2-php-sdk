@@ -20,18 +20,29 @@ namespace Gs2\Ranking\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Ranking\Model\SubscribeUser;
 
+/**
+ * Result of describeSubscribesByCategoryNameAndUserId: Obtaining a list of users to which the user is subscribed by specifying the user ID
+ *
+ * @see https://docs.gs2.io/api_reference/ranking/sdk/#describesubscribesbycategorynameanduserid
+ */
 class DescribeSubscribesByCategoryNameAndUserIdResult implements IResult {
-    /** @var array */
+    /** @var array List of Subscribed User Information */
     private $items;
 
+    /** @return array|null List of Subscribed User Information */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Subscribed User Information */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Subscribed User Information
+     * @return DescribeSubscribesByCategoryNameAndUserIdResult
+     */
 	public function withItems(?array $items): DescribeSubscribesByCategoryNameAndUserIdResult {
 		$this->items = $items;
 		return $this;

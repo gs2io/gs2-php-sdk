@@ -20,18 +20,29 @@ namespace Gs2\Idle\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Idle\Model\CurrentCategoryMaster;
 
+/**
+ * Result of exportMaster: Export Category Model Master in a master data format that can be activated
+ *
+ * @see https://docs.gs2.io/api_reference/idle/sdk/#exportmaster
+ */
 class ExportMasterResult implements IResult {
-    /** @var CurrentCategoryMaster */
+    /** @var CurrentCategoryMaster Category Model master data that can be activated */
     private $item;
 
+    /** @return CurrentCategoryMaster|null Category Model master data that can be activated */
 	public function getItem(): ?CurrentCategoryMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentCategoryMaster|null $item Category Model master data that can be activated */
 	public function setItem(?CurrentCategoryMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentCategoryMaster|null $item Category Model master data that can be activated
+     * @return ExportMasterResult
+     */
 	public function withItem(?CurrentCategoryMaster $item): ExportMasterResult {
 		$this->item = $item;
 		return $this;

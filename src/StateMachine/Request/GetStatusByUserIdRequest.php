@@ -19,51 +19,80 @@ namespace Gs2\StateMachine\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getStatusByUserId: Get State Machine Status by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/state_machine/sdk/#getstatusbyuserid
+ */
 class GetStatusByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Status name */
     private $statusName;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetStatusByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetStatusByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return GetStatusByUserIdRequest
+     */
 	public function withUserId(?string $userId): GetStatusByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Status name */
 	public function getStatusName(): ?string {
 		return $this->statusName;
 	}
+    /** @param string|null $statusName Status name */
 	public function setStatusName(?string $statusName) {
 		$this->statusName = $statusName;
 	}
+    /**
+     * @param string|null $statusName Status name
+     * @return GetStatusByUserIdRequest
+     */
 	public function withStatusName(?string $statusName): GetStatusByUserIdRequest {
 		$this->statusName = $statusName;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return GetStatusByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): GetStatusByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

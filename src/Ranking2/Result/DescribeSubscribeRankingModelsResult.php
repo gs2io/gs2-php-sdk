@@ -20,18 +20,29 @@ namespace Gs2\Ranking2\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Ranking2\Model\SubscribeRankingModel;
 
+/**
+ * Result of describeSubscribeRankingModels: List Subscribe Ranking Models
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/sdk/#describesubscriberankingmodels
+ */
 class DescribeSubscribeRankingModelsResult implements IResult {
-    /** @var array */
+    /** @var array List of Subscribe Ranking Models */
     private $items;
 
+    /** @return array|null List of Subscribe Ranking Models */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Subscribe Ranking Models */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Subscribe Ranking Models
+     * @return DescribeSubscribeRankingModelsResult
+     */
 	public function withItems(?array $items): DescribeSubscribeRankingModelsResult {
 		$this->items = $items;
 		return $this;

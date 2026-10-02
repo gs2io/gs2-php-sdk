@@ -23,33 +23,50 @@ use Gs2\Guild\Model\Member;
 use Gs2\Guild\Model\Guild;
 use Gs2\Guild\Model\SendMemberRequest;
 
+/**
+ * Result of sendRequest: Send a join request
+ *
+ * @see https://docs.gs2.io/api_reference/guild/sdk/#sendrequest
+ */
 class SendRequestResult implements IResult {
-    /** @var Guild */
+    /** @var Guild Joined guild */
     private $item;
-    /** @var SendMemberRequest */
+    /** @var SendMemberRequest Sent Join Request */
     private $sendMemberRequest;
 
+    /** @return Guild|null Joined guild */
 	public function getItem(): ?Guild {
 		return $this->item;
 	}
 
+    /** @param Guild|null $item Joined guild */
 	public function setItem(?Guild $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Guild|null $item Joined guild
+     * @return SendRequestResult
+     */
 	public function withItem(?Guild $item): SendRequestResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return SendMemberRequest|null Sent Join Request */
 	public function getSendMemberRequest(): ?SendMemberRequest {
 		return $this->sendMemberRequest;
 	}
 
+    /** @param SendMemberRequest|null $sendMemberRequest Sent Join Request */
 	public function setSendMemberRequest(?SendMemberRequest $sendMemberRequest) {
 		$this->sendMemberRequest = $sendMemberRequest;
 	}
 
+    /**
+     * @param SendMemberRequest|null $sendMemberRequest Sent Join Request
+     * @return SendRequestResult
+     */
 	public function withSendMemberRequest(?SendMemberRequest $sendMemberRequest): SendRequestResult {
 		$this->sendMemberRequest = $sendMemberRequest;
 		return $this;

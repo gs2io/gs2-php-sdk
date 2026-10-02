@@ -19,39 +19,62 @@ namespace Gs2\Identifier\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for createSecurityPolicy: Create Security Policy
+ *
+ * @see https://docs.gs2.io/api_reference/identifier/sdk/#createsecuritypolicy
+ */
 class CreateSecurityPolicyRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Security Policy Name */
     private $name;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var string */
+    /** @var string Policy Document */
     private $policy;
+    /** @return string|null Security Policy Name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Security Policy Name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Security Policy Name
+     * @return CreateSecurityPolicyRequest
+     */
 	public function withName(?string $name): CreateSecurityPolicyRequest {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return CreateSecurityPolicyRequest
+     */
 	public function withDescription(?string $description): CreateSecurityPolicyRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Policy Document */
 	public function getPolicy(): ?string {
 		return $this->policy;
 	}
+    /** @param string|null $policy Policy Document */
 	public function setPolicy(?string $policy) {
 		$this->policy = $policy;
 	}
+    /**
+     * @param string|null $policy Policy Document
+     * @return CreateSecurityPolicyRequest
+     */
 	public function withPolicy(?string $policy): CreateSecurityPolicyRequest {
 		$this->policy = $policy;
 		return $this;

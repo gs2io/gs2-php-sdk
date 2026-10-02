@@ -20,115 +20,168 @@ namespace Gs2\Quest\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Quest Group Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/quest/sdk/#questgroupmodelmaster
+ */
 class QuestGroupModelMaster implements IModel {
 	/**
-     * @var string
+     * @var string Quest Group Model Master GRN
 	 */
 	private $questGroupModelId;
 	/**
-     * @var string
+     * @var string Quest Group Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Description
 	 */
 	private $description;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var string
+     * @var string Challenge Period Event GRN
 	 */
 	private $challengePeriodEventId;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Quest Group Model Master GRN */
 	public function getQuestGroupModelId(): ?string {
 		return $this->questGroupModelId;
 	}
+    /** @param string|null $questGroupModelId Quest Group Model Master GRN */
 	public function setQuestGroupModelId(?string $questGroupModelId) {
 		$this->questGroupModelId = $questGroupModelId;
 	}
+    /**
+     * @param string|null $questGroupModelId Quest Group Model Master GRN
+     * @return QuestGroupModelMaster
+     */
 	public function withQuestGroupModelId(?string $questGroupModelId): QuestGroupModelMaster {
 		$this->questGroupModelId = $questGroupModelId;
 		return $this;
 	}
+    /** @return string|null Quest Group Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Quest Group Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Quest Group Model name
+     * @return QuestGroupModelMaster
+     */
 	public function withName(?string $name): QuestGroupModelMaster {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return QuestGroupModelMaster
+     */
 	public function withDescription(?string $description): QuestGroupModelMaster {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return QuestGroupModelMaster
+     */
 	public function withMetadata(?string $metadata): QuestGroupModelMaster {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return string|null Challenge Period Event GRN */
 	public function getChallengePeriodEventId(): ?string {
 		return $this->challengePeriodEventId;
 	}
+    /** @param string|null $challengePeriodEventId Challenge Period Event GRN */
 	public function setChallengePeriodEventId(?string $challengePeriodEventId) {
 		$this->challengePeriodEventId = $challengePeriodEventId;
 	}
+    /**
+     * @param string|null $challengePeriodEventId Challenge Period Event GRN
+     * @return QuestGroupModelMaster
+     */
 	public function withChallengePeriodEventId(?string $challengePeriodEventId): QuestGroupModelMaster {
 		$this->challengePeriodEventId = $challengePeriodEventId;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return QuestGroupModelMaster
+     */
 	public function withCreatedAt(?int $createdAt): QuestGroupModelMaster {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return QuestGroupModelMaster
+     */
 	public function withUpdatedAt(?int $updatedAt): QuestGroupModelMaster {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return QuestGroupModelMaster
+     */
 	public function withRevision(?int $revision): QuestGroupModelMaster {
 		$this->revision = $revision;
 		return $this;

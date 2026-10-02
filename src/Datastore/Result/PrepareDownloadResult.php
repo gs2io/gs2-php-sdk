@@ -20,48 +20,71 @@ namespace Gs2\Datastore\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Datastore\Model\DataObject;
 
+/**
+ * Result of prepareDownload: Prepare data object for download
+ *
+ * @see https://docs.gs2.io/api_reference/datastore/sdk/#preparedownload
+ */
 class PrepareDownloadResult implements IResult {
-    /** @var DataObject */
+    /** @var DataObject Data object */
     private $item;
-    /** @var string */
+    /** @var string URL to download the file */
     private $fileUrl;
-    /** @var int */
+    /** @var int File size */
     private $contentLength;
 
+    /** @return DataObject|null Data object */
 	public function getItem(): ?DataObject {
 		return $this->item;
 	}
 
+    /** @param DataObject|null $item Data object */
 	public function setItem(?DataObject $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param DataObject|null $item Data object
+     * @return PrepareDownloadResult
+     */
 	public function withItem(?DataObject $item): PrepareDownloadResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null URL to download the file */
 	public function getFileUrl(): ?string {
 		return $this->fileUrl;
 	}
 
+    /** @param string|null $fileUrl URL to download the file */
 	public function setFileUrl(?string $fileUrl) {
 		$this->fileUrl = $fileUrl;
 	}
 
+    /**
+     * @param string|null $fileUrl URL to download the file
+     * @return PrepareDownloadResult
+     */
 	public function withFileUrl(?string $fileUrl): PrepareDownloadResult {
 		$this->fileUrl = $fileUrl;
 		return $this;
 	}
 
+    /** @return int|null File size */
 	public function getContentLength(): ?int {
 		return $this->contentLength;
 	}
 
+    /** @param int|null $contentLength File size */
 	public function setContentLength(?int $contentLength) {
 		$this->contentLength = $contentLength;
 	}
 
+    /**
+     * @param int|null $contentLength File size
+     * @return PrepareDownloadResult
+     */
 	public function withContentLength(?int $contentLength): PrepareDownloadResult {
 		$this->contentLength = $contentLength;
 		return $this;

@@ -20,18 +20,29 @@ namespace Gs2\Friend\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Friend\Model\FriendRequest;
 
+/**
+ * Result of deleteRequestByUserId: Cancel a sent friend request by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/friend/sdk/#deleterequestbyuserid
+ */
 class DeleteRequestByUserIdResult implements IResult {
-    /** @var FriendRequest */
+    /** @var FriendRequest Friend Request deleted */
     private $item;
 
+    /** @return FriendRequest|null Friend Request deleted */
 	public function getItem(): ?FriendRequest {
 		return $this->item;
 	}
 
+    /** @param FriendRequest|null $item Friend Request deleted */
 	public function setItem(?FriendRequest $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param FriendRequest|null $item Friend Request deleted
+     * @return DeleteRequestByUserIdResult
+     */
 	public function withItem(?FriendRequest $item): DeleteRequestByUserIdResult {
 		$this->item = $item;
 		return $this;

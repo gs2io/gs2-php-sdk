@@ -19,63 +19,98 @@ namespace Gs2\Datastore\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getDataObjectHistoryByUserId: Get Data Object History by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/datastore/sdk/#getdataobjecthistorybyuserid
+ */
 class GetDataObjectHistoryByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Data Object Name */
     private $dataObjectName;
-    /** @var string */
+    /** @var string Generation ID */
     private $generation;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetDataObjectHistoryByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetDataObjectHistoryByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return GetDataObjectHistoryByUserIdRequest
+     */
 	public function withUserId(?string $userId): GetDataObjectHistoryByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Data Object Name */
 	public function getDataObjectName(): ?string {
 		return $this->dataObjectName;
 	}
+    /** @param string|null $dataObjectName Data Object Name */
 	public function setDataObjectName(?string $dataObjectName) {
 		$this->dataObjectName = $dataObjectName;
 	}
+    /**
+     * @param string|null $dataObjectName Data Object Name
+     * @return GetDataObjectHistoryByUserIdRequest
+     */
 	public function withDataObjectName(?string $dataObjectName): GetDataObjectHistoryByUserIdRequest {
 		$this->dataObjectName = $dataObjectName;
 		return $this;
 	}
+    /** @return string|null Generation ID */
 	public function getGeneration(): ?string {
 		return $this->generation;
 	}
+    /** @param string|null $generation Generation ID */
 	public function setGeneration(?string $generation) {
 		$this->generation = $generation;
 	}
+    /**
+     * @param string|null $generation Generation ID
+     * @return GetDataObjectHistoryByUserIdRequest
+     */
 	public function withGeneration(?string $generation): GetDataObjectHistoryByUserIdRequest {
 		$this->generation = $generation;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return GetDataObjectHistoryByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): GetDataObjectHistoryByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

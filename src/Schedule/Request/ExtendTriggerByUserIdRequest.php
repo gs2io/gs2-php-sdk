@@ -19,65 +19,100 @@ namespace Gs2\Schedule\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for extendTriggerByUserId: Extend the period of a trigger by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/schedule/sdk/#extendtriggerbyuserid
+ */
 class ExtendTriggerByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Trigger name */
     private $triggerName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var int */
+    /** @var int Trigger extension period (seconds) */
     private $extendSeconds;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return ExtendTriggerByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): ExtendTriggerByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Trigger name */
 	public function getTriggerName(): ?string {
 		return $this->triggerName;
 	}
+    /** @param string|null $triggerName Trigger name */
 	public function setTriggerName(?string $triggerName) {
 		$this->triggerName = $triggerName;
 	}
+    /**
+     * @param string|null $triggerName Trigger name
+     * @return ExtendTriggerByUserIdRequest
+     */
 	public function withTriggerName(?string $triggerName): ExtendTriggerByUserIdRequest {
 		$this->triggerName = $triggerName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return ExtendTriggerByUserIdRequest
+     */
 	public function withUserId(?string $userId): ExtendTriggerByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return int|null Trigger extension period (seconds) */
 	public function getExtendSeconds(): ?int {
 		return $this->extendSeconds;
 	}
+    /** @param int|null $extendSeconds Trigger extension period (seconds) */
 	public function setExtendSeconds(?int $extendSeconds) {
 		$this->extendSeconds = $extendSeconds;
 	}
+    /**
+     * @param int|null $extendSeconds Trigger extension period (seconds)
+     * @return ExtendTriggerByUserIdRequest
+     */
 	public function withExtendSeconds(?int $extendSeconds): ExtendTriggerByUserIdRequest {
 		$this->extendSeconds = $extendSeconds;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return ExtendTriggerByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): ExtendTriggerByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

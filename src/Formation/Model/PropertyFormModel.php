@@ -20,59 +20,88 @@ namespace Gs2\Formation\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Property Form Model
+ *
+ * @see https://docs.gs2.io/api_reference/formation/sdk/#propertyformmodel
+ */
 class PropertyFormModel implements IModel {
 	/**
-     * @var string
+     * @var string Property Form Model GRN
 	 */
 	private $propertyFormModelId;
 	/**
-     * @var string
+     * @var string Property Form Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var array
+     * @var array List of Slot Model
 	 */
 	private $slots;
+    /** @return string|null Property Form Model GRN */
 	public function getPropertyFormModelId(): ?string {
 		return $this->propertyFormModelId;
 	}
+    /** @param string|null $propertyFormModelId Property Form Model GRN */
 	public function setPropertyFormModelId(?string $propertyFormModelId) {
 		$this->propertyFormModelId = $propertyFormModelId;
 	}
+    /**
+     * @param string|null $propertyFormModelId Property Form Model GRN
+     * @return PropertyFormModel
+     */
 	public function withPropertyFormModelId(?string $propertyFormModelId): PropertyFormModel {
 		$this->propertyFormModelId = $propertyFormModelId;
 		return $this;
 	}
+    /** @return string|null Property Form Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Property Form Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Property Form Model name
+     * @return PropertyFormModel
+     */
 	public function withName(?string $name): PropertyFormModel {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return PropertyFormModel
+     */
 	public function withMetadata(?string $metadata): PropertyFormModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return array|null List of Slot Model */
 	public function getSlots(): ?array {
 		return $this->slots;
 	}
+    /** @param array|null $slots List of Slot Model */
 	public function setSlots(?array $slots) {
 		$this->slots = $slots;
 	}
+    /**
+     * @param array|null $slots List of Slot Model
+     * @return PropertyFormModel
+     */
 	public function withSlots(?array $slots): PropertyFormModel {
 		$this->slots = $slots;
 		return $this;

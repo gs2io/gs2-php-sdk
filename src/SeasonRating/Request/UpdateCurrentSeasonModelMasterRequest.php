@@ -19,51 +19,80 @@ namespace Gs2\SeasonRating\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for updateCurrentSeasonModelMaster: Update currently active Season Model master data
+ *
+ * @see https://docs.gs2.io/api_reference/season_rating/sdk/#updatecurrentseasonmodelmaster
+ */
 class UpdateCurrentSeasonModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Update mode */
     private $mode;
-    /** @var string */
+    /** @var string Master Data */
     private $settings;
-    /** @var string */
+    /** @var string Token obtained by pre-upload */
     private $uploadToken;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UpdateCurrentSeasonModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UpdateCurrentSeasonModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Update mode */
 	public function getMode(): ?string {
 		return $this->mode;
 	}
+    /** @param string|null $mode Update mode */
 	public function setMode(?string $mode) {
 		$this->mode = $mode;
 	}
+    /**
+     * @param string|null $mode Update mode
+     * @return UpdateCurrentSeasonModelMasterRequest
+     */
 	public function withMode(?string $mode): UpdateCurrentSeasonModelMasterRequest {
 		$this->mode = $mode;
 		return $this;
 	}
+    /** @return string|null Master Data */
 	public function getSettings(): ?string {
 		return $this->settings;
 	}
+    /** @param string|null $settings Master Data */
 	public function setSettings(?string $settings) {
 		$this->settings = $settings;
 	}
+    /**
+     * @param string|null $settings Master Data
+     * @return UpdateCurrentSeasonModelMasterRequest
+     */
 	public function withSettings(?string $settings): UpdateCurrentSeasonModelMasterRequest {
 		$this->settings = $settings;
 		return $this;
 	}
+    /** @return string|null Token obtained by pre-upload */
 	public function getUploadToken(): ?string {
 		return $this->uploadToken;
 	}
+    /** @param string|null $uploadToken Token obtained by pre-upload */
 	public function setUploadToken(?string $uploadToken) {
 		$this->uploadToken = $uploadToken;
 	}
+    /**
+     * @param string|null $uploadToken Token obtained by pre-upload
+     * @return UpdateCurrentSeasonModelMasterRequest
+     */
 	public function withUploadToken(?string $uploadToken): UpdateCurrentSeasonModelMasterRequest {
 		$this->uploadToken = $uploadToken;
 		return $this;

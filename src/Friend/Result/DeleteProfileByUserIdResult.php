@@ -20,18 +20,29 @@ namespace Gs2\Friend\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Friend\Model\Profile;
 
+/**
+ * Result of deleteProfileByUserId: Delete profile
+ *
+ * @see https://docs.gs2.io/api_reference/friend/sdk/#deleteprofilebyuserid
+ */
 class DeleteProfileByUserIdResult implements IResult {
-    /** @var Profile */
+    /** @var Profile Profile deleted */
     private $item;
 
+    /** @return Profile|null Profile deleted */
 	public function getItem(): ?Profile {
 		return $this->item;
 	}
 
+    /** @param Profile|null $item Profile deleted */
 	public function setItem(?Profile $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Profile|null $item Profile deleted
+     * @return DeleteProfileByUserIdResult
+     */
 	public function withItem(?Profile $item): DeleteProfileByUserIdResult {
 		$this->item = $item;
 		return $this;

@@ -22,18 +22,29 @@ use Gs2\Log\Model\FacetValueCount;
 use Gs2\Log\Model\NumericRange;
 use Gs2\Log\Model\Facet;
 
+/**
+ * Result of queryFacets: Facet Query
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#queryfacets
+ */
 class QueryFacetsResult implements IResult {
-    /** @var array */
+    /** @var array List of Facets */
     private $items;
 
+    /** @return array|null List of Facets */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Facets */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Facets
+     * @return QueryFacetsResult
+     */
 	public function withItems(?array $items): QueryFacetsResult {
 		$this->items = $items;
 		return $this;

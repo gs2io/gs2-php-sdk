@@ -20,33 +20,50 @@ namespace Gs2\Log\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Log\Model\Dashboard;
 
+/**
+ * Result of describeDashboards: Get list of dashboards
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#describedashboards
+ */
 class DescribeDashboardsResult implements IResult {
-    /** @var array */
+    /** @var array List of Dashboards */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Dashboards */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Dashboards */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Dashboards
+     * @return DescribeDashboardsResult
+     */
 	public function withItems(?array $items): DescribeDashboardsResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeDashboardsResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeDashboardsResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

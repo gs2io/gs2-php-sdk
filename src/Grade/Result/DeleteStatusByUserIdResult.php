@@ -20,18 +20,29 @@ namespace Gs2\Grade\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Grade\Model\Status;
 
+/**
+ * Result of deleteStatusByUserId: Delete status by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/grade/sdk/#deletestatusbyuserid
+ */
 class DeleteStatusByUserIdResult implements IResult {
-    /** @var Status */
+    /** @var Status Status deleted */
     private $item;
 
+    /** @return Status|null Status deleted */
 	public function getItem(): ?Status {
 		return $this->item;
 	}
 
+    /** @param Status|null $item Status deleted */
 	public function setItem(?Status $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Status|null $item Status deleted
+     * @return DeleteStatusByUserIdResult
+     */
 	public function withItem(?Status $item): DeleteStatusByUserIdResult {
 		$this->item = $item;
 		return $this;

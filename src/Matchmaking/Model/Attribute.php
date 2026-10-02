@@ -20,31 +20,48 @@ namespace Gs2\Matchmaking\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Attribute
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#attribute
+ */
 class Attribute implements IModel {
 	/**
-     * @var string
+     * @var string Attribute Name
 	 */
 	private $name;
 	/**
-     * @var int
+     * @var int Attribute Value
 	 */
 	private $value;
+    /** @return string|null Attribute Name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Attribute Name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Attribute Name
+     * @return Attribute
+     */
 	public function withName(?string $name): Attribute {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return int|null Attribute Value */
 	public function getValue(): ?int {
 		return $this->value;
 	}
+    /** @param int|null $value Attribute Value */
 	public function setValue(?int $value) {
 		$this->value = $value;
 	}
+    /**
+     * @param int|null $value Attribute Value
+     * @return Attribute
+     */
 	public function withValue(?int $value): Attribute {
 		$this->value = $value;
 		return $this;

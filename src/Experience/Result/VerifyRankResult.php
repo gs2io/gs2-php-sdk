@@ -20,18 +20,29 @@ namespace Gs2\Experience\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Experience\Model\Status;
 
+/**
+ * Result of verifyRank: Verify rank
+ *
+ * @see https://docs.gs2.io/api_reference/experience/sdk/#verifyrank
+ */
 class VerifyRankResult implements IResult {
-    /** @var Status */
+    /** @var Status Status updated */
     private $item;
 
+    /** @return Status|null Status updated */
 	public function getItem(): ?Status {
 		return $this->item;
 	}
 
+    /** @param Status|null $item Status updated */
 	public function setItem(?Status $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Status|null $item Status updated
+     * @return VerifyRankResult
+     */
 	public function withItem(?Status $item): VerifyRankResult {
 		$this->item = $item;
 		return $this;

@@ -22,18 +22,29 @@ use Gs2\Guild\Model\RoleModel;
 use Gs2\Guild\Model\Member;
 use Gs2\Guild\Model\Guild;
 
+/**
+ * Result of deleteGuildByGuildName: Delete Guild by specifying a Guild name
+ *
+ * @see https://docs.gs2.io/api_reference/guild/sdk/#deleteguildbyguildname
+ */
 class DeleteGuildByGuildNameResult implements IResult {
-    /** @var Guild */
+    /** @var Guild Guild deleted */
     private $item;
 
+    /** @return Guild|null Guild deleted */
 	public function getItem(): ?Guild {
 		return $this->item;
 	}
 
+    /** @param Guild|null $item Guild deleted */
 	public function setItem(?Guild $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Guild|null $item Guild deleted
+     * @return DeleteGuildByGuildNameResult
+     */
 	public function withItem(?Guild $item): DeleteGuildByGuildNameResult {
 		$this->item = $item;
 		return $this;

@@ -20,129 +20,188 @@ namespace Gs2\Stamina\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Maximum Stamina Table Master
+ *
+ * @see https://docs.gs2.io/api_reference/stamina/sdk/#maxstaminatablemaster
+ */
 class MaxStaminaTableMaster implements IModel {
 	/**
-     * @var string
+     * @var string Maximum Stamina Table Master GRN
 	 */
 	private $maxStaminaTableId;
 	/**
-     * @var string
+     * @var string Maximum Stamina Value Table Name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var string
+     * @var string Description
 	 */
 	private $description;
 	/**
-     * @var string
+     * @var string Experience Model ID
 	 */
 	private $experienceModelId;
 	/**
-     * @var array
+     * @var array Maximum Stamina Values by Rank
 	 */
 	private $values;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Maximum Stamina Table Master GRN */
 	public function getMaxStaminaTableId(): ?string {
 		return $this->maxStaminaTableId;
 	}
+    /** @param string|null $maxStaminaTableId Maximum Stamina Table Master GRN */
 	public function setMaxStaminaTableId(?string $maxStaminaTableId) {
 		$this->maxStaminaTableId = $maxStaminaTableId;
 	}
+    /**
+     * @param string|null $maxStaminaTableId Maximum Stamina Table Master GRN
+     * @return MaxStaminaTableMaster
+     */
 	public function withMaxStaminaTableId(?string $maxStaminaTableId): MaxStaminaTableMaster {
 		$this->maxStaminaTableId = $maxStaminaTableId;
 		return $this;
 	}
+    /** @return string|null Maximum Stamina Value Table Name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Maximum Stamina Value Table Name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Maximum Stamina Value Table Name
+     * @return MaxStaminaTableMaster
+     */
 	public function withName(?string $name): MaxStaminaTableMaster {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return MaxStaminaTableMaster
+     */
 	public function withMetadata(?string $metadata): MaxStaminaTableMaster {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return MaxStaminaTableMaster
+     */
 	public function withDescription(?string $description): MaxStaminaTableMaster {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Experience Model ID */
 	public function getExperienceModelId(): ?string {
 		return $this->experienceModelId;
 	}
+    /** @param string|null $experienceModelId Experience Model ID */
 	public function setExperienceModelId(?string $experienceModelId) {
 		$this->experienceModelId = $experienceModelId;
 	}
+    /**
+     * @param string|null $experienceModelId Experience Model ID
+     * @return MaxStaminaTableMaster
+     */
 	public function withExperienceModelId(?string $experienceModelId): MaxStaminaTableMaster {
 		$this->experienceModelId = $experienceModelId;
 		return $this;
 	}
+    /** @return array|null Maximum Stamina Values by Rank */
 	public function getValues(): ?array {
 		return $this->values;
 	}
+    /** @param array|null $values Maximum Stamina Values by Rank */
 	public function setValues(?array $values) {
 		$this->values = $values;
 	}
+    /**
+     * @param array|null $values Maximum Stamina Values by Rank
+     * @return MaxStaminaTableMaster
+     */
 	public function withValues(?array $values): MaxStaminaTableMaster {
 		$this->values = $values;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return MaxStaminaTableMaster
+     */
 	public function withCreatedAt(?int $createdAt): MaxStaminaTableMaster {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return MaxStaminaTableMaster
+     */
 	public function withUpdatedAt(?int $updatedAt): MaxStaminaTableMaster {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return MaxStaminaTableMaster
+     */
 	public function withRevision(?int $revision): MaxStaminaTableMaster {
 		$this->revision = $revision;
 		return $this;

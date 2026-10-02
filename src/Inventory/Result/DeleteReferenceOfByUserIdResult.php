@@ -22,63 +22,92 @@ use Gs2\Inventory\Model\ItemSet;
 use Gs2\Inventory\Model\ItemModel;
 use Gs2\Inventory\Model\Inventory;
 
+/**
+ * Result of deleteReferenceOfByUserId: Delete the reference source by specifying the user ID
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#deletereferenceofbyuserid
+ */
 class DeleteReferenceOfByUserIdResult implements IResult {
-    /** @var string */
+    /** @var string References for this possession */
     private $item;
-    /** @var ItemSet */
+    /** @var ItemSet Item Set after deleting the reference source */
     private $itemSet;
-    /** @var ItemModel */
+    /** @var ItemModel Item Model */
     private $itemModel;
-    /** @var Inventory */
+    /** @var Inventory Inventory */
     private $inventory;
 
+    /** @return string|null References for this possession */
 	public function getItem(): ?string {
 		return $this->item;
 	}
 
+    /** @param string|null $item References for this possession */
 	public function setItem(?string $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param string|null $item References for this possession
+     * @return DeleteReferenceOfByUserIdResult
+     */
 	public function withItem(?string $item): DeleteReferenceOfByUserIdResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return ItemSet|null Item Set after deleting the reference source */
 	public function getItemSet(): ?ItemSet {
 		return $this->itemSet;
 	}
 
+    /** @param ItemSet|null $itemSet Item Set after deleting the reference source */
 	public function setItemSet(?ItemSet $itemSet) {
 		$this->itemSet = $itemSet;
 	}
 
+    /**
+     * @param ItemSet|null $itemSet Item Set after deleting the reference source
+     * @return DeleteReferenceOfByUserIdResult
+     */
 	public function withItemSet(?ItemSet $itemSet): DeleteReferenceOfByUserIdResult {
 		$this->itemSet = $itemSet;
 		return $this;
 	}
 
+    /** @return ItemModel|null Item Model */
 	public function getItemModel(): ?ItemModel {
 		return $this->itemModel;
 	}
 
+    /** @param ItemModel|null $itemModel Item Model */
 	public function setItemModel(?ItemModel $itemModel) {
 		$this->itemModel = $itemModel;
 	}
 
+    /**
+     * @param ItemModel|null $itemModel Item Model
+     * @return DeleteReferenceOfByUserIdResult
+     */
 	public function withItemModel(?ItemModel $itemModel): DeleteReferenceOfByUserIdResult {
 		$this->itemModel = $itemModel;
 		return $this;
 	}
 
+    /** @return Inventory|null Inventory */
 	public function getInventory(): ?Inventory {
 		return $this->inventory;
 	}
 
+    /** @param Inventory|null $inventory Inventory */
 	public function setInventory(?Inventory $inventory) {
 		$this->inventory = $inventory;
 	}
 
+    /**
+     * @param Inventory|null $inventory Inventory
+     * @return DeleteReferenceOfByUserIdResult
+     */
 	public function withInventory(?Inventory $inventory): DeleteReferenceOfByUserIdResult {
 		$this->inventory = $inventory;
 		return $this;

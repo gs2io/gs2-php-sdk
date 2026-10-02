@@ -20,18 +20,29 @@ namespace Gs2\Matchmaking\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Matchmaking\Model\SeasonGathering;
 
+/**
+ * Result of getSeasonGathering: Get Season Gathering
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#getseasongathering
+ */
 class GetSeasonGatheringResult implements IResult {
-    /** @var SeasonGathering */
+    /** @var SeasonGathering SeasonGathering */
     private $item;
 
+    /** @return SeasonGathering|null SeasonGathering */
 	public function getItem(): ?SeasonGathering {
 		return $this->item;
 	}
 
+    /** @param SeasonGathering|null $item SeasonGathering */
 	public function setItem(?SeasonGathering $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param SeasonGathering|null $item SeasonGathering
+     * @return GetSeasonGatheringResult
+     */
 	public function withItem(?SeasonGathering $item): GetSeasonGatheringResult {
 		$this->item = $item;
 		return $this;

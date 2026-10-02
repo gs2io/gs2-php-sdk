@@ -20,33 +20,50 @@ namespace Gs2\Identifier\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Identifier\Model\Identifier;
 
+/**
+ * Result of describeIdentifiers: List Credentials
+ *
+ * @see https://docs.gs2.io/api_reference/identifier/sdk/#describeidentifiers
+ */
 class DescribeIdentifiersResult implements IResult {
-    /** @var array */
+    /** @var array List of Credentials */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Credentials */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Credentials */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Credentials
+     * @return DescribeIdentifiersResult
+     */
 	public function withItems(?array $items): DescribeIdentifiersResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeIdentifiersResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeIdentifiersResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

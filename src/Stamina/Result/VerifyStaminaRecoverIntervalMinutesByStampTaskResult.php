@@ -20,33 +20,50 @@ namespace Gs2\Stamina\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Stamina\Model\Stamina;
 
+/**
+ * Result of verifyStaminaRecoverIntervalMinutesByStampTask: Verify the recovery interval minutes of stamina as a verification action
+ *
+ * @see https://docs.gs2.io/api_reference/stamina/stamp_sheet/#gs2staminaverifystaminarecoverintervalminutesbyuserid
+ */
 class VerifyStaminaRecoverIntervalMinutesByStampTaskResult implements IResult {
-    /** @var Stamina */
+    /** @var Stamina Stamina */
     private $item;
-    /** @var string */
+    /** @var string Context recording the execution results of verification actions */
     private $newContextStack;
 
+    /** @return Stamina|null Stamina */
 	public function getItem(): ?Stamina {
 		return $this->item;
 	}
 
+    /** @param Stamina|null $item Stamina */
 	public function setItem(?Stamina $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Stamina|null $item Stamina
+     * @return VerifyStaminaRecoverIntervalMinutesByStampTaskResult
+     */
 	public function withItem(?Stamina $item): VerifyStaminaRecoverIntervalMinutesByStampTaskResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null Context recording the execution results of verification actions */
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
+    /** @param string|null $newContextStack Context recording the execution results of verification actions */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
+    /**
+     * @param string|null $newContextStack Context recording the execution results of verification actions
+     * @return VerifyStaminaRecoverIntervalMinutesByStampTaskResult
+     */
 	public function withNewContextStack(?string $newContextStack): VerifyStaminaRecoverIntervalMinutesByStampTaskResult {
 		$this->newContextStack = $newContextStack;
 		return $this;

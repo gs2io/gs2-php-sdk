@@ -20,18 +20,29 @@ namespace Gs2\Matchmaking\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Matchmaking\Model\RatingModel;
 
+/**
+ * Result of describeRatingModels: List Rating Models
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#describeratingmodels
+ */
 class DescribeRatingModelsResult implements IResult {
-    /** @var array */
+    /** @var array List of Rating Model */
     private $items;
 
+    /** @return array|null List of Rating Model */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Rating Model */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Rating Model
+     * @return DescribeRatingModelsResult
+     */
 	public function withItems(?array $items): DescribeRatingModelsResult {
 		$this->items = $items;
 		return $this;

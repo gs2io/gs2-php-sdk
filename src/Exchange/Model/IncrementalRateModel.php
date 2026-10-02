@@ -20,157 +20,228 @@ namespace Gs2\Exchange\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Incremental Cost Exchange Rate Model
+ *
+ * @see https://docs.gs2.io/api_reference/exchange/sdk/#incrementalratemodel
+ */
 class IncrementalRateModel implements IModel {
 	/**
-     * @var string
+     * @var string Incremental Cost Exchange Rate Model GRN
 	 */
 	private $incrementalRateModelId;
 	/**
-     * @var string
+     * @var string Incremental Cost Exchange Rate Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var ConsumeAction
+     * @var ConsumeAction Consume Action (Quantity and Value are overwritten automatically)
 	 */
 	private $consumeAction;
 	/**
-     * @var string
+     * @var string Calculation method for cost increase amount
 	 */
 	private $calculateType;
 	/**
-     * @var int
+     * @var int Base Value
 	 */
 	private $baseValue;
 	/**
-     * @var int
+     * @var int Coefficient Value
 	 */
 	private $coefficientValue;
 	/**
-     * @var string
+     * @var string GRN of cost calculation script
 	 */
 	private $calculateScriptId;
 	/**
-     * @var string
+     * @var string GS2-Limit Usage Limit Model GRN for managing exchange execution counts
 	 */
 	private $exchangeCountId;
 	/**
-     * @var int
+     * @var int Maximum number of exchanges
 	 */
 	private $maximumExchangeCount;
 	/**
-     * @var array
+     * @var array List of Acquire Actions
 	 */
 	private $acquireActions;
+    /** @return string|null Incremental Cost Exchange Rate Model GRN */
 	public function getIncrementalRateModelId(): ?string {
 		return $this->incrementalRateModelId;
 	}
+    /** @param string|null $incrementalRateModelId Incremental Cost Exchange Rate Model GRN */
 	public function setIncrementalRateModelId(?string $incrementalRateModelId) {
 		$this->incrementalRateModelId = $incrementalRateModelId;
 	}
+    /**
+     * @param string|null $incrementalRateModelId Incremental Cost Exchange Rate Model GRN
+     * @return IncrementalRateModel
+     */
 	public function withIncrementalRateModelId(?string $incrementalRateModelId): IncrementalRateModel {
 		$this->incrementalRateModelId = $incrementalRateModelId;
 		return $this;
 	}
+    /** @return string|null Incremental Cost Exchange Rate Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Incremental Cost Exchange Rate Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Incremental Cost Exchange Rate Model name
+     * @return IncrementalRateModel
+     */
 	public function withName(?string $name): IncrementalRateModel {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return IncrementalRateModel
+     */
 	public function withMetadata(?string $metadata): IncrementalRateModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return ConsumeAction|null Consume Action (Quantity and Value are overwritten automatically) */
 	public function getConsumeAction(): ?ConsumeAction {
 		return $this->consumeAction;
 	}
+    /** @param ConsumeAction|null $consumeAction Consume Action (Quantity and Value are overwritten automatically) */
 	public function setConsumeAction(?ConsumeAction $consumeAction) {
 		$this->consumeAction = $consumeAction;
 	}
+    /**
+     * @param ConsumeAction|null $consumeAction Consume Action (Quantity and Value are overwritten automatically)
+     * @return IncrementalRateModel
+     */
 	public function withConsumeAction(?ConsumeAction $consumeAction): IncrementalRateModel {
 		$this->consumeAction = $consumeAction;
 		return $this;
 	}
+    /** @return string|null Calculation method for cost increase amount */
 	public function getCalculateType(): ?string {
 		return $this->calculateType;
 	}
+    /** @param string|null $calculateType Calculation method for cost increase amount */
 	public function setCalculateType(?string $calculateType) {
 		$this->calculateType = $calculateType;
 	}
+    /**
+     * @param string|null $calculateType Calculation method for cost increase amount
+     * @return IncrementalRateModel
+     */
 	public function withCalculateType(?string $calculateType): IncrementalRateModel {
 		$this->calculateType = $calculateType;
 		return $this;
 	}
+    /** @return int|null Base Value */
 	public function getBaseValue(): ?int {
 		return $this->baseValue;
 	}
+    /** @param int|null $baseValue Base Value */
 	public function setBaseValue(?int $baseValue) {
 		$this->baseValue = $baseValue;
 	}
+    /**
+     * @param int|null $baseValue Base Value
+     * @return IncrementalRateModel
+     */
 	public function withBaseValue(?int $baseValue): IncrementalRateModel {
 		$this->baseValue = $baseValue;
 		return $this;
 	}
+    /** @return int|null Coefficient Value */
 	public function getCoefficientValue(): ?int {
 		return $this->coefficientValue;
 	}
+    /** @param int|null $coefficientValue Coefficient Value */
 	public function setCoefficientValue(?int $coefficientValue) {
 		$this->coefficientValue = $coefficientValue;
 	}
+    /**
+     * @param int|null $coefficientValue Coefficient Value
+     * @return IncrementalRateModel
+     */
 	public function withCoefficientValue(?int $coefficientValue): IncrementalRateModel {
 		$this->coefficientValue = $coefficientValue;
 		return $this;
 	}
+    /** @return string|null GRN of cost calculation script */
 	public function getCalculateScriptId(): ?string {
 		return $this->calculateScriptId;
 	}
+    /** @param string|null $calculateScriptId GRN of cost calculation script */
 	public function setCalculateScriptId(?string $calculateScriptId) {
 		$this->calculateScriptId = $calculateScriptId;
 	}
+    /**
+     * @param string|null $calculateScriptId GRN of cost calculation script
+     * @return IncrementalRateModel
+     */
 	public function withCalculateScriptId(?string $calculateScriptId): IncrementalRateModel {
 		$this->calculateScriptId = $calculateScriptId;
 		return $this;
 	}
+    /** @return string|null GS2-Limit Usage Limit Model GRN for managing exchange execution counts */
 	public function getExchangeCountId(): ?string {
 		return $this->exchangeCountId;
 	}
+    /** @param string|null $exchangeCountId GS2-Limit Usage Limit Model GRN for managing exchange execution counts */
 	public function setExchangeCountId(?string $exchangeCountId) {
 		$this->exchangeCountId = $exchangeCountId;
 	}
+    /**
+     * @param string|null $exchangeCountId GS2-Limit Usage Limit Model GRN for managing exchange execution counts
+     * @return IncrementalRateModel
+     */
 	public function withExchangeCountId(?string $exchangeCountId): IncrementalRateModel {
 		$this->exchangeCountId = $exchangeCountId;
 		return $this;
 	}
+    /** @return int|null Maximum number of exchanges */
 	public function getMaximumExchangeCount(): ?int {
 		return $this->maximumExchangeCount;
 	}
+    /** @param int|null $maximumExchangeCount Maximum number of exchanges */
 	public function setMaximumExchangeCount(?int $maximumExchangeCount) {
 		$this->maximumExchangeCount = $maximumExchangeCount;
 	}
+    /**
+     * @param int|null $maximumExchangeCount Maximum number of exchanges
+     * @return IncrementalRateModel
+     */
 	public function withMaximumExchangeCount(?int $maximumExchangeCount): IncrementalRateModel {
 		$this->maximumExchangeCount = $maximumExchangeCount;
 		return $this;
 	}
+    /** @return array|null List of Acquire Actions */
 	public function getAcquireActions(): ?array {
 		return $this->acquireActions;
 	}
+    /** @param array|null $acquireActions List of Acquire Actions */
 	public function setAcquireActions(?array $acquireActions) {
 		$this->acquireActions = $acquireActions;
 	}
+    /**
+     * @param array|null $acquireActions List of Acquire Actions
+     * @return IncrementalRateModel
+     */
 	public function withAcquireActions(?array $acquireActions): IncrementalRateModel {
 		$this->acquireActions = $acquireActions;
 		return $this;

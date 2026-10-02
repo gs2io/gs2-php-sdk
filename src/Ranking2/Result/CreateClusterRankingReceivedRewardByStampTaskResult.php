@@ -20,33 +20,50 @@ namespace Gs2\Ranking2\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Ranking2\Model\ClusterRankingReceivedReward;
 
+/**
+ * Result of createClusterRankingReceivedRewardByStampTask: Execute record history of cluster ranking rewards received as consume action
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/stamp_sheet/#gs2ranking2createclusterrankingreceivedrewardbyuserid
+ */
 class CreateClusterRankingReceivedRewardByStampTaskResult implements IResult {
-    /** @var ClusterRankingReceivedReward */
+    /** @var ClusterRankingReceivedReward Cluster Ranking Reward Received History */
     private $item;
-    /** @var string */
+    /** @var string Context recording the execution results of Consume Actions */
     private $newContextStack;
 
+    /** @return ClusterRankingReceivedReward|null Cluster Ranking Reward Received History */
 	public function getItem(): ?ClusterRankingReceivedReward {
 		return $this->item;
 	}
 
+    /** @param ClusterRankingReceivedReward|null $item Cluster Ranking Reward Received History */
 	public function setItem(?ClusterRankingReceivedReward $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param ClusterRankingReceivedReward|null $item Cluster Ranking Reward Received History
+     * @return CreateClusterRankingReceivedRewardByStampTaskResult
+     */
 	public function withItem(?ClusterRankingReceivedReward $item): CreateClusterRankingReceivedRewardByStampTaskResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null Context recording the execution results of Consume Actions */
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
+    /** @param string|null $newContextStack Context recording the execution results of Consume Actions */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
+    /**
+     * @param string|null $newContextStack Context recording the execution results of Consume Actions
+     * @return CreateClusterRankingReceivedRewardByStampTaskResult
+     */
 	public function withNewContextStack(?string $newContextStack): CreateClusterRankingReceivedRewardByStampTaskResult {
 		$this->newContextStack = $newContextStack;
 		return $this;

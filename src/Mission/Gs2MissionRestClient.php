@@ -5357,25 +5357,22 @@ class DeleteMissionTaskModelMasterTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 Mission API クライアント
+ * GS2-Mission API client
  *
- * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/
  */
 class Gs2MissionRestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * List Completion Statuses
+     *
      * @param DescribeCompletesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#describecompletes
      */
     public function describeCompletesAsync(
             DescribeCompletesRequest $request
@@ -5389,8 +5386,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Completion Statuses
+     *
      * @param DescribeCompletesRequest $request
      * @return DescribeCompletesResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#describecompletes
      */
     public function describeCompletes (
             DescribeCompletesRequest $request
@@ -5401,8 +5401,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Completion Statuses by User ID
+     *
      * @param DescribeCompletesByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#describecompletesbyuserid
      */
     public function describeCompletesByUserIdAsync(
             DescribeCompletesByUserIdRequest $request
@@ -5416,8 +5419,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Completion Statuses by User ID
+     *
      * @param DescribeCompletesByUserIdRequest $request
      * @return DescribeCompletesByUserIdResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#describecompletesbyuserid
      */
     public function describeCompletesByUserId (
             DescribeCompletesByUserIdRequest $request
@@ -5428,8 +5434,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Issue transactions to receive rewards for mission accomplishment
+     *
      * @param CompleteRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#complete-1
      */
     public function completeAsync(
             CompleteRequest $request
@@ -5443,8 +5452,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Issue transactions to receive rewards for mission accomplishment
+     *
      * @param CompleteRequest $request
      * @return CompleteResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#complete-1
      */
     public function complete (
             CompleteRequest $request
@@ -5455,8 +5467,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Issue transactions to receive rewards for mission accomplishment by User ID
+     *
      * @param CompleteByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#completebyuserid
      */
     public function completeByUserIdAsync(
             CompleteByUserIdRequest $request
@@ -5470,8 +5485,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Issue transactions to receive rewards for mission accomplishment by User ID
+     *
      * @param CompleteByUserIdRequest $request
      * @return CompleteByUserIdResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#completebyuserid
      */
     public function completeByUserId (
             CompleteByUserIdRequest $request
@@ -5482,8 +5500,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Issue transactions to receive rewards for multiple mission tasks in bulk
+     *
      * @param BatchCompleteRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#batchcomplete
      */
     public function batchCompleteAsync(
             BatchCompleteRequest $request
@@ -5497,8 +5518,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Issue transactions to receive rewards for multiple mission tasks in bulk
+     *
      * @param BatchCompleteRequest $request
      * @return BatchCompleteResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#batchcomplete
      */
     public function batchComplete (
             BatchCompleteRequest $request
@@ -5509,8 +5533,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Issue transactions to receive rewards for multiple mission tasks in bulk by User ID
+     *
      * @param BatchCompleteByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#batchcompletebyuserid
      */
     public function batchCompleteByUserIdAsync(
             BatchCompleteByUserIdRequest $request
@@ -5524,8 +5551,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Issue transactions to receive rewards for multiple mission tasks in bulk by User ID
+     *
      * @param BatchCompleteByUserIdRequest $request
      * @return BatchCompleteByUserIdResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#batchcompletebyuserid
      */
     public function batchCompleteByUserId (
             BatchCompleteByUserIdRequest $request
@@ -5536,8 +5566,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Receive rewards for mission accomplishment
+     *
      * @param ReceiveByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#receivebyuserid
      */
     public function receiveByUserIdAsync(
             ReceiveByUserIdRequest $request
@@ -5551,8 +5584,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Receive rewards for mission accomplishment
+     *
      * @param ReceiveByUserIdRequest $request
      * @return ReceiveByUserIdResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#receivebyuserid
      */
     public function receiveByUserId (
             ReceiveByUserIdRequest $request
@@ -5563,8 +5599,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Receive rewards for multiple mission tasks in bulk
+     *
      * @param BatchReceiveByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#batchreceivebyuserid
      */
     public function batchReceiveByUserIdAsync(
             BatchReceiveByUserIdRequest $request
@@ -5578,8 +5617,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Receive rewards for multiple mission tasks in bulk
+     *
      * @param BatchReceiveByUserIdRequest $request
      * @return BatchReceiveByUserIdResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#batchreceivebyuserid
      */
     public function batchReceiveByUserId (
             BatchReceiveByUserIdRequest $request
@@ -5590,8 +5632,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Revert the status of mission accomplishment to unreceived
+     *
      * @param RevertReceiveByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#revertreceivebyuserid
      */
     public function revertReceiveByUserIdAsync(
             RevertReceiveByUserIdRequest $request
@@ -5605,8 +5650,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Revert the status of mission accomplishment to unreceived
+     *
      * @param RevertReceiveByUserIdRequest $request
      * @return RevertReceiveByUserIdResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#revertreceivebyuserid
      */
     public function revertReceiveByUserId (
             RevertReceiveByUserIdRequest $request
@@ -5617,8 +5665,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Completion Statuses
+     *
      * @param GetCompleteRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#getcomplete
      */
     public function getCompleteAsync(
             GetCompleteRequest $request
@@ -5632,8 +5683,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Completion Statuses
+     *
      * @param GetCompleteRequest $request
      * @return GetCompleteResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#getcomplete
      */
     public function getComplete (
             GetCompleteRequest $request
@@ -5644,8 +5698,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Completion Status by User ID
+     *
      * @param GetCompleteByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#getcompletebyuserid
      */
     public function getCompleteByUserIdAsync(
             GetCompleteByUserIdRequest $request
@@ -5659,8 +5716,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Completion Status by User ID
+     *
      * @param GetCompleteByUserIdRequest $request
      * @return GetCompleteByUserIdResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#getcompletebyuserid
      */
     public function getCompleteByUserId (
             GetCompleteByUserIdRequest $request
@@ -5671,8 +5731,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Re-evaluate Completion Status
+     *
      * @param EvaluateCompleteRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#evaluatecomplete
      */
     public function evaluateCompleteAsync(
             EvaluateCompleteRequest $request
@@ -5686,8 +5749,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Re-evaluate Completion Status
+     *
      * @param EvaluateCompleteRequest $request
      * @return EvaluateCompleteResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#evaluatecomplete
      */
     public function evaluateComplete (
             EvaluateCompleteRequest $request
@@ -5698,8 +5764,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Re-evaluate Completion Status by User ID
+     *
      * @param EvaluateCompleteByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#evaluatecompletebyuserid
      */
     public function evaluateCompleteByUserIdAsync(
             EvaluateCompleteByUserIdRequest $request
@@ -5713,8 +5782,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Re-evaluate Completion Status by User ID
+     *
      * @param EvaluateCompleteByUserIdRequest $request
      * @return EvaluateCompleteByUserIdResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#evaluatecompletebyuserid
      */
     public function evaluateCompleteByUserId (
             EvaluateCompleteByUserIdRequest $request
@@ -5725,8 +5797,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Completion Status
+     *
      * @param DeleteCompleteByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#deletecompletebyuserid
      */
     public function deleteCompleteByUserIdAsync(
             DeleteCompleteByUserIdRequest $request
@@ -5740,8 +5815,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Completion Status
+     *
      * @param DeleteCompleteByUserIdRequest $request
      * @return DeleteCompleteByUserIdResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#deletecompletebyuserid
      */
     public function deleteCompleteByUserId (
             DeleteCompleteByUserIdRequest $request
@@ -5752,8 +5830,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify Completion Status
+     *
      * @param VerifyCompleteRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#verifycomplete
      */
     public function verifyCompleteAsync(
             VerifyCompleteRequest $request
@@ -5767,8 +5848,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify Completion Status
+     *
      * @param VerifyCompleteRequest $request
      * @return VerifyCompleteResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#verifycomplete
      */
     public function verifyComplete (
             VerifyCompleteRequest $request
@@ -5779,8 +5863,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify Completion Status by User ID
+     *
      * @param VerifyCompleteByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#verifycompletebyuserid
      */
     public function verifyCompleteByUserIdAsync(
             VerifyCompleteByUserIdRequest $request
@@ -5794,8 +5881,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify Completion Status by User ID
+     *
      * @param VerifyCompleteByUserIdRequest $request
      * @return VerifyCompleteByUserIdResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#verifycompletebyuserid
      */
     public function verifyCompleteByUserId (
             VerifyCompleteByUserIdRequest $request
@@ -5806,8 +5896,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Receive mission rewards as a consume action within a distributed transaction
+     *
      * @param ReceiveByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/stamp_sheet/#gs2missionreceivebyuserid
      */
     public function receiveByStampTaskAsync(
             ReceiveByStampTaskRequest $request
@@ -5821,8 +5914,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Receive mission rewards as a consume action within a distributed transaction
+     *
      * @param ReceiveByStampTaskRequest $request
      * @return ReceiveByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/mission/stamp_sheet/#gs2missionreceivebyuserid
      */
     public function receiveByStampTask (
             ReceiveByStampTaskRequest $request
@@ -5833,8 +5929,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Batch receive mission rewards as a consume action within a distributed transaction
+     *
      * @param BatchReceiveByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/stamp_sheet/#gs2missionbatchreceivebyuserid
      */
     public function batchReceiveByStampTaskAsync(
             BatchReceiveByStampTaskRequest $request
@@ -5848,8 +5947,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Batch receive mission rewards as a consume action within a distributed transaction
+     *
      * @param BatchReceiveByStampTaskRequest $request
      * @return BatchReceiveByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/mission/stamp_sheet/#gs2missionbatchreceivebyuserid
      */
     public function batchReceiveByStampTask (
             BatchReceiveByStampTaskRequest $request
@@ -5860,8 +5962,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Revert mission reward receipt as an acquire action within a distributed transaction
+     *
      * @param RevertReceiveByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/stamp_sheet/#gs2missionrevertreceivebyuserid
      */
     public function revertReceiveByStampSheetAsync(
             RevertReceiveByStampSheetRequest $request
@@ -5875,8 +5980,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Revert mission reward receipt as an acquire action within a distributed transaction
+     *
      * @param RevertReceiveByStampSheetRequest $request
      * @return RevertReceiveByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/mission/stamp_sheet/#gs2missionrevertreceivebyuserid
      */
     public function revertReceiveByStampSheet (
             RevertReceiveByStampSheetRequest $request
@@ -5887,8 +5995,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute verification of Completion Status as a verify action within a distributed transaction (verify task)
+     *
      * @param VerifyCompleteByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/stamp_sheet/#gs2missionverifycompletebyuserid
      */
     public function verifyCompleteByStampTaskAsync(
             VerifyCompleteByStampTaskRequest $request
@@ -5902,8 +6013,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute verification of Completion Status as a verify action within a distributed transaction (verify task)
+     *
      * @param VerifyCompleteByStampTaskRequest $request
      * @return VerifyCompleteByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/mission/stamp_sheet/#gs2missionverifycompletebyuserid
      */
     public function verifyCompleteByStampTask (
             VerifyCompleteByStampTaskRequest $request
@@ -5914,8 +6028,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Counter Model Masters
+     *
      * @param DescribeCounterModelMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#describecountermodelmasters
      */
     public function describeCounterModelMastersAsync(
             DescribeCounterModelMastersRequest $request
@@ -5929,8 +6046,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Counter Model Masters
+     *
      * @param DescribeCounterModelMastersRequest $request
      * @return DescribeCounterModelMastersResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#describecountermodelmasters
      */
     public function describeCounterModelMasters (
             DescribeCounterModelMastersRequest $request
@@ -5941,8 +6061,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Counter Model Master
+     *
      * @param CreateCounterModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#createcountermodelmaster
      */
     public function createCounterModelMasterAsync(
             CreateCounterModelMasterRequest $request
@@ -5956,8 +6079,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Counter Model Master
+     *
      * @param CreateCounterModelMasterRequest $request
      * @return CreateCounterModelMasterResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#createcountermodelmaster
      */
     public function createCounterModelMaster (
             CreateCounterModelMasterRequest $request
@@ -5968,8 +6094,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Counter Model Master
+     *
      * @param GetCounterModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#getcountermodelmaster
      */
     public function getCounterModelMasterAsync(
             GetCounterModelMasterRequest $request
@@ -5983,8 +6112,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Counter Model Master
+     *
      * @param GetCounterModelMasterRequest $request
      * @return GetCounterModelMasterResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#getcountermodelmaster
      */
     public function getCounterModelMaster (
             GetCounterModelMasterRequest $request
@@ -5995,8 +6127,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Counter Model Master
+     *
      * @param UpdateCounterModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#updatecountermodelmaster
      */
     public function updateCounterModelMasterAsync(
             UpdateCounterModelMasterRequest $request
@@ -6010,8 +6145,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Counter Model Master
+     *
      * @param UpdateCounterModelMasterRequest $request
      * @return UpdateCounterModelMasterResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#updatecountermodelmaster
      */
     public function updateCounterModelMaster (
             UpdateCounterModelMasterRequest $request
@@ -6022,8 +6160,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Counter Model Master
+     *
      * @param DeleteCounterModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#deletecountermodelmaster
      */
     public function deleteCounterModelMasterAsync(
             DeleteCounterModelMasterRequest $request
@@ -6037,8 +6178,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Counter Model Master
+     *
      * @param DeleteCounterModelMasterRequest $request
      * @return DeleteCounterModelMasterResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#deletecountermodelmaster
      */
     public function deleteCounterModelMaster (
             DeleteCounterModelMasterRequest $request
@@ -6049,8 +6193,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Mission Group Model Masters
+     *
      * @param DescribeMissionGroupModelMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#describemissiongroupmodelmasters
      */
     public function describeMissionGroupModelMastersAsync(
             DescribeMissionGroupModelMastersRequest $request
@@ -6064,8 +6211,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Mission Group Model Masters
+     *
      * @param DescribeMissionGroupModelMastersRequest $request
      * @return DescribeMissionGroupModelMastersResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#describemissiongroupmodelmasters
      */
     public function describeMissionGroupModelMasters (
             DescribeMissionGroupModelMastersRequest $request
@@ -6076,8 +6226,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Mission Group Model Master
+     *
      * @param CreateMissionGroupModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#createmissiongroupmodelmaster
      */
     public function createMissionGroupModelMasterAsync(
             CreateMissionGroupModelMasterRequest $request
@@ -6091,8 +6244,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Mission Group Model Master
+     *
      * @param CreateMissionGroupModelMasterRequest $request
      * @return CreateMissionGroupModelMasterResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#createmissiongroupmodelmaster
      */
     public function createMissionGroupModelMaster (
             CreateMissionGroupModelMasterRequest $request
@@ -6103,8 +6259,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Mission Group Model Master
+     *
      * @param GetMissionGroupModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#getmissiongroupmodelmaster
      */
     public function getMissionGroupModelMasterAsync(
             GetMissionGroupModelMasterRequest $request
@@ -6118,8 +6277,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Mission Group Model Master
+     *
      * @param GetMissionGroupModelMasterRequest $request
      * @return GetMissionGroupModelMasterResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#getmissiongroupmodelmaster
      */
     public function getMissionGroupModelMaster (
             GetMissionGroupModelMasterRequest $request
@@ -6130,8 +6292,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Mission Group Model Master
+     *
      * @param UpdateMissionGroupModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#updatemissiongroupmodelmaster
      */
     public function updateMissionGroupModelMasterAsync(
             UpdateMissionGroupModelMasterRequest $request
@@ -6145,8 +6310,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Mission Group Model Master
+     *
      * @param UpdateMissionGroupModelMasterRequest $request
      * @return UpdateMissionGroupModelMasterResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#updatemissiongroupmodelmaster
      */
     public function updateMissionGroupModelMaster (
             UpdateMissionGroupModelMasterRequest $request
@@ -6157,8 +6325,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Mission Group Model Master
+     *
      * @param DeleteMissionGroupModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#deletemissiongroupmodelmaster
      */
     public function deleteMissionGroupModelMasterAsync(
             DeleteMissionGroupModelMasterRequest $request
@@ -6172,8 +6343,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Mission Group Model Master
+     *
      * @param DeleteMissionGroupModelMasterRequest $request
      * @return DeleteMissionGroupModelMasterResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#deletemissiongroupmodelmaster
      */
     public function deleteMissionGroupModelMaster (
             DeleteMissionGroupModelMasterRequest $request
@@ -6184,8 +6358,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#describenamespaces
      */
     public function describeNamespacesAsync(
             DescribeNamespacesRequest $request
@@ -6199,8 +6376,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#describenamespaces
      */
     public function describeNamespaces (
             DescribeNamespacesRequest $request
@@ -6211,8 +6391,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#createnamespace
      */
     public function createNamespaceAsync(
             CreateNamespaceRequest $request
@@ -6226,8 +6409,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#createnamespace
      */
     public function createNamespace (
             CreateNamespaceRequest $request
@@ -6238,8 +6424,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#getnamespacestatus
      */
     public function getNamespaceStatusAsync(
             GetNamespaceStatusRequest $request
@@ -6253,8 +6442,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#getnamespacestatus
      */
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
@@ -6265,8 +6457,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#getnamespace
      */
     public function getNamespaceAsync(
             GetNamespaceRequest $request
@@ -6280,8 +6475,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#getnamespace
      */
     public function getNamespace (
             GetNamespaceRequest $request
@@ -6292,8 +6490,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#updatenamespace
      */
     public function updateNamespaceAsync(
             UpdateNamespaceRequest $request
@@ -6307,8 +6508,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#updatenamespace
      */
     public function updateNamespace (
             UpdateNamespaceRequest $request
@@ -6319,8 +6523,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#deletenamespace
      */
     public function deleteNamespaceAsync(
             DeleteNamespaceRequest $request
@@ -6334,8 +6541,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#deletenamespace
      */
     public function deleteNamespace (
             DeleteNamespaceRequest $request
@@ -6346,8 +6556,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#getserviceversion
      */
     public function getServiceVersionAsync(
             GetServiceVersionRequest $request
@@ -6361,8 +6574,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return GetServiceVersionResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#getserviceversion
      */
     public function getServiceVersion (
             GetServiceVersionRequest $request
@@ -6373,8 +6589,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserIdAsync(
             DumpUserDataByUserIdRequest $request
@@ -6388,8 +6607,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return DumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserId (
             DumpUserDataByUserIdRequest $request
@@ -6400,8 +6622,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserIdAsync(
             CheckDumpUserDataByUserIdRequest $request
@@ -6415,8 +6640,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return CheckDumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserId (
             CheckDumpUserDataByUserIdRequest $request
@@ -6427,8 +6655,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserIdAsync(
             CleanUserDataByUserIdRequest $request
@@ -6442,8 +6673,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return CleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserId (
             CleanUserDataByUserIdRequest $request
@@ -6454,8 +6688,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserIdAsync(
             CheckCleanUserDataByUserIdRequest $request
@@ -6469,8 +6706,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return CheckCleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserId (
             CheckCleanUserDataByUserIdRequest $request
@@ -6481,8 +6721,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserIdAsync(
             PrepareImportUserDataByUserIdRequest $request
@@ -6496,8 +6739,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PrepareImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserId (
             PrepareImportUserDataByUserIdRequest $request
@@ -6508,8 +6754,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserIdAsync(
             ImportUserDataByUserIdRequest $request
@@ -6523,8 +6772,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return ImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserId (
             ImportUserDataByUserIdRequest $request
@@ -6535,8 +6787,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserIdAsync(
             CheckImportUserDataByUserIdRequest $request
@@ -6550,8 +6805,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return CheckImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserId (
             CheckImportUserDataByUserIdRequest $request
@@ -6562,8 +6820,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List counters
+     *
      * @param DescribeCountersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#describecounters
      */
     public function describeCountersAsync(
             DescribeCountersRequest $request
@@ -6577,8 +6838,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List counters
+     *
      * @param DescribeCountersRequest $request
      * @return DescribeCountersResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#describecounters
      */
     public function describeCounters (
             DescribeCountersRequest $request
@@ -6589,8 +6853,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List counters by User ID
+     *
      * @param DescribeCountersByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#describecountersbyuserid
      */
     public function describeCountersByUserIdAsync(
             DescribeCountersByUserIdRequest $request
@@ -6604,8 +6871,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List counters by User ID
+     *
      * @param DescribeCountersByUserIdRequest $request
      * @return DescribeCountersByUserIdResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#describecountersbyuserid
      */
     public function describeCountersByUserId (
             DescribeCountersByUserIdRequest $request
@@ -6616,8 +6886,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Increase counter by User ID
+     *
      * @param IncreaseCounterByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#increasecounterbyuserid
      */
     public function increaseCounterByUserIdAsync(
             IncreaseCounterByUserIdRequest $request
@@ -6631,8 +6904,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Increase counter by User ID
+     *
      * @param IncreaseCounterByUserIdRequest $request
      * @return IncreaseCounterByUserIdResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#increasecounterbyuserid
      */
     public function increaseCounterByUserId (
             IncreaseCounterByUserIdRequest $request
@@ -6643,8 +6919,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Set counter by User ID
+     *
      * @param SetCounterByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#setcounterbyuserid
      */
     public function setCounterByUserIdAsync(
             SetCounterByUserIdRequest $request
@@ -6658,8 +6937,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Set counter by User ID
+     *
      * @param SetCounterByUserIdRequest $request
      * @return SetCounterByUserIdResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#setcounterbyuserid
      */
     public function setCounterByUserId (
             SetCounterByUserIdRequest $request
@@ -6670,8 +6952,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Decrease counter
+     *
      * @param DecreaseCounterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#decreasecounter
      */
     public function decreaseCounterAsync(
             DecreaseCounterRequest $request
@@ -6685,8 +6970,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Decrease counter
+     *
      * @param DecreaseCounterRequest $request
      * @return DecreaseCounterResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#decreasecounter
      */
     public function decreaseCounter (
             DecreaseCounterRequest $request
@@ -6697,8 +6985,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Decrease counter by User ID
+     *
      * @param DecreaseCounterByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#decreasecounterbyuserid
      */
     public function decreaseCounterByUserIdAsync(
             DecreaseCounterByUserIdRequest $request
@@ -6712,8 +7003,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Decrease counter by User ID
+     *
      * @param DecreaseCounterByUserIdRequest $request
      * @return DecreaseCounterByUserIdResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#decreasecounterbyuserid
      */
     public function decreaseCounterByUserId (
             DecreaseCounterByUserIdRequest $request
@@ -6724,8 +7018,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Counter
+     *
      * @param GetCounterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#getcounter
      */
     public function getCounterAsync(
             GetCounterRequest $request
@@ -6739,8 +7036,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Counter
+     *
      * @param GetCounterRequest $request
      * @return GetCounterResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#getcounter
      */
     public function getCounter (
             GetCounterRequest $request
@@ -6751,8 +7051,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get counter by User ID
+     *
      * @param GetCounterByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#getcounterbyuserid
      */
     public function getCounterByUserIdAsync(
             GetCounterByUserIdRequest $request
@@ -6766,8 +7069,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get counter by User ID
+     *
      * @param GetCounterByUserIdRequest $request
      * @return GetCounterByUserIdResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#getcounterbyuserid
      */
     public function getCounterByUserId (
             GetCounterByUserIdRequest $request
@@ -6778,8 +7084,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify counter value
+     *
      * @param VerifyCounterValueRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#verifycountervalue
      */
     public function verifyCounterValueAsync(
             VerifyCounterValueRequest $request
@@ -6793,8 +7102,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify counter value
+     *
      * @param VerifyCounterValueRequest $request
      * @return VerifyCounterValueResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#verifycountervalue
      */
     public function verifyCounterValue (
             VerifyCounterValueRequest $request
@@ -6805,8 +7117,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify counter value by User ID
+     *
      * @param VerifyCounterValueByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#verifycountervaluebyuserid
      */
     public function verifyCounterValueByUserIdAsync(
             VerifyCounterValueByUserIdRequest $request
@@ -6820,8 +7135,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify counter value by User ID
+     *
      * @param VerifyCounterValueByUserIdRequest $request
      * @return VerifyCounterValueByUserIdResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#verifycountervaluebyuserid
      */
     public function verifyCounterValueByUserId (
             VerifyCounterValueByUserIdRequest $request
@@ -6832,8 +7150,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Reset counter
+     *
      * @param ResetCounterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#resetcounter
      */
     public function resetCounterAsync(
             ResetCounterRequest $request
@@ -6847,8 +7168,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Reset counter
+     *
      * @param ResetCounterRequest $request
      * @return ResetCounterResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#resetcounter
      */
     public function resetCounter (
             ResetCounterRequest $request
@@ -6859,8 +7183,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Reset counter by User ID
+     *
      * @param ResetCounterByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#resetcounterbyuserid
      */
     public function resetCounterByUserIdAsync(
             ResetCounterByUserIdRequest $request
@@ -6874,8 +7201,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Reset counter by User ID
+     *
      * @param ResetCounterByUserIdRequest $request
      * @return ResetCounterByUserIdResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#resetcounterbyuserid
      */
     public function resetCounterByUserId (
             ResetCounterByUserIdRequest $request
@@ -6886,8 +7216,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete counters
+     *
      * @param DeleteCounterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#deletecounter
      */
     public function deleteCounterAsync(
             DeleteCounterRequest $request
@@ -6901,8 +7234,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete counters
+     *
      * @param DeleteCounterRequest $request
      * @return DeleteCounterResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#deletecounter
      */
     public function deleteCounter (
             DeleteCounterRequest $request
@@ -6913,8 +7249,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete counter by User ID
+     *
      * @param DeleteCounterByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#deletecounterbyuserid
      */
     public function deleteCounterByUserIdAsync(
             DeleteCounterByUserIdRequest $request
@@ -6928,8 +7267,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete counter by User ID
+     *
      * @param DeleteCounterByUserIdRequest $request
      * @return DeleteCounterByUserIdResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#deletecounterbyuserid
      */
     public function deleteCounterByUserId (
             DeleteCounterByUserIdRequest $request
@@ -6940,8 +7282,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute counter addition as an acquire action within a distributed transaction
+     *
      * @param IncreaseByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/stamp_sheet/#gs2missionincreasecounterbyuserid
      */
     public function increaseByStampSheetAsync(
             IncreaseByStampSheetRequest $request
@@ -6955,8 +7300,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute counter addition as an acquire action within a distributed transaction
+     *
      * @param IncreaseByStampSheetRequest $request
      * @return IncreaseByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/mission/stamp_sheet/#gs2missionincreasecounterbyuserid
      */
     public function increaseByStampSheet (
             IncreaseByStampSheetRequest $request
@@ -6967,8 +7315,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute counter setting any values as an acquire action within a distributed transaction
+     *
      * @param SetByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/stamp_sheet/#gs2missionsetcounterbyuserid
      */
     public function setByStampSheetAsync(
             SetByStampSheetRequest $request
@@ -6982,8 +7333,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute counter setting any values as an acquire action within a distributed transaction
+     *
      * @param SetByStampSheetRequest $request
      * @return SetByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/mission/stamp_sheet/#gs2missionsetcounterbyuserid
      */
     public function setByStampSheet (
             SetByStampSheetRequest $request
@@ -6994,8 +7348,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute counter subtraction as a consume action within a distributed transaction
+     *
      * @param DecreaseByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/stamp_sheet/#gs2missiondecreasecounterbyuserid
      */
     public function decreaseByStampTaskAsync(
             DecreaseByStampTaskRequest $request
@@ -7009,8 +7366,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute counter subtraction as a consume action within a distributed transaction
+     *
      * @param DecreaseByStampTaskRequest $request
      * @return DecreaseByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/mission/stamp_sheet/#gs2missiondecreasecounterbyuserid
      */
     public function decreaseByStampTask (
             DecreaseByStampTaskRequest $request
@@ -7021,8 +7381,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute counter reset as a consume action within a distributed transaction
+     *
      * @param ResetByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/stamp_sheet/#gs2missionresetcounterbyuserid
      */
     public function resetByStampTaskAsync(
             ResetByStampTaskRequest $request
@@ -7036,8 +7399,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute counter reset as a consume action within a distributed transaction
+     *
      * @param ResetByStampTaskRequest $request
      * @return ResetByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/mission/stamp_sheet/#gs2missionresetcounterbyuserid
      */
     public function resetByStampTask (
             ResetByStampTaskRequest $request
@@ -7048,8 +7414,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute counter value verification as a verify action within a distributed transaction (verify task)
+     *
      * @param VerifyCounterValueByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/stamp_sheet/#gs2missionverifycountervaluebyuserid
      */
     public function verifyCounterValueByStampTaskAsync(
             VerifyCounterValueByStampTaskRequest $request
@@ -7063,8 +7432,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute counter value verification as a verify action within a distributed transaction (verify task)
+     *
      * @param VerifyCounterValueByStampTaskRequest $request
      * @return VerifyCounterValueByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/mission/stamp_sheet/#gs2missionverifycountervaluebyuserid
      */
     public function verifyCounterValueByStampTask (
             VerifyCounterValueByStampTaskRequest $request
@@ -7075,8 +7447,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Mission Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#exportmaster
      */
     public function exportMasterAsync(
             ExportMasterRequest $request
@@ -7090,8 +7465,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Mission Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return ExportMasterResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#exportmaster
      */
     public function exportMaster (
             ExportMasterRequest $request
@@ -7102,8 +7480,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Mission Model master data
+     *
      * @param GetCurrentMissionMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#getcurrentmissionmaster
      */
     public function getCurrentMissionMasterAsync(
             GetCurrentMissionMasterRequest $request
@@ -7117,8 +7498,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Mission Model master data
+     *
      * @param GetCurrentMissionMasterRequest $request
      * @return GetCurrentMissionMasterResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#getcurrentmissionmaster
      */
     public function getCurrentMissionMaster (
             GetCurrentMissionMasterRequest $request
@@ -7129,8 +7513,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Mission Model master data (3-phase version)
+     *
      * @param PreUpdateCurrentMissionMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#preupdatecurrentmissionmaster
      */
     public function preUpdateCurrentMissionMasterAsync(
             PreUpdateCurrentMissionMasterRequest $request
@@ -7144,8 +7531,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Mission Model master data (3-phase version)
+     *
      * @param PreUpdateCurrentMissionMasterRequest $request
      * @return PreUpdateCurrentMissionMasterResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#preupdatecurrentmissionmaster
      */
     public function preUpdateCurrentMissionMaster (
             PreUpdateCurrentMissionMasterRequest $request
@@ -7156,8 +7546,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Mission Model master data
+     *
      * @param UpdateCurrentMissionMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#updatecurrentmissionmaster
      */
     public function updateCurrentMissionMasterAsync(
             UpdateCurrentMissionMasterRequest $request
@@ -7171,8 +7564,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Mission Model master data
+     *
      * @param UpdateCurrentMissionMasterRequest $request
      * @return UpdateCurrentMissionMasterResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#updatecurrentmissionmaster
      */
     public function updateCurrentMissionMaster (
             UpdateCurrentMissionMasterRequest $request
@@ -7183,8 +7579,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Mission Model master data from GitHub
+     *
      * @param UpdateCurrentMissionMasterFromGitHubRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#updatecurrentmissionmasterfromgithub
      */
     public function updateCurrentMissionMasterFromGitHubAsync(
             UpdateCurrentMissionMasterFromGitHubRequest $request
@@ -7198,8 +7597,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Mission Model master data from GitHub
+     *
      * @param UpdateCurrentMissionMasterFromGitHubRequest $request
      * @return UpdateCurrentMissionMasterFromGitHubResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#updatecurrentmissionmasterfromgithub
      */
     public function updateCurrentMissionMasterFromGitHub (
             UpdateCurrentMissionMasterFromGitHubRequest $request
@@ -7210,8 +7612,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Counter Models
+     *
      * @param DescribeCounterModelsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#describecountermodels
      */
     public function describeCounterModelsAsync(
             DescribeCounterModelsRequest $request
@@ -7225,8 +7630,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Counter Models
+     *
      * @param DescribeCounterModelsRequest $request
      * @return DescribeCounterModelsResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#describecountermodels
      */
     public function describeCounterModels (
             DescribeCounterModelsRequest $request
@@ -7237,8 +7645,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Counter Model
+     *
      * @param GetCounterModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#getcountermodel
      */
     public function getCounterModelAsync(
             GetCounterModelRequest $request
@@ -7252,8 +7663,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Counter Model
+     *
      * @param GetCounterModelRequest $request
      * @return GetCounterModelResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#getcountermodel
      */
     public function getCounterModel (
             GetCounterModelRequest $request
@@ -7264,8 +7678,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Mission Group Models
+     *
      * @param DescribeMissionGroupModelsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#describemissiongroupmodels
      */
     public function describeMissionGroupModelsAsync(
             DescribeMissionGroupModelsRequest $request
@@ -7279,8 +7696,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Mission Group Models
+     *
      * @param DescribeMissionGroupModelsRequest $request
      * @return DescribeMissionGroupModelsResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#describemissiongroupmodels
      */
     public function describeMissionGroupModels (
             DescribeMissionGroupModelsRequest $request
@@ -7291,8 +7711,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Mission Group Model
+     *
      * @param GetMissionGroupModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#getmissiongroupmodel
      */
     public function getMissionGroupModelAsync(
             GetMissionGroupModelRequest $request
@@ -7306,8 +7729,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Mission Group Model
+     *
      * @param GetMissionGroupModelRequest $request
      * @return GetMissionGroupModelResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#getmissiongroupmodel
      */
     public function getMissionGroupModel (
             GetMissionGroupModelRequest $request
@@ -7318,8 +7744,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Mission Task Models
+     *
      * @param DescribeMissionTaskModelsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#describemissiontaskmodels
      */
     public function describeMissionTaskModelsAsync(
             DescribeMissionTaskModelsRequest $request
@@ -7333,8 +7762,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Mission Task Models
+     *
      * @param DescribeMissionTaskModelsRequest $request
      * @return DescribeMissionTaskModelsResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#describemissiontaskmodels
      */
     public function describeMissionTaskModels (
             DescribeMissionTaskModelsRequest $request
@@ -7345,8 +7777,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Mission Task Model
+     *
      * @param GetMissionTaskModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#getmissiontaskmodel
      */
     public function getMissionTaskModelAsync(
             GetMissionTaskModelRequest $request
@@ -7360,8 +7795,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Mission Task Model
+     *
      * @param GetMissionTaskModelRequest $request
      * @return GetMissionTaskModelResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#getmissiontaskmodel
      */
     public function getMissionTaskModel (
             GetMissionTaskModelRequest $request
@@ -7372,8 +7810,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Mission Task Model Masters
+     *
      * @param DescribeMissionTaskModelMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#describemissiontaskmodelmasters
      */
     public function describeMissionTaskModelMastersAsync(
             DescribeMissionTaskModelMastersRequest $request
@@ -7387,8 +7828,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Mission Task Model Masters
+     *
      * @param DescribeMissionTaskModelMastersRequest $request
      * @return DescribeMissionTaskModelMastersResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#describemissiontaskmodelmasters
      */
     public function describeMissionTaskModelMasters (
             DescribeMissionTaskModelMastersRequest $request
@@ -7399,8 +7843,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Mission Task Model Master
+     *
      * @param CreateMissionTaskModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#createmissiontaskmodelmaster
      */
     public function createMissionTaskModelMasterAsync(
             CreateMissionTaskModelMasterRequest $request
@@ -7414,8 +7861,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Mission Task Model Master
+     *
      * @param CreateMissionTaskModelMasterRequest $request
      * @return CreateMissionTaskModelMasterResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#createmissiontaskmodelmaster
      */
     public function createMissionTaskModelMaster (
             CreateMissionTaskModelMasterRequest $request
@@ -7426,8 +7876,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Mission Task Model Master
+     *
      * @param GetMissionTaskModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#getmissiontaskmodelmaster
      */
     public function getMissionTaskModelMasterAsync(
             GetMissionTaskModelMasterRequest $request
@@ -7441,8 +7894,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Mission Task Model Master
+     *
      * @param GetMissionTaskModelMasterRequest $request
      * @return GetMissionTaskModelMasterResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#getmissiontaskmodelmaster
      */
     public function getMissionTaskModelMaster (
             GetMissionTaskModelMasterRequest $request
@@ -7453,8 +7909,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Mission Task Model Master
+     *
      * @param UpdateMissionTaskModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#updatemissiontaskmodelmaster
      */
     public function updateMissionTaskModelMasterAsync(
             UpdateMissionTaskModelMasterRequest $request
@@ -7468,8 +7927,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Mission Task Model Master
+     *
      * @param UpdateMissionTaskModelMasterRequest $request
      * @return UpdateMissionTaskModelMasterResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#updatemissiontaskmodelmaster
      */
     public function updateMissionTaskModelMaster (
             UpdateMissionTaskModelMasterRequest $request
@@ -7480,8 +7942,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Mission Task Model Master
+     *
      * @param DeleteMissionTaskModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#deletemissiontaskmodelmaster
      */
     public function deleteMissionTaskModelMasterAsync(
             DeleteMissionTaskModelMasterRequest $request
@@ -7495,8 +7960,11 @@ class Gs2MissionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Mission Task Model Master
+     *
      * @param DeleteMissionTaskModelMasterRequest $request
      * @return DeleteMissionTaskModelMasterResult
+     * @see https://docs.gs2.io/api_reference/mission/sdk/#deletemissiontaskmodelmaster
      */
     public function deleteMissionTaskModelMaster (
             DeleteMissionTaskModelMasterRequest $request

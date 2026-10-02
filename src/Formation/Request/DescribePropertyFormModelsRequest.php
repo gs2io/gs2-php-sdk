@@ -19,15 +19,26 @@ namespace Gs2\Formation\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for describePropertyFormModels: List Property Form Models
+ *
+ * @see https://docs.gs2.io/api_reference/formation/sdk/#describepropertyformmodels
+ */
 class DescribePropertyFormModelsRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DescribePropertyFormModelsRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DescribePropertyFormModelsRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;

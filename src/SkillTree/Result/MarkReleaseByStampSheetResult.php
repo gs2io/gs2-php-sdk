@@ -20,18 +20,29 @@ namespace Gs2\SkillTree\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\SkillTree\Model\Status;
 
+/**
+ * Result of markReleaseByStampSheet: Execute the record of the released node as an acquire action
+ *
+ * @see https://docs.gs2.io/api_reference/skill_tree/stamp_sheet/#gs2skilltreemarkreleasebyuserid
+ */
 class MarkReleaseByStampSheetResult implements IResult {
-    /** @var Status */
+    /** @var Status Status */
     private $item;
 
+    /** @return Status|null Status */
 	public function getItem(): ?Status {
 		return $this->item;
 	}
 
+    /** @param Status|null $item Status */
 	public function setItem(?Status $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Status|null $item Status
+     * @return MarkReleaseByStampSheetResult
+     */
 	public function withItem(?Status $item): MarkReleaseByStampSheetResult {
 		$this->item = $item;
 		return $this;

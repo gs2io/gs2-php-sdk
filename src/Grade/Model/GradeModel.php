@@ -20,101 +20,148 @@ namespace Gs2\Grade\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Grade Model
+ *
+ * @see https://docs.gs2.io/api_reference/grade/sdk/#grademodel
+ */
 class GradeModel implements IModel {
 	/**
-     * @var string
+     * @var string Grade Model GRN
 	 */
 	private $gradeModelId;
 	/**
-     * @var string
+     * @var string Grade Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var array
+     * @var array List of Default Grade Models
 	 */
 	private $defaultGrades;
 	/**
-     * @var string
+     * @var string GS2-Experience Experience Model GRN
 	 */
 	private $experienceModelId;
 	/**
-     * @var array
+     * @var array List of Grade Entry Models
 	 */
 	private $gradeEntries;
 	/**
-     * @var array
+     * @var array List of Reward Addition Tables
 	 */
 	private $acquireActionRates;
+    /** @return string|null Grade Model GRN */
 	public function getGradeModelId(): ?string {
 		return $this->gradeModelId;
 	}
+    /** @param string|null $gradeModelId Grade Model GRN */
 	public function setGradeModelId(?string $gradeModelId) {
 		$this->gradeModelId = $gradeModelId;
 	}
+    /**
+     * @param string|null $gradeModelId Grade Model GRN
+     * @return GradeModel
+     */
 	public function withGradeModelId(?string $gradeModelId): GradeModel {
 		$this->gradeModelId = $gradeModelId;
 		return $this;
 	}
+    /** @return string|null Grade Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Grade Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Grade Model name
+     * @return GradeModel
+     */
 	public function withName(?string $name): GradeModel {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return GradeModel
+     */
 	public function withMetadata(?string $metadata): GradeModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return array|null List of Default Grade Models */
 	public function getDefaultGrades(): ?array {
 		return $this->defaultGrades;
 	}
+    /** @param array|null $defaultGrades List of Default Grade Models */
 	public function setDefaultGrades(?array $defaultGrades) {
 		$this->defaultGrades = $defaultGrades;
 	}
+    /**
+     * @param array|null $defaultGrades List of Default Grade Models
+     * @return GradeModel
+     */
 	public function withDefaultGrades(?array $defaultGrades): GradeModel {
 		$this->defaultGrades = $defaultGrades;
 		return $this;
 	}
+    /** @return string|null GS2-Experience Experience Model GRN */
 	public function getExperienceModelId(): ?string {
 		return $this->experienceModelId;
 	}
+    /** @param string|null $experienceModelId GS2-Experience Experience Model GRN */
 	public function setExperienceModelId(?string $experienceModelId) {
 		$this->experienceModelId = $experienceModelId;
 	}
+    /**
+     * @param string|null $experienceModelId GS2-Experience Experience Model GRN
+     * @return GradeModel
+     */
 	public function withExperienceModelId(?string $experienceModelId): GradeModel {
 		$this->experienceModelId = $experienceModelId;
 		return $this;
 	}
+    /** @return array|null List of Grade Entry Models */
 	public function getGradeEntries(): ?array {
 		return $this->gradeEntries;
 	}
+    /** @param array|null $gradeEntries List of Grade Entry Models */
 	public function setGradeEntries(?array $gradeEntries) {
 		$this->gradeEntries = $gradeEntries;
 	}
+    /**
+     * @param array|null $gradeEntries List of Grade Entry Models
+     * @return GradeModel
+     */
 	public function withGradeEntries(?array $gradeEntries): GradeModel {
 		$this->gradeEntries = $gradeEntries;
 		return $this;
 	}
+    /** @return array|null List of Reward Addition Tables */
 	public function getAcquireActionRates(): ?array {
 		return $this->acquireActionRates;
 	}
+    /** @param array|null $acquireActionRates List of Reward Addition Tables */
 	public function setAcquireActionRates(?array $acquireActionRates) {
 		$this->acquireActionRates = $acquireActionRates;
 	}
+    /**
+     * @param array|null $acquireActionRates List of Reward Addition Tables
+     * @return GradeModel
+     */
 	public function withAcquireActionRates(?array $acquireActionRates): GradeModel {
 		$this->acquireActionRates = $acquireActionRates;
 		return $this;

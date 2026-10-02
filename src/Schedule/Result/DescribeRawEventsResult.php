@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Schedule\Model\RepeatSetting;
 use Gs2\Schedule\Model\Event;
 
+/**
+ * Result of describeRawEvents: List Events
+ *
+ * @see https://docs.gs2.io/api_reference/schedule/sdk/#describerawevents
+ */
 class DescribeRawEventsResult implements IResult {
-    /** @var array */
+    /** @var array List of Events */
     private $items;
 
+    /** @return array|null List of Events */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Events */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Events
+     * @return DescribeRawEventsResult
+     */
 	public function withItems(?array $items): DescribeRawEventsResult {
 		$this->items = $items;
 		return $this;

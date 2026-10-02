@@ -19,39 +19,58 @@ namespace Gs2\Project\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/** Request for signIn: Sign-in */
 class SignInRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string E-Mail */
     private $email;
-    /** @var string */
+    /** @var string Password */
     private $password;
-    /** @var string */
+    /** @var string Passcode */
     private $otp;
+    /** @return string|null E-Mail */
 	public function getEmail(): ?string {
 		return $this->email;
 	}
+    /** @param string|null $email E-Mail */
 	public function setEmail(?string $email) {
 		$this->email = $email;
 	}
+    /**
+     * @param string|null $email E-Mail
+     * @return SignInRequest
+     */
 	public function withEmail(?string $email): SignInRequest {
 		$this->email = $email;
 		return $this;
 	}
+    /** @return string|null Password */
 	public function getPassword(): ?string {
 		return $this->password;
 	}
+    /** @param string|null $password Password */
 	public function setPassword(?string $password) {
 		$this->password = $password;
 	}
+    /**
+     * @param string|null $password Password
+     * @return SignInRequest
+     */
 	public function withPassword(?string $password): SignInRequest {
 		$this->password = $password;
 		return $this;
 	}
+    /** @return string|null Passcode */
 	public function getOtp(): ?string {
 		return $this->otp;
 	}
+    /** @param string|null $otp Passcode */
 	public function setOtp(?string $otp) {
 		$this->otp = $otp;
 	}
+    /**
+     * @param string|null $otp Passcode
+     * @return SignInRequest
+     */
 	public function withOtp(?string $otp): SignInRequest {
 		$this->otp = $otp;
 		return $this;

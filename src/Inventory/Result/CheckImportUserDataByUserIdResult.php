@@ -19,18 +19,29 @@ namespace Gs2\Inventory\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of checkImportUserDataByUserId: Check if the import of the data associated with the specified user ID is complete
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#checkimportuserdatabyuserid
+ */
 class CheckImportUserDataByUserIdResult implements IResult {
-    /** @var string */
+    /** @var string URL of log data */
     private $url;
 
+    /** @return string|null URL of log data */
 	public function getUrl(): ?string {
 		return $this->url;
 	}
 
+    /** @param string|null $url URL of log data */
 	public function setUrl(?string $url) {
 		$this->url = $url;
 	}
 
+    /**
+     * @param string|null $url URL of log data
+     * @return CheckImportUserDataByUserIdResult
+     */
 	public function withUrl(?string $url): CheckImportUserDataByUserIdResult {
 		$this->url = $url;
 		return $this;

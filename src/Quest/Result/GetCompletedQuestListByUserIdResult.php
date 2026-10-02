@@ -20,18 +20,29 @@ namespace Gs2\Quest\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Quest\Model\CompletedQuestList;
 
+/**
+ * Result of getCompletedQuestListByUserId: Get Completed Quest List by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/quest/sdk/#getcompletedquestlistbyuserid
+ */
 class GetCompletedQuestListByUserIdResult implements IResult {
-    /** @var CompletedQuestList */
+    /** @var CompletedQuestList Completed Quest List */
     private $item;
 
+    /** @return CompletedQuestList|null Completed Quest List */
 	public function getItem(): ?CompletedQuestList {
 		return $this->item;
 	}
 
+    /** @param CompletedQuestList|null $item Completed Quest List */
 	public function setItem(?CompletedQuestList $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CompletedQuestList|null $item Completed Quest List
+     * @return GetCompletedQuestListByUserIdResult
+     */
 	public function withItem(?CompletedQuestList $item): GetCompletedQuestListByUserIdResult {
 		$this->item = $item;
 		return $this;

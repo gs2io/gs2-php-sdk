@@ -20,18 +20,29 @@ namespace Gs2\Stamina\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Stamina\Model\MaxStaminaTableMaster;
 
+/**
+ * Result of getMaxStaminaTableMaster: Get Maximum Stamina Table Master
+ *
+ * @see https://docs.gs2.io/api_reference/stamina/sdk/#getmaxstaminatablemaster
+ */
 class GetMaxStaminaTableMasterResult implements IResult {
-    /** @var MaxStaminaTableMaster */
+    /** @var MaxStaminaTableMaster Maximum Stamina Table Master */
     private $item;
 
+    /** @return MaxStaminaTableMaster|null Maximum Stamina Table Master */
 	public function getItem(): ?MaxStaminaTableMaster {
 		return $this->item;
 	}
 
+    /** @param MaxStaminaTableMaster|null $item Maximum Stamina Table Master */
 	public function setItem(?MaxStaminaTableMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param MaxStaminaTableMaster|null $item Maximum Stamina Table Master
+     * @return GetMaxStaminaTableMasterResult
+     */
 	public function withItem(?MaxStaminaTableMaster $item): GetMaxStaminaTableMasterResult {
 		$this->item = $item;
 		return $this;

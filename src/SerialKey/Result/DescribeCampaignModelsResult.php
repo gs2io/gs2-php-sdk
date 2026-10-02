@@ -20,18 +20,29 @@ namespace Gs2\SerialKey\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\SerialKey\Model\CampaignModel;
 
+/**
+ * Result of describeCampaignModels: List Campaign Models
+ *
+ * @see https://docs.gs2.io/api_reference/serial_key/sdk/#describecampaignmodels
+ */
 class DescribeCampaignModelsResult implements IResult {
-    /** @var array */
+    /** @var array List of Campaign Model */
     private $items;
 
+    /** @return array|null List of Campaign Model */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Campaign Model */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Campaign Model
+     * @return DescribeCampaignModelsResult
+     */
 	public function withItems(?array $items): DescribeCampaignModelsResult {
 		$this->items = $items;
 		return $this;

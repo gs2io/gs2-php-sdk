@@ -19,27 +19,44 @@ namespace Gs2\Mission\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getCounterModel: Get Counter Model
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#getcountermodel
+ */
 class GetCounterModelRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Counter Model name */
     private $counterName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetCounterModelRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetCounterModelRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Counter Model name */
 	public function getCounterName(): ?string {
 		return $this->counterName;
 	}
+    /** @param string|null $counterName Counter Model name */
 	public function setCounterName(?string $counterName) {
 		$this->counterName = $counterName;
 	}
+    /**
+     * @param string|null $counterName Counter Model name
+     * @return GetCounterModelRequest
+     */
 	public function withCounterName(?string $counterName): GetCounterModelRequest {
 		$this->counterName = $counterName;
 		return $this;

@@ -19,15 +19,26 @@ namespace Gs2\Identifier\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getSecurityPolicy: Get Security Policy
+ *
+ * @see https://docs.gs2.io/api_reference/identifier/sdk/#getsecuritypolicy
+ */
 class GetSecurityPolicyRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Security Policy Name */
     private $securityPolicyName;
+    /** @return string|null Security Policy Name */
 	public function getSecurityPolicyName(): ?string {
 		return $this->securityPolicyName;
 	}
+    /** @param string|null $securityPolicyName Security Policy Name */
 	public function setSecurityPolicyName(?string $securityPolicyName) {
 		$this->securityPolicyName = $securityPolicyName;
 	}
+    /**
+     * @param string|null $securityPolicyName Security Policy Name
+     * @return GetSecurityPolicyRequest
+     */
 	public function withSecurityPolicyName(?string $securityPolicyName): GetSecurityPolicyRequest {
 		$this->securityPolicyName = $securityPolicyName;
 		return $this;

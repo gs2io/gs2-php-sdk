@@ -3728,25 +3728,22 @@ class SetRarityParameterStatusByStampSheetTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 Enchant API クライアント
+ * GS2-Enchant API client
  *
- * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/enchant/sdk/
  */
 class Gs2EnchantRestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#describenamespaces
      */
     public function describeNamespacesAsync(
             DescribeNamespacesRequest $request
@@ -3760,8 +3757,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#describenamespaces
      */
     public function describeNamespaces (
             DescribeNamespacesRequest $request
@@ -3772,8 +3772,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#createnamespace
      */
     public function createNamespaceAsync(
             CreateNamespaceRequest $request
@@ -3787,8 +3790,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#createnamespace
      */
     public function createNamespace (
             CreateNamespaceRequest $request
@@ -3799,8 +3805,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#getnamespacestatus
      */
     public function getNamespaceStatusAsync(
             GetNamespaceStatusRequest $request
@@ -3814,8 +3823,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#getnamespacestatus
      */
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
@@ -3826,8 +3838,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#getnamespace
      */
     public function getNamespaceAsync(
             GetNamespaceRequest $request
@@ -3841,8 +3856,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#getnamespace
      */
     public function getNamespace (
             GetNamespaceRequest $request
@@ -3853,8 +3871,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#updatenamespace
      */
     public function updateNamespaceAsync(
             UpdateNamespaceRequest $request
@@ -3868,8 +3889,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#updatenamespace
      */
     public function updateNamespace (
             UpdateNamespaceRequest $request
@@ -3880,8 +3904,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#deletenamespace
      */
     public function deleteNamespaceAsync(
             DeleteNamespaceRequest $request
@@ -3895,8 +3922,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#deletenamespace
      */
     public function deleteNamespace (
             DeleteNamespaceRequest $request
@@ -3907,8 +3937,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get microservice version
+     *
      * @param GetServiceVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#getserviceversion
      */
     public function getServiceVersionAsync(
             GetServiceVersionRequest $request
@@ -3922,8 +3955,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get microservice version
+     *
      * @param GetServiceVersionRequest $request
      * @return GetServiceVersionResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#getserviceversion
      */
     public function getServiceVersion (
             GetServiceVersionRequest $request
@@ -3934,8 +3970,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserIdAsync(
             DumpUserDataByUserIdRequest $request
@@ -3949,8 +3988,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return DumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserId (
             DumpUserDataByUserIdRequest $request
@@ -3961,8 +4003,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserIdAsync(
             CheckDumpUserDataByUserIdRequest $request
@@ -3976,8 +4021,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return CheckDumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserId (
             CheckDumpUserDataByUserIdRequest $request
@@ -3988,8 +4036,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserIdAsync(
             CleanUserDataByUserIdRequest $request
@@ -4003,8 +4054,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return CleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserId (
             CleanUserDataByUserIdRequest $request
@@ -4015,8 +4069,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserIdAsync(
             CheckCleanUserDataByUserIdRequest $request
@@ -4030,8 +4087,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return CheckCleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserId (
             CheckCleanUserDataByUserIdRequest $request
@@ -4042,8 +4102,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserIdAsync(
             PrepareImportUserDataByUserIdRequest $request
@@ -4057,8 +4120,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PrepareImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserId (
             PrepareImportUserDataByUserIdRequest $request
@@ -4069,8 +4135,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserIdAsync(
             ImportUserDataByUserIdRequest $request
@@ -4084,8 +4153,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return ImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserId (
             ImportUserDataByUserIdRequest $request
@@ -4096,8 +4168,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserIdAsync(
             CheckImportUserDataByUserIdRequest $request
@@ -4111,8 +4186,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return CheckImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserId (
             CheckImportUserDataByUserIdRequest $request
@@ -4123,8 +4201,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Balance Parameter Models
+     *
      * @param DescribeBalanceParameterModelsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#describebalanceparametermodels
      */
     public function describeBalanceParameterModelsAsync(
             DescribeBalanceParameterModelsRequest $request
@@ -4138,8 +4219,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Balance Parameter Models
+     *
      * @param DescribeBalanceParameterModelsRequest $request
      * @return DescribeBalanceParameterModelsResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#describebalanceparametermodels
      */
     public function describeBalanceParameterModels (
             DescribeBalanceParameterModelsRequest $request
@@ -4150,8 +4234,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Balance Parameter Model
+     *
      * @param GetBalanceParameterModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#getbalanceparametermodel
      */
     public function getBalanceParameterModelAsync(
             GetBalanceParameterModelRequest $request
@@ -4165,8 +4252,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Balance Parameter Model
+     *
      * @param GetBalanceParameterModelRequest $request
      * @return GetBalanceParameterModelResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#getbalanceparametermodel
      */
     public function getBalanceParameterModel (
             GetBalanceParameterModelRequest $request
@@ -4177,8 +4267,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Balance Parameter Model Masters
+     *
      * @param DescribeBalanceParameterModelMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#describebalanceparametermodelmasters
      */
     public function describeBalanceParameterModelMastersAsync(
             DescribeBalanceParameterModelMastersRequest $request
@@ -4192,8 +4285,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Balance Parameter Model Masters
+     *
      * @param DescribeBalanceParameterModelMastersRequest $request
      * @return DescribeBalanceParameterModelMastersResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#describebalanceparametermodelmasters
      */
     public function describeBalanceParameterModelMasters (
             DescribeBalanceParameterModelMastersRequest $request
@@ -4204,8 +4300,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Balance Parameter Model Master
+     *
      * @param CreateBalanceParameterModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#createbalanceparametermodelmaster
      */
     public function createBalanceParameterModelMasterAsync(
             CreateBalanceParameterModelMasterRequest $request
@@ -4219,8 +4318,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Balance Parameter Model Master
+     *
      * @param CreateBalanceParameterModelMasterRequest $request
      * @return CreateBalanceParameterModelMasterResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#createbalanceparametermodelmaster
      */
     public function createBalanceParameterModelMaster (
             CreateBalanceParameterModelMasterRequest $request
@@ -4231,8 +4333,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Balance Parameter Model Master Data
+     *
      * @param GetBalanceParameterModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#getbalanceparametermodelmaster
      */
     public function getBalanceParameterModelMasterAsync(
             GetBalanceParameterModelMasterRequest $request
@@ -4246,8 +4351,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Balance Parameter Model Master Data
+     *
      * @param GetBalanceParameterModelMasterRequest $request
      * @return GetBalanceParameterModelMasterResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#getbalanceparametermodelmaster
      */
     public function getBalanceParameterModelMaster (
             GetBalanceParameterModelMasterRequest $request
@@ -4258,8 +4366,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Balance Parameter Model Master
+     *
      * @param UpdateBalanceParameterModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#updatebalanceparametermodelmaster
      */
     public function updateBalanceParameterModelMasterAsync(
             UpdateBalanceParameterModelMasterRequest $request
@@ -4273,8 +4384,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Balance Parameter Model Master
+     *
      * @param UpdateBalanceParameterModelMasterRequest $request
      * @return UpdateBalanceParameterModelMasterResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#updatebalanceparametermodelmaster
      */
     public function updateBalanceParameterModelMaster (
             UpdateBalanceParameterModelMasterRequest $request
@@ -4285,8 +4399,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Balance Parameter Model Master
+     *
      * @param DeleteBalanceParameterModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#deletebalanceparametermodelmaster
      */
     public function deleteBalanceParameterModelMasterAsync(
             DeleteBalanceParameterModelMasterRequest $request
@@ -4300,8 +4417,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Balance Parameter Model Master
+     *
      * @param DeleteBalanceParameterModelMasterRequest $request
      * @return DeleteBalanceParameterModelMasterResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#deletebalanceparametermodelmaster
      */
     public function deleteBalanceParameterModelMaster (
             DeleteBalanceParameterModelMasterRequest $request
@@ -4312,8 +4432,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Rarity Parameter Models
+     *
      * @param DescribeRarityParameterModelsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#describerarityparametermodels
      */
     public function describeRarityParameterModelsAsync(
             DescribeRarityParameterModelsRequest $request
@@ -4327,8 +4450,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Rarity Parameter Models
+     *
      * @param DescribeRarityParameterModelsRequest $request
      * @return DescribeRarityParameterModelsResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#describerarityparametermodels
      */
     public function describeRarityParameterModels (
             DescribeRarityParameterModelsRequest $request
@@ -4339,8 +4465,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Rarity Parameter Model
+     *
      * @param GetRarityParameterModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#getrarityparametermodel
      */
     public function getRarityParameterModelAsync(
             GetRarityParameterModelRequest $request
@@ -4354,8 +4483,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Rarity Parameter Model
+     *
      * @param GetRarityParameterModelRequest $request
      * @return GetRarityParameterModelResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#getrarityparametermodel
      */
     public function getRarityParameterModel (
             GetRarityParameterModelRequest $request
@@ -4366,8 +4498,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Rarity Parameter Model Masters
+     *
      * @param DescribeRarityParameterModelMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#describerarityparametermodelmasters
      */
     public function describeRarityParameterModelMastersAsync(
             DescribeRarityParameterModelMastersRequest $request
@@ -4381,8 +4516,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Rarity Parameter Model Masters
+     *
      * @param DescribeRarityParameterModelMastersRequest $request
      * @return DescribeRarityParameterModelMastersResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#describerarityparametermodelmasters
      */
     public function describeRarityParameterModelMasters (
             DescribeRarityParameterModelMastersRequest $request
@@ -4393,8 +4531,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Rarity Parameter Model Master
+     *
      * @param CreateRarityParameterModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#createrarityparametermodelmaster
      */
     public function createRarityParameterModelMasterAsync(
             CreateRarityParameterModelMasterRequest $request
@@ -4408,8 +4549,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Rarity Parameter Model Master
+     *
      * @param CreateRarityParameterModelMasterRequest $request
      * @return CreateRarityParameterModelMasterResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#createrarityparametermodelmaster
      */
     public function createRarityParameterModelMaster (
             CreateRarityParameterModelMasterRequest $request
@@ -4420,8 +4564,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Rarity Parameter Model Master
+     *
      * @param GetRarityParameterModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#getrarityparametermodelmaster
      */
     public function getRarityParameterModelMasterAsync(
             GetRarityParameterModelMasterRequest $request
@@ -4435,8 +4582,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Rarity Parameter Model Master
+     *
      * @param GetRarityParameterModelMasterRequest $request
      * @return GetRarityParameterModelMasterResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#getrarityparametermodelmaster
      */
     public function getRarityParameterModelMaster (
             GetRarityParameterModelMasterRequest $request
@@ -4447,8 +4597,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Rarity Parameter Model Master
+     *
      * @param UpdateRarityParameterModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#updaterarityparametermodelmaster
      */
     public function updateRarityParameterModelMasterAsync(
             UpdateRarityParameterModelMasterRequest $request
@@ -4462,8 +4615,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Rarity Parameter Model Master
+     *
      * @param UpdateRarityParameterModelMasterRequest $request
      * @return UpdateRarityParameterModelMasterResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#updaterarityparametermodelmaster
      */
     public function updateRarityParameterModelMaster (
             UpdateRarityParameterModelMasterRequest $request
@@ -4474,8 +4630,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Rarity Parameter Model Master
+     *
      * @param DeleteRarityParameterModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#deleterarityparametermodelmaster
      */
     public function deleteRarityParameterModelMasterAsync(
             DeleteRarityParameterModelMasterRequest $request
@@ -4489,8 +4648,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Rarity Parameter Model Master
+     *
      * @param DeleteRarityParameterModelMasterRequest $request
      * @return DeleteRarityParameterModelMasterResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#deleterarityparametermodelmaster
      */
     public function deleteRarityParameterModelMaster (
             DeleteRarityParameterModelMasterRequest $request
@@ -4501,8 +4663,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Parameter Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#exportmaster
      */
     public function exportMasterAsync(
             ExportMasterRequest $request
@@ -4516,8 +4681,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Parameter Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return ExportMasterResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#exportmaster
      */
     public function exportMaster (
             ExportMasterRequest $request
@@ -4528,8 +4696,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Parameter Model master data
+     *
      * @param GetCurrentParameterMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#getcurrentparametermaster
      */
     public function getCurrentParameterMasterAsync(
             GetCurrentParameterMasterRequest $request
@@ -4543,8 +4714,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Parameter Model master data
+     *
      * @param GetCurrentParameterMasterRequest $request
      * @return GetCurrentParameterMasterResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#getcurrentparametermaster
      */
     public function getCurrentParameterMaster (
             GetCurrentParameterMasterRequest $request
@@ -4555,8 +4729,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Parameter Model master data (3-phase version)
+     *
      * @param PreUpdateCurrentParameterMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#preupdatecurrentparametermaster
      */
     public function preUpdateCurrentParameterMasterAsync(
             PreUpdateCurrentParameterMasterRequest $request
@@ -4570,8 +4747,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Parameter Model master data (3-phase version)
+     *
      * @param PreUpdateCurrentParameterMasterRequest $request
      * @return PreUpdateCurrentParameterMasterResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#preupdatecurrentparametermaster
      */
     public function preUpdateCurrentParameterMaster (
             PreUpdateCurrentParameterMasterRequest $request
@@ -4582,8 +4762,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Parameter Model master data
+     *
      * @param UpdateCurrentParameterMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#updatecurrentparametermaster
      */
     public function updateCurrentParameterMasterAsync(
             UpdateCurrentParameterMasterRequest $request
@@ -4597,8 +4780,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Parameter Model master data
+     *
      * @param UpdateCurrentParameterMasterRequest $request
      * @return UpdateCurrentParameterMasterResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#updatecurrentparametermaster
      */
     public function updateCurrentParameterMaster (
             UpdateCurrentParameterMasterRequest $request
@@ -4609,8 +4795,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Updates currently active Parameter Model master data from GitHub
+     *
      * @param UpdateCurrentParameterMasterFromGitHubRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#updatecurrentparametermasterfromgithub
      */
     public function updateCurrentParameterMasterFromGitHubAsync(
             UpdateCurrentParameterMasterFromGitHubRequest $request
@@ -4624,8 +4813,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Updates currently active Parameter Model master data from GitHub
+     *
      * @param UpdateCurrentParameterMasterFromGitHubRequest $request
      * @return UpdateCurrentParameterMasterFromGitHubResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#updatecurrentparametermasterfromgithub
      */
     public function updateCurrentParameterMasterFromGitHub (
             UpdateCurrentParameterMasterFromGitHubRequest $request
@@ -4636,8 +4828,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Balance Parameter Statuses
+     *
      * @param DescribeBalanceParameterStatusesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#describebalanceparameterstatuses
      */
     public function describeBalanceParameterStatusesAsync(
             DescribeBalanceParameterStatusesRequest $request
@@ -4651,8 +4846,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Balance Parameter Statuses
+     *
      * @param DescribeBalanceParameterStatusesRequest $request
      * @return DescribeBalanceParameterStatusesResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#describebalanceparameterstatuses
      */
     public function describeBalanceParameterStatuses (
             DescribeBalanceParameterStatusesRequest $request
@@ -4663,8 +4861,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Balance Parameter Statuses by User ID
+     *
      * @param DescribeBalanceParameterStatusesByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#describebalanceparameterstatusesbyuserid
      */
     public function describeBalanceParameterStatusesByUserIdAsync(
             DescribeBalanceParameterStatusesByUserIdRequest $request
@@ -4678,8 +4879,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Balance Parameter Statuses by User ID
+     *
      * @param DescribeBalanceParameterStatusesByUserIdRequest $request
      * @return DescribeBalanceParameterStatusesByUserIdResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#describebalanceparameterstatusesbyuserid
      */
     public function describeBalanceParameterStatusesByUserId (
             DescribeBalanceParameterStatusesByUserIdRequest $request
@@ -4690,8 +4894,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Balance Parameter Status
+     *
      * @param GetBalanceParameterStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#getbalanceparameterstatus
      */
     public function getBalanceParameterStatusAsync(
             GetBalanceParameterStatusRequest $request
@@ -4705,8 +4912,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Balance Parameter Status
+     *
      * @param GetBalanceParameterStatusRequest $request
      * @return GetBalanceParameterStatusResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#getbalanceparameterstatus
      */
     public function getBalanceParameterStatus (
             GetBalanceParameterStatusRequest $request
@@ -4717,8 +4927,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Balance Parameter Status by User ID
+     *
      * @param GetBalanceParameterStatusByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#getbalanceparameterstatusbyuserid
      */
     public function getBalanceParameterStatusByUserIdAsync(
             GetBalanceParameterStatusByUserIdRequest $request
@@ -4732,8 +4945,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Balance Parameter Status by User ID
+     *
      * @param GetBalanceParameterStatusByUserIdRequest $request
      * @return GetBalanceParameterStatusByUserIdResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#getbalanceparameterstatusbyuserid
      */
     public function getBalanceParameterStatusByUserId (
             GetBalanceParameterStatusByUserIdRequest $request
@@ -4744,8 +4960,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Balance Parameter Status
+     *
      * @param DeleteBalanceParameterStatusByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#deletebalanceparameterstatusbyuserid
      */
     public function deleteBalanceParameterStatusByUserIdAsync(
             DeleteBalanceParameterStatusByUserIdRequest $request
@@ -4759,8 +4978,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Balance Parameter Status
+     *
      * @param DeleteBalanceParameterStatusByUserIdRequest $request
      * @return DeleteBalanceParameterStatusByUserIdResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#deletebalanceparameterstatusbyuserid
      */
     public function deleteBalanceParameterStatusByUserId (
             DeleteBalanceParameterStatusByUserIdRequest $request
@@ -4771,8 +4993,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Re-draw balance parameter by User ID
+     *
      * @param ReDrawBalanceParameterStatusByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#redrawbalanceparameterstatusbyuserid
      */
     public function reDrawBalanceParameterStatusByUserIdAsync(
             ReDrawBalanceParameterStatusByUserIdRequest $request
@@ -4786,8 +5011,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Re-draw balance parameter by User ID
+     *
      * @param ReDrawBalanceParameterStatusByUserIdRequest $request
      * @return ReDrawBalanceParameterStatusByUserIdResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#redrawbalanceparameterstatusbyuserid
      */
     public function reDrawBalanceParameterStatusByUserId (
             ReDrawBalanceParameterStatusByUserIdRequest $request
@@ -4798,8 +5026,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute re-draw of Balance Parameter Status as acquire action
+     *
      * @param ReDrawBalanceParameterStatusByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/stamp_sheet/#gs2enchantredrawbalanceparameterstatusbyuserid
      */
     public function reDrawBalanceParameterStatusByStampSheetAsync(
             ReDrawBalanceParameterStatusByStampSheetRequest $request
@@ -4813,8 +5044,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute re-draw of Balance Parameter Status as acquire action
+     *
      * @param ReDrawBalanceParameterStatusByStampSheetRequest $request
      * @return ReDrawBalanceParameterStatusByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/enchant/stamp_sheet/#gs2enchantredrawbalanceparameterstatusbyuserid
      */
     public function reDrawBalanceParameterStatusByStampSheet (
             ReDrawBalanceParameterStatusByStampSheetRequest $request
@@ -4825,8 +5059,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Set any value to Balance Parameter Status by User ID
+     *
      * @param SetBalanceParameterStatusByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#setbalanceparameterstatusbyuserid
      */
     public function setBalanceParameterStatusByUserIdAsync(
             SetBalanceParameterStatusByUserIdRequest $request
@@ -4840,8 +5077,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Set any value to Balance Parameter Status by User ID
+     *
      * @param SetBalanceParameterStatusByUserIdRequest $request
      * @return SetBalanceParameterStatusByUserIdResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#setbalanceparameterstatusbyuserid
      */
     public function setBalanceParameterStatusByUserId (
             SetBalanceParameterStatusByUserIdRequest $request
@@ -4852,8 +5092,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute setting any value to Balance Parameter Status as acquire action
+     *
      * @param SetBalanceParameterStatusByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/stamp_sheet/#gs2enchantsetbalanceparameterstatusbyuserid
      */
     public function setBalanceParameterStatusByStampSheetAsync(
             SetBalanceParameterStatusByStampSheetRequest $request
@@ -4867,8 +5110,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute setting any value to Balance Parameter Status as acquire action
+     *
      * @param SetBalanceParameterStatusByStampSheetRequest $request
      * @return SetBalanceParameterStatusByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/enchant/stamp_sheet/#gs2enchantsetbalanceparameterstatusbyuserid
      */
     public function setBalanceParameterStatusByStampSheet (
             SetBalanceParameterStatusByStampSheetRequest $request
@@ -4879,8 +5125,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Rarity Parameter Statuses
+     *
      * @param DescribeRarityParameterStatusesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#describerarityparameterstatuses
      */
     public function describeRarityParameterStatusesAsync(
             DescribeRarityParameterStatusesRequest $request
@@ -4894,8 +5143,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Rarity Parameter Statuses
+     *
      * @param DescribeRarityParameterStatusesRequest $request
      * @return DescribeRarityParameterStatusesResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#describerarityparameterstatuses
      */
     public function describeRarityParameterStatuses (
             DescribeRarityParameterStatusesRequest $request
@@ -4906,8 +5158,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Rarity Parameter Statuses by User ID
+     *
      * @param DescribeRarityParameterStatusesByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#describerarityparameterstatusesbyuserid
      */
     public function describeRarityParameterStatusesByUserIdAsync(
             DescribeRarityParameterStatusesByUserIdRequest $request
@@ -4921,8 +5176,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Rarity Parameter Statuses by User ID
+     *
      * @param DescribeRarityParameterStatusesByUserIdRequest $request
      * @return DescribeRarityParameterStatusesByUserIdResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#describerarityparameterstatusesbyuserid
      */
     public function describeRarityParameterStatusesByUserId (
             DescribeRarityParameterStatusesByUserIdRequest $request
@@ -4933,8 +5191,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Rarity Parameter Status
+     *
      * @param GetRarityParameterStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#getrarityparameterstatus
      */
     public function getRarityParameterStatusAsync(
             GetRarityParameterStatusRequest $request
@@ -4948,8 +5209,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Rarity Parameter Status
+     *
      * @param GetRarityParameterStatusRequest $request
      * @return GetRarityParameterStatusResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#getrarityparameterstatus
      */
     public function getRarityParameterStatus (
             GetRarityParameterStatusRequest $request
@@ -4960,8 +5224,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Rarity Parameter Status by User ID
+     *
      * @param GetRarityParameterStatusByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#getrarityparameterstatusbyuserid
      */
     public function getRarityParameterStatusByUserIdAsync(
             GetRarityParameterStatusByUserIdRequest $request
@@ -4975,8 +5242,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Rarity Parameter Status by User ID
+     *
      * @param GetRarityParameterStatusByUserIdRequest $request
      * @return GetRarityParameterStatusByUserIdResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#getrarityparameterstatusbyuserid
      */
     public function getRarityParameterStatusByUserId (
             GetRarityParameterStatusByUserIdRequest $request
@@ -4987,8 +5257,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Rarity Parameter Status
+     *
      * @param DeleteRarityParameterStatusByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#deleterarityparameterstatusbyuserid
      */
     public function deleteRarityParameterStatusByUserIdAsync(
             DeleteRarityParameterStatusByUserIdRequest $request
@@ -5002,8 +5275,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Rarity Parameter Status
+     *
      * @param DeleteRarityParameterStatusByUserIdRequest $request
      * @return DeleteRarityParameterStatusByUserIdResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#deleterarityparameterstatusbyuserid
      */
     public function deleteRarityParameterStatusByUserId (
             DeleteRarityParameterStatusByUserIdRequest $request
@@ -5014,8 +5290,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Re-draw Rarity Parameter Status by User ID
+     *
      * @param ReDrawRarityParameterStatusByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#redrawrarityparameterstatusbyuserid
      */
     public function reDrawRarityParameterStatusByUserIdAsync(
             ReDrawRarityParameterStatusByUserIdRequest $request
@@ -5029,8 +5308,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Re-draw Rarity Parameter Status by User ID
+     *
      * @param ReDrawRarityParameterStatusByUserIdRequest $request
      * @return ReDrawRarityParameterStatusByUserIdResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#redrawrarityparameterstatusbyuserid
      */
     public function reDrawRarityParameterStatusByUserId (
             ReDrawRarityParameterStatusByUserIdRequest $request
@@ -5041,8 +5323,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute re-draw Rarity Parameter Status as an acquire action
+     *
      * @param ReDrawRarityParameterStatusByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/stamp_sheet/#gs2enchantredrawrarityparameterstatusbyuserid
      */
     public function reDrawRarityParameterStatusByStampSheetAsync(
             ReDrawRarityParameterStatusByStampSheetRequest $request
@@ -5056,8 +5341,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute re-draw Rarity Parameter Status as an acquire action
+     *
      * @param ReDrawRarityParameterStatusByStampSheetRequest $request
      * @return ReDrawRarityParameterStatusByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/enchant/stamp_sheet/#gs2enchantredrawrarityparameterstatusbyuserid
      */
     public function reDrawRarityParameterStatusByStampSheet (
             ReDrawRarityParameterStatusByStampSheetRequest $request
@@ -5068,8 +5356,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Add Rarity Parameter Status by User ID
+     *
      * @param AddRarityParameterStatusByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#addrarityparameterstatusbyuserid
      */
     public function addRarityParameterStatusByUserIdAsync(
             AddRarityParameterStatusByUserIdRequest $request
@@ -5083,8 +5374,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Add Rarity Parameter Status by User ID
+     *
      * @param AddRarityParameterStatusByUserIdRequest $request
      * @return AddRarityParameterStatusByUserIdResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#addrarityparameterstatusbyuserid
      */
     public function addRarityParameterStatusByUserId (
             AddRarityParameterStatusByUserIdRequest $request
@@ -5095,8 +5389,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute add rarity parameter as an acquire action
+     *
      * @param AddRarityParameterStatusByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/stamp_sheet/#gs2enchantaddrarityparameterstatusbyuserid
      */
     public function addRarityParameterStatusByStampSheetAsync(
             AddRarityParameterStatusByStampSheetRequest $request
@@ -5110,8 +5407,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute add rarity parameter as an acquire action
+     *
      * @param AddRarityParameterStatusByStampSheetRequest $request
      * @return AddRarityParameterStatusByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/enchant/stamp_sheet/#gs2enchantaddrarityparameterstatusbyuserid
      */
     public function addRarityParameterStatusByStampSheet (
             AddRarityParameterStatusByStampSheetRequest $request
@@ -5122,8 +5422,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify rarity parameter
+     *
      * @param VerifyRarityParameterStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#verifyrarityparameterstatus
      */
     public function verifyRarityParameterStatusAsync(
             VerifyRarityParameterStatusRequest $request
@@ -5137,8 +5440,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify rarity parameter
+     *
      * @param VerifyRarityParameterStatusRequest $request
      * @return VerifyRarityParameterStatusResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#verifyrarityparameterstatus
      */
     public function verifyRarityParameterStatus (
             VerifyRarityParameterStatusRequest $request
@@ -5149,8 +5455,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify rarity parameter by User ID
+     *
      * @param VerifyRarityParameterStatusByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#verifyrarityparameterstatusbyuserid
      */
     public function verifyRarityParameterStatusByUserIdAsync(
             VerifyRarityParameterStatusByUserIdRequest $request
@@ -5164,8 +5473,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify rarity parameter by User ID
+     *
      * @param VerifyRarityParameterStatusByUserIdRequest $request
      * @return VerifyRarityParameterStatusByUserIdResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#verifyrarityparameterstatusbyuserid
      */
     public function verifyRarityParameterStatusByUserId (
             VerifyRarityParameterStatusByUserIdRequest $request
@@ -5176,8 +5488,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute verification of rarity parameter as a verify action
+     *
      * @param VerifyRarityParameterStatusByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/stamp_sheet/#gs2enchantverifyrarityparameterstatusbyuserid
      */
     public function verifyRarityParameterStatusByStampTaskAsync(
             VerifyRarityParameterStatusByStampTaskRequest $request
@@ -5191,8 +5506,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute verification of rarity parameter as a verify action
+     *
      * @param VerifyRarityParameterStatusByStampTaskRequest $request
      * @return VerifyRarityParameterStatusByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/enchant/stamp_sheet/#gs2enchantverifyrarityparameterstatusbyuserid
      */
     public function verifyRarityParameterStatusByStampTask (
             VerifyRarityParameterStatusByStampTaskRequest $request
@@ -5203,8 +5521,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Set any value to rarity parameter by User ID
+     *
      * @param SetRarityParameterStatusByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#setrarityparameterstatusbyuserid
      */
     public function setRarityParameterStatusByUserIdAsync(
             SetRarityParameterStatusByUserIdRequest $request
@@ -5218,8 +5539,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Set any value to rarity parameter by User ID
+     *
      * @param SetRarityParameterStatusByUserIdRequest $request
      * @return SetRarityParameterStatusByUserIdResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#setrarityparameterstatusbyuserid
      */
     public function setRarityParameterStatusByUserId (
             SetRarityParameterStatusByUserIdRequest $request
@@ -5230,8 +5554,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute setting any value to rarity parameter as an acquire action
+     *
      * @param SetRarityParameterStatusByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/stamp_sheet/#gs2enchantsetrarityparameterstatusbyuserid
      */
     public function setRarityParameterStatusByStampSheetAsync(
             SetRarityParameterStatusByStampSheetRequest $request
@@ -5245,8 +5572,11 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute setting any value to rarity parameter as an acquire action
+     *
      * @param SetRarityParameterStatusByStampSheetRequest $request
      * @return SetRarityParameterStatusByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/enchant/stamp_sheet/#gs2enchantsetrarityparameterstatusbyuserid
      */
     public function setRarityParameterStatusByStampSheet (
             SetRarityParameterStatusByStampSheetRequest $request

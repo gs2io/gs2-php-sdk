@@ -2629,25 +2629,22 @@ class UpdateCurrentVersionMasterFromGitHubTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 Version API クライアント
+ * GS2-Version API client
  *
- * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/version/sdk/
  */
 class Gs2VersionRestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/version/sdk/#describenamespaces
      */
     public function describeNamespacesAsync(
             DescribeNamespacesRequest $request
@@ -2661,8 +2658,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
+     * @see https://docs.gs2.io/api_reference/version/sdk/#describenamespaces
      */
     public function describeNamespaces (
             DescribeNamespacesRequest $request
@@ -2673,8 +2673,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/version/sdk/#createnamespace
      */
     public function createNamespaceAsync(
             CreateNamespaceRequest $request
@@ -2688,8 +2691,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/version/sdk/#createnamespace
      */
     public function createNamespace (
             CreateNamespaceRequest $request
@@ -2700,8 +2706,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/version/sdk/#getnamespacestatus
      */
     public function getNamespaceStatusAsync(
             GetNamespaceStatusRequest $request
@@ -2715,8 +2724,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
+     * @see https://docs.gs2.io/api_reference/version/sdk/#getnamespacestatus
      */
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
@@ -2727,8 +2739,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/version/sdk/#getnamespace
      */
     public function getNamespaceAsync(
             GetNamespaceRequest $request
@@ -2742,8 +2757,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
+     * @see https://docs.gs2.io/api_reference/version/sdk/#getnamespace
      */
     public function getNamespace (
             GetNamespaceRequest $request
@@ -2754,8 +2772,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/version/sdk/#updatenamespace
      */
     public function updateNamespaceAsync(
             UpdateNamespaceRequest $request
@@ -2769,8 +2790,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/version/sdk/#updatenamespace
      */
     public function updateNamespace (
             UpdateNamespaceRequest $request
@@ -2781,8 +2805,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/version/sdk/#deletenamespace
      */
     public function deleteNamespaceAsync(
             DeleteNamespaceRequest $request
@@ -2796,8 +2823,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
+     * @see https://docs.gs2.io/api_reference/version/sdk/#deletenamespace
      */
     public function deleteNamespace (
             DeleteNamespaceRequest $request
@@ -2808,8 +2838,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/version/sdk/#getserviceversion
      */
     public function getServiceVersionAsync(
             GetServiceVersionRequest $request
@@ -2823,8 +2856,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return GetServiceVersionResult
+     * @see https://docs.gs2.io/api_reference/version/sdk/#getserviceversion
      */
     public function getServiceVersion (
             GetServiceVersionRequest $request
@@ -2835,8 +2871,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/version/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserIdAsync(
             DumpUserDataByUserIdRequest $request
@@ -2850,8 +2889,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return DumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/version/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserId (
             DumpUserDataByUserIdRequest $request
@@ -2862,8 +2904,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/version/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserIdAsync(
             CheckDumpUserDataByUserIdRequest $request
@@ -2877,8 +2922,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return CheckDumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/version/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserId (
             CheckDumpUserDataByUserIdRequest $request
@@ -2889,8 +2937,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/version/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserIdAsync(
             CleanUserDataByUserIdRequest $request
@@ -2904,8 +2955,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return CleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/version/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserId (
             CleanUserDataByUserIdRequest $request
@@ -2916,8 +2970,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the clean of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/version/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserIdAsync(
             CheckCleanUserDataByUserIdRequest $request
@@ -2931,8 +2988,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the clean of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return CheckCleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/version/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserId (
             CheckCleanUserDataByUserIdRequest $request
@@ -2943,8 +3003,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/version/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserIdAsync(
             PrepareImportUserDataByUserIdRequest $request
@@ -2958,8 +3021,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PrepareImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/version/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserId (
             PrepareImportUserDataByUserIdRequest $request
@@ -2970,8 +3036,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/version/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserIdAsync(
             ImportUserDataByUserIdRequest $request
@@ -2985,8 +3054,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return ImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/version/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserId (
             ImportUserDataByUserIdRequest $request
@@ -2997,8 +3069,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/version/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserIdAsync(
             CheckImportUserDataByUserIdRequest $request
@@ -3012,8 +3087,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return CheckImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/version/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserId (
             CheckImportUserDataByUserIdRequest $request
@@ -3024,8 +3102,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Version Model Masters
+     *
      * @param DescribeVersionModelMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/version/sdk/#describeversionmodelmasters
      */
     public function describeVersionModelMastersAsync(
             DescribeVersionModelMastersRequest $request
@@ -3039,8 +3120,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Version Model Masters
+     *
      * @param DescribeVersionModelMastersRequest $request
      * @return DescribeVersionModelMastersResult
+     * @see https://docs.gs2.io/api_reference/version/sdk/#describeversionmodelmasters
      */
     public function describeVersionModelMasters (
             DescribeVersionModelMastersRequest $request
@@ -3051,8 +3135,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Version Model Master
+     *
      * @param CreateVersionModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/version/sdk/#createversionmodelmaster
      */
     public function createVersionModelMasterAsync(
             CreateVersionModelMasterRequest $request
@@ -3066,8 +3153,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Version Model Master
+     *
      * @param CreateVersionModelMasterRequest $request
      * @return CreateVersionModelMasterResult
+     * @see https://docs.gs2.io/api_reference/version/sdk/#createversionmodelmaster
      */
     public function createVersionModelMaster (
             CreateVersionModelMasterRequest $request
@@ -3078,8 +3168,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Version Model Master
+     *
      * @param GetVersionModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/version/sdk/#getversionmodelmaster
      */
     public function getVersionModelMasterAsync(
             GetVersionModelMasterRequest $request
@@ -3093,8 +3186,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Version Model Master
+     *
      * @param GetVersionModelMasterRequest $request
      * @return GetVersionModelMasterResult
+     * @see https://docs.gs2.io/api_reference/version/sdk/#getversionmodelmaster
      */
     public function getVersionModelMaster (
             GetVersionModelMasterRequest $request
@@ -3105,8 +3201,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Version Model Master
+     *
      * @param UpdateVersionModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/version/sdk/#updateversionmodelmaster
      */
     public function updateVersionModelMasterAsync(
             UpdateVersionModelMasterRequest $request
@@ -3120,8 +3219,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Version Model Master
+     *
      * @param UpdateVersionModelMasterRequest $request
      * @return UpdateVersionModelMasterResult
+     * @see https://docs.gs2.io/api_reference/version/sdk/#updateversionmodelmaster
      */
     public function updateVersionModelMaster (
             UpdateVersionModelMasterRequest $request
@@ -3132,8 +3234,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Version Model Master
+     *
      * @param DeleteVersionModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/version/sdk/#deleteversionmodelmaster
      */
     public function deleteVersionModelMasterAsync(
             DeleteVersionModelMasterRequest $request
@@ -3147,8 +3252,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Version Model Master
+     *
      * @param DeleteVersionModelMasterRequest $request
      * @return DeleteVersionModelMasterResult
+     * @see https://docs.gs2.io/api_reference/version/sdk/#deleteversionmodelmaster
      */
     public function deleteVersionModelMaster (
             DeleteVersionModelMasterRequest $request
@@ -3159,8 +3267,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Version Models
+     *
      * @param DescribeVersionModelsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/version/sdk/#describeversionmodels
      */
     public function describeVersionModelsAsync(
             DescribeVersionModelsRequest $request
@@ -3174,8 +3285,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Version Models
+     *
      * @param DescribeVersionModelsRequest $request
      * @return DescribeVersionModelsResult
+     * @see https://docs.gs2.io/api_reference/version/sdk/#describeversionmodels
      */
     public function describeVersionModels (
             DescribeVersionModelsRequest $request
@@ -3186,8 +3300,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Version Model
+     *
      * @param GetVersionModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/version/sdk/#getversionmodel
      */
     public function getVersionModelAsync(
             GetVersionModelRequest $request
@@ -3201,8 +3318,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Version Model
+     *
      * @param GetVersionModelRequest $request
      * @return GetVersionModelResult
+     * @see https://docs.gs2.io/api_reference/version/sdk/#getversionmodel
      */
     public function getVersionModel (
             GetVersionModelRequest $request
@@ -3213,8 +3333,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Approved Versions
+     *
      * @param DescribeAcceptVersionsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/version/sdk/#describeacceptversions
      */
     public function describeAcceptVersionsAsync(
             DescribeAcceptVersionsRequest $request
@@ -3228,8 +3351,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Approved Versions
+     *
      * @param DescribeAcceptVersionsRequest $request
      * @return DescribeAcceptVersionsResult
+     * @see https://docs.gs2.io/api_reference/version/sdk/#describeacceptversions
      */
     public function describeAcceptVersions (
             DescribeAcceptVersionsRequest $request
@@ -3240,8 +3366,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Approved Versions by User ID
+     *
      * @param DescribeAcceptVersionsByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/version/sdk/#describeacceptversionsbyuserid
      */
     public function describeAcceptVersionsByUserIdAsync(
             DescribeAcceptVersionsByUserIdRequest $request
@@ -3255,8 +3384,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Approved Versions by User ID
+     *
      * @param DescribeAcceptVersionsByUserIdRequest $request
      * @return DescribeAcceptVersionsByUserIdResult
+     * @see https://docs.gs2.io/api_reference/version/sdk/#describeacceptversionsbyuserid
      */
     public function describeAcceptVersionsByUserId (
             DescribeAcceptVersionsByUserIdRequest $request
@@ -3267,8 +3399,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Approve current version
+     *
      * @param AcceptRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/version/sdk/#accept
      */
     public function acceptAsync(
             AcceptRequest $request
@@ -3282,8 +3417,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Approve current version
+     *
      * @param AcceptRequest $request
      * @return AcceptResult
+     * @see https://docs.gs2.io/api_reference/version/sdk/#accept
      */
     public function accept (
             AcceptRequest $request
@@ -3294,8 +3432,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Approve current version by User ID
+     *
      * @param AcceptByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/version/sdk/#acceptbyuserid
      */
     public function acceptByUserIdAsync(
             AcceptByUserIdRequest $request
@@ -3309,8 +3450,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Approve current version by User ID
+     *
      * @param AcceptByUserIdRequest $request
      * @return AcceptByUserIdResult
+     * @see https://docs.gs2.io/api_reference/version/sdk/#acceptbyuserid
      */
     public function acceptByUserId (
             AcceptByUserIdRequest $request
@@ -3321,8 +3465,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Reject current version
+     *
      * @param RejectRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/version/sdk/#reject
      */
     public function rejectAsync(
             RejectRequest $request
@@ -3336,8 +3483,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Reject current version
+     *
      * @param RejectRequest $request
      * @return RejectResult
+     * @see https://docs.gs2.io/api_reference/version/sdk/#reject
      */
     public function reject (
             RejectRequest $request
@@ -3348,8 +3498,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Reject current version by User ID
+     *
      * @param RejectByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/version/sdk/#rejectbyuserid
      */
     public function rejectByUserIdAsync(
             RejectByUserIdRequest $request
@@ -3363,8 +3516,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Reject current version by User ID
+     *
      * @param RejectByUserIdRequest $request
      * @return RejectByUserIdResult
+     * @see https://docs.gs2.io/api_reference/version/sdk/#rejectbyuserid
      */
     public function rejectByUserId (
             RejectByUserIdRequest $request
@@ -3375,8 +3531,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Approved Version
+     *
      * @param GetAcceptVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/version/sdk/#getacceptversion
      */
     public function getAcceptVersionAsync(
             GetAcceptVersionRequest $request
@@ -3390,8 +3549,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Approved Version
+     *
      * @param GetAcceptVersionRequest $request
      * @return GetAcceptVersionResult
+     * @see https://docs.gs2.io/api_reference/version/sdk/#getacceptversion
      */
     public function getAcceptVersion (
             GetAcceptVersionRequest $request
@@ -3402,8 +3564,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Approved Version by User ID
+     *
      * @param GetAcceptVersionByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/version/sdk/#getacceptversionbyuserid
      */
     public function getAcceptVersionByUserIdAsync(
             GetAcceptVersionByUserIdRequest $request
@@ -3417,8 +3582,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Approved Version by User ID
+     *
      * @param GetAcceptVersionByUserIdRequest $request
      * @return GetAcceptVersionByUserIdResult
+     * @see https://docs.gs2.io/api_reference/version/sdk/#getacceptversionbyuserid
      */
     public function getAcceptVersionByUserId (
             GetAcceptVersionByUserIdRequest $request
@@ -3429,8 +3597,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Approved Version
+     *
      * @param DeleteAcceptVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/version/sdk/#deleteacceptversion
      */
     public function deleteAcceptVersionAsync(
             DeleteAcceptVersionRequest $request
@@ -3444,8 +3615,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Approved Version
+     *
      * @param DeleteAcceptVersionRequest $request
      * @return DeleteAcceptVersionResult
+     * @see https://docs.gs2.io/api_reference/version/sdk/#deleteacceptversion
      */
     public function deleteAcceptVersion (
             DeleteAcceptVersionRequest $request
@@ -3456,8 +3630,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Approved Version by User ID
+     *
      * @param DeleteAcceptVersionByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/version/sdk/#deleteacceptversionbyuserid
      */
     public function deleteAcceptVersionByUserIdAsync(
             DeleteAcceptVersionByUserIdRequest $request
@@ -3471,8 +3648,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Approved Version by User ID
+     *
      * @param DeleteAcceptVersionByUserIdRequest $request
      * @return DeleteAcceptVersionByUserIdResult
+     * @see https://docs.gs2.io/api_reference/version/sdk/#deleteacceptversionbyuserid
      */
     public function deleteAcceptVersionByUserId (
             DeleteAcceptVersionByUserIdRequest $request
@@ -3483,8 +3663,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check Version
+     *
      * @param CheckVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/version/sdk/#checkversion
      */
     public function checkVersionAsync(
             CheckVersionRequest $request
@@ -3498,8 +3681,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check Version
+     *
      * @param CheckVersionRequest $request
      * @return CheckVersionResult
+     * @see https://docs.gs2.io/api_reference/version/sdk/#checkversion
      */
     public function checkVersion (
             CheckVersionRequest $request
@@ -3510,8 +3696,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check Version by User ID
+     *
      * @param CheckVersionByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/version/sdk/#checkversionbyuserid
      */
     public function checkVersionByUserIdAsync(
             CheckVersionByUserIdRequest $request
@@ -3525,8 +3714,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check Version by User ID
+     *
      * @param CheckVersionByUserIdRequest $request
      * @return CheckVersionByUserIdResult
+     * @see https://docs.gs2.io/api_reference/version/sdk/#checkversionbyuserid
      */
     public function checkVersionByUserId (
             CheckVersionByUserIdRequest $request
@@ -3537,8 +3729,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Calculate version signature
+     *
      * @param CalculateSignatureRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/version/sdk/#calculatesignature
      */
     public function calculateSignatureAsync(
             CalculateSignatureRequest $request
@@ -3552,8 +3747,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Calculate version signature
+     *
      * @param CalculateSignatureRequest $request
      * @return CalculateSignatureResult
+     * @see https://docs.gs2.io/api_reference/version/sdk/#calculatesignature
      */
     public function calculateSignature (
             CalculateSignatureRequest $request
@@ -3564,8 +3762,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Version Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/version/sdk/#exportmaster
      */
     public function exportMasterAsync(
             ExportMasterRequest $request
@@ -3579,8 +3780,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Version Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return ExportMasterResult
+     * @see https://docs.gs2.io/api_reference/version/sdk/#exportmaster
      */
     public function exportMaster (
             ExportMasterRequest $request
@@ -3591,8 +3795,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Version Model master data
+     *
      * @param GetCurrentVersionMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/version/sdk/#getcurrentversionmaster
      */
     public function getCurrentVersionMasterAsync(
             GetCurrentVersionMasterRequest $request
@@ -3606,8 +3813,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Version Model master data
+     *
      * @param GetCurrentVersionMasterRequest $request
      * @return GetCurrentVersionMasterResult
+     * @see https://docs.gs2.io/api_reference/version/sdk/#getcurrentversionmaster
      */
     public function getCurrentVersionMaster (
             GetCurrentVersionMasterRequest $request
@@ -3618,8 +3828,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Version Model master data (3-phase version)
+     *
      * @param PreUpdateCurrentVersionMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/version/sdk/#preupdatecurrentversionmaster
      */
     public function preUpdateCurrentVersionMasterAsync(
             PreUpdateCurrentVersionMasterRequest $request
@@ -3633,8 +3846,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Version Model master data (3-phase version)
+     *
      * @param PreUpdateCurrentVersionMasterRequest $request
      * @return PreUpdateCurrentVersionMasterResult
+     * @see https://docs.gs2.io/api_reference/version/sdk/#preupdatecurrentversionmaster
      */
     public function preUpdateCurrentVersionMaster (
             PreUpdateCurrentVersionMasterRequest $request
@@ -3645,8 +3861,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Version Model master data
+     *
      * @param UpdateCurrentVersionMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/version/sdk/#updatecurrentversionmaster
      */
     public function updateCurrentVersionMasterAsync(
             UpdateCurrentVersionMasterRequest $request
@@ -3660,8 +3879,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Version Model master data
+     *
      * @param UpdateCurrentVersionMasterRequest $request
      * @return UpdateCurrentVersionMasterResult
+     * @see https://docs.gs2.io/api_reference/version/sdk/#updatecurrentversionmaster
      */
     public function updateCurrentVersionMaster (
             UpdateCurrentVersionMasterRequest $request
@@ -3672,8 +3894,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Version Model master data from GitHub
+     *
      * @param UpdateCurrentVersionMasterFromGitHubRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/version/sdk/#updatecurrentversionmasterfromgithub
      */
     public function updateCurrentVersionMasterFromGitHubAsync(
             UpdateCurrentVersionMasterFromGitHubRequest $request
@@ -3687,8 +3912,11 @@ class Gs2VersionRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Version Model master data from GitHub
+     *
      * @param UpdateCurrentVersionMasterFromGitHubRequest $request
      * @return UpdateCurrentVersionMasterFromGitHubResult
+     * @see https://docs.gs2.io/api_reference/version/sdk/#updatecurrentversionmasterfromgithub
      */
     public function updateCurrentVersionMasterFromGitHub (
             UpdateCurrentVersionMasterFromGitHubRequest $request

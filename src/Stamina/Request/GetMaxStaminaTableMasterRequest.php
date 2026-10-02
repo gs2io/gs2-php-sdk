@@ -19,27 +19,44 @@ namespace Gs2\Stamina\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getMaxStaminaTableMaster: Get Maximum Stamina Table Master
+ *
+ * @see https://docs.gs2.io/api_reference/stamina/sdk/#getmaxstaminatablemaster
+ */
 class GetMaxStaminaTableMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Maximum Stamina Value Table Name */
     private $maxStaminaTableName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetMaxStaminaTableMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetMaxStaminaTableMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Maximum Stamina Value Table Name */
 	public function getMaxStaminaTableName(): ?string {
 		return $this->maxStaminaTableName;
 	}
+    /** @param string|null $maxStaminaTableName Maximum Stamina Value Table Name */
 	public function setMaxStaminaTableName(?string $maxStaminaTableName) {
 		$this->maxStaminaTableName = $maxStaminaTableName;
 	}
+    /**
+     * @param string|null $maxStaminaTableName Maximum Stamina Value Table Name
+     * @return GetMaxStaminaTableMasterRequest
+     */
 	public function withMaxStaminaTableName(?string $maxStaminaTableName): GetMaxStaminaTableMasterRequest {
 		$this->maxStaminaTableName = $maxStaminaTableName;
 		return $this;

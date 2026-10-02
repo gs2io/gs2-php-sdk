@@ -22,63 +22,92 @@ use Gs2\Inventory\Model\ItemSet;
 use Gs2\Inventory\Model\ItemModel;
 use Gs2\Inventory\Model\Inventory;
 
+/**
+ * Result of getReferenceOf: Get reference source
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#getreferenceof
+ */
 class GetReferenceOfResult implements IResult {
-    /** @var string */
+    /** @var string References for this possession */
     private $item;
-    /** @var ItemSet */
+    /** @var ItemSet Item Set */
     private $itemSet;
-    /** @var ItemModel */
+    /** @var ItemModel Item Model */
     private $itemModel;
-    /** @var Inventory */
+    /** @var Inventory Inventory */
     private $inventory;
 
+    /** @return string|null References for this possession */
 	public function getItem(): ?string {
 		return $this->item;
 	}
 
+    /** @param string|null $item References for this possession */
 	public function setItem(?string $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param string|null $item References for this possession
+     * @return GetReferenceOfResult
+     */
 	public function withItem(?string $item): GetReferenceOfResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return ItemSet|null Item Set */
 	public function getItemSet(): ?ItemSet {
 		return $this->itemSet;
 	}
 
+    /** @param ItemSet|null $itemSet Item Set */
 	public function setItemSet(?ItemSet $itemSet) {
 		$this->itemSet = $itemSet;
 	}
 
+    /**
+     * @param ItemSet|null $itemSet Item Set
+     * @return GetReferenceOfResult
+     */
 	public function withItemSet(?ItemSet $itemSet): GetReferenceOfResult {
 		$this->itemSet = $itemSet;
 		return $this;
 	}
 
+    /** @return ItemModel|null Item Model */
 	public function getItemModel(): ?ItemModel {
 		return $this->itemModel;
 	}
 
+    /** @param ItemModel|null $itemModel Item Model */
 	public function setItemModel(?ItemModel $itemModel) {
 		$this->itemModel = $itemModel;
 	}
 
+    /**
+     * @param ItemModel|null $itemModel Item Model
+     * @return GetReferenceOfResult
+     */
 	public function withItemModel(?ItemModel $itemModel): GetReferenceOfResult {
 		$this->itemModel = $itemModel;
 		return $this;
 	}
 
+    /** @return Inventory|null Inventory */
 	public function getInventory(): ?Inventory {
 		return $this->inventory;
 	}
 
+    /** @param Inventory|null $inventory Inventory */
 	public function setInventory(?Inventory $inventory) {
 		$this->inventory = $inventory;
 	}
 
+    /**
+     * @param Inventory|null $inventory Inventory
+     * @return GetReferenceOfResult
+     */
 	public function withInventory(?Inventory $inventory): GetReferenceOfResult {
 		$this->inventory = $inventory;
 		return $this;

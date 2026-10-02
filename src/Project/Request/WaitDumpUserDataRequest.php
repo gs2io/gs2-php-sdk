@@ -19,53 +19,78 @@ namespace Gs2\Project\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/** Request for waitDumpUserData: Wait for the completion of user data dump */
 class WaitDumpUserDataRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Owner ID */
     private $ownerId;
-    /** @var string */
+    /** @var string Transaction ID */
     private $transactionId;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Owner ID */
 	public function getOwnerId(): ?string {
 		return $this->ownerId;
 	}
+    /** @param string|null $ownerId Owner ID */
 	public function setOwnerId(?string $ownerId) {
 		$this->ownerId = $ownerId;
 	}
+    /**
+     * @param string|null $ownerId Owner ID
+     * @return WaitDumpUserDataRequest
+     */
 	public function withOwnerId(?string $ownerId): WaitDumpUserDataRequest {
 		$this->ownerId = $ownerId;
 		return $this;
 	}
+    /** @return string|null Transaction ID */
 	public function getTransactionId(): ?string {
 		return $this->transactionId;
 	}
+    /** @param string|null $transactionId Transaction ID */
 	public function setTransactionId(?string $transactionId) {
 		$this->transactionId = $transactionId;
 	}
+    /**
+     * @param string|null $transactionId Transaction ID
+     * @return WaitDumpUserDataRequest
+     */
 	public function withTransactionId(?string $transactionId): WaitDumpUserDataRequest {
 		$this->transactionId = $transactionId;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return WaitDumpUserDataRequest
+     */
 	public function withUserId(?string $userId): WaitDumpUserDataRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return WaitDumpUserDataRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): WaitDumpUserDataRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

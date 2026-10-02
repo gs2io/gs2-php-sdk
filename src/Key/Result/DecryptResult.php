@@ -19,18 +19,29 @@ namespace Gs2\Key\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of decrypt: Decrypt data
+ *
+ * @see https://docs.gs2.io/api_reference/key/sdk/#decrypt
+ */
 class DecryptResult implements IResult {
-    /** @var string */
+    /** @var string Decrypted Data */
     private $data;
 
+    /** @return string|null Decrypted Data */
 	public function getData(): ?string {
 		return $this->data;
 	}
 
+    /** @param string|null $data Decrypted Data */
 	public function setData(?string $data) {
 		$this->data = $data;
 	}
 
+    /**
+     * @param string|null $data Decrypted Data
+     * @return DecryptResult
+     */
 	public function withData(?string $data): DecryptResult {
 		$this->data = $data;
 		return $this;

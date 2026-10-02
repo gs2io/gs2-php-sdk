@@ -20,18 +20,29 @@ namespace Gs2\Log\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Log\Model\Dashboard;
 
+/**
+ * Result of createDashboard: Create new dashboard
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#createdashboard
+ */
 class CreateDashboardResult implements IResult {
-    /** @var Dashboard */
+    /** @var Dashboard Created Dashboard */
     private $item;
 
+    /** @return Dashboard|null Created Dashboard */
 	public function getItem(): ?Dashboard {
 		return $this->item;
 	}
 
+    /** @param Dashboard|null $item Created Dashboard */
 	public function setItem(?Dashboard $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Dashboard|null $item Created Dashboard
+     * @return CreateDashboardResult
+     */
 	public function withItem(?Dashboard $item): CreateDashboardResult {
 		$this->item = $item;
 		return $this;

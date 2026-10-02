@@ -19,6 +19,11 @@ namespace Gs2\News\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of updateCurrentNewsMaster: Update currently available notices
+ *
+ * @see https://docs.gs2.io/api_reference/news/sdk/#updatecurrentnewsmaster
+ */
 class UpdateCurrentNewsMasterResult implements IResult {
 
     public static function fromJson(?array $data): ?UpdateCurrentNewsMasterResult {

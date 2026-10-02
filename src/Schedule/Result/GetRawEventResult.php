@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Schedule\Model\RepeatSetting;
 use Gs2\Schedule\Model\Event;
 
+/**
+ * Result of getRawEvent: Get Event
+ *
+ * @see https://docs.gs2.io/api_reference/schedule/sdk/#getrawevent
+ */
 class GetRawEventResult implements IResult {
-    /** @var Event */
+    /** @var Event Event */
     private $item;
 
+    /** @return Event|null Event */
 	public function getItem(): ?Event {
 		return $this->item;
 	}
 
+    /** @param Event|null $item Event */
 	public function setItem(?Event $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Event|null $item Event
+     * @return GetRawEventResult
+     */
 	public function withItem(?Event $item): GetRawEventResult {
 		$this->item = $item;
 		return $this;

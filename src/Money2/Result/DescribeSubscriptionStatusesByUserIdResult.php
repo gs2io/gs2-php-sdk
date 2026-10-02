@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Money2\Model\SubscribeTransaction;
 use Gs2\Money2\Model\SubscriptionStatus;
 
+/**
+ * Result of describeSubscriptionStatusesByUserId: List Store Subscription Statuses by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#describesubscriptionstatusesbyuserid
+ */
 class DescribeSubscriptionStatusesByUserIdResult implements IResult {
-    /** @var array */
+    /** @var array List of Subscription statuses */
     private $items;
 
+    /** @return array|null List of Subscription statuses */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Subscription statuses */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Subscription statuses
+     * @return DescribeSubscriptionStatusesByUserIdResult
+     */
 	public function withItems(?array $items): DescribeSubscriptionStatusesByUserIdResult {
 		$this->items = $items;
 		return $this;

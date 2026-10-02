@@ -21,33 +21,50 @@ use Gs2\Core\Model\IResult;
 use Gs2\Inventory\Model\SimpleItem;
 use Gs2\Inventory\Model\SimpleItemModel;
 
+/**
+ * Result of getSimpleItem: Get a Simple Item
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#getsimpleitem
+ */
 class GetSimpleItemResult implements IResult {
-    /** @var SimpleItem */
+    /** @var SimpleItem Simple Item */
     private $item;
-    /** @var SimpleItemModel */
+    /** @var SimpleItemModel Simple Item Model */
     private $itemModel;
 
+    /** @return SimpleItem|null Simple Item */
 	public function getItem(): ?SimpleItem {
 		return $this->item;
 	}
 
+    /** @param SimpleItem|null $item Simple Item */
 	public function setItem(?SimpleItem $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param SimpleItem|null $item Simple Item
+     * @return GetSimpleItemResult
+     */
 	public function withItem(?SimpleItem $item): GetSimpleItemResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return SimpleItemModel|null Simple Item Model */
 	public function getItemModel(): ?SimpleItemModel {
 		return $this->itemModel;
 	}
 
+    /** @param SimpleItemModel|null $itemModel Simple Item Model */
 	public function setItemModel(?SimpleItemModel $itemModel) {
 		$this->itemModel = $itemModel;
 	}
 
+    /**
+     * @param SimpleItemModel|null $itemModel Simple Item Model
+     * @return GetSimpleItemResult
+     */
 	public function withItemModel(?SimpleItemModel $itemModel): GetSimpleItemResult {
 		$this->itemModel = $itemModel;
 		return $this;

@@ -20,18 +20,29 @@ namespace Gs2\Money\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Money\Model\Receipt;
 
+/**
+ * Result of revertRecordReceiptByStampSheet: Execute receipt recording deletion as an acquire action
+ *
+ * @see https://docs.gs2.io/api_reference/money/stamp_sheet/#gs2moneyrevertrecordreceipt
+ */
 class RevertRecordReceiptByStampSheetResult implements IResult {
-    /** @var Receipt */
+    /** @var Receipt Recorded Receipt */
     private $item;
 
+    /** @return Receipt|null Recorded Receipt */
 	public function getItem(): ?Receipt {
 		return $this->item;
 	}
 
+    /** @param Receipt|null $item Recorded Receipt */
 	public function setItem(?Receipt $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Receipt|null $item Recorded Receipt
+     * @return RevertRecordReceiptByStampSheetResult
+     */
 	public function withItem(?Receipt $item): RevertRecordReceiptByStampSheetResult {
 		$this->item = $item;
 		return $this;

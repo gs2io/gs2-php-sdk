@@ -20,157 +20,228 @@ namespace Gs2\Mission\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Mission Group Model
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#missiongroupmodel
+ */
 class MissionGroupModel implements IModel {
 	/**
-     * @var string
+     * @var string Mission Group GRN
 	 */
 	private $missionGroupId;
 	/**
-     * @var string
+     * @var string Mission Group Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var array
+     * @var array List of Mission Task
 	 */
 	private $tasks;
 	/**
-     * @var string
+     * @var string Reset timing
 	 */
 	private $resetType;
 	/**
-     * @var int
+     * @var int Date to reset
 	 */
 	private $resetDayOfMonth;
 	/**
-     * @var string
+     * @var string Day of the week to reset
 	 */
 	private $resetDayOfWeek;
 	/**
-     * @var int
+     * @var int Hour of Reset
 	 */
 	private $resetHour;
 	/**
-     * @var string
+     * @var string Push notifications when mission tasks are accomplished
 	 */
 	private $completeNotificationNamespaceId;
 	/**
-     * @var int
+     * @var int Base date and time for counting elapsed days
 	 */
 	private $anchorTimestamp;
 	/**
-     * @var int
+     * @var int Number of days to reset
 	 */
 	private $days;
+    /** @return string|null Mission Group GRN */
 	public function getMissionGroupId(): ?string {
 		return $this->missionGroupId;
 	}
+    /** @param string|null $missionGroupId Mission Group GRN */
 	public function setMissionGroupId(?string $missionGroupId) {
 		$this->missionGroupId = $missionGroupId;
 	}
+    /**
+     * @param string|null $missionGroupId Mission Group GRN
+     * @return MissionGroupModel
+     */
 	public function withMissionGroupId(?string $missionGroupId): MissionGroupModel {
 		$this->missionGroupId = $missionGroupId;
 		return $this;
 	}
+    /** @return string|null Mission Group Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Mission Group Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Mission Group Model name
+     * @return MissionGroupModel
+     */
 	public function withName(?string $name): MissionGroupModel {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return MissionGroupModel
+     */
 	public function withMetadata(?string $metadata): MissionGroupModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return array|null List of Mission Task */
 	public function getTasks(): ?array {
 		return $this->tasks;
 	}
+    /** @param array|null $tasks List of Mission Task */
 	public function setTasks(?array $tasks) {
 		$this->tasks = $tasks;
 	}
+    /**
+     * @param array|null $tasks List of Mission Task
+     * @return MissionGroupModel
+     */
 	public function withTasks(?array $tasks): MissionGroupModel {
 		$this->tasks = $tasks;
 		return $this;
 	}
+    /** @return string|null Reset timing */
 	public function getResetType(): ?string {
 		return $this->resetType;
 	}
+    /** @param string|null $resetType Reset timing */
 	public function setResetType(?string $resetType) {
 		$this->resetType = $resetType;
 	}
+    /**
+     * @param string|null $resetType Reset timing
+     * @return MissionGroupModel
+     */
 	public function withResetType(?string $resetType): MissionGroupModel {
 		$this->resetType = $resetType;
 		return $this;
 	}
+    /** @return int|null Date to reset */
 	public function getResetDayOfMonth(): ?int {
 		return $this->resetDayOfMonth;
 	}
+    /** @param int|null $resetDayOfMonth Date to reset */
 	public function setResetDayOfMonth(?int $resetDayOfMonth) {
 		$this->resetDayOfMonth = $resetDayOfMonth;
 	}
+    /**
+     * @param int|null $resetDayOfMonth Date to reset
+     * @return MissionGroupModel
+     */
 	public function withResetDayOfMonth(?int $resetDayOfMonth): MissionGroupModel {
 		$this->resetDayOfMonth = $resetDayOfMonth;
 		return $this;
 	}
+    /** @return string|null Day of the week to reset */
 	public function getResetDayOfWeek(): ?string {
 		return $this->resetDayOfWeek;
 	}
+    /** @param string|null $resetDayOfWeek Day of the week to reset */
 	public function setResetDayOfWeek(?string $resetDayOfWeek) {
 		$this->resetDayOfWeek = $resetDayOfWeek;
 	}
+    /**
+     * @param string|null $resetDayOfWeek Day of the week to reset
+     * @return MissionGroupModel
+     */
 	public function withResetDayOfWeek(?string $resetDayOfWeek): MissionGroupModel {
 		$this->resetDayOfWeek = $resetDayOfWeek;
 		return $this;
 	}
+    /** @return int|null Hour of Reset */
 	public function getResetHour(): ?int {
 		return $this->resetHour;
 	}
+    /** @param int|null $resetHour Hour of Reset */
 	public function setResetHour(?int $resetHour) {
 		$this->resetHour = $resetHour;
 	}
+    /**
+     * @param int|null $resetHour Hour of Reset
+     * @return MissionGroupModel
+     */
 	public function withResetHour(?int $resetHour): MissionGroupModel {
 		$this->resetHour = $resetHour;
 		return $this;
 	}
+    /** @return string|null Push notifications when mission tasks are accomplished */
 	public function getCompleteNotificationNamespaceId(): ?string {
 		return $this->completeNotificationNamespaceId;
 	}
+    /** @param string|null $completeNotificationNamespaceId Push notifications when mission tasks are accomplished */
 	public function setCompleteNotificationNamespaceId(?string $completeNotificationNamespaceId) {
 		$this->completeNotificationNamespaceId = $completeNotificationNamespaceId;
 	}
+    /**
+     * @param string|null $completeNotificationNamespaceId Push notifications when mission tasks are accomplished
+     * @return MissionGroupModel
+     */
 	public function withCompleteNotificationNamespaceId(?string $completeNotificationNamespaceId): MissionGroupModel {
 		$this->completeNotificationNamespaceId = $completeNotificationNamespaceId;
 		return $this;
 	}
+    /** @return int|null Base date and time for counting elapsed days */
 	public function getAnchorTimestamp(): ?int {
 		return $this->anchorTimestamp;
 	}
+    /** @param int|null $anchorTimestamp Base date and time for counting elapsed days */
 	public function setAnchorTimestamp(?int $anchorTimestamp) {
 		$this->anchorTimestamp = $anchorTimestamp;
 	}
+    /**
+     * @param int|null $anchorTimestamp Base date and time for counting elapsed days
+     * @return MissionGroupModel
+     */
 	public function withAnchorTimestamp(?int $anchorTimestamp): MissionGroupModel {
 		$this->anchorTimestamp = $anchorTimestamp;
 		return $this;
 	}
+    /** @return int|null Number of days to reset */
 	public function getDays(): ?int {
 		return $this->days;
 	}
+    /** @param int|null $days Number of days to reset */
 	public function setDays(?int $days) {
 		$this->days = $days;
 	}
+    /**
+     * @param int|null $days Number of days to reset
+     * @return MissionGroupModel
+     */
 	public function withDays(?int $days): MissionGroupModel {
 		$this->days = $days;
 		return $this;

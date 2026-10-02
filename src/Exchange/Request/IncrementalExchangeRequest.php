@@ -20,65 +20,100 @@ namespace Gs2\Exchange\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Exchange\Model\Config;
 
+/**
+ * Request for incrementalExchange: Perform incremental cost exchange
+ *
+ * @see https://docs.gs2.io/api_reference/exchange/sdk/#incrementalexchange
+ */
 class IncrementalExchangeRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Incremental Cost Exchange Rate Model name */
     private $rateName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var int */
+    /** @var int Number of exchanges */
     private $count;
-    /** @var array */
+    /** @var array Configuration values applied to transaction variables */
     private $config;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return IncrementalExchangeRequest
+     */
 	public function withNamespaceName(?string $namespaceName): IncrementalExchangeRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Incremental Cost Exchange Rate Model name */
 	public function getRateName(): ?string {
 		return $this->rateName;
 	}
+    /** @param string|null $rateName Incremental Cost Exchange Rate Model name */
 	public function setRateName(?string $rateName) {
 		$this->rateName = $rateName;
 	}
+    /**
+     * @param string|null $rateName Incremental Cost Exchange Rate Model name
+     * @return IncrementalExchangeRequest
+     */
 	public function withRateName(?string $rateName): IncrementalExchangeRequest {
 		$this->rateName = $rateName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return IncrementalExchangeRequest
+     */
 	public function withAccessToken(?string $accessToken): IncrementalExchangeRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return int|null Number of exchanges */
 	public function getCount(): ?int {
 		return $this->count;
 	}
+    /** @param int|null $count Number of exchanges */
 	public function setCount(?int $count) {
 		$this->count = $count;
 	}
+    /**
+     * @param int|null $count Number of exchanges
+     * @return IncrementalExchangeRequest
+     */
 	public function withCount(?int $count): IncrementalExchangeRequest {
 		$this->count = $count;
 		return $this;
 	}
+    /** @return array|null Configuration values applied to transaction variables */
 	public function getConfig(): ?array {
 		return $this->config;
 	}
+    /** @param array|null $config Configuration values applied to transaction variables */
 	public function setConfig(?array $config) {
 		$this->config = $config;
 	}
+    /**
+     * @param array|null $config Configuration values applied to transaction variables
+     * @return IncrementalExchangeRequest
+     */
 	public function withConfig(?array $config): IncrementalExchangeRequest {
 		$this->config = $config;
 		return $this;

@@ -20,18 +20,29 @@ namespace Gs2\SerialKey\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\SerialKey\Model\CurrentCampaignMaster;
 
+/**
+ * Result of exportMaster: Export Campaign Model Master in a format that permits master data activation
+ *
+ * @see https://docs.gs2.io/api_reference/serial_key/sdk/#exportmaster
+ */
 class ExportMasterResult implements IResult {
-    /** @var CurrentCampaignMaster */
+    /** @var CurrentCampaignMaster Campaign Model master data that can be activated */
     private $item;
 
+    /** @return CurrentCampaignMaster|null Campaign Model master data that can be activated */
 	public function getItem(): ?CurrentCampaignMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentCampaignMaster|null $item Campaign Model master data that can be activated */
 	public function setItem(?CurrentCampaignMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentCampaignMaster|null $item Campaign Model master data that can be activated
+     * @return ExportMasterResult
+     */
 	public function withItem(?CurrentCampaignMaster $item): ExportMasterResult {
 		$this->item = $item;
 		return $this;

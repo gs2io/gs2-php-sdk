@@ -19,135 +19,202 @@ namespace Gs2\Project\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/** Request for createProject: Create Project */
 class CreateProjectRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Signed in to the account token. */
     private $accountToken;
-    /** @var string */
+    /** @var string Project Name */
     private $name;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var string */
+    /** @var string Contract Plan */
     private $plan;
-    /** @var string */
+    /** @var string Payment Currency */
     private $currency;
-    /** @var string */
+    /** @var string First region name to activate */
     private $activateRegionName;
-    /** @var string */
+    /** @var string Payment Method Name */
     private $billingMethodName;
-    /** @var string */
+    /** @var string Configuring Amazon EventBridge */
     private $enableEventBridge;
-    /** @var string */
+    /** @var string ID of AWS account to be used for notification */
     private $eventBridgeAwsAccountId;
-    /** @var string */
+    /** @var string AWS Region to be used for notification */
     private $eventBridgeAwsRegion;
-    /** @var string */
+    /** @var string Database schema */
     private $dataStoreKeyScheme;
+    /** @return string|null Signed in to the account token. */
 	public function getAccountToken(): ?string {
 		return $this->accountToken;
 	}
+    /** @param string|null $accountToken Signed in to the account token. */
 	public function setAccountToken(?string $accountToken) {
 		$this->accountToken = $accountToken;
 	}
+    /**
+     * @param string|null $accountToken Signed in to the account token.
+     * @return CreateProjectRequest
+     */
 	public function withAccountToken(?string $accountToken): CreateProjectRequest {
 		$this->accountToken = $accountToken;
 		return $this;
 	}
+    /** @return string|null Project Name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Project Name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Project Name
+     * @return CreateProjectRequest
+     */
 	public function withName(?string $name): CreateProjectRequest {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return CreateProjectRequest
+     */
 	public function withDescription(?string $description): CreateProjectRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Contract Plan */
 	public function getPlan(): ?string {
 		return $this->plan;
 	}
+    /** @param string|null $plan Contract Plan */
 	public function setPlan(?string $plan) {
 		$this->plan = $plan;
 	}
+    /**
+     * @param string|null $plan Contract Plan
+     * @return CreateProjectRequest
+     */
 	public function withPlan(?string $plan): CreateProjectRequest {
 		$this->plan = $plan;
 		return $this;
 	}
+    /** @return string|null Payment Currency */
 	public function getCurrency(): ?string {
 		return $this->currency;
 	}
+    /** @param string|null $currency Payment Currency */
 	public function setCurrency(?string $currency) {
 		$this->currency = $currency;
 	}
+    /**
+     * @param string|null $currency Payment Currency
+     * @return CreateProjectRequest
+     */
 	public function withCurrency(?string $currency): CreateProjectRequest {
 		$this->currency = $currency;
 		return $this;
 	}
+    /** @return string|null First region name to activate */
 	public function getActivateRegionName(): ?string {
 		return $this->activateRegionName;
 	}
+    /** @param string|null $activateRegionName First region name to activate */
 	public function setActivateRegionName(?string $activateRegionName) {
 		$this->activateRegionName = $activateRegionName;
 	}
+    /**
+     * @param string|null $activateRegionName First region name to activate
+     * @return CreateProjectRequest
+     */
 	public function withActivateRegionName(?string $activateRegionName): CreateProjectRequest {
 		$this->activateRegionName = $activateRegionName;
 		return $this;
 	}
+    /** @return string|null Payment Method Name */
 	public function getBillingMethodName(): ?string {
 		return $this->billingMethodName;
 	}
+    /** @param string|null $billingMethodName Payment Method Name */
 	public function setBillingMethodName(?string $billingMethodName) {
 		$this->billingMethodName = $billingMethodName;
 	}
+    /**
+     * @param string|null $billingMethodName Payment Method Name
+     * @return CreateProjectRequest
+     */
 	public function withBillingMethodName(?string $billingMethodName): CreateProjectRequest {
 		$this->billingMethodName = $billingMethodName;
 		return $this;
 	}
+    /** @return string|null Configuring Amazon EventBridge */
 	public function getEnableEventBridge(): ?string {
 		return $this->enableEventBridge;
 	}
+    /** @param string|null $enableEventBridge Configuring Amazon EventBridge */
 	public function setEnableEventBridge(?string $enableEventBridge) {
 		$this->enableEventBridge = $enableEventBridge;
 	}
+    /**
+     * @param string|null $enableEventBridge Configuring Amazon EventBridge
+     * @return CreateProjectRequest
+     */
 	public function withEnableEventBridge(?string $enableEventBridge): CreateProjectRequest {
 		$this->enableEventBridge = $enableEventBridge;
 		return $this;
 	}
+    /** @return string|null ID of AWS account to be used for notification */
 	public function getEventBridgeAwsAccountId(): ?string {
 		return $this->eventBridgeAwsAccountId;
 	}
+    /** @param string|null $eventBridgeAwsAccountId ID of AWS account to be used for notification */
 	public function setEventBridgeAwsAccountId(?string $eventBridgeAwsAccountId) {
 		$this->eventBridgeAwsAccountId = $eventBridgeAwsAccountId;
 	}
+    /**
+     * @param string|null $eventBridgeAwsAccountId ID of AWS account to be used for notification
+     * @return CreateProjectRequest
+     */
 	public function withEventBridgeAwsAccountId(?string $eventBridgeAwsAccountId): CreateProjectRequest {
 		$this->eventBridgeAwsAccountId = $eventBridgeAwsAccountId;
 		return $this;
 	}
+    /** @return string|null AWS Region to be used for notification */
 	public function getEventBridgeAwsRegion(): ?string {
 		return $this->eventBridgeAwsRegion;
 	}
+    /** @param string|null $eventBridgeAwsRegion AWS Region to be used for notification */
 	public function setEventBridgeAwsRegion(?string $eventBridgeAwsRegion) {
 		$this->eventBridgeAwsRegion = $eventBridgeAwsRegion;
 	}
+    /**
+     * @param string|null $eventBridgeAwsRegion AWS Region to be used for notification
+     * @return CreateProjectRequest
+     */
 	public function withEventBridgeAwsRegion(?string $eventBridgeAwsRegion): CreateProjectRequest {
 		$this->eventBridgeAwsRegion = $eventBridgeAwsRegion;
 		return $this;
 	}
+    /** @return string|null Database schema */
 	public function getDataStoreKeyScheme(): ?string {
 		return $this->dataStoreKeyScheme;
 	}
+    /** @param string|null $dataStoreKeyScheme Database schema */
 	public function setDataStoreKeyScheme(?string $dataStoreKeyScheme) {
 		$this->dataStoreKeyScheme = $dataStoreKeyScheme;
 	}
+    /**
+     * @param string|null $dataStoreKeyScheme Database schema
+     * @return CreateProjectRequest
+     */
 	public function withDataStoreKeyScheme(?string $dataStoreKeyScheme): CreateProjectRequest {
 		$this->dataStoreKeyScheme = $dataStoreKeyScheme;
 		return $this;

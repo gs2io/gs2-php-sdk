@@ -19,15 +19,26 @@ namespace Gs2\Deploy\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for preChangeSet: Prepare to get Change Set (pre-upload)
+ *
+ * @see https://docs.gs2.io/api_reference/deploy/sdk/#prechangeset
+ */
 class PreChangeSetRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Stack name */
     private $stackName;
+    /** @return string|null Stack name */
 	public function getStackName(): ?string {
 		return $this->stackName;
 	}
+    /** @param string|null $stackName Stack name */
 	public function setStackName(?string $stackName) {
 		$this->stackName = $stackName;
 	}
+    /**
+     * @param string|null $stackName Stack name
+     * @return PreChangeSetRequest
+     */
 	public function withStackName(?string $stackName): PreChangeSetRequest {
 		$this->stackName = $stackName;
 		return $this;

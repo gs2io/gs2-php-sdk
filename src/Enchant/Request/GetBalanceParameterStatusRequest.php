@@ -19,51 +19,80 @@ namespace Gs2\Enchant\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getBalanceParameterStatus: Get Balance Parameter Status
+ *
+ * @see https://docs.gs2.io/api_reference/enchant/sdk/#getbalanceparameterstatus
+ */
 class GetBalanceParameterStatusRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Balance Parameter Model name */
     private $parameterName;
-    /** @var string */
+    /** @var string Property ID of the resource that owns the parameter */
     private $propertyId;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetBalanceParameterStatusRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetBalanceParameterStatusRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return GetBalanceParameterStatusRequest
+     */
 	public function withAccessToken(?string $accessToken): GetBalanceParameterStatusRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Balance Parameter Model name */
 	public function getParameterName(): ?string {
 		return $this->parameterName;
 	}
+    /** @param string|null $parameterName Balance Parameter Model name */
 	public function setParameterName(?string $parameterName) {
 		$this->parameterName = $parameterName;
 	}
+    /**
+     * @param string|null $parameterName Balance Parameter Model name
+     * @return GetBalanceParameterStatusRequest
+     */
 	public function withParameterName(?string $parameterName): GetBalanceParameterStatusRequest {
 		$this->parameterName = $parameterName;
 		return $this;
 	}
+    /** @return string|null Property ID of the resource that owns the parameter */
 	public function getPropertyId(): ?string {
 		return $this->propertyId;
 	}
+    /** @param string|null $propertyId Property ID of the resource that owns the parameter */
 	public function setPropertyId(?string $propertyId) {
 		$this->propertyId = $propertyId;
 	}
+    /**
+     * @param string|null $propertyId Property ID of the resource that owns the parameter
+     * @return GetBalanceParameterStatusRequest
+     */
 	public function withPropertyId(?string $propertyId): GetBalanceParameterStatusRequest {
 		$this->propertyId = $propertyId;
 		return $this;

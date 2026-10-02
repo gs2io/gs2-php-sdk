@@ -20,18 +20,29 @@ namespace Gs2\Inbox\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Inbox\Model\Received;
 
+/**
+ * Result of deleteReceivedByUserId: Delete Received Global Message by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/inbox/sdk/#deletereceivedbyuserid
+ */
 class DeleteReceivedByUserIdResult implements IResult {
-    /** @var Received */
+    /** @var Received Received Global Message */
     private $item;
 
+    /** @return Received|null Received Global Message */
 	public function getItem(): ?Received {
 		return $this->item;
 	}
 
+    /** @param Received|null $item Received Global Message */
 	public function setItem(?Received $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Received|null $item Received Global Message
+     * @return DeleteReceivedByUserIdResult
+     */
 	public function withItem(?Received $item): DeleteReceivedByUserIdResult {
 		$this->item = $item;
 		return $this;

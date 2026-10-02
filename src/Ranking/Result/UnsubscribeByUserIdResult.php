@@ -20,18 +20,29 @@ namespace Gs2\Ranking\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Ranking\Model\SubscribeUser;
 
+/**
+ * Result of unsubscribeByUserId: Unsubscribe the target user by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/ranking/sdk/#unsubscribebyuserid
+ */
 class UnsubscribeByUserIdResult implements IResult {
-    /** @var SubscribeUser */
+    /** @var SubscribeUser Unsubscribed Subscribed User Information */
     private $item;
 
+    /** @return SubscribeUser|null Unsubscribed Subscribed User Information */
 	public function getItem(): ?SubscribeUser {
 		return $this->item;
 	}
 
+    /** @param SubscribeUser|null $item Unsubscribed Subscribed User Information */
 	public function setItem(?SubscribeUser $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param SubscribeUser|null $item Unsubscribed Subscribed User Information
+     * @return UnsubscribeByUserIdResult
+     */
 	public function withItem(?SubscribeUser $item): UnsubscribeByUserIdResult {
 		$this->item = $item;
 		return $this;

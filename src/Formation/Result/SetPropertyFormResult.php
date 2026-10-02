@@ -23,33 +23,50 @@ use Gs2\Formation\Model\PropertyForm;
 use Gs2\Formation\Model\SlotModel;
 use Gs2\Formation\Model\PropertyFormModel;
 
+/**
+ * Result of setPropertyForm: Update Property Form
+ *
+ * @see https://docs.gs2.io/api_reference/formation/sdk/#setpropertyform
+ */
 class SetPropertyFormResult implements IResult {
-    /** @var PropertyForm */
+    /** @var PropertyForm Property Form */
     private $item;
-    /** @var PropertyFormModel */
+    /** @var PropertyFormModel Property Form Model */
     private $propertyFormModel;
 
+    /** @return PropertyForm|null Property Form */
 	public function getItem(): ?PropertyForm {
 		return $this->item;
 	}
 
+    /** @param PropertyForm|null $item Property Form */
 	public function setItem(?PropertyForm $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param PropertyForm|null $item Property Form
+     * @return SetPropertyFormResult
+     */
 	public function withItem(?PropertyForm $item): SetPropertyFormResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return PropertyFormModel|null Property Form Model */
 	public function getPropertyFormModel(): ?PropertyFormModel {
 		return $this->propertyFormModel;
 	}
 
+    /** @param PropertyFormModel|null $propertyFormModel Property Form Model */
 	public function setPropertyFormModel(?PropertyFormModel $propertyFormModel) {
 		$this->propertyFormModel = $propertyFormModel;
 	}
 
+    /**
+     * @param PropertyFormModel|null $propertyFormModel Property Form Model
+     * @return SetPropertyFormResult
+     */
 	public function withPropertyFormModel(?PropertyFormModel $propertyFormModel): SetPropertyFormResult {
 		$this->propertyFormModel = $propertyFormModel;
 		return $this;

@@ -20,73 +20,108 @@ namespace Gs2\Enchant\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Rarity Parameter Value Model
+ *
+ * @see https://docs.gs2.io/api_reference/enchant/sdk/#rarityparametervaluemodel
+ */
 class RarityParameterValueModel implements IModel {
 	/**
-     * @var string
+     * @var string Name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var string
+     * @var string Parameter Resource Name for Game (Not used for GS2)
 	 */
 	private $resourceName;
 	/**
-     * @var int
+     * @var int Parameter Resource Value for Game (Not used for GS2)
 	 */
 	private $resourceValue;
 	/**
-     * @var int
+     * @var int Draw Weight
 	 */
 	private $weight;
+    /** @return string|null Name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Name
+     * @return RarityParameterValueModel
+     */
 	public function withName(?string $name): RarityParameterValueModel {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return RarityParameterValueModel
+     */
 	public function withMetadata(?string $metadata): RarityParameterValueModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return string|null Parameter Resource Name for Game (Not used for GS2) */
 	public function getResourceName(): ?string {
 		return $this->resourceName;
 	}
+    /** @param string|null $resourceName Parameter Resource Name for Game (Not used for GS2) */
 	public function setResourceName(?string $resourceName) {
 		$this->resourceName = $resourceName;
 	}
+    /**
+     * @param string|null $resourceName Parameter Resource Name for Game (Not used for GS2)
+     * @return RarityParameterValueModel
+     */
 	public function withResourceName(?string $resourceName): RarityParameterValueModel {
 		$this->resourceName = $resourceName;
 		return $this;
 	}
+    /** @return int|null Parameter Resource Value for Game (Not used for GS2) */
 	public function getResourceValue(): ?int {
 		return $this->resourceValue;
 	}
+    /** @param int|null $resourceValue Parameter Resource Value for Game (Not used for GS2) */
 	public function setResourceValue(?int $resourceValue) {
 		$this->resourceValue = $resourceValue;
 	}
+    /**
+     * @param int|null $resourceValue Parameter Resource Value for Game (Not used for GS2)
+     * @return RarityParameterValueModel
+     */
 	public function withResourceValue(?int $resourceValue): RarityParameterValueModel {
 		$this->resourceValue = $resourceValue;
 		return $this;
 	}
+    /** @return int|null Draw Weight */
 	public function getWeight(): ?int {
 		return $this->weight;
 	}
+    /** @param int|null $weight Draw Weight */
 	public function setWeight(?int $weight) {
 		$this->weight = $weight;
 	}
+    /**
+     * @param int|null $weight Draw Weight
+     * @return RarityParameterValueModel
+     */
 	public function withWeight(?int $weight): RarityParameterValueModel {
 		$this->weight = $weight;
 		return $this;

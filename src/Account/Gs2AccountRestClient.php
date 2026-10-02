@@ -4308,25 +4308,22 @@ class UpdateCurrentModelMasterFromGitHubTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 Account API クライアント
+ * GS2-Account API client
  *
- * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/account/sdk/
  */
 class Gs2AccountRestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#describenamespaces
      */
     public function describeNamespacesAsync(
             DescribeNamespacesRequest $request
@@ -4340,8 +4337,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#describenamespaces
      */
     public function describeNamespaces (
             DescribeNamespacesRequest $request
@@ -4352,8 +4352,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#createnamespace
      */
     public function createNamespaceAsync(
             CreateNamespaceRequest $request
@@ -4367,8 +4370,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#createnamespace
      */
     public function createNamespace (
             CreateNamespaceRequest $request
@@ -4379,8 +4385,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#getnamespacestatus
      */
     public function getNamespaceStatusAsync(
             GetNamespaceStatusRequest $request
@@ -4394,8 +4403,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#getnamespacestatus
      */
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
@@ -4406,8 +4418,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#getnamespace
      */
     public function getNamespaceAsync(
             GetNamespaceRequest $request
@@ -4421,8 +4436,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#getnamespace
      */
     public function getNamespace (
             GetNamespaceRequest $request
@@ -4433,8 +4451,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#updatenamespace
      */
     public function updateNamespaceAsync(
             UpdateNamespaceRequest $request
@@ -4448,8 +4469,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#updatenamespace
      */
     public function updateNamespace (
             UpdateNamespaceRequest $request
@@ -4460,8 +4484,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#deletenamespace
      */
     public function deleteNamespaceAsync(
             DeleteNamespaceRequest $request
@@ -4475,8 +4502,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#deletenamespace
      */
     public function deleteNamespace (
             DeleteNamespaceRequest $request
@@ -4487,8 +4517,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get microservice version
+     *
      * @param GetServiceVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#getserviceversion
      */
     public function getServiceVersionAsync(
             GetServiceVersionRequest $request
@@ -4502,8 +4535,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get microservice version
+     *
      * @param GetServiceVersionRequest $request
      * @return GetServiceVersionResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#getserviceversion
      */
     public function getServiceVersion (
             GetServiceVersionRequest $request
@@ -4514,8 +4550,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserIdAsync(
             DumpUserDataByUserIdRequest $request
@@ -4529,8 +4568,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return DumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserId (
             DumpUserDataByUserIdRequest $request
@@ -4541,8 +4583,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserIdAsync(
             CheckDumpUserDataByUserIdRequest $request
@@ -4556,8 +4601,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return CheckDumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserId (
             CheckDumpUserDataByUserIdRequest $request
@@ -4568,8 +4616,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserIdAsync(
             CleanUserDataByUserIdRequest $request
@@ -4583,8 +4634,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return CleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserId (
             CleanUserDataByUserIdRequest $request
@@ -4595,8 +4649,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserIdAsync(
             CheckCleanUserDataByUserIdRequest $request
@@ -4610,8 +4667,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return CheckCleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserId (
             CheckCleanUserDataByUserIdRequest $request
@@ -4622,8 +4682,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserIdAsync(
             PrepareImportUserDataByUserIdRequest $request
@@ -4637,8 +4700,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PrepareImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserId (
             PrepareImportUserDataByUserIdRequest $request
@@ -4649,8 +4715,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserIdAsync(
             ImportUserDataByUserIdRequest $request
@@ -4664,8 +4733,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return ImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserId (
             ImportUserDataByUserIdRequest $request
@@ -4676,8 +4748,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserIdAsync(
             CheckImportUserDataByUserIdRequest $request
@@ -4691,8 +4766,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return CheckImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserId (
             CheckImportUserDataByUserIdRequest $request
@@ -4703,8 +4781,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Game Player Accounts
+     *
      * @param DescribeAccountsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#describeaccounts
      */
     public function describeAccountsAsync(
             DescribeAccountsRequest $request
@@ -4718,8 +4799,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Game Player Accounts
+     *
      * @param DescribeAccountsRequest $request
      * @return DescribeAccountsResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#describeaccounts
      */
     public function describeAccounts (
             DescribeAccountsRequest $request
@@ -4730,8 +4814,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Game Player Account
+     *
      * @param CreateAccountRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#createaccount
      */
     public function createAccountAsync(
             CreateAccountRequest $request
@@ -4745,8 +4832,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Game Player Account
+     *
      * @param CreateAccountRequest $request
      * @return CreateAccountResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#createaccount
      */
     public function createAccount (
             CreateAccountRequest $request
@@ -4757,8 +4847,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update the correction value for the current time of the game player's Account
+     *
      * @param UpdateTimeOffsetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#updatetimeoffset
      */
     public function updateTimeOffsetAsync(
             UpdateTimeOffsetRequest $request
@@ -4772,8 +4865,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update the correction value for the current time of the game player's Account
+     *
      * @param UpdateTimeOffsetRequest $request
      * @return UpdateTimeOffsetResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#updatetimeoffset
      */
     public function updateTimeOffset (
             UpdateTimeOffsetRequest $request
@@ -4784,8 +4880,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update whether the Account is currently banned of Game Player Account
+     *
      * @param UpdateBannedRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#updatebanned
      */
     public function updateBannedAsync(
             UpdateBannedRequest $request
@@ -4799,8 +4898,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update whether the Account is currently banned of Game Player Account
+     *
      * @param UpdateBannedRequest $request
      * @return UpdateBannedResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#updatebanned
      */
     public function updateBanned (
             UpdateBannedRequest $request
@@ -4811,8 +4913,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Add the Account Ban Status for a Game Player Account
+     *
      * @param AddBanRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#addban
      */
     public function addBanAsync(
             AddBanRequest $request
@@ -4826,8 +4931,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Add the Account Ban Status for a Game Player Account
+     *
      * @param AddBanRequest $request
      * @return AddBanResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#addban
      */
     public function addBan (
             AddBanRequest $request
@@ -4838,8 +4946,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Remove the Account Ban Status for a Game Player Account
+     *
      * @param RemoveBanRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#removeban
      */
     public function removeBanAsync(
             RemoveBanRequest $request
@@ -4853,8 +4964,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Remove the Account Ban Status for a Game Player Account
+     *
      * @param RemoveBanRequest $request
      * @return RemoveBanResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#removeban
      */
     public function removeBan (
             RemoveBanRequest $request
@@ -4865,8 +4979,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Game Player Account
+     *
      * @param GetAccountRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#getaccount
      */
     public function getAccountAsync(
             GetAccountRequest $request
@@ -4880,8 +4997,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Game Player Account
+     *
      * @param GetAccountRequest $request
      * @return GetAccountResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#getaccount
      */
     public function getAccount (
             GetAccountRequest $request
@@ -4892,8 +5012,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Game Player Account
+     *
      * @param DeleteAccountRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#deleteaccount
      */
     public function deleteAccountAsync(
             DeleteAccountRequest $request
@@ -4907,8 +5030,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Game Player Account
+     *
      * @param DeleteAccountRequest $request
      * @return DeleteAccountResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#deleteaccount
      */
     public function deleteAccount (
             DeleteAccountRequest $request
@@ -4919,8 +5045,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Authenticate Game Player Account
+     *
      * @param AuthenticationRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#authentication
      */
     public function authenticationAsync(
             AuthenticationRequest $request
@@ -4934,8 +5063,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Authenticate Game Player Account
+     *
      * @param AuthenticationRequest $request
      * @return AuthenticationResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#authentication
      */
     public function authentication (
             AuthenticationRequest $request
@@ -4946,8 +5078,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Takeover Information
+     *
      * @param DescribeTakeOversRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#describetakeovers
      */
     public function describeTakeOversAsync(
             DescribeTakeOversRequest $request
@@ -4961,8 +5096,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Takeover Information
+     *
      * @param DescribeTakeOversRequest $request
      * @return DescribeTakeOversResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#describetakeovers
      */
     public function describeTakeOvers (
             DescribeTakeOversRequest $request
@@ -4973,8 +5111,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Takeover Information by User ID
+     *
      * @param DescribeTakeOversByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#describetakeoversbyuserid
      */
     public function describeTakeOversByUserIdAsync(
             DescribeTakeOversByUserIdRequest $request
@@ -4988,8 +5129,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Takeover Information by User ID
+     *
      * @param DescribeTakeOversByUserIdRequest $request
      * @return DescribeTakeOversByUserIdResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#describetakeoversbyuserid
      */
     public function describeTakeOversByUserId (
             DescribeTakeOversByUserIdRequest $request
@@ -5000,8 +5144,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Takeover Information
+     *
      * @param CreateTakeOverRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#createtakeover
      */
     public function createTakeOverAsync(
             CreateTakeOverRequest $request
@@ -5015,8 +5162,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Takeover Information
+     *
      * @param CreateTakeOverRequest $request
      * @return CreateTakeOverResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#createtakeover
      */
     public function createTakeOver (
             CreateTakeOverRequest $request
@@ -5027,8 +5177,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Takeover Information by User ID
+     *
      * @param CreateTakeOverByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#createtakeoverbyuserid
      */
     public function createTakeOverByUserIdAsync(
             CreateTakeOverByUserIdRequest $request
@@ -5042,8 +5195,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Takeover Information by User ID
+     *
      * @param CreateTakeOverByUserIdRequest $request
      * @return CreateTakeOverByUserIdResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#createtakeoverbyuserid
      */
     public function createTakeOverByUserId (
             CreateTakeOverByUserIdRequest $request
@@ -5054,8 +5210,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Takeover Information using OpenID Connect
+     *
      * @param CreateTakeOverOpenIdConnectRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#createtakeoveropenidconnect
      */
     public function createTakeOverOpenIdConnectAsync(
             CreateTakeOverOpenIdConnectRequest $request
@@ -5069,8 +5228,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Takeover Information using OpenID Connect
+     *
      * @param CreateTakeOverOpenIdConnectRequest $request
      * @return CreateTakeOverOpenIdConnectResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#createtakeoveropenidconnect
      */
     public function createTakeOverOpenIdConnect (
             CreateTakeOverOpenIdConnectRequest $request
@@ -5081,8 +5243,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Takeover Information using OpenID Connect by User ID
+     *
      * @param CreateTakeOverOpenIdConnectAndByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#createtakeoveropenidconnectandbyuserid
      */
     public function createTakeOverOpenIdConnectAndByUserIdAsync(
             CreateTakeOverOpenIdConnectAndByUserIdRequest $request
@@ -5096,8 +5261,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Takeover Information using OpenID Connect by User ID
+     *
      * @param CreateTakeOverOpenIdConnectAndByUserIdRequest $request
      * @return CreateTakeOverOpenIdConnectAndByUserIdResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#createtakeoveropenidconnectandbyuserid
      */
     public function createTakeOverOpenIdConnectAndByUserId (
             CreateTakeOverOpenIdConnectAndByUserIdRequest $request
@@ -5108,8 +5276,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Takeover Information
+     *
      * @param GetTakeOverRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#gettakeover
      */
     public function getTakeOverAsync(
             GetTakeOverRequest $request
@@ -5123,8 +5294,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Takeover Information
+     *
      * @param GetTakeOverRequest $request
      * @return GetTakeOverResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#gettakeover
      */
     public function getTakeOver (
             GetTakeOverRequest $request
@@ -5135,8 +5309,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Takeover Information by User ID
+     *
      * @param GetTakeOverByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#gettakeoverbyuserid
      */
     public function getTakeOverByUserIdAsync(
             GetTakeOverByUserIdRequest $request
@@ -5150,8 +5327,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Takeover Information by User ID
+     *
      * @param GetTakeOverByUserIdRequest $request
      * @return GetTakeOverByUserIdResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#gettakeoverbyuserid
      */
     public function getTakeOverByUserId (
             GetTakeOverByUserIdRequest $request
@@ -5162,8 +5342,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Takeover Information
+     *
      * @param UpdateTakeOverRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#updatetakeover
      */
     public function updateTakeOverAsync(
             UpdateTakeOverRequest $request
@@ -5177,8 +5360,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Takeover Information
+     *
      * @param UpdateTakeOverRequest $request
      * @return UpdateTakeOverResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#updatetakeover
      */
     public function updateTakeOver (
             UpdateTakeOverRequest $request
@@ -5189,8 +5375,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Takeover Information by User ID
+     *
      * @param UpdateTakeOverByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#updatetakeoverbyuserid
      */
     public function updateTakeOverByUserIdAsync(
             UpdateTakeOverByUserIdRequest $request
@@ -5204,8 +5393,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Takeover Information by User ID
+     *
      * @param UpdateTakeOverByUserIdRequest $request
      * @return UpdateTakeOverByUserIdResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#updatetakeoverbyuserid
      */
     public function updateTakeOverByUserId (
             UpdateTakeOverByUserIdRequest $request
@@ -5216,8 +5408,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Takeover Information
+     *
      * @param DeleteTakeOverRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#deletetakeover
      */
     public function deleteTakeOverAsync(
             DeleteTakeOverRequest $request
@@ -5231,8 +5426,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Takeover Information
+     *
      * @param DeleteTakeOverRequest $request
      * @return DeleteTakeOverResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#deletetakeover
      */
     public function deleteTakeOver (
             DeleteTakeOverRequest $request
@@ -5243,8 +5441,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Takeover Information by specifying user Identifier
+     *
      * @param DeleteTakeOverByUserIdentifierRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#deletetakeoverbyuseridentifier
      */
     public function deleteTakeOverByUserIdentifierAsync(
             DeleteTakeOverByUserIdentifierRequest $request
@@ -5258,8 +5459,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Takeover Information by specifying user Identifier
+     *
      * @param DeleteTakeOverByUserIdentifierRequest $request
      * @return DeleteTakeOverByUserIdentifierResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#deletetakeoverbyuseridentifier
      */
     public function deleteTakeOverByUserIdentifier (
             DeleteTakeOverByUserIdentifierRequest $request
@@ -5270,8 +5474,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Takeover Information by User ID
+     *
      * @param DeleteTakeOverByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#deletetakeoverbyuserid
      */
     public function deleteTakeOverByUserIdAsync(
             DeleteTakeOverByUserIdRequest $request
@@ -5285,8 +5492,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Takeover Information by User ID
+     *
      * @param DeleteTakeOverByUserIdRequest $request
      * @return DeleteTakeOverByUserIdResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#deletetakeoverbyuserid
      */
     public function deleteTakeOverByUserId (
             DeleteTakeOverByUserIdRequest $request
@@ -5297,8 +5507,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute Account Takeover
+     *
      * @param DoTakeOverRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#dotakeover
      */
     public function doTakeOverAsync(
             DoTakeOverRequest $request
@@ -5312,8 +5525,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute Account Takeover
+     *
      * @param DoTakeOverRequest $request
      * @return DoTakeOverResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#dotakeover
      */
     public function doTakeOver (
             DoTakeOverRequest $request
@@ -5324,8 +5540,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute Account Takeover using OpenID Connect
+     *
      * @param DoTakeOverOpenIdConnectRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#dotakeoveropenidconnect
      */
     public function doTakeOverOpenIdConnectAsync(
             DoTakeOverOpenIdConnectRequest $request
@@ -5339,8 +5558,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute Account Takeover using OpenID Connect
+     *
      * @param DoTakeOverOpenIdConnectRequest $request
      * @return DoTakeOverOpenIdConnectResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#dotakeoveropenidconnect
      */
     public function doTakeOverOpenIdConnect (
             DoTakeOverOpenIdConnectRequest $request
@@ -5351,8 +5573,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get authorization URL
+     *
      * @param GetAuthorizationUrlRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#getauthorizationurl
      */
     public function getAuthorizationUrlAsync(
             GetAuthorizationUrlRequest $request
@@ -5366,8 +5591,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get authorization URL
+     *
      * @param GetAuthorizationUrlRequest $request
      * @return GetAuthorizationUrlResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#getauthorizationurl
      */
     public function getAuthorizationUrl (
             GetAuthorizationUrlRequest $request
@@ -5378,8 +5606,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List External Platform Account IDs
+     *
      * @param DescribePlatformIdsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#describeplatformids
      */
     public function describePlatformIdsAsync(
             DescribePlatformIdsRequest $request
@@ -5393,8 +5624,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List External Platform Account IDs
+     *
      * @param DescribePlatformIdsRequest $request
      * @return DescribePlatformIdsResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#describeplatformids
      */
     public function describePlatformIds (
             DescribePlatformIdsRequest $request
@@ -5405,8 +5639,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List External Platform Account IDs by specifying GS2-Account user ID
+     *
      * @param DescribePlatformIdsByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#describeplatformidsbyuserid
      */
     public function describePlatformIdsByUserIdAsync(
             DescribePlatformIdsByUserIdRequest $request
@@ -5420,8 +5657,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List External Platform Account IDs by specifying GS2-Account user ID
+     *
      * @param DescribePlatformIdsByUserIdRequest $request
      * @return DescribePlatformIdsByUserIdResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#describeplatformidsbyuserid
      */
     public function describePlatformIdsByUserId (
             DescribePlatformIdsByUserIdRequest $request
@@ -5432,8 +5672,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create External Platform Account ID
+     *
      * @param CreatePlatformIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#createplatformid
      */
     public function createPlatformIdAsync(
             CreatePlatformIdRequest $request
@@ -5447,8 +5690,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create External Platform Account ID
+     *
      * @param CreatePlatformIdRequest $request
      * @return CreatePlatformIdResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#createplatformid
      */
     public function createPlatformId (
             CreatePlatformIdRequest $request
@@ -5459,8 +5705,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create External Platform Account ID by specifying GS2-Account user ID
+     *
      * @param CreatePlatformIdByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#createplatformidbyuserid
      */
     public function createPlatformIdByUserIdAsync(
             CreatePlatformIdByUserIdRequest $request
@@ -5474,8 +5723,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create External Platform Account ID by specifying GS2-Account user ID
+     *
      * @param CreatePlatformIdByUserIdRequest $request
      * @return CreatePlatformIdByUserIdResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#createplatformidbyuserid
      */
     public function createPlatformIdByUserId (
             CreatePlatformIdByUserIdRequest $request
@@ -5486,8 +5738,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get External Platform Account ID
+     *
      * @param GetPlatformIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#getplatformid
      */
     public function getPlatformIdAsync(
             GetPlatformIdRequest $request
@@ -5501,8 +5756,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get External Platform Account ID
+     *
      * @param GetPlatformIdRequest $request
      * @return GetPlatformIdResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#getplatformid
      */
     public function getPlatformId (
             GetPlatformIdRequest $request
@@ -5513,8 +5771,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get External Platform Account ID by User ID
+     *
      * @param GetPlatformIdByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#getplatformidbyuserid
      */
     public function getPlatformIdByUserIdAsync(
             GetPlatformIdByUserIdRequest $request
@@ -5528,8 +5789,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get External Platform Account ID by User ID
+     *
      * @param GetPlatformIdByUserIdRequest $request
      * @return GetPlatformIdByUserIdResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#getplatformidbyuserid
      */
     public function getPlatformIdByUserId (
             GetPlatformIdByUserIdRequest $request
@@ -5540,8 +5804,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Find GS2-Account user ID by specifying External Platform Account ID
+     *
      * @param FindPlatformIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#findplatformid
      */
     public function findPlatformIdAsync(
             FindPlatformIdRequest $request
@@ -5555,8 +5822,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Find GS2-Account user ID by specifying External Platform Account ID
+     *
      * @param FindPlatformIdRequest $request
      * @return FindPlatformIdResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#findplatformid
      */
     public function findPlatformId (
             FindPlatformIdRequest $request
@@ -5567,8 +5837,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get External Platform Account ID by specifying GS2-Account user ID
+     *
      * @param FindPlatformIdByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#findplatformidbyuserid
      */
     public function findPlatformIdByUserIdAsync(
             FindPlatformIdByUserIdRequest $request
@@ -5582,8 +5855,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get External Platform Account ID by specifying GS2-Account user ID
+     *
      * @param FindPlatformIdByUserIdRequest $request
      * @return FindPlatformIdByUserIdResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#findplatformidbyuserid
      */
     public function findPlatformIdByUserId (
             FindPlatformIdByUserIdRequest $request
@@ -5594,8 +5870,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete External Platform Account ID
+     *
      * @param DeletePlatformIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#deleteplatformid
      */
     public function deletePlatformIdAsync(
             DeletePlatformIdRequest $request
@@ -5609,8 +5888,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete External Platform Account ID
+     *
      * @param DeletePlatformIdRequest $request
      * @return DeletePlatformIdResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#deleteplatformid
      */
     public function deletePlatformId (
             DeletePlatformIdRequest $request
@@ -5621,8 +5903,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete External Platform Account ID by External Platform User ID
+     *
      * @param DeletePlatformIdByUserIdentifierRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#deleteplatformidbyuseridentifier
      */
     public function deletePlatformIdByUserIdentifierAsync(
             DeletePlatformIdByUserIdentifierRequest $request
@@ -5636,8 +5921,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete External Platform Account ID by External Platform User ID
+     *
      * @param DeletePlatformIdByUserIdentifierRequest $request
      * @return DeletePlatformIdByUserIdentifierResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#deleteplatformidbyuseridentifier
      */
     public function deletePlatformIdByUserIdentifier (
             DeletePlatformIdByUserIdentifierRequest $request
@@ -5648,8 +5936,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete External Platform Account ID by specifying GS2-Account user ID
+     *
      * @param DeletePlatformIdByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#deleteplatformidbyuserid
      */
     public function deletePlatformIdByUserIdAsync(
             DeletePlatformIdByUserIdRequest $request
@@ -5663,8 +5954,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete External Platform Account ID by specifying GS2-Account user ID
+     *
      * @param DeletePlatformIdByUserIdRequest $request
      * @return DeletePlatformIdByUserIdResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#deleteplatformidbyuserid
      */
     public function deletePlatformIdByUserId (
             DeletePlatformIdByUserIdRequest $request
@@ -5675,8 +5969,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Data Owner
+     *
      * @param GetDataOwnerByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#getdataownerbyuserid
      */
     public function getDataOwnerByUserIdAsync(
             GetDataOwnerByUserIdRequest $request
@@ -5690,8 +5987,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Data Owner
+     *
      * @param GetDataOwnerByUserIdRequest $request
      * @return GetDataOwnerByUserIdResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#getdataownerbyuserid
      */
     public function getDataOwnerByUserId (
             GetDataOwnerByUserIdRequest $request
@@ -5702,8 +6002,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Data Owner
+     *
      * @param UpdateDataOwnerByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#updatedataownerbyuserid
      */
     public function updateDataOwnerByUserIdAsync(
             UpdateDataOwnerByUserIdRequest $request
@@ -5717,8 +6020,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Data Owner
+     *
      * @param UpdateDataOwnerByUserIdRequest $request
      * @return UpdateDataOwnerByUserIdResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#updatedataownerbyuserid
      */
     public function updateDataOwnerByUserId (
             UpdateDataOwnerByUserIdRequest $request
@@ -5729,8 +6035,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Data Owner
+     *
      * @param DeleteDataOwnerByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#deletedataownerbyuserid
      */
     public function deleteDataOwnerByUserIdAsync(
             DeleteDataOwnerByUserIdRequest $request
@@ -5744,8 +6053,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Data Owner
+     *
      * @param DeleteDataOwnerByUserIdRequest $request
      * @return DeleteDataOwnerByUserIdResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#deletedataownerbyuserid
      */
     public function deleteDataOwnerByUserId (
             DeleteDataOwnerByUserIdRequest $request
@@ -5756,8 +6068,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Takeover Type Models
+     *
      * @param DescribeTakeOverTypeModelsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#describetakeovertypemodels
      */
     public function describeTakeOverTypeModelsAsync(
             DescribeTakeOverTypeModelsRequest $request
@@ -5771,8 +6086,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Takeover Type Models
+     *
      * @param DescribeTakeOverTypeModelsRequest $request
      * @return DescribeTakeOverTypeModelsResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#describetakeovertypemodels
      */
     public function describeTakeOverTypeModels (
             DescribeTakeOverTypeModelsRequest $request
@@ -5783,8 +6101,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Takeover Type Model
+     *
      * @param GetTakeOverTypeModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#gettakeovertypemodel
      */
     public function getTakeOverTypeModelAsync(
             GetTakeOverTypeModelRequest $request
@@ -5798,8 +6119,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Takeover Type Model
+     *
      * @param GetTakeOverTypeModelRequest $request
      * @return GetTakeOverTypeModelResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#gettakeovertypemodel
      */
     public function getTakeOverTypeModel (
             GetTakeOverTypeModelRequest $request
@@ -5810,8 +6134,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Takeover Type Model Masters
+     *
      * @param DescribeTakeOverTypeModelMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#describetakeovertypemodelmasters
      */
     public function describeTakeOverTypeModelMastersAsync(
             DescribeTakeOverTypeModelMastersRequest $request
@@ -5825,8 +6152,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Takeover Type Model Masters
+     *
      * @param DescribeTakeOverTypeModelMastersRequest $request
      * @return DescribeTakeOverTypeModelMastersResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#describetakeovertypemodelmasters
      */
     public function describeTakeOverTypeModelMasters (
             DescribeTakeOverTypeModelMastersRequest $request
@@ -5837,8 +6167,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Takeover Type Model Master
+     *
      * @param CreateTakeOverTypeModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#createtakeovertypemodelmaster
      */
     public function createTakeOverTypeModelMasterAsync(
             CreateTakeOverTypeModelMasterRequest $request
@@ -5852,8 +6185,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Takeover Type Model Master
+     *
      * @param CreateTakeOverTypeModelMasterRequest $request
      * @return CreateTakeOverTypeModelMasterResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#createtakeovertypemodelmaster
      */
     public function createTakeOverTypeModelMaster (
             CreateTakeOverTypeModelMasterRequest $request
@@ -5864,8 +6200,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Takeover Type Model Master
+     *
      * @param GetTakeOverTypeModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#gettakeovertypemodelmaster
      */
     public function getTakeOverTypeModelMasterAsync(
             GetTakeOverTypeModelMasterRequest $request
@@ -5879,8 +6218,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Takeover Type Model Master
+     *
      * @param GetTakeOverTypeModelMasterRequest $request
      * @return GetTakeOverTypeModelMasterResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#gettakeovertypemodelmaster
      */
     public function getTakeOverTypeModelMaster (
             GetTakeOverTypeModelMasterRequest $request
@@ -5891,8 +6233,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Takeover Type Model Master
+     *
      * @param UpdateTakeOverTypeModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#updatetakeovertypemodelmaster
      */
     public function updateTakeOverTypeModelMasterAsync(
             UpdateTakeOverTypeModelMasterRequest $request
@@ -5906,8 +6251,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Takeover Type Model Master
+     *
      * @param UpdateTakeOverTypeModelMasterRequest $request
      * @return UpdateTakeOverTypeModelMasterResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#updatetakeovertypemodelmaster
      */
     public function updateTakeOverTypeModelMaster (
             UpdateTakeOverTypeModelMasterRequest $request
@@ -5918,8 +6266,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Takeover Type Model Master
+     *
      * @param DeleteTakeOverTypeModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#deletetakeovertypemodelmaster
      */
     public function deleteTakeOverTypeModelMasterAsync(
             DeleteTakeOverTypeModelMasterRequest $request
@@ -5933,8 +6284,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Takeover Type Model Master
+     *
      * @param DeleteTakeOverTypeModelMasterRequest $request
      * @return DeleteTakeOverTypeModelMasterResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#deletetakeovertypemodelmaster
      */
     public function deleteTakeOverTypeModelMaster (
             DeleteTakeOverTypeModelMasterRequest $request
@@ -5945,8 +6299,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Takeover Type Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#exportmaster
      */
     public function exportMasterAsync(
             ExportMasterRequest $request
@@ -5960,8 +6317,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Takeover Type Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return ExportMasterResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#exportmaster
      */
     public function exportMaster (
             ExportMasterRequest $request
@@ -5972,8 +6332,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get master data of the currently active Takeover Type Models
+     *
      * @param GetCurrentModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#getcurrentmodelmaster
      */
     public function getCurrentModelMasterAsync(
             GetCurrentModelMasterRequest $request
@@ -5987,8 +6350,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get master data of the currently active Takeover Type Models
+     *
      * @param GetCurrentModelMasterRequest $request
      * @return GetCurrentModelMasterResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#getcurrentmodelmaster
      */
     public function getCurrentModelMaster (
             GetCurrentModelMasterRequest $request
@@ -5999,8 +6365,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update master data of the currently active Takeover Type Models (3-phase version)
+     *
      * @param PreUpdateCurrentModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#preupdatecurrentmodelmaster
      */
     public function preUpdateCurrentModelMasterAsync(
             PreUpdateCurrentModelMasterRequest $request
@@ -6014,8 +6383,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update master data of the currently active Takeover Type Models (3-phase version)
+     *
      * @param PreUpdateCurrentModelMasterRequest $request
      * @return PreUpdateCurrentModelMasterResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#preupdatecurrentmodelmaster
      */
     public function preUpdateCurrentModelMaster (
             PreUpdateCurrentModelMasterRequest $request
@@ -6026,8 +6398,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update master data of the currently active Takeover Type Models
+     *
      * @param UpdateCurrentModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#updatecurrentmodelmaster
      */
     public function updateCurrentModelMasterAsync(
             UpdateCurrentModelMasterRequest $request
@@ -6041,8 +6416,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update master data of the currently active Takeover Type Models
+     *
      * @param UpdateCurrentModelMasterRequest $request
      * @return UpdateCurrentModelMasterResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#updatecurrentmodelmaster
      */
     public function updateCurrentModelMaster (
             UpdateCurrentModelMasterRequest $request
@@ -6053,8 +6431,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update master data of the currently active Takeover Type Models from GitHub
+     *
      * @param UpdateCurrentModelMasterFromGitHubRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#updatecurrentmodelmasterfromgithub
      */
     public function updateCurrentModelMasterFromGitHubAsync(
             UpdateCurrentModelMasterFromGitHubRequest $request
@@ -6068,8 +6449,11 @@ class Gs2AccountRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update master data of the currently active Takeover Type Models from GitHub
+     *
      * @param UpdateCurrentModelMasterFromGitHubRequest $request
      * @return UpdateCurrentModelMasterFromGitHubResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#updatecurrentmodelmasterfromgithub
      */
     public function updateCurrentModelMasterFromGitHub (
             UpdateCurrentModelMasterFromGitHubRequest $request

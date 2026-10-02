@@ -386,25 +386,22 @@ class GetOutputTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 Freeze API クライアント
+ * GS2-Freeze API client
  *
- * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/freeze/sdk/
  */
 class Gs2FreezeRestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * List stages
+     *
      * @param DescribeStagesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/freeze/sdk/#describestages
      */
     public function describeStagesAsync(
             DescribeStagesRequest $request
@@ -418,8 +415,11 @@ class Gs2FreezeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List stages
+     *
      * @param DescribeStagesRequest $request
      * @return DescribeStagesResult
+     * @see https://docs.gs2.io/api_reference/freeze/sdk/#describestages
      */
     public function describeStages (
             DescribeStagesRequest $request
@@ -430,8 +430,11 @@ class Gs2FreezeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get stage
+     *
      * @param GetStageRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/freeze/sdk/#getstage
      */
     public function getStageAsync(
             GetStageRequest $request
@@ -445,8 +448,11 @@ class Gs2FreezeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get stage
+     *
      * @param GetStageRequest $request
      * @return GetStageResult
+     * @see https://docs.gs2.io/api_reference/freeze/sdk/#getstage
      */
     public function getStage (
             GetStageRequest $request
@@ -457,8 +463,11 @@ class Gs2FreezeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Promote stage
+     *
      * @param PromoteStageRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/freeze/sdk/#promotestage
      */
     public function promoteStageAsync(
             PromoteStageRequest $request
@@ -472,8 +481,11 @@ class Gs2FreezeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Promote stage
+     *
      * @param PromoteStageRequest $request
      * @return PromoteStageResult
+     * @see https://docs.gs2.io/api_reference/freeze/sdk/#promotestage
      */
     public function promoteStage (
             PromoteStageRequest $request
@@ -484,8 +496,11 @@ class Gs2FreezeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Rollback stage
+     *
      * @param RollbackStageRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/freeze/sdk/#rollbackstage
      */
     public function rollbackStageAsync(
             RollbackStageRequest $request
@@ -499,8 +514,11 @@ class Gs2FreezeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Rollback stage
+     *
      * @param RollbackStageRequest $request
      * @return RollbackStageResult
+     * @see https://docs.gs2.io/api_reference/freeze/sdk/#rollbackstage
      */
     public function rollbackStage (
             RollbackStageRequest $request
@@ -511,8 +529,11 @@ class Gs2FreezeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List stage update progress outputs
+     *
      * @param DescribeOutputsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/freeze/sdk/#describeoutputs
      */
     public function describeOutputsAsync(
             DescribeOutputsRequest $request
@@ -526,8 +547,11 @@ class Gs2FreezeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List stage update progress outputs
+     *
      * @param DescribeOutputsRequest $request
      * @return DescribeOutputsResult
+     * @see https://docs.gs2.io/api_reference/freeze/sdk/#describeoutputs
      */
     public function describeOutputs (
             DescribeOutputsRequest $request
@@ -538,8 +562,11 @@ class Gs2FreezeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get stage update progress output
+     *
      * @param GetOutputRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/freeze/sdk/#getoutput
      */
     public function getOutputAsync(
             GetOutputRequest $request
@@ -553,8 +580,11 @@ class Gs2FreezeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get stage update progress output
+     *
      * @param GetOutputRequest $request
      * @return GetOutputResult
+     * @see https://docs.gs2.io/api_reference/freeze/sdk/#getoutput
      */
     public function getOutput (
             GetOutputRequest $request

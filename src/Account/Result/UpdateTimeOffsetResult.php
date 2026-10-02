@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Account\Model\BanStatus;
 use Gs2\Account\Model\Account;
 
+/**
+ * Result of updateTimeOffset: Update the correction value for the current time of the game player's Account
+ *
+ * @see https://docs.gs2.io/api_reference/account/sdk/#updatetimeoffset
+ */
 class UpdateTimeOffsetResult implements IResult {
-    /** @var Account */
+    /** @var Account Game Player Account updated */
     private $item;
 
+    /** @return Account|null Game Player Account updated */
 	public function getItem(): ?Account {
 		return $this->item;
 	}
 
+    /** @param Account|null $item Game Player Account updated */
 	public function setItem(?Account $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Account|null $item Game Player Account updated
+     * @return UpdateTimeOffsetResult
+     */
 	public function withItem(?Account $item): UpdateTimeOffsetResult {
 		$this->item = $item;
 		return $this;

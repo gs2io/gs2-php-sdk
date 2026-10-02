@@ -20,18 +20,29 @@ namespace Gs2\Identifier\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Identifier\Model\Identifier;
 
+/**
+ * Result of deleteIdentifier: Delete credential
+ *
+ * @see https://docs.gs2.io/api_reference/identifier/sdk/#deleteidentifier
+ */
 class DeleteIdentifierResult implements IResult {
-    /** @var Identifier */
+    /** @var Identifier Credential */
     private $item;
 
+    /** @return Identifier|null Credential */
 	public function getItem(): ?Identifier {
 		return $this->item;
 	}
 
+    /** @param Identifier|null $item Credential */
 	public function setItem(?Identifier $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Identifier|null $item Credential
+     * @return DeleteIdentifierResult
+     */
 	public function withItem(?Identifier $item): DeleteIdentifierResult {
 		$this->item = $item;
 		return $this;

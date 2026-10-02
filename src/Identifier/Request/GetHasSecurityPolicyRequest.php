@@ -19,15 +19,26 @@ namespace Gs2\Identifier\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getHasSecurityPolicy: List assigned Security Policies
+ *
+ * @see https://docs.gs2.io/api_reference/identifier/sdk/#gethassecuritypolicy
+ */
 class GetHasSecurityPolicyRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string GS2-Identifier User name */
     private $userName;
+    /** @return string|null GS2-Identifier User name */
 	public function getUserName(): ?string {
 		return $this->userName;
 	}
+    /** @param string|null $userName GS2-Identifier User name */
 	public function setUserName(?string $userName) {
 		$this->userName = $userName;
 	}
+    /**
+     * @param string|null $userName GS2-Identifier User name
+     * @return GetHasSecurityPolicyRequest
+     */
 	public function withUserName(?string $userName): GetHasSecurityPolicyRequest {
 		$this->userName = $userName;
 		return $this;

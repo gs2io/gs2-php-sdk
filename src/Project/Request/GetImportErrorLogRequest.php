@@ -19,27 +19,40 @@ namespace Gs2\Project\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/** Request for getImportErrorLog: Get import user data progress */
 class GetImportErrorLogRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Transaction ID */
     private $transactionId;
-    /** @var string */
+    /** @var string Log name */
     private $errorLogName;
+    /** @return string|null Transaction ID */
 	public function getTransactionId(): ?string {
 		return $this->transactionId;
 	}
+    /** @param string|null $transactionId Transaction ID */
 	public function setTransactionId(?string $transactionId) {
 		$this->transactionId = $transactionId;
 	}
+    /**
+     * @param string|null $transactionId Transaction ID
+     * @return GetImportErrorLogRequest
+     */
 	public function withTransactionId(?string $transactionId): GetImportErrorLogRequest {
 		$this->transactionId = $transactionId;
 		return $this;
 	}
+    /** @return string|null Log name */
 	public function getErrorLogName(): ?string {
 		return $this->errorLogName;
 	}
+    /** @param string|null $errorLogName Log name */
 	public function setErrorLogName(?string $errorLogName) {
 		$this->errorLogName = $errorLogName;
 	}
+    /**
+     * @param string|null $errorLogName Log name
+     * @return GetImportErrorLogRequest
+     */
 	public function withErrorLogName(?string $errorLogName): GetImportErrorLogRequest {
 		$this->errorLogName = $errorLogName;
 		return $this;

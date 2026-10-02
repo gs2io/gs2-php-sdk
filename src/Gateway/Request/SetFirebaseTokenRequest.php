@@ -19,53 +19,82 @@ namespace Gs2\Gateway\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for setFirebaseToken: Set Firebase device token
+ *
+ * @see https://docs.gs2.io/api_reference/gateway/sdk/#setfirebasetoken
+ */
 class SetFirebaseTokenRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Device Token for Firebase Cloud Messaging */
     private $token;
-    /** @var string */
+    /** @var string Locale of the notification message */
     private $locale;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return SetFirebaseTokenRequest
+     */
 	public function withNamespaceName(?string $namespaceName): SetFirebaseTokenRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return SetFirebaseTokenRequest
+     */
 	public function withAccessToken(?string $accessToken): SetFirebaseTokenRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Device Token for Firebase Cloud Messaging */
 	public function getToken(): ?string {
 		return $this->token;
 	}
+    /** @param string|null $token Device Token for Firebase Cloud Messaging */
 	public function setToken(?string $token) {
 		$this->token = $token;
 	}
+    /**
+     * @param string|null $token Device Token for Firebase Cloud Messaging
+     * @return SetFirebaseTokenRequest
+     */
 	public function withToken(?string $token): SetFirebaseTokenRequest {
 		$this->token = $token;
 		return $this;
 	}
+    /** @return string|null Locale of the notification message */
 	public function getLocale(): ?string {
 		return $this->locale;
 	}
+    /** @param string|null $locale Locale of the notification message */
 	public function setLocale(?string $locale) {
 		$this->locale = $locale;
 	}
+    /**
+     * @param string|null $locale Locale of the notification message
+     * @return SetFirebaseTokenRequest
+     */
 	public function withLocale(?string $locale): SetFirebaseTokenRequest {
 		$this->locale = $locale;
 		return $this;

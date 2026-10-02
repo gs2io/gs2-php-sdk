@@ -20,143 +20,204 @@ namespace Gs2\Project\Model;
 use Gs2\Core\Model\IModel;
 
 
+/** GS2 Account */
 class Account implements IModel {
 	/**
-     * @var string
+     * @var string GS2 Account GRN
 	 */
 	private $accountId;
 	/**
-     * @var string
+     * @var string GS2 Account Name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string E-Mail
 	 */
 	private $email;
 	/**
-     * @var string
+     * @var string Full Name
 	 */
 	private $fullName;
 	/**
-     * @var string
+     * @var string Company Name
 	 */
 	private $companyName;
 	/**
-     * @var string
+     * @var string Two-factor authentication
 	 */
 	private $enableTwoFactorAuthentication;
 	/**
-     * @var TwoFactorAuthenticationSetting
+     * @var TwoFactorAuthenticationSetting Two-factor authentication setting
 	 */
 	private $twoFactorAuthenticationSetting;
 	/**
-     * @var string
+     * @var string Status
 	 */
 	private $status;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
+    /** @return string|null GS2 Account GRN */
 	public function getAccountId(): ?string {
 		return $this->accountId;
 	}
+    /** @param string|null $accountId GS2 Account GRN */
 	public function setAccountId(?string $accountId) {
 		$this->accountId = $accountId;
 	}
+    /**
+     * @param string|null $accountId GS2 Account GRN
+     * @return Account
+     */
 	public function withAccountId(?string $accountId): Account {
 		$this->accountId = $accountId;
 		return $this;
 	}
+    /** @return string|null GS2 Account Name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name GS2 Account Name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name GS2 Account Name
+     * @return Account
+     */
 	public function withName(?string $name): Account {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null E-Mail */
 	public function getEmail(): ?string {
 		return $this->email;
 	}
+    /** @param string|null $email E-Mail */
 	public function setEmail(?string $email) {
 		$this->email = $email;
 	}
+    /**
+     * @param string|null $email E-Mail
+     * @return Account
+     */
 	public function withEmail(?string $email): Account {
 		$this->email = $email;
 		return $this;
 	}
+    /** @return string|null Full Name */
 	public function getFullName(): ?string {
 		return $this->fullName;
 	}
+    /** @param string|null $fullName Full Name */
 	public function setFullName(?string $fullName) {
 		$this->fullName = $fullName;
 	}
+    /**
+     * @param string|null $fullName Full Name
+     * @return Account
+     */
 	public function withFullName(?string $fullName): Account {
 		$this->fullName = $fullName;
 		return $this;
 	}
+    /** @return string|null Company Name */
 	public function getCompanyName(): ?string {
 		return $this->companyName;
 	}
+    /** @param string|null $companyName Company Name */
 	public function setCompanyName(?string $companyName) {
 		$this->companyName = $companyName;
 	}
+    /**
+     * @param string|null $companyName Company Name
+     * @return Account
+     */
 	public function withCompanyName(?string $companyName): Account {
 		$this->companyName = $companyName;
 		return $this;
 	}
+    /** @return string|null Two-factor authentication */
 	public function getEnableTwoFactorAuthentication(): ?string {
 		return $this->enableTwoFactorAuthentication;
 	}
+    /** @param string|null $enableTwoFactorAuthentication Two-factor authentication */
 	public function setEnableTwoFactorAuthentication(?string $enableTwoFactorAuthentication) {
 		$this->enableTwoFactorAuthentication = $enableTwoFactorAuthentication;
 	}
+    /**
+     * @param string|null $enableTwoFactorAuthentication Two-factor authentication
+     * @return Account
+     */
 	public function withEnableTwoFactorAuthentication(?string $enableTwoFactorAuthentication): Account {
 		$this->enableTwoFactorAuthentication = $enableTwoFactorAuthentication;
 		return $this;
 	}
+    /** @return TwoFactorAuthenticationSetting|null Two-factor authentication setting */
 	public function getTwoFactorAuthenticationSetting(): ?TwoFactorAuthenticationSetting {
 		return $this->twoFactorAuthenticationSetting;
 	}
+    /** @param TwoFactorAuthenticationSetting|null $twoFactorAuthenticationSetting Two-factor authentication setting */
 	public function setTwoFactorAuthenticationSetting(?TwoFactorAuthenticationSetting $twoFactorAuthenticationSetting) {
 		$this->twoFactorAuthenticationSetting = $twoFactorAuthenticationSetting;
 	}
+    /**
+     * @param TwoFactorAuthenticationSetting|null $twoFactorAuthenticationSetting Two-factor authentication setting
+     * @return Account
+     */
 	public function withTwoFactorAuthenticationSetting(?TwoFactorAuthenticationSetting $twoFactorAuthenticationSetting): Account {
 		$this->twoFactorAuthenticationSetting = $twoFactorAuthenticationSetting;
 		return $this;
 	}
+    /** @return string|null Status */
 	public function getStatus(): ?string {
 		return $this->status;
 	}
+    /** @param string|null $status Status */
 	public function setStatus(?string $status) {
 		$this->status = $status;
 	}
+    /**
+     * @param string|null $status Status
+     * @return Account
+     */
 	public function withStatus(?string $status): Account {
 		$this->status = $status;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return Account
+     */
 	public function withCreatedAt(?int $createdAt): Account {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return Account
+     */
 	public function withUpdatedAt(?int $updatedAt): Account {
 		$this->updatedAt = $updatedAt;
 		return $this;

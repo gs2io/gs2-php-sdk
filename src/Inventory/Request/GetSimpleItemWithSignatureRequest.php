@@ -19,63 +19,98 @@ namespace Gs2\Inventory\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getSimpleItemWithSignature: Get a Simple Item along with the signature
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#getsimpleitemwithsignature
+ */
 class GetSimpleItemWithSignatureRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Simple Inventory Model name */
     private $inventoryName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Simple Item Model Name */
     private $itemName;
-    /** @var string */
+    /** @var string Encryption Key GRN */
     private $keyId;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetSimpleItemWithSignatureRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetSimpleItemWithSignatureRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Simple Inventory Model name */
 	public function getInventoryName(): ?string {
 		return $this->inventoryName;
 	}
+    /** @param string|null $inventoryName Simple Inventory Model name */
 	public function setInventoryName(?string $inventoryName) {
 		$this->inventoryName = $inventoryName;
 	}
+    /**
+     * @param string|null $inventoryName Simple Inventory Model name
+     * @return GetSimpleItemWithSignatureRequest
+     */
 	public function withInventoryName(?string $inventoryName): GetSimpleItemWithSignatureRequest {
 		$this->inventoryName = $inventoryName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return GetSimpleItemWithSignatureRequest
+     */
 	public function withAccessToken(?string $accessToken): GetSimpleItemWithSignatureRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Simple Item Model Name */
 	public function getItemName(): ?string {
 		return $this->itemName;
 	}
+    /** @param string|null $itemName Simple Item Model Name */
 	public function setItemName(?string $itemName) {
 		$this->itemName = $itemName;
 	}
+    /**
+     * @param string|null $itemName Simple Item Model Name
+     * @return GetSimpleItemWithSignatureRequest
+     */
 	public function withItemName(?string $itemName): GetSimpleItemWithSignatureRequest {
 		$this->itemName = $itemName;
 		return $this;
 	}
+    /** @return string|null Encryption Key GRN */
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
+    /** @param string|null $keyId Encryption Key GRN */
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
+    /**
+     * @param string|null $keyId Encryption Key GRN
+     * @return GetSimpleItemWithSignatureRequest
+     */
 	public function withKeyId(?string $keyId): GetSimpleItemWithSignatureRequest {
 		$this->keyId = $keyId;
 		return $this;

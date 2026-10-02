@@ -20,31 +20,48 @@ namespace Gs2\Friend\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Public Profile
+ *
+ * @see https://docs.gs2.io/api_reference/friend/sdk/#publicprofile
+ */
 class PublicProfile implements IModel {
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var string
+     * @var string Public profile
 	 */
 	private $publicProfile;
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return PublicProfile
+     */
 	public function withUserId(?string $userId): PublicProfile {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Public profile */
 	public function getPublicProfile(): ?string {
 		return $this->publicProfile;
 	}
+    /** @param string|null $publicProfile Public profile */
 	public function setPublicProfile(?string $publicProfile) {
 		$this->publicProfile = $publicProfile;
 	}
+    /**
+     * @param string|null $publicProfile Public profile
+     * @return PublicProfile
+     */
 	public function withPublicProfile(?string $publicProfile): PublicProfile {
 		$this->publicProfile = $publicProfile;
 		return $this;

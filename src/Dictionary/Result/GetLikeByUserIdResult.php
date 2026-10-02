@@ -20,18 +20,29 @@ namespace Gs2\Dictionary\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Dictionary\Model\Like;
 
+/**
+ * Result of getLikeByUserId: Get Like by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/dictionary/sdk/#getlikebyuserid
+ */
 class GetLikeByUserIdResult implements IResult {
-    /** @var Like */
+    /** @var Like Like Entry */
     private $item;
 
+    /** @return Like|null Like Entry */
 	public function getItem(): ?Like {
 		return $this->item;
 	}
 
+    /** @param Like|null $item Like Entry */
 	public function setItem(?Like $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Like|null $item Like Entry
+     * @return GetLikeByUserIdResult
+     */
 	public function withItem(?Like $item): GetLikeByUserIdResult {
 		$this->item = $item;
 		return $this;

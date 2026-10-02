@@ -19,27 +19,44 @@ namespace Gs2\Distributor\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for freezeMasterData: Freeze master data at the current time
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#freezemasterdata
+ */
 class FreezeMasterDataRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return FreezeMasterDataRequest
+     */
 	public function withNamespaceName(?string $namespaceName): FreezeMasterDataRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return FreezeMasterDataRequest
+     */
 	public function withAccessToken(?string $accessToken): FreezeMasterDataRequest {
 		$this->accessToken = $accessToken;
 		return $this;

@@ -20,33 +20,46 @@ namespace Gs2\Project\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Project\Model\DumpProgress;
 
+/** Result of describeDumpProgresses: List Dump User Data Progress */
 class DescribeDumpProgressesResult implements IResult {
-    /** @var array */
+    /** @var array List of Dump User Data Progress */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Dump User Data Progress */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Dump User Data Progress */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Dump User Data Progress
+     * @return DescribeDumpProgressesResult
+     */
 	public function withItems(?array $items): DescribeDumpProgressesResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeDumpProgressesResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeDumpProgressesResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

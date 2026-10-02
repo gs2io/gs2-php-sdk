@@ -23,48 +23,71 @@ use Gs2\Distributor\Model\ConsumeActionResult;
 use Gs2\Distributor\Model\AcquireActionResult;
 use Gs2\Distributor\Model\TransactionResult;
 
+/**
+ * Result of ifExpressionByStampTask: Execute conditional branching of consume actions as a transaction
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/stamp_sheet/#gs2distributorifexpressionbyuserid
+ */
 class IfExpressionByStampTaskResult implements IResult {
-    /** @var TransactionResult */
+    /** @var TransactionResult Transaction Execution Result */
     private $item;
-    /** @var bool */
+    /** @var bool Result of condition evaluation */
     private $expressionResult;
-    /** @var string */
+    /** @var string Context recording the execution results of Consume Actions */
     private $newContextStack;
 
+    /** @return TransactionResult|null Transaction Execution Result */
 	public function getItem(): ?TransactionResult {
 		return $this->item;
 	}
 
+    /** @param TransactionResult|null $item Transaction Execution Result */
 	public function setItem(?TransactionResult $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param TransactionResult|null $item Transaction Execution Result
+     * @return IfExpressionByStampTaskResult
+     */
 	public function withItem(?TransactionResult $item): IfExpressionByStampTaskResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return bool|null Result of condition evaluation */
 	public function getExpressionResult(): ?bool {
 		return $this->expressionResult;
 	}
 
+    /** @param bool|null $expressionResult Result of condition evaluation */
 	public function setExpressionResult(?bool $expressionResult) {
 		$this->expressionResult = $expressionResult;
 	}
 
+    /**
+     * @param bool|null $expressionResult Result of condition evaluation
+     * @return IfExpressionByStampTaskResult
+     */
 	public function withExpressionResult(?bool $expressionResult): IfExpressionByStampTaskResult {
 		$this->expressionResult = $expressionResult;
 		return $this;
 	}
 
+    /** @return string|null Context recording the execution results of Consume Actions */
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
+    /** @param string|null $newContextStack Context recording the execution results of Consume Actions */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
+    /**
+     * @param string|null $newContextStack Context recording the execution results of Consume Actions
+     * @return IfExpressionByStampTaskResult
+     */
 	public function withNewContextStack(?string $newContextStack): IfExpressionByStampTaskResult {
 		$this->newContextStack = $newContextStack;
 		return $this;

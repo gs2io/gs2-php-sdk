@@ -20,31 +20,48 @@ namespace Gs2\Enchant\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Balance Parameter Value
+ *
+ * @see https://docs.gs2.io/api_reference/enchant/sdk/#balanceparametervalue
+ */
 class BalanceParameterValue implements IModel {
 	/**
-     * @var string
+     * @var string Name
 	 */
 	private $name;
 	/**
-     * @var int
+     * @var int Value
 	 */
 	private $value;
+    /** @return string|null Name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Name
+     * @return BalanceParameterValue
+     */
 	public function withName(?string $name): BalanceParameterValue {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return int|null Value */
 	public function getValue(): ?int {
 		return $this->value;
 	}
+    /** @param int|null $value Value */
 	public function setValue(?int $value) {
 		$this->value = $value;
 	}
+    /**
+     * @param int|null $value Value
+     * @return BalanceParameterValue
+     */
 	public function withValue(?int $value): BalanceParameterValue {
 		$this->value = $value;
 		return $this;

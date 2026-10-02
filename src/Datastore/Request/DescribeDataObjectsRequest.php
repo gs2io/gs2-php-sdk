@@ -19,63 +19,98 @@ namespace Gs2\Datastore\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for describeDataObjects: List Data Objects
+ *
+ * @see https://docs.gs2.io/api_reference/datastore/sdk/#describedataobjects
+ */
 class DescribeDataObjectsRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Status */
     private $status;
-    /** @var string */
+    /** @var string Token specifying the position from which to start acquiring data */
     private $pageToken;
-    /** @var int */
+    /** @var int Number of data items to retrieve */
     private $limit;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DescribeDataObjectsRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DescribeDataObjectsRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return DescribeDataObjectsRequest
+     */
 	public function withAccessToken(?string $accessToken): DescribeDataObjectsRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Status */
 	public function getStatus(): ?string {
 		return $this->status;
 	}
+    /** @param string|null $status Status */
 	public function setStatus(?string $status) {
 		$this->status = $status;
 	}
+    /**
+     * @param string|null $status Status
+     * @return DescribeDataObjectsRequest
+     */
 	public function withStatus(?string $status): DescribeDataObjectsRequest {
 		$this->status = $status;
 		return $this;
 	}
+    /** @return string|null Token specifying the position from which to start acquiring data */
 	public function getPageToken(): ?string {
 		return $this->pageToken;
 	}
+    /** @param string|null $pageToken Token specifying the position from which to start acquiring data */
 	public function setPageToken(?string $pageToken) {
 		$this->pageToken = $pageToken;
 	}
+    /**
+     * @param string|null $pageToken Token specifying the position from which to start acquiring data
+     * @return DescribeDataObjectsRequest
+     */
 	public function withPageToken(?string $pageToken): DescribeDataObjectsRequest {
 		$this->pageToken = $pageToken;
 		return $this;
 	}
+    /** @return int|null Number of data items to retrieve */
 	public function getLimit(): ?int {
 		return $this->limit;
 	}
+    /** @param int|null $limit Number of data items to retrieve */
 	public function setLimit(?int $limit) {
 		$this->limit = $limit;
 	}
+    /**
+     * @param int|null $limit Number of data items to retrieve
+     * @return DescribeDataObjectsRequest
+     */
 	public function withLimit(?int $limit): DescribeDataObjectsRequest {
 		$this->limit = $limit;
 		return $this;

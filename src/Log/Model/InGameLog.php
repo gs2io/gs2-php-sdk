@@ -20,73 +20,108 @@ namespace Gs2\Log\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * In-game Log
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#ingamelog
+ */
 class InGameLog implements IModel {
 	/**
-     * @var int
+     * @var int Timestamp
 	 */
 	private $timestamp;
 	/**
-     * @var string
+     * @var string Request ID
 	 */
 	private $requestId;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var array
+     * @var array Tags
 	 */
 	private $tags;
 	/**
-     * @var string
+     * @var string Payload
 	 */
 	private $payload;
+    /** @return int|null Timestamp */
 	public function getTimestamp(): ?int {
 		return $this->timestamp;
 	}
+    /** @param int|null $timestamp Timestamp */
 	public function setTimestamp(?int $timestamp) {
 		$this->timestamp = $timestamp;
 	}
+    /**
+     * @param int|null $timestamp Timestamp
+     * @return InGameLog
+     */
 	public function withTimestamp(?int $timestamp): InGameLog {
 		$this->timestamp = $timestamp;
 		return $this;
 	}
+    /** @return string|null Request ID */
 	public function getRequestId(): ?string {
 		return $this->requestId;
 	}
+    /** @param string|null $requestId Request ID */
 	public function setRequestId(?string $requestId) {
 		$this->requestId = $requestId;
 	}
+    /**
+     * @param string|null $requestId Request ID
+     * @return InGameLog
+     */
 	public function withRequestId(?string $requestId): InGameLog {
 		$this->requestId = $requestId;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return InGameLog
+     */
 	public function withUserId(?string $userId): InGameLog {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return array|null Tags */
 	public function getTags(): ?array {
 		return $this->tags;
 	}
+    /** @param array|null $tags Tags */
 	public function setTags(?array $tags) {
 		$this->tags = $tags;
 	}
+    /**
+     * @param array|null $tags Tags
+     * @return InGameLog
+     */
 	public function withTags(?array $tags): InGameLog {
 		$this->tags = $tags;
 		return $this;
 	}
+    /** @return string|null Payload */
 	public function getPayload(): ?string {
 		return $this->payload;
 	}
+    /** @param string|null $payload Payload */
 	public function setPayload(?string $payload) {
 		$this->payload = $payload;
 	}
+    /**
+     * @param string|null $payload Payload
+     * @return InGameLog
+     */
 	public function withPayload(?string $payload): InGameLog {
 		$this->payload = $payload;
 		return $this;

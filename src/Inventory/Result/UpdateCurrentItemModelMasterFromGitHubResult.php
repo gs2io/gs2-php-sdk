@@ -20,18 +20,29 @@ namespace Gs2\Inventory\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Inventory\Model\CurrentItemModelMaster;
 
+/**
+ * Result of updateCurrentItemModelMasterFromGitHub: Update currently active Item Model master data from GitHub
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#updatecurrentitemmodelmasterfromgithub
+ */
 class UpdateCurrentItemModelMasterFromGitHubResult implements IResult {
-    /** @var CurrentItemModelMaster */
+    /** @var CurrentItemModelMaster Updated master data of the currently active Item Models */
     private $item;
 
+    /** @return CurrentItemModelMaster|null Updated master data of the currently active Item Models */
 	public function getItem(): ?CurrentItemModelMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentItemModelMaster|null $item Updated master data of the currently active Item Models */
 	public function setItem(?CurrentItemModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentItemModelMaster|null $item Updated master data of the currently active Item Models
+     * @return UpdateCurrentItemModelMasterFromGitHubResult
+     */
 	public function withItem(?CurrentItemModelMaster $item): UpdateCurrentItemModelMasterFromGitHubResult {
 		$this->item = $item;
 		return $this;

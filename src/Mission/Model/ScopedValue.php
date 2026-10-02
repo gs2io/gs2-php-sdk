@@ -20,87 +20,128 @@ namespace Gs2\Mission\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Scoped Value
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#scopedvalue
+ */
 class ScopedValue implements IModel {
 	/**
-     * @var string
+     * @var string Scope type
 	 */
 	private $scopeType;
 	/**
-     * @var string
+     * @var string Reset timing
 	 */
 	private $resetType;
 	/**
-     * @var string
+     * @var string Condition Name
 	 */
 	private $conditionName;
 	/**
-     * @var int
+     * @var int Count value
 	 */
 	private $value;
 	/**
-     * @var int
+     * @var int Next reset timing
 	 */
 	private $nextResetAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
+    /** @return string|null Scope type */
 	public function getScopeType(): ?string {
 		return $this->scopeType;
 	}
+    /** @param string|null $scopeType Scope type */
 	public function setScopeType(?string $scopeType) {
 		$this->scopeType = $scopeType;
 	}
+    /**
+     * @param string|null $scopeType Scope type
+     * @return ScopedValue
+     */
 	public function withScopeType(?string $scopeType): ScopedValue {
 		$this->scopeType = $scopeType;
 		return $this;
 	}
+    /** @return string|null Reset timing */
 	public function getResetType(): ?string {
 		return $this->resetType;
 	}
+    /** @param string|null $resetType Reset timing */
 	public function setResetType(?string $resetType) {
 		$this->resetType = $resetType;
 	}
+    /**
+     * @param string|null $resetType Reset timing
+     * @return ScopedValue
+     */
 	public function withResetType(?string $resetType): ScopedValue {
 		$this->resetType = $resetType;
 		return $this;
 	}
+    /** @return string|null Condition Name */
 	public function getConditionName(): ?string {
 		return $this->conditionName;
 	}
+    /** @param string|null $conditionName Condition Name */
 	public function setConditionName(?string $conditionName) {
 		$this->conditionName = $conditionName;
 	}
+    /**
+     * @param string|null $conditionName Condition Name
+     * @return ScopedValue
+     */
 	public function withConditionName(?string $conditionName): ScopedValue {
 		$this->conditionName = $conditionName;
 		return $this;
 	}
+    /** @return int|null Count value */
 	public function getValue(): ?int {
 		return $this->value;
 	}
+    /** @param int|null $value Count value */
 	public function setValue(?int $value) {
 		$this->value = $value;
 	}
+    /**
+     * @param int|null $value Count value
+     * @return ScopedValue
+     */
 	public function withValue(?int $value): ScopedValue {
 		$this->value = $value;
 		return $this;
 	}
+    /** @return int|null Next reset timing */
 	public function getNextResetAt(): ?int {
 		return $this->nextResetAt;
 	}
+    /** @param int|null $nextResetAt Next reset timing */
 	public function setNextResetAt(?int $nextResetAt) {
 		$this->nextResetAt = $nextResetAt;
 	}
+    /**
+     * @param int|null $nextResetAt Next reset timing
+     * @return ScopedValue
+     */
 	public function withNextResetAt(?int $nextResetAt): ScopedValue {
 		$this->nextResetAt = $nextResetAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return ScopedValue
+     */
 	public function withUpdatedAt(?int $updatedAt): ScopedValue {
 		$this->updatedAt = $updatedAt;
 		return $this;

@@ -20,101 +20,148 @@ namespace Gs2\Enhance\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Unleash Rate Model
+ *
+ * @see https://docs.gs2.io/api_reference/enhance/sdk/#unleashratemodel
+ */
 class UnleashRateModel implements IModel {
 	/**
-     * @var string
+     * @var string Unleash Rate Model GRN
 	 */
 	private $unleashRateModelId;
 	/**
-     * @var string
+     * @var string Unleash Rate Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Description
 	 */
 	private $description;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var string
+     * @var string GS2-Inventory Inventory Model GRN usable for unleash targets
 	 */
 	private $targetInventoryModelId;
 	/**
-     * @var string
+     * @var string Grade Model GRN
 	 */
 	private $gradeModelId;
 	/**
-     * @var array
+     * @var array List of Grade Entry
 	 */
 	private $gradeEntries;
+    /** @return string|null Unleash Rate Model GRN */
 	public function getUnleashRateModelId(): ?string {
 		return $this->unleashRateModelId;
 	}
+    /** @param string|null $unleashRateModelId Unleash Rate Model GRN */
 	public function setUnleashRateModelId(?string $unleashRateModelId) {
 		$this->unleashRateModelId = $unleashRateModelId;
 	}
+    /**
+     * @param string|null $unleashRateModelId Unleash Rate Model GRN
+     * @return UnleashRateModel
+     */
 	public function withUnleashRateModelId(?string $unleashRateModelId): UnleashRateModel {
 		$this->unleashRateModelId = $unleashRateModelId;
 		return $this;
 	}
+    /** @return string|null Unleash Rate Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Unleash Rate Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Unleash Rate Model name
+     * @return UnleashRateModel
+     */
 	public function withName(?string $name): UnleashRateModel {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return UnleashRateModel
+     */
 	public function withDescription(?string $description): UnleashRateModel {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return UnleashRateModel
+     */
 	public function withMetadata(?string $metadata): UnleashRateModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return string|null GS2-Inventory Inventory Model GRN usable for unleash targets */
 	public function getTargetInventoryModelId(): ?string {
 		return $this->targetInventoryModelId;
 	}
+    /** @param string|null $targetInventoryModelId GS2-Inventory Inventory Model GRN usable for unleash targets */
 	public function setTargetInventoryModelId(?string $targetInventoryModelId) {
 		$this->targetInventoryModelId = $targetInventoryModelId;
 	}
+    /**
+     * @param string|null $targetInventoryModelId GS2-Inventory Inventory Model GRN usable for unleash targets
+     * @return UnleashRateModel
+     */
 	public function withTargetInventoryModelId(?string $targetInventoryModelId): UnleashRateModel {
 		$this->targetInventoryModelId = $targetInventoryModelId;
 		return $this;
 	}
+    /** @return string|null Grade Model GRN */
 	public function getGradeModelId(): ?string {
 		return $this->gradeModelId;
 	}
+    /** @param string|null $gradeModelId Grade Model GRN */
 	public function setGradeModelId(?string $gradeModelId) {
 		$this->gradeModelId = $gradeModelId;
 	}
+    /**
+     * @param string|null $gradeModelId Grade Model GRN
+     * @return UnleashRateModel
+     */
 	public function withGradeModelId(?string $gradeModelId): UnleashRateModel {
 		$this->gradeModelId = $gradeModelId;
 		return $this;
 	}
+    /** @return array|null List of Grade Entry */
 	public function getGradeEntries(): ?array {
 		return $this->gradeEntries;
 	}
+    /** @param array|null $gradeEntries List of Grade Entry */
 	public function setGradeEntries(?array $gradeEntries) {
 		$this->gradeEntries = $gradeEntries;
 	}
+    /**
+     * @param array|null $gradeEntries List of Grade Entry
+     * @return UnleashRateModel
+     */
 	public function withGradeEntries(?array $gradeEntries): UnleashRateModel {
 		$this->gradeEntries = $gradeEntries;
 		return $this;

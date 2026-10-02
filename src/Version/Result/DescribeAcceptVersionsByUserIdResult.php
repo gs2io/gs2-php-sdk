@@ -21,33 +21,50 @@ use Gs2\Core\Model\IResult;
 use Gs2\Version\Model\Version;
 use Gs2\Version\Model\AcceptVersion;
 
+/**
+ * Result of describeAcceptVersionsByUserId: List Approved Versions by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/version/sdk/#describeacceptversionsbyuserid
+ */
 class DescribeAcceptVersionsByUserIdResult implements IResult {
-    /** @var array */
+    /** @var array List of Approved Versions */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Approved Versions */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Approved Versions */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Approved Versions
+     * @return DescribeAcceptVersionsByUserIdResult
+     */
 	public function withItems(?array $items): DescribeAcceptVersionsByUserIdResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeAcceptVersionsByUserIdResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeAcceptVersionsByUserIdResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

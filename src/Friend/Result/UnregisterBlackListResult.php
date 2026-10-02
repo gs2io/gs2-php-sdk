@@ -20,18 +20,29 @@ namespace Gs2\Friend\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Friend\Model\BlackList;
 
+/**
+ * Result of unregisterBlackList: Remove a user from blacklist
+ *
+ * @see https://docs.gs2.io/api_reference/friend/sdk/#unregisterblacklist
+ */
 class UnregisterBlackListResult implements IResult {
-    /** @var BlackList */
+    /** @var BlackList Blacklist */
     private $item;
 
+    /** @return BlackList|null Blacklist */
 	public function getItem(): ?BlackList {
 		return $this->item;
 	}
 
+    /** @param BlackList|null $item Blacklist */
 	public function setItem(?BlackList $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param BlackList|null $item Blacklist
+     * @return UnregisterBlackListResult
+     */
 	public function withItem(?BlackList $item): UnregisterBlackListResult {
 		$this->item = $item;
 		return $this;

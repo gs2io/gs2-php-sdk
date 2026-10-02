@@ -24,18 +24,29 @@ use Gs2\LoginReward\Model\VerifyAction;
 use Gs2\LoginReward\Model\ConsumeAction;
 use Gs2\LoginReward\Model\BonusModelMaster;
 
+/**
+ * Result of deleteBonusModelMaster: Delete Login Bonus Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/login_reward/sdk/#deletebonusmodelmaster
+ */
 class DeleteBonusModelMasterResult implements IResult {
-    /** @var BonusModelMaster */
+    /** @var BonusModelMaster Login Bonus Model Master deleted */
     private $item;
 
+    /** @return BonusModelMaster|null Login Bonus Model Master deleted */
 	public function getItem(): ?BonusModelMaster {
 		return $this->item;
 	}
 
+    /** @param BonusModelMaster|null $item Login Bonus Model Master deleted */
 	public function setItem(?BonusModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param BonusModelMaster|null $item Login Bonus Model Master deleted
+     * @return DeleteBonusModelMasterResult
+     */
 	public function withItem(?BonusModelMaster $item): DeleteBonusModelMasterResult {
 		$this->item = $item;
 		return $this;

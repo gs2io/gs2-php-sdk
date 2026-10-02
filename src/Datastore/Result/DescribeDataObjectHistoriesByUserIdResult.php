@@ -20,33 +20,50 @@ namespace Gs2\Datastore\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Datastore\Model\DataObjectHistory;
 
+/**
+ * Result of describeDataObjectHistoriesByUserId: List Data Object Histories by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/datastore/sdk/#describedataobjecthistoriesbyuserid
+ */
 class DescribeDataObjectHistoriesByUserIdResult implements IResult {
-    /** @var array */
+    /** @var array List of Data Object Histories */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Data Object Histories */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Data Object Histories */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Data Object Histories
+     * @return DescribeDataObjectHistoriesByUserIdResult
+     */
 	public function withItems(?array $items): DescribeDataObjectHistoriesByUserIdResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeDataObjectHistoriesByUserIdResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeDataObjectHistoriesByUserIdResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

@@ -21,48 +21,67 @@ use Gs2\Core\Model\IResult;
 use Gs2\Project\Model\Gs2Region;
 use Gs2\Project\Model\Project;
 
+/** Result of getProjectToken: Issue project tokens */
 class GetProjectTokenResult implements IResult {
-    /** @var Project */
+    /** @var Project Projects signed in to */
     private $item;
-    /** @var string */
+    /** @var string Owner ID */
     private $ownerId;
-    /** @var string */
+    /** @var string Signed in to the project token. */
     private $projectToken;
 
+    /** @return Project|null Projects signed in to */
 	public function getItem(): ?Project {
 		return $this->item;
 	}
 
+    /** @param Project|null $item Projects signed in to */
 	public function setItem(?Project $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Project|null $item Projects signed in to
+     * @return GetProjectTokenResult
+     */
 	public function withItem(?Project $item): GetProjectTokenResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null Owner ID */
 	public function getOwnerId(): ?string {
 		return $this->ownerId;
 	}
 
+    /** @param string|null $ownerId Owner ID */
 	public function setOwnerId(?string $ownerId) {
 		$this->ownerId = $ownerId;
 	}
 
+    /**
+     * @param string|null $ownerId Owner ID
+     * @return GetProjectTokenResult
+     */
 	public function withOwnerId(?string $ownerId): GetProjectTokenResult {
 		$this->ownerId = $ownerId;
 		return $this;
 	}
 
+    /** @return string|null Signed in to the project token. */
 	public function getProjectToken(): ?string {
 		return $this->projectToken;
 	}
 
+    /** @param string|null $projectToken Signed in to the project token. */
 	public function setProjectToken(?string $projectToken) {
 		$this->projectToken = $projectToken;
 	}
 
+    /**
+     * @param string|null $projectToken Signed in to the project token.
+     * @return GetProjectTokenResult
+     */
 	public function withProjectToken(?string $projectToken): GetProjectTokenResult {
 		$this->projectToken = $projectToken;
 		return $this;

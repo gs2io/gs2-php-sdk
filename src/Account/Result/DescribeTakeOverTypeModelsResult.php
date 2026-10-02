@@ -22,18 +22,29 @@ use Gs2\Account\Model\ScopeValue;
 use Gs2\Account\Model\OpenIdConnectSetting;
 use Gs2\Account\Model\TakeOverTypeModel;
 
+/**
+ * Result of describeTakeOverTypeModels: List Takeover Type Models
+ *
+ * @see https://docs.gs2.io/api_reference/account/sdk/#describetakeovertypemodels
+ */
 class DescribeTakeOverTypeModelsResult implements IResult {
-    /** @var array */
+    /** @var array List of Takeover Type Models */
     private $items;
 
+    /** @return array|null List of Takeover Type Models */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Takeover Type Models */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Takeover Type Models
+     * @return DescribeTakeOverTypeModelsResult
+     */
 	public function withItems(?array $items): DescribeTakeOverTypeModelsResult {
 		$this->items = $items;
 		return $this;

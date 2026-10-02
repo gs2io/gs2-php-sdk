@@ -20,18 +20,29 @@ namespace Gs2\Key\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Key\Model\GitHubApiKey;
 
+/**
+ * Result of getGitHubApiKey: Get GitHub API Key
+ *
+ * @see https://docs.gs2.io/api_reference/key/sdk/#getgithubapikey
+ */
 class GetGitHubApiKeyResult implements IResult {
-    /** @var GitHubApiKey */
+    /** @var GitHubApiKey GitHub API Key */
     private $item;
 
+    /** @return GitHubApiKey|null GitHub API Key */
 	public function getItem(): ?GitHubApiKey {
 		return $this->item;
 	}
 
+    /** @param GitHubApiKey|null $item GitHub API Key */
 	public function setItem(?GitHubApiKey $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param GitHubApiKey|null $item GitHub API Key
+     * @return GetGitHubApiKeyResult
+     */
 	public function withItem(?GitHubApiKey $item): GetGitHubApiKeyResult {
 		$this->item = $item;
 		return $this;

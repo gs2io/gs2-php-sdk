@@ -20,33 +20,50 @@ namespace Gs2\Identifier\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Identifier\Model\SecurityPolicy;
 
+/**
+ * Result of describeSecurityPolicies: List Security Policies
+ *
+ * @see https://docs.gs2.io/api_reference/identifier/sdk/#describesecuritypolicies
+ */
 class DescribeSecurityPoliciesResult implements IResult {
-    /** @var array */
+    /** @var array List of security policies */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of security policies */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of security policies */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of security policies
+     * @return DescribeSecurityPoliciesResult
+     */
 	public function withItems(?array $items): DescribeSecurityPoliciesResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeSecurityPoliciesResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeSecurityPoliciesResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

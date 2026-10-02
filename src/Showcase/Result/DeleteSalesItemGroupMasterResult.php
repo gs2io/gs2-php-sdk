@@ -20,18 +20,29 @@ namespace Gs2\Showcase\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Showcase\Model\SalesItemGroupMaster;
 
+/**
+ * Result of deleteSalesItemGroupMaster: Delete Sales Item Group Master
+ *
+ * @see https://docs.gs2.io/api_reference/showcase/sdk/#deletesalesitemgroupmaster
+ */
 class DeleteSalesItemGroupMasterResult implements IResult {
-    /** @var SalesItemGroupMaster */
+    /** @var SalesItemGroupMaster Sales Item Group Master deleted */
     private $item;
 
+    /** @return SalesItemGroupMaster|null Sales Item Group Master deleted */
 	public function getItem(): ?SalesItemGroupMaster {
 		return $this->item;
 	}
 
+    /** @param SalesItemGroupMaster|null $item Sales Item Group Master deleted */
 	public function setItem(?SalesItemGroupMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param SalesItemGroupMaster|null $item Sales Item Group Master deleted
+     * @return DeleteSalesItemGroupMasterResult
+     */
 	public function withItem(?SalesItemGroupMaster $item): DeleteSalesItemGroupMasterResult {
 		$this->item = $item;
 		return $this;

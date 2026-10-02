@@ -20,18 +20,29 @@ namespace Gs2\Stamina\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Stamina\Model\CurrentStaminaMaster;
 
+/**
+ * Result of getCurrentStaminaMaster: Get currently active Stamina Model master data
+ *
+ * @see https://docs.gs2.io/api_reference/stamina/sdk/#getcurrentstaminamaster
+ */
 class GetCurrentStaminaMasterResult implements IResult {
-    /** @var CurrentStaminaMaster */
+    /** @var CurrentStaminaMaster Currently active Stamina Model master data */
     private $item;
 
+    /** @return CurrentStaminaMaster|null Currently active Stamina Model master data */
 	public function getItem(): ?CurrentStaminaMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentStaminaMaster|null $item Currently active Stamina Model master data */
 	public function setItem(?CurrentStaminaMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentStaminaMaster|null $item Currently active Stamina Model master data
+     * @return GetCurrentStaminaMasterResult
+     */
 	public function withItem(?CurrentStaminaMaster $item): GetCurrentStaminaMasterResult {
 		$this->item = $item;
 		return $this;

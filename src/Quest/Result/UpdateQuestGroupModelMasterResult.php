@@ -20,18 +20,29 @@ namespace Gs2\Quest\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Quest\Model\QuestGroupModelMaster;
 
+/**
+ * Result of updateQuestGroupModelMaster: Update Quest Group Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/quest/sdk/#updatequestgroupmodelmaster
+ */
 class UpdateQuestGroupModelMasterResult implements IResult {
-    /** @var QuestGroupModelMaster */
+    /** @var QuestGroupModelMaster Quest Group Model Master updated */
     private $item;
 
+    /** @return QuestGroupModelMaster|null Quest Group Model Master updated */
 	public function getItem(): ?QuestGroupModelMaster {
 		return $this->item;
 	}
 
+    /** @param QuestGroupModelMaster|null $item Quest Group Model Master updated */
 	public function setItem(?QuestGroupModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param QuestGroupModelMaster|null $item Quest Group Model Master updated
+     * @return UpdateQuestGroupModelMasterResult
+     */
 	public function withItem(?QuestGroupModelMaster $item): UpdateQuestGroupModelMasterResult {
 		$this->item = $item;
 		return $this;

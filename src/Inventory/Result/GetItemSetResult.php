@@ -22,48 +22,71 @@ use Gs2\Inventory\Model\ItemSet;
 use Gs2\Inventory\Model\ItemModel;
 use Gs2\Inventory\Model\Inventory;
 
+/**
+ * Result of getItemSet: Get Item Set
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#getitemset
+ */
 class GetItemSetResult implements IResult {
-    /** @var array */
+    /** @var array List of Item Sets */
     private $items;
-    /** @var ItemModel */
+    /** @var ItemModel Item Model */
     private $itemModel;
-    /** @var Inventory */
+    /** @var Inventory inventory */
     private $inventory;
 
+    /** @return array|null List of Item Sets */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Item Sets */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Item Sets
+     * @return GetItemSetResult
+     */
 	public function withItems(?array $items): GetItemSetResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return ItemModel|null Item Model */
 	public function getItemModel(): ?ItemModel {
 		return $this->itemModel;
 	}
 
+    /** @param ItemModel|null $itemModel Item Model */
 	public function setItemModel(?ItemModel $itemModel) {
 		$this->itemModel = $itemModel;
 	}
 
+    /**
+     * @param ItemModel|null $itemModel Item Model
+     * @return GetItemSetResult
+     */
 	public function withItemModel(?ItemModel $itemModel): GetItemSetResult {
 		$this->itemModel = $itemModel;
 		return $this;
 	}
 
+    /** @return Inventory|null inventory */
 	public function getInventory(): ?Inventory {
 		return $this->inventory;
 	}
 
+    /** @param Inventory|null $inventory inventory */
 	public function setInventory(?Inventory $inventory) {
 		$this->inventory = $inventory;
 	}
 
+    /**
+     * @param Inventory|null $inventory inventory
+     * @return GetItemSetResult
+     */
 	public function withInventory(?Inventory $inventory): GetItemSetResult {
 		$this->inventory = $inventory;
 		return $this;

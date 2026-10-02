@@ -25,33 +25,50 @@ use Gs2\LoginReward\Model\VerifyAction;
 use Gs2\LoginReward\Model\ConsumeAction;
 use Gs2\LoginReward\Model\BonusModel;
 
+/**
+ * Result of markReceived: Mark as received
+ *
+ * @see https://docs.gs2.io/api_reference/login_reward/sdk/#markreceived
+ */
 class MarkReceivedResult implements IResult {
-    /** @var ReceiveStatus */
+    /** @var ReceiveStatus ReceiveStatus */
     private $item;
-    /** @var BonusModel */
+    /** @var BonusModel Login Bonus Model */
     private $bonusModel;
 
+    /** @return ReceiveStatus|null ReceiveStatus */
 	public function getItem(): ?ReceiveStatus {
 		return $this->item;
 	}
 
+    /** @param ReceiveStatus|null $item ReceiveStatus */
 	public function setItem(?ReceiveStatus $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param ReceiveStatus|null $item ReceiveStatus
+     * @return MarkReceivedResult
+     */
 	public function withItem(?ReceiveStatus $item): MarkReceivedResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return BonusModel|null Login Bonus Model */
 	public function getBonusModel(): ?BonusModel {
 		return $this->bonusModel;
 	}
 
+    /** @param BonusModel|null $bonusModel Login Bonus Model */
 	public function setBonusModel(?BonusModel $bonusModel) {
 		$this->bonusModel = $bonusModel;
 	}
 
+    /**
+     * @param BonusModel|null $bonusModel Login Bonus Model
+     * @return MarkReceivedResult
+     */
 	public function withBonusModel(?BonusModel $bonusModel): MarkReceivedResult {
 		$this->bonusModel = $bonusModel;
 		return $this;

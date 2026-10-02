@@ -19,63 +19,98 @@ namespace Gs2\Datastore\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for describeDataObjectHistories: List Data Object Histories
+ *
+ * @see https://docs.gs2.io/api_reference/datastore/sdk/#describedataobjecthistories
+ */
 class DescribeDataObjectHistoriesRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Data Object Name */
     private $dataObjectName;
-    /** @var string */
+    /** @var string Token specifying the position from which to start acquiring data */
     private $pageToken;
-    /** @var int */
+    /** @var int Number of data items to retrieve */
     private $limit;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DescribeDataObjectHistoriesRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DescribeDataObjectHistoriesRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return DescribeDataObjectHistoriesRequest
+     */
 	public function withAccessToken(?string $accessToken): DescribeDataObjectHistoriesRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Data Object Name */
 	public function getDataObjectName(): ?string {
 		return $this->dataObjectName;
 	}
+    /** @param string|null $dataObjectName Data Object Name */
 	public function setDataObjectName(?string $dataObjectName) {
 		$this->dataObjectName = $dataObjectName;
 	}
+    /**
+     * @param string|null $dataObjectName Data Object Name
+     * @return DescribeDataObjectHistoriesRequest
+     */
 	public function withDataObjectName(?string $dataObjectName): DescribeDataObjectHistoriesRequest {
 		$this->dataObjectName = $dataObjectName;
 		return $this;
 	}
+    /** @return string|null Token specifying the position from which to start acquiring data */
 	public function getPageToken(): ?string {
 		return $this->pageToken;
 	}
+    /** @param string|null $pageToken Token specifying the position from which to start acquiring data */
 	public function setPageToken(?string $pageToken) {
 		$this->pageToken = $pageToken;
 	}
+    /**
+     * @param string|null $pageToken Token specifying the position from which to start acquiring data
+     * @return DescribeDataObjectHistoriesRequest
+     */
 	public function withPageToken(?string $pageToken): DescribeDataObjectHistoriesRequest {
 		$this->pageToken = $pageToken;
 		return $this;
 	}
+    /** @return int|null Number of data items to retrieve */
 	public function getLimit(): ?int {
 		return $this->limit;
 	}
+    /** @param int|null $limit Number of data items to retrieve */
 	public function setLimit(?int $limit) {
 		$this->limit = $limit;
 	}
+    /**
+     * @param int|null $limit Number of data items to retrieve
+     * @return DescribeDataObjectHistoriesRequest
+     */
 	public function withLimit(?int $limit): DescribeDataObjectHistoriesRequest {
 		$this->limit = $limit;
 		return $this;

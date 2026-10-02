@@ -20,33 +20,50 @@ namespace Gs2\Guild\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Guild\Model\JoinedGuild;
 
+/**
+ * Result of describeJoinedGuildsByUserId: List joined Guilds by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/guild/sdk/#describejoinedguildsbyuserid
+ */
 class DescribeJoinedGuildsByUserIdResult implements IResult {
-    /** @var array */
+    /** @var array Joining guild */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null Joining guild */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items Joining guild */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items Joining guild
+     * @return DescribeJoinedGuildsByUserIdResult
+     */
 	public function withItems(?array $items): DescribeJoinedGuildsByUserIdResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeJoinedGuildsByUserIdResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeJoinedGuildsByUserIdResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

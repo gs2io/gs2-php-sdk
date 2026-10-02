@@ -21,48 +21,71 @@ use Gs2\Core\Model\IResult;
 use Gs2\Grade\Model\Status;
 use Gs2\Experience\Model\Status as ExperienceStatus;
 
+/**
+ * Result of subGrade: Subtract grade
+ *
+ * @see https://docs.gs2.io/api_reference/grade/sdk/#subgrade
+ */
 class SubGradeResult implements IResult {
-    /** @var Status */
+    /** @var Status Status after subtraction */
     private $item;
-    /** @var string */
+    /** @var string GS2-Experience Namespace Name */
     private $experienceNamespaceName;
-    /** @var ExperienceStatus */
+    /** @var ExperienceStatus GS2-Experience Status after addition */
     private $experienceStatus;
 
+    /** @return Status|null Status after subtraction */
 	public function getItem(): ?Status {
 		return $this->item;
 	}
 
+    /** @param Status|null $item Status after subtraction */
 	public function setItem(?Status $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Status|null $item Status after subtraction
+     * @return SubGradeResult
+     */
 	public function withItem(?Status $item): SubGradeResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null GS2-Experience Namespace Name */
 	public function getExperienceNamespaceName(): ?string {
 		return $this->experienceNamespaceName;
 	}
 
+    /** @param string|null $experienceNamespaceName GS2-Experience Namespace Name */
 	public function setExperienceNamespaceName(?string $experienceNamespaceName) {
 		$this->experienceNamespaceName = $experienceNamespaceName;
 	}
 
+    /**
+     * @param string|null $experienceNamespaceName GS2-Experience Namespace Name
+     * @return SubGradeResult
+     */
 	public function withExperienceNamespaceName(?string $experienceNamespaceName): SubGradeResult {
 		$this->experienceNamespaceName = $experienceNamespaceName;
 		return $this;
 	}
 
+    /** @return ExperienceStatus|null GS2-Experience Status after addition */
 	public function getExperienceStatus(): ?ExperienceStatus {
 		return $this->experienceStatus;
 	}
 
+    /** @param ExperienceStatus|null $experienceStatus GS2-Experience Status after addition */
 	public function setExperienceStatus(?ExperienceStatus $experienceStatus) {
 		$this->experienceStatus = $experienceStatus;
 	}
 
+    /**
+     * @param ExperienceStatus|null $experienceStatus GS2-Experience Status after addition
+     * @return SubGradeResult
+     */
 	public function withExperienceStatus(?ExperienceStatus $experienceStatus): SubGradeResult {
 		$this->experienceStatus = $experienceStatus;
 		return $this;

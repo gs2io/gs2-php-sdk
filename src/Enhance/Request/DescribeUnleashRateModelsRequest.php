@@ -19,15 +19,26 @@ namespace Gs2\Enhance\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for describeUnleashRateModels: List Unleash Rate Models
+ *
+ * @see https://docs.gs2.io/api_reference/enhance/sdk/#describeunleashratemodels
+ */
 class DescribeUnleashRateModelsRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DescribeUnleashRateModelsRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DescribeUnleashRateModelsRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;

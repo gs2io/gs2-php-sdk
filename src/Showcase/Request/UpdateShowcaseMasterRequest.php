@@ -20,75 +20,116 @@ namespace Gs2\Showcase\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Showcase\Model\DisplayItemMaster;
 
+/**
+ * Request for updateShowcaseMaster: Update Showcase Master
+ *
+ * @see https://docs.gs2.io/api_reference/showcase/sdk/#updateshowcasemaster
+ */
 class UpdateShowcaseMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Showcase name */
     private $showcaseName;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var string */
+    /** @var string Metadata */
     private $metadata;
-    /** @var array */
+    /** @var array List of Display Items */
     private $displayItems;
-    /** @var string */
+    /** @var string GRN of the GS2-Schedule event that defines the sales period for the Showcase */
     private $salesPeriodEventId;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UpdateShowcaseMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UpdateShowcaseMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Showcase name */
 	public function getShowcaseName(): ?string {
 		return $this->showcaseName;
 	}
+    /** @param string|null $showcaseName Showcase name */
 	public function setShowcaseName(?string $showcaseName) {
 		$this->showcaseName = $showcaseName;
 	}
+    /**
+     * @param string|null $showcaseName Showcase name
+     * @return UpdateShowcaseMasterRequest
+     */
 	public function withShowcaseName(?string $showcaseName): UpdateShowcaseMasterRequest {
 		$this->showcaseName = $showcaseName;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return UpdateShowcaseMasterRequest
+     */
 	public function withDescription(?string $description): UpdateShowcaseMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return UpdateShowcaseMasterRequest
+     */
 	public function withMetadata(?string $metadata): UpdateShowcaseMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return array|null List of Display Items */
 	public function getDisplayItems(): ?array {
 		return $this->displayItems;
 	}
+    /** @param array|null $displayItems List of Display Items */
 	public function setDisplayItems(?array $displayItems) {
 		$this->displayItems = $displayItems;
 	}
+    /**
+     * @param array|null $displayItems List of Display Items
+     * @return UpdateShowcaseMasterRequest
+     */
 	public function withDisplayItems(?array $displayItems): UpdateShowcaseMasterRequest {
 		$this->displayItems = $displayItems;
 		return $this;
 	}
+    /** @return string|null GRN of the GS2-Schedule event that defines the sales period for the Showcase */
 	public function getSalesPeriodEventId(): ?string {
 		return $this->salesPeriodEventId;
 	}
+    /** @param string|null $salesPeriodEventId GRN of the GS2-Schedule event that defines the sales period for the Showcase */
 	public function setSalesPeriodEventId(?string $salesPeriodEventId) {
 		$this->salesPeriodEventId = $salesPeriodEventId;
 	}
+    /**
+     * @param string|null $salesPeriodEventId GRN of the GS2-Schedule event that defines the sales period for the Showcase
+     * @return UpdateShowcaseMasterRequest
+     */
 	public function withSalesPeriodEventId(?string $salesPeriodEventId): UpdateShowcaseMasterRequest {
 		$this->salesPeriodEventId = $salesPeriodEventId;
 		return $this;

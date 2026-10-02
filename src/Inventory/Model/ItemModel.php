@@ -20,87 +20,128 @@ namespace Gs2\Inventory\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Item Model
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#itemmodel
+ */
 class ItemModel implements IModel {
 	/**
-     * @var string
+     * @var string Item Model GRN
 	 */
 	private $itemModelId;
 	/**
-     * @var string
+     * @var string Item Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var int
+     * @var int Maximum Stackable Quantity
 	 */
 	private $stackingLimit;
 	/**
-     * @var bool
+     * @var bool Allow Multiple Stacks
 	 */
 	private $allowMultipleStacks;
 	/**
-     * @var int
+     * @var int Display Order
 	 */
 	private $sortValue;
+    /** @return string|null Item Model GRN */
 	public function getItemModelId(): ?string {
 		return $this->itemModelId;
 	}
+    /** @param string|null $itemModelId Item Model GRN */
 	public function setItemModelId(?string $itemModelId) {
 		$this->itemModelId = $itemModelId;
 	}
+    /**
+     * @param string|null $itemModelId Item Model GRN
+     * @return ItemModel
+     */
 	public function withItemModelId(?string $itemModelId): ItemModel {
 		$this->itemModelId = $itemModelId;
 		return $this;
 	}
+    /** @return string|null Item Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Item Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Item Model name
+     * @return ItemModel
+     */
 	public function withName(?string $name): ItemModel {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return ItemModel
+     */
 	public function withMetadata(?string $metadata): ItemModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return int|null Maximum Stackable Quantity */
 	public function getStackingLimit(): ?int {
 		return $this->stackingLimit;
 	}
+    /** @param int|null $stackingLimit Maximum Stackable Quantity */
 	public function setStackingLimit(?int $stackingLimit) {
 		$this->stackingLimit = $stackingLimit;
 	}
+    /**
+     * @param int|null $stackingLimit Maximum Stackable Quantity
+     * @return ItemModel
+     */
 	public function withStackingLimit(?int $stackingLimit): ItemModel {
 		$this->stackingLimit = $stackingLimit;
 		return $this;
 	}
+    /** @return bool|null Allow Multiple Stacks */
 	public function getAllowMultipleStacks(): ?bool {
 		return $this->allowMultipleStacks;
 	}
+    /** @param bool|null $allowMultipleStacks Allow Multiple Stacks */
 	public function setAllowMultipleStacks(?bool $allowMultipleStacks) {
 		$this->allowMultipleStacks = $allowMultipleStacks;
 	}
+    /**
+     * @param bool|null $allowMultipleStacks Allow Multiple Stacks
+     * @return ItemModel
+     */
 	public function withAllowMultipleStacks(?bool $allowMultipleStacks): ItemModel {
 		$this->allowMultipleStacks = $allowMultipleStacks;
 		return $this;
 	}
+    /** @return int|null Display Order */
 	public function getSortValue(): ?int {
 		return $this->sortValue;
 	}
+    /** @param int|null $sortValue Display Order */
 	public function setSortValue(?int $sortValue) {
 		$this->sortValue = $sortValue;
 	}
+    /**
+     * @param int|null $sortValue Display Order
+     * @return ItemModel
+     */
 	public function withSortValue(?int $sortValue): ItemModel {
 		$this->sortValue = $sortValue;
 		return $this;

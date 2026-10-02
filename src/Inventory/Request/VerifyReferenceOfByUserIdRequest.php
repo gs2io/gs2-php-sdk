@@ -19,101 +19,154 @@ namespace Gs2\Inventory\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for verifyReferenceOfByUserId: Verify the reference source by specifying the user ID
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#verifyreferenceofbyuserid
+ */
 class VerifyReferenceOfByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Inventory Model Name */
     private $inventoryName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Item Model Name */
     private $itemName;
-    /** @var string */
+    /** @var string Name identifying the Item Set */
     private $itemSetName;
-    /** @var string */
+    /** @var string Reference */
     private $referenceOf;
-    /** @var string */
+    /** @var string Type of verification */
     private $verifyType;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return VerifyReferenceOfByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): VerifyReferenceOfByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Inventory Model Name */
 	public function getInventoryName(): ?string {
 		return $this->inventoryName;
 	}
+    /** @param string|null $inventoryName Inventory Model Name */
 	public function setInventoryName(?string $inventoryName) {
 		$this->inventoryName = $inventoryName;
 	}
+    /**
+     * @param string|null $inventoryName Inventory Model Name
+     * @return VerifyReferenceOfByUserIdRequest
+     */
 	public function withInventoryName(?string $inventoryName): VerifyReferenceOfByUserIdRequest {
 		$this->inventoryName = $inventoryName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return VerifyReferenceOfByUserIdRequest
+     */
 	public function withUserId(?string $userId): VerifyReferenceOfByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Item Model Name */
 	public function getItemName(): ?string {
 		return $this->itemName;
 	}
+    /** @param string|null $itemName Item Model Name */
 	public function setItemName(?string $itemName) {
 		$this->itemName = $itemName;
 	}
+    /**
+     * @param string|null $itemName Item Model Name
+     * @return VerifyReferenceOfByUserIdRequest
+     */
 	public function withItemName(?string $itemName): VerifyReferenceOfByUserIdRequest {
 		$this->itemName = $itemName;
 		return $this;
 	}
+    /** @return string|null Name identifying the Item Set */
 	public function getItemSetName(): ?string {
 		return $this->itemSetName;
 	}
+    /** @param string|null $itemSetName Name identifying the Item Set */
 	public function setItemSetName(?string $itemSetName) {
 		$this->itemSetName = $itemSetName;
 	}
+    /**
+     * @param string|null $itemSetName Name identifying the Item Set
+     * @return VerifyReferenceOfByUserIdRequest
+     */
 	public function withItemSetName(?string $itemSetName): VerifyReferenceOfByUserIdRequest {
 		$this->itemSetName = $itemSetName;
 		return $this;
 	}
+    /** @return string|null Reference */
 	public function getReferenceOf(): ?string {
 		return $this->referenceOf;
 	}
+    /** @param string|null $referenceOf Reference */
 	public function setReferenceOf(?string $referenceOf) {
 		$this->referenceOf = $referenceOf;
 	}
+    /**
+     * @param string|null $referenceOf Reference
+     * @return VerifyReferenceOfByUserIdRequest
+     */
 	public function withReferenceOf(?string $referenceOf): VerifyReferenceOfByUserIdRequest {
 		$this->referenceOf = $referenceOf;
 		return $this;
 	}
+    /** @return string|null Type of verification */
 	public function getVerifyType(): ?string {
 		return $this->verifyType;
 	}
+    /** @param string|null $verifyType Type of verification */
 	public function setVerifyType(?string $verifyType) {
 		$this->verifyType = $verifyType;
 	}
+    /**
+     * @param string|null $verifyType Type of verification
+     * @return VerifyReferenceOfByUserIdRequest
+     */
 	public function withVerifyType(?string $verifyType): VerifyReferenceOfByUserIdRequest {
 		$this->verifyType = $verifyType;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return VerifyReferenceOfByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): VerifyReferenceOfByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

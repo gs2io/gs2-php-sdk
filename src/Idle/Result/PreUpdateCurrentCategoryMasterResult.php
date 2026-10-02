@@ -19,33 +19,50 @@ namespace Gs2\Idle\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of preUpdateCurrentCategoryMaster: Update currently active Category Model master data (3-phase version)
+ *
+ * @see https://docs.gs2.io/api_reference/idle/sdk/#preupdatecurrentcategorymaster
+ */
 class PreUpdateCurrentCategoryMasterResult implements IResult {
-    /** @var string */
+    /** @var string Token used to reflect results after upload */
     private $uploadToken;
-    /** @var string */
+    /** @var string URL used to upload */
     private $uploadUrl;
 
+    /** @return string|null Token used to reflect results after upload */
 	public function getUploadToken(): ?string {
 		return $this->uploadToken;
 	}
 
+    /** @param string|null $uploadToken Token used to reflect results after upload */
 	public function setUploadToken(?string $uploadToken) {
 		$this->uploadToken = $uploadToken;
 	}
 
+    /**
+     * @param string|null $uploadToken Token used to reflect results after upload
+     * @return PreUpdateCurrentCategoryMasterResult
+     */
 	public function withUploadToken(?string $uploadToken): PreUpdateCurrentCategoryMasterResult {
 		$this->uploadToken = $uploadToken;
 		return $this;
 	}
 
+    /** @return string|null URL used to upload */
 	public function getUploadUrl(): ?string {
 		return $this->uploadUrl;
 	}
 
+    /** @param string|null $uploadUrl URL used to upload */
 	public function setUploadUrl(?string $uploadUrl) {
 		$this->uploadUrl = $uploadUrl;
 	}
 
+    /**
+     * @param string|null $uploadUrl URL used to upload
+     * @return PreUpdateCurrentCategoryMasterResult
+     */
 	public function withUploadUrl(?string $uploadUrl): PreUpdateCurrentCategoryMasterResult {
 		$this->uploadUrl = $uploadUrl;
 		return $this;

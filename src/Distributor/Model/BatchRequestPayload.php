@@ -20,59 +20,88 @@ namespace Gs2\Distributor\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * API Batch Request
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#batchrequestpayload
+ */
 class BatchRequestPayload implements IModel {
 	/**
-     * @var string
+     * @var string Request ID
 	 */
 	private $requestId;
 	/**
-     * @var string
+     * @var string Service
 	 */
 	private $service;
 	/**
-     * @var string
+     * @var string Method Name
 	 */
 	private $methodName;
 	/**
-     * @var string
+     * @var string Parameter
 	 */
 	private $parameter;
+    /** @return string|null Request ID */
 	public function getRequestId(): ?string {
 		return $this->requestId;
 	}
+    /** @param string|null $requestId Request ID */
 	public function setRequestId(?string $requestId) {
 		$this->requestId = $requestId;
 	}
+    /**
+     * @param string|null $requestId Request ID
+     * @return BatchRequestPayload
+     */
 	public function withRequestId(?string $requestId): BatchRequestPayload {
 		$this->requestId = $requestId;
 		return $this;
 	}
+    /** @return string|null Service */
 	public function getService(): ?string {
 		return $this->service;
 	}
+    /** @param string|null $service Service */
 	public function setService(?string $service) {
 		$this->service = $service;
 	}
+    /**
+     * @param string|null $service Service
+     * @return BatchRequestPayload
+     */
 	public function withService(?string $service): BatchRequestPayload {
 		$this->service = $service;
 		return $this;
 	}
+    /** @return string|null Method Name */
 	public function getMethodName(): ?string {
 		return $this->methodName;
 	}
+    /** @param string|null $methodName Method Name */
 	public function setMethodName(?string $methodName) {
 		$this->methodName = $methodName;
 	}
+    /**
+     * @param string|null $methodName Method Name
+     * @return BatchRequestPayload
+     */
 	public function withMethodName(?string $methodName): BatchRequestPayload {
 		$this->methodName = $methodName;
 		return $this;
 	}
+    /** @return string|null Parameter */
 	public function getParameter(): ?string {
 		return $this->parameter;
 	}
+    /** @param string|null $parameter Parameter */
 	public function setParameter(?string $parameter) {
 		$this->parameter = $parameter;
 	}
+    /**
+     * @param string|null $parameter Parameter
+     * @return BatchRequestPayload
+     */
 	public function withParameter(?string $parameter): BatchRequestPayload {
 		$this->parameter = $parameter;
 		return $this;

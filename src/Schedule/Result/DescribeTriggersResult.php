@@ -20,33 +20,50 @@ namespace Gs2\Schedule\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Schedule\Model\Trigger;
 
+/**
+ * Result of describeTriggers: List Triggers
+ *
+ * @see https://docs.gs2.io/api_reference/schedule/sdk/#describetriggers
+ */
 class DescribeTriggersResult implements IResult {
-    /** @var array */
+    /** @var array List of Triggers */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Triggers */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Triggers */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Triggers
+     * @return DescribeTriggersResult
+     */
 	public function withItems(?array $items): DescribeTriggersResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeTriggersResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeTriggersResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

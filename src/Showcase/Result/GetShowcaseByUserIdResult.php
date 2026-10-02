@@ -26,18 +26,29 @@ use Gs2\Showcase\Model\SalesItemGroup;
 use Gs2\Showcase\Model\DisplayItem;
 use Gs2\Showcase\Model\Showcase;
 
+/**
+ * Result of getShowcaseByUserId: Get Showcase by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/showcase/sdk/#getshowcasebyuserid
+ */
 class GetShowcaseByUserIdResult implements IResult {
-    /** @var Showcase */
+    /** @var Showcase Showcase */
     private $item;
 
+    /** @return Showcase|null Showcase */
 	public function getItem(): ?Showcase {
 		return $this->item;
 	}
 
+    /** @param Showcase|null $item Showcase */
 	public function setItem(?Showcase $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Showcase|null $item Showcase
+     * @return GetShowcaseByUserIdResult
+     */
 	public function withItem(?Showcase $item): GetShowcaseByUserIdResult {
 		$this->item = $item;
 		return $this;

@@ -20,33 +20,50 @@ namespace Gs2\Dictionary\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Dictionary\Model\Entry;
 
+/**
+ * Result of deleteEntriesByStampTask: Execute the entry deletion as a consume action
+ *
+ * @see https://docs.gs2.io/api_reference/dictionary/stamp_sheet/#gs2dictionarydeleteentriesbyuserid
+ */
 class DeleteEntriesByStampTaskResult implements IResult {
-    /** @var array */
+    /** @var array List of Deleted Entries */
     private $items;
-    /** @var string */
+    /** @var string Context recording the execution results of Consume Actions */
     private $newContextStack;
 
+    /** @return array|null List of Deleted Entries */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Deleted Entries */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Deleted Entries
+     * @return DeleteEntriesByStampTaskResult
+     */
 	public function withItems(?array $items): DeleteEntriesByStampTaskResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Context recording the execution results of Consume Actions */
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
+    /** @param string|null $newContextStack Context recording the execution results of Consume Actions */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
+    /**
+     * @param string|null $newContextStack Context recording the execution results of Consume Actions
+     * @return DeleteEntriesByStampTaskResult
+     */
 	public function withNewContextStack(?string $newContextStack): DeleteEntriesByStampTaskResult {
 		$this->newContextStack = $newContextStack;
 		return $this;

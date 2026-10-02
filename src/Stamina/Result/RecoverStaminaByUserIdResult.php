@@ -24,48 +24,71 @@ use Gs2\Stamina\Model\RecoverIntervalTable;
 use Gs2\Stamina\Model\RecoverValueTable;
 use Gs2\Stamina\Model\StaminaModel;
 
+/**
+ * Result of recoverStaminaByUserId: Recover Stamina by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/stamina/sdk/#recoverstaminabyuserid
+ */
 class RecoverStaminaByUserIdResult implements IResult {
-    /** @var Stamina */
+    /** @var Stamina Stamina */
     private $item;
-    /** @var StaminaModel */
+    /** @var StaminaModel Stamina Model */
     private $staminaModel;
-    /** @var int */
+    /** @var int Stamina value transferred to GS2-Inbox without receiving more than the maximum Stamina value */
     private $overflowValue;
 
+    /** @return Stamina|null Stamina */
 	public function getItem(): ?Stamina {
 		return $this->item;
 	}
 
+    /** @param Stamina|null $item Stamina */
 	public function setItem(?Stamina $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Stamina|null $item Stamina
+     * @return RecoverStaminaByUserIdResult
+     */
 	public function withItem(?Stamina $item): RecoverStaminaByUserIdResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return StaminaModel|null Stamina Model */
 	public function getStaminaModel(): ?StaminaModel {
 		return $this->staminaModel;
 	}
 
+    /** @param StaminaModel|null $staminaModel Stamina Model */
 	public function setStaminaModel(?StaminaModel $staminaModel) {
 		$this->staminaModel = $staminaModel;
 	}
 
+    /**
+     * @param StaminaModel|null $staminaModel Stamina Model
+     * @return RecoverStaminaByUserIdResult
+     */
 	public function withStaminaModel(?StaminaModel $staminaModel): RecoverStaminaByUserIdResult {
 		$this->staminaModel = $staminaModel;
 		return $this;
 	}
 
+    /** @return int|null Stamina value transferred to GS2-Inbox without receiving more than the maximum Stamina value */
 	public function getOverflowValue(): ?int {
 		return $this->overflowValue;
 	}
 
+    /** @param int|null $overflowValue Stamina value transferred to GS2-Inbox without receiving more than the maximum Stamina value */
 	public function setOverflowValue(?int $overflowValue) {
 		$this->overflowValue = $overflowValue;
 	}
 
+    /**
+     * @param int|null $overflowValue Stamina value transferred to GS2-Inbox without receiving more than the maximum Stamina value
+     * @return RecoverStaminaByUserIdResult
+     */
 	public function withOverflowValue(?int $overflowValue): RecoverStaminaByUserIdResult {
 		$this->overflowValue = $overflowValue;
 		return $this;

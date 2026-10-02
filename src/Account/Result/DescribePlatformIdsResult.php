@@ -20,33 +20,50 @@ namespace Gs2\Account\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Account\Model\PlatformId;
 
+/**
+ * Result of describePlatformIds: List External Platform Account IDs
+ *
+ * @see https://docs.gs2.io/api_reference/account/sdk/#describeplatformids
+ */
 class DescribePlatformIdsResult implements IResult {
-    /** @var array */
+    /** @var array List of External Platform Account IDs */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of External Platform Account IDs */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of External Platform Account IDs */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of External Platform Account IDs
+     * @return DescribePlatformIdsResult
+     */
 	public function withItems(?array $items): DescribePlatformIdsResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribePlatformIdsResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribePlatformIdsResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

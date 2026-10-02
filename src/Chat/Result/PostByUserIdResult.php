@@ -20,18 +20,29 @@ namespace Gs2\Chat\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Chat\Model\Message;
 
+/**
+ * Result of postByUserId: Post Message by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/chat/sdk/#postbyuserid
+ */
 class PostByUserIdResult implements IResult {
-    /** @var Message */
+    /** @var Message Posted message */
     private $item;
 
+    /** @return Message|null Posted message */
 	public function getItem(): ?Message {
 		return $this->item;
 	}
 
+    /** @param Message|null $item Posted message */
 	public function setItem(?Message $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Message|null $item Posted message
+     * @return PostByUserIdResult
+     */
 	public function withItem(?Message $item): PostByUserIdResult {
 		$this->item = $item;
 		return $this;

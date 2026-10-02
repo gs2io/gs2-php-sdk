@@ -20,87 +20,128 @@ namespace Gs2\Friend\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Send Box
+ *
+ * @see https://docs.gs2.io/api_reference/friend/sdk/#sendbox
+ */
 class SendBox implements IModel {
 	/**
-     * @var string
+     * @var string Friend Request Send Box GRN
 	 */
 	private $sendBoxId;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var array
+     * @var array Destination user ID list for friend requests
 	 */
 	private $targetUserIds;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Friend Request Send Box GRN */
 	public function getSendBoxId(): ?string {
 		return $this->sendBoxId;
 	}
+    /** @param string|null $sendBoxId Friend Request Send Box GRN */
 	public function setSendBoxId(?string $sendBoxId) {
 		$this->sendBoxId = $sendBoxId;
 	}
+    /**
+     * @param string|null $sendBoxId Friend Request Send Box GRN
+     * @return SendBox
+     */
 	public function withSendBoxId(?string $sendBoxId): SendBox {
 		$this->sendBoxId = $sendBoxId;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return SendBox
+     */
 	public function withUserId(?string $userId): SendBox {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return array|null Destination user ID list for friend requests */
 	public function getTargetUserIds(): ?array {
 		return $this->targetUserIds;
 	}
+    /** @param array|null $targetUserIds Destination user ID list for friend requests */
 	public function setTargetUserIds(?array $targetUserIds) {
 		$this->targetUserIds = $targetUserIds;
 	}
+    /**
+     * @param array|null $targetUserIds Destination user ID list for friend requests
+     * @return SendBox
+     */
 	public function withTargetUserIds(?array $targetUserIds): SendBox {
 		$this->targetUserIds = $targetUserIds;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return SendBox
+     */
 	public function withCreatedAt(?int $createdAt): SendBox {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return SendBox
+     */
 	public function withUpdatedAt(?int $updatedAt): SendBox {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return SendBox
+     */
 	public function withRevision(?int $revision): SendBox {
 		$this->revision = $revision;
 		return $this;

@@ -22,18 +22,29 @@ use Gs2\Money2\Model\AppleAppStoreSubscriptionContent;
 use Gs2\Money2\Model\GooglePlaySubscriptionContent;
 use Gs2\Money2\Model\StoreSubscriptionContentModelMaster;
 
+/**
+ * Result of deleteStoreSubscriptionContentModelMaster: Delete Store Subscription Content Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#deletestoresubscriptioncontentmodelmaster
+ */
 class DeleteStoreSubscriptionContentModelMasterResult implements IResult {
-    /** @var StoreSubscriptionContentModelMaster */
+    /** @var StoreSubscriptionContentModelMaster Store Subscription Content Model Master deleted */
     private $item;
 
+    /** @return StoreSubscriptionContentModelMaster|null Store Subscription Content Model Master deleted */
 	public function getItem(): ?StoreSubscriptionContentModelMaster {
 		return $this->item;
 	}
 
+    /** @param StoreSubscriptionContentModelMaster|null $item Store Subscription Content Model Master deleted */
 	public function setItem(?StoreSubscriptionContentModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param StoreSubscriptionContentModelMaster|null $item Store Subscription Content Model Master deleted
+     * @return DeleteStoreSubscriptionContentModelMasterResult
+     */
 	public function withItem(?StoreSubscriptionContentModelMaster $item): DeleteStoreSubscriptionContentModelMasterResult {
 		$this->item = $item;
 		return $this;

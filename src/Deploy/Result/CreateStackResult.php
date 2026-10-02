@@ -20,18 +20,29 @@ namespace Gs2\Deploy\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Deploy\Model\Stack;
 
+/**
+ * Result of createStack: Create Stack
+ *
+ * @see https://docs.gs2.io/api_reference/deploy/sdk/#createstack
+ */
 class CreateStackResult implements IResult {
-    /** @var Stack */
+    /** @var Stack Stack created */
     private $item;
 
+    /** @return Stack|null Stack created */
 	public function getItem(): ?Stack {
 		return $this->item;
 	}
 
+    /** @param Stack|null $item Stack created */
 	public function setItem(?Stack $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Stack|null $item Stack created
+     * @return CreateStackResult
+     */
 	public function withItem(?Stack $item): CreateStackResult {
 		$this->item = $item;
 		return $this;

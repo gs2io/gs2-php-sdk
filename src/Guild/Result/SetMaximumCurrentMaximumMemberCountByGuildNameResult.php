@@ -22,33 +22,50 @@ use Gs2\Guild\Model\RoleModel;
 use Gs2\Guild\Model\Member;
 use Gs2\Guild\Model\Guild;
 
+/**
+ * Result of setMaximumCurrentMaximumMemberCountByGuildName: Set the maximum number of guild members by specifying a Guild name
+ *
+ * @see https://docs.gs2.io/api_reference/guild/sdk/#setmaximumcurrentmaximummembercountbyguildname
+ */
 class SetMaximumCurrentMaximumMemberCountByGuildNameResult implements IResult {
-    /** @var Guild */
+    /** @var Guild Guild updated */
     private $item;
-    /** @var Guild */
+    /** @var Guild Guild before update */
     private $old;
 
+    /** @return Guild|null Guild updated */
 	public function getItem(): ?Guild {
 		return $this->item;
 	}
 
+    /** @param Guild|null $item Guild updated */
 	public function setItem(?Guild $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Guild|null $item Guild updated
+     * @return SetMaximumCurrentMaximumMemberCountByGuildNameResult
+     */
 	public function withItem(?Guild $item): SetMaximumCurrentMaximumMemberCountByGuildNameResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return Guild|null Guild before update */
 	public function getOld(): ?Guild {
 		return $this->old;
 	}
 
+    /** @param Guild|null $old Guild before update */
 	public function setOld(?Guild $old) {
 		$this->old = $old;
 	}
 
+    /**
+     * @param Guild|null $old Guild before update
+     * @return SetMaximumCurrentMaximumMemberCountByGuildNameResult
+     */
 	public function withOld(?Guild $old): SetMaximumCurrentMaximumMemberCountByGuildNameResult {
 		$this->old = $old;
 		return $this;

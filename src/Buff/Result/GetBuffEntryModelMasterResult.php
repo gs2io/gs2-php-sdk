@@ -23,18 +23,29 @@ use Gs2\Buff\Model\BuffTargetModel;
 use Gs2\Buff\Model\BuffTargetAction;
 use Gs2\Buff\Model\BuffEntryModelMaster;
 
+/**
+ * Result of getBuffEntryModelMaster: Get Buff Entry Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/buff/sdk/#getbuffentrymodelmaster
+ */
 class GetBuffEntryModelMasterResult implements IResult {
-    /** @var BuffEntryModelMaster */
+    /** @var BuffEntryModelMaster Buff Entry Model Master */
     private $item;
 
+    /** @return BuffEntryModelMaster|null Buff Entry Model Master */
 	public function getItem(): ?BuffEntryModelMaster {
 		return $this->item;
 	}
 
+    /** @param BuffEntryModelMaster|null $item Buff Entry Model Master */
 	public function setItem(?BuffEntryModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param BuffEntryModelMaster|null $item Buff Entry Model Master
+     * @return GetBuffEntryModelMasterResult
+     */
 	public function withItem(?BuffEntryModelMaster $item): GetBuffEntryModelMasterResult {
 		$this->item = $item;
 		return $this;

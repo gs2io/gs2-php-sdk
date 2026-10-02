@@ -20,59 +20,88 @@ namespace Gs2\Ranking\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Subscribed User
+ *
+ * @see https://docs.gs2.io/api_reference/ranking/sdk/#subscribeuser
+ */
 class SubscribeUser implements IModel {
 	/**
-     * @var string
+     * @var string Subscription Target GRN
 	 */
 	private $subscribeUserId;
 	/**
-     * @var string
+     * @var string Category Model name
 	 */
 	private $categoryName;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var string
+     * @var string Target User ID
 	 */
 	private $targetUserId;
+    /** @return string|null Subscription Target GRN */
 	public function getSubscribeUserId(): ?string {
 		return $this->subscribeUserId;
 	}
+    /** @param string|null $subscribeUserId Subscription Target GRN */
 	public function setSubscribeUserId(?string $subscribeUserId) {
 		$this->subscribeUserId = $subscribeUserId;
 	}
+    /**
+     * @param string|null $subscribeUserId Subscription Target GRN
+     * @return SubscribeUser
+     */
 	public function withSubscribeUserId(?string $subscribeUserId): SubscribeUser {
 		$this->subscribeUserId = $subscribeUserId;
 		return $this;
 	}
+    /** @return string|null Category Model name */
 	public function getCategoryName(): ?string {
 		return $this->categoryName;
 	}
+    /** @param string|null $categoryName Category Model name */
 	public function setCategoryName(?string $categoryName) {
 		$this->categoryName = $categoryName;
 	}
+    /**
+     * @param string|null $categoryName Category Model name
+     * @return SubscribeUser
+     */
 	public function withCategoryName(?string $categoryName): SubscribeUser {
 		$this->categoryName = $categoryName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return SubscribeUser
+     */
 	public function withUserId(?string $userId): SubscribeUser {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Target User ID */
 	public function getTargetUserId(): ?string {
 		return $this->targetUserId;
 	}
+    /** @param string|null $targetUserId Target User ID */
 	public function setTargetUserId(?string $targetUserId) {
 		$this->targetUserId = $targetUserId;
 	}
+    /**
+     * @param string|null $targetUserId Target User ID
+     * @return SubscribeUser
+     */
 	public function withTargetUserId(?string $targetUserId): SubscribeUser {
 		$this->targetUserId = $targetUserId;
 		return $this;

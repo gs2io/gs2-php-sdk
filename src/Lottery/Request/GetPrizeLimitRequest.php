@@ -19,39 +19,62 @@ namespace Gs2\Lottery\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getPrizeLimit: Get Prize Limit
+ *
+ * @see https://docs.gs2.io/api_reference/lottery/sdk/#getprizelimit
+ */
 class GetPrizeLimitRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Prize Table name */
     private $prizeTableName;
-    /** @var string */
+    /** @var string Prize ID */
     private $prizeId;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetPrizeLimitRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetPrizeLimitRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Prize Table name */
 	public function getPrizeTableName(): ?string {
 		return $this->prizeTableName;
 	}
+    /** @param string|null $prizeTableName Prize Table name */
 	public function setPrizeTableName(?string $prizeTableName) {
 		$this->prizeTableName = $prizeTableName;
 	}
+    /**
+     * @param string|null $prizeTableName Prize Table name
+     * @return GetPrizeLimitRequest
+     */
 	public function withPrizeTableName(?string $prizeTableName): GetPrizeLimitRequest {
 		$this->prizeTableName = $prizeTableName;
 		return $this;
 	}
+    /** @return string|null Prize ID */
 	public function getPrizeId(): ?string {
 		return $this->prizeId;
 	}
+    /** @param string|null $prizeId Prize ID */
 	public function setPrizeId(?string $prizeId) {
 		$this->prizeId = $prizeId;
 	}
+    /**
+     * @param string|null $prizeId Prize ID
+     * @return GetPrizeLimitRequest
+     */
 	public function withPrizeId(?string $prizeId): GetPrizeLimitRequest {
 		$this->prizeId = $prizeId;
 		return $this;

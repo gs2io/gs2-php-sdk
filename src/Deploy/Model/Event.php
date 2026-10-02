@@ -20,101 +20,148 @@ namespace Gs2\Deploy\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Event
+ *
+ * @see https://docs.gs2.io/api_reference/deploy/sdk/#event
+ */
 class Event implements IModel {
 	/**
-     * @var string
+     * @var string Event GRN
 	 */
 	private $eventId;
 	/**
-     * @var string
+     * @var string Event name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Resource name
 	 */
 	private $resourceName;
 	/**
-     * @var string
+     * @var string Status
 	 */
 	private $type;
 	/**
-     * @var string
+     * @var string Message
 	 */
 	private $message;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $eventAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Event GRN */
 	public function getEventId(): ?string {
 		return $this->eventId;
 	}
+    /** @param string|null $eventId Event GRN */
 	public function setEventId(?string $eventId) {
 		$this->eventId = $eventId;
 	}
+    /**
+     * @param string|null $eventId Event GRN
+     * @return Event
+     */
 	public function withEventId(?string $eventId): Event {
 		$this->eventId = $eventId;
 		return $this;
 	}
+    /** @return string|null Event name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Event name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Event name
+     * @return Event
+     */
 	public function withName(?string $name): Event {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Resource name */
 	public function getResourceName(): ?string {
 		return $this->resourceName;
 	}
+    /** @param string|null $resourceName Resource name */
 	public function setResourceName(?string $resourceName) {
 		$this->resourceName = $resourceName;
 	}
+    /**
+     * @param string|null $resourceName Resource name
+     * @return Event
+     */
 	public function withResourceName(?string $resourceName): Event {
 		$this->resourceName = $resourceName;
 		return $this;
 	}
+    /** @return string|null Status */
 	public function getType(): ?string {
 		return $this->type;
 	}
+    /** @param string|null $type Status */
 	public function setType(?string $type) {
 		$this->type = $type;
 	}
+    /**
+     * @param string|null $type Status
+     * @return Event
+     */
 	public function withType(?string $type): Event {
 		$this->type = $type;
 		return $this;
 	}
+    /** @return string|null Message */
 	public function getMessage(): ?string {
 		return $this->message;
 	}
+    /** @param string|null $message Message */
 	public function setMessage(?string $message) {
 		$this->message = $message;
 	}
+    /**
+     * @param string|null $message Message
+     * @return Event
+     */
 	public function withMessage(?string $message): Event {
 		$this->message = $message;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getEventAt(): ?int {
 		return $this->eventAt;
 	}
+    /** @param int|null $eventAt Creation Timestamp */
 	public function setEventAt(?int $eventAt) {
 		$this->eventAt = $eventAt;
 	}
+    /**
+     * @param int|null $eventAt Creation Timestamp
+     * @return Event
+     */
 	public function withEventAt(?int $eventAt): Event {
 		$this->eventAt = $eventAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return Event
+     */
 	public function withRevision(?int $revision): Event {
 		$this->revision = $revision;
 		return $this;

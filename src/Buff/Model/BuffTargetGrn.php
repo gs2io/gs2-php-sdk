@@ -20,31 +20,48 @@ namespace Gs2\Buff\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * GRN pattern that identifies the resources used as conditions for applying buffs
+ *
+ * @see https://docs.gs2.io/api_reference/buff/sdk/#bufftargetgrn
+ */
 class BuffTargetGrn implements IModel {
 	/**
-     * @var string
+     * @var string Buff application condition model name
 	 */
 	private $targetModelName;
 	/**
-     * @var string
+     * @var string Buff application condition GRN
 	 */
 	private $targetGrn;
+    /** @return string|null Buff application condition model name */
 	public function getTargetModelName(): ?string {
 		return $this->targetModelName;
 	}
+    /** @param string|null $targetModelName Buff application condition model name */
 	public function setTargetModelName(?string $targetModelName) {
 		$this->targetModelName = $targetModelName;
 	}
+    /**
+     * @param string|null $targetModelName Buff application condition model name
+     * @return BuffTargetGrn
+     */
 	public function withTargetModelName(?string $targetModelName): BuffTargetGrn {
 		$this->targetModelName = $targetModelName;
 		return $this;
 	}
+    /** @return string|null Buff application condition GRN */
 	public function getTargetGrn(): ?string {
 		return $this->targetGrn;
 	}
+    /** @param string|null $targetGrn Buff application condition GRN */
 	public function setTargetGrn(?string $targetGrn) {
 		$this->targetGrn = $targetGrn;
 	}
+    /**
+     * @param string|null $targetGrn Buff application condition GRN
+     * @return BuffTargetGrn
+     */
 	public function withTargetGrn(?string $targetGrn): BuffTargetGrn {
 		$this->targetGrn = $targetGrn;
 		return $this;

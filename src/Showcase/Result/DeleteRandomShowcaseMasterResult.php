@@ -24,18 +24,29 @@ use Gs2\Showcase\Model\AcquireAction;
 use Gs2\Showcase\Model\RandomDisplayItemModel;
 use Gs2\Showcase\Model\RandomShowcaseMaster;
 
+/**
+ * Result of deleteRandomShowcaseMaster: Delete Random Showcase Master
+ *
+ * @see https://docs.gs2.io/api_reference/showcase/sdk/#deleterandomshowcasemaster
+ */
 class DeleteRandomShowcaseMasterResult implements IResult {
-    /** @var RandomShowcaseMaster */
+    /** @var RandomShowcaseMaster Random Showcase Master deleted */
     private $item;
 
+    /** @return RandomShowcaseMaster|null Random Showcase Master deleted */
 	public function getItem(): ?RandomShowcaseMaster {
 		return $this->item;
 	}
 
+    /** @param RandomShowcaseMaster|null $item Random Showcase Master deleted */
 	public function setItem(?RandomShowcaseMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param RandomShowcaseMaster|null $item Random Showcase Master deleted
+     * @return DeleteRandomShowcaseMasterResult
+     */
 	public function withItem(?RandomShowcaseMaster $item): DeleteRandomShowcaseMasterResult {
 		$this->item = $item;
 		return $this;

@@ -23,18 +23,29 @@ use Gs2\Showcase\Model\ConsumeAction;
 use Gs2\Showcase\Model\AcquireAction;
 use Gs2\Showcase\Model\SalesItemMaster;
 
+/**
+ * Result of createSalesItemMaster: Create Sales Item Master
+ *
+ * @see https://docs.gs2.io/api_reference/showcase/sdk/#createsalesitemmaster
+ */
 class CreateSalesItemMasterResult implements IResult {
-    /** @var SalesItemMaster */
+    /** @var SalesItemMaster Sales Item Master created */
     private $item;
 
+    /** @return SalesItemMaster|null Sales Item Master created */
 	public function getItem(): ?SalesItemMaster {
 		return $this->item;
 	}
 
+    /** @param SalesItemMaster|null $item Sales Item Master created */
 	public function setItem(?SalesItemMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param SalesItemMaster|null $item Sales Item Master created
+     * @return CreateSalesItemMasterResult
+     */
 	public function withItem(?SalesItemMaster $item): CreateSalesItemMasterResult {
 		$this->item = $item;
 		return $this;

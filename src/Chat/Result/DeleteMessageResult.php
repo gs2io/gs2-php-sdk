@@ -20,18 +20,29 @@ namespace Gs2\Chat\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Chat\Model\Message;
 
+/**
+ * Result of deleteMessage: Delete message
+ *
+ * @see https://docs.gs2.io/api_reference/chat/sdk/#deletemessage
+ */
 class DeleteMessageResult implements IResult {
-    /** @var Message */
+    /** @var Message Message deleted */
     private $item;
 
+    /** @return Message|null Message deleted */
 	public function getItem(): ?Message {
 		return $this->item;
 	}
 
+    /** @param Message|null $item Message deleted */
 	public function setItem(?Message $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Message|null $item Message deleted
+     * @return DeleteMessageResult
+     */
 	public function withItem(?Message $item): DeleteMessageResult {
 		$this->item = $item;
 		return $this;

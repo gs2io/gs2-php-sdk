@@ -89,12 +89,12 @@ abstract class Gs2Session {
     private $m_Gs2SessionIdTaskGenerator;
 
     /**
-     * @var bool リクエストボディをgzip圧縮するかどうか
+     * @var bool Whether to gzip-compress the request body
      */
     private $m_EnableCompressRequest = true;
 
     /**
-     * @var bool レスポンスのgzip展開を受け入れるかどうか
+     * @var bool Whether to accept gzip-compressed responses
      */
     private $m_EnableDecompressResponse = true;
 

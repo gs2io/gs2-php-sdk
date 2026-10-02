@@ -19,51 +19,80 @@ namespace Gs2\Deploy\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for changeSet: Get Change Set
+ *
+ * @see https://docs.gs2.io/api_reference/deploy/sdk/#changeset-1
+ */
 class ChangeSetRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Stack name */
     private $stackName;
-    /** @var string */
+    /** @var string Update mode */
     private $mode;
-    /** @var string */
+    /** @var string Template data */
     private $template;
-    /** @var string */
+    /** @var string Token obtained by pre-upload */
     private $uploadToken;
+    /** @return string|null Stack name */
 	public function getStackName(): ?string {
 		return $this->stackName;
 	}
+    /** @param string|null $stackName Stack name */
 	public function setStackName(?string $stackName) {
 		$this->stackName = $stackName;
 	}
+    /**
+     * @param string|null $stackName Stack name
+     * @return ChangeSetRequest
+     */
 	public function withStackName(?string $stackName): ChangeSetRequest {
 		$this->stackName = $stackName;
 		return $this;
 	}
+    /** @return string|null Update mode */
 	public function getMode(): ?string {
 		return $this->mode;
 	}
+    /** @param string|null $mode Update mode */
 	public function setMode(?string $mode) {
 		$this->mode = $mode;
 	}
+    /**
+     * @param string|null $mode Update mode
+     * @return ChangeSetRequest
+     */
 	public function withMode(?string $mode): ChangeSetRequest {
 		$this->mode = $mode;
 		return $this;
 	}
+    /** @return string|null Template data */
 	public function getTemplate(): ?string {
 		return $this->template;
 	}
+    /** @param string|null $template Template data */
 	public function setTemplate(?string $template) {
 		$this->template = $template;
 	}
+    /**
+     * @param string|null $template Template data
+     * @return ChangeSetRequest
+     */
 	public function withTemplate(?string $template): ChangeSetRequest {
 		$this->template = $template;
 		return $this;
 	}
+    /** @return string|null Token obtained by pre-upload */
 	public function getUploadToken(): ?string {
 		return $this->uploadToken;
 	}
+    /** @param string|null $uploadToken Token obtained by pre-upload */
 	public function setUploadToken(?string $uploadToken) {
 		$this->uploadToken = $uploadToken;
 	}
+    /**
+     * @param string|null $uploadToken Token obtained by pre-upload
+     * @return ChangeSetRequest
+     */
 	public function withUploadToken(?string $uploadToken): ChangeSetRequest {
 		$this->uploadToken = $uploadToken;
 		return $this;

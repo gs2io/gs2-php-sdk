@@ -20,18 +20,29 @@ namespace Gs2\Stamina\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Stamina\Model\Stamina;
 
+/**
+ * Result of deleteStaminaByUserId: Delete Stamina by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/stamina/sdk/#deletestaminabyuserid
+ */
 class DeleteStaminaByUserIdResult implements IResult {
-    /** @var Stamina */
+    /** @var Stamina Stamina deleted */
     private $item;
 
+    /** @return Stamina|null Stamina deleted */
 	public function getItem(): ?Stamina {
 		return $this->item;
 	}
 
+    /** @param Stamina|null $item Stamina deleted */
 	public function setItem(?Stamina $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Stamina|null $item Stamina deleted
+     * @return DeleteStaminaByUserIdResult
+     */
 	public function withItem(?Stamina $item): DeleteStaminaByUserIdResult {
 		$this->item = $item;
 		return $this;

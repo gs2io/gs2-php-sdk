@@ -23,18 +23,29 @@ use Gs2\Ranking\Model\Scope;
 use Gs2\Ranking\Model\GlobalRankingSetting;
 use Gs2\Ranking\Model\CategoryModelMaster;
 
+/**
+ * Result of updateCategoryModelMaster: Update Category Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/ranking/sdk/#updatecategorymodelmaster
+ */
 class UpdateCategoryModelMasterResult implements IResult {
-    /** @var CategoryModelMaster */
+    /** @var CategoryModelMaster Category Model Master updated */
     private $item;
 
+    /** @return CategoryModelMaster|null Category Model Master updated */
 	public function getItem(): ?CategoryModelMaster {
 		return $this->item;
 	}
 
+    /** @param CategoryModelMaster|null $item Category Model Master updated */
 	public function setItem(?CategoryModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CategoryModelMaster|null $item Category Model Master updated
+     * @return UpdateCategoryModelMasterResult
+     */
 	public function withItem(?CategoryModelMaster $item): UpdateCategoryModelMasterResult {
 		$this->item = $item;
 		return $this;

@@ -24,18 +24,29 @@ use Gs2\LoginReward\Model\VerifyAction;
 use Gs2\LoginReward\Model\ConsumeAction;
 use Gs2\LoginReward\Model\BonusModel;
 
+/**
+ * Result of describeBonusModels: List Login Bonus Models
+ *
+ * @see https://docs.gs2.io/api_reference/login_reward/sdk/#describebonusmodels
+ */
 class DescribeBonusModelsResult implements IResult {
-    /** @var array */
+    /** @var array List of Login Bonus Models */
     private $items;
 
+    /** @return array|null List of Login Bonus Models */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Login Bonus Models */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Login Bonus Models
+     * @return DescribeBonusModelsResult
+     */
 	public function withItems(?array $items): DescribeBonusModelsResult {
 		$this->items = $items;
 		return $this;

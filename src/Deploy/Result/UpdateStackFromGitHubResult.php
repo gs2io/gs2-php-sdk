@@ -20,18 +20,29 @@ namespace Gs2\Deploy\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Deploy\Model\Stack;
 
+/**
+ * Result of updateStackFromGitHub: Update Stack from GitHub
+ *
+ * @see https://docs.gs2.io/api_reference/deploy/sdk/#updatestackfromgithub
+ */
 class UpdateStackFromGitHubResult implements IResult {
-    /** @var Stack */
+    /** @var Stack Stack updated */
     private $item;
 
+    /** @return Stack|null Stack updated */
 	public function getItem(): ?Stack {
 		return $this->item;
 	}
 
+    /** @param Stack|null $item Stack updated */
 	public function setItem(?Stack $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Stack|null $item Stack updated
+     * @return UpdateStackFromGitHubResult
+     */
 	public function withItem(?Stack $item): UpdateStackFromGitHubResult {
 		$this->item = $item;
 		return $this;

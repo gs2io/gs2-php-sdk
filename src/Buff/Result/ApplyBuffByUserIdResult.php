@@ -23,33 +23,50 @@ use Gs2\Buff\Model\BuffTargetModel;
 use Gs2\Buff\Model\BuffTargetAction;
 use Gs2\Buff\Model\BuffEntryModel;
 
+/**
+ * Result of applyBuffByUserId: Apply buff by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/buff/sdk/#applybuffbyuserid
+ */
 class ApplyBuffByUserIdResult implements IResult {
-    /** @var array */
+    /** @var array List of applied buffs */
     private $items;
-    /** @var string */
+    /** @var string Context stack after applying buff */
     private $newContextStack;
 
+    /** @return array|null List of applied buffs */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of applied buffs */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of applied buffs
+     * @return ApplyBuffByUserIdResult
+     */
 	public function withItems(?array $items): ApplyBuffByUserIdResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Context stack after applying buff */
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
+    /** @param string|null $newContextStack Context stack after applying buff */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
+    /**
+     * @param string|null $newContextStack Context stack after applying buff
+     * @return ApplyBuffByUserIdResult
+     */
 	public function withNewContextStack(?string $newContextStack): ApplyBuffByUserIdResult {
 		$this->newContextStack = $newContextStack;
 		return $this;

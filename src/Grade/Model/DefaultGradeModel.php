@@ -20,31 +20,48 @@ namespace Gs2\Grade\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Default Grade Model
+ *
+ * @see https://docs.gs2.io/api_reference/grade/sdk/#defaultgrademodel
+ */
 class DefaultGradeModel implements IModel {
 	/**
-     * @var string
+     * @var string Property ID Regex
 	 */
 	private $propertyIdRegex;
 	/**
-     * @var int
+     * @var int Default Grade Value
 	 */
 	private $defaultGradeValue;
+    /** @return string|null Property ID Regex */
 	public function getPropertyIdRegex(): ?string {
 		return $this->propertyIdRegex;
 	}
+    /** @param string|null $propertyIdRegex Property ID Regex */
 	public function setPropertyIdRegex(?string $propertyIdRegex) {
 		$this->propertyIdRegex = $propertyIdRegex;
 	}
+    /**
+     * @param string|null $propertyIdRegex Property ID Regex
+     * @return DefaultGradeModel
+     */
 	public function withPropertyIdRegex(?string $propertyIdRegex): DefaultGradeModel {
 		$this->propertyIdRegex = $propertyIdRegex;
 		return $this;
 	}
+    /** @return int|null Default Grade Value */
 	public function getDefaultGradeValue(): ?int {
 		return $this->defaultGradeValue;
 	}
+    /** @param int|null $defaultGradeValue Default Grade Value */
 	public function setDefaultGradeValue(?int $defaultGradeValue) {
 		$this->defaultGradeValue = $defaultGradeValue;
 	}
+    /**
+     * @param int|null $defaultGradeValue Default Grade Value
+     * @return DefaultGradeModel
+     */
 	public function withDefaultGradeValue(?int $defaultGradeValue): DefaultGradeModel {
 		$this->defaultGradeValue = $defaultGradeValue;
 		return $this;

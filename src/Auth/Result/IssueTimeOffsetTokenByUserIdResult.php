@@ -19,48 +19,71 @@ namespace Gs2\Auth\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of issueTimeOffsetTokenByUserId: Issue a time offset token usable with the specified user ID
+ *
+ * @see https://docs.gs2.io/api_reference/auth/sdk/#issuetimeoffsettokenbyuserid
+ */
 class IssueTimeOffsetTokenByUserIdResult implements IResult {
-    /** @var string */
+    /** @var string Time offset token */
     private $token;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var int */
+    /** @var int Expiration time */
     private $expire;
 
+    /** @return string|null Time offset token */
 	public function getToken(): ?string {
 		return $this->token;
 	}
 
+    /** @param string|null $token Time offset token */
 	public function setToken(?string $token) {
 		$this->token = $token;
 	}
 
+    /**
+     * @param string|null $token Time offset token
+     * @return IssueTimeOffsetTokenByUserIdResult
+     */
 	public function withToken(?string $token): IssueTimeOffsetTokenByUserIdResult {
 		$this->token = $token;
 		return $this;
 	}
 
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
 
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
 
+    /**
+     * @param string|null $userId User ID
+     * @return IssueTimeOffsetTokenByUserIdResult
+     */
 	public function withUserId(?string $userId): IssueTimeOffsetTokenByUserIdResult {
 		$this->userId = $userId;
 		return $this;
 	}
 
+    /** @return int|null Expiration time */
 	public function getExpire(): ?int {
 		return $this->expire;
 	}
 
+    /** @param int|null $expire Expiration time */
 	public function setExpire(?int $expire) {
 		$this->expire = $expire;
 	}
 
+    /**
+     * @param int|null $expire Expiration time
+     * @return IssueTimeOffsetTokenByUserIdResult
+     */
 	public function withExpire(?int $expire): IssueTimeOffsetTokenByUserIdResult {
 		$this->expire = $expire;
 		return $this;

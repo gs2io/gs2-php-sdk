@@ -19,39 +19,62 @@ namespace Gs2\StateMachine\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for updateStateMachineMaster: Create or update a new State Machine Master
+ *
+ * @see https://docs.gs2.io/api_reference/state_machine/sdk/#updatestatemachinemaster
+ */
 class UpdateStateMachineMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Main state machine name */
     private $mainStateMachineName;
-    /** @var string */
+    /** @var string State machine definition */
     private $payload;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UpdateStateMachineMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UpdateStateMachineMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Main state machine name */
 	public function getMainStateMachineName(): ?string {
 		return $this->mainStateMachineName;
 	}
+    /** @param string|null $mainStateMachineName Main state machine name */
 	public function setMainStateMachineName(?string $mainStateMachineName) {
 		$this->mainStateMachineName = $mainStateMachineName;
 	}
+    /**
+     * @param string|null $mainStateMachineName Main state machine name
+     * @return UpdateStateMachineMasterRequest
+     */
 	public function withMainStateMachineName(?string $mainStateMachineName): UpdateStateMachineMasterRequest {
 		$this->mainStateMachineName = $mainStateMachineName;
 		return $this;
 	}
+    /** @return string|null State machine definition */
 	public function getPayload(): ?string {
 		return $this->payload;
 	}
+    /** @param string|null $payload State machine definition */
 	public function setPayload(?string $payload) {
 		$this->payload = $payload;
 	}
+    /**
+     * @param string|null $payload State machine definition
+     * @return UpdateStateMachineMasterRequest
+     */
 	public function withPayload(?string $payload): UpdateStateMachineMasterRequest {
 		$this->payload = $payload;
 		return $this;

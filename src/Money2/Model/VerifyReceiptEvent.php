@@ -20,59 +20,88 @@ namespace Gs2\Money2\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Verify Receipt Event
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#verifyreceiptevent
+ */
 class VerifyReceiptEvent implements IModel {
 	/**
-     * @var string
+     * @var string Store Content Model name
 	 */
 	private $contentName;
 	/**
-     * @var string
+     * @var string Store Platform
 	 */
 	private $platform;
 	/**
-     * @var AppleAppStoreVerifyReceiptEvent
+     * @var AppleAppStoreVerifyReceiptEvent Apple App Store Verify Receipt Event
 	 */
 	private $appleAppStoreVerifyReceiptEvent;
 	/**
-     * @var GooglePlayVerifyReceiptEvent
+     * @var GooglePlayVerifyReceiptEvent Google Play Verify Receipt Event
 	 */
 	private $googlePlayVerifyReceiptEvent;
+    /** @return string|null Store Content Model name */
 	public function getContentName(): ?string {
 		return $this->contentName;
 	}
+    /** @param string|null $contentName Store Content Model name */
 	public function setContentName(?string $contentName) {
 		$this->contentName = $contentName;
 	}
+    /**
+     * @param string|null $contentName Store Content Model name
+     * @return VerifyReceiptEvent
+     */
 	public function withContentName(?string $contentName): VerifyReceiptEvent {
 		$this->contentName = $contentName;
 		return $this;
 	}
+    /** @return string|null Store Platform */
 	public function getPlatform(): ?string {
 		return $this->platform;
 	}
+    /** @param string|null $platform Store Platform */
 	public function setPlatform(?string $platform) {
 		$this->platform = $platform;
 	}
+    /**
+     * @param string|null $platform Store Platform
+     * @return VerifyReceiptEvent
+     */
 	public function withPlatform(?string $platform): VerifyReceiptEvent {
 		$this->platform = $platform;
 		return $this;
 	}
+    /** @return AppleAppStoreVerifyReceiptEvent|null Apple App Store Verify Receipt Event */
 	public function getAppleAppStoreVerifyReceiptEvent(): ?AppleAppStoreVerifyReceiptEvent {
 		return $this->appleAppStoreVerifyReceiptEvent;
 	}
+    /** @param AppleAppStoreVerifyReceiptEvent|null $appleAppStoreVerifyReceiptEvent Apple App Store Verify Receipt Event */
 	public function setAppleAppStoreVerifyReceiptEvent(?AppleAppStoreVerifyReceiptEvent $appleAppStoreVerifyReceiptEvent) {
 		$this->appleAppStoreVerifyReceiptEvent = $appleAppStoreVerifyReceiptEvent;
 	}
+    /**
+     * @param AppleAppStoreVerifyReceiptEvent|null $appleAppStoreVerifyReceiptEvent Apple App Store Verify Receipt Event
+     * @return VerifyReceiptEvent
+     */
 	public function withAppleAppStoreVerifyReceiptEvent(?AppleAppStoreVerifyReceiptEvent $appleAppStoreVerifyReceiptEvent): VerifyReceiptEvent {
 		$this->appleAppStoreVerifyReceiptEvent = $appleAppStoreVerifyReceiptEvent;
 		return $this;
 	}
+    /** @return GooglePlayVerifyReceiptEvent|null Google Play Verify Receipt Event */
 	public function getGooglePlayVerifyReceiptEvent(): ?GooglePlayVerifyReceiptEvent {
 		return $this->googlePlayVerifyReceiptEvent;
 	}
+    /** @param GooglePlayVerifyReceiptEvent|null $googlePlayVerifyReceiptEvent Google Play Verify Receipt Event */
 	public function setGooglePlayVerifyReceiptEvent(?GooglePlayVerifyReceiptEvent $googlePlayVerifyReceiptEvent) {
 		$this->googlePlayVerifyReceiptEvent = $googlePlayVerifyReceiptEvent;
 	}
+    /**
+     * @param GooglePlayVerifyReceiptEvent|null $googlePlayVerifyReceiptEvent Google Play Verify Receipt Event
+     * @return VerifyReceiptEvent
+     */
 	public function withGooglePlayVerifyReceiptEvent(?GooglePlayVerifyReceiptEvent $googlePlayVerifyReceiptEvent): VerifyReceiptEvent {
 		$this->googlePlayVerifyReceiptEvent = $googlePlayVerifyReceiptEvent;
 		return $this;

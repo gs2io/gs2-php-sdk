@@ -21,33 +21,50 @@ use Gs2\Core\Model\IResult;
 use Gs2\Idle\Model\AcquireAction;
 use Gs2\Idle\Model\Status;
 
+/**
+ * Result of predictionByUserId: Get a list of available rewards by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/idle/sdk/#predictionbyuserid
+ */
 class PredictionByUserIdResult implements IResult {
-    /** @var array */
+    /** @var array Rewards */
     private $items;
-    /** @var Status */
+    /** @var Status Status */
     private $status;
 
+    /** @return array|null Rewards */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items Rewards */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items Rewards
+     * @return PredictionByUserIdResult
+     */
 	public function withItems(?array $items): PredictionByUserIdResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return Status|null Status */
 	public function getStatus(): ?Status {
 		return $this->status;
 	}
 
+    /** @param Status|null $status Status */
 	public function setStatus(?Status $status) {
 		$this->status = $status;
 	}
 
+    /**
+     * @param Status|null $status Status
+     * @return PredictionByUserIdResult
+     */
 	public function withStatus(?Status $status): PredictionByUserIdResult {
 		$this->status = $status;
 		return $this;

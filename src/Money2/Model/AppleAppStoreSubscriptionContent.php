@@ -20,17 +20,28 @@ namespace Gs2\Money2\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Subscription content of Apple App Store
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#appleappstoresubscriptioncontent
+ */
 class AppleAppStoreSubscriptionContent implements IModel {
 	/**
-     * @var string
+     * @var string Subscription Group ID
 	 */
 	private $subscriptionGroupIdentifier;
+    /** @return string|null Subscription Group ID */
 	public function getSubscriptionGroupIdentifier(): ?string {
 		return $this->subscriptionGroupIdentifier;
 	}
+    /** @param string|null $subscriptionGroupIdentifier Subscription Group ID */
 	public function setSubscriptionGroupIdentifier(?string $subscriptionGroupIdentifier) {
 		$this->subscriptionGroupIdentifier = $subscriptionGroupIdentifier;
 	}
+    /**
+     * @param string|null $subscriptionGroupIdentifier Subscription Group ID
+     * @return AppleAppStoreSubscriptionContent
+     */
 	public function withSubscriptionGroupIdentifier(?string $subscriptionGroupIdentifier): AppleAppStoreSubscriptionContent {
 		$this->subscriptionGroupIdentifier = $subscriptionGroupIdentifier;
 		return $this;

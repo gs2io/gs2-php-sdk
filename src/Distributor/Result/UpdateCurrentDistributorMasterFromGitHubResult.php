@@ -20,18 +20,29 @@ namespace Gs2\Distributor\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Distributor\Model\CurrentDistributorMaster;
 
+/**
+ * Result of updateCurrentDistributorMasterFromGitHub: Update currently active Distributor Model master data from GitHub
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#updatecurrentdistributormasterfromgithub
+ */
 class UpdateCurrentDistributorMasterFromGitHubResult implements IResult {
-    /** @var CurrentDistributorMaster */
+    /** @var CurrentDistributorMaster Updated currently active Distributor Model master data */
     private $item;
 
+    /** @return CurrentDistributorMaster|null Updated currently active Distributor Model master data */
 	public function getItem(): ?CurrentDistributorMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentDistributorMaster|null $item Updated currently active Distributor Model master data */
 	public function setItem(?CurrentDistributorMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentDistributorMaster|null $item Updated currently active Distributor Model master data
+     * @return UpdateCurrentDistributorMasterFromGitHubResult
+     */
 	public function withItem(?CurrentDistributorMaster $item): UpdateCurrentDistributorMasterFromGitHubResult {
 		$this->item = $item;
 		return $this;

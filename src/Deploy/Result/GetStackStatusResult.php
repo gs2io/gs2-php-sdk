@@ -19,18 +19,29 @@ namespace Gs2\Deploy\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of getStackStatus: Get Stack Status
+ *
+ * @see https://docs.gs2.io/api_reference/deploy/sdk/#getstackstatus
+ */
 class GetStackStatusResult implements IResult {
-    /** @var string */
+    /** @var string Stack Status */
     private $status;
 
+    /** @return string|null Stack Status */
 	public function getStatus(): ?string {
 		return $this->status;
 	}
 
+    /** @param string|null $status Stack Status */
 	public function setStatus(?string $status) {
 		$this->status = $status;
 	}
 
+    /**
+     * @param string|null $status Stack Status
+     * @return GetStackStatusResult
+     */
 	public function withStatus(?string $status): GetStackStatusResult {
 		$this->status = $status;
 		return $this;

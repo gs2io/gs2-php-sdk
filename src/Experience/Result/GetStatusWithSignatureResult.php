@@ -20,48 +20,71 @@ namespace Gs2\Experience\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Experience\Model\Status;
 
+/**
+ * Result of getStatusWithSignature: Get status along with signature
+ *
+ * @see https://docs.gs2.io/api_reference/experience/sdk/#getstatuswithsignature
+ */
 class GetStatusWithSignatureResult implements IResult {
-    /** @var Status */
+    /** @var Status Status */
     private $item;
-    /** @var string */
+    /** @var string Object to be verified */
     private $body;
-    /** @var string */
+    /** @var string signature */
     private $signature;
 
+    /** @return Status|null Status */
 	public function getItem(): ?Status {
 		return $this->item;
 	}
 
+    /** @param Status|null $item Status */
 	public function setItem(?Status $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Status|null $item Status
+     * @return GetStatusWithSignatureResult
+     */
 	public function withItem(?Status $item): GetStatusWithSignatureResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null Object to be verified */
 	public function getBody(): ?string {
 		return $this->body;
 	}
 
+    /** @param string|null $body Object to be verified */
 	public function setBody(?string $body) {
 		$this->body = $body;
 	}
 
+    /**
+     * @param string|null $body Object to be verified
+     * @return GetStatusWithSignatureResult
+     */
 	public function withBody(?string $body): GetStatusWithSignatureResult {
 		$this->body = $body;
 		return $this;
 	}
 
+    /** @return string|null signature */
 	public function getSignature(): ?string {
 		return $this->signature;
 	}
 
+    /** @param string|null $signature signature */
 	public function setSignature(?string $signature) {
 		$this->signature = $signature;
 	}
 
+    /**
+     * @param string|null $signature signature
+     * @return GetStatusWithSignatureResult
+     */
 	public function withSignature(?string $signature): GetStatusWithSignatureResult {
 		$this->signature = $signature;
 		return $this;

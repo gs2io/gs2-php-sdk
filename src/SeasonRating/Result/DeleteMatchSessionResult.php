@@ -20,18 +20,29 @@ namespace Gs2\SeasonRating\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\SeasonRating\Model\MatchSession;
 
+/**
+ * Result of deleteMatchSession: Delete MatchSession
+ *
+ * @see https://docs.gs2.io/api_reference/season_rating/sdk/#deletematchsession
+ */
 class DeleteMatchSessionResult implements IResult {
-    /** @var MatchSession */
+    /** @var MatchSession MatchSession deleted */
     private $item;
 
+    /** @return MatchSession|null MatchSession deleted */
 	public function getItem(): ?MatchSession {
 		return $this->item;
 	}
 
+    /** @param MatchSession|null $item MatchSession deleted */
 	public function setItem(?MatchSession $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param MatchSession|null $item MatchSession deleted
+     * @return DeleteMatchSessionResult
+     */
 	public function withItem(?MatchSession $item): DeleteMatchSessionResult {
 		$this->item = $item;
 		return $this;

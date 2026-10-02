@@ -19,27 +19,44 @@ namespace Gs2\Experience\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getExperienceModelMaster: Get Experience Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/experience/sdk/#getexperiencemodelmaster
+ */
 class GetExperienceModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Experience Model name */
     private $experienceName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetExperienceModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetExperienceModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Experience Model name */
 	public function getExperienceName(): ?string {
 		return $this->experienceName;
 	}
+    /** @param string|null $experienceName Experience Model name */
 	public function setExperienceName(?string $experienceName) {
 		$this->experienceName = $experienceName;
 	}
+    /**
+     * @param string|null $experienceName Experience Model name
+     * @return GetExperienceModelMasterRequest
+     */
 	public function withExperienceName(?string $experienceName): GetExperienceModelMasterRequest {
 		$this->experienceName = $experienceName;
 		return $this;

@@ -19,27 +19,44 @@ namespace Gs2\Enchant\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for reDrawBalanceParameterStatusByStampSheet: Execute re-draw of Balance Parameter Status as acquire action
+ *
+ * @see https://docs.gs2.io/api_reference/enchant/stamp_sheet/#gs2enchantredrawbalanceparameterstatusbyuserid
+ */
 class ReDrawBalanceParameterStatusByStampSheetRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Transaction */
     private $stampSheet;
-    /** @var string */
+    /** @var string Encryption Key GRN */
     private $keyId;
+    /** @return string|null Transaction */
 	public function getStampSheet(): ?string {
 		return $this->stampSheet;
 	}
+    /** @param string|null $stampSheet Transaction */
 	public function setStampSheet(?string $stampSheet) {
 		$this->stampSheet = $stampSheet;
 	}
+    /**
+     * @param string|null $stampSheet Transaction
+     * @return ReDrawBalanceParameterStatusByStampSheetRequest
+     */
 	public function withStampSheet(?string $stampSheet): ReDrawBalanceParameterStatusByStampSheetRequest {
 		$this->stampSheet = $stampSheet;
 		return $this;
 	}
+    /** @return string|null Encryption Key GRN */
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
+    /** @param string|null $keyId Encryption Key GRN */
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
+    /**
+     * @param string|null $keyId Encryption Key GRN
+     * @return ReDrawBalanceParameterStatusByStampSheetRequest
+     */
 	public function withKeyId(?string $keyId): ReDrawBalanceParameterStatusByStampSheetRequest {
 		$this->keyId = $keyId;
 		return $this;

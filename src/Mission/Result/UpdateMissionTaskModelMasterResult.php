@@ -23,18 +23,29 @@ use Gs2\Mission\Model\VerifyAction;
 use Gs2\Mission\Model\AcquireAction;
 use Gs2\Mission\Model\MissionTaskModelMaster;
 
+/**
+ * Result of updateMissionTaskModelMaster: Update Mission Task Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#updatemissiontaskmodelmaster
+ */
 class UpdateMissionTaskModelMasterResult implements IResult {
-    /** @var MissionTaskModelMaster */
+    /** @var MissionTaskModelMaster Mission Task Model Master updated */
     private $item;
 
+    /** @return MissionTaskModelMaster|null Mission Task Model Master updated */
 	public function getItem(): ?MissionTaskModelMaster {
 		return $this->item;
 	}
 
+    /** @param MissionTaskModelMaster|null $item Mission Task Model Master updated */
 	public function setItem(?MissionTaskModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param MissionTaskModelMaster|null $item Mission Task Model Master updated
+     * @return UpdateMissionTaskModelMasterResult
+     */
 	public function withItem(?MissionTaskModelMaster $item): UpdateMissionTaskModelMasterResult {
 		$this->item = $item;
 		return $this;

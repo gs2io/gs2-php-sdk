@@ -22,33 +22,50 @@ use Gs2\Money2\Model\AppleAppStoreContent;
 use Gs2\Money2\Model\GooglePlayContent;
 use Gs2\Money2\Model\StoreContentModelMaster;
 
+/**
+ * Result of describeStoreContentModelMasters: List Store Content Model Masters
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#describestorecontentmodelmasters
+ */
 class DescribeStoreContentModelMastersResult implements IResult {
-    /** @var array */
+    /** @var array List of Store Content Model Masters */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Store Content Model Masters */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Store Content Model Masters */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Store Content Model Masters
+     * @return DescribeStoreContentModelMastersResult
+     */
 	public function withItems(?array $items): DescribeStoreContentModelMastersResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeStoreContentModelMastersResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeStoreContentModelMastersResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

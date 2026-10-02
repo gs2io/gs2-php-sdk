@@ -21,33 +21,50 @@ use Gs2\Core\Model\IResult;
 use Gs2\Quest\Model\Reward;
 use Gs2\Quest\Model\Progress;
 
+/**
+ * Result of deleteProgressByStampTask: Delete Quest Progress in Consume Actions
+ *
+ * @see https://docs.gs2.io/api_reference/quest/stamp_sheet/#gs2questdeleteprogressbyuserid
+ */
 class DeleteProgressByStampTaskResult implements IResult {
-    /** @var Progress */
+    /** @var Progress Quest Progress deleted */
     private $item;
-    /** @var string */
+    /** @var string Context recording the execution results of Consume Actions */
     private $newContextStack;
 
+    /** @return Progress|null Quest Progress deleted */
 	public function getItem(): ?Progress {
 		return $this->item;
 	}
 
+    /** @param Progress|null $item Quest Progress deleted */
 	public function setItem(?Progress $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Progress|null $item Quest Progress deleted
+     * @return DeleteProgressByStampTaskResult
+     */
 	public function withItem(?Progress $item): DeleteProgressByStampTaskResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null Context recording the execution results of Consume Actions */
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
+    /** @param string|null $newContextStack Context recording the execution results of Consume Actions */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
+    /**
+     * @param string|null $newContextStack Context recording the execution results of Consume Actions
+     * @return DeleteProgressByStampTaskResult
+     */
 	public function withNewContextStack(?string $newContextStack): DeleteProgressByStampTaskResult {
 		$this->newContextStack = $newContextStack;
 		return $this;

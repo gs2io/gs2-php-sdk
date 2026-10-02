@@ -22,48 +22,71 @@ use Gs2\Inventory\Model\ItemSet;
 use Gs2\Inventory\Model\ItemModel;
 use Gs2\Inventory\Model\Inventory;
 
+/**
+ * Result of deleteItemSetByUserId: Delete Item Set
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#deleteitemsetbyuserid
+ */
 class DeleteItemSetByUserIdResult implements IResult {
-    /** @var array */
+    /** @var array List of deleted Item Sets */
     private $items;
-    /** @var ItemModel */
+    /** @var ItemModel Item Model */
     private $itemModel;
-    /** @var Inventory */
+    /** @var Inventory Inventory */
     private $inventory;
 
+    /** @return array|null List of deleted Item Sets */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of deleted Item Sets */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of deleted Item Sets
+     * @return DeleteItemSetByUserIdResult
+     */
 	public function withItems(?array $items): DeleteItemSetByUserIdResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return ItemModel|null Item Model */
 	public function getItemModel(): ?ItemModel {
 		return $this->itemModel;
 	}
 
+    /** @param ItemModel|null $itemModel Item Model */
 	public function setItemModel(?ItemModel $itemModel) {
 		$this->itemModel = $itemModel;
 	}
 
+    /**
+     * @param ItemModel|null $itemModel Item Model
+     * @return DeleteItemSetByUserIdResult
+     */
 	public function withItemModel(?ItemModel $itemModel): DeleteItemSetByUserIdResult {
 		$this->itemModel = $itemModel;
 		return $this;
 	}
 
+    /** @return Inventory|null Inventory */
 	public function getInventory(): ?Inventory {
 		return $this->inventory;
 	}
 
+    /** @param Inventory|null $inventory Inventory */
 	public function setInventory(?Inventory $inventory) {
 		$this->inventory = $inventory;
 	}
 
+    /**
+     * @param Inventory|null $inventory Inventory
+     * @return DeleteItemSetByUserIdResult
+     */
 	public function withInventory(?Inventory $inventory): DeleteItemSetByUserIdResult {
 		$this->inventory = $inventory;
 		return $this;

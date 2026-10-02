@@ -20,18 +20,29 @@ namespace Gs2\SeasonRating\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\SeasonRating\Model\CurrentSeasonModelMaster;
 
+/**
+ * Result of updateCurrentSeasonModelMaster: Update currently active Season Model master data
+ *
+ * @see https://docs.gs2.io/api_reference/season_rating/sdk/#updatecurrentseasonmodelmaster
+ */
 class UpdateCurrentSeasonModelMasterResult implements IResult {
-    /** @var CurrentSeasonModelMaster */
+    /** @var CurrentSeasonModelMaster Updated master data of the currently active Season Models */
     private $item;
 
+    /** @return CurrentSeasonModelMaster|null Updated master data of the currently active Season Models */
 	public function getItem(): ?CurrentSeasonModelMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentSeasonModelMaster|null $item Updated master data of the currently active Season Models */
 	public function setItem(?CurrentSeasonModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentSeasonModelMaster|null $item Updated master data of the currently active Season Models
+     * @return UpdateCurrentSeasonModelMasterResult
+     */
 	public function withItem(?CurrentSeasonModelMaster $item): UpdateCurrentSeasonModelMasterResult {
 		$this->item = $item;
 		return $this;

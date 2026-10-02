@@ -24,33 +24,50 @@ use Gs2\StateMachine\Model\StackEntry;
 use Gs2\StateMachine\Model\Variable;
 use Gs2\StateMachine\Model\Status;
 
+/**
+ * Result of describeStatusesByUserId: List State Machine Statuses by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/state_machine/sdk/#describestatusesbyuserid
+ */
 class DescribeStatusesByUserIdResult implements IResult {
-    /** @var array */
+    /** @var array List of Status of State Machine */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Status of State Machine */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Status of State Machine */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Status of State Machine
+     * @return DescribeStatusesByUserIdResult
+     */
 	public function withItems(?array $items): DescribeStatusesByUserIdResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeStatusesByUserIdResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeStatusesByUserIdResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

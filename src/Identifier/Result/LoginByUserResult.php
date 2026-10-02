@@ -20,18 +20,29 @@ namespace Gs2\Identifier\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Identifier\Model\ProjectToken;
 
+/**
+ * Result of loginByUser: Get a Project Token by specifying a GS2-Identifier user
+ *
+ * @see https://docs.gs2.io/api_reference/identifier/sdk/#loginbyuser
+ */
 class LoginByUserResult implements IResult {
-    /** @var ProjectToken */
+    /** @var ProjectToken Project Token */
     private $item;
 
+    /** @return ProjectToken|null Project Token */
 	public function getItem(): ?ProjectToken {
 		return $this->item;
 	}
 
+    /** @param ProjectToken|null $item Project Token */
 	public function setItem(?ProjectToken $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param ProjectToken|null $item Project Token
+     * @return LoginByUserResult
+     */
 	public function withItem(?ProjectToken $item): LoginByUserResult {
 		$this->item = $item;
 		return $this;

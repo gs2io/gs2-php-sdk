@@ -19,39 +19,62 @@ namespace Gs2\Ranking\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for calcRanking: Forced execution of the ranking calculation process
+ *
+ * @see https://docs.gs2.io/api_reference/ranking/sdk/#calcranking
+ */
 class CalcRankingRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Category Model name */
     private $categoryName;
-    /** @var string */
+    /** @var string Additional scope */
     private $additionalScopeName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return CalcRankingRequest
+     */
 	public function withNamespaceName(?string $namespaceName): CalcRankingRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Category Model name */
 	public function getCategoryName(): ?string {
 		return $this->categoryName;
 	}
+    /** @param string|null $categoryName Category Model name */
 	public function setCategoryName(?string $categoryName) {
 		$this->categoryName = $categoryName;
 	}
+    /**
+     * @param string|null $categoryName Category Model name
+     * @return CalcRankingRequest
+     */
 	public function withCategoryName(?string $categoryName): CalcRankingRequest {
 		$this->categoryName = $categoryName;
 		return $this;
 	}
+    /** @return string|null Additional scope */
 	public function getAdditionalScopeName(): ?string {
 		return $this->additionalScopeName;
 	}
+    /** @param string|null $additionalScopeName Additional scope */
 	public function setAdditionalScopeName(?string $additionalScopeName) {
 		$this->additionalScopeName = $additionalScopeName;
 	}
+    /**
+     * @param string|null $additionalScopeName Additional scope
+     * @return CalcRankingRequest
+     */
 	public function withAdditionalScopeName(?string $additionalScopeName): CalcRankingRequest {
 		$this->additionalScopeName = $additionalScopeName;
 		return $this;

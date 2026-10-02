@@ -19,51 +19,80 @@ namespace Gs2\Ranking\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for describeSubscribesByCategoryNameAndUserId: Obtaining a list of users to which the user is subscribed by specifying the user ID
+ *
+ * @see https://docs.gs2.io/api_reference/ranking/sdk/#describesubscribesbycategorynameanduserid
+ */
 class DescribeSubscribesByCategoryNameAndUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Category Model name */
     private $categoryName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DescribeSubscribesByCategoryNameAndUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DescribeSubscribesByCategoryNameAndUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Category Model name */
 	public function getCategoryName(): ?string {
 		return $this->categoryName;
 	}
+    /** @param string|null $categoryName Category Model name */
 	public function setCategoryName(?string $categoryName) {
 		$this->categoryName = $categoryName;
 	}
+    /**
+     * @param string|null $categoryName Category Model name
+     * @return DescribeSubscribesByCategoryNameAndUserIdRequest
+     */
 	public function withCategoryName(?string $categoryName): DescribeSubscribesByCategoryNameAndUserIdRequest {
 		$this->categoryName = $categoryName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return DescribeSubscribesByCategoryNameAndUserIdRequest
+     */
 	public function withUserId(?string $userId): DescribeSubscribesByCategoryNameAndUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return DescribeSubscribesByCategoryNameAndUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): DescribeSubscribesByCategoryNameAndUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

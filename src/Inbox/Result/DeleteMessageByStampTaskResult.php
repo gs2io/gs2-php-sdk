@@ -21,33 +21,50 @@ use Gs2\Core\Model\IResult;
 use Gs2\Inbox\Model\AcquireAction;
 use Gs2\Inbox\Model\Message;
 
+/**
+ * Result of deleteMessageByStampTask: Execute deleting a Message as a consume action
+ *
+ * @see https://docs.gs2.io/api_reference/inbox/stamp_sheet/#gs2inboxdeletemessagebyuserid
+ */
 class DeleteMessageByStampTaskResult implements IResult {
-    /** @var Message */
+    /** @var Message Message */
     private $item;
-    /** @var string */
+    /** @var string Context recording the execution results of Consume Actions */
     private $newContextStack;
 
+    /** @return Message|null Message */
 	public function getItem(): ?Message {
 		return $this->item;
 	}
 
+    /** @param Message|null $item Message */
 	public function setItem(?Message $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Message|null $item Message
+     * @return DeleteMessageByStampTaskResult
+     */
 	public function withItem(?Message $item): DeleteMessageByStampTaskResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null Context recording the execution results of Consume Actions */
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
+    /** @param string|null $newContextStack Context recording the execution results of Consume Actions */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
+    /**
+     * @param string|null $newContextStack Context recording the execution results of Consume Actions
+     * @return DeleteMessageByStampTaskResult
+     */
 	public function withNewContextStack(?string $newContextStack): DeleteMessageByStampTaskResult {
 		$this->newContextStack = $newContextStack;
 		return $this;

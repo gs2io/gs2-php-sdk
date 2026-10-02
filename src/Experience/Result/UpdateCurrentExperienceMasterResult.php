@@ -20,18 +20,29 @@ namespace Gs2\Experience\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Experience\Model\CurrentExperienceMaster;
 
+/**
+ * Result of updateCurrentExperienceMaster: Update currently active Experience Model master data
+ *
+ * @see https://docs.gs2.io/api_reference/experience/sdk/#updatecurrentexperiencemaster
+ */
 class UpdateCurrentExperienceMasterResult implements IResult {
-    /** @var CurrentExperienceMaster */
+    /** @var CurrentExperienceMaster Updated master data of the currently active Experience Models */
     private $item;
 
+    /** @return CurrentExperienceMaster|null Updated master data of the currently active Experience Models */
 	public function getItem(): ?CurrentExperienceMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentExperienceMaster|null $item Updated master data of the currently active Experience Models */
 	public function setItem(?CurrentExperienceMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentExperienceMaster|null $item Updated master data of the currently active Experience Models
+     * @return UpdateCurrentExperienceMasterResult
+     */
 	public function withItem(?CurrentExperienceMaster $item): UpdateCurrentExperienceMasterResult {
 		$this->item = $item;
 		return $this;

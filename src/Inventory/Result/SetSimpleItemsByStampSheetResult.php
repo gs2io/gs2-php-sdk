@@ -20,18 +20,29 @@ namespace Gs2\Inventory\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Inventory\Model\SimpleItem;
 
+/**
+ * Result of setSimpleItemsByStampSheet: Execute setting of any value for the quantity of simple items as an acquire action
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventorysetsimpleitemsbyuserid
+ */
 class SetSimpleItemsByStampSheetResult implements IResult {
-    /** @var array */
+    /** @var array List of Quantity of simple items after update */
     private $items;
 
+    /** @return array|null List of Quantity of simple items after update */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Quantity of simple items after update */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Quantity of simple items after update
+     * @return SetSimpleItemsByStampSheetResult
+     */
 	public function withItems(?array $items): SetSimpleItemsByStampSheetResult {
 		$this->items = $items;
 		return $this;

@@ -20,18 +20,29 @@ namespace Gs2\Script\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Script\Model\Script;
 
+/**
+ * Result of getScript: Get Script
+ *
+ * @see https://docs.gs2.io/api_reference/script/sdk/#getscript
+ */
 class GetScriptResult implements IResult {
-    /** @var Script */
+    /** @var Script Script */
     private $item;
 
+    /** @return Script|null Script */
 	public function getItem(): ?Script {
 		return $this->item;
 	}
 
+    /** @param Script|null $item Script */
 	public function setItem(?Script $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Script|null $item Script
+     * @return GetScriptResult
+     */
 	public function withItem(?Script $item): GetScriptResult {
 		$this->item = $item;
 		return $this;

@@ -20,59 +20,88 @@ namespace Gs2\Lottery\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Prize Table
+ *
+ * @see https://docs.gs2.io/api_reference/lottery/sdk/#prizetable
+ */
 class PrizeTable implements IModel {
 	/**
-     * @var string
+     * @var string Prize Table GRN
 	 */
 	private $prizeTableId;
 	/**
-     * @var string
+     * @var string Prize Table name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var array
+     * @var array Prizes
 	 */
 	private $prizes;
+    /** @return string|null Prize Table GRN */
 	public function getPrizeTableId(): ?string {
 		return $this->prizeTableId;
 	}
+    /** @param string|null $prizeTableId Prize Table GRN */
 	public function setPrizeTableId(?string $prizeTableId) {
 		$this->prizeTableId = $prizeTableId;
 	}
+    /**
+     * @param string|null $prizeTableId Prize Table GRN
+     * @return PrizeTable
+     */
 	public function withPrizeTableId(?string $prizeTableId): PrizeTable {
 		$this->prizeTableId = $prizeTableId;
 		return $this;
 	}
+    /** @return string|null Prize Table name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Prize Table name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Prize Table name
+     * @return PrizeTable
+     */
 	public function withName(?string $name): PrizeTable {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return PrizeTable
+     */
 	public function withMetadata(?string $metadata): PrizeTable {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return array|null Prizes */
 	public function getPrizes(): ?array {
 		return $this->prizes;
 	}
+    /** @param array|null $prizes Prizes */
 	public function setPrizes(?array $prizes) {
 		$this->prizes = $prizes;
 	}
+    /**
+     * @param array|null $prizes Prizes
+     * @return PrizeTable
+     */
 	public function withPrizes(?array $prizes): PrizeTable {
 		$this->prizes = $prizes;
 		return $this;

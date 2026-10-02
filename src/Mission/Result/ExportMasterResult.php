@@ -20,18 +20,29 @@ namespace Gs2\Mission\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Mission\Model\CurrentMissionMaster;
 
+/**
+ * Result of exportMaster: Export Mission Model Master in a master data format that can be activated
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#exportmaster
+ */
 class ExportMasterResult implements IResult {
-    /** @var CurrentMissionMaster */
+    /** @var CurrentMissionMaster Mission Model Master data that can be activated */
     private $item;
 
+    /** @return CurrentMissionMaster|null Mission Model Master data that can be activated */
 	public function getItem(): ?CurrentMissionMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentMissionMaster|null $item Mission Model Master data that can be activated */
 	public function setItem(?CurrentMissionMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentMissionMaster|null $item Mission Model Master data that can be activated
+     * @return ExportMasterResult
+     */
 	public function withItem(?CurrentMissionMaster $item): ExportMasterResult {
 		$this->item = $item;
 		return $this;

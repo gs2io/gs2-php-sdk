@@ -20,18 +20,29 @@ namespace Gs2\Chat\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Chat\Model\CategoryModel;
 
+/**
+ * Result of describeCategoryModels: List Message Category Models
+ *
+ * @see https://docs.gs2.io/api_reference/chat/sdk/#describecategorymodels
+ */
 class DescribeCategoryModelsResult implements IResult {
-    /** @var array */
+    /** @var array List of Message Category Models */
     private $items;
 
+    /** @return array|null List of Message Category Models */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Message Category Models */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Message Category Models
+     * @return DescribeCategoryModelsResult
+     */
 	public function withItems(?array $items): DescribeCategoryModelsResult {
 		$this->items = $items;
 		return $this;

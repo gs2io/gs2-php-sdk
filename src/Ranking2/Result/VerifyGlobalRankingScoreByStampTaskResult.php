@@ -20,33 +20,50 @@ namespace Gs2\Ranking2\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Ranking2\Model\GlobalRankingScore;
 
+/**
+ * Result of verifyGlobalRankingScoreByStampTask: Execute the verification of the global ranking score as a verification action
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/stamp_sheet/#gs2ranking2verifyglobalrankingscorebyuserid
+ */
 class VerifyGlobalRankingScoreByStampTaskResult implements IResult {
-    /** @var GlobalRankingScore */
+    /** @var GlobalRankingScore Global Ranking Score */
     private $item;
-    /** @var string */
+    /** @var string Context recording the execution results of verification actions */
     private $newContextStack;
 
+    /** @return GlobalRankingScore|null Global Ranking Score */
 	public function getItem(): ?GlobalRankingScore {
 		return $this->item;
 	}
 
+    /** @param GlobalRankingScore|null $item Global Ranking Score */
 	public function setItem(?GlobalRankingScore $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param GlobalRankingScore|null $item Global Ranking Score
+     * @return VerifyGlobalRankingScoreByStampTaskResult
+     */
 	public function withItem(?GlobalRankingScore $item): VerifyGlobalRankingScoreByStampTaskResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null Context recording the execution results of verification actions */
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
+    /** @param string|null $newContextStack Context recording the execution results of verification actions */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
+    /**
+     * @param string|null $newContextStack Context recording the execution results of verification actions
+     * @return VerifyGlobalRankingScoreByStampTaskResult
+     */
 	public function withNewContextStack(?string $newContextStack): VerifyGlobalRankingScoreByStampTaskResult {
 		$this->newContextStack = $newContextStack;
 		return $this;

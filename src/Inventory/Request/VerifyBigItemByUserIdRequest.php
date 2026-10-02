@@ -19,101 +19,154 @@ namespace Gs2\Inventory\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for verifyBigItemByUserId: Verify possession quantity of Big Items by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#verifybigitembyuserid
+ */
 class VerifyBigItemByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Big Inventory Model name */
     private $inventoryName;
-    /** @var string */
+    /** @var string Big Item Model Name */
     private $itemName;
-    /** @var string */
+    /** @var string Type of verification */
     private $verifyType;
-    /** @var string */
+    /** @var string Quantity in Possession */
     private $count;
-    /** @var bool */
+    /** @var bool Whether to multiply the value used for verification when specifying the quantity */
     private $multiplyValueSpecifyingQuantity;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return VerifyBigItemByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): VerifyBigItemByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return VerifyBigItemByUserIdRequest
+     */
 	public function withUserId(?string $userId): VerifyBigItemByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Big Inventory Model name */
 	public function getInventoryName(): ?string {
 		return $this->inventoryName;
 	}
+    /** @param string|null $inventoryName Big Inventory Model name */
 	public function setInventoryName(?string $inventoryName) {
 		$this->inventoryName = $inventoryName;
 	}
+    /**
+     * @param string|null $inventoryName Big Inventory Model name
+     * @return VerifyBigItemByUserIdRequest
+     */
 	public function withInventoryName(?string $inventoryName): VerifyBigItemByUserIdRequest {
 		$this->inventoryName = $inventoryName;
 		return $this;
 	}
+    /** @return string|null Big Item Model Name */
 	public function getItemName(): ?string {
 		return $this->itemName;
 	}
+    /** @param string|null $itemName Big Item Model Name */
 	public function setItemName(?string $itemName) {
 		$this->itemName = $itemName;
 	}
+    /**
+     * @param string|null $itemName Big Item Model Name
+     * @return VerifyBigItemByUserIdRequest
+     */
 	public function withItemName(?string $itemName): VerifyBigItemByUserIdRequest {
 		$this->itemName = $itemName;
 		return $this;
 	}
+    /** @return string|null Type of verification */
 	public function getVerifyType(): ?string {
 		return $this->verifyType;
 	}
+    /** @param string|null $verifyType Type of verification */
 	public function setVerifyType(?string $verifyType) {
 		$this->verifyType = $verifyType;
 	}
+    /**
+     * @param string|null $verifyType Type of verification
+     * @return VerifyBigItemByUserIdRequest
+     */
 	public function withVerifyType(?string $verifyType): VerifyBigItemByUserIdRequest {
 		$this->verifyType = $verifyType;
 		return $this;
 	}
+    /** @return string|null Quantity in Possession */
 	public function getCount(): ?string {
 		return $this->count;
 	}
+    /** @param string|null $count Quantity in Possession */
 	public function setCount(?string $count) {
 		$this->count = $count;
 	}
+    /**
+     * @param string|null $count Quantity in Possession
+     * @return VerifyBigItemByUserIdRequest
+     */
 	public function withCount(?string $count): VerifyBigItemByUserIdRequest {
 		$this->count = $count;
 		return $this;
 	}
+    /** @return bool|null Whether to multiply the value used for verification when specifying the quantity */
 	public function getMultiplyValueSpecifyingQuantity(): ?bool {
 		return $this->multiplyValueSpecifyingQuantity;
 	}
+    /** @param bool|null $multiplyValueSpecifyingQuantity Whether to multiply the value used for verification when specifying the quantity */
 	public function setMultiplyValueSpecifyingQuantity(?bool $multiplyValueSpecifyingQuantity) {
 		$this->multiplyValueSpecifyingQuantity = $multiplyValueSpecifyingQuantity;
 	}
+    /**
+     * @param bool|null $multiplyValueSpecifyingQuantity Whether to multiply the value used for verification when specifying the quantity
+     * @return VerifyBigItemByUserIdRequest
+     */
 	public function withMultiplyValueSpecifyingQuantity(?bool $multiplyValueSpecifyingQuantity): VerifyBigItemByUserIdRequest {
 		$this->multiplyValueSpecifyingQuantity = $multiplyValueSpecifyingQuantity;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return VerifyBigItemByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): VerifyBigItemByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

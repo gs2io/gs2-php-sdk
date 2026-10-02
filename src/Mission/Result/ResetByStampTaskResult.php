@@ -21,33 +21,50 @@ use Gs2\Core\Model\IResult;
 use Gs2\Mission\Model\ScopedValue;
 use Gs2\Mission\Model\Counter;
 
+/**
+ * Result of resetByStampTask: Execute counter reset as a consume action within a distributed transaction
+ *
+ * @see https://docs.gs2.io/api_reference/mission/stamp_sheet/#gs2missionresetcounterbyuserid
+ */
 class ResetByStampTaskResult implements IResult {
-    /** @var Counter */
+    /** @var Counter Counter after counter addition */
     private $item;
-    /** @var string */
+    /** @var string Context recording the execution results of Consume Actions */
     private $newContextStack;
 
+    /** @return Counter|null Counter after counter addition */
 	public function getItem(): ?Counter {
 		return $this->item;
 	}
 
+    /** @param Counter|null $item Counter after counter addition */
 	public function setItem(?Counter $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Counter|null $item Counter after counter addition
+     * @return ResetByStampTaskResult
+     */
 	public function withItem(?Counter $item): ResetByStampTaskResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null Context recording the execution results of Consume Actions */
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
+    /** @param string|null $newContextStack Context recording the execution results of Consume Actions */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
+    /**
+     * @param string|null $newContextStack Context recording the execution results of Consume Actions
+     * @return ResetByStampTaskResult
+     */
 	public function withNewContextStack(?string $newContextStack): ResetByStampTaskResult {
 		$this->newContextStack = $newContextStack;
 		return $this;

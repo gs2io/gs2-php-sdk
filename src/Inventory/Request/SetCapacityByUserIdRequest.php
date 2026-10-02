@@ -19,65 +19,100 @@ namespace Gs2\Inventory\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for setCapacityByUserId: Set inventory capacity size by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#setcapacitybyuserid
+ */
 class SetCapacityByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Inventory Model Name */
     private $inventoryName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var int */
+    /** @var int New maximum capacity for inventory */
     private $newCapacityValue;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return SetCapacityByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): SetCapacityByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Inventory Model Name */
 	public function getInventoryName(): ?string {
 		return $this->inventoryName;
 	}
+    /** @param string|null $inventoryName Inventory Model Name */
 	public function setInventoryName(?string $inventoryName) {
 		$this->inventoryName = $inventoryName;
 	}
+    /**
+     * @param string|null $inventoryName Inventory Model Name
+     * @return SetCapacityByUserIdRequest
+     */
 	public function withInventoryName(?string $inventoryName): SetCapacityByUserIdRequest {
 		$this->inventoryName = $inventoryName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return SetCapacityByUserIdRequest
+     */
 	public function withUserId(?string $userId): SetCapacityByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return int|null New maximum capacity for inventory */
 	public function getNewCapacityValue(): ?int {
 		return $this->newCapacityValue;
 	}
+    /** @param int|null $newCapacityValue New maximum capacity for inventory */
 	public function setNewCapacityValue(?int $newCapacityValue) {
 		$this->newCapacityValue = $newCapacityValue;
 	}
+    /**
+     * @param int|null $newCapacityValue New maximum capacity for inventory
+     * @return SetCapacityByUserIdRequest
+     */
 	public function withNewCapacityValue(?int $newCapacityValue): SetCapacityByUserIdRequest {
 		$this->newCapacityValue = $newCapacityValue;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return SetCapacityByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): SetCapacityByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

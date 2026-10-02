@@ -20,31 +20,48 @@ namespace Gs2\Money2\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Google Play Setting
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#googleplaysetting
+ */
 class GooglePlaySetting implements IModel {
 	/**
-     * @var string
+     * @var string Package Name to be distributed on Google Play
 	 */
 	private $packageName;
 	/**
-     * @var string
+     * @var string Public key used for signature verification
 	 */
 	private $publicKey;
+    /** @return string|null Package Name to be distributed on Google Play */
 	public function getPackageName(): ?string {
 		return $this->packageName;
 	}
+    /** @param string|null $packageName Package Name to be distributed on Google Play */
 	public function setPackageName(?string $packageName) {
 		$this->packageName = $packageName;
 	}
+    /**
+     * @param string|null $packageName Package Name to be distributed on Google Play
+     * @return GooglePlaySetting
+     */
 	public function withPackageName(?string $packageName): GooglePlaySetting {
 		$this->packageName = $packageName;
 		return $this;
 	}
+    /** @return string|null Public key used for signature verification */
 	public function getPublicKey(): ?string {
 		return $this->publicKey;
 	}
+    /** @param string|null $publicKey Public key used for signature verification */
 	public function setPublicKey(?string $publicKey) {
 		$this->publicKey = $publicKey;
 	}
+    /**
+     * @param string|null $publicKey Public key used for signature verification
+     * @return GooglePlaySetting
+     */
 	public function withPublicKey(?string $publicKey): GooglePlaySetting {
 		$this->publicKey = $publicKey;
 		return $this;

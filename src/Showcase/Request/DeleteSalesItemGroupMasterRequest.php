@@ -19,27 +19,44 @@ namespace Gs2\Showcase\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for deleteSalesItemGroupMaster: Delete Sales Item Group Master
+ *
+ * @see https://docs.gs2.io/api_reference/showcase/sdk/#deletesalesitemgroupmaster
+ */
 class DeleteSalesItemGroupMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Sales Item Group name */
     private $salesItemGroupName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DeleteSalesItemGroupMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DeleteSalesItemGroupMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Sales Item Group name */
 	public function getSalesItemGroupName(): ?string {
 		return $this->salesItemGroupName;
 	}
+    /** @param string|null $salesItemGroupName Sales Item Group name */
 	public function setSalesItemGroupName(?string $salesItemGroupName) {
 		$this->salesItemGroupName = $salesItemGroupName;
 	}
+    /**
+     * @param string|null $salesItemGroupName Sales Item Group name
+     * @return DeleteSalesItemGroupMasterRequest
+     */
 	public function withSalesItemGroupName(?string $salesItemGroupName): DeleteSalesItemGroupMasterRequest {
 		$this->salesItemGroupName = $salesItemGroupName;
 		return $this;

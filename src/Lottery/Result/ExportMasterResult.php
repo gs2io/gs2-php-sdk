@@ -20,18 +20,29 @@ namespace Gs2\Lottery\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Lottery\Model\CurrentLotteryMaster;
 
+/**
+ * Result of exportMaster: Export Lottery Model Master in a master data format that can be activated
+ *
+ * @see https://docs.gs2.io/api_reference/lottery/sdk/#exportmaster
+ */
 class ExportMasterResult implements IResult {
-    /** @var CurrentLotteryMaster */
+    /** @var CurrentLotteryMaster Lottery Model master data that can be activated */
     private $item;
 
+    /** @return CurrentLotteryMaster|null Lottery Model master data that can be activated */
 	public function getItem(): ?CurrentLotteryMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentLotteryMaster|null $item Lottery Model master data that can be activated */
 	public function setItem(?CurrentLotteryMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentLotteryMaster|null $item Lottery Model master data that can be activated
+     * @return ExportMasterResult
+     */
 	public function withItem(?CurrentLotteryMaster $item): ExportMasterResult {
 		$this->item = $item;
 		return $this;

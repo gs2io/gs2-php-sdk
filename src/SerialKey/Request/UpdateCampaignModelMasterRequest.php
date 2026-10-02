@@ -19,63 +19,98 @@ namespace Gs2\SerialKey\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for updateCampaignModelMaster: Update Campaign Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/serial_key/sdk/#updatecampaignmodelmaster
+ */
 class UpdateCampaignModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Campaign Model name */
     private $campaignModelName;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var string */
+    /** @var string Metadata */
     private $metadata;
-    /** @var bool */
+    /** @var bool Whether to allow redemption with campaign code */
     private $enableCampaignCode;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UpdateCampaignModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UpdateCampaignModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Campaign Model name */
 	public function getCampaignModelName(): ?string {
 		return $this->campaignModelName;
 	}
+    /** @param string|null $campaignModelName Campaign Model name */
 	public function setCampaignModelName(?string $campaignModelName) {
 		$this->campaignModelName = $campaignModelName;
 	}
+    /**
+     * @param string|null $campaignModelName Campaign Model name
+     * @return UpdateCampaignModelMasterRequest
+     */
 	public function withCampaignModelName(?string $campaignModelName): UpdateCampaignModelMasterRequest {
 		$this->campaignModelName = $campaignModelName;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return UpdateCampaignModelMasterRequest
+     */
 	public function withDescription(?string $description): UpdateCampaignModelMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return UpdateCampaignModelMasterRequest
+     */
 	public function withMetadata(?string $metadata): UpdateCampaignModelMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return bool|null Whether to allow redemption with campaign code */
 	public function getEnableCampaignCode(): ?bool {
 		return $this->enableCampaignCode;
 	}
+    /** @param bool|null $enableCampaignCode Whether to allow redemption with campaign code */
 	public function setEnableCampaignCode(?bool $enableCampaignCode) {
 		$this->enableCampaignCode = $enableCampaignCode;
 	}
+    /**
+     * @param bool|null $enableCampaignCode Whether to allow redemption with campaign code
+     * @return UpdateCampaignModelMasterRequest
+     */
 	public function withEnableCampaignCode(?bool $enableCampaignCode): UpdateCampaignModelMasterRequest {
 		$this->enableCampaignCode = $enableCampaignCode;
 		return $this;

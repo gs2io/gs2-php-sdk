@@ -20,18 +20,29 @@ namespace Gs2\Ranking2\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Ranking2\Model\GlobalRankingData;
 
+/**
+ * Result of getGlobalRankingByUserId: Get Global Ranking by specifying the user ID
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/sdk/#getglobalrankingbyuserid
+ */
 class GetGlobalRankingByUserIdResult implements IResult {
-    /** @var GlobalRankingData */
+    /** @var GlobalRankingData Global Ranking */
     private $item;
 
+    /** @return GlobalRankingData|null Global Ranking */
 	public function getItem(): ?GlobalRankingData {
 		return $this->item;
 	}
 
+    /** @param GlobalRankingData|null $item Global Ranking */
 	public function setItem(?GlobalRankingData $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param GlobalRankingData|null $item Global Ranking
+     * @return GetGlobalRankingByUserIdResult
+     */
 	public function withItem(?GlobalRankingData $item): GetGlobalRankingByUserIdResult {
 		$this->item = $item;
 		return $this;

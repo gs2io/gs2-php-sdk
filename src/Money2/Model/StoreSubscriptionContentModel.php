@@ -20,143 +20,208 @@ namespace Gs2\Money2\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Store Subscription Content Model
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#storesubscriptioncontentmodel
+ */
 class StoreSubscriptionContentModel implements IModel {
 	/**
-     * @var string
+     * @var string Subscription Content Model GRN
 	 */
 	private $storeSubscriptionContentModelId;
 	/**
-     * @var string
+     * @var string Store Subscription Content Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var string
+     * @var string Namespace GRN of GS2-Schedule to link the subscription period
 	 */
 	private $scheduleNamespaceId;
 	/**
-     * @var string
+     * @var string Trigger name to reflect the subscription period
 	 */
 	private $triggerName;
 	/**
-     * @var string
+     * @var string Mode to reflect the subscription period on the trigger
 	 */
 	private $triggerExtendMode;
 	/**
-     * @var int
+     * @var int Hour of the day to roll up the subscription period (UTC)
 	 */
 	private $rollupHour;
 	/**
-     * @var int
+     * @var int Time span (days) that allows subscription contract information to be assigned to other users
 	 */
 	private $reallocateSpanDays;
 	/**
-     * @var AppleAppStoreSubscriptionContent
+     * @var AppleAppStoreSubscriptionContent Apple App Store Content
 	 */
 	private $appleAppStore;
 	/**
-     * @var GooglePlaySubscriptionContent
+     * @var GooglePlaySubscriptionContent Google Play Content
 	 */
 	private $googlePlay;
+    /** @return string|null Subscription Content Model GRN */
 	public function getStoreSubscriptionContentModelId(): ?string {
 		return $this->storeSubscriptionContentModelId;
 	}
+    /** @param string|null $storeSubscriptionContentModelId Subscription Content Model GRN */
 	public function setStoreSubscriptionContentModelId(?string $storeSubscriptionContentModelId) {
 		$this->storeSubscriptionContentModelId = $storeSubscriptionContentModelId;
 	}
+    /**
+     * @param string|null $storeSubscriptionContentModelId Subscription Content Model GRN
+     * @return StoreSubscriptionContentModel
+     */
 	public function withStoreSubscriptionContentModelId(?string $storeSubscriptionContentModelId): StoreSubscriptionContentModel {
 		$this->storeSubscriptionContentModelId = $storeSubscriptionContentModelId;
 		return $this;
 	}
+    /** @return string|null Store Subscription Content Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Store Subscription Content Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Store Subscription Content Model name
+     * @return StoreSubscriptionContentModel
+     */
 	public function withName(?string $name): StoreSubscriptionContentModel {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return StoreSubscriptionContentModel
+     */
 	public function withMetadata(?string $metadata): StoreSubscriptionContentModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return string|null Namespace GRN of GS2-Schedule to link the subscription period */
 	public function getScheduleNamespaceId(): ?string {
 		return $this->scheduleNamespaceId;
 	}
+    /** @param string|null $scheduleNamespaceId Namespace GRN of GS2-Schedule to link the subscription period */
 	public function setScheduleNamespaceId(?string $scheduleNamespaceId) {
 		$this->scheduleNamespaceId = $scheduleNamespaceId;
 	}
+    /**
+     * @param string|null $scheduleNamespaceId Namespace GRN of GS2-Schedule to link the subscription period
+     * @return StoreSubscriptionContentModel
+     */
 	public function withScheduleNamespaceId(?string $scheduleNamespaceId): StoreSubscriptionContentModel {
 		$this->scheduleNamespaceId = $scheduleNamespaceId;
 		return $this;
 	}
+    /** @return string|null Trigger name to reflect the subscription period */
 	public function getTriggerName(): ?string {
 		return $this->triggerName;
 	}
+    /** @param string|null $triggerName Trigger name to reflect the subscription period */
 	public function setTriggerName(?string $triggerName) {
 		$this->triggerName = $triggerName;
 	}
+    /**
+     * @param string|null $triggerName Trigger name to reflect the subscription period
+     * @return StoreSubscriptionContentModel
+     */
 	public function withTriggerName(?string $triggerName): StoreSubscriptionContentModel {
 		$this->triggerName = $triggerName;
 		return $this;
 	}
+    /** @return string|null Mode to reflect the subscription period on the trigger */
 	public function getTriggerExtendMode(): ?string {
 		return $this->triggerExtendMode;
 	}
+    /** @param string|null $triggerExtendMode Mode to reflect the subscription period on the trigger */
 	public function setTriggerExtendMode(?string $triggerExtendMode) {
 		$this->triggerExtendMode = $triggerExtendMode;
 	}
+    /**
+     * @param string|null $triggerExtendMode Mode to reflect the subscription period on the trigger
+     * @return StoreSubscriptionContentModel
+     */
 	public function withTriggerExtendMode(?string $triggerExtendMode): StoreSubscriptionContentModel {
 		$this->triggerExtendMode = $triggerExtendMode;
 		return $this;
 	}
+    /** @return int|null Hour of the day to roll up the subscription period (UTC) */
 	public function getRollupHour(): ?int {
 		return $this->rollupHour;
 	}
+    /** @param int|null $rollupHour Hour of the day to roll up the subscription period (UTC) */
 	public function setRollupHour(?int $rollupHour) {
 		$this->rollupHour = $rollupHour;
 	}
+    /**
+     * @param int|null $rollupHour Hour of the day to roll up the subscription period (UTC)
+     * @return StoreSubscriptionContentModel
+     */
 	public function withRollupHour(?int $rollupHour): StoreSubscriptionContentModel {
 		$this->rollupHour = $rollupHour;
 		return $this;
 	}
+    /** @return int|null Time span (days) that allows subscription contract information to be assigned to other users */
 	public function getReallocateSpanDays(): ?int {
 		return $this->reallocateSpanDays;
 	}
+    /** @param int|null $reallocateSpanDays Time span (days) that allows subscription contract information to be assigned to other users */
 	public function setReallocateSpanDays(?int $reallocateSpanDays) {
 		$this->reallocateSpanDays = $reallocateSpanDays;
 	}
+    /**
+     * @param int|null $reallocateSpanDays Time span (days) that allows subscription contract information to be assigned to other users
+     * @return StoreSubscriptionContentModel
+     */
 	public function withReallocateSpanDays(?int $reallocateSpanDays): StoreSubscriptionContentModel {
 		$this->reallocateSpanDays = $reallocateSpanDays;
 		return $this;
 	}
+    /** @return AppleAppStoreSubscriptionContent|null Apple App Store Content */
 	public function getAppleAppStore(): ?AppleAppStoreSubscriptionContent {
 		return $this->appleAppStore;
 	}
+    /** @param AppleAppStoreSubscriptionContent|null $appleAppStore Apple App Store Content */
 	public function setAppleAppStore(?AppleAppStoreSubscriptionContent $appleAppStore) {
 		$this->appleAppStore = $appleAppStore;
 	}
+    /**
+     * @param AppleAppStoreSubscriptionContent|null $appleAppStore Apple App Store Content
+     * @return StoreSubscriptionContentModel
+     */
 	public function withAppleAppStore(?AppleAppStoreSubscriptionContent $appleAppStore): StoreSubscriptionContentModel {
 		$this->appleAppStore = $appleAppStore;
 		return $this;
 	}
+    /** @return GooglePlaySubscriptionContent|null Google Play Content */
 	public function getGooglePlay(): ?GooglePlaySubscriptionContent {
 		return $this->googlePlay;
 	}
+    /** @param GooglePlaySubscriptionContent|null $googlePlay Google Play Content */
 	public function setGooglePlay(?GooglePlaySubscriptionContent $googlePlay) {
 		$this->googlePlay = $googlePlay;
 	}
+    /**
+     * @param GooglePlaySubscriptionContent|null $googlePlay Google Play Content
+     * @return StoreSubscriptionContentModel
+     */
 	public function withGooglePlay(?GooglePlaySubscriptionContent $googlePlay): StoreSubscriptionContentModel {
 		$this->googlePlay = $googlePlay;
 		return $this;

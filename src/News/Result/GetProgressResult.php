@@ -20,18 +20,29 @@ namespace Gs2\News\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\News\Model\Progress;
 
+/**
+ * Result of getProgress: Get content generation progress
+ *
+ * @see https://docs.gs2.io/api_reference/news/sdk/#getprogress
+ */
 class GetProgressResult implements IResult {
-    /** @var Progress */
+    /** @var Progress Progress */
     private $item;
 
+    /** @return Progress|null Progress */
 	public function getItem(): ?Progress {
 		return $this->item;
 	}
 
+    /** @param Progress|null $item Progress */
 	public function setItem(?Progress $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Progress|null $item Progress
+     * @return GetProgressResult
+     */
 	public function withItem(?Progress $item): GetProgressResult {
 		$this->item = $item;
 		return $this;

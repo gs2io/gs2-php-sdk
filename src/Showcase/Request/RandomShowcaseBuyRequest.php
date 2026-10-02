@@ -20,77 +20,118 @@ namespace Gs2\Showcase\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Showcase\Model\Config;
 
+/**
+ * Request for randomShowcaseBuy: Purchase Random Displayed Item from Random Showcase
+ *
+ * @see https://docs.gs2.io/api_reference/showcase/sdk/#randomshowcasebuy
+ */
 class RandomShowcaseBuyRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Random Showcase name */
     private $showcaseName;
-    /** @var string */
+    /** @var string Random Displayed Item name */
     private $displayItemName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var int */
+    /** @var int Purchase quantity */
     private $quantity;
-    /** @var array */
+    /** @var array Configuration values applied to transaction variables */
     private $config;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return RandomShowcaseBuyRequest
+     */
 	public function withNamespaceName(?string $namespaceName): RandomShowcaseBuyRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Random Showcase name */
 	public function getShowcaseName(): ?string {
 		return $this->showcaseName;
 	}
+    /** @param string|null $showcaseName Random Showcase name */
 	public function setShowcaseName(?string $showcaseName) {
 		$this->showcaseName = $showcaseName;
 	}
+    /**
+     * @param string|null $showcaseName Random Showcase name
+     * @return RandomShowcaseBuyRequest
+     */
 	public function withShowcaseName(?string $showcaseName): RandomShowcaseBuyRequest {
 		$this->showcaseName = $showcaseName;
 		return $this;
 	}
+    /** @return string|null Random Displayed Item name */
 	public function getDisplayItemName(): ?string {
 		return $this->displayItemName;
 	}
+    /** @param string|null $displayItemName Random Displayed Item name */
 	public function setDisplayItemName(?string $displayItemName) {
 		$this->displayItemName = $displayItemName;
 	}
+    /**
+     * @param string|null $displayItemName Random Displayed Item name
+     * @return RandomShowcaseBuyRequest
+     */
 	public function withDisplayItemName(?string $displayItemName): RandomShowcaseBuyRequest {
 		$this->displayItemName = $displayItemName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return RandomShowcaseBuyRequest
+     */
 	public function withAccessToken(?string $accessToken): RandomShowcaseBuyRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return int|null Purchase quantity */
 	public function getQuantity(): ?int {
 		return $this->quantity;
 	}
+    /** @param int|null $quantity Purchase quantity */
 	public function setQuantity(?int $quantity) {
 		$this->quantity = $quantity;
 	}
+    /**
+     * @param int|null $quantity Purchase quantity
+     * @return RandomShowcaseBuyRequest
+     */
 	public function withQuantity(?int $quantity): RandomShowcaseBuyRequest {
 		$this->quantity = $quantity;
 		return $this;
 	}
+    /** @return array|null Configuration values applied to transaction variables */
 	public function getConfig(): ?array {
 		return $this->config;
 	}
+    /** @param array|null $config Configuration values applied to transaction variables */
 	public function setConfig(?array $config) {
 		$this->config = $config;
 	}
+    /**
+     * @param array|null $config Configuration values applied to transaction variables
+     * @return RandomShowcaseBuyRequest
+     */
 	public function withConfig(?array $config): RandomShowcaseBuyRequest {
 		$this->config = $config;
 		return $this;

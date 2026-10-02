@@ -29,138 +29,197 @@ use Gs2\Core\Model\ConsumeActionResult as CoreConsumeActionResult;
 use Gs2\Core\Model\AcquireActionResult as CoreAcquireActionResult;
 use Gs2\Core\Model\TransactionResult as CoreTransactionResult;
 
+/**
+ * Result of invokeScript: Execute the script
+ *
+ * @see https://docs.gs2.io/api_reference/script/sdk/#invokescript
+ */
 class InvokeScriptResult implements IResult {
-    /** @var int */
+    /** @var int Status Code */
     private $code;
-    /** @var string */
+    /** @var string Result Value */
     private $result;
-    /** @var Transaction */
+    /** @var Transaction Transaction */
     private $transaction;
-    /** @var RandomStatus */
+    /** @var RandomStatus Random number status */
     private $randomStatus;
-    /** @var bool */
+    /** @var bool Whether to commit the transaction atomically */
     private $atomicCommit;
-    /** @var CoreTransactionResult */
+    /** @var CoreTransactionResult Transaction Execution Result */
     private $transactionResult;
-    /** @var int */
+    /** @var int Script execution time (milliseconds) */
     private $executeTime;
-    /** @var int */
+    /** @var int Time (seconds) for which costs were calculated */
     private $charged;
-    /** @var array */
+    /** @var array List of contents of standard output */
     private $output;
 
+    /** @return int|null Status Code */
 	public function getCode(): ?int {
 		return $this->code;
 	}
 
+    /** @param int|null $code Status Code */
 	public function setCode(?int $code) {
 		$this->code = $code;
 	}
 
+    /**
+     * @param int|null $code Status Code
+     * @return InvokeScriptResult
+     */
 	public function withCode(?int $code): InvokeScriptResult {
 		$this->code = $code;
 		return $this;
 	}
 
+    /** @return string|null Result Value */
 	public function getResult(): ?string {
 		return $this->result;
 	}
 
+    /** @param string|null $result Result Value */
 	public function setResult(?string $result) {
 		$this->result = $result;
 	}
 
+    /**
+     * @param string|null $result Result Value
+     * @return InvokeScriptResult
+     */
 	public function withResult(?string $result): InvokeScriptResult {
 		$this->result = $result;
 		return $this;
 	}
 
+    /** @return Transaction|null Transaction */
 	public function getTransaction(): ?Transaction {
 		return $this->transaction;
 	}
 
+    /** @param Transaction|null $transaction Transaction */
 	public function setTransaction(?Transaction $transaction) {
 		$this->transaction = $transaction;
 	}
 
+    /**
+     * @param Transaction|null $transaction Transaction
+     * @return InvokeScriptResult
+     */
 	public function withTransaction(?Transaction $transaction): InvokeScriptResult {
 		$this->transaction = $transaction;
 		return $this;
 	}
 
+    /** @return RandomStatus|null Random number status */
 	public function getRandomStatus(): ?RandomStatus {
 		return $this->randomStatus;
 	}
 
+    /** @param RandomStatus|null $randomStatus Random number status */
 	public function setRandomStatus(?RandomStatus $randomStatus) {
 		$this->randomStatus = $randomStatus;
 	}
 
+    /**
+     * @param RandomStatus|null $randomStatus Random number status
+     * @return InvokeScriptResult
+     */
 	public function withRandomStatus(?RandomStatus $randomStatus): InvokeScriptResult {
 		$this->randomStatus = $randomStatus;
 		return $this;
 	}
 
+    /** @return bool|null Whether to commit the transaction atomically */
 	public function getAtomicCommit(): ?bool {
 		return $this->atomicCommit;
 	}
 
+    /** @param bool|null $atomicCommit Whether to commit the transaction atomically */
 	public function setAtomicCommit(?bool $atomicCommit) {
 		$this->atomicCommit = $atomicCommit;
 	}
 
+    /**
+     * @param bool|null $atomicCommit Whether to commit the transaction atomically
+     * @return InvokeScriptResult
+     */
 	public function withAtomicCommit(?bool $atomicCommit): InvokeScriptResult {
 		$this->atomicCommit = $atomicCommit;
 		return $this;
 	}
 
+    /** @return CoreTransactionResult|null Transaction Execution Result */
 	public function getTransactionResult(): ?CoreTransactionResult {
 		return $this->transactionResult;
 	}
 
+    /** @param CoreTransactionResult|null $transactionResult Transaction Execution Result */
 	public function setTransactionResult(?CoreTransactionResult $transactionResult) {
 		$this->transactionResult = $transactionResult;
 	}
 
+    /**
+     * @param CoreTransactionResult|null $transactionResult Transaction Execution Result
+     * @return InvokeScriptResult
+     */
 	public function withTransactionResult(?CoreTransactionResult $transactionResult): InvokeScriptResult {
 		$this->transactionResult = $transactionResult;
 		return $this;
 	}
 
+    /** @return int|null Script execution time (milliseconds) */
 	public function getExecuteTime(): ?int {
 		return $this->executeTime;
 	}
 
+    /** @param int|null $executeTime Script execution time (milliseconds) */
 	public function setExecuteTime(?int $executeTime) {
 		$this->executeTime = $executeTime;
 	}
 
+    /**
+     * @param int|null $executeTime Script execution time (milliseconds)
+     * @return InvokeScriptResult
+     */
 	public function withExecuteTime(?int $executeTime): InvokeScriptResult {
 		$this->executeTime = $executeTime;
 		return $this;
 	}
 
+    /** @return int|null Time (seconds) for which costs were calculated */
 	public function getCharged(): ?int {
 		return $this->charged;
 	}
 
+    /** @param int|null $charged Time (seconds) for which costs were calculated */
 	public function setCharged(?int $charged) {
 		$this->charged = $charged;
 	}
 
+    /**
+     * @param int|null $charged Time (seconds) for which costs were calculated
+     * @return InvokeScriptResult
+     */
 	public function withCharged(?int $charged): InvokeScriptResult {
 		$this->charged = $charged;
 		return $this;
 	}
 
+    /** @return array|null List of contents of standard output */
 	public function getOutput(): ?array {
 		return $this->output;
 	}
 
+    /** @param array|null $output List of contents of standard output */
 	public function setOutput(?array $output) {
 		$this->output = $output;
 	}
 
+    /**
+     * @param array|null $output List of contents of standard output
+     * @return InvokeScriptResult
+     */
 	public function withOutput(?array $output): InvokeScriptResult {
 		$this->output = $output;
 		return $this;

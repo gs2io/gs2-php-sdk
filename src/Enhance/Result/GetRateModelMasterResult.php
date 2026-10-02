@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Enhance\Model\BonusRate;
 use Gs2\Enhance\Model\RateModelMaster;
 
+/**
+ * Result of getRateModelMaster: Get Enhancement Rate Master
+ *
+ * @see https://docs.gs2.io/api_reference/enhance/sdk/#getratemodelmaster
+ */
 class GetRateModelMasterResult implements IResult {
-    /** @var RateModelMaster */
+    /** @var RateModelMaster Enhancement Rate Master */
     private $item;
 
+    /** @return RateModelMaster|null Enhancement Rate Master */
 	public function getItem(): ?RateModelMaster {
 		return $this->item;
 	}
 
+    /** @param RateModelMaster|null $item Enhancement Rate Master */
 	public function setItem(?RateModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param RateModelMaster|null $item Enhancement Rate Master
+     * @return GetRateModelMasterResult
+     */
 	public function withItem(?RateModelMaster $item): GetRateModelMasterResult {
 		$this->item = $item;
 		return $this;

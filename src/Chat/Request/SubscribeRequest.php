@@ -20,53 +20,82 @@ namespace Gs2\Chat\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Chat\Model\NotificationType;
 
+/**
+ * Request for subscribe: Subscribe to a room
+ *
+ * @see https://docs.gs2.io/api_reference/chat/sdk/#subscribe-1
+ */
 class SubscribeRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Room name to subscribe to */
     private $roomName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var array */
+    /** @var array List of categories to receive notifications of new messages */
     private $notificationTypes;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return SubscribeRequest
+     */
 	public function withNamespaceName(?string $namespaceName): SubscribeRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Room name to subscribe to */
 	public function getRoomName(): ?string {
 		return $this->roomName;
 	}
+    /** @param string|null $roomName Room name to subscribe to */
 	public function setRoomName(?string $roomName) {
 		$this->roomName = $roomName;
 	}
+    /**
+     * @param string|null $roomName Room name to subscribe to
+     * @return SubscribeRequest
+     */
 	public function withRoomName(?string $roomName): SubscribeRequest {
 		$this->roomName = $roomName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return SubscribeRequest
+     */
 	public function withAccessToken(?string $accessToken): SubscribeRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return array|null List of categories to receive notifications of new messages */
 	public function getNotificationTypes(): ?array {
 		return $this->notificationTypes;
 	}
+    /** @param array|null $notificationTypes List of categories to receive notifications of new messages */
 	public function setNotificationTypes(?array $notificationTypes) {
 		$this->notificationTypes = $notificationTypes;
 	}
+    /**
+     * @param array|null $notificationTypes List of categories to receive notifications of new messages
+     * @return SubscribeRequest
+     */
 	public function withNotificationTypes(?array $notificationTypes): SubscribeRequest {
 		$this->notificationTypes = $notificationTypes;
 		return $this;

@@ -20,18 +20,29 @@ namespace Gs2\Gateway\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Gateway\Model\FirebaseToken;
 
+/**
+ * Result of getFirebaseToken: Get Firebase device token
+ *
+ * @see https://docs.gs2.io/api_reference/gateway/sdk/#getfirebasetoken
+ */
 class GetFirebaseTokenResult implements IResult {
-    /** @var FirebaseToken */
+    /** @var FirebaseToken Firebase Device Token */
     private $item;
 
+    /** @return FirebaseToken|null Firebase Device Token */
 	public function getItem(): ?FirebaseToken {
 		return $this->item;
 	}
 
+    /** @param FirebaseToken|null $item Firebase Device Token */
 	public function setItem(?FirebaseToken $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param FirebaseToken|null $item Firebase Device Token
+     * @return GetFirebaseTokenResult
+     */
 	public function withItem(?FirebaseToken $item): GetFirebaseTokenResult {
 		$this->item = $item;
 		return $this;

@@ -1829,25 +1829,22 @@ class UpdateCurrentBuffMasterFromGitHubTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 Buff API クライアント
+ * GS2-Buff API client
  *
- * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/buff/sdk/
  */
 class Gs2BuffRestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#describenamespaces
      */
     public function describeNamespacesAsync(
             DescribeNamespacesRequest $request
@@ -1861,8 +1858,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#describenamespaces
      */
     public function describeNamespaces (
             DescribeNamespacesRequest $request
@@ -1873,8 +1873,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#createnamespace
      */
     public function createNamespaceAsync(
             CreateNamespaceRequest $request
@@ -1888,8 +1891,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#createnamespace
      */
     public function createNamespace (
             CreateNamespaceRequest $request
@@ -1900,8 +1906,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#getnamespacestatus
      */
     public function getNamespaceStatusAsync(
             GetNamespaceStatusRequest $request
@@ -1915,8 +1924,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#getnamespacestatus
      */
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
@@ -1927,8 +1939,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#getnamespace
      */
     public function getNamespaceAsync(
             GetNamespaceRequest $request
@@ -1942,8 +1957,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#getnamespace
      */
     public function getNamespace (
             GetNamespaceRequest $request
@@ -1954,8 +1972,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#updatenamespace
      */
     public function updateNamespaceAsync(
             UpdateNamespaceRequest $request
@@ -1969,8 +1990,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#updatenamespace
      */
     public function updateNamespace (
             UpdateNamespaceRequest $request
@@ -1981,8 +2005,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#deletenamespace
      */
     public function deleteNamespaceAsync(
             DeleteNamespaceRequest $request
@@ -1996,8 +2023,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#deletenamespace
      */
     public function deleteNamespace (
             DeleteNamespaceRequest $request
@@ -2008,8 +2038,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get microservice version
+     *
      * @param GetServiceVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#getserviceversion
      */
     public function getServiceVersionAsync(
             GetServiceVersionRequest $request
@@ -2023,8 +2056,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get microservice version
+     *
      * @param GetServiceVersionRequest $request
      * @return GetServiceVersionResult
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#getserviceversion
      */
     public function getServiceVersion (
             GetServiceVersionRequest $request
@@ -2035,8 +2071,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserIdAsync(
             DumpUserDataByUserIdRequest $request
@@ -2050,8 +2089,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return DumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserId (
             DumpUserDataByUserIdRequest $request
@@ -2062,8 +2104,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserIdAsync(
             CheckDumpUserDataByUserIdRequest $request
@@ -2077,8 +2122,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return CheckDumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserId (
             CheckDumpUserDataByUserIdRequest $request
@@ -2089,8 +2137,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserIdAsync(
             CleanUserDataByUserIdRequest $request
@@ -2104,8 +2155,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return CleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserId (
             CleanUserDataByUserIdRequest $request
@@ -2116,8 +2170,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserIdAsync(
             CheckCleanUserDataByUserIdRequest $request
@@ -2131,8 +2188,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return CheckCleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserId (
             CheckCleanUserDataByUserIdRequest $request
@@ -2143,8 +2203,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserIdAsync(
             PrepareImportUserDataByUserIdRequest $request
@@ -2158,8 +2221,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PrepareImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserId (
             PrepareImportUserDataByUserIdRequest $request
@@ -2170,8 +2236,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserIdAsync(
             ImportUserDataByUserIdRequest $request
@@ -2185,8 +2254,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return ImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserId (
             ImportUserDataByUserIdRequest $request
@@ -2197,8 +2269,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserIdAsync(
             CheckImportUserDataByUserIdRequest $request
@@ -2212,8 +2287,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return CheckImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserId (
             CheckImportUserDataByUserIdRequest $request
@@ -2224,8 +2302,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Buff Entry Models
+     *
      * @param DescribeBuffEntryModelsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#describebuffentrymodels
      */
     public function describeBuffEntryModelsAsync(
             DescribeBuffEntryModelsRequest $request
@@ -2239,8 +2320,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Buff Entry Models
+     *
      * @param DescribeBuffEntryModelsRequest $request
      * @return DescribeBuffEntryModelsResult
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#describebuffentrymodels
      */
     public function describeBuffEntryModels (
             DescribeBuffEntryModelsRequest $request
@@ -2251,8 +2335,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Buff Entry Model
+     *
      * @param GetBuffEntryModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#getbuffentrymodel
      */
     public function getBuffEntryModelAsync(
             GetBuffEntryModelRequest $request
@@ -2266,8 +2353,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Buff Entry Model
+     *
      * @param GetBuffEntryModelRequest $request
      * @return GetBuffEntryModelResult
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#getbuffentrymodel
      */
     public function getBuffEntryModel (
             GetBuffEntryModelRequest $request
@@ -2278,8 +2368,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Buff Entry Model Masters
+     *
      * @param DescribeBuffEntryModelMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#describebuffentrymodelmasters
      */
     public function describeBuffEntryModelMastersAsync(
             DescribeBuffEntryModelMastersRequest $request
@@ -2293,8 +2386,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Buff Entry Model Masters
+     *
      * @param DescribeBuffEntryModelMastersRequest $request
      * @return DescribeBuffEntryModelMastersResult
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#describebuffentrymodelmasters
      */
     public function describeBuffEntryModelMasters (
             DescribeBuffEntryModelMastersRequest $request
@@ -2305,8 +2401,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Buff Entry Model Master
+     *
      * @param CreateBuffEntryModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#createbuffentrymodelmaster
      */
     public function createBuffEntryModelMasterAsync(
             CreateBuffEntryModelMasterRequest $request
@@ -2320,8 +2419,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Buff Entry Model Master
+     *
      * @param CreateBuffEntryModelMasterRequest $request
      * @return CreateBuffEntryModelMasterResult
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#createbuffentrymodelmaster
      */
     public function createBuffEntryModelMaster (
             CreateBuffEntryModelMasterRequest $request
@@ -2332,8 +2434,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Buff Entry Model Master
+     *
      * @param GetBuffEntryModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#getbuffentrymodelmaster
      */
     public function getBuffEntryModelMasterAsync(
             GetBuffEntryModelMasterRequest $request
@@ -2347,8 +2452,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Buff Entry Model Master
+     *
      * @param GetBuffEntryModelMasterRequest $request
      * @return GetBuffEntryModelMasterResult
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#getbuffentrymodelmaster
      */
     public function getBuffEntryModelMaster (
             GetBuffEntryModelMasterRequest $request
@@ -2359,8 +2467,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Buff Entry Model Master
+     *
      * @param UpdateBuffEntryModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#updatebuffentrymodelmaster
      */
     public function updateBuffEntryModelMasterAsync(
             UpdateBuffEntryModelMasterRequest $request
@@ -2374,8 +2485,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Buff Entry Model Master
+     *
      * @param UpdateBuffEntryModelMasterRequest $request
      * @return UpdateBuffEntryModelMasterResult
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#updatebuffentrymodelmaster
      */
     public function updateBuffEntryModelMaster (
             UpdateBuffEntryModelMasterRequest $request
@@ -2386,8 +2500,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Buff Entry Model Master
+     *
      * @param DeleteBuffEntryModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#deletebuffentrymodelmaster
      */
     public function deleteBuffEntryModelMasterAsync(
             DeleteBuffEntryModelMasterRequest $request
@@ -2401,8 +2518,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Buff Entry Model Master
+     *
      * @param DeleteBuffEntryModelMasterRequest $request
      * @return DeleteBuffEntryModelMasterResult
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#deletebuffentrymodelmaster
      */
     public function deleteBuffEntryModelMaster (
             DeleteBuffEntryModelMasterRequest $request
@@ -2413,8 +2533,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Apply buff
+     *
      * @param ApplyBuffRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#applybuff
      */
     public function applyBuffAsync(
             ApplyBuffRequest $request
@@ -2428,8 +2551,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Apply buff
+     *
      * @param ApplyBuffRequest $request
      * @return ApplyBuffResult
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#applybuff
      */
     public function applyBuff (
             ApplyBuffRequest $request
@@ -2440,8 +2566,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Apply buff by User ID
+     *
      * @param ApplyBuffByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#applybuffbyuserid
      */
     public function applyBuffByUserIdAsync(
             ApplyBuffByUserIdRequest $request
@@ -2455,8 +2584,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Apply buff by User ID
+     *
      * @param ApplyBuffByUserIdRequest $request
      * @return ApplyBuffByUserIdResult
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#applybuffbyuserid
      */
     public function applyBuffByUserId (
             ApplyBuffByUserIdRequest $request
@@ -2467,8 +2599,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Buff Entry Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#exportmaster
      */
     public function exportMasterAsync(
             ExportMasterRequest $request
@@ -2482,8 +2617,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Buff Entry Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return ExportMasterResult
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#exportmaster
      */
     public function exportMaster (
             ExportMasterRequest $request
@@ -2494,8 +2632,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get master data of the currently active Buff Entry Models
+     *
      * @param GetCurrentBuffMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#getcurrentbuffmaster
      */
     public function getCurrentBuffMasterAsync(
             GetCurrentBuffMasterRequest $request
@@ -2509,8 +2650,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get master data of the currently active Buff Entry Models
+     *
      * @param GetCurrentBuffMasterRequest $request
      * @return GetCurrentBuffMasterResult
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#getcurrentbuffmaster
      */
     public function getCurrentBuffMaster (
             GetCurrentBuffMasterRequest $request
@@ -2521,8 +2665,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update master data of the currently active Buff Entry Models (3-phase version)
+     *
      * @param PreUpdateCurrentBuffMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#preupdatecurrentbuffmaster
      */
     public function preUpdateCurrentBuffMasterAsync(
             PreUpdateCurrentBuffMasterRequest $request
@@ -2536,8 +2683,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update master data of the currently active Buff Entry Models (3-phase version)
+     *
      * @param PreUpdateCurrentBuffMasterRequest $request
      * @return PreUpdateCurrentBuffMasterResult
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#preupdatecurrentbuffmaster
      */
     public function preUpdateCurrentBuffMaster (
             PreUpdateCurrentBuffMasterRequest $request
@@ -2548,8 +2698,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update master data of the currently active Buff Entry Models
+     *
      * @param UpdateCurrentBuffMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#updatecurrentbuffmaster
      */
     public function updateCurrentBuffMasterAsync(
             UpdateCurrentBuffMasterRequest $request
@@ -2563,8 +2716,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update master data of the currently active Buff Entry Models
+     *
      * @param UpdateCurrentBuffMasterRequest $request
      * @return UpdateCurrentBuffMasterResult
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#updatecurrentbuffmaster
      */
     public function updateCurrentBuffMaster (
             UpdateCurrentBuffMasterRequest $request
@@ -2575,8 +2731,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update master data of the currently active Buff Entry Models from GitHub
+     *
      * @param UpdateCurrentBuffMasterFromGitHubRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#updatecurrentbuffmasterfromgithub
      */
     public function updateCurrentBuffMasterFromGitHubAsync(
             UpdateCurrentBuffMasterFromGitHubRequest $request
@@ -2590,8 +2749,11 @@ class Gs2BuffRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update master data of the currently active Buff Entry Models from GitHub
+     *
      * @param UpdateCurrentBuffMasterFromGitHubRequest $request
      * @return UpdateCurrentBuffMasterFromGitHubResult
+     * @see https://docs.gs2.io/api_reference/buff/sdk/#updatecurrentbuffmasterfromgithub
      */
     public function updateCurrentBuffMasterFromGitHub (
             UpdateCurrentBuffMasterFromGitHubRequest $request

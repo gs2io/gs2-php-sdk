@@ -22,33 +22,50 @@ use Gs2\Exchange\Model\ConsumeAction;
 use Gs2\Exchange\Model\AcquireAction;
 use Gs2\Exchange\Model\IncrementalRateModelMaster;
 
+/**
+ * Result of describeIncrementalRateModelMasters: List Incremental Cost Exchange Rate Model Masters
+ *
+ * @see https://docs.gs2.io/api_reference/exchange/sdk/#describeincrementalratemodelmasters
+ */
 class DescribeIncrementalRateModelMastersResult implements IResult {
-    /** @var array */
+    /** @var array List of Incremental Cost Exchange Rate Model Masters */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Incremental Cost Exchange Rate Model Masters */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Incremental Cost Exchange Rate Model Masters */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Incremental Cost Exchange Rate Model Masters
+     * @return DescribeIncrementalRateModelMastersResult
+     */
 	public function withItems(?array $items): DescribeIncrementalRateModelMastersResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeIncrementalRateModelMastersResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeIncrementalRateModelMastersResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

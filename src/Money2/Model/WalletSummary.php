@@ -20,45 +20,68 @@ namespace Gs2\Money2\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Wallet Status
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#walletsummary
+ */
 class WalletSummary implements IModel {
 	/**
-     * @var int
+     * @var int Count of paid currency
 	 */
 	private $paid;
 	/**
-     * @var int
+     * @var int Count of free currency
 	 */
 	private $free;
 	/**
-     * @var int
+     * @var int Total
 	 */
 	private $total;
+    /** @return int|null Count of paid currency */
 	public function getPaid(): ?int {
 		return $this->paid;
 	}
+    /** @param int|null $paid Count of paid currency */
 	public function setPaid(?int $paid) {
 		$this->paid = $paid;
 	}
+    /**
+     * @param int|null $paid Count of paid currency
+     * @return WalletSummary
+     */
 	public function withPaid(?int $paid): WalletSummary {
 		$this->paid = $paid;
 		return $this;
 	}
+    /** @return int|null Count of free currency */
 	public function getFree(): ?int {
 		return $this->free;
 	}
+    /** @param int|null $free Count of free currency */
 	public function setFree(?int $free) {
 		$this->free = $free;
 	}
+    /**
+     * @param int|null $free Count of free currency
+     * @return WalletSummary
+     */
 	public function withFree(?int $free): WalletSummary {
 		$this->free = $free;
 		return $this;
 	}
+    /** @return int|null Total */
 	public function getTotal(): ?int {
 		return $this->total;
 	}
+    /** @param int|null $total Total */
 	public function setTotal(?int $total) {
 		$this->total = $total;
 	}
+    /**
+     * @param int|null $total Total
+     * @return WalletSummary
+     */
 	public function withTotal(?int $total): WalletSummary {
 		$this->total = $total;
 		return $this;

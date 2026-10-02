@@ -20,33 +20,50 @@ namespace Gs2\Friend\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Friend\Model\FollowUser;
 
+/**
+ * Result of describeFollows: List followed users
+ *
+ * @see https://docs.gs2.io/api_reference/friend/sdk/#describefollows
+ */
 class DescribeFollowsResult implements IResult {
-    /** @var array */
+    /** @var array List of users that the user follows */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of users that the user follows */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of users that the user follows */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of users that the user follows
+     * @return DescribeFollowsResult
+     */
 	public function withItems(?array $items): DescribeFollowsResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeFollowsResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeFollowsResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

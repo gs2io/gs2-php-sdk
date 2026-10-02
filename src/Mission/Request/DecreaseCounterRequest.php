@@ -19,53 +19,82 @@ namespace Gs2\Mission\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for decreaseCounter: Decrease counter
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#decreasecounter
+ */
 class DecreaseCounterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Counter Model name */
     private $counterName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var int */
+    /** @var int Value to be subtracted */
     private $value;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DecreaseCounterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DecreaseCounterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Counter Model name */
 	public function getCounterName(): ?string {
 		return $this->counterName;
 	}
+    /** @param string|null $counterName Counter Model name */
 	public function setCounterName(?string $counterName) {
 		$this->counterName = $counterName;
 	}
+    /**
+     * @param string|null $counterName Counter Model name
+     * @return DecreaseCounterRequest
+     */
 	public function withCounterName(?string $counterName): DecreaseCounterRequest {
 		$this->counterName = $counterName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return DecreaseCounterRequest
+     */
 	public function withAccessToken(?string $accessToken): DecreaseCounterRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return int|null Value to be subtracted */
 	public function getValue(): ?int {
 		return $this->value;
 	}
+    /** @param int|null $value Value to be subtracted */
 	public function setValue(?int $value) {
 		$this->value = $value;
 	}
+    /**
+     * @param int|null $value Value to be subtracted
+     * @return DecreaseCounterRequest
+     */
 	public function withValue(?int $value): DecreaseCounterRequest {
 		$this->value = $value;
 		return $this;

@@ -22,33 +22,50 @@ use Gs2\Guild\Model\RoleModel;
 use Gs2\Guild\Model\Member;
 use Gs2\Guild\Model\Guild;
 
+/**
+ * Result of verifyIncludeMemberByStampTask: Execute verification of whether the guild members include the user ID as a verify action
+ *
+ * @see https://docs.gs2.io/api_reference/guild/stamp_sheet/#gs2guildverifyincludememberbyuserid
+ */
 class VerifyIncludeMemberByStampTaskResult implements IResult {
-    /** @var Guild */
+    /** @var Guild Guild updated */
     private $item;
-    /** @var string */
+    /** @var string Context recording the execution results of verification actions */
     private $newContextStack;
 
+    /** @return Guild|null Guild updated */
 	public function getItem(): ?Guild {
 		return $this->item;
 	}
 
+    /** @param Guild|null $item Guild updated */
 	public function setItem(?Guild $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Guild|null $item Guild updated
+     * @return VerifyIncludeMemberByStampTaskResult
+     */
 	public function withItem(?Guild $item): VerifyIncludeMemberByStampTaskResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null Context recording the execution results of verification actions */
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
+    /** @param string|null $newContextStack Context recording the execution results of verification actions */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
+    /**
+     * @param string|null $newContextStack Context recording the execution results of verification actions
+     * @return VerifyIncludeMemberByStampTaskResult
+     */
 	public function withNewContextStack(?string $newContextStack): VerifyIncludeMemberByStampTaskResult {
 		$this->newContextStack = $newContextStack;
 		return $this;

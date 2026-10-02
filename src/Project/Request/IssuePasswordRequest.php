@@ -19,15 +19,22 @@ namespace Gs2\Project\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/** Request for issuePassword: Reissue Password */
 class IssuePasswordRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Token required to reissue password */
     private $issuePasswordToken;
+    /** @return string|null Token required to reissue password */
 	public function getIssuePasswordToken(): ?string {
 		return $this->issuePasswordToken;
 	}
+    /** @param string|null $issuePasswordToken Token required to reissue password */
 	public function setIssuePasswordToken(?string $issuePasswordToken) {
 		$this->issuePasswordToken = $issuePasswordToken;
 	}
+    /**
+     * @param string|null $issuePasswordToken Token required to reissue password
+     * @return IssuePasswordRequest
+     */
 	public function withIssuePasswordToken(?string $issuePasswordToken): IssuePasswordRequest {
 		$this->issuePasswordToken = $issuePasswordToken;
 		return $this;

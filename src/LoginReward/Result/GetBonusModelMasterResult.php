@@ -24,18 +24,29 @@ use Gs2\LoginReward\Model\VerifyAction;
 use Gs2\LoginReward\Model\ConsumeAction;
 use Gs2\LoginReward\Model\BonusModelMaster;
 
+/**
+ * Result of getBonusModelMaster: Get Login Bonus Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/login_reward/sdk/#getbonusmodelmaster
+ */
 class GetBonusModelMasterResult implements IResult {
-    /** @var BonusModelMaster */
+    /** @var BonusModelMaster Login Bonus Model Master */
     private $item;
 
+    /** @return BonusModelMaster|null Login Bonus Model Master */
 	public function getItem(): ?BonusModelMaster {
 		return $this->item;
 	}
 
+    /** @param BonusModelMaster|null $item Login Bonus Model Master */
 	public function setItem(?BonusModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param BonusModelMaster|null $item Login Bonus Model Master
+     * @return GetBonusModelMasterResult
+     */
 	public function withItem(?BonusModelMaster $item): GetBonusModelMasterResult {
 		$this->item = $item;
 		return $this;

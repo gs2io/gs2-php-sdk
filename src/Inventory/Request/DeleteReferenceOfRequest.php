@@ -19,77 +19,118 @@ namespace Gs2\Inventory\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for deleteReferenceOf: Delete References
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#deletereferenceof
+ */
 class DeleteReferenceOfRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Inventory Model Name */
     private $inventoryName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Item Model Name */
     private $itemName;
-    /** @var string */
+    /** @var string Name identifying the Item Set */
     private $itemSetName;
-    /** @var string */
+    /** @var string Reference */
     private $referenceOf;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DeleteReferenceOfRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DeleteReferenceOfRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Inventory Model Name */
 	public function getInventoryName(): ?string {
 		return $this->inventoryName;
 	}
+    /** @param string|null $inventoryName Inventory Model Name */
 	public function setInventoryName(?string $inventoryName) {
 		$this->inventoryName = $inventoryName;
 	}
+    /**
+     * @param string|null $inventoryName Inventory Model Name
+     * @return DeleteReferenceOfRequest
+     */
 	public function withInventoryName(?string $inventoryName): DeleteReferenceOfRequest {
 		$this->inventoryName = $inventoryName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return DeleteReferenceOfRequest
+     */
 	public function withAccessToken(?string $accessToken): DeleteReferenceOfRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Item Model Name */
 	public function getItemName(): ?string {
 		return $this->itemName;
 	}
+    /** @param string|null $itemName Item Model Name */
 	public function setItemName(?string $itemName) {
 		$this->itemName = $itemName;
 	}
+    /**
+     * @param string|null $itemName Item Model Name
+     * @return DeleteReferenceOfRequest
+     */
 	public function withItemName(?string $itemName): DeleteReferenceOfRequest {
 		$this->itemName = $itemName;
 		return $this;
 	}
+    /** @return string|null Name identifying the Item Set */
 	public function getItemSetName(): ?string {
 		return $this->itemSetName;
 	}
+    /** @param string|null $itemSetName Name identifying the Item Set */
 	public function setItemSetName(?string $itemSetName) {
 		$this->itemSetName = $itemSetName;
 	}
+    /**
+     * @param string|null $itemSetName Name identifying the Item Set
+     * @return DeleteReferenceOfRequest
+     */
 	public function withItemSetName(?string $itemSetName): DeleteReferenceOfRequest {
 		$this->itemSetName = $itemSetName;
 		return $this;
 	}
+    /** @return string|null Reference */
 	public function getReferenceOf(): ?string {
 		return $this->referenceOf;
 	}
+    /** @param string|null $referenceOf Reference */
 	public function setReferenceOf(?string $referenceOf) {
 		$this->referenceOf = $referenceOf;
 	}
+    /**
+     * @param string|null $referenceOf Reference
+     * @return DeleteReferenceOfRequest
+     */
 	public function withReferenceOf(?string $referenceOf): DeleteReferenceOfRequest {
 		$this->referenceOf = $referenceOf;
 		return $this;

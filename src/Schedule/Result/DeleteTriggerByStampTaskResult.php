@@ -20,33 +20,50 @@ namespace Gs2\Schedule\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Schedule\Model\Trigger;
 
+/**
+ * Result of deleteTriggerByStampTask: Execute trigger as consume action
+ *
+ * @see https://docs.gs2.io/api_reference/schedule/stamp_sheet/#gs2scheduledeletetriggerbyuserid
+ */
 class DeleteTriggerByStampTaskResult implements IResult {
-    /** @var Trigger */
+    /** @var Trigger Trigger deleted */
     private $item;
-    /** @var string */
+    /** @var string Context recording the execution results of Consume Actions */
     private $newContextStack;
 
+    /** @return Trigger|null Trigger deleted */
 	public function getItem(): ?Trigger {
 		return $this->item;
 	}
 
+    /** @param Trigger|null $item Trigger deleted */
 	public function setItem(?Trigger $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Trigger|null $item Trigger deleted
+     * @return DeleteTriggerByStampTaskResult
+     */
 	public function withItem(?Trigger $item): DeleteTriggerByStampTaskResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null Context recording the execution results of Consume Actions */
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
+    /** @param string|null $newContextStack Context recording the execution results of Consume Actions */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
+    /**
+     * @param string|null $newContextStack Context recording the execution results of Consume Actions
+     * @return DeleteTriggerByStampTaskResult
+     */
 	public function withNewContextStack(?string $newContextStack): DeleteTriggerByStampTaskResult {
 		$this->newContextStack = $newContextStack;
 		return $this;

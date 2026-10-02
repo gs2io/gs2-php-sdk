@@ -23,33 +23,50 @@ use Gs2\Formation\Model\SlotModel;
 use Gs2\Formation\Model\FormModel;
 use Gs2\Formation\Model\MoldModel;
 
+/**
+ * Result of addCapacityByStampSheet: Execute capacity size addition as acquire action
+ *
+ * @see https://docs.gs2.io/api_reference/formation/stamp_sheet/#gs2formationaddmoldcapacitybyuserid
+ */
 class AddCapacityByStampSheetResult implements IResult {
-    /** @var Mold */
+    /** @var Mold Form Storage Area after capacity addition */
     private $item;
-    /** @var MoldModel */
+    /** @var MoldModel Form Storage Area */
     private $moldModel;
 
+    /** @return Mold|null Form Storage Area after capacity addition */
 	public function getItem(): ?Mold {
 		return $this->item;
 	}
 
+    /** @param Mold|null $item Form Storage Area after capacity addition */
 	public function setItem(?Mold $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Mold|null $item Form Storage Area after capacity addition
+     * @return AddCapacityByStampSheetResult
+     */
 	public function withItem(?Mold $item): AddCapacityByStampSheetResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return MoldModel|null Form Storage Area */
 	public function getMoldModel(): ?MoldModel {
 		return $this->moldModel;
 	}
 
+    /** @param MoldModel|null $moldModel Form Storage Area */
 	public function setMoldModel(?MoldModel $moldModel) {
 		$this->moldModel = $moldModel;
 	}
 
+    /**
+     * @param MoldModel|null $moldModel Form Storage Area
+     * @return AddCapacityByStampSheetResult
+     */
 	public function withMoldModel(?MoldModel $moldModel): AddCapacityByStampSheetResult {
 		$this->moldModel = $moldModel;
 		return $this;

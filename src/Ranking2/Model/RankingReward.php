@@ -20,45 +20,68 @@ namespace Gs2\Ranking2\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Ranking Reward
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/sdk/#rankingreward
+ */
 class RankingReward implements IModel {
 	/**
-     * @var int
+     * @var int Rank Threshold
 	 */
 	private $thresholdRank;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var array
+     * @var array List of Acquire Actions
 	 */
 	private $acquireActions;
+    /** @return int|null Rank Threshold */
 	public function getThresholdRank(): ?int {
 		return $this->thresholdRank;
 	}
+    /** @param int|null $thresholdRank Rank Threshold */
 	public function setThresholdRank(?int $thresholdRank) {
 		$this->thresholdRank = $thresholdRank;
 	}
+    /**
+     * @param int|null $thresholdRank Rank Threshold
+     * @return RankingReward
+     */
 	public function withThresholdRank(?int $thresholdRank): RankingReward {
 		$this->thresholdRank = $thresholdRank;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return RankingReward
+     */
 	public function withMetadata(?string $metadata): RankingReward {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return array|null List of Acquire Actions */
 	public function getAcquireActions(): ?array {
 		return $this->acquireActions;
 	}
+    /** @param array|null $acquireActions List of Acquire Actions */
 	public function setAcquireActions(?array $acquireActions) {
 		$this->acquireActions = $acquireActions;
 	}
+    /**
+     * @param array|null $acquireActions List of Acquire Actions
+     * @return RankingReward
+     */
 	public function withAcquireActions(?array $acquireActions): RankingReward {
 		$this->acquireActions = $acquireActions;
 		return $this;

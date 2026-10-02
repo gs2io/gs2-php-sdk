@@ -19,27 +19,44 @@ namespace Gs2\Log\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for deleteDashboard: Delete Dashboard
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#deletedashboard
+ */
 class DeleteDashboardRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Dashboard Name */
     private $dashboardName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DeleteDashboardRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DeleteDashboardRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Dashboard Name */
 	public function getDashboardName(): ?string {
 		return $this->dashboardName;
 	}
+    /** @param string|null $dashboardName Dashboard Name */
 	public function setDashboardName(?string $dashboardName) {
 		$this->dashboardName = $dashboardName;
 	}
+    /**
+     * @param string|null $dashboardName Dashboard Name
+     * @return DeleteDashboardRequest
+     */
 	public function withDashboardName(?string $dashboardName): DeleteDashboardRequest {
 		$this->dashboardName = $dashboardName;
 		return $this;

@@ -22,18 +22,29 @@ use Gs2\Money2\Model\AppleAppStoreContent;
 use Gs2\Money2\Model\GooglePlayContent;
 use Gs2\Money2\Model\StoreContentModel;
 
+/**
+ * Result of getStoreContentModel: Get Store Content Model
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#getstorecontentmodel
+ */
 class GetStoreContentModelResult implements IResult {
-    /** @var StoreContentModel */
+    /** @var StoreContentModel Store Content Model */
     private $item;
 
+    /** @return StoreContentModel|null Store Content Model */
 	public function getItem(): ?StoreContentModel {
 		return $this->item;
 	}
 
+    /** @param StoreContentModel|null $item Store Content Model */
 	public function setItem(?StoreContentModel $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param StoreContentModel|null $item Store Content Model
+     * @return GetStoreContentModelResult
+     */
 	public function withItem(?StoreContentModel $item): GetStoreContentModelResult {
 		$this->item = $item;
 		return $this;

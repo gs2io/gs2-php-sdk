@@ -20,101 +20,148 @@ namespace Gs2\Schedule\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Trigger
+ *
+ * @see https://docs.gs2.io/api_reference/schedule/sdk/#trigger
+ */
 class Trigger implements IModel {
 	/**
-     * @var string
+     * @var string Trigger GRN
 	 */
 	private $triggerId;
 	/**
-     * @var string
+     * @var string Trigger name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var int
+     * @var int Triggered At
 	 */
 	private $triggeredAt;
 	/**
-     * @var int
+     * @var int Expires At
 	 */
 	private $expiresAt;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Trigger GRN */
 	public function getTriggerId(): ?string {
 		return $this->triggerId;
 	}
+    /** @param string|null $triggerId Trigger GRN */
 	public function setTriggerId(?string $triggerId) {
 		$this->triggerId = $triggerId;
 	}
+    /**
+     * @param string|null $triggerId Trigger GRN
+     * @return Trigger
+     */
 	public function withTriggerId(?string $triggerId): Trigger {
 		$this->triggerId = $triggerId;
 		return $this;
 	}
+    /** @return string|null Trigger name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Trigger name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Trigger name
+     * @return Trigger
+     */
 	public function withName(?string $name): Trigger {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return Trigger
+     */
 	public function withUserId(?string $userId): Trigger {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return int|null Triggered At */
 	public function getTriggeredAt(): ?int {
 		return $this->triggeredAt;
 	}
+    /** @param int|null $triggeredAt Triggered At */
 	public function setTriggeredAt(?int $triggeredAt) {
 		$this->triggeredAt = $triggeredAt;
 	}
+    /**
+     * @param int|null $triggeredAt Triggered At
+     * @return Trigger
+     */
 	public function withTriggeredAt(?int $triggeredAt): Trigger {
 		$this->triggeredAt = $triggeredAt;
 		return $this;
 	}
+    /** @return int|null Expires At */
 	public function getExpiresAt(): ?int {
 		return $this->expiresAt;
 	}
+    /** @param int|null $expiresAt Expires At */
 	public function setExpiresAt(?int $expiresAt) {
 		$this->expiresAt = $expiresAt;
 	}
+    /**
+     * @param int|null $expiresAt Expires At
+     * @return Trigger
+     */
 	public function withExpiresAt(?int $expiresAt): Trigger {
 		$this->expiresAt = $expiresAt;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return Trigger
+     */
 	public function withCreatedAt(?int $createdAt): Trigger {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return Trigger
+     */
 	public function withRevision(?int $revision): Trigger {
 		$this->revision = $revision;
 		return $this;

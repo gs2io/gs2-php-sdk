@@ -4198,25 +4198,22 @@ class GetUnusedBalanceTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 Money2 API クライアント
+ * GS2-Money2 API client
  *
- * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/
  */
 class Gs2Money2RestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#describenamespaces
      */
     public function describeNamespacesAsync(
             DescribeNamespacesRequest $request
@@ -4230,8 +4227,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#describenamespaces
      */
     public function describeNamespaces (
             DescribeNamespacesRequest $request
@@ -4242,8 +4242,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#createnamespace
      */
     public function createNamespaceAsync(
             CreateNamespaceRequest $request
@@ -4257,8 +4260,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#createnamespace
      */
     public function createNamespace (
             CreateNamespaceRequest $request
@@ -4269,8 +4275,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#getnamespacestatus
      */
     public function getNamespaceStatusAsync(
             GetNamespaceStatusRequest $request
@@ -4284,8 +4293,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#getnamespacestatus
      */
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
@@ -4296,8 +4308,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#getnamespace
      */
     public function getNamespaceAsync(
             GetNamespaceRequest $request
@@ -4311,8 +4326,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#getnamespace
      */
     public function getNamespace (
             GetNamespaceRequest $request
@@ -4323,8 +4341,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#updatenamespace
      */
     public function updateNamespaceAsync(
             UpdateNamespaceRequest $request
@@ -4338,8 +4359,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#updatenamespace
      */
     public function updateNamespace (
             UpdateNamespaceRequest $request
@@ -4350,8 +4374,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#deletenamespace
      */
     public function deleteNamespaceAsync(
             DeleteNamespaceRequest $request
@@ -4365,8 +4392,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#deletenamespace
      */
     public function deleteNamespace (
             DeleteNamespaceRequest $request
@@ -4377,8 +4407,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#getserviceversion
      */
     public function getServiceVersionAsync(
             GetServiceVersionRequest $request
@@ -4392,8 +4425,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return GetServiceVersionResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#getserviceversion
      */
     public function getServiceVersion (
             GetServiceVersionRequest $request
@@ -4404,8 +4440,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserIdAsync(
             DumpUserDataByUserIdRequest $request
@@ -4419,8 +4458,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return DumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserId (
             DumpUserDataByUserIdRequest $request
@@ -4431,8 +4473,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserIdAsync(
             CheckDumpUserDataByUserIdRequest $request
@@ -4446,8 +4491,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return CheckDumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserId (
             CheckDumpUserDataByUserIdRequest $request
@@ -4458,8 +4506,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserIdAsync(
             CleanUserDataByUserIdRequest $request
@@ -4473,8 +4524,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return CleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserId (
             CleanUserDataByUserIdRequest $request
@@ -4485,8 +4539,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the clean of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserIdAsync(
             CheckCleanUserDataByUserIdRequest $request
@@ -4500,8 +4557,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the clean of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return CheckCleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserId (
             CheckCleanUserDataByUserIdRequest $request
@@ -4512,8 +4572,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserIdAsync(
             PrepareImportUserDataByUserIdRequest $request
@@ -4527,8 +4590,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PrepareImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserId (
             PrepareImportUserDataByUserIdRequest $request
@@ -4539,8 +4605,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserIdAsync(
             ImportUserDataByUserIdRequest $request
@@ -4554,8 +4623,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return ImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserId (
             ImportUserDataByUserIdRequest $request
@@ -4566,8 +4638,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserIdAsync(
             CheckImportUserDataByUserIdRequest $request
@@ -4581,8 +4656,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return CheckImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserId (
             CheckImportUserDataByUserIdRequest $request
@@ -4593,8 +4671,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * List wallets
+     *
      * @param DescribeWalletsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#describewallets
      */
     public function describeWalletsAsync(
             DescribeWalletsRequest $request
@@ -4608,8 +4689,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * List wallets
+     *
      * @param DescribeWalletsRequest $request
      * @return DescribeWalletsResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#describewallets
      */
     public function describeWallets (
             DescribeWalletsRequest $request
@@ -4620,8 +4704,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * List wallets by User ID
+     *
      * @param DescribeWalletsByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#describewalletsbyuserid
      */
     public function describeWalletsByUserIdAsync(
             DescribeWalletsByUserIdRequest $request
@@ -4635,8 +4722,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * List wallets by User ID
+     *
      * @param DescribeWalletsByUserIdRequest $request
      * @return DescribeWalletsByUserIdResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#describewalletsbyuserid
      */
     public function describeWalletsByUserId (
             DescribeWalletsByUserIdRequest $request
@@ -4647,8 +4737,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Wallet
+     *
      * @param GetWalletRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#getwallet
      */
     public function getWalletAsync(
             GetWalletRequest $request
@@ -4662,8 +4755,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Wallet
+     *
      * @param GetWalletRequest $request
      * @return GetWalletResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#getwallet
      */
     public function getWallet (
             GetWalletRequest $request
@@ -4674,8 +4770,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Wallet by User ID
+     *
      * @param GetWalletByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#getwalletbyuserid
      */
     public function getWalletByUserIdAsync(
             GetWalletByUserIdRequest $request
@@ -4689,8 +4788,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Wallet by User ID
+     *
      * @param GetWalletByUserIdRequest $request
      * @return GetWalletByUserIdResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#getwalletbyuserid
      */
     public function getWalletByUserId (
             GetWalletByUserIdRequest $request
@@ -4701,8 +4803,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Deposit balance to Wallet by User ID
+     *
      * @param DepositByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#depositbyuserid
      */
     public function depositByUserIdAsync(
             DepositByUserIdRequest $request
@@ -4716,8 +4821,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Deposit balance to Wallet by User ID
+     *
      * @param DepositByUserIdRequest $request
      * @return DepositByUserIdResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#depositbyuserid
      */
     public function depositByUserId (
             DepositByUserIdRequest $request
@@ -4728,8 +4836,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Withdraw balance from wallet
+     *
      * @param WithdrawRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#withdraw
      */
     public function withdrawAsync(
             WithdrawRequest $request
@@ -4743,8 +4854,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Withdraw balance from wallet
+     *
      * @param WithdrawRequest $request
      * @return WithdrawResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#withdraw
      */
     public function withdraw (
             WithdrawRequest $request
@@ -4755,8 +4869,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Withdraw balance from Wallet by User ID
+     *
      * @param WithdrawByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#withdrawbyuserid
      */
     public function withdrawByUserIdAsync(
             WithdrawByUserIdRequest $request
@@ -4770,8 +4887,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Withdraw balance from Wallet by User ID
+     *
      * @param WithdrawByUserIdRequest $request
      * @return WithdrawByUserIdResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#withdrawbyuserid
      */
     public function withdrawByUserId (
             WithdrawByUserIdRequest $request
@@ -4782,8 +4902,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute balance addition to wallet as an acquire action within a distributed transaction
+     *
      * @param DepositByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/stamp_sheet/#gs2money2depositbyuserid
      */
     public function depositByStampSheetAsync(
             DepositByStampSheetRequest $request
@@ -4797,8 +4920,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute balance addition to wallet as an acquire action within a distributed transaction
+     *
      * @param DepositByStampSheetRequest $request
      * @return DepositByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/money2/stamp_sheet/#gs2money2depositbyuserid
      */
     public function depositByStampSheet (
             DepositByStampSheetRequest $request
@@ -4809,8 +4935,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute withdrawal of balance from wallet as a consume action within a distributed transaction
+     *
      * @param WithdrawByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/stamp_sheet/#gs2money2withdrawbyuserid
      */
     public function withdrawByStampTaskAsync(
             WithdrawByStampTaskRequest $request
@@ -4824,8 +4953,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute withdrawal of balance from wallet as a consume action within a distributed transaction
+     *
      * @param WithdrawByStampTaskRequest $request
      * @return WithdrawByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/money2/stamp_sheet/#gs2money2withdrawbyuserid
      */
     public function withdrawByStampTask (
             WithdrawByStampTaskRequest $request
@@ -4836,8 +4968,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Events
+     *
      * @param DescribeEventsByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#describeeventsbyuserid
      */
     public function describeEventsByUserIdAsync(
             DescribeEventsByUserIdRequest $request
@@ -4851,8 +4986,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Events
+     *
      * @param DescribeEventsByUserIdRequest $request
      * @return DescribeEventsByUserIdResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#describeeventsbyuserid
      */
     public function describeEventsByUserId (
             DescribeEventsByUserIdRequest $request
@@ -4863,8 +5001,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Event by specifying transaction ID
+     *
      * @param GetEventByTransactionIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#geteventbytransactionid
      */
     public function getEventByTransactionIdAsync(
             GetEventByTransactionIdRequest $request
@@ -4878,8 +5019,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Event by specifying transaction ID
+     *
      * @param GetEventByTransactionIdRequest $request
      * @return GetEventByTransactionIdResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#geteventbytransactionid
      */
     public function getEventByTransactionId (
             GetEventByTransactionIdRequest $request
@@ -4890,8 +5034,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Record receipt
+     *
      * @param VerifyReceiptRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#verifyreceipt
      */
     public function verifyReceiptAsync(
             VerifyReceiptRequest $request
@@ -4905,8 +5052,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Record receipt
+     *
      * @param VerifyReceiptRequest $request
      * @return VerifyReceiptResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#verifyreceipt
      */
     public function verifyReceipt (
             VerifyReceiptRequest $request
@@ -4917,8 +5067,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Mark a receipt as used by User ID
+     *
      * @param VerifyReceiptByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#verifyreceiptbyuserid
      */
     public function verifyReceiptByUserIdAsync(
             VerifyReceiptByUserIdRequest $request
@@ -4932,8 +5085,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Mark a receipt as used by User ID
+     *
      * @param VerifyReceiptByUserIdRequest $request
      * @return VerifyReceiptByUserIdResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#verifyreceiptbyuserid
      */
     public function verifyReceiptByUserId (
             VerifyReceiptByUserIdRequest $request
@@ -4944,8 +5100,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute receipt verification as a consume action within a distributed transaction
+     *
      * @param VerifyReceiptByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/stamp_sheet/#gs2money2verifyreceiptbyuserid
      */
     public function verifyReceiptByStampTaskAsync(
             VerifyReceiptByStampTaskRequest $request
@@ -4959,8 +5118,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute receipt verification as a consume action within a distributed transaction
+     *
      * @param VerifyReceiptByStampTaskRequest $request
      * @return VerifyReceiptByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/money2/stamp_sheet/#gs2money2verifyreceiptbyuserid
      */
     public function verifyReceiptByStampTask (
             VerifyReceiptByStampTaskRequest $request
@@ -4971,8 +5133,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Store Subscription Statuses
+     *
      * @param DescribeSubscriptionStatusesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#describesubscriptionstatuses
      */
     public function describeSubscriptionStatusesAsync(
             DescribeSubscriptionStatusesRequest $request
@@ -4986,8 +5151,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Store Subscription Statuses
+     *
      * @param DescribeSubscriptionStatusesRequest $request
      * @return DescribeSubscriptionStatusesResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#describesubscriptionstatuses
      */
     public function describeSubscriptionStatuses (
             DescribeSubscriptionStatusesRequest $request
@@ -4998,8 +5166,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Store Subscription Statuses by User ID
+     *
      * @param DescribeSubscriptionStatusesByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#describesubscriptionstatusesbyuserid
      */
     public function describeSubscriptionStatusesByUserIdAsync(
             DescribeSubscriptionStatusesByUserIdRequest $request
@@ -5013,8 +5184,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Store Subscription Statuses by User ID
+     *
      * @param DescribeSubscriptionStatusesByUserIdRequest $request
      * @return DescribeSubscriptionStatusesByUserIdResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#describesubscriptionstatusesbyuserid
      */
     public function describeSubscriptionStatusesByUserId (
             DescribeSubscriptionStatusesByUserIdRequest $request
@@ -5025,8 +5199,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get subscription status
+     *
      * @param GetSubscriptionStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#getsubscriptionstatus
      */
     public function getSubscriptionStatusAsync(
             GetSubscriptionStatusRequest $request
@@ -5040,8 +5217,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get subscription status
+     *
      * @param GetSubscriptionStatusRequest $request
      * @return GetSubscriptionStatusResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#getsubscriptionstatus
      */
     public function getSubscriptionStatus (
             GetSubscriptionStatusRequest $request
@@ -5052,8 +5232,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get subscription status by User ID
+     *
      * @param GetSubscriptionStatusByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#getsubscriptionstatusbyuserid
      */
     public function getSubscriptionStatusByUserIdAsync(
             GetSubscriptionStatusByUserIdRequest $request
@@ -5067,8 +5250,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get subscription status by User ID
+     *
      * @param GetSubscriptionStatusByUserIdRequest $request
      * @return GetSubscriptionStatusByUserIdResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#getsubscriptionstatusbyuserid
      */
     public function getSubscriptionStatusByUserId (
             GetSubscriptionStatusByUserIdRequest $request
@@ -5079,8 +5265,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Allocate subscription status from receipt
+     *
      * @param AllocateSubscriptionStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#allocatesubscriptionstatus
      */
     public function allocateSubscriptionStatusAsync(
             AllocateSubscriptionStatusRequest $request
@@ -5094,8 +5283,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Allocate subscription status from receipt
+     *
      * @param AllocateSubscriptionStatusRequest $request
      * @return AllocateSubscriptionStatusResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#allocatesubscriptionstatus
      */
     public function allocateSubscriptionStatus (
             AllocateSubscriptionStatusRequest $request
@@ -5106,8 +5298,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Allocate subscription status by User ID from receipt
+     *
      * @param AllocateSubscriptionStatusByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#allocatesubscriptionstatusbyuserid
      */
     public function allocateSubscriptionStatusByUserIdAsync(
             AllocateSubscriptionStatusByUserIdRequest $request
@@ -5121,8 +5316,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Allocate subscription status by User ID from receipt
+     *
      * @param AllocateSubscriptionStatusByUserIdRequest $request
      * @return AllocateSubscriptionStatusByUserIdResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#allocatesubscriptionstatusbyuserid
      */
     public function allocateSubscriptionStatusByUserId (
             AllocateSubscriptionStatusByUserIdRequest $request
@@ -5133,8 +5331,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Takeover the subscription status of a subscription that is already assigned to another user
+     *
      * @param TakeoverSubscriptionStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#takeoversubscriptionstatus
      */
     public function takeoverSubscriptionStatusAsync(
             TakeoverSubscriptionStatusRequest $request
@@ -5148,8 +5349,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Takeover the subscription status of a subscription that is already assigned to another user
+     *
      * @param TakeoverSubscriptionStatusRequest $request
      * @return TakeoverSubscriptionStatusResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#takeoversubscriptionstatus
      */
     public function takeoverSubscriptionStatus (
             TakeoverSubscriptionStatusRequest $request
@@ -5160,8 +5364,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Takeover the subscription status of a subscription that is already assigned to another user by User ID
+     *
      * @param TakeoverSubscriptionStatusByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#takeoversubscriptionstatusbyuserid
      */
     public function takeoverSubscriptionStatusByUserIdAsync(
             TakeoverSubscriptionStatusByUserIdRequest $request
@@ -5175,8 +5382,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Takeover the subscription status of a subscription that is already assigned to another user by User ID
+     *
      * @param TakeoverSubscriptionStatusByUserIdRequest $request
      * @return TakeoverSubscriptionStatusByUserIdResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#takeoversubscriptionstatusbyuserid
      */
     public function takeoverSubscriptionStatusByUserId (
             TakeoverSubscriptionStatusByUserIdRequest $request
@@ -5187,8 +5397,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * List store refund history by User ID
+     *
      * @param DescribeRefundHistoriesByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#describerefundhistoriesbyuserid
      */
     public function describeRefundHistoriesByUserIdAsync(
             DescribeRefundHistoriesByUserIdRequest $request
@@ -5202,8 +5415,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * List store refund history by User ID
+     *
      * @param DescribeRefundHistoriesByUserIdRequest $request
      * @return DescribeRefundHistoriesByUserIdResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#describerefundhistoriesbyuserid
      */
     public function describeRefundHistoriesByUserId (
             DescribeRefundHistoriesByUserIdRequest $request
@@ -5214,8 +5430,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * List store refund history by year and month
+     *
      * @param DescribeRefundHistoriesByDateRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#describerefundhistoriesbydate
      */
     public function describeRefundHistoriesByDateAsync(
             DescribeRefundHistoriesByDateRequest $request
@@ -5229,8 +5448,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * List store refund history by year and month
+     *
      * @param DescribeRefundHistoriesByDateRequest $request
      * @return DescribeRefundHistoriesByDateResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#describerefundhistoriesbydate
      */
     public function describeRefundHistoriesByDate (
             DescribeRefundHistoriesByDateRequest $request
@@ -5241,8 +5463,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get refund history by specifying a transaction ID
+     *
      * @param GetRefundHistoryRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#getrefundhistory
      */
     public function getRefundHistoryAsync(
             GetRefundHistoryRequest $request
@@ -5256,8 +5481,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get refund history by specifying a transaction ID
+     *
      * @param GetRefundHistoryRequest $request
      * @return GetRefundHistoryResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#getrefundhistory
      */
     public function getRefundHistory (
             GetRefundHistoryRequest $request
@@ -5268,8 +5496,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Store Content Model
+     *
      * @param DescribeStoreContentModelsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#describestorecontentmodels
      */
     public function describeStoreContentModelsAsync(
             DescribeStoreContentModelsRequest $request
@@ -5283,8 +5514,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Store Content Model
+     *
      * @param DescribeStoreContentModelsRequest $request
      * @return DescribeStoreContentModelsResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#describestorecontentmodels
      */
     public function describeStoreContentModels (
             DescribeStoreContentModelsRequest $request
@@ -5295,8 +5529,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Store Content Model
+     *
      * @param GetStoreContentModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#getstorecontentmodel
      */
     public function getStoreContentModelAsync(
             GetStoreContentModelRequest $request
@@ -5310,8 +5547,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Store Content Model
+     *
      * @param GetStoreContentModelRequest $request
      * @return GetStoreContentModelResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#getstorecontentmodel
      */
     public function getStoreContentModel (
             GetStoreContentModelRequest $request
@@ -5322,8 +5562,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Store Content Model Masters
+     *
      * @param DescribeStoreContentModelMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#describestorecontentmodelmasters
      */
     public function describeStoreContentModelMastersAsync(
             DescribeStoreContentModelMastersRequest $request
@@ -5337,8 +5580,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Store Content Model Masters
+     *
      * @param DescribeStoreContentModelMastersRequest $request
      * @return DescribeStoreContentModelMastersResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#describestorecontentmodelmasters
      */
     public function describeStoreContentModelMasters (
             DescribeStoreContentModelMastersRequest $request
@@ -5349,8 +5595,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create store content master
+     *
      * @param CreateStoreContentModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#createstorecontentmodelmaster
      */
     public function createStoreContentModelMasterAsync(
             CreateStoreContentModelMasterRequest $request
@@ -5364,8 +5613,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create store content master
+     *
      * @param CreateStoreContentModelMasterRequest $request
      * @return CreateStoreContentModelMasterResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#createstorecontentmodelmaster
      */
     public function createStoreContentModelMaster (
             CreateStoreContentModelMasterRequest $request
@@ -5376,8 +5628,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Store Content Master
+     *
      * @param GetStoreContentModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#getstorecontentmodelmaster
      */
     public function getStoreContentModelMasterAsync(
             GetStoreContentModelMasterRequest $request
@@ -5391,8 +5646,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Store Content Master
+     *
      * @param GetStoreContentModelMasterRequest $request
      * @return GetStoreContentModelMasterResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#getstorecontentmodelmaster
      */
     public function getStoreContentModelMaster (
             GetStoreContentModelMasterRequest $request
@@ -5403,8 +5661,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Store Content Master
+     *
      * @param UpdateStoreContentModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#updatestorecontentmodelmaster
      */
     public function updateStoreContentModelMasterAsync(
             UpdateStoreContentModelMasterRequest $request
@@ -5418,8 +5679,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Store Content Master
+     *
      * @param UpdateStoreContentModelMasterRequest $request
      * @return UpdateStoreContentModelMasterResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#updatestorecontentmodelmaster
      */
     public function updateStoreContentModelMaster (
             UpdateStoreContentModelMasterRequest $request
@@ -5430,8 +5694,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Store Content Master
+     *
      * @param DeleteStoreContentModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#deletestorecontentmodelmaster
      */
     public function deleteStoreContentModelMasterAsync(
             DeleteStoreContentModelMasterRequest $request
@@ -5445,8 +5712,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Store Content Master
+     *
      * @param DeleteStoreContentModelMasterRequest $request
      * @return DeleteStoreContentModelMasterResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#deletestorecontentmodelmaster
      */
     public function deleteStoreContentModelMaster (
             DeleteStoreContentModelMasterRequest $request
@@ -5457,8 +5727,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Store Subscription Content Models
+     *
      * @param DescribeStoreSubscriptionContentModelsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#describestoresubscriptioncontentmodels
      */
     public function describeStoreSubscriptionContentModelsAsync(
             DescribeStoreSubscriptionContentModelsRequest $request
@@ -5472,8 +5745,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Store Subscription Content Models
+     *
      * @param DescribeStoreSubscriptionContentModelsRequest $request
      * @return DescribeStoreSubscriptionContentModelsResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#describestoresubscriptioncontentmodels
      */
     public function describeStoreSubscriptionContentModels (
             DescribeStoreSubscriptionContentModelsRequest $request
@@ -5484,8 +5760,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Store Subscription Content Model
+     *
      * @param GetStoreSubscriptionContentModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#getstoresubscriptioncontentmodel
      */
     public function getStoreSubscriptionContentModelAsync(
             GetStoreSubscriptionContentModelRequest $request
@@ -5499,8 +5778,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Store Subscription Content Model
+     *
      * @param GetStoreSubscriptionContentModelRequest $request
      * @return GetStoreSubscriptionContentModelResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#getstoresubscriptioncontentmodel
      */
     public function getStoreSubscriptionContentModel (
             GetStoreSubscriptionContentModelRequest $request
@@ -5511,8 +5793,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Store Subscription Content Model Masters
+     *
      * @param DescribeStoreSubscriptionContentModelMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#describestoresubscriptioncontentmodelmasters
      */
     public function describeStoreSubscriptionContentModelMastersAsync(
             DescribeStoreSubscriptionContentModelMastersRequest $request
@@ -5526,8 +5811,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Store Subscription Content Model Masters
+     *
      * @param DescribeStoreSubscriptionContentModelMastersRequest $request
      * @return DescribeStoreSubscriptionContentModelMastersResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#describestoresubscriptioncontentmodelmasters
      */
     public function describeStoreSubscriptionContentModelMasters (
             DescribeStoreSubscriptionContentModelMastersRequest $request
@@ -5538,8 +5826,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Store Subscription Content Model Master
+     *
      * @param CreateStoreSubscriptionContentModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#createstoresubscriptioncontentmodelmaster
      */
     public function createStoreSubscriptionContentModelMasterAsync(
             CreateStoreSubscriptionContentModelMasterRequest $request
@@ -5553,8 +5844,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Store Subscription Content Model Master
+     *
      * @param CreateStoreSubscriptionContentModelMasterRequest $request
      * @return CreateStoreSubscriptionContentModelMasterResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#createstoresubscriptioncontentmodelmaster
      */
     public function createStoreSubscriptionContentModelMaster (
             CreateStoreSubscriptionContentModelMasterRequest $request
@@ -5565,8 +5859,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Store Subscription Content Model Master
+     *
      * @param GetStoreSubscriptionContentModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#getstoresubscriptioncontentmodelmaster
      */
     public function getStoreSubscriptionContentModelMasterAsync(
             GetStoreSubscriptionContentModelMasterRequest $request
@@ -5580,8 +5877,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Store Subscription Content Model Master
+     *
      * @param GetStoreSubscriptionContentModelMasterRequest $request
      * @return GetStoreSubscriptionContentModelMasterResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#getstoresubscriptioncontentmodelmaster
      */
     public function getStoreSubscriptionContentModelMaster (
             GetStoreSubscriptionContentModelMasterRequest $request
@@ -5592,8 +5892,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Store Subscription Content Model Master
+     *
      * @param UpdateStoreSubscriptionContentModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#updatestoresubscriptioncontentmodelmaster
      */
     public function updateStoreSubscriptionContentModelMasterAsync(
             UpdateStoreSubscriptionContentModelMasterRequest $request
@@ -5607,8 +5910,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Store Subscription Content Model Master
+     *
      * @param UpdateStoreSubscriptionContentModelMasterRequest $request
      * @return UpdateStoreSubscriptionContentModelMasterResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#updatestoresubscriptioncontentmodelmaster
      */
     public function updateStoreSubscriptionContentModelMaster (
             UpdateStoreSubscriptionContentModelMasterRequest $request
@@ -5619,8 +5925,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Store Subscription Content Model Master
+     *
      * @param DeleteStoreSubscriptionContentModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#deletestoresubscriptioncontentmodelmaster
      */
     public function deleteStoreSubscriptionContentModelMasterAsync(
             DeleteStoreSubscriptionContentModelMasterRequest $request
@@ -5634,8 +5943,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Store Subscription Content Model Master
+     *
      * @param DeleteStoreSubscriptionContentModelMasterRequest $request
      * @return DeleteStoreSubscriptionContentModelMasterResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#deletestoresubscriptioncontentmodelmaster
      */
     public function deleteStoreSubscriptionContentModelMaster (
             DeleteStoreSubscriptionContentModelMasterRequest $request
@@ -5646,8 +5958,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#exportmaster
      */
     public function exportMasterAsync(
             ExportMasterRequest $request
@@ -5661,8 +5976,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return ExportMasterResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#exportmaster
      */
     public function exportMaster (
             ExportMasterRequest $request
@@ -5673,8 +5991,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Models master data
+     *
      * @param GetCurrentModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#getcurrentmodelmaster
      */
     public function getCurrentModelMasterAsync(
             GetCurrentModelMasterRequest $request
@@ -5688,8 +6009,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Models master data
+     *
      * @param GetCurrentModelMasterRequest $request
      * @return GetCurrentModelMasterResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#getcurrentmodelmaster
      */
     public function getCurrentModelMaster (
             GetCurrentModelMasterRequest $request
@@ -5700,8 +6024,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Models master data (3-phase version)
+     *
      * @param PreUpdateCurrentModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#preupdatecurrentmodelmaster
      */
     public function preUpdateCurrentModelMasterAsync(
             PreUpdateCurrentModelMasterRequest $request
@@ -5715,8 +6042,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Models master data (3-phase version)
+     *
      * @param PreUpdateCurrentModelMasterRequest $request
      * @return PreUpdateCurrentModelMasterResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#preupdatecurrentmodelmaster
      */
     public function preUpdateCurrentModelMaster (
             PreUpdateCurrentModelMasterRequest $request
@@ -5727,8 +6057,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Models master data
+     *
      * @param UpdateCurrentModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#updatecurrentmodelmaster
      */
     public function updateCurrentModelMasterAsync(
             UpdateCurrentModelMasterRequest $request
@@ -5742,8 +6075,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Models master data
+     *
      * @param UpdateCurrentModelMasterRequest $request
      * @return UpdateCurrentModelMasterResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#updatecurrentmodelmaster
      */
     public function updateCurrentModelMaster (
             UpdateCurrentModelMasterRequest $request
@@ -5754,8 +6090,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Models master data from GitHub
+     *
      * @param UpdateCurrentModelMasterFromGitHubRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#updatecurrentmodelmasterfromgithub
      */
     public function updateCurrentModelMasterFromGitHubAsync(
             UpdateCurrentModelMasterFromGitHubRequest $request
@@ -5769,8 +6108,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Models master data from GitHub
+     *
      * @param UpdateCurrentModelMasterFromGitHubRequest $request
      * @return UpdateCurrentModelMasterFromGitHubResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#updatecurrentmodelmasterfromgithub
      */
     public function updateCurrentModelMasterFromGitHub (
             UpdateCurrentModelMasterFromGitHubRequest $request
@@ -5781,8 +6123,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * List daily transaction histories by specifying currency
+     *
      * @param DescribeDailyTransactionHistoriesByCurrencyRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#describedailytransactionhistoriesbycurrency
      */
     public function describeDailyTransactionHistoriesByCurrencyAsync(
             DescribeDailyTransactionHistoriesByCurrencyRequest $request
@@ -5796,8 +6141,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * List daily transaction histories by specifying currency
+     *
      * @param DescribeDailyTransactionHistoriesByCurrencyRequest $request
      * @return DescribeDailyTransactionHistoriesByCurrencyResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#describedailytransactionhistoriesbycurrency
      */
     public function describeDailyTransactionHistoriesByCurrency (
             DescribeDailyTransactionHistoriesByCurrencyRequest $request
@@ -5808,8 +6156,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * List daily transaction histories
+     *
      * @param DescribeDailyTransactionHistoriesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#describedailytransactionhistories
      */
     public function describeDailyTransactionHistoriesAsync(
             DescribeDailyTransactionHistoriesRequest $request
@@ -5823,8 +6174,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * List daily transaction histories
+     *
      * @param DescribeDailyTransactionHistoriesRequest $request
      * @return DescribeDailyTransactionHistoriesResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#describedailytransactionhistories
      */
     public function describeDailyTransactionHistories (
             DescribeDailyTransactionHistoriesRequest $request
@@ -5835,8 +6189,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get daily transaction history by specifying date and currency
+     *
      * @param GetDailyTransactionHistoryRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#getdailytransactionhistory
      */
     public function getDailyTransactionHistoryAsync(
             GetDailyTransactionHistoryRequest $request
@@ -5850,8 +6207,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get daily transaction history by specifying date and currency
+     *
      * @param GetDailyTransactionHistoryRequest $request
      * @return GetDailyTransactionHistoryResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#getdailytransactionhistory
      */
     public function getDailyTransactionHistory (
             GetDailyTransactionHistoryRequest $request
@@ -5862,8 +6222,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Unused Balances
+     *
      * @param DescribeUnusedBalancesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#describeunusedbalances
      */
     public function describeUnusedBalancesAsync(
             DescribeUnusedBalancesRequest $request
@@ -5877,8 +6240,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Unused Balances
+     *
      * @param DescribeUnusedBalancesRequest $request
      * @return DescribeUnusedBalancesResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#describeunusedbalances
      */
     public function describeUnusedBalances (
             DescribeUnusedBalancesRequest $request
@@ -5889,8 +6255,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Unused Balance by specifying a currency
+     *
      * @param GetUnusedBalanceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#getunusedbalance
      */
     public function getUnusedBalanceAsync(
             GetUnusedBalanceRequest $request
@@ -5904,8 +6273,11 @@ class Gs2Money2RestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Unused Balance by specifying a currency
+     *
      * @param GetUnusedBalanceRequest $request
      * @return GetUnusedBalanceResult
+     * @see https://docs.gs2.io/api_reference/money2/sdk/#getunusedbalance
      */
     public function getUnusedBalance (
             GetUnusedBalanceRequest $request

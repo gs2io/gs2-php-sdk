@@ -19,53 +19,82 @@ namespace Gs2\Datastore\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for prepareDownloadOwnDataByGeneration: Prepare own data object for download by specifying the generation
+ *
+ * @see https://docs.gs2.io/api_reference/datastore/sdk/#preparedownloadowndatabygeneration
+ */
 class PrepareDownloadOwnDataByGenerationRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Data Object Name */
     private $dataObjectName;
-    /** @var string */
+    /** @var string Data Generation */
     private $generation;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return PrepareDownloadOwnDataByGenerationRequest
+     */
 	public function withNamespaceName(?string $namespaceName): PrepareDownloadOwnDataByGenerationRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return PrepareDownloadOwnDataByGenerationRequest
+     */
 	public function withAccessToken(?string $accessToken): PrepareDownloadOwnDataByGenerationRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Data Object Name */
 	public function getDataObjectName(): ?string {
 		return $this->dataObjectName;
 	}
+    /** @param string|null $dataObjectName Data Object Name */
 	public function setDataObjectName(?string $dataObjectName) {
 		$this->dataObjectName = $dataObjectName;
 	}
+    /**
+     * @param string|null $dataObjectName Data Object Name
+     * @return PrepareDownloadOwnDataByGenerationRequest
+     */
 	public function withDataObjectName(?string $dataObjectName): PrepareDownloadOwnDataByGenerationRequest {
 		$this->dataObjectName = $dataObjectName;
 		return $this;
 	}
+    /** @return string|null Data Generation */
 	public function getGeneration(): ?string {
 		return $this->generation;
 	}
+    /** @param string|null $generation Data Generation */
 	public function setGeneration(?string $generation) {
 		$this->generation = $generation;
 	}
+    /**
+     * @param string|null $generation Data Generation
+     * @return PrepareDownloadOwnDataByGenerationRequest
+     */
 	public function withGeneration(?string $generation): PrepareDownloadOwnDataByGenerationRequest {
 		$this->generation = $generation;
 		return $this;

@@ -20,31 +20,48 @@ namespace Gs2\Inventory\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Quantity of Simple Items in possession
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#heldcount
+ */
 class HeldCount implements IModel {
 	/**
-     * @var string
+     * @var string Simple Item Model Name
 	 */
 	private $itemName;
 	/**
-     * @var int
+     * @var int Number of items held
 	 */
 	private $count;
+    /** @return string|null Simple Item Model Name */
 	public function getItemName(): ?string {
 		return $this->itemName;
 	}
+    /** @param string|null $itemName Simple Item Model Name */
 	public function setItemName(?string $itemName) {
 		$this->itemName = $itemName;
 	}
+    /**
+     * @param string|null $itemName Simple Item Model Name
+     * @return HeldCount
+     */
 	public function withItemName(?string $itemName): HeldCount {
 		$this->itemName = $itemName;
 		return $this;
 	}
+    /** @return int|null Number of items held */
 	public function getCount(): ?int {
 		return $this->count;
 	}
+    /** @param int|null $count Number of items held */
 	public function setCount(?int $count) {
 		$this->count = $count;
 	}
+    /**
+     * @param int|null $count Number of items held
+     * @return HeldCount
+     */
 	public function withCount(?int $count): HeldCount {
 		$this->count = $count;
 		return $this;

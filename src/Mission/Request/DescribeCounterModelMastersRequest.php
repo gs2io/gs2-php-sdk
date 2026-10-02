@@ -19,51 +19,80 @@ namespace Gs2\Mission\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for describeCounterModelMasters: List Counter Model Masters
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#describecountermodelmasters
+ */
 class DescribeCounterModelMastersRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Filter by Counter Model name prefix */
     private $namePrefix;
-    /** @var string */
+    /** @var string Token specifying the position from which to start acquiring data */
     private $pageToken;
-    /** @var int */
+    /** @var int Number of data items to retrieve */
     private $limit;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DescribeCounterModelMastersRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DescribeCounterModelMastersRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Filter by Counter Model name prefix */
 	public function getNamePrefix(): ?string {
 		return $this->namePrefix;
 	}
+    /** @param string|null $namePrefix Filter by Counter Model name prefix */
 	public function setNamePrefix(?string $namePrefix) {
 		$this->namePrefix = $namePrefix;
 	}
+    /**
+     * @param string|null $namePrefix Filter by Counter Model name prefix
+     * @return DescribeCounterModelMastersRequest
+     */
 	public function withNamePrefix(?string $namePrefix): DescribeCounterModelMastersRequest {
 		$this->namePrefix = $namePrefix;
 		return $this;
 	}
+    /** @return string|null Token specifying the position from which to start acquiring data */
 	public function getPageToken(): ?string {
 		return $this->pageToken;
 	}
+    /** @param string|null $pageToken Token specifying the position from which to start acquiring data */
 	public function setPageToken(?string $pageToken) {
 		$this->pageToken = $pageToken;
 	}
+    /**
+     * @param string|null $pageToken Token specifying the position from which to start acquiring data
+     * @return DescribeCounterModelMastersRequest
+     */
 	public function withPageToken(?string $pageToken): DescribeCounterModelMastersRequest {
 		$this->pageToken = $pageToken;
 		return $this;
 	}
+    /** @return int|null Number of data items to retrieve */
 	public function getLimit(): ?int {
 		return $this->limit;
 	}
+    /** @param int|null $limit Number of data items to retrieve */
 	public function setLimit(?int $limit) {
 		$this->limit = $limit;
 	}
+    /**
+     * @param int|null $limit Number of data items to retrieve
+     * @return DescribeCounterModelMastersRequest
+     */
 	public function withLimit(?int $limit): DescribeCounterModelMastersRequest {
 		$this->limit = $limit;
 		return $this;

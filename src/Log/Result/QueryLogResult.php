@@ -21,48 +21,71 @@ use Gs2\Core\Model\IResult;
 use Gs2\Log\Model\Label;
 use Gs2\Log\Model\LogEntry;
 
+/**
+ * Result of queryLog: Query log entries (v2)
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#querylog
+ */
 class QueryLogResult implements IResult {
-    /** @var array */
+    /** @var array List of Access Logs */
     private $items;
-    /** @var int */
+    /** @var int Total number of query results (returns 10001 if it exceeds 10000) */
     private $totalEntryCount;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Access Logs */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Access Logs */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Access Logs
+     * @return QueryLogResult
+     */
 	public function withItems(?array $items): QueryLogResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return int|null Total number of query results (returns 10001 if it exceeds 10000) */
 	public function getTotalEntryCount(): ?int {
 		return $this->totalEntryCount;
 	}
 
+    /** @param int|null $totalEntryCount Total number of query results (returns 10001 if it exceeds 10000) */
 	public function setTotalEntryCount(?int $totalEntryCount) {
 		$this->totalEntryCount = $totalEntryCount;
 	}
 
+    /**
+     * @param int|null $totalEntryCount Total number of query results (returns 10001 if it exceeds 10000)
+     * @return QueryLogResult
+     */
 	public function withTotalEntryCount(?int $totalEntryCount): QueryLogResult {
 		$this->totalEntryCount = $totalEntryCount;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return QueryLogResult
+     */
 	public function withNextPageToken(?string $nextPageToken): QueryLogResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

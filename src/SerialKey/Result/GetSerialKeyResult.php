@@ -21,33 +21,50 @@ use Gs2\Core\Model\IResult;
 use Gs2\SerialKey\Model\SerialKey;
 use Gs2\SerialKey\Model\CampaignModel;
 
+/**
+ * Result of getSerialKey: Get serial code
+ *
+ * @see https://docs.gs2.io/api_reference/serial_key/sdk/#getserialkey
+ */
 class GetSerialKeyResult implements IResult {
-    /** @var SerialKey */
+    /** @var SerialKey Serial Code */
     private $item;
-    /** @var CampaignModel */
+    /** @var CampaignModel Campaign Model */
     private $campaignModel;
 
+    /** @return SerialKey|null Serial Code */
 	public function getItem(): ?SerialKey {
 		return $this->item;
 	}
 
+    /** @param SerialKey|null $item Serial Code */
 	public function setItem(?SerialKey $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param SerialKey|null $item Serial Code
+     * @return GetSerialKeyResult
+     */
 	public function withItem(?SerialKey $item): GetSerialKeyResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return CampaignModel|null Campaign Model */
 	public function getCampaignModel(): ?CampaignModel {
 		return $this->campaignModel;
 	}
 
+    /** @param CampaignModel|null $campaignModel Campaign Model */
 	public function setCampaignModel(?CampaignModel $campaignModel) {
 		$this->campaignModel = $campaignModel;
 	}
 
+    /**
+     * @param CampaignModel|null $campaignModel Campaign Model
+     * @return GetSerialKeyResult
+     */
 	public function withCampaignModel(?CampaignModel $campaignModel): GetSerialKeyResult {
 		$this->campaignModel = $campaignModel;
 		return $this;

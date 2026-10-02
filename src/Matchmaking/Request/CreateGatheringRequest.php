@@ -24,101 +24,154 @@ use Gs2\Matchmaking\Model\AttributeRange;
 use Gs2\Matchmaking\Model\CapacityOfRole;
 use Gs2\Matchmaking\Model\TimeSpan;
 
+/**
+ * Request for createGathering: Create a Gathering and start recruiting
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#creategathering
+ */
 class CreateGatheringRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var Player */
+    /** @var Player Own player information */
     private $player;
-    /** @var array */
+    /** @var array Recruitment Requirements */
     private $attributeRanges;
-    /** @var array */
+    /** @var array List of Role Capacities */
     private $capacityOfRoles;
-    /** @var array */
+    /** @var array Allowed User IDs */
     private $allowUserIds;
-    /** @var int */
+    /** @var int Gathering Expiration Time */
     private $expiresAt;
-    /** @var TimeSpan */
+    /** @var TimeSpan Time to expiration */
     private $expiresAtTimeSpan;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return CreateGatheringRequest
+     */
 	public function withNamespaceName(?string $namespaceName): CreateGatheringRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return CreateGatheringRequest
+     */
 	public function withAccessToken(?string $accessToken): CreateGatheringRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return Player|null Own player information */
 	public function getPlayer(): ?Player {
 		return $this->player;
 	}
+    /** @param Player|null $player Own player information */
 	public function setPlayer(?Player $player) {
 		$this->player = $player;
 	}
+    /**
+     * @param Player|null $player Own player information
+     * @return CreateGatheringRequest
+     */
 	public function withPlayer(?Player $player): CreateGatheringRequest {
 		$this->player = $player;
 		return $this;
 	}
+    /** @return array|null Recruitment Requirements */
 	public function getAttributeRanges(): ?array {
 		return $this->attributeRanges;
 	}
+    /** @param array|null $attributeRanges Recruitment Requirements */
 	public function setAttributeRanges(?array $attributeRanges) {
 		$this->attributeRanges = $attributeRanges;
 	}
+    /**
+     * @param array|null $attributeRanges Recruitment Requirements
+     * @return CreateGatheringRequest
+     */
 	public function withAttributeRanges(?array $attributeRanges): CreateGatheringRequest {
 		$this->attributeRanges = $attributeRanges;
 		return $this;
 	}
+    /** @return array|null List of Role Capacities */
 	public function getCapacityOfRoles(): ?array {
 		return $this->capacityOfRoles;
 	}
+    /** @param array|null $capacityOfRoles List of Role Capacities */
 	public function setCapacityOfRoles(?array $capacityOfRoles) {
 		$this->capacityOfRoles = $capacityOfRoles;
 	}
+    /**
+     * @param array|null $capacityOfRoles List of Role Capacities
+     * @return CreateGatheringRequest
+     */
 	public function withCapacityOfRoles(?array $capacityOfRoles): CreateGatheringRequest {
 		$this->capacityOfRoles = $capacityOfRoles;
 		return $this;
 	}
+    /** @return array|null Allowed User IDs */
 	public function getAllowUserIds(): ?array {
 		return $this->allowUserIds;
 	}
+    /** @param array|null $allowUserIds Allowed User IDs */
 	public function setAllowUserIds(?array $allowUserIds) {
 		$this->allowUserIds = $allowUserIds;
 	}
+    /**
+     * @param array|null $allowUserIds Allowed User IDs
+     * @return CreateGatheringRequest
+     */
 	public function withAllowUserIds(?array $allowUserIds): CreateGatheringRequest {
 		$this->allowUserIds = $allowUserIds;
 		return $this;
 	}
+    /** @return int|null Gathering Expiration Time */
 	public function getExpiresAt(): ?int {
 		return $this->expiresAt;
 	}
+    /** @param int|null $expiresAt Gathering Expiration Time */
 	public function setExpiresAt(?int $expiresAt) {
 		$this->expiresAt = $expiresAt;
 	}
+    /**
+     * @param int|null $expiresAt Gathering Expiration Time
+     * @return CreateGatheringRequest
+     */
 	public function withExpiresAt(?int $expiresAt): CreateGatheringRequest {
 		$this->expiresAt = $expiresAt;
 		return $this;
 	}
+    /** @return TimeSpan|null Time to expiration */
 	public function getExpiresAtTimeSpan(): ?TimeSpan {
 		return $this->expiresAtTimeSpan;
 	}
+    /** @param TimeSpan|null $expiresAtTimeSpan Time to expiration */
 	public function setExpiresAtTimeSpan(?TimeSpan $expiresAtTimeSpan) {
 		$this->expiresAtTimeSpan = $expiresAtTimeSpan;
 	}
+    /**
+     * @param TimeSpan|null $expiresAtTimeSpan Time to expiration
+     * @return CreateGatheringRequest
+     */
 	public function withExpiresAtTimeSpan(?TimeSpan $expiresAtTimeSpan): CreateGatheringRequest {
 		$this->expiresAtTimeSpan = $expiresAtTimeSpan;
 		return $this;

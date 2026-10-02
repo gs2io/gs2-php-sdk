@@ -21,33 +21,50 @@ use Gs2\Core\Model\IResult;
 use Gs2\Enchant\Model\RarityParameterValue;
 use Gs2\Enchant\Model\RarityParameterStatus;
 
+/**
+ * Result of verifyRarityParameterStatusByStampTask: Execute verification of rarity parameter as a verify action
+ *
+ * @see https://docs.gs2.io/api_reference/enchant/stamp_sheet/#gs2enchantverifyrarityparameterstatusbyuserid
+ */
 class VerifyRarityParameterStatusByStampTaskResult implements IResult {
-    /** @var RarityParameterStatus */
+    /** @var RarityParameterStatus Rarity Parameter Status */
     private $item;
-    /** @var string */
+    /** @var string Context recording the execution results of verification actions */
     private $newContextStack;
 
+    /** @return RarityParameterStatus|null Rarity Parameter Status */
 	public function getItem(): ?RarityParameterStatus {
 		return $this->item;
 	}
 
+    /** @param RarityParameterStatus|null $item Rarity Parameter Status */
 	public function setItem(?RarityParameterStatus $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param RarityParameterStatus|null $item Rarity Parameter Status
+     * @return VerifyRarityParameterStatusByStampTaskResult
+     */
 	public function withItem(?RarityParameterStatus $item): VerifyRarityParameterStatusByStampTaskResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null Context recording the execution results of verification actions */
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
+    /** @param string|null $newContextStack Context recording the execution results of verification actions */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
+    /**
+     * @param string|null $newContextStack Context recording the execution results of verification actions
+     * @return VerifyRarityParameterStatusByStampTaskResult
+     */
 	public function withNewContextStack(?string $newContextStack): VerifyRarityParameterStatusByStampTaskResult {
 		$this->newContextStack = $newContextStack;
 		return $this;

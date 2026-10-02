@@ -19,27 +19,44 @@ namespace Gs2\Datastore\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for restoreDataObject: Repair management information on data objects
+ *
+ * @see https://docs.gs2.io/api_reference/datastore/sdk/#restoredataobject
+ */
 class RestoreDataObjectRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Data object GRN */
     private $dataObjectId;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return RestoreDataObjectRequest
+     */
 	public function withNamespaceName(?string $namespaceName): RestoreDataObjectRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Data object GRN */
 	public function getDataObjectId(): ?string {
 		return $this->dataObjectId;
 	}
+    /** @param string|null $dataObjectId Data object GRN */
 	public function setDataObjectId(?string $dataObjectId) {
 		$this->dataObjectId = $dataObjectId;
 	}
+    /**
+     * @param string|null $dataObjectId Data object GRN
+     * @return RestoreDataObjectRequest
+     */
 	public function withDataObjectId(?string $dataObjectId): RestoreDataObjectRequest {
 		$this->dataObjectId = $dataObjectId;
 		return $this;

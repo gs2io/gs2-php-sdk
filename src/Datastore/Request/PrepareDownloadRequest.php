@@ -19,41 +19,64 @@ namespace Gs2\Datastore\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for prepareDownload: Prepare data object for download
+ *
+ * @see https://docs.gs2.io/api_reference/datastore/sdk/#preparedownload
+ */
 class PrepareDownloadRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Data object GRN */
     private $dataObjectId;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return PrepareDownloadRequest
+     */
 	public function withNamespaceName(?string $namespaceName): PrepareDownloadRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return PrepareDownloadRequest
+     */
 	public function withAccessToken(?string $accessToken): PrepareDownloadRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Data object GRN */
 	public function getDataObjectId(): ?string {
 		return $this->dataObjectId;
 	}
+    /** @param string|null $dataObjectId Data object GRN */
 	public function setDataObjectId(?string $dataObjectId) {
 		$this->dataObjectId = $dataObjectId;
 	}
+    /**
+     * @param string|null $dataObjectId Data object GRN
+     * @return PrepareDownloadRequest
+     */
 	public function withDataObjectId(?string $dataObjectId): PrepareDownloadRequest {
 		$this->dataObjectId = $dataObjectId;
 		return $this;

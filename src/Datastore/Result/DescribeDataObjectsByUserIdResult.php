@@ -20,33 +20,50 @@ namespace Gs2\Datastore\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Datastore\Model\DataObject;
 
+/**
+ * Result of describeDataObjectsByUserId: List Data Objects by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/datastore/sdk/#describedataobjectsbyuserid
+ */
 class DescribeDataObjectsByUserIdResult implements IResult {
-    /** @var array */
+    /** @var array List of Data object */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Data object */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Data object */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Data object
+     * @return DescribeDataObjectsByUserIdResult
+     */
 	public function withItems(?array $items): DescribeDataObjectsByUserIdResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeDataObjectsByUserIdResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeDataObjectsByUserIdResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

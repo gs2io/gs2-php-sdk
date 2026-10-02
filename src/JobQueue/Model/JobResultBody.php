@@ -20,59 +20,88 @@ namespace Gs2\JobQueue\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Job Execution Result Body
+ *
+ * @see https://docs.gs2.io/api_reference/job_queue/sdk/#jobresultbody
+ */
 class JobResultBody implements IModel {
 	/**
-     * @var int
+     * @var int Try Number
 	 */
 	private $tryNumber;
 	/**
-     * @var int
+     * @var int Status Code
 	 */
 	private $statusCode;
 	/**
-     * @var string
+     * @var string Response Content
 	 */
 	private $result;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $tryAt;
+    /** @return int|null Try Number */
 	public function getTryNumber(): ?int {
 		return $this->tryNumber;
 	}
+    /** @param int|null $tryNumber Try Number */
 	public function setTryNumber(?int $tryNumber) {
 		$this->tryNumber = $tryNumber;
 	}
+    /**
+     * @param int|null $tryNumber Try Number
+     * @return JobResultBody
+     */
 	public function withTryNumber(?int $tryNumber): JobResultBody {
 		$this->tryNumber = $tryNumber;
 		return $this;
 	}
+    /** @return int|null Status Code */
 	public function getStatusCode(): ?int {
 		return $this->statusCode;
 	}
+    /** @param int|null $statusCode Status Code */
 	public function setStatusCode(?int $statusCode) {
 		$this->statusCode = $statusCode;
 	}
+    /**
+     * @param int|null $statusCode Status Code
+     * @return JobResultBody
+     */
 	public function withStatusCode(?int $statusCode): JobResultBody {
 		$this->statusCode = $statusCode;
 		return $this;
 	}
+    /** @return string|null Response Content */
 	public function getResult(): ?string {
 		return $this->result;
 	}
+    /** @param string|null $result Response Content */
 	public function setResult(?string $result) {
 		$this->result = $result;
 	}
+    /**
+     * @param string|null $result Response Content
+     * @return JobResultBody
+     */
 	public function withResult(?string $result): JobResultBody {
 		$this->result = $result;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getTryAt(): ?int {
 		return $this->tryAt;
 	}
+    /** @param int|null $tryAt Creation Timestamp */
 	public function setTryAt(?int $tryAt) {
 		$this->tryAt = $tryAt;
 	}
+    /**
+     * @param int|null $tryAt Creation Timestamp
+     * @return JobResultBody
+     */
 	public function withTryAt(?int $tryAt): JobResultBody {
 		$this->tryAt = $tryAt;
 		return $this;

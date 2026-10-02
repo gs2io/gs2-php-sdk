@@ -20,73 +20,108 @@ namespace Gs2\Showcase\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Sales Item
+ *
+ * @see https://docs.gs2.io/api_reference/showcase/sdk/#salesitem
+ */
 class SalesItem implements IModel {
 	/**
-     * @var string
+     * @var string Sales Item name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var array
+     * @var array List of Verify Actions
 	 */
 	private $verifyActions;
 	/**
-     * @var array
+     * @var array List of Consume Actions
 	 */
 	private $consumeActions;
 	/**
-     * @var array
+     * @var array List of Acquire Actions
 	 */
 	private $acquireActions;
+    /** @return string|null Sales Item name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Sales Item name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Sales Item name
+     * @return SalesItem
+     */
 	public function withName(?string $name): SalesItem {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return SalesItem
+     */
 	public function withMetadata(?string $metadata): SalesItem {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return array|null List of Verify Actions */
 	public function getVerifyActions(): ?array {
 		return $this->verifyActions;
 	}
+    /** @param array|null $verifyActions List of Verify Actions */
 	public function setVerifyActions(?array $verifyActions) {
 		$this->verifyActions = $verifyActions;
 	}
+    /**
+     * @param array|null $verifyActions List of Verify Actions
+     * @return SalesItem
+     */
 	public function withVerifyActions(?array $verifyActions): SalesItem {
 		$this->verifyActions = $verifyActions;
 		return $this;
 	}
+    /** @return array|null List of Consume Actions */
 	public function getConsumeActions(): ?array {
 		return $this->consumeActions;
 	}
+    /** @param array|null $consumeActions List of Consume Actions */
 	public function setConsumeActions(?array $consumeActions) {
 		$this->consumeActions = $consumeActions;
 	}
+    /**
+     * @param array|null $consumeActions List of Consume Actions
+     * @return SalesItem
+     */
 	public function withConsumeActions(?array $consumeActions): SalesItem {
 		$this->consumeActions = $consumeActions;
 		return $this;
 	}
+    /** @return array|null List of Acquire Actions */
 	public function getAcquireActions(): ?array {
 		return $this->acquireActions;
 	}
+    /** @param array|null $acquireActions List of Acquire Actions */
 	public function setAcquireActions(?array $acquireActions) {
 		$this->acquireActions = $acquireActions;
 	}
+    /**
+     * @param array|null $acquireActions List of Acquire Actions
+     * @return SalesItem
+     */
 	public function withAcquireActions(?array $acquireActions): SalesItem {
 		$this->acquireActions = $acquireActions;
 		return $this;

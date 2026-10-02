@@ -20,45 +20,68 @@ namespace Gs2\Enchant\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Rarity Parameter Value
+ *
+ * @see https://docs.gs2.io/api_reference/enchant/sdk/#rarityparametervalue
+ */
 class RarityParameterValue implements IModel {
 	/**
-     * @var string
+     * @var string Name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Resource Name
 	 */
 	private $resourceName;
 	/**
-     * @var int
+     * @var int Resource Value
 	 */
 	private $resourceValue;
+    /** @return string|null Name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Name
+     * @return RarityParameterValue
+     */
 	public function withName(?string $name): RarityParameterValue {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Resource Name */
 	public function getResourceName(): ?string {
 		return $this->resourceName;
 	}
+    /** @param string|null $resourceName Resource Name */
 	public function setResourceName(?string $resourceName) {
 		$this->resourceName = $resourceName;
 	}
+    /**
+     * @param string|null $resourceName Resource Name
+     * @return RarityParameterValue
+     */
 	public function withResourceName(?string $resourceName): RarityParameterValue {
 		$this->resourceName = $resourceName;
 		return $this;
 	}
+    /** @return int|null Resource Value */
 	public function getResourceValue(): ?int {
 		return $this->resourceValue;
 	}
+    /** @param int|null $resourceValue Resource Value */
 	public function setResourceValue(?int $resourceValue) {
 		$this->resourceValue = $resourceValue;
 	}
+    /**
+     * @param int|null $resourceValue Resource Value
+     * @return RarityParameterValue
+     */
 	public function withResourceValue(?int $resourceValue): RarityParameterValue {
 		$this->resourceValue = $resourceValue;
 		return $this;

@@ -19,99 +19,152 @@ namespace Gs2\Chat\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for describeLatestMessagesByUserId: List latest Messages by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/chat/sdk/#describelatestmessagesbyuserid
+ */
 class DescribeLatestMessagesByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Room name */
     private $roomName;
-    /** @var string */
+    /** @var string Password required to access the room */
     private $password;
-    /** @var int */
+    /** @var int Category number for classifying messages */
     private $category;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Token specifying the position from which to start acquiring data */
     private $pageToken;
-    /** @var int */
+    /** @var int Number of data items to retrieve */
     private $limit;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DescribeLatestMessagesByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DescribeLatestMessagesByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Room name */
 	public function getRoomName(): ?string {
 		return $this->roomName;
 	}
+    /** @param string|null $roomName Room name */
 	public function setRoomName(?string $roomName) {
 		$this->roomName = $roomName;
 	}
+    /**
+     * @param string|null $roomName Room name
+     * @return DescribeLatestMessagesByUserIdRequest
+     */
 	public function withRoomName(?string $roomName): DescribeLatestMessagesByUserIdRequest {
 		$this->roomName = $roomName;
 		return $this;
 	}
+    /** @return string|null Password required to access the room */
 	public function getPassword(): ?string {
 		return $this->password;
 	}
+    /** @param string|null $password Password required to access the room */
 	public function setPassword(?string $password) {
 		$this->password = $password;
 	}
+    /**
+     * @param string|null $password Password required to access the room
+     * @return DescribeLatestMessagesByUserIdRequest
+     */
 	public function withPassword(?string $password): DescribeLatestMessagesByUserIdRequest {
 		$this->password = $password;
 		return $this;
 	}
+    /** @return int|null Category number for classifying messages */
 	public function getCategory(): ?int {
 		return $this->category;
 	}
+    /** @param int|null $category Category number for classifying messages */
 	public function setCategory(?int $category) {
 		$this->category = $category;
 	}
+    /**
+     * @param int|null $category Category number for classifying messages
+     * @return DescribeLatestMessagesByUserIdRequest
+     */
 	public function withCategory(?int $category): DescribeLatestMessagesByUserIdRequest {
 		$this->category = $category;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return DescribeLatestMessagesByUserIdRequest
+     */
 	public function withUserId(?string $userId): DescribeLatestMessagesByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Token specifying the position from which to start acquiring data */
 	public function getPageToken(): ?string {
 		return $this->pageToken;
 	}
+    /** @param string|null $pageToken Token specifying the position from which to start acquiring data */
 	public function setPageToken(?string $pageToken) {
 		$this->pageToken = $pageToken;
 	}
+    /**
+     * @param string|null $pageToken Token specifying the position from which to start acquiring data
+     * @return DescribeLatestMessagesByUserIdRequest
+     */
 	public function withPageToken(?string $pageToken): DescribeLatestMessagesByUserIdRequest {
 		$this->pageToken = $pageToken;
 		return $this;
 	}
+    /** @return int|null Number of data items to retrieve */
 	public function getLimit(): ?int {
 		return $this->limit;
 	}
+    /** @param int|null $limit Number of data items to retrieve */
 	public function setLimit(?int $limit) {
 		$this->limit = $limit;
 	}
+    /**
+     * @param int|null $limit Number of data items to retrieve
+     * @return DescribeLatestMessagesByUserIdRequest
+     */
 	public function withLimit(?int $limit): DescribeLatestMessagesByUserIdRequest {
 		$this->limit = $limit;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return DescribeLatestMessagesByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): DescribeLatestMessagesByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

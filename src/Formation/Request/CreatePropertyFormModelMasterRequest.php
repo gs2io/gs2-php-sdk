@@ -20,63 +20,98 @@ namespace Gs2\Formation\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Formation\Model\SlotModel;
 
+/**
+ * Request for createPropertyFormModelMaster: Create Property Form Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/formation/sdk/#createpropertyformmodelmaster
+ */
 class CreatePropertyFormModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Property Form Model name */
     private $name;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var string */
+    /** @var string Metadata */
     private $metadata;
-    /** @var array */
+    /** @var array List of Slot Model */
     private $slots;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return CreatePropertyFormModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): CreatePropertyFormModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Property Form Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Property Form Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Property Form Model name
+     * @return CreatePropertyFormModelMasterRequest
+     */
 	public function withName(?string $name): CreatePropertyFormModelMasterRequest {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return CreatePropertyFormModelMasterRequest
+     */
 	public function withDescription(?string $description): CreatePropertyFormModelMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return CreatePropertyFormModelMasterRequest
+     */
 	public function withMetadata(?string $metadata): CreatePropertyFormModelMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return array|null List of Slot Model */
 	public function getSlots(): ?array {
 		return $this->slots;
 	}
+    /** @param array|null $slots List of Slot Model */
 	public function setSlots(?array $slots) {
 		$this->slots = $slots;
 	}
+    /**
+     * @param array|null $slots List of Slot Model
+     * @return CreatePropertyFormModelMasterRequest
+     */
 	public function withSlots(?array $slots): CreatePropertyFormModelMasterRequest {
 		$this->slots = $slots;
 		return $this;

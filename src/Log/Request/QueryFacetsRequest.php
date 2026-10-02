@@ -19,51 +19,80 @@ namespace Gs2\Log\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for queryFacets: Facet Query
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#queryfacets
+ */
 class QueryFacetsRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var int */
+    /** @var int Search range start date and time */
     private $begin;
-    /** @var int */
+    /** @var int Search range end date and time */
     private $end;
-    /** @var string */
+    /** @var string Search query string */
     private $query;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return QueryFacetsRequest
+     */
 	public function withNamespaceName(?string $namespaceName): QueryFacetsRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return int|null Search range start date and time */
 	public function getBegin(): ?int {
 		return $this->begin;
 	}
+    /** @param int|null $begin Search range start date and time */
 	public function setBegin(?int $begin) {
 		$this->begin = $begin;
 	}
+    /**
+     * @param int|null $begin Search range start date and time
+     * @return QueryFacetsRequest
+     */
 	public function withBegin(?int $begin): QueryFacetsRequest {
 		$this->begin = $begin;
 		return $this;
 	}
+    /** @return int|null Search range end date and time */
 	public function getEnd(): ?int {
 		return $this->end;
 	}
+    /** @param int|null $end Search range end date and time */
 	public function setEnd(?int $end) {
 		$this->end = $end;
 	}
+    /**
+     * @param int|null $end Search range end date and time
+     * @return QueryFacetsRequest
+     */
 	public function withEnd(?int $end): QueryFacetsRequest {
 		$this->end = $end;
 		return $this;
 	}
+    /** @return string|null Search query string */
 	public function getQuery(): ?string {
 		return $this->query;
 	}
+    /** @param string|null $query Search query string */
 	public function setQuery(?string $query) {
 		$this->query = $query;
 	}
+    /**
+     * @param string|null $query Search query string
+     * @return QueryFacetsRequest
+     */
 	public function withQuery(?string $query): QueryFacetsRequest {
 		$this->query = $query;
 		return $this;

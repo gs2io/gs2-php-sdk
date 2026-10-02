@@ -20,33 +20,50 @@ namespace Gs2\JobQueue\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\JobQueue\Model\Job;
 
+/**
+ * Result of pushByStampSheet: Execute job registration as an acquire action
+ *
+ * @see https://docs.gs2.io/api_reference/job_queue/stamp_sheet/#gs2jobqueuepushbyuserid
+ */
 class PushByStampSheetResult implements IResult {
-    /** @var array */
+    /** @var array List of jobs added */
     private $items;
     /** @var bool */
     private $autoRun;
 
+    /** @return array|null List of jobs added */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of jobs added */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of jobs added
+     * @return PushByStampSheetResult
+     */
 	public function withItems(?array $items): PushByStampSheetResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return bool|null */
 	public function getAutoRun(): ?bool {
 		return $this->autoRun;
 	}
 
+    /** @param bool|null $autoRun */
 	public function setAutoRun(?bool $autoRun) {
 		$this->autoRun = $autoRun;
 	}
 
+    /**
+     * @param bool|null $autoRun
+     * @return PushByStampSheetResult
+     */
 	public function withAutoRun(?bool $autoRun): PushByStampSheetResult {
 		$this->autoRun = $autoRun;
 		return $this;

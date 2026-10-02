@@ -20,18 +20,29 @@ namespace Gs2\Inventory\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Inventory\Model\SimpleItem;
 
+/**
+ * Result of acquireSimpleItemsByStampSheet: Execute the acquisition of simple items as an acquire action
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventoryacquiresimpleitemsbyuserid
+ */
 class AcquireSimpleItemsByStampSheetResult implements IResult {
-    /** @var array */
+    /** @var array List of Quantity of simple items after addition */
     private $items;
 
+    /** @return array|null List of Quantity of simple items after addition */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Quantity of simple items after addition */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Quantity of simple items after addition
+     * @return AcquireSimpleItemsByStampSheetResult
+     */
 	public function withItems(?array $items): AcquireSimpleItemsByStampSheetResult {
 		$this->items = $items;
 		return $this;

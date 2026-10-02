@@ -19,15 +19,26 @@ namespace Gs2\Idle\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getCurrentCategoryMaster: Get currently active Category Model master data
+ *
+ * @see https://docs.gs2.io/api_reference/idle/sdk/#getcurrentcategorymaster
+ */
 class GetCurrentCategoryMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetCurrentCategoryMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetCurrentCategoryMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;

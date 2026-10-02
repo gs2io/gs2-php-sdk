@@ -19,65 +19,100 @@ namespace Gs2\Guild\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for updateMemberMetadata: Update member metadata
+ *
+ * @see https://docs.gs2.io/api_reference/guild/sdk/#updatemembermetadata
+ */
 class UpdateMemberMetadataRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Guild Model name */
     private $guildModelName;
-    /** @var string */
+    /** @var string Guild Name */
     private $guildName;
-    /** @var string */
+    /** @var string User ID to be updated */
     private $accessToken;
-    /** @var string */
+    /** @var string Guild Member Metadata */
     private $metadata;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UpdateMemberMetadataRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UpdateMemberMetadataRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Guild Model name */
 	public function getGuildModelName(): ?string {
 		return $this->guildModelName;
 	}
+    /** @param string|null $guildModelName Guild Model name */
 	public function setGuildModelName(?string $guildModelName) {
 		$this->guildModelName = $guildModelName;
 	}
+    /**
+     * @param string|null $guildModelName Guild Model name
+     * @return UpdateMemberMetadataRequest
+     */
 	public function withGuildModelName(?string $guildModelName): UpdateMemberMetadataRequest {
 		$this->guildModelName = $guildModelName;
 		return $this;
 	}
+    /** @return string|null Guild Name */
 	public function getGuildName(): ?string {
 		return $this->guildName;
 	}
+    /** @param string|null $guildName Guild Name */
 	public function setGuildName(?string $guildName) {
 		$this->guildName = $guildName;
 	}
+    /**
+     * @param string|null $guildName Guild Name
+     * @return UpdateMemberMetadataRequest
+     */
 	public function withGuildName(?string $guildName): UpdateMemberMetadataRequest {
 		$this->guildName = $guildName;
 		return $this;
 	}
+    /** @return string|null User ID to be updated */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID to be updated */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID to be updated
+     * @return UpdateMemberMetadataRequest
+     */
 	public function withAccessToken(?string $accessToken): UpdateMemberMetadataRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Guild Member Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Guild Member Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Guild Member Metadata
+     * @return UpdateMemberMetadataRequest
+     */
 	public function withMetadata(?string $metadata): UpdateMemberMetadataRequest {
 		$this->metadata = $metadata;
 		return $this;

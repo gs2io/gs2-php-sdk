@@ -19,27 +19,44 @@ namespace Gs2\Grade\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for verifyGradeUpMaterialByStampTask: Execute material verification used for grade up as a verify action
+ *
+ * @see https://docs.gs2.io/api_reference/grade/stamp_sheet/#gs2gradeverifygradeupmaterialbyuserid
+ */
 class VerifyGradeUpMaterialByStampTaskRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Verify Action */
     private $stampTask;
-    /** @var string */
+    /** @var string Encryption Key GRN */
     private $keyId;
+    /** @return string|null Verify Action */
 	public function getStampTask(): ?string {
 		return $this->stampTask;
 	}
+    /** @param string|null $stampTask Verify Action */
 	public function setStampTask(?string $stampTask) {
 		$this->stampTask = $stampTask;
 	}
+    /**
+     * @param string|null $stampTask Verify Action
+     * @return VerifyGradeUpMaterialByStampTaskRequest
+     */
 	public function withStampTask(?string $stampTask): VerifyGradeUpMaterialByStampTaskRequest {
 		$this->stampTask = $stampTask;
 		return $this;
 	}
+    /** @return string|null Encryption Key GRN */
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
+    /** @param string|null $keyId Encryption Key GRN */
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
+    /**
+     * @param string|null $keyId Encryption Key GRN
+     * @return VerifyGradeUpMaterialByStampTaskRequest
+     */
 	public function withKeyId(?string $keyId): VerifyGradeUpMaterialByStampTaskRequest {
 		$this->keyId = $keyId;
 		return $this;

@@ -19,6 +19,11 @@ namespace Gs2\Distributor\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of andExpressionByUserId: Perform multiple verification actions and determine if all are true
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#andexpressionbyuserid
+ */
 class AndExpressionByUserIdResult implements IResult {
 
     public static function fromJson(?array $data): ?AndExpressionByUserIdResult {

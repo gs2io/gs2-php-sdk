@@ -20,18 +20,29 @@ namespace Gs2\Log\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Log\Model\Insight;
 
+/**
+ * Result of deleteInsight: Delete a insight
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#deleteinsight
+ */
 class DeleteInsightResult implements IResult {
-    /** @var Insight */
+    /** @var Insight GS2-Insight */
     private $item;
 
+    /** @return Insight|null GS2-Insight */
 	public function getItem(): ?Insight {
 		return $this->item;
 	}
 
+    /** @param Insight|null $item GS2-Insight */
 	public function setItem(?Insight $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Insight|null $item GS2-Insight
+     * @return DeleteInsightResult
+     */
 	public function withItem(?Insight $item): DeleteInsightResult {
 		$this->item = $item;
 		return $this;

@@ -19,51 +19,80 @@ namespace Gs2\MegaField\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for createAreaModelMaster: Create Area Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/mega_field/sdk/#createareamodelmaster
+ */
 class CreateAreaModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Area Model name */
     private $name;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var string */
+    /** @var string Metadata */
     private $metadata;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return CreateAreaModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): CreateAreaModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Area Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Area Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Area Model name
+     * @return CreateAreaModelMasterRequest
+     */
 	public function withName(?string $name): CreateAreaModelMasterRequest {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return CreateAreaModelMasterRequest
+     */
 	public function withDescription(?string $description): CreateAreaModelMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return CreateAreaModelMasterRequest
+     */
 	public function withMetadata(?string $metadata): CreateAreaModelMasterRequest {
 		$this->metadata = $metadata;
 		return $this;

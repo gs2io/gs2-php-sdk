@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Mission\Model\ScopedValue;
 use Gs2\Mission\Model\Counter;
 
+/**
+ * Result of verifyCounterValue: Verify counter value
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#verifycountervalue
+ */
 class VerifyCounterValueResult implements IResult {
-    /** @var Counter */
+    /** @var Counter Counter */
     private $item;
 
+    /** @return Counter|null Counter */
 	public function getItem(): ?Counter {
 		return $this->item;
 	}
 
+    /** @param Counter|null $item Counter */
 	public function setItem(?Counter $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Counter|null $item Counter
+     * @return VerifyCounterValueResult
+     */
 	public function withItem(?Counter $item): VerifyCounterValueResult {
 		$this->item = $item;
 		return $this;

@@ -20,87 +20,128 @@ namespace Gs2\Showcase\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Displayed Item Master Data
+ *
+ * @see https://docs.gs2.io/api_reference/showcase/sdk/#displayitemmaster
+ */
 class DisplayItemMaster implements IModel {
 	/**
-     * @var string
+     * @var string Displayed Item ID
 	 */
 	private $displayItemId;
 	/**
-     * @var string
+     * @var string Type
 	 */
 	private $type;
 	/**
-     * @var string
+     * @var string Sales Item name
 	 */
 	private $salesItemName;
 	/**
-     * @var string
+     * @var string Sales Item Group name
 	 */
 	private $salesItemGroupName;
 	/**
-     * @var string
+     * @var string GS2-Schedule event GRN with sales periods for this display item
 	 */
 	private $salesPeriodEventId;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Displayed Item ID */
 	public function getDisplayItemId(): ?string {
 		return $this->displayItemId;
 	}
+    /** @param string|null $displayItemId Displayed Item ID */
 	public function setDisplayItemId(?string $displayItemId) {
 		$this->displayItemId = $displayItemId;
 	}
+    /**
+     * @param string|null $displayItemId Displayed Item ID
+     * @return DisplayItemMaster
+     */
 	public function withDisplayItemId(?string $displayItemId): DisplayItemMaster {
 		$this->displayItemId = $displayItemId;
 		return $this;
 	}
+    /** @return string|null Type */
 	public function getType(): ?string {
 		return $this->type;
 	}
+    /** @param string|null $type Type */
 	public function setType(?string $type) {
 		$this->type = $type;
 	}
+    /**
+     * @param string|null $type Type
+     * @return DisplayItemMaster
+     */
 	public function withType(?string $type): DisplayItemMaster {
 		$this->type = $type;
 		return $this;
 	}
+    /** @return string|null Sales Item name */
 	public function getSalesItemName(): ?string {
 		return $this->salesItemName;
 	}
+    /** @param string|null $salesItemName Sales Item name */
 	public function setSalesItemName(?string $salesItemName) {
 		$this->salesItemName = $salesItemName;
 	}
+    /**
+     * @param string|null $salesItemName Sales Item name
+     * @return DisplayItemMaster
+     */
 	public function withSalesItemName(?string $salesItemName): DisplayItemMaster {
 		$this->salesItemName = $salesItemName;
 		return $this;
 	}
+    /** @return string|null Sales Item Group name */
 	public function getSalesItemGroupName(): ?string {
 		return $this->salesItemGroupName;
 	}
+    /** @param string|null $salesItemGroupName Sales Item Group name */
 	public function setSalesItemGroupName(?string $salesItemGroupName) {
 		$this->salesItemGroupName = $salesItemGroupName;
 	}
+    /**
+     * @param string|null $salesItemGroupName Sales Item Group name
+     * @return DisplayItemMaster
+     */
 	public function withSalesItemGroupName(?string $salesItemGroupName): DisplayItemMaster {
 		$this->salesItemGroupName = $salesItemGroupName;
 		return $this;
 	}
+    /** @return string|null GS2-Schedule event GRN with sales periods for this display item */
 	public function getSalesPeriodEventId(): ?string {
 		return $this->salesPeriodEventId;
 	}
+    /** @param string|null $salesPeriodEventId GS2-Schedule event GRN with sales periods for this display item */
 	public function setSalesPeriodEventId(?string $salesPeriodEventId) {
 		$this->salesPeriodEventId = $salesPeriodEventId;
 	}
+    /**
+     * @param string|null $salesPeriodEventId GS2-Schedule event GRN with sales periods for this display item
+     * @return DisplayItemMaster
+     */
 	public function withSalesPeriodEventId(?string $salesPeriodEventId): DisplayItemMaster {
 		$this->salesPeriodEventId = $salesPeriodEventId;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return DisplayItemMaster
+     */
 	public function withRevision(?int $revision): DisplayItemMaster {
 		$this->revision = $revision;
 		return $this;

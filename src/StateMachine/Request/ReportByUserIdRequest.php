@@ -22,65 +22,100 @@ use Gs2\StateMachine\Model\ChangeStateEvent;
 use Gs2\StateMachine\Model\EmitEvent;
 use Gs2\StateMachine\Model\Event;
 
+/**
+ * Request for reportByUserId: Report multiple events to the state machine by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/state_machine/sdk/#reportbyuserid
+ */
 class ReportByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Status name */
     private $statusName;
-    /** @var array */
+    /** @var array List of events */
     private $events;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return ReportByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): ReportByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return ReportByUserIdRequest
+     */
 	public function withUserId(?string $userId): ReportByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Status name */
 	public function getStatusName(): ?string {
 		return $this->statusName;
 	}
+    /** @param string|null $statusName Status name */
 	public function setStatusName(?string $statusName) {
 		$this->statusName = $statusName;
 	}
+    /**
+     * @param string|null $statusName Status name
+     * @return ReportByUserIdRequest
+     */
 	public function withStatusName(?string $statusName): ReportByUserIdRequest {
 		$this->statusName = $statusName;
 		return $this;
 	}
+    /** @return array|null List of events */
 	public function getEvents(): ?array {
 		return $this->events;
 	}
+    /** @param array|null $events List of events */
 	public function setEvents(?array $events) {
 		$this->events = $events;
 	}
+    /**
+     * @param array|null $events List of events
+     * @return ReportByUserIdRequest
+     */
 	public function withEvents(?array $events): ReportByUserIdRequest {
 		$this->events = $events;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return ReportByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): ReportByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

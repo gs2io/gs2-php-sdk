@@ -25,153 +25,220 @@ use Gs2\Inbox\Model\MobileNotificationMessage;
 use Gs2\Inbox\Model\NotificationSetting;
 use Gs2\Inbox\Model\LogSetting;
 
+/**
+ * Request for updateNamespace: Update Namespace
+ *
+ * @see https://docs.gs2.io/api_reference/inbox/sdk/#updatenamespace
+ */
 class UpdateNamespaceRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var bool */
+    /** @var bool Automatic Deletion */
     private $isAutomaticDeletingEnabled;
-    /** @var TransactionSetting */
+    /** @var TransactionSetting Transaction Setting */
     private $transactionSetting;
-    /** @var TransactionSettingV2 */
+    /** @var TransactionSettingV2 Transaction Setting (V2) */
     private $transactionSettingV2;
-    /** @var ScriptSetting */
+    /** @var ScriptSetting Script setting to be executed when a message is received */
     private $receiveMessageScript;
-    /** @var ScriptSetting */
+    /** @var ScriptSetting Script setting to be executed when a message is opened */
     private $readMessageScript;
-    /** @var ScriptSetting */
+    /** @var ScriptSetting Script setting to be executed when a message is deleted */
     private $deleteMessageScript;
-    /** @var NotificationSetting */
+    /** @var NotificationSetting Receive Notification */
     private $receiveNotification;
-    /** @var LogSetting */
+    /** @var LogSetting Log Output Setting */
     private $logSetting;
-    /** @var string */
+    /** @var string GS2-JobQueue Namespace GRN used to execute transactions */
     private $queueNamespaceId;
-    /** @var string */
+    /** @var string GS2-Key Namespace used to issue transactions */
     private $keyId;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UpdateNamespaceRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UpdateNamespaceRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return UpdateNamespaceRequest
+     */
 	public function withDescription(?string $description): UpdateNamespaceRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return bool|null Automatic Deletion */
 	public function getIsAutomaticDeletingEnabled(): ?bool {
 		return $this->isAutomaticDeletingEnabled;
 	}
+    /** @param bool|null $isAutomaticDeletingEnabled Automatic Deletion */
 	public function setIsAutomaticDeletingEnabled(?bool $isAutomaticDeletingEnabled) {
 		$this->isAutomaticDeletingEnabled = $isAutomaticDeletingEnabled;
 	}
+    /**
+     * @param bool|null $isAutomaticDeletingEnabled Automatic Deletion
+     * @return UpdateNamespaceRequest
+     */
 	public function withIsAutomaticDeletingEnabled(?bool $isAutomaticDeletingEnabled): UpdateNamespaceRequest {
 		$this->isAutomaticDeletingEnabled = $isAutomaticDeletingEnabled;
 		return $this;
 	}
     /**
+     * @return TransactionSetting|null Transaction Setting
      * @deprecated
      */
 	public function getTransactionSetting(): ?TransactionSetting {
 		return $this->transactionSetting;
 	}
     /**
+     * @param TransactionSetting|null $transactionSetting Transaction Setting
      * @deprecated
      */
 	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
 		$this->transactionSetting = $transactionSetting;
 	}
     /**
+     * @param TransactionSetting|null $transactionSetting Transaction Setting
+     * @return UpdateNamespaceRequest
      * @deprecated
      */
 	public function withTransactionSetting(?TransactionSetting $transactionSetting): UpdateNamespaceRequest {
 		$this->transactionSetting = $transactionSetting;
 		return $this;
 	}
+    /** @return TransactionSettingV2|null Transaction Setting (V2) */
 	public function getTransactionSettingV2(): ?TransactionSettingV2 {
 		return $this->transactionSettingV2;
 	}
+    /** @param TransactionSettingV2|null $transactionSettingV2 Transaction Setting (V2) */
 	public function setTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2) {
 		$this->transactionSettingV2 = $transactionSettingV2;
 	}
+    /**
+     * @param TransactionSettingV2|null $transactionSettingV2 Transaction Setting (V2)
+     * @return UpdateNamespaceRequest
+     */
 	public function withTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2): UpdateNamespaceRequest {
 		$this->transactionSettingV2 = $transactionSettingV2;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to be executed when a message is received */
 	public function getReceiveMessageScript(): ?ScriptSetting {
 		return $this->receiveMessageScript;
 	}
+    /** @param ScriptSetting|null $receiveMessageScript Script setting to be executed when a message is received */
 	public function setReceiveMessageScript(?ScriptSetting $receiveMessageScript) {
 		$this->receiveMessageScript = $receiveMessageScript;
 	}
+    /**
+     * @param ScriptSetting|null $receiveMessageScript Script setting to be executed when a message is received
+     * @return UpdateNamespaceRequest
+     */
 	public function withReceiveMessageScript(?ScriptSetting $receiveMessageScript): UpdateNamespaceRequest {
 		$this->receiveMessageScript = $receiveMessageScript;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to be executed when a message is opened */
 	public function getReadMessageScript(): ?ScriptSetting {
 		return $this->readMessageScript;
 	}
+    /** @param ScriptSetting|null $readMessageScript Script setting to be executed when a message is opened */
 	public function setReadMessageScript(?ScriptSetting $readMessageScript) {
 		$this->readMessageScript = $readMessageScript;
 	}
+    /**
+     * @param ScriptSetting|null $readMessageScript Script setting to be executed when a message is opened
+     * @return UpdateNamespaceRequest
+     */
 	public function withReadMessageScript(?ScriptSetting $readMessageScript): UpdateNamespaceRequest {
 		$this->readMessageScript = $readMessageScript;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to be executed when a message is deleted */
 	public function getDeleteMessageScript(): ?ScriptSetting {
 		return $this->deleteMessageScript;
 	}
+    /** @param ScriptSetting|null $deleteMessageScript Script setting to be executed when a message is deleted */
 	public function setDeleteMessageScript(?ScriptSetting $deleteMessageScript) {
 		$this->deleteMessageScript = $deleteMessageScript;
 	}
+    /**
+     * @param ScriptSetting|null $deleteMessageScript Script setting to be executed when a message is deleted
+     * @return UpdateNamespaceRequest
+     */
 	public function withDeleteMessageScript(?ScriptSetting $deleteMessageScript): UpdateNamespaceRequest {
 		$this->deleteMessageScript = $deleteMessageScript;
 		return $this;
 	}
+    /** @return NotificationSetting|null Receive Notification */
 	public function getReceiveNotification(): ?NotificationSetting {
 		return $this->receiveNotification;
 	}
+    /** @param NotificationSetting|null $receiveNotification Receive Notification */
 	public function setReceiveNotification(?NotificationSetting $receiveNotification) {
 		$this->receiveNotification = $receiveNotification;
 	}
+    /**
+     * @param NotificationSetting|null $receiveNotification Receive Notification
+     * @return UpdateNamespaceRequest
+     */
 	public function withReceiveNotification(?NotificationSetting $receiveNotification): UpdateNamespaceRequest {
 		$this->receiveNotification = $receiveNotification;
 		return $this;
 	}
+    /** @return LogSetting|null Log Output Setting */
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
+    /** @param LogSetting|null $logSetting Log Output Setting */
 	public function setLogSetting(?LogSetting $logSetting) {
 		$this->logSetting = $logSetting;
 	}
+    /**
+     * @param LogSetting|null $logSetting Log Output Setting
+     * @return UpdateNamespaceRequest
+     */
 	public function withLogSetting(?LogSetting $logSetting): UpdateNamespaceRequest {
 		$this->logSetting = $logSetting;
 		return $this;
 	}
     /**
+     * @return string|null GS2-JobQueue Namespace GRN used to execute transactions
      * @deprecated
      */
 	public function getQueueNamespaceId(): ?string {
 		return $this->queueNamespaceId;
 	}
     /**
+     * @param string|null $queueNamespaceId GS2-JobQueue Namespace GRN used to execute transactions
      * @deprecated
      */
 	public function setQueueNamespaceId(?string $queueNamespaceId) {
 		$this->queueNamespaceId = $queueNamespaceId;
 	}
     /**
+     * @param string|null $queueNamespaceId GS2-JobQueue Namespace GRN used to execute transactions
+     * @return UpdateNamespaceRequest
      * @deprecated
      */
 	public function withQueueNamespaceId(?string $queueNamespaceId): UpdateNamespaceRequest {
@@ -179,18 +246,22 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
 		return $this;
 	}
     /**
+     * @return string|null GS2-Key Namespace used to issue transactions
      * @deprecated
      */
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
     /**
+     * @param string|null $keyId GS2-Key Namespace used to issue transactions
      * @deprecated
      */
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
     /**
+     * @param string|null $keyId GS2-Key Namespace used to issue transactions
+     * @return UpdateNamespaceRequest
      * @deprecated
      */
 	public function withKeyId(?string $keyId): UpdateNamespaceRequest {

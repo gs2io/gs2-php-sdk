@@ -19,77 +19,118 @@ namespace Gs2\Stamina\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for verifyStaminaValue: Verify the value of the current stamina
+ *
+ * @see https://docs.gs2.io/api_reference/stamina/sdk/#verifystaminavalue
+ */
 class VerifyStaminaValueRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Stamina Model Name */
     private $staminaName;
-    /** @var string */
+    /** @var string Type of verification */
     private $verifyType;
-    /** @var int */
+    /** @var int Value to be verified */
     private $value;
-    /** @var bool */
+    /** @var bool Whether to multiply the value used for verification when specifying the quantity */
     private $multiplyValueSpecifyingQuantity;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return VerifyStaminaValueRequest
+     */
 	public function withNamespaceName(?string $namespaceName): VerifyStaminaValueRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return VerifyStaminaValueRequest
+     */
 	public function withAccessToken(?string $accessToken): VerifyStaminaValueRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Stamina Model Name */
 	public function getStaminaName(): ?string {
 		return $this->staminaName;
 	}
+    /** @param string|null $staminaName Stamina Model Name */
 	public function setStaminaName(?string $staminaName) {
 		$this->staminaName = $staminaName;
 	}
+    /**
+     * @param string|null $staminaName Stamina Model Name
+     * @return VerifyStaminaValueRequest
+     */
 	public function withStaminaName(?string $staminaName): VerifyStaminaValueRequest {
 		$this->staminaName = $staminaName;
 		return $this;
 	}
+    /** @return string|null Type of verification */
 	public function getVerifyType(): ?string {
 		return $this->verifyType;
 	}
+    /** @param string|null $verifyType Type of verification */
 	public function setVerifyType(?string $verifyType) {
 		$this->verifyType = $verifyType;
 	}
+    /**
+     * @param string|null $verifyType Type of verification
+     * @return VerifyStaminaValueRequest
+     */
 	public function withVerifyType(?string $verifyType): VerifyStaminaValueRequest {
 		$this->verifyType = $verifyType;
 		return $this;
 	}
+    /** @return int|null Value to be verified */
 	public function getValue(): ?int {
 		return $this->value;
 	}
+    /** @param int|null $value Value to be verified */
 	public function setValue(?int $value) {
 		$this->value = $value;
 	}
+    /**
+     * @param int|null $value Value to be verified
+     * @return VerifyStaminaValueRequest
+     */
 	public function withValue(?int $value): VerifyStaminaValueRequest {
 		$this->value = $value;
 		return $this;
 	}
+    /** @return bool|null Whether to multiply the value used for verification when specifying the quantity */
 	public function getMultiplyValueSpecifyingQuantity(): ?bool {
 		return $this->multiplyValueSpecifyingQuantity;
 	}
+    /** @param bool|null $multiplyValueSpecifyingQuantity Whether to multiply the value used for verification when specifying the quantity */
 	public function setMultiplyValueSpecifyingQuantity(?bool $multiplyValueSpecifyingQuantity) {
 		$this->multiplyValueSpecifyingQuantity = $multiplyValueSpecifyingQuantity;
 	}
+    /**
+     * @param bool|null $multiplyValueSpecifyingQuantity Whether to multiply the value used for verification when specifying the quantity
+     * @return VerifyStaminaValueRequest
+     */
 	public function withMultiplyValueSpecifyingQuantity(?bool $multiplyValueSpecifyingQuantity): VerifyStaminaValueRequest {
 		$this->multiplyValueSpecifyingQuantity = $multiplyValueSpecifyingQuantity;
 		return $this;

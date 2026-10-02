@@ -3303,25 +3303,22 @@ class GetTransactionResultByUserIdTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 Distributor API クライアント
+ * GS2-Distributor API client
  *
- * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/
  */
 class Gs2DistributorRestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#describenamespaces
      */
     public function describeNamespacesAsync(
             DescribeNamespacesRequest $request
@@ -3335,8 +3332,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#describenamespaces
      */
     public function describeNamespaces (
             DescribeNamespacesRequest $request
@@ -3347,8 +3347,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#createnamespace
      */
     public function createNamespaceAsync(
             CreateNamespaceRequest $request
@@ -3362,8 +3365,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#createnamespace
      */
     public function createNamespace (
             CreateNamespaceRequest $request
@@ -3374,8 +3380,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#getnamespacestatus
      */
     public function getNamespaceStatusAsync(
             GetNamespaceStatusRequest $request
@@ -3389,8 +3398,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#getnamespacestatus
      */
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
@@ -3401,8 +3413,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#getnamespace
      */
     public function getNamespaceAsync(
             GetNamespaceRequest $request
@@ -3416,8 +3431,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#getnamespace
      */
     public function getNamespace (
             GetNamespaceRequest $request
@@ -3428,8 +3446,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#updatenamespace
      */
     public function updateNamespaceAsync(
             UpdateNamespaceRequest $request
@@ -3443,8 +3464,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#updatenamespace
      */
     public function updateNamespace (
             UpdateNamespaceRequest $request
@@ -3455,8 +3479,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#deletenamespace
      */
     public function deleteNamespaceAsync(
             DeleteNamespaceRequest $request
@@ -3470,8 +3497,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#deletenamespace
      */
     public function deleteNamespace (
             DeleteNamespaceRequest $request
@@ -3482,8 +3512,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get microservice version
+     *
      * @param GetServiceVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#getserviceversion
      */
     public function getServiceVersionAsync(
             GetServiceVersionRequest $request
@@ -3497,8 +3530,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get microservice version
+     *
      * @param GetServiceVersionRequest $request
      * @return GetServiceVersionResult
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#getserviceversion
      */
     public function getServiceVersion (
             GetServiceVersionRequest $request
@@ -3509,8 +3545,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Distributor Model Masters
+     *
      * @param DescribeDistributorModelMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#describedistributormodelmasters
      */
     public function describeDistributorModelMastersAsync(
             DescribeDistributorModelMastersRequest $request
@@ -3524,8 +3563,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Distributor Model Masters
+     *
      * @param DescribeDistributorModelMastersRequest $request
      * @return DescribeDistributorModelMastersResult
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#describedistributormodelmasters
      */
     public function describeDistributorModelMasters (
             DescribeDistributorModelMastersRequest $request
@@ -3536,8 +3578,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Distributor Model Master
+     *
      * @param CreateDistributorModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#createdistributormodelmaster
      */
     public function createDistributorModelMasterAsync(
             CreateDistributorModelMasterRequest $request
@@ -3551,8 +3596,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Distributor Model Master
+     *
      * @param CreateDistributorModelMasterRequest $request
      * @return CreateDistributorModelMasterResult
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#createdistributormodelmaster
      */
     public function createDistributorModelMaster (
             CreateDistributorModelMasterRequest $request
@@ -3563,8 +3611,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Distributor Model Master
+     *
      * @param GetDistributorModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#getdistributormodelmaster
      */
     public function getDistributorModelMasterAsync(
             GetDistributorModelMasterRequest $request
@@ -3578,8 +3629,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Distributor Model Master
+     *
      * @param GetDistributorModelMasterRequest $request
      * @return GetDistributorModelMasterResult
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#getdistributormodelmaster
      */
     public function getDistributorModelMaster (
             GetDistributorModelMasterRequest $request
@@ -3590,8 +3644,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Distributor Model Master
+     *
      * @param UpdateDistributorModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#updatedistributormodelmaster
      */
     public function updateDistributorModelMasterAsync(
             UpdateDistributorModelMasterRequest $request
@@ -3605,8 +3662,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Distributor Model Master
+     *
      * @param UpdateDistributorModelMasterRequest $request
      * @return UpdateDistributorModelMasterResult
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#updatedistributormodelmaster
      */
     public function updateDistributorModelMaster (
             UpdateDistributorModelMasterRequest $request
@@ -3617,8 +3677,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Distributor Model Master
+     *
      * @param DeleteDistributorModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#deletedistributormodelmaster
      */
     public function deleteDistributorModelMasterAsync(
             DeleteDistributorModelMasterRequest $request
@@ -3632,8 +3695,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Distributor Model Master
+     *
      * @param DeleteDistributorModelMasterRequest $request
      * @return DeleteDistributorModelMasterResult
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#deletedistributormodelmaster
      */
     public function deleteDistributorModelMaster (
             DeleteDistributorModelMasterRequest $request
@@ -3644,8 +3710,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Distributor Models
+     *
      * @param DescribeDistributorModelsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#describedistributormodels
      */
     public function describeDistributorModelsAsync(
             DescribeDistributorModelsRequest $request
@@ -3659,8 +3728,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Distributor Models
+     *
      * @param DescribeDistributorModelsRequest $request
      * @return DescribeDistributorModelsResult
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#describedistributormodels
      */
     public function describeDistributorModels (
             DescribeDistributorModelsRequest $request
@@ -3671,8 +3743,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Distributor Model
+     *
      * @param GetDistributorModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#getdistributormodel
      */
     public function getDistributorModelAsync(
             GetDistributorModelRequest $request
@@ -3686,8 +3761,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Distributor Model
+     *
      * @param GetDistributorModelRequest $request
      * @return GetDistributorModelResult
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#getdistributormodel
      */
     public function getDistributorModel (
             GetDistributorModelRequest $request
@@ -3698,8 +3776,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Distributor Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#exportmaster
      */
     public function exportMasterAsync(
             ExportMasterRequest $request
@@ -3713,8 +3794,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Distributor Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return ExportMasterResult
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#exportmaster
      */
     public function exportMaster (
             ExportMasterRequest $request
@@ -3725,8 +3809,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Distributor Model master data
+     *
      * @param GetCurrentDistributorMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#getcurrentdistributormaster
      */
     public function getCurrentDistributorMasterAsync(
             GetCurrentDistributorMasterRequest $request
@@ -3740,8 +3827,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Distributor Model master data
+     *
      * @param GetCurrentDistributorMasterRequest $request
      * @return GetCurrentDistributorMasterResult
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#getcurrentdistributormaster
      */
     public function getCurrentDistributorMaster (
             GetCurrentDistributorMasterRequest $request
@@ -3752,8 +3842,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Distributor Model master data (3-phase version)
+     *
      * @param PreUpdateCurrentDistributorMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#preupdatecurrentdistributormaster
      */
     public function preUpdateCurrentDistributorMasterAsync(
             PreUpdateCurrentDistributorMasterRequest $request
@@ -3767,8 +3860,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Distributor Model master data (3-phase version)
+     *
      * @param PreUpdateCurrentDistributorMasterRequest $request
      * @return PreUpdateCurrentDistributorMasterResult
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#preupdatecurrentdistributormaster
      */
     public function preUpdateCurrentDistributorMaster (
             PreUpdateCurrentDistributorMasterRequest $request
@@ -3779,8 +3875,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Distributor Model master data
+     *
      * @param UpdateCurrentDistributorMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#updatecurrentdistributormaster
      */
     public function updateCurrentDistributorMasterAsync(
             UpdateCurrentDistributorMasterRequest $request
@@ -3794,8 +3893,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Distributor Model master data
+     *
      * @param UpdateCurrentDistributorMasterRequest $request
      * @return UpdateCurrentDistributorMasterResult
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#updatecurrentdistributormaster
      */
     public function updateCurrentDistributorMaster (
             UpdateCurrentDistributorMasterRequest $request
@@ -3806,8 +3908,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Distributor Model master data from GitHub
+     *
      * @param UpdateCurrentDistributorMasterFromGitHubRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#updatecurrentdistributormasterfromgithub
      */
     public function updateCurrentDistributorMasterFromGitHubAsync(
             UpdateCurrentDistributorMasterFromGitHubRequest $request
@@ -3821,8 +3926,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Distributor Model master data from GitHub
+     *
      * @param UpdateCurrentDistributorMasterFromGitHubRequest $request
      * @return UpdateCurrentDistributorMasterFromGitHubResult
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#updatecurrentdistributormasterfromgithub
      */
     public function updateCurrentDistributorMasterFromGitHub (
             UpdateCurrentDistributorMasterFromGitHubRequest $request
@@ -3833,8 +3941,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Distribution of possessions
+     *
      * @param DistributeRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#distribute
      */
     public function distributeAsync(
             DistributeRequest $request
@@ -3848,8 +3959,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Distribution of possessions
+     *
      * @param DistributeRequest $request
      * @return DistributeResult
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#distribute
      */
     public function distribute (
             DistributeRequest $request
@@ -3860,8 +3974,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Distribute possessions (no bailout in case of overflow)
+     *
      * @param DistributeWithoutOverflowProcessRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#distributewithoutoverflowprocess
      */
     public function distributeWithoutOverflowProcessAsync(
             DistributeWithoutOverflowProcessRequest $request
@@ -3875,8 +3992,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Distribute possessions (no bailout in case of overflow)
+     *
      * @param DistributeWithoutOverflowProcessRequest $request
      * @return DistributeWithoutOverflowProcessResult
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#distributewithoutoverflowprocess
      */
     public function distributeWithoutOverflowProcess (
             DistributeWithoutOverflowProcessRequest $request
@@ -3887,8 +4007,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute verify action of transaction
+     *
      * @param RunVerifyTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#runverifytask
      */
     public function runVerifyTaskAsync(
             RunVerifyTaskRequest $request
@@ -3902,8 +4025,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute verify action of transaction
+     *
      * @param RunVerifyTaskRequest $request
      * @return RunVerifyTaskResult
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#runverifytask
      */
     public function runVerifyTask (
             RunVerifyTaskRequest $request
@@ -3914,6 +4040,8 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute consume action of transaction
+     *
      * @param RunStampTaskRequest $request
      * @return PromiseInterface
      */
@@ -3929,6 +4057,8 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute consume action of transaction
+     *
      * @param RunStampTaskRequest $request
      * @return RunStampTaskResult
      */
@@ -3941,6 +4071,8 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute acquire action of transaction
+     *
      * @param RunStampSheetRequest $request
      * @return PromiseInterface
      */
@@ -3956,6 +4088,8 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute acquire action of transaction
+     *
      * @param RunStampSheetRequest $request
      * @return RunStampSheetResult
      */
@@ -3968,8 +4102,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute transaction
+     *
      * @param RunStampSheetExpressRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#runstampsheetexpress
      */
     public function runStampSheetExpressAsync(
             RunStampSheetExpressRequest $request
@@ -3983,8 +4120,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute transaction
+     *
      * @param RunStampSheetExpressRequest $request
      * @return RunStampSheetExpressResult
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#runstampsheetexpress
      */
     public function runStampSheetExpress (
             RunStampSheetExpressRequest $request
@@ -3995,8 +4135,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute verify action of transaction without specifying the GS2-Distributor Namespace
+     *
      * @param RunVerifyTaskWithoutNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#runverifytaskwithoutnamespace
      */
     public function runVerifyTaskWithoutNamespaceAsync(
             RunVerifyTaskWithoutNamespaceRequest $request
@@ -4010,8 +4153,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute verify action of transaction without specifying the GS2-Distributor Namespace
+     *
      * @param RunVerifyTaskWithoutNamespaceRequest $request
      * @return RunVerifyTaskWithoutNamespaceResult
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#runverifytaskwithoutnamespace
      */
     public function runVerifyTaskWithoutNamespace (
             RunVerifyTaskWithoutNamespaceRequest $request
@@ -4022,8 +4168,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute consume action of transaction without specifying the GS2-Distributor Namespace
+     *
      * @param RunStampTaskWithoutNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#runstamptaskwithoutnamespace
      */
     public function runStampTaskWithoutNamespaceAsync(
             RunStampTaskWithoutNamespaceRequest $request
@@ -4037,8 +4186,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute consume action of transaction without specifying the GS2-Distributor Namespace
+     *
      * @param RunStampTaskWithoutNamespaceRequest $request
      * @return RunStampTaskWithoutNamespaceResult
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#runstamptaskwithoutnamespace
      */
     public function runStampTaskWithoutNamespace (
             RunStampTaskWithoutNamespaceRequest $request
@@ -4049,8 +4201,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute acquire action of transaction without specifying the GS2-Distributor Namespace
+     *
      * @param RunStampSheetWithoutNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#runstampsheetwithoutnamespace
      */
     public function runStampSheetWithoutNamespaceAsync(
             RunStampSheetWithoutNamespaceRequest $request
@@ -4064,8 +4219,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute acquire action of transaction without specifying the GS2-Distributor Namespace
+     *
      * @param RunStampSheetWithoutNamespaceRequest $request
      * @return RunStampSheetWithoutNamespaceResult
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#runstampsheetwithoutnamespace
      */
     public function runStampSheetWithoutNamespace (
             RunStampSheetWithoutNamespaceRequest $request
@@ -4076,8 +4234,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute transactions without specifying the GS2-Distributor Namespace
+     *
      * @param RunStampSheetExpressWithoutNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#runstampsheetexpresswithoutnamespace
      */
     public function runStampSheetExpressWithoutNamespaceAsync(
             RunStampSheetExpressWithoutNamespaceRequest $request
@@ -4091,8 +4252,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute transactions without specifying the GS2-Distributor Namespace
+     *
      * @param RunStampSheetExpressWithoutNamespaceRequest $request
      * @return RunStampSheetExpressWithoutNamespaceResult
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#runstampsheetexpresswithoutnamespace
      */
     public function runStampSheetExpressWithoutNamespace (
             RunStampSheetExpressWithoutNamespaceRequest $request
@@ -4103,8 +4267,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Set the default value of Config to be specified for the Transaction Issuance API
+     *
      * @param SetTransactionDefaultConfigRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#settransactiondefaultconfig
      */
     public function setTransactionDefaultConfigAsync(
             SetTransactionDefaultConfigRequest $request
@@ -4118,8 +4285,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Set the default value of Config to be specified for the Transaction Issuance API
+     *
      * @param SetTransactionDefaultConfigRequest $request
      * @return SetTransactionDefaultConfigResult
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#settransactiondefaultconfig
      */
     public function setTransactionDefaultConfig (
             SetTransactionDefaultConfigRequest $request
@@ -4130,8 +4300,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Set the default value of Config to be specified for the Transaction Issuance API by User ID
+     *
      * @param SetTransactionDefaultConfigByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#settransactiondefaultconfigbyuserid
      */
     public function setTransactionDefaultConfigByUserIdAsync(
             SetTransactionDefaultConfigByUserIdRequest $request
@@ -4145,8 +4318,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Set the default value of Config to be specified for the Transaction Issuance API by User ID
+     *
      * @param SetTransactionDefaultConfigByUserIdRequest $request
      * @return SetTransactionDefaultConfigByUserIdResult
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#settransactiondefaultconfigbyuserid
      */
     public function setTransactionDefaultConfigByUserId (
             SetTransactionDefaultConfigByUserIdRequest $request
@@ -4157,8 +4333,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Freeze master data at the current time
+     *
      * @param FreezeMasterDataRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#freezemasterdata
      */
     public function freezeMasterDataAsync(
             FreezeMasterDataRequest $request
@@ -4172,8 +4351,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Freeze master data at the current time
+     *
      * @param FreezeMasterDataRequest $request
      * @return FreezeMasterDataResult
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#freezemasterdata
      */
     public function freezeMasterData (
             FreezeMasterDataRequest $request
@@ -4184,8 +4366,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Freeze master data at the current time by User ID
+     *
      * @param FreezeMasterDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#freezemasterdatabyuserid
      */
     public function freezeMasterDataByUserIdAsync(
             FreezeMasterDataByUserIdRequest $request
@@ -4199,8 +4384,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Freeze master data at the current time by User ID
+     *
      * @param FreezeMasterDataByUserIdRequest $request
      * @return FreezeMasterDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#freezemasterdatabyuserid
      */
     public function freezeMasterDataByUserId (
             FreezeMasterDataByUserIdRequest $request
@@ -4211,8 +4399,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Sign a timestamp for freezing master data
+     *
      * @param SignFreezeMasterDataTimestampRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#signfreezemasterdatatimestamp
      */
     public function signFreezeMasterDataTimestampAsync(
             SignFreezeMasterDataTimestampRequest $request
@@ -4226,8 +4417,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Sign a timestamp for freezing master data
+     *
      * @param SignFreezeMasterDataTimestampRequest $request
      * @return SignFreezeMasterDataTimestampResult
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#signfreezemasterdatatimestamp
      */
     public function signFreezeMasterDataTimestamp (
             SignFreezeMasterDataTimestampRequest $request
@@ -4238,8 +4432,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Freeze master data at the specified signed timestamp
+     *
      * @param FreezeMasterDataBySignedTimestampRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#freezemasterdatabysignedtimestamp
      */
     public function freezeMasterDataBySignedTimestampAsync(
             FreezeMasterDataBySignedTimestampRequest $request
@@ -4253,8 +4450,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Freeze master data at the specified signed timestamp
+     *
      * @param FreezeMasterDataBySignedTimestampRequest $request
      * @return FreezeMasterDataBySignedTimestampResult
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#freezemasterdatabysignedtimestamp
      */
     public function freezeMasterDataBySignedTimestamp (
             FreezeMasterDataBySignedTimestampRequest $request
@@ -4265,8 +4465,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Freeze master data at the specified timestamp
+     *
      * @param FreezeMasterDataByTimestampRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#freezemasterdatabytimestamp
      */
     public function freezeMasterDataByTimestampAsync(
             FreezeMasterDataByTimestampRequest $request
@@ -4280,8 +4483,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Freeze master data at the specified timestamp
+     *
      * @param FreezeMasterDataByTimestampRequest $request
      * @return FreezeMasterDataByTimestampResult
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#freezemasterdatabytimestamp
      */
     public function freezeMasterDataByTimestamp (
             FreezeMasterDataByTimestampRequest $request
@@ -4292,8 +4498,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute multiple APIs in bulk
+     *
      * @param BatchExecuteApiRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#batchexecuteapi
      */
     public function batchExecuteApiAsync(
             BatchExecuteApiRequest $request
@@ -4307,8 +4516,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute multiple APIs in bulk
+     *
      * @param BatchExecuteApiRequest $request
      * @return BatchExecuteApiResult
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#batchexecuteapi
      */
     public function batchExecuteApi (
             BatchExecuteApiRequest $request
@@ -4319,8 +4531,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Validate the condition and switch the contents of the Consume Action
+     *
      * @param IfExpressionByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#ifexpressionbyuserid
      */
     public function ifExpressionByUserIdAsync(
             IfExpressionByUserIdRequest $request
@@ -4334,8 +4549,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Validate the condition and switch the contents of the Consume Action
+     *
      * @param IfExpressionByUserIdRequest $request
      * @return IfExpressionByUserIdResult
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#ifexpressionbyuserid
      */
     public function ifExpressionByUserId (
             IfExpressionByUserIdRequest $request
@@ -4346,8 +4564,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Perform multiple verification actions and determine if all are true
+     *
      * @param AndExpressionByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#andexpressionbyuserid
      */
     public function andExpressionByUserIdAsync(
             AndExpressionByUserIdRequest $request
@@ -4361,8 +4582,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Perform multiple verification actions and determine if all are true
+     *
      * @param AndExpressionByUserIdRequest $request
      * @return AndExpressionByUserIdResult
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#andexpressionbyuserid
      */
     public function andExpressionByUserId (
             AndExpressionByUserIdRequest $request
@@ -4373,8 +4597,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Perform multiple verification actions and determine if any are true
+     *
      * @param OrExpressionByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#orexpressionbyuserid
      */
     public function orExpressionByUserIdAsync(
             OrExpressionByUserIdRequest $request
@@ -4388,8 +4615,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Perform multiple verification actions and determine if any are true
+     *
      * @param OrExpressionByUserIdRequest $request
      * @return OrExpressionByUserIdResult
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#orexpressionbyuserid
      */
     public function orExpressionByUserId (
             OrExpressionByUserIdRequest $request
@@ -4400,8 +4630,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute conditional branching of consume actions as a transaction
+     *
      * @param IfExpressionByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/stamp_sheet/#gs2distributorifexpressionbyuserid
      */
     public function ifExpressionByStampTaskAsync(
             IfExpressionByStampTaskRequest $request
@@ -4415,8 +4648,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute conditional branching of consume actions as a transaction
+     *
      * @param IfExpressionByStampTaskRequest $request
      * @return IfExpressionByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/distributor/stamp_sheet/#gs2distributorifexpressionbyuserid
      */
     public function ifExpressionByStampTask (
             IfExpressionByStampTaskRequest $request
@@ -4427,8 +4663,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute AND expression as a transaction
+     *
      * @param AndExpressionByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/stamp_sheet/#gs2distributorandexpressionbyuserid
      */
     public function andExpressionByStampTaskAsync(
             AndExpressionByStampTaskRequest $request
@@ -4442,8 +4681,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute AND expression as a transaction
+     *
      * @param AndExpressionByStampTaskRequest $request
      * @return AndExpressionByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/distributor/stamp_sheet/#gs2distributorandexpressionbyuserid
      */
     public function andExpressionByStampTask (
             AndExpressionByStampTaskRequest $request
@@ -4454,8 +4696,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute OR expression as a transaction
+     *
      * @param OrExpressionByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/stamp_sheet/#gs2distributororexpressionbyuserid
      */
     public function orExpressionByStampTaskAsync(
             OrExpressionByStampTaskRequest $request
@@ -4469,8 +4714,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute OR expression as a transaction
+     *
      * @param OrExpressionByStampTaskRequest $request
      * @return OrExpressionByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/distributor/stamp_sheet/#gs2distributororexpressionbyuserid
      */
     public function orExpressionByStampTask (
             OrExpressionByStampTaskRequest $request
@@ -4481,8 +4729,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Transaction Result
+     *
      * @param GetStampSheetResultRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#getstampsheetresult
      */
     public function getStampSheetResultAsync(
             GetStampSheetResultRequest $request
@@ -4496,8 +4747,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Transaction Result
+     *
      * @param GetStampSheetResultRequest $request
      * @return GetStampSheetResultResult
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#getstampsheetresult
      */
     public function getStampSheetResult (
             GetStampSheetResultRequest $request
@@ -4508,8 +4762,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Transaction Result by User ID
+     *
      * @param GetStampSheetResultByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#getstampsheetresultbyuserid
      */
     public function getStampSheetResultByUserIdAsync(
             GetStampSheetResultByUserIdRequest $request
@@ -4523,8 +4780,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Transaction Result by User ID
+     *
      * @param GetStampSheetResultByUserIdRequest $request
      * @return GetStampSheetResultByUserIdResult
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#getstampsheetresultbyuserid
      */
     public function getStampSheetResultByUserId (
             GetStampSheetResultByUserIdRequest $request
@@ -4535,8 +4795,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List all data of the requesting user in bulk
+     *
      * @param DescribeUserDataRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#describeuserdata
      */
     public function describeUserDataAsync(
             DescribeUserDataRequest $request
@@ -4550,8 +4813,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List all data of the requesting user in bulk
+     *
      * @param DescribeUserDataRequest $request
      * @return DescribeUserDataResult
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#describeuserdata
      */
     public function describeUserData (
             DescribeUserDataRequest $request
@@ -4562,8 +4828,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List all data of the specified user in bulk
+     *
      * @param DescribeUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#describeuserdatabyuserid
      */
     public function describeUserDataByUserIdAsync(
             DescribeUserDataByUserIdRequest $request
@@ -4577,8 +4846,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List all data of the specified user in bulk
+     *
      * @param DescribeUserDataByUserIdRequest $request
      * @return DescribeUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#describeuserdatabyuserid
      */
     public function describeUserDataByUserId (
             DescribeUserDataByUserIdRequest $request
@@ -4589,8 +4861,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute transaction
+     *
      * @param RunTransactionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#runtransaction
      */
     public function runTransactionAsync(
             RunTransactionRequest $request
@@ -4604,8 +4879,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute transaction
+     *
      * @param RunTransactionRequest $request
      * @return RunTransactionResult
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#runtransaction
      */
     public function runTransaction (
             RunTransactionRequest $request
@@ -4616,8 +4894,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Transaction Result
+     *
      * @param GetTransactionResultRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#gettransactionresult
      */
     public function getTransactionResultAsync(
             GetTransactionResultRequest $request
@@ -4631,8 +4912,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Transaction Result
+     *
      * @param GetTransactionResultRequest $request
      * @return GetTransactionResultResult
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#gettransactionresult
      */
     public function getTransactionResult (
             GetTransactionResultRequest $request
@@ -4643,8 +4927,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Transaction Result by User ID
+     *
      * @param GetTransactionResultByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#gettransactionresultbyuserid
      */
     public function getTransactionResultByUserIdAsync(
             GetTransactionResultByUserIdRequest $request
@@ -4658,8 +4945,11 @@ class Gs2DistributorRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Transaction Result by User ID
+     *
      * @param GetTransactionResultByUserIdRequest $request
      * @return GetTransactionResultByUserIdResult
+     * @see https://docs.gs2.io/api_reference/distributor/sdk/#gettransactionresultbyuserid
      */
     public function getTransactionResultByUserId (
             GetTransactionResultByUserIdRequest $request

@@ -19,53 +19,82 @@ namespace Gs2\Datastore\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for prepareDownloadByGeneration: Prepare data object for download by specifying the generation
+ *
+ * @see https://docs.gs2.io/api_reference/datastore/sdk/#preparedownloadbygeneration
+ */
 class PrepareDownloadByGenerationRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Data object GRN */
     private $dataObjectId;
-    /** @var string */
+    /** @var string Data Generation */
     private $generation;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return PrepareDownloadByGenerationRequest
+     */
 	public function withNamespaceName(?string $namespaceName): PrepareDownloadByGenerationRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return PrepareDownloadByGenerationRequest
+     */
 	public function withAccessToken(?string $accessToken): PrepareDownloadByGenerationRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Data object GRN */
 	public function getDataObjectId(): ?string {
 		return $this->dataObjectId;
 	}
+    /** @param string|null $dataObjectId Data object GRN */
 	public function setDataObjectId(?string $dataObjectId) {
 		$this->dataObjectId = $dataObjectId;
 	}
+    /**
+     * @param string|null $dataObjectId Data object GRN
+     * @return PrepareDownloadByGenerationRequest
+     */
 	public function withDataObjectId(?string $dataObjectId): PrepareDownloadByGenerationRequest {
 		$this->dataObjectId = $dataObjectId;
 		return $this;
 	}
+    /** @return string|null Data Generation */
 	public function getGeneration(): ?string {
 		return $this->generation;
 	}
+    /** @param string|null $generation Data Generation */
 	public function setGeneration(?string $generation) {
 		$this->generation = $generation;
 	}
+    /**
+     * @param string|null $generation Data Generation
+     * @return PrepareDownloadByGenerationRequest
+     */
 	public function withGeneration(?string $generation): PrepareDownloadByGenerationRequest {
 		$this->generation = $generation;
 		return $this;

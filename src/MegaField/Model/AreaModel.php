@@ -20,59 +20,88 @@ namespace Gs2\MegaField\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Area divides space, and different areas can be treated as different spaces even if they have the same coordinates.
+ *
+ * @see https://docs.gs2.io/api_reference/mega_field/sdk/#areamodel
+ */
 class AreaModel implements IModel {
 	/**
-     * @var string
+     * @var string Area Model GRN
 	 */
 	private $areaModelId;
 	/**
-     * @var string
+     * @var string Area Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var array
+     * @var array List of layer models
 	 */
 	private $layerModels;
+    /** @return string|null Area Model GRN */
 	public function getAreaModelId(): ?string {
 		return $this->areaModelId;
 	}
+    /** @param string|null $areaModelId Area Model GRN */
 	public function setAreaModelId(?string $areaModelId) {
 		$this->areaModelId = $areaModelId;
 	}
+    /**
+     * @param string|null $areaModelId Area Model GRN
+     * @return AreaModel
+     */
 	public function withAreaModelId(?string $areaModelId): AreaModel {
 		$this->areaModelId = $areaModelId;
 		return $this;
 	}
+    /** @return string|null Area Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Area Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Area Model name
+     * @return AreaModel
+     */
 	public function withName(?string $name): AreaModel {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return AreaModel
+     */
 	public function withMetadata(?string $metadata): AreaModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return array|null List of layer models */
 	public function getLayerModels(): ?array {
 		return $this->layerModels;
 	}
+    /** @param array|null $layerModels List of layer models */
 	public function setLayerModels(?array $layerModels) {
 		$this->layerModels = $layerModels;
 	}
+    /**
+     * @param array|null $layerModels List of layer models
+     * @return AreaModel
+     */
 	public function withLayerModels(?array $layerModels): AreaModel {
 		$this->layerModels = $layerModels;
 		return $this;

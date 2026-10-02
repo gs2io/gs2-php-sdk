@@ -22,33 +22,50 @@ use Gs2\Mission\Model\ScopedValue;
 use Gs2\Mission\Model\Counter;
 use Gs2\Mission\Model\Complete;
 
+/**
+ * Result of increaseCounterByUserId: Increase counter by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#increasecounterbyuserid
+ */
 class IncreaseCounterByUserIdResult implements IResult {
-    /** @var Counter */
+    /** @var Counter Counters increased */
     private $item;
-    /** @var array */
+    /** @var array List of updated Completion Statuses */
     private $changedCompletes;
 
+    /** @return Counter|null Counters increased */
 	public function getItem(): ?Counter {
 		return $this->item;
 	}
 
+    /** @param Counter|null $item Counters increased */
 	public function setItem(?Counter $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Counter|null $item Counters increased
+     * @return IncreaseCounterByUserIdResult
+     */
 	public function withItem(?Counter $item): IncreaseCounterByUserIdResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return array|null List of updated Completion Statuses */
 	public function getChangedCompletes(): ?array {
 		return $this->changedCompletes;
 	}
 
+    /** @param array|null $changedCompletes List of updated Completion Statuses */
 	public function setChangedCompletes(?array $changedCompletes) {
 		$this->changedCompletes = $changedCompletes;
 	}
 
+    /**
+     * @param array|null $changedCompletes List of updated Completion Statuses
+     * @return IncreaseCounterByUserIdResult
+     */
 	public function withChangedCompletes(?array $changedCompletes): IncreaseCounterByUserIdResult {
 		$this->changedCompletes = $changedCompletes;
 		return $this;

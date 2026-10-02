@@ -19,51 +19,80 @@ namespace Gs2\Formation\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getPropertyForm: Get Property Form
+ *
+ * @see https://docs.gs2.io/api_reference/formation/sdk/#getpropertyform
+ */
 class GetPropertyFormRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Property Form Model name */
     private $propertyFormModelName;
-    /** @var string */
+    /** @var string Property ID */
     private $propertyId;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetPropertyFormRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetPropertyFormRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return GetPropertyFormRequest
+     */
 	public function withAccessToken(?string $accessToken): GetPropertyFormRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Property Form Model name */
 	public function getPropertyFormModelName(): ?string {
 		return $this->propertyFormModelName;
 	}
+    /** @param string|null $propertyFormModelName Property Form Model name */
 	public function setPropertyFormModelName(?string $propertyFormModelName) {
 		$this->propertyFormModelName = $propertyFormModelName;
 	}
+    /**
+     * @param string|null $propertyFormModelName Property Form Model name
+     * @return GetPropertyFormRequest
+     */
 	public function withPropertyFormModelName(?string $propertyFormModelName): GetPropertyFormRequest {
 		$this->propertyFormModelName = $propertyFormModelName;
 		return $this;
 	}
+    /** @return string|null Property ID */
 	public function getPropertyId(): ?string {
 		return $this->propertyId;
 	}
+    /** @param string|null $propertyId Property ID */
 	public function setPropertyId(?string $propertyId) {
 		$this->propertyId = $propertyId;
 	}
+    /**
+     * @param string|null $propertyId Property ID
+     * @return GetPropertyFormRequest
+     */
 	public function withPropertyId(?string $propertyId): GetPropertyFormRequest {
 		$this->propertyId = $propertyId;
 		return $this;

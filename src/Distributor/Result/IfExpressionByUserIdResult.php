@@ -23,33 +23,50 @@ use Gs2\Distributor\Model\ConsumeActionResult;
 use Gs2\Distributor\Model\AcquireActionResult;
 use Gs2\Distributor\Model\TransactionResult;
 
+/**
+ * Result of ifExpressionByUserId: Validate the condition and switch the contents of the Consume Action
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#ifexpressionbyuserid
+ */
 class IfExpressionByUserIdResult implements IResult {
-    /** @var TransactionResult */
+    /** @var TransactionResult Transaction Execution Result */
     private $item;
-    /** @var bool */
+    /** @var bool Result of condition evaluation */
     private $expressionResult;
 
+    /** @return TransactionResult|null Transaction Execution Result */
 	public function getItem(): ?TransactionResult {
 		return $this->item;
 	}
 
+    /** @param TransactionResult|null $item Transaction Execution Result */
 	public function setItem(?TransactionResult $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param TransactionResult|null $item Transaction Execution Result
+     * @return IfExpressionByUserIdResult
+     */
 	public function withItem(?TransactionResult $item): IfExpressionByUserIdResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return bool|null Result of condition evaluation */
 	public function getExpressionResult(): ?bool {
 		return $this->expressionResult;
 	}
 
+    /** @param bool|null $expressionResult Result of condition evaluation */
 	public function setExpressionResult(?bool $expressionResult) {
 		$this->expressionResult = $expressionResult;
 	}
 
+    /**
+     * @param bool|null $expressionResult Result of condition evaluation
+     * @return IfExpressionByUserIdResult
+     */
 	public function withExpressionResult(?bool $expressionResult): IfExpressionByUserIdResult {
 		$this->expressionResult = $expressionResult;
 		return $this;

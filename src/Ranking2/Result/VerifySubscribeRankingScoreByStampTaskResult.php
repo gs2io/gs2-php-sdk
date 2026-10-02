@@ -20,33 +20,50 @@ namespace Gs2\Ranking2\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Ranking2\Model\SubscribeRankingScore;
 
+/**
+ * Result of verifySubscribeRankingScoreByStampTask: Execute the verification of the subscribe ranking score as a verification action
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/stamp_sheet/#gs2ranking2verifysubscriberankingscorebyuserid
+ */
 class VerifySubscribeRankingScoreByStampTaskResult implements IResult {
-    /** @var SubscribeRankingScore */
+    /** @var SubscribeRankingScore Subscribe Ranking Score */
     private $item;
-    /** @var string */
+    /** @var string Context recording the execution results of verification actions */
     private $newContextStack;
 
+    /** @return SubscribeRankingScore|null Subscribe Ranking Score */
 	public function getItem(): ?SubscribeRankingScore {
 		return $this->item;
 	}
 
+    /** @param SubscribeRankingScore|null $item Subscribe Ranking Score */
 	public function setItem(?SubscribeRankingScore $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param SubscribeRankingScore|null $item Subscribe Ranking Score
+     * @return VerifySubscribeRankingScoreByStampTaskResult
+     */
 	public function withItem(?SubscribeRankingScore $item): VerifySubscribeRankingScoreByStampTaskResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null Context recording the execution results of verification actions */
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
+    /** @param string|null $newContextStack Context recording the execution results of verification actions */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
+    /**
+     * @param string|null $newContextStack Context recording the execution results of verification actions
+     * @return VerifySubscribeRankingScoreByStampTaskResult
+     */
 	public function withNewContextStack(?string $newContextStack): VerifySubscribeRankingScoreByStampTaskResult {
 		$this->newContextStack = $newContextStack;
 		return $this;

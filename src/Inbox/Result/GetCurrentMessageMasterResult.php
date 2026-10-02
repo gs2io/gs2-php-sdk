@@ -20,18 +20,29 @@ namespace Gs2\Inbox\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Inbox\Model\CurrentMessageMaster;
 
+/**
+ * Result of getCurrentMessageMaster: Get currently active Global Message master data
+ *
+ * @see https://docs.gs2.io/api_reference/inbox/sdk/#getcurrentmessagemaster
+ */
 class GetCurrentMessageMasterResult implements IResult {
-    /** @var CurrentMessageMaster */
+    /** @var CurrentMessageMaster Currently active Global Message master data */
     private $item;
 
+    /** @return CurrentMessageMaster|null Currently active Global Message master data */
 	public function getItem(): ?CurrentMessageMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentMessageMaster|null $item Currently active Global Message master data */
 	public function setItem(?CurrentMessageMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentMessageMaster|null $item Currently active Global Message master data
+     * @return GetCurrentMessageMasterResult
+     */
 	public function withItem(?CurrentMessageMaster $item): GetCurrentMessageMasterResult {
 		$this->item = $item;
 		return $this;

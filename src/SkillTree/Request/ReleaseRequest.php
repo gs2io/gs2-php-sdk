@@ -20,65 +20,100 @@ namespace Gs2\SkillTree\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\SkillTree\Model\Config;
 
+/**
+ * Request for release: Release a node
+ *
+ * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#release
+ */
 class ReleaseRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Property ID */
     private $propertyId;
-    /** @var array */
+    /** @var array List of Node Model names */
     private $nodeModelNames;
-    /** @var array */
+    /** @var array Configuration values applied to transaction variables */
     private $config;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return ReleaseRequest
+     */
 	public function withNamespaceName(?string $namespaceName): ReleaseRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return ReleaseRequest
+     */
 	public function withAccessToken(?string $accessToken): ReleaseRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Property ID */
 	public function getPropertyId(): ?string {
 		return $this->propertyId;
 	}
+    /** @param string|null $propertyId Property ID */
 	public function setPropertyId(?string $propertyId) {
 		$this->propertyId = $propertyId;
 	}
+    /**
+     * @param string|null $propertyId Property ID
+     * @return ReleaseRequest
+     */
 	public function withPropertyId(?string $propertyId): ReleaseRequest {
 		$this->propertyId = $propertyId;
 		return $this;
 	}
+    /** @return array|null List of Node Model names */
 	public function getNodeModelNames(): ?array {
 		return $this->nodeModelNames;
 	}
+    /** @param array|null $nodeModelNames List of Node Model names */
 	public function setNodeModelNames(?array $nodeModelNames) {
 		$this->nodeModelNames = $nodeModelNames;
 	}
+    /**
+     * @param array|null $nodeModelNames List of Node Model names
+     * @return ReleaseRequest
+     */
 	public function withNodeModelNames(?array $nodeModelNames): ReleaseRequest {
 		$this->nodeModelNames = $nodeModelNames;
 		return $this;
 	}
+    /** @return array|null Configuration values applied to transaction variables */
 	public function getConfig(): ?array {
 		return $this->config;
 	}
+    /** @param array|null $config Configuration values applied to transaction variables */
 	public function setConfig(?array $config) {
 		$this->config = $config;
 	}
+    /**
+     * @param array|null $config Configuration values applied to transaction variables
+     * @return ReleaseRequest
+     */
 	public function withConfig(?array $config): ReleaseRequest {
 		$this->config = $config;
 		return $this;

@@ -8926,25 +8926,22 @@ class VerifyBigItemByStampTaskTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 Inventory API クライアント
+ * GS2-Inventory API client
  *
- * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/
  */
 class Gs2InventoryRestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#describenamespaces
      */
     public function describeNamespacesAsync(
             DescribeNamespacesRequest $request
@@ -8958,8 +8955,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#describenamespaces
      */
     public function describeNamespaces (
             DescribeNamespacesRequest $request
@@ -8970,8 +8970,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#createnamespace
      */
     public function createNamespaceAsync(
             CreateNamespaceRequest $request
@@ -8985,8 +8988,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#createnamespace
      */
     public function createNamespace (
             CreateNamespaceRequest $request
@@ -8997,8 +9003,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getnamespacestatus
      */
     public function getNamespaceStatusAsync(
             GetNamespaceStatusRequest $request
@@ -9012,8 +9021,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getnamespacestatus
      */
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
@@ -9024,8 +9036,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getnamespace
      */
     public function getNamespaceAsync(
             GetNamespaceRequest $request
@@ -9039,8 +9054,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getnamespace
      */
     public function getNamespace (
             GetNamespaceRequest $request
@@ -9051,8 +9069,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#updatenamespace
      */
     public function updateNamespaceAsync(
             UpdateNamespaceRequest $request
@@ -9066,8 +9087,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#updatenamespace
      */
     public function updateNamespace (
             UpdateNamespaceRequest $request
@@ -9078,8 +9102,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#deletenamespace
      */
     public function deleteNamespaceAsync(
             DeleteNamespaceRequest $request
@@ -9093,8 +9120,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#deletenamespace
      */
     public function deleteNamespace (
             DeleteNamespaceRequest $request
@@ -9105,8 +9135,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getserviceversion
      */
     public function getServiceVersionAsync(
             GetServiceVersionRequest $request
@@ -9120,8 +9153,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return GetServiceVersionResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getserviceversion
      */
     public function getServiceVersion (
             GetServiceVersionRequest $request
@@ -9132,8 +9168,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserIdAsync(
             DumpUserDataByUserIdRequest $request
@@ -9147,8 +9186,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return DumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserId (
             DumpUserDataByUserIdRequest $request
@@ -9159,8 +9201,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserIdAsync(
             CheckDumpUserDataByUserIdRequest $request
@@ -9174,8 +9219,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return CheckDumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserId (
             CheckDumpUserDataByUserIdRequest $request
@@ -9186,8 +9234,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserIdAsync(
             CleanUserDataByUserIdRequest $request
@@ -9201,8 +9252,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return CleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserId (
             CleanUserDataByUserIdRequest $request
@@ -9213,8 +9267,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserIdAsync(
             CheckCleanUserDataByUserIdRequest $request
@@ -9228,8 +9285,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return CheckCleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserId (
             CheckCleanUserDataByUserIdRequest $request
@@ -9240,8 +9300,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserIdAsync(
             PrepareImportUserDataByUserIdRequest $request
@@ -9255,8 +9318,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PrepareImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserId (
             PrepareImportUserDataByUserIdRequest $request
@@ -9267,8 +9333,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserIdAsync(
             ImportUserDataByUserIdRequest $request
@@ -9282,8 +9351,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return ImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserId (
             ImportUserDataByUserIdRequest $request
@@ -9294,8 +9366,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserIdAsync(
             CheckImportUserDataByUserIdRequest $request
@@ -9309,8 +9384,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return CheckImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserId (
             CheckImportUserDataByUserIdRequest $request
@@ -9321,8 +9399,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Inventory Model Masters
+     *
      * @param DescribeInventoryModelMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#describeinventorymodelmasters
      */
     public function describeInventoryModelMastersAsync(
             DescribeInventoryModelMastersRequest $request
@@ -9336,8 +9417,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Inventory Model Masters
+     *
      * @param DescribeInventoryModelMastersRequest $request
      * @return DescribeInventoryModelMastersResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#describeinventorymodelmasters
      */
     public function describeInventoryModelMasters (
             DescribeInventoryModelMastersRequest $request
@@ -9348,8 +9432,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Inventory Model Master
+     *
      * @param CreateInventoryModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#createinventorymodelmaster
      */
     public function createInventoryModelMasterAsync(
             CreateInventoryModelMasterRequest $request
@@ -9363,8 +9450,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Inventory Model Master
+     *
      * @param CreateInventoryModelMasterRequest $request
      * @return CreateInventoryModelMasterResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#createinventorymodelmaster
      */
     public function createInventoryModelMaster (
             CreateInventoryModelMasterRequest $request
@@ -9375,8 +9465,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Inventory Model Master
+     *
      * @param GetInventoryModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getinventorymodelmaster
      */
     public function getInventoryModelMasterAsync(
             GetInventoryModelMasterRequest $request
@@ -9390,8 +9483,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Inventory Model Master
+     *
      * @param GetInventoryModelMasterRequest $request
      * @return GetInventoryModelMasterResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getinventorymodelmaster
      */
     public function getInventoryModelMaster (
             GetInventoryModelMasterRequest $request
@@ -9402,8 +9498,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Inventory Model Master
+     *
      * @param UpdateInventoryModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#updateinventorymodelmaster
      */
     public function updateInventoryModelMasterAsync(
             UpdateInventoryModelMasterRequest $request
@@ -9417,8 +9516,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Inventory Model Master
+     *
      * @param UpdateInventoryModelMasterRequest $request
      * @return UpdateInventoryModelMasterResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#updateinventorymodelmaster
      */
     public function updateInventoryModelMaster (
             UpdateInventoryModelMasterRequest $request
@@ -9429,8 +9531,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Inventory Model Master
+     *
      * @param DeleteInventoryModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#deleteinventorymodelmaster
      */
     public function deleteInventoryModelMasterAsync(
             DeleteInventoryModelMasterRequest $request
@@ -9444,8 +9549,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Inventory Model Master
+     *
      * @param DeleteInventoryModelMasterRequest $request
      * @return DeleteInventoryModelMasterResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#deleteinventorymodelmaster
      */
     public function deleteInventoryModelMaster (
             DeleteInventoryModelMasterRequest $request
@@ -9456,8 +9564,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Inventory Models
+     *
      * @param DescribeInventoryModelsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#describeinventorymodels
      */
     public function describeInventoryModelsAsync(
             DescribeInventoryModelsRequest $request
@@ -9471,8 +9582,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Inventory Models
+     *
      * @param DescribeInventoryModelsRequest $request
      * @return DescribeInventoryModelsResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#describeinventorymodels
      */
     public function describeInventoryModels (
             DescribeInventoryModelsRequest $request
@@ -9483,8 +9597,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Inventory Model
+     *
      * @param GetInventoryModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getinventorymodel
      */
     public function getInventoryModelAsync(
             GetInventoryModelRequest $request
@@ -9498,8 +9615,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Inventory Model
+     *
      * @param GetInventoryModelRequest $request
      * @return GetInventoryModelResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getinventorymodel
      */
     public function getInventoryModel (
             GetInventoryModelRequest $request
@@ -9510,8 +9630,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Item Model Masters
+     *
      * @param DescribeItemModelMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#describeitemmodelmasters
      */
     public function describeItemModelMastersAsync(
             DescribeItemModelMastersRequest $request
@@ -9525,8 +9648,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Item Model Masters
+     *
      * @param DescribeItemModelMastersRequest $request
      * @return DescribeItemModelMastersResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#describeitemmodelmasters
      */
     public function describeItemModelMasters (
             DescribeItemModelMastersRequest $request
@@ -9537,8 +9663,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Item Model Master
+     *
      * @param CreateItemModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#createitemmodelmaster
      */
     public function createItemModelMasterAsync(
             CreateItemModelMasterRequest $request
@@ -9552,8 +9681,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Item Model Master
+     *
      * @param CreateItemModelMasterRequest $request
      * @return CreateItemModelMasterResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#createitemmodelmaster
      */
     public function createItemModelMaster (
             CreateItemModelMasterRequest $request
@@ -9564,8 +9696,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Item Model Master
+     *
      * @param GetItemModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getitemmodelmaster
      */
     public function getItemModelMasterAsync(
             GetItemModelMasterRequest $request
@@ -9579,8 +9714,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Item Model Master
+     *
      * @param GetItemModelMasterRequest $request
      * @return GetItemModelMasterResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getitemmodelmaster
      */
     public function getItemModelMaster (
             GetItemModelMasterRequest $request
@@ -9591,8 +9729,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Item Model Master
+     *
      * @param UpdateItemModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#updateitemmodelmaster
      */
     public function updateItemModelMasterAsync(
             UpdateItemModelMasterRequest $request
@@ -9606,8 +9747,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Item Model Master
+     *
      * @param UpdateItemModelMasterRequest $request
      * @return UpdateItemModelMasterResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#updateitemmodelmaster
      */
     public function updateItemModelMaster (
             UpdateItemModelMasterRequest $request
@@ -9618,8 +9762,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Item Model Master
+     *
      * @param DeleteItemModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#deleteitemmodelmaster
      */
     public function deleteItemModelMasterAsync(
             DeleteItemModelMasterRequest $request
@@ -9633,8 +9780,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Item Model Master
+     *
      * @param DeleteItemModelMasterRequest $request
      * @return DeleteItemModelMasterResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#deleteitemmodelmaster
      */
     public function deleteItemModelMaster (
             DeleteItemModelMasterRequest $request
@@ -9645,8 +9795,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Item Models
+     *
      * @param DescribeItemModelsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#describeitemmodels
      */
     public function describeItemModelsAsync(
             DescribeItemModelsRequest $request
@@ -9660,8 +9813,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Item Models
+     *
      * @param DescribeItemModelsRequest $request
      * @return DescribeItemModelsResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#describeitemmodels
      */
     public function describeItemModels (
             DescribeItemModelsRequest $request
@@ -9672,8 +9828,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Item Model
+     *
      * @param GetItemModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getitemmodel
      */
     public function getItemModelAsync(
             GetItemModelRequest $request
@@ -9687,8 +9846,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Item Model
+     *
      * @param GetItemModelRequest $request
      * @return GetItemModelResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getitemmodel
      */
     public function getItemModel (
             GetItemModelRequest $request
@@ -9699,8 +9861,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Simple Inventory Model Masters
+     *
      * @param DescribeSimpleInventoryModelMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#describesimpleinventorymodelmasters
      */
     public function describeSimpleInventoryModelMastersAsync(
             DescribeSimpleInventoryModelMastersRequest $request
@@ -9714,8 +9879,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Simple Inventory Model Masters
+     *
      * @param DescribeSimpleInventoryModelMastersRequest $request
      * @return DescribeSimpleInventoryModelMastersResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#describesimpleinventorymodelmasters
      */
     public function describeSimpleInventoryModelMasters (
             DescribeSimpleInventoryModelMastersRequest $request
@@ -9726,8 +9894,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Simple Inventory Model Master
+     *
      * @param CreateSimpleInventoryModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#createsimpleinventorymodelmaster
      */
     public function createSimpleInventoryModelMasterAsync(
             CreateSimpleInventoryModelMasterRequest $request
@@ -9741,8 +9912,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Simple Inventory Model Master
+     *
      * @param CreateSimpleInventoryModelMasterRequest $request
      * @return CreateSimpleInventoryModelMasterResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#createsimpleinventorymodelmaster
      */
     public function createSimpleInventoryModelMaster (
             CreateSimpleInventoryModelMasterRequest $request
@@ -9753,8 +9927,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Simple Inventory Model Master
+     *
      * @param GetSimpleInventoryModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getsimpleinventorymodelmaster
      */
     public function getSimpleInventoryModelMasterAsync(
             GetSimpleInventoryModelMasterRequest $request
@@ -9768,8 +9945,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Simple Inventory Model Master
+     *
      * @param GetSimpleInventoryModelMasterRequest $request
      * @return GetSimpleInventoryModelMasterResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getsimpleinventorymodelmaster
      */
     public function getSimpleInventoryModelMaster (
             GetSimpleInventoryModelMasterRequest $request
@@ -9780,8 +9960,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Simple Inventory Model Master
+     *
      * @param UpdateSimpleInventoryModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#updatesimpleinventorymodelmaster
      */
     public function updateSimpleInventoryModelMasterAsync(
             UpdateSimpleInventoryModelMasterRequest $request
@@ -9795,8 +9978,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Simple Inventory Model Master
+     *
      * @param UpdateSimpleInventoryModelMasterRequest $request
      * @return UpdateSimpleInventoryModelMasterResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#updatesimpleinventorymodelmaster
      */
     public function updateSimpleInventoryModelMaster (
             UpdateSimpleInventoryModelMasterRequest $request
@@ -9807,8 +9993,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Simple Inventory Model Master
+     *
      * @param DeleteSimpleInventoryModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#deletesimpleinventorymodelmaster
      */
     public function deleteSimpleInventoryModelMasterAsync(
             DeleteSimpleInventoryModelMasterRequest $request
@@ -9822,8 +10011,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Simple Inventory Model Master
+     *
      * @param DeleteSimpleInventoryModelMasterRequest $request
      * @return DeleteSimpleInventoryModelMasterResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#deletesimpleinventorymodelmaster
      */
     public function deleteSimpleInventoryModelMaster (
             DeleteSimpleInventoryModelMasterRequest $request
@@ -9834,8 +10026,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Simple Inventory Models
+     *
      * @param DescribeSimpleInventoryModelsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#describesimpleinventorymodels
      */
     public function describeSimpleInventoryModelsAsync(
             DescribeSimpleInventoryModelsRequest $request
@@ -9849,8 +10044,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Simple Inventory Models
+     *
      * @param DescribeSimpleInventoryModelsRequest $request
      * @return DescribeSimpleInventoryModelsResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#describesimpleinventorymodels
      */
     public function describeSimpleInventoryModels (
             DescribeSimpleInventoryModelsRequest $request
@@ -9861,8 +10059,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Simple Inventory Model
+     *
      * @param GetSimpleInventoryModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getsimpleinventorymodel
      */
     public function getSimpleInventoryModelAsync(
             GetSimpleInventoryModelRequest $request
@@ -9876,8 +10077,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Simple Inventory Model
+     *
      * @param GetSimpleInventoryModelRequest $request
      * @return GetSimpleInventoryModelResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getsimpleinventorymodel
      */
     public function getSimpleInventoryModel (
             GetSimpleInventoryModelRequest $request
@@ -9888,8 +10092,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Simple Item Model Masters
+     *
      * @param DescribeSimpleItemModelMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#describesimpleitemmodelmasters
      */
     public function describeSimpleItemModelMastersAsync(
             DescribeSimpleItemModelMastersRequest $request
@@ -9903,8 +10110,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Simple Item Model Masters
+     *
      * @param DescribeSimpleItemModelMastersRequest $request
      * @return DescribeSimpleItemModelMastersResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#describesimpleitemmodelmasters
      */
     public function describeSimpleItemModelMasters (
             DescribeSimpleItemModelMastersRequest $request
@@ -9915,8 +10125,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Simple Item Model Master
+     *
      * @param CreateSimpleItemModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#createsimpleitemmodelmaster
      */
     public function createSimpleItemModelMasterAsync(
             CreateSimpleItemModelMasterRequest $request
@@ -9930,8 +10143,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Simple Item Model Master
+     *
      * @param CreateSimpleItemModelMasterRequest $request
      * @return CreateSimpleItemModelMasterResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#createsimpleitemmodelmaster
      */
     public function createSimpleItemModelMaster (
             CreateSimpleItemModelMasterRequest $request
@@ -9942,8 +10158,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Simple Item Model Master
+     *
      * @param GetSimpleItemModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getsimpleitemmodelmaster
      */
     public function getSimpleItemModelMasterAsync(
             GetSimpleItemModelMasterRequest $request
@@ -9957,8 +10176,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Simple Item Model Master
+     *
      * @param GetSimpleItemModelMasterRequest $request
      * @return GetSimpleItemModelMasterResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getsimpleitemmodelmaster
      */
     public function getSimpleItemModelMaster (
             GetSimpleItemModelMasterRequest $request
@@ -9969,8 +10191,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Simple Item Model Master
+     *
      * @param UpdateSimpleItemModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#updatesimpleitemmodelmaster
      */
     public function updateSimpleItemModelMasterAsync(
             UpdateSimpleItemModelMasterRequest $request
@@ -9984,8 +10209,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Simple Item Model Master
+     *
      * @param UpdateSimpleItemModelMasterRequest $request
      * @return UpdateSimpleItemModelMasterResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#updatesimpleitemmodelmaster
      */
     public function updateSimpleItemModelMaster (
             UpdateSimpleItemModelMasterRequest $request
@@ -9996,8 +10224,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Simple Item Model Master
+     *
      * @param DeleteSimpleItemModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#deletesimpleitemmodelmaster
      */
     public function deleteSimpleItemModelMasterAsync(
             DeleteSimpleItemModelMasterRequest $request
@@ -10011,8 +10242,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Simple Item Model Master
+     *
      * @param DeleteSimpleItemModelMasterRequest $request
      * @return DeleteSimpleItemModelMasterResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#deletesimpleitemmodelmaster
      */
     public function deleteSimpleItemModelMaster (
             DeleteSimpleItemModelMasterRequest $request
@@ -10023,8 +10257,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Simple Item Models
+     *
      * @param DescribeSimpleItemModelsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#describesimpleitemmodels
      */
     public function describeSimpleItemModelsAsync(
             DescribeSimpleItemModelsRequest $request
@@ -10038,8 +10275,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Simple Item Models
+     *
      * @param DescribeSimpleItemModelsRequest $request
      * @return DescribeSimpleItemModelsResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#describesimpleitemmodels
      */
     public function describeSimpleItemModels (
             DescribeSimpleItemModelsRequest $request
@@ -10050,8 +10290,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Simple Item Model
+     *
      * @param GetSimpleItemModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getsimpleitemmodel
      */
     public function getSimpleItemModelAsync(
             GetSimpleItemModelRequest $request
@@ -10065,8 +10308,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Simple Item Model
+     *
      * @param GetSimpleItemModelRequest $request
      * @return GetSimpleItemModelResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getsimpleitemmodel
      */
     public function getSimpleItemModel (
             GetSimpleItemModelRequest $request
@@ -10077,8 +10323,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Big Inventory Model Masters
+     *
      * @param DescribeBigInventoryModelMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#describebiginventorymodelmasters
      */
     public function describeBigInventoryModelMastersAsync(
             DescribeBigInventoryModelMastersRequest $request
@@ -10092,8 +10341,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Big Inventory Model Masters
+     *
      * @param DescribeBigInventoryModelMastersRequest $request
      * @return DescribeBigInventoryModelMastersResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#describebiginventorymodelmasters
      */
     public function describeBigInventoryModelMasters (
             DescribeBigInventoryModelMastersRequest $request
@@ -10104,8 +10356,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Big Inventory Model Master
+     *
      * @param CreateBigInventoryModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#createbiginventorymodelmaster
      */
     public function createBigInventoryModelMasterAsync(
             CreateBigInventoryModelMasterRequest $request
@@ -10119,8 +10374,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Big Inventory Model Master
+     *
      * @param CreateBigInventoryModelMasterRequest $request
      * @return CreateBigInventoryModelMasterResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#createbiginventorymodelmaster
      */
     public function createBigInventoryModelMaster (
             CreateBigInventoryModelMasterRequest $request
@@ -10131,8 +10389,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Big Inventory Model Master
+     *
      * @param GetBigInventoryModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getbiginventorymodelmaster
      */
     public function getBigInventoryModelMasterAsync(
             GetBigInventoryModelMasterRequest $request
@@ -10146,8 +10407,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Big Inventory Model Master
+     *
      * @param GetBigInventoryModelMasterRequest $request
      * @return GetBigInventoryModelMasterResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getbiginventorymodelmaster
      */
     public function getBigInventoryModelMaster (
             GetBigInventoryModelMasterRequest $request
@@ -10158,8 +10422,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Big Inventory Model Master
+     *
      * @param UpdateBigInventoryModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#updatebiginventorymodelmaster
      */
     public function updateBigInventoryModelMasterAsync(
             UpdateBigInventoryModelMasterRequest $request
@@ -10173,8 +10440,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Big Inventory Model Master
+     *
      * @param UpdateBigInventoryModelMasterRequest $request
      * @return UpdateBigInventoryModelMasterResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#updatebiginventorymodelmaster
      */
     public function updateBigInventoryModelMaster (
             UpdateBigInventoryModelMasterRequest $request
@@ -10185,8 +10455,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Big Inventory Model Master
+     *
      * @param DeleteBigInventoryModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#deletebiginventorymodelmaster
      */
     public function deleteBigInventoryModelMasterAsync(
             DeleteBigInventoryModelMasterRequest $request
@@ -10200,8 +10473,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Big Inventory Model Master
+     *
      * @param DeleteBigInventoryModelMasterRequest $request
      * @return DeleteBigInventoryModelMasterResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#deletebiginventorymodelmaster
      */
     public function deleteBigInventoryModelMaster (
             DeleteBigInventoryModelMasterRequest $request
@@ -10212,8 +10488,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Big Inventory Models
+     *
      * @param DescribeBigInventoryModelsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#describebiginventorymodels
      */
     public function describeBigInventoryModelsAsync(
             DescribeBigInventoryModelsRequest $request
@@ -10227,8 +10506,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Big Inventory Models
+     *
      * @param DescribeBigInventoryModelsRequest $request
      * @return DescribeBigInventoryModelsResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#describebiginventorymodels
      */
     public function describeBigInventoryModels (
             DescribeBigInventoryModelsRequest $request
@@ -10239,8 +10521,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Big Inventory Model
+     *
      * @param GetBigInventoryModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getbiginventorymodel
      */
     public function getBigInventoryModelAsync(
             GetBigInventoryModelRequest $request
@@ -10254,8 +10539,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Big Inventory Model
+     *
      * @param GetBigInventoryModelRequest $request
      * @return GetBigInventoryModelResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getbiginventorymodel
      */
     public function getBigInventoryModel (
             GetBigInventoryModelRequest $request
@@ -10266,8 +10554,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Big Item Model Masters
+     *
      * @param DescribeBigItemModelMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#describebigitemmodelmasters
      */
     public function describeBigItemModelMastersAsync(
             DescribeBigItemModelMastersRequest $request
@@ -10281,8 +10572,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Big Item Model Masters
+     *
      * @param DescribeBigItemModelMastersRequest $request
      * @return DescribeBigItemModelMastersResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#describebigitemmodelmasters
      */
     public function describeBigItemModelMasters (
             DescribeBigItemModelMastersRequest $request
@@ -10293,8 +10587,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Big Item Model Master
+     *
      * @param CreateBigItemModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#createbigitemmodelmaster
      */
     public function createBigItemModelMasterAsync(
             CreateBigItemModelMasterRequest $request
@@ -10308,8 +10605,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Big Item Model Master
+     *
      * @param CreateBigItemModelMasterRequest $request
      * @return CreateBigItemModelMasterResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#createbigitemmodelmaster
      */
     public function createBigItemModelMaster (
             CreateBigItemModelMasterRequest $request
@@ -10320,8 +10620,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Big Item Model Master
+     *
      * @param GetBigItemModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getbigitemmodelmaster
      */
     public function getBigItemModelMasterAsync(
             GetBigItemModelMasterRequest $request
@@ -10335,8 +10638,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Big Item Model Master
+     *
      * @param GetBigItemModelMasterRequest $request
      * @return GetBigItemModelMasterResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getbigitemmodelmaster
      */
     public function getBigItemModelMaster (
             GetBigItemModelMasterRequest $request
@@ -10347,8 +10653,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Big Item Model Master
+     *
      * @param UpdateBigItemModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#updatebigitemmodelmaster
      */
     public function updateBigItemModelMasterAsync(
             UpdateBigItemModelMasterRequest $request
@@ -10362,8 +10671,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Big Item Model Master
+     *
      * @param UpdateBigItemModelMasterRequest $request
      * @return UpdateBigItemModelMasterResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#updatebigitemmodelmaster
      */
     public function updateBigItemModelMaster (
             UpdateBigItemModelMasterRequest $request
@@ -10374,8 +10686,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Big Item Model Master
+     *
      * @param DeleteBigItemModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#deletebigitemmodelmaster
      */
     public function deleteBigItemModelMasterAsync(
             DeleteBigItemModelMasterRequest $request
@@ -10389,8 +10704,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Big Item Model Master
+     *
      * @param DeleteBigItemModelMasterRequest $request
      * @return DeleteBigItemModelMasterResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#deletebigitemmodelmaster
      */
     public function deleteBigItemModelMaster (
             DeleteBigItemModelMasterRequest $request
@@ -10401,8 +10719,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Big Item Models
+     *
      * @param DescribeBigItemModelsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#describebigitemmodels
      */
     public function describeBigItemModelsAsync(
             DescribeBigItemModelsRequest $request
@@ -10416,8 +10737,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Big Item Models
+     *
      * @param DescribeBigItemModelsRequest $request
      * @return DescribeBigItemModelsResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#describebigitemmodels
      */
     public function describeBigItemModels (
             DescribeBigItemModelsRequest $request
@@ -10428,8 +10752,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Big Item Model
+     *
      * @param GetBigItemModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getbigitemmodel
      */
     public function getBigItemModelAsync(
             GetBigItemModelRequest $request
@@ -10443,8 +10770,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Big Item Model
+     *
      * @param GetBigItemModelRequest $request
      * @return GetBigItemModelResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getbigitemmodel
      */
     public function getBigItemModel (
             GetBigItemModelRequest $request
@@ -10455,8 +10785,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Item Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#exportmaster
      */
     public function exportMasterAsync(
             ExportMasterRequest $request
@@ -10470,8 +10803,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Item Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return ExportMasterResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#exportmaster
      */
     public function exportMaster (
             ExportMasterRequest $request
@@ -10482,8 +10818,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Item Model master data
+     *
      * @param GetCurrentItemModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getcurrentitemmodelmaster
      */
     public function getCurrentItemModelMasterAsync(
             GetCurrentItemModelMasterRequest $request
@@ -10497,8 +10836,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Item Model master data
+     *
      * @param GetCurrentItemModelMasterRequest $request
      * @return GetCurrentItemModelMasterResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getcurrentitemmodelmaster
      */
     public function getCurrentItemModelMaster (
             GetCurrentItemModelMasterRequest $request
@@ -10509,8 +10851,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Item Model master data (3-phase version)
+     *
      * @param PreUpdateCurrentItemModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#preupdatecurrentitemmodelmaster
      */
     public function preUpdateCurrentItemModelMasterAsync(
             PreUpdateCurrentItemModelMasterRequest $request
@@ -10524,8 +10869,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Item Model master data (3-phase version)
+     *
      * @param PreUpdateCurrentItemModelMasterRequest $request
      * @return PreUpdateCurrentItemModelMasterResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#preupdatecurrentitemmodelmaster
      */
     public function preUpdateCurrentItemModelMaster (
             PreUpdateCurrentItemModelMasterRequest $request
@@ -10536,8 +10884,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Item Model master data
+     *
      * @param UpdateCurrentItemModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#updatecurrentitemmodelmaster
      */
     public function updateCurrentItemModelMasterAsync(
             UpdateCurrentItemModelMasterRequest $request
@@ -10551,8 +10902,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Item Model master data
+     *
      * @param UpdateCurrentItemModelMasterRequest $request
      * @return UpdateCurrentItemModelMasterResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#updatecurrentitemmodelmaster
      */
     public function updateCurrentItemModelMaster (
             UpdateCurrentItemModelMasterRequest $request
@@ -10563,8 +10917,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Item Model master data from GitHub
+     *
      * @param UpdateCurrentItemModelMasterFromGitHubRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#updatecurrentitemmodelmasterfromgithub
      */
     public function updateCurrentItemModelMasterFromGitHubAsync(
             UpdateCurrentItemModelMasterFromGitHubRequest $request
@@ -10578,8 +10935,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Item Model master data from GitHub
+     *
      * @param UpdateCurrentItemModelMasterFromGitHubRequest $request
      * @return UpdateCurrentItemModelMasterFromGitHubResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#updatecurrentitemmodelmasterfromgithub
      */
     public function updateCurrentItemModelMasterFromGitHub (
             UpdateCurrentItemModelMasterFromGitHubRequest $request
@@ -10590,8 +10950,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Inventories
+     *
      * @param DescribeInventoriesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#describeinventories
      */
     public function describeInventoriesAsync(
             DescribeInventoriesRequest $request
@@ -10605,8 +10968,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Inventories
+     *
      * @param DescribeInventoriesRequest $request
      * @return DescribeInventoriesResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#describeinventories
      */
     public function describeInventories (
             DescribeInventoriesRequest $request
@@ -10617,8 +10983,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Inventories by User ID
+     *
      * @param DescribeInventoriesByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#describeinventoriesbyuserid
      */
     public function describeInventoriesByUserIdAsync(
             DescribeInventoriesByUserIdRequest $request
@@ -10632,8 +11001,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Inventories by User ID
+     *
      * @param DescribeInventoriesByUserIdRequest $request
      * @return DescribeInventoriesByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#describeinventoriesbyuserid
      */
     public function describeInventoriesByUserId (
             DescribeInventoriesByUserIdRequest $request
@@ -10644,8 +11016,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Inventory
+     *
      * @param GetInventoryRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getinventory
      */
     public function getInventoryAsync(
             GetInventoryRequest $request
@@ -10659,8 +11034,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Inventory
+     *
      * @param GetInventoryRequest $request
      * @return GetInventoryResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getinventory
      */
     public function getInventory (
             GetInventoryRequest $request
@@ -10671,8 +11049,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Inventory by User ID
+     *
      * @param GetInventoryByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getinventorybyuserid
      */
     public function getInventoryByUserIdAsync(
             GetInventoryByUserIdRequest $request
@@ -10686,8 +11067,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Inventory by User ID
+     *
      * @param GetInventoryByUserIdRequest $request
      * @return GetInventoryByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getinventorybyuserid
      */
     public function getInventoryByUserId (
             GetInventoryByUserIdRequest $request
@@ -10698,8 +11082,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Add inventory capacity size by User ID
+     *
      * @param AddCapacityByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#addcapacitybyuserid
      */
     public function addCapacityByUserIdAsync(
             AddCapacityByUserIdRequest $request
@@ -10713,8 +11100,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Add inventory capacity size by User ID
+     *
      * @param AddCapacityByUserIdRequest $request
      * @return AddCapacityByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#addcapacitybyuserid
      */
     public function addCapacityByUserId (
             AddCapacityByUserIdRequest $request
@@ -10725,8 +11115,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Set inventory capacity size by User ID
+     *
      * @param SetCapacityByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#setcapacitybyuserid
      */
     public function setCapacityByUserIdAsync(
             SetCapacityByUserIdRequest $request
@@ -10740,8 +11133,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Set inventory capacity size by User ID
+     *
      * @param SetCapacityByUserIdRequest $request
      * @return SetCapacityByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#setcapacitybyuserid
      */
     public function setCapacityByUserId (
             SetCapacityByUserIdRequest $request
@@ -10752,8 +11148,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete inventory
+     *
      * @param DeleteInventoryByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#deleteinventorybyuserid
      */
     public function deleteInventoryByUserIdAsync(
             DeleteInventoryByUserIdRequest $request
@@ -10767,8 +11166,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete inventory
+     *
      * @param DeleteInventoryByUserIdRequest $request
      * @return DeleteInventoryByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#deleteinventorybyuserid
      */
     public function deleteInventoryByUserId (
             DeleteInventoryByUserIdRequest $request
@@ -10779,8 +11181,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify current max inventory capacity
+     *
      * @param VerifyInventoryCurrentMaxCapacityRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#verifyinventorycurrentmaxcapacity
      */
     public function verifyInventoryCurrentMaxCapacityAsync(
             VerifyInventoryCurrentMaxCapacityRequest $request
@@ -10794,8 +11199,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify current max inventory capacity
+     *
      * @param VerifyInventoryCurrentMaxCapacityRequest $request
      * @return VerifyInventoryCurrentMaxCapacityResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#verifyinventorycurrentmaxcapacity
      */
     public function verifyInventoryCurrentMaxCapacity (
             VerifyInventoryCurrentMaxCapacityRequest $request
@@ -10806,8 +11214,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify current max inventory capacity by User ID
+     *
      * @param VerifyInventoryCurrentMaxCapacityByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#verifyinventorycurrentmaxcapacitybyuserid
      */
     public function verifyInventoryCurrentMaxCapacityByUserIdAsync(
             VerifyInventoryCurrentMaxCapacityByUserIdRequest $request
@@ -10821,8 +11232,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify current max inventory capacity by User ID
+     *
      * @param VerifyInventoryCurrentMaxCapacityByUserIdRequest $request
      * @return VerifyInventoryCurrentMaxCapacityByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#verifyinventorycurrentmaxcapacitybyuserid
      */
     public function verifyInventoryCurrentMaxCapacityByUserId (
             VerifyInventoryCurrentMaxCapacityByUserIdRequest $request
@@ -10833,8 +11247,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute verification of current max inventory capacity as verify action
+     *
      * @param VerifyInventoryCurrentMaxCapacityByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventoryverifyinventorycurrentmaxcapacitybyuserid
      */
     public function verifyInventoryCurrentMaxCapacityByStampTaskAsync(
             VerifyInventoryCurrentMaxCapacityByStampTaskRequest $request
@@ -10848,8 +11265,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute verification of current max inventory capacity as verify action
+     *
      * @param VerifyInventoryCurrentMaxCapacityByStampTaskRequest $request
      * @return VerifyInventoryCurrentMaxCapacityByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventoryverifyinventorycurrentmaxcapacitybyuserid
      */
     public function verifyInventoryCurrentMaxCapacityByStampTask (
             VerifyInventoryCurrentMaxCapacityByStampTaskRequest $request
@@ -10860,8 +11280,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute inventory capacity size addition as acquire action
+     *
      * @param AddCapacityByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventoryaddcapacitybyuserid
      */
     public function addCapacityByStampSheetAsync(
             AddCapacityByStampSheetRequest $request
@@ -10875,8 +11298,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute inventory capacity size addition as acquire action
+     *
      * @param AddCapacityByStampSheetRequest $request
      * @return AddCapacityByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventoryaddcapacitybyuserid
      */
     public function addCapacityByStampSheet (
             AddCapacityByStampSheetRequest $request
@@ -10887,8 +11313,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute inventory capacity size setting as acquire action
+     *
      * @param SetCapacityByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventorysetcapacitybyuserid
      */
     public function setCapacityByStampSheetAsync(
             SetCapacityByStampSheetRequest $request
@@ -10902,8 +11331,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute inventory capacity size setting as acquire action
+     *
      * @param SetCapacityByStampSheetRequest $request
      * @return SetCapacityByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventorysetcapacitybyuserid
      */
     public function setCapacityByStampSheet (
             SetCapacityByStampSheetRequest $request
@@ -10914,8 +11346,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Item Sets
+     *
      * @param DescribeItemSetsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#describeitemsets
      */
     public function describeItemSetsAsync(
             DescribeItemSetsRequest $request
@@ -10929,8 +11364,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Item Sets
+     *
      * @param DescribeItemSetsRequest $request
      * @return DescribeItemSetsResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#describeitemsets
      */
     public function describeItemSets (
             DescribeItemSetsRequest $request
@@ -10941,8 +11379,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Item Sets by User ID
+     *
      * @param DescribeItemSetsByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#describeitemsetsbyuserid
      */
     public function describeItemSetsByUserIdAsync(
             DescribeItemSetsByUserIdRequest $request
@@ -10956,8 +11397,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Item Sets by User ID
+     *
      * @param DescribeItemSetsByUserIdRequest $request
      * @return DescribeItemSetsByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#describeitemsetsbyuserid
      */
     public function describeItemSetsByUserId (
             DescribeItemSetsByUserIdRequest $request
@@ -10968,8 +11412,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Item Set
+     *
      * @param GetItemSetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getitemset
      */
     public function getItemSetAsync(
             GetItemSetRequest $request
@@ -10983,8 +11430,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Item Set
+     *
      * @param GetItemSetRequest $request
      * @return GetItemSetResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getitemset
      */
     public function getItemSet (
             GetItemSetRequest $request
@@ -10995,8 +11445,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Item Set by specifying the user ID
+     *
      * @param GetItemSetByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getitemsetbyuserid
      */
     public function getItemSetByUserIdAsync(
             GetItemSetByUserIdRequest $request
@@ -11010,8 +11463,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Item Set by specifying the user ID
+     *
      * @param GetItemSetByUserIdRequest $request
      * @return GetItemSetByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getitemsetbyuserid
      */
     public function getItemSetByUserId (
             GetItemSetByUserIdRequest $request
@@ -11022,8 +11478,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Item Set along with the signature
+     *
      * @param GetItemWithSignatureRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getitemwithsignature
      */
     public function getItemWithSignatureAsync(
             GetItemWithSignatureRequest $request
@@ -11037,8 +11496,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Item Set along with the signature
+     *
      * @param GetItemWithSignatureRequest $request
      * @return GetItemWithSignatureResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getitemwithsignature
      */
     public function getItemWithSignature (
             GetItemWithSignatureRequest $request
@@ -11049,8 +11511,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Item Set with signature by specifying the user ID
+     *
      * @param GetItemWithSignatureByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getitemwithsignaturebyuserid
      */
     public function getItemWithSignatureByUserIdAsync(
             GetItemWithSignatureByUserIdRequest $request
@@ -11064,8 +11529,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Item Set with signature by specifying the user ID
+     *
      * @param GetItemWithSignatureByUserIdRequest $request
      * @return GetItemWithSignatureByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getitemwithsignaturebyuserid
      */
     public function getItemWithSignatureByUserId (
             GetItemWithSignatureByUserIdRequest $request
@@ -11076,8 +11544,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Acquire Item Sets by specifying the user ID
+     *
      * @param AcquireItemSetByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#acquireitemsetbyuserid
      */
     public function acquireItemSetByUserIdAsync(
             AcquireItemSetByUserIdRequest $request
@@ -11091,8 +11562,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Acquire Item Sets by specifying the user ID
+     *
      * @param AcquireItemSetByUserIdRequest $request
      * @return AcquireItemSetByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#acquireitemsetbyuserid
      */
     public function acquireItemSetByUserId (
             AcquireItemSetByUserIdRequest $request
@@ -11103,8 +11577,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Acquire one Item Set while setting the grade to GS2-Grade by specifying the user ID
+     *
      * @param AcquireItemSetWithGradeByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#acquireitemsetwithgradebyuserid
      */
     public function acquireItemSetWithGradeByUserIdAsync(
             AcquireItemSetWithGradeByUserIdRequest $request
@@ -11118,8 +11595,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Acquire one Item Set while setting the grade to GS2-Grade by specifying the user ID
+     *
      * @param AcquireItemSetWithGradeByUserIdRequest $request
      * @return AcquireItemSetWithGradeByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#acquireitemsetwithgradebyuserid
      */
     public function acquireItemSetWithGradeByUserId (
             AcquireItemSetWithGradeByUserIdRequest $request
@@ -11130,8 +11610,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Consume Item Sets
+     *
      * @param ConsumeItemSetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#consumeitemset
      */
     public function consumeItemSetAsync(
             ConsumeItemSetRequest $request
@@ -11145,8 +11628,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Consume Item Sets
+     *
      * @param ConsumeItemSetRequest $request
      * @return ConsumeItemSetResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#consumeitemset
      */
     public function consumeItemSet (
             ConsumeItemSetRequest $request
@@ -11157,8 +11643,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Consume Item Sets by specifying the user ID
+     *
      * @param ConsumeItemSetByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#consumeitemsetbyuserid
      */
     public function consumeItemSetByUserIdAsync(
             ConsumeItemSetByUserIdRequest $request
@@ -11172,8 +11661,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Consume Item Sets by specifying the user ID
+     *
      * @param ConsumeItemSetByUserIdRequest $request
      * @return ConsumeItemSetByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#consumeitemsetbyuserid
      */
     public function consumeItemSetByUserId (
             ConsumeItemSetByUserIdRequest $request
@@ -11184,8 +11676,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Item Set
+     *
      * @param DeleteItemSetByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#deleteitemsetbyuserid
      */
     public function deleteItemSetByUserIdAsync(
             DeleteItemSetByUserIdRequest $request
@@ -11199,8 +11694,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Item Set
+     *
      * @param DeleteItemSetByUserIdRequest $request
      * @return DeleteItemSetByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#deleteitemsetbyuserid
      */
     public function deleteItemSetByUserId (
             DeleteItemSetByUserIdRequest $request
@@ -11211,8 +11709,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the quantity of Item Sets in possession
+     *
      * @param VerifyItemSetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#verifyitemset
      */
     public function verifyItemSetAsync(
             VerifyItemSetRequest $request
@@ -11226,8 +11727,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the quantity of Item Sets in possession
+     *
      * @param VerifyItemSetRequest $request
      * @return VerifyItemSetResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#verifyitemset
      */
     public function verifyItemSet (
             VerifyItemSetRequest $request
@@ -11238,8 +11742,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the quantity of Item Sets in possession by specifying the user ID
+     *
      * @param VerifyItemSetByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#verifyitemsetbyuserid
      */
     public function verifyItemSetByUserIdAsync(
             VerifyItemSetByUserIdRequest $request
@@ -11253,8 +11760,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the quantity of Item Sets in possession by specifying the user ID
+     *
      * @param VerifyItemSetByUserIdRequest $request
      * @return VerifyItemSetByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#verifyitemsetbyuserid
      */
     public function verifyItemSetByUserId (
             VerifyItemSetByUserIdRequest $request
@@ -11265,8 +11775,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute Item Set acquisition as an acquire action
+     *
      * @param AcquireItemSetByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventoryacquireitemsetbyuserid
      */
     public function acquireItemSetByStampSheetAsync(
             AcquireItemSetByStampSheetRequest $request
@@ -11280,8 +11793,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute Item Set acquisition as an acquire action
+     *
      * @param AcquireItemSetByStampSheetRequest $request
      * @return AcquireItemSetByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventoryacquireitemsetbyuserid
      */
     public function acquireItemSetByStampSheet (
             AcquireItemSetByStampSheetRequest $request
@@ -11292,8 +11808,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * As an Acquire Action, set the grade to GS2-Grade while acquiring one Item Set
+     *
      * @param AcquireItemSetWithGradeByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventoryacquireitemsetwithgradebyuserid
      */
     public function acquireItemSetWithGradeByStampSheetAsync(
             AcquireItemSetWithGradeByStampSheetRequest $request
@@ -11307,8 +11826,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * As an Acquire Action, set the grade to GS2-Grade while acquiring one Item Set
+     *
      * @param AcquireItemSetWithGradeByStampSheetRequest $request
      * @return AcquireItemSetWithGradeByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventoryacquireitemsetwithgradebyuserid
      */
     public function acquireItemSetWithGradeByStampSheet (
             AcquireItemSetWithGradeByStampSheetRequest $request
@@ -11319,8 +11841,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * As a Consume Action, execute the consumption of the Item Set
+     *
      * @param ConsumeItemSetByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventoryconsumeitemsetbyuserid
      */
     public function consumeItemSetByStampTaskAsync(
             ConsumeItemSetByStampTaskRequest $request
@@ -11334,8 +11859,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * As a Consume Action, execute the consumption of the Item Set
+     *
      * @param ConsumeItemSetByStampTaskRequest $request
      * @return ConsumeItemSetByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventoryconsumeitemsetbyuserid
      */
     public function consumeItemSetByStampTask (
             ConsumeItemSetByStampTaskRequest $request
@@ -11346,8 +11874,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * As a verification action, execute the verification of the Item Set
+     *
      * @param VerifyItemSetByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventoryverifyitemsetbyuserid
      */
     public function verifyItemSetByStampTaskAsync(
             VerifyItemSetByStampTaskRequest $request
@@ -11361,8 +11892,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * As a verification action, execute the verification of the Item Set
+     *
      * @param VerifyItemSetByStampTaskRequest $request
      * @return VerifyItemSetByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventoryverifyitemsetbyuserid
      */
     public function verifyItemSetByStampTask (
             VerifyItemSetByStampTaskRequest $request
@@ -11373,8 +11907,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List references
+     *
      * @param DescribeReferenceOfRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#describereferenceof
      */
     public function describeReferenceOfAsync(
             DescribeReferenceOfRequest $request
@@ -11388,8 +11925,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List references
+     *
      * @param DescribeReferenceOfRequest $request
      * @return DescribeReferenceOfResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#describereferenceof
      */
     public function describeReferenceOf (
             DescribeReferenceOfRequest $request
@@ -11400,8 +11940,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List references by User ID
+     *
      * @param DescribeReferenceOfByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#describereferenceofbyuserid
      */
     public function describeReferenceOfByUserIdAsync(
             DescribeReferenceOfByUserIdRequest $request
@@ -11415,8 +11958,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List references by User ID
+     *
      * @param DescribeReferenceOfByUserIdRequest $request
      * @return DescribeReferenceOfByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#describereferenceofbyuserid
      */
     public function describeReferenceOfByUserId (
             DescribeReferenceOfByUserIdRequest $request
@@ -11427,8 +11973,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get reference source
+     *
      * @param GetReferenceOfRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getreferenceof
      */
     public function getReferenceOfAsync(
             GetReferenceOfRequest $request
@@ -11442,8 +11991,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get reference source
+     *
      * @param GetReferenceOfRequest $request
      * @return GetReferenceOfResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getreferenceof
      */
     public function getReferenceOf (
             GetReferenceOfRequest $request
@@ -11454,8 +12006,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get reference source by User ID
+     *
      * @param GetReferenceOfByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getreferenceofbyuserid
      */
     public function getReferenceOfByUserIdAsync(
             GetReferenceOfByUserIdRequest $request
@@ -11469,8 +12024,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get reference source by User ID
+     *
      * @param GetReferenceOfByUserIdRequest $request
      * @return GetReferenceOfByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getreferenceofbyuserid
      */
     public function getReferenceOfByUserId (
             GetReferenceOfByUserIdRequest $request
@@ -11481,8 +12039,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the reference source
+     *
      * @param VerifyReferenceOfRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#verifyreferenceof
      */
     public function verifyReferenceOfAsync(
             VerifyReferenceOfRequest $request
@@ -11496,8 +12057,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the reference source
+     *
      * @param VerifyReferenceOfRequest $request
      * @return VerifyReferenceOfResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#verifyreferenceof
      */
     public function verifyReferenceOf (
             VerifyReferenceOfRequest $request
@@ -11508,8 +12072,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the reference source by specifying the user ID
+     *
      * @param VerifyReferenceOfByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#verifyreferenceofbyuserid
      */
     public function verifyReferenceOfByUserIdAsync(
             VerifyReferenceOfByUserIdRequest $request
@@ -11523,8 +12090,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the reference source by specifying the user ID
+     *
      * @param VerifyReferenceOfByUserIdRequest $request
      * @return VerifyReferenceOfByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#verifyreferenceofbyuserid
      */
     public function verifyReferenceOfByUserId (
             VerifyReferenceOfByUserIdRequest $request
@@ -11535,8 +12105,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Add a reference
+     *
      * @param AddReferenceOfRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#addreferenceof
      */
     public function addReferenceOfAsync(
             AddReferenceOfRequest $request
@@ -11550,8 +12123,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Add a reference
+     *
      * @param AddReferenceOfRequest $request
      * @return AddReferenceOfResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#addreferenceof
      */
     public function addReferenceOf (
             AddReferenceOfRequest $request
@@ -11562,8 +12138,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Add a reference by User ID
+     *
      * @param AddReferenceOfByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#addreferenceofbyuserid
      */
     public function addReferenceOfByUserIdAsync(
             AddReferenceOfByUserIdRequest $request
@@ -11577,8 +12156,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Add a reference by User ID
+     *
      * @param AddReferenceOfByUserIdRequest $request
      * @return AddReferenceOfByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#addreferenceofbyuserid
      */
     public function addReferenceOfByUserId (
             AddReferenceOfByUserIdRequest $request
@@ -11589,8 +12171,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete References
+     *
      * @param DeleteReferenceOfRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#deletereferenceof
      */
     public function deleteReferenceOfAsync(
             DeleteReferenceOfRequest $request
@@ -11604,8 +12189,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete References
+     *
      * @param DeleteReferenceOfRequest $request
      * @return DeleteReferenceOfResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#deletereferenceof
      */
     public function deleteReferenceOf (
             DeleteReferenceOfRequest $request
@@ -11616,8 +12204,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete the reference source by specifying the user ID
+     *
      * @param DeleteReferenceOfByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#deletereferenceofbyuserid
      */
     public function deleteReferenceOfByUserIdAsync(
             DeleteReferenceOfByUserIdRequest $request
@@ -11631,8 +12222,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete the reference source by specifying the user ID
+     *
      * @param DeleteReferenceOfByUserIdRequest $request
      * @return DeleteReferenceOfByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#deletereferenceofbyuserid
      */
     public function deleteReferenceOfByUserId (
             DeleteReferenceOfByUserIdRequest $request
@@ -11643,8 +12237,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute addition of reference source as acquire action
+     *
      * @param AddReferenceOfItemSetByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventoryaddreferenceofbyuserid
      */
     public function addReferenceOfItemSetByStampSheetAsync(
             AddReferenceOfItemSetByStampSheetRequest $request
@@ -11658,8 +12255,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute addition of reference source as acquire action
+     *
      * @param AddReferenceOfItemSetByStampSheetRequest $request
      * @return AddReferenceOfItemSetByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventoryaddreferenceofbyuserid
      */
     public function addReferenceOfItemSetByStampSheet (
             AddReferenceOfItemSetByStampSheetRequest $request
@@ -11670,8 +12270,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute deletion of reference source as acquire action
+     *
      * @param DeleteReferenceOfItemSetByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventorydeletereferenceofbyuserid
      */
     public function deleteReferenceOfItemSetByStampSheetAsync(
             DeleteReferenceOfItemSetByStampSheetRequest $request
@@ -11685,8 +12288,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute deletion of reference source as acquire action
+     *
      * @param DeleteReferenceOfItemSetByStampSheetRequest $request
      * @return DeleteReferenceOfItemSetByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventorydeletereferenceofbyuserid
      */
     public function deleteReferenceOfItemSetByStampSheet (
             DeleteReferenceOfItemSetByStampSheetRequest $request
@@ -11697,8 +12303,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute verification of reference source as verify action
+     *
      * @param VerifyReferenceOfByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventoryverifyreferenceofbyuserid
      */
     public function verifyReferenceOfByStampTaskAsync(
             VerifyReferenceOfByStampTaskRequest $request
@@ -11712,8 +12321,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute verification of reference source as verify action
+     *
      * @param VerifyReferenceOfByStampTaskRequest $request
      * @return VerifyReferenceOfByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventoryverifyreferenceofbyuserid
      */
     public function verifyReferenceOfByStampTask (
             VerifyReferenceOfByStampTaskRequest $request
@@ -11724,8 +12336,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Simple Items
+     *
      * @param DescribeSimpleItemsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#describesimpleitems
      */
     public function describeSimpleItemsAsync(
             DescribeSimpleItemsRequest $request
@@ -11739,8 +12354,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Simple Items
+     *
      * @param DescribeSimpleItemsRequest $request
      * @return DescribeSimpleItemsResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#describesimpleitems
      */
     public function describeSimpleItems (
             DescribeSimpleItemsRequest $request
@@ -11751,8 +12369,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Simple Items by User ID
+     *
      * @param DescribeSimpleItemsByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#describesimpleitemsbyuserid
      */
     public function describeSimpleItemsByUserIdAsync(
             DescribeSimpleItemsByUserIdRequest $request
@@ -11766,8 +12387,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Simple Items by User ID
+     *
      * @param DescribeSimpleItemsByUserIdRequest $request
      * @return DescribeSimpleItemsByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#describesimpleitemsbyuserid
      */
     public function describeSimpleItemsByUserId (
             DescribeSimpleItemsByUserIdRequest $request
@@ -11778,8 +12402,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get a Simple Item
+     *
      * @param GetSimpleItemRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getsimpleitem
      */
     public function getSimpleItemAsync(
             GetSimpleItemRequest $request
@@ -11793,8 +12420,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get a Simple Item
+     *
      * @param GetSimpleItemRequest $request
      * @return GetSimpleItemResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getsimpleitem
      */
     public function getSimpleItem (
             GetSimpleItemRequest $request
@@ -11805,8 +12435,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get a Simple Item by User ID
+     *
      * @param GetSimpleItemByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getsimpleitembyuserid
      */
     public function getSimpleItemByUserIdAsync(
             GetSimpleItemByUserIdRequest $request
@@ -11820,8 +12453,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get a Simple Item by User ID
+     *
      * @param GetSimpleItemByUserIdRequest $request
      * @return GetSimpleItemByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getsimpleitembyuserid
      */
     public function getSimpleItemByUserId (
             GetSimpleItemByUserIdRequest $request
@@ -11832,8 +12468,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get a Simple Item along with the signature
+     *
      * @param GetSimpleItemWithSignatureRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getsimpleitemwithsignature
      */
     public function getSimpleItemWithSignatureAsync(
             GetSimpleItemWithSignatureRequest $request
@@ -11847,8 +12486,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get a Simple Item along with the signature
+     *
      * @param GetSimpleItemWithSignatureRequest $request
      * @return GetSimpleItemWithSignatureResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getsimpleitemwithsignature
      */
     public function getSimpleItemWithSignature (
             GetSimpleItemWithSignatureRequest $request
@@ -11859,8 +12501,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get a Simple Item with signature by specifying the user ID
+     *
      * @param GetSimpleItemWithSignatureByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getsimpleitemwithsignaturebyuserid
      */
     public function getSimpleItemWithSignatureByUserIdAsync(
             GetSimpleItemWithSignatureByUserIdRequest $request
@@ -11874,8 +12519,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get a Simple Item with signature by specifying the user ID
+     *
      * @param GetSimpleItemWithSignatureByUserIdRequest $request
      * @return GetSimpleItemWithSignatureByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getsimpleitemwithsignaturebyuserid
      */
     public function getSimpleItemWithSignatureByUserId (
             GetSimpleItemWithSignatureByUserIdRequest $request
@@ -11886,8 +12534,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Acquire Simple Items by User ID
+     *
      * @param AcquireSimpleItemsByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#acquiresimpleitemsbyuserid
      */
     public function acquireSimpleItemsByUserIdAsync(
             AcquireSimpleItemsByUserIdRequest $request
@@ -11901,8 +12552,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Acquire Simple Items by User ID
+     *
      * @param AcquireSimpleItemsByUserIdRequest $request
      * @return AcquireSimpleItemsByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#acquiresimpleitemsbyuserid
      */
     public function acquireSimpleItemsByUserId (
             AcquireSimpleItemsByUserIdRequest $request
@@ -11913,8 +12567,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Consume Simple Items
+     *
      * @param ConsumeSimpleItemsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#consumesimpleitems
      */
     public function consumeSimpleItemsAsync(
             ConsumeSimpleItemsRequest $request
@@ -11928,8 +12585,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Consume Simple Items
+     *
      * @param ConsumeSimpleItemsRequest $request
      * @return ConsumeSimpleItemsResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#consumesimpleitems
      */
     public function consumeSimpleItems (
             ConsumeSimpleItemsRequest $request
@@ -11940,8 +12600,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Consume Simple Items by User ID
+     *
      * @param ConsumeSimpleItemsByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#consumesimpleitemsbyuserid
      */
     public function consumeSimpleItemsByUserIdAsync(
             ConsumeSimpleItemsByUserIdRequest $request
@@ -11955,8 +12618,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Consume Simple Items by User ID
+     *
      * @param ConsumeSimpleItemsByUserIdRequest $request
      * @return ConsumeSimpleItemsByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#consumesimpleitemsbyuserid
      */
     public function consumeSimpleItemsByUserId (
             ConsumeSimpleItemsByUserIdRequest $request
@@ -11967,8 +12633,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Set the quantity of simple items by User ID
+     *
      * @param SetSimpleItemsByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#setsimpleitemsbyuserid
      */
     public function setSimpleItemsByUserIdAsync(
             SetSimpleItemsByUserIdRequest $request
@@ -11982,8 +12651,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Set the quantity of simple items by User ID
+     *
      * @param SetSimpleItemsByUserIdRequest $request
      * @return SetSimpleItemsByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#setsimpleitemsbyuserid
      */
     public function setSimpleItemsByUserId (
             SetSimpleItemsByUserIdRequest $request
@@ -11994,8 +12666,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete simple item possession quantities
+     *
      * @param DeleteSimpleItemsByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#deletesimpleitemsbyuserid
      */
     public function deleteSimpleItemsByUserIdAsync(
             DeleteSimpleItemsByUserIdRequest $request
@@ -12009,8 +12684,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete simple item possession quantities
+     *
      * @param DeleteSimpleItemsByUserIdRequest $request
      * @return DeleteSimpleItemsByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#deletesimpleitemsbyuserid
      */
     public function deleteSimpleItemsByUserId (
             DeleteSimpleItemsByUserIdRequest $request
@@ -12021,8 +12699,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the quantity of possessions in simple items
+     *
      * @param VerifySimpleItemRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#verifysimpleitem
      */
     public function verifySimpleItemAsync(
             VerifySimpleItemRequest $request
@@ -12036,8 +12717,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the quantity of possessions in simple items
+     *
      * @param VerifySimpleItemRequest $request
      * @return VerifySimpleItemResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#verifysimpleitem
      */
     public function verifySimpleItem (
             VerifySimpleItemRequest $request
@@ -12048,8 +12732,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the quantity of possessions in simple items by User ID
+     *
      * @param VerifySimpleItemByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#verifysimpleitembyuserid
      */
     public function verifySimpleItemByUserIdAsync(
             VerifySimpleItemByUserIdRequest $request
@@ -12063,8 +12750,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the quantity of possessions in simple items by User ID
+     *
      * @param VerifySimpleItemByUserIdRequest $request
      * @return VerifySimpleItemByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#verifysimpleitembyuserid
      */
     public function verifySimpleItemByUserId (
             VerifySimpleItemByUserIdRequest $request
@@ -12075,8 +12765,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the acquisition of simple items as an acquire action
+     *
      * @param AcquireSimpleItemsByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventoryacquiresimpleitemsbyuserid
      */
     public function acquireSimpleItemsByStampSheetAsync(
             AcquireSimpleItemsByStampSheetRequest $request
@@ -12090,8 +12783,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the acquisition of simple items as an acquire action
+     *
      * @param AcquireSimpleItemsByStampSheetRequest $request
      * @return AcquireSimpleItemsByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventoryacquiresimpleitemsbyuserid
      */
     public function acquireSimpleItemsByStampSheet (
             AcquireSimpleItemsByStampSheetRequest $request
@@ -12102,8 +12798,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the consumption of simple items as a consume action
+     *
      * @param ConsumeSimpleItemsByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventoryconsumesimpleitemsbyuserid
      */
     public function consumeSimpleItemsByStampTaskAsync(
             ConsumeSimpleItemsByStampTaskRequest $request
@@ -12117,8 +12816,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the consumption of simple items as a consume action
+     *
      * @param ConsumeSimpleItemsByStampTaskRequest $request
      * @return ConsumeSimpleItemsByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventoryconsumesimpleitemsbyuserid
      */
     public function consumeSimpleItemsByStampTask (
             ConsumeSimpleItemsByStampTaskRequest $request
@@ -12129,8 +12831,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute setting of any value for the quantity of simple items as an acquire action
+     *
      * @param SetSimpleItemsByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventorysetsimpleitemsbyuserid
      */
     public function setSimpleItemsByStampSheetAsync(
             SetSimpleItemsByStampSheetRequest $request
@@ -12144,8 +12849,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute setting of any value for the quantity of simple items as an acquire action
+     *
      * @param SetSimpleItemsByStampSheetRequest $request
      * @return SetSimpleItemsByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventorysetsimpleitemsbyuserid
      */
     public function setSimpleItemsByStampSheet (
             SetSimpleItemsByStampSheetRequest $request
@@ -12156,8 +12864,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the verification of the quantity of simple items as a verify action
+     *
      * @param VerifySimpleItemByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventoryverifysimpleitembyuserid
      */
     public function verifySimpleItemByStampTaskAsync(
             VerifySimpleItemByStampTaskRequest $request
@@ -12171,8 +12882,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the verification of the quantity of simple items as a verify action
+     *
      * @param VerifySimpleItemByStampTaskRequest $request
      * @return VerifySimpleItemByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventoryverifysimpleitembyuserid
      */
     public function verifySimpleItemByStampTask (
             VerifySimpleItemByStampTaskRequest $request
@@ -12183,8 +12897,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Big Items
+     *
      * @param DescribeBigItemsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#describebigitems
      */
     public function describeBigItemsAsync(
             DescribeBigItemsRequest $request
@@ -12198,8 +12915,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Big Items
+     *
      * @param DescribeBigItemsRequest $request
      * @return DescribeBigItemsResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#describebigitems
      */
     public function describeBigItems (
             DescribeBigItemsRequest $request
@@ -12210,8 +12930,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Big Items by User ID
+     *
      * @param DescribeBigItemsByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#describebigitemsbyuserid
      */
     public function describeBigItemsByUserIdAsync(
             DescribeBigItemsByUserIdRequest $request
@@ -12225,8 +12948,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Big Items by User ID
+     *
      * @param DescribeBigItemsByUserIdRequest $request
      * @return DescribeBigItemsByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#describebigitemsbyuserid
      */
     public function describeBigItemsByUserId (
             DescribeBigItemsByUserIdRequest $request
@@ -12237,8 +12963,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get a Big Item
+     *
      * @param GetBigItemRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getbigitem
      */
     public function getBigItemAsync(
             GetBigItemRequest $request
@@ -12252,8 +12981,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get a Big Item
+     *
      * @param GetBigItemRequest $request
      * @return GetBigItemResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getbigitem
      */
     public function getBigItem (
             GetBigItemRequest $request
@@ -12264,8 +12996,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get a Big Item by specifying the user ID
+     *
      * @param GetBigItemByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getbigitembyuserid
      */
     public function getBigItemByUserIdAsync(
             GetBigItemByUserIdRequest $request
@@ -12279,8 +13014,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get a Big Item by specifying the user ID
+     *
      * @param GetBigItemByUserIdRequest $request
      * @return GetBigItemByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#getbigitembyuserid
      */
     public function getBigItemByUserId (
             GetBigItemByUserIdRequest $request
@@ -12291,8 +13029,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Acquire Big Item by User ID
+     *
      * @param AcquireBigItemByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#acquirebigitembyuserid
      */
     public function acquireBigItemByUserIdAsync(
             AcquireBigItemByUserIdRequest $request
@@ -12306,8 +13047,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Acquire Big Item by User ID
+     *
      * @param AcquireBigItemByUserIdRequest $request
      * @return AcquireBigItemByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#acquirebigitembyuserid
      */
     public function acquireBigItemByUserId (
             AcquireBigItemByUserIdRequest $request
@@ -12318,8 +13062,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Consume Big Items
+     *
      * @param ConsumeBigItemRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#consumebigitem
      */
     public function consumeBigItemAsync(
             ConsumeBigItemRequest $request
@@ -12333,8 +13080,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Consume Big Items
+     *
      * @param ConsumeBigItemRequest $request
      * @return ConsumeBigItemResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#consumebigitem
      */
     public function consumeBigItem (
             ConsumeBigItemRequest $request
@@ -12345,8 +13095,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Consume Big Items by User ID
+     *
      * @param ConsumeBigItemByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#consumebigitembyuserid
      */
     public function consumeBigItemByUserIdAsync(
             ConsumeBigItemByUserIdRequest $request
@@ -12360,8 +13113,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Consume Big Items by User ID
+     *
      * @param ConsumeBigItemByUserIdRequest $request
      * @return ConsumeBigItemByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#consumebigitembyuserid
      */
     public function consumeBigItemByUserId (
             ConsumeBigItemByUserIdRequest $request
@@ -12372,8 +13128,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Set the Big Item by User ID
+     *
      * @param SetBigItemByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#setbigitembyuserid
      */
     public function setBigItemByUserIdAsync(
             SetBigItemByUserIdRequest $request
@@ -12387,8 +13146,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Set the Big Item by User ID
+     *
      * @param SetBigItemByUserIdRequest $request
      * @return SetBigItemByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#setbigitembyuserid
      */
     public function setBigItemByUserId (
             SetBigItemByUserIdRequest $request
@@ -12399,8 +13161,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Big Item
+     *
      * @param DeleteBigItemByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#deletebigitembyuserid
      */
     public function deleteBigItemByUserIdAsync(
             DeleteBigItemByUserIdRequest $request
@@ -12414,8 +13179,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Big Item
+     *
      * @param DeleteBigItemByUserIdRequest $request
      * @return DeleteBigItemByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#deletebigitembyuserid
      */
     public function deleteBigItemByUserId (
             DeleteBigItemByUserIdRequest $request
@@ -12426,8 +13194,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify possession quantity of big items
+     *
      * @param VerifyBigItemRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#verifybigitem
      */
     public function verifyBigItemAsync(
             VerifyBigItemRequest $request
@@ -12441,8 +13212,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify possession quantity of big items
+     *
      * @param VerifyBigItemRequest $request
      * @return VerifyBigItemResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#verifybigitem
      */
     public function verifyBigItem (
             VerifyBigItemRequest $request
@@ -12453,8 +13227,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify possession quantity of Big Items by User ID
+     *
      * @param VerifyBigItemByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#verifybigitembyuserid
      */
     public function verifyBigItemByUserIdAsync(
             VerifyBigItemByUserIdRequest $request
@@ -12468,8 +13245,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify possession quantity of Big Items by User ID
+     *
      * @param VerifyBigItemByUserIdRequest $request
      * @return VerifyBigItemByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inventory/sdk/#verifybigitembyuserid
      */
     public function verifyBigItemByUserId (
             VerifyBigItemByUserIdRequest $request
@@ -12480,8 +13260,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute acquisition of big items as acquire action
+     *
      * @param AcquireBigItemByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventoryacquirebigitembyuserid
      */
     public function acquireBigItemByStampSheetAsync(
             AcquireBigItemByStampSheetRequest $request
@@ -12495,8 +13278,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute acquisition of big items as acquire action
+     *
      * @param AcquireBigItemByStampSheetRequest $request
      * @return AcquireBigItemByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventoryacquirebigitembyuserid
      */
     public function acquireBigItemByStampSheet (
             AcquireBigItemByStampSheetRequest $request
@@ -12507,8 +13293,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute consumption of Big Items as consume action
+     *
      * @param ConsumeBigItemByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventoryconsumebigitembyuserid
      */
     public function consumeBigItemByStampTaskAsync(
             ConsumeBigItemByStampTaskRequest $request
@@ -12522,8 +13311,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute consumption of Big Items as consume action
+     *
      * @param ConsumeBigItemByStampTaskRequest $request
      * @return ConsumeBigItemByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventoryconsumebigitembyuserid
      */
     public function consumeBigItemByStampTask (
             ConsumeBigItemByStampTaskRequest $request
@@ -12534,8 +13326,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute setting of Big Item as acquire action
+     *
      * @param SetBigItemByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventorysetbigitembyuserid
      */
     public function setBigItemByStampSheetAsync(
             SetBigItemByStampSheetRequest $request
@@ -12549,8 +13344,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute setting of Big Item as acquire action
+     *
      * @param SetBigItemByStampSheetRequest $request
      * @return SetBigItemByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventorysetbigitembyuserid
      */
     public function setBigItemByStampSheet (
             SetBigItemByStampSheetRequest $request
@@ -12561,8 +13359,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute verification of Big Item as verify action
+     *
      * @param VerifyBigItemByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventoryverifybigitembyuserid
      */
     public function verifyBigItemByStampTaskAsync(
             VerifyBigItemByStampTaskRequest $request
@@ -12576,8 +13377,11 @@ class Gs2InventoryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute verification of Big Item as verify action
+     *
      * @param VerifyBigItemByStampTaskRequest $request
      * @return VerifyBigItemByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventoryverifybigitembyuserid
      */
     public function verifyBigItemByStampTask (
             VerifyBigItemByStampTaskRequest $request

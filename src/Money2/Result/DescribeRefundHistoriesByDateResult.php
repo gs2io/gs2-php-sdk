@@ -23,33 +23,50 @@ use Gs2\Money2\Model\GooglePlayVerifyReceiptEvent;
 use Gs2\Money2\Model\RefundEvent;
 use Gs2\Money2\Model\RefundHistory;
 
+/**
+ * Result of describeRefundHistoriesByDate: List store refund history by year and month
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#describerefundhistoriesbydate
+ */
 class DescribeRefundHistoriesByDateResult implements IResult {
-    /** @var array */
+    /** @var array List of refund history */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of refund history */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of refund history */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of refund history
+     * @return DescribeRefundHistoriesByDateResult
+     */
 	public function withItems(?array $items): DescribeRefundHistoriesByDateResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeRefundHistoriesByDateResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeRefundHistoriesByDateResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

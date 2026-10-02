@@ -20,18 +20,29 @@ namespace Gs2\Enchant\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Enchant\Model\CurrentParameterMaster;
 
+/**
+ * Result of getCurrentParameterMaster: Get currently active Parameter Model master data
+ *
+ * @see https://docs.gs2.io/api_reference/enchant/sdk/#getcurrentparametermaster
+ */
 class GetCurrentParameterMasterResult implements IResult {
-    /** @var CurrentParameterMaster */
+    /** @var CurrentParameterMaster Currently active Parameter Model master data */
     private $item;
 
+    /** @return CurrentParameterMaster|null Currently active Parameter Model master data */
 	public function getItem(): ?CurrentParameterMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentParameterMaster|null $item Currently active Parameter Model master data */
 	public function setItem(?CurrentParameterMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentParameterMaster|null $item Currently active Parameter Model master data
+     * @return GetCurrentParameterMasterResult
+     */
 	public function withItem(?CurrentParameterMaster $item): GetCurrentParameterMasterResult {
 		$this->item = $item;
 		return $this;

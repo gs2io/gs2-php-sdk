@@ -20,157 +20,228 @@ namespace Gs2\Grade\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Grade Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/grade/sdk/#grademodelmaster
+ */
 class GradeModelMaster implements IModel {
 	/**
-     * @var string
+     * @var string Grade Model Master GRN
 	 */
 	private $gradeModelId;
 	/**
-     * @var string
+     * @var string Grade Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Description
 	 */
 	private $description;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var array
+     * @var array List of Default Grade Models
 	 */
 	private $defaultGrades;
 	/**
-     * @var string
+     * @var string GS2-Experience Experience Model GRN
 	 */
 	private $experienceModelId;
 	/**
-     * @var array
+     * @var array List of Grade Entry Models
 	 */
 	private $gradeEntries;
 	/**
-     * @var array
+     * @var array List of Reward Addition Tables
 	 */
 	private $acquireActionRates;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Grade Model Master GRN */
 	public function getGradeModelId(): ?string {
 		return $this->gradeModelId;
 	}
+    /** @param string|null $gradeModelId Grade Model Master GRN */
 	public function setGradeModelId(?string $gradeModelId) {
 		$this->gradeModelId = $gradeModelId;
 	}
+    /**
+     * @param string|null $gradeModelId Grade Model Master GRN
+     * @return GradeModelMaster
+     */
 	public function withGradeModelId(?string $gradeModelId): GradeModelMaster {
 		$this->gradeModelId = $gradeModelId;
 		return $this;
 	}
+    /** @return string|null Grade Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Grade Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Grade Model name
+     * @return GradeModelMaster
+     */
 	public function withName(?string $name): GradeModelMaster {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return GradeModelMaster
+     */
 	public function withDescription(?string $description): GradeModelMaster {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return GradeModelMaster
+     */
 	public function withMetadata(?string $metadata): GradeModelMaster {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return array|null List of Default Grade Models */
 	public function getDefaultGrades(): ?array {
 		return $this->defaultGrades;
 	}
+    /** @param array|null $defaultGrades List of Default Grade Models */
 	public function setDefaultGrades(?array $defaultGrades) {
 		$this->defaultGrades = $defaultGrades;
 	}
+    /**
+     * @param array|null $defaultGrades List of Default Grade Models
+     * @return GradeModelMaster
+     */
 	public function withDefaultGrades(?array $defaultGrades): GradeModelMaster {
 		$this->defaultGrades = $defaultGrades;
 		return $this;
 	}
+    /** @return string|null GS2-Experience Experience Model GRN */
 	public function getExperienceModelId(): ?string {
 		return $this->experienceModelId;
 	}
+    /** @param string|null $experienceModelId GS2-Experience Experience Model GRN */
 	public function setExperienceModelId(?string $experienceModelId) {
 		$this->experienceModelId = $experienceModelId;
 	}
+    /**
+     * @param string|null $experienceModelId GS2-Experience Experience Model GRN
+     * @return GradeModelMaster
+     */
 	public function withExperienceModelId(?string $experienceModelId): GradeModelMaster {
 		$this->experienceModelId = $experienceModelId;
 		return $this;
 	}
+    /** @return array|null List of Grade Entry Models */
 	public function getGradeEntries(): ?array {
 		return $this->gradeEntries;
 	}
+    /** @param array|null $gradeEntries List of Grade Entry Models */
 	public function setGradeEntries(?array $gradeEntries) {
 		$this->gradeEntries = $gradeEntries;
 	}
+    /**
+     * @param array|null $gradeEntries List of Grade Entry Models
+     * @return GradeModelMaster
+     */
 	public function withGradeEntries(?array $gradeEntries): GradeModelMaster {
 		$this->gradeEntries = $gradeEntries;
 		return $this;
 	}
+    /** @return array|null List of Reward Addition Tables */
 	public function getAcquireActionRates(): ?array {
 		return $this->acquireActionRates;
 	}
+    /** @param array|null $acquireActionRates List of Reward Addition Tables */
 	public function setAcquireActionRates(?array $acquireActionRates) {
 		$this->acquireActionRates = $acquireActionRates;
 	}
+    /**
+     * @param array|null $acquireActionRates List of Reward Addition Tables
+     * @return GradeModelMaster
+     */
 	public function withAcquireActionRates(?array $acquireActionRates): GradeModelMaster {
 		$this->acquireActionRates = $acquireActionRates;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return GradeModelMaster
+     */
 	public function withCreatedAt(?int $createdAt): GradeModelMaster {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return GradeModelMaster
+     */
 	public function withUpdatedAt(?int $updatedAt): GradeModelMaster {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return GradeModelMaster
+     */
 	public function withRevision(?int $revision): GradeModelMaster {
 		$this->revision = $revision;
 		return $this;

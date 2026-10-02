@@ -20,18 +20,29 @@ namespace Gs2\AdReward\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\AdReward\Model\Point;
 
+/**
+ * Result of getPointByUserId: Get Point status by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#getpointbyuserid
+ */
 class GetPointByUserIdResult implements IResult {
-    /** @var Point */
+    /** @var Point Points earned from ad viewing */
     private $item;
 
+    /** @return Point|null Points earned from ad viewing */
 	public function getItem(): ?Point {
 		return $this->item;
 	}
 
+    /** @param Point|null $item Points earned from ad viewing */
 	public function setItem(?Point $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Point|null $item Points earned from ad viewing
+     * @return GetPointByUserIdResult
+     */
 	public function withItem(?Point $item): GetPointByUserIdResult {
 		$this->item = $item;
 		return $this;

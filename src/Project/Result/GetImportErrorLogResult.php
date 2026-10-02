@@ -20,18 +20,25 @@ namespace Gs2\Project\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Project\Model\ImportErrorLog;
 
+/** Result of getImportErrorLog: Get import user data progress */
 class GetImportErrorLogResult implements IResult {
-    /** @var ImportErrorLog */
+    /** @var ImportErrorLog ImportErrorLog */
     private $item;
 
+    /** @return ImportErrorLog|null ImportErrorLog */
 	public function getItem(): ?ImportErrorLog {
 		return $this->item;
 	}
 
+    /** @param ImportErrorLog|null $item ImportErrorLog */
 	public function setItem(?ImportErrorLog $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param ImportErrorLog|null $item ImportErrorLog
+     * @return GetImportErrorLogResult
+     */
 	public function withItem(?ImportErrorLog $item): GetImportErrorLogResult {
 		$this->item = $item;
 		return $this;

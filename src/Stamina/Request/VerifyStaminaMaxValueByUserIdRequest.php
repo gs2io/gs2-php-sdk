@@ -19,89 +19,136 @@ namespace Gs2\Stamina\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for verifyStaminaMaxValueByUserId: Verify the value of the max stamina by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/stamina/sdk/#verifystaminamaxvaluebyuserid
+ */
 class VerifyStaminaMaxValueByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Stamina Model Name */
     private $staminaName;
-    /** @var string */
+    /** @var string Type of verification */
     private $verifyType;
-    /** @var int */
+    /** @var int Value to be verified */
     private $value;
-    /** @var bool */
+    /** @var bool Whether to multiply the value used for verification when specifying the quantity */
     private $multiplyValueSpecifyingQuantity;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return VerifyStaminaMaxValueByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): VerifyStaminaMaxValueByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return VerifyStaminaMaxValueByUserIdRequest
+     */
 	public function withUserId(?string $userId): VerifyStaminaMaxValueByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Stamina Model Name */
 	public function getStaminaName(): ?string {
 		return $this->staminaName;
 	}
+    /** @param string|null $staminaName Stamina Model Name */
 	public function setStaminaName(?string $staminaName) {
 		$this->staminaName = $staminaName;
 	}
+    /**
+     * @param string|null $staminaName Stamina Model Name
+     * @return VerifyStaminaMaxValueByUserIdRequest
+     */
 	public function withStaminaName(?string $staminaName): VerifyStaminaMaxValueByUserIdRequest {
 		$this->staminaName = $staminaName;
 		return $this;
 	}
+    /** @return string|null Type of verification */
 	public function getVerifyType(): ?string {
 		return $this->verifyType;
 	}
+    /** @param string|null $verifyType Type of verification */
 	public function setVerifyType(?string $verifyType) {
 		$this->verifyType = $verifyType;
 	}
+    /**
+     * @param string|null $verifyType Type of verification
+     * @return VerifyStaminaMaxValueByUserIdRequest
+     */
 	public function withVerifyType(?string $verifyType): VerifyStaminaMaxValueByUserIdRequest {
 		$this->verifyType = $verifyType;
 		return $this;
 	}
+    /** @return int|null Value to be verified */
 	public function getValue(): ?int {
 		return $this->value;
 	}
+    /** @param int|null $value Value to be verified */
 	public function setValue(?int $value) {
 		$this->value = $value;
 	}
+    /**
+     * @param int|null $value Value to be verified
+     * @return VerifyStaminaMaxValueByUserIdRequest
+     */
 	public function withValue(?int $value): VerifyStaminaMaxValueByUserIdRequest {
 		$this->value = $value;
 		return $this;
 	}
+    /** @return bool|null Whether to multiply the value used for verification when specifying the quantity */
 	public function getMultiplyValueSpecifyingQuantity(): ?bool {
 		return $this->multiplyValueSpecifyingQuantity;
 	}
+    /** @param bool|null $multiplyValueSpecifyingQuantity Whether to multiply the value used for verification when specifying the quantity */
 	public function setMultiplyValueSpecifyingQuantity(?bool $multiplyValueSpecifyingQuantity) {
 		$this->multiplyValueSpecifyingQuantity = $multiplyValueSpecifyingQuantity;
 	}
+    /**
+     * @param bool|null $multiplyValueSpecifyingQuantity Whether to multiply the value used for verification when specifying the quantity
+     * @return VerifyStaminaMaxValueByUserIdRequest
+     */
 	public function withMultiplyValueSpecifyingQuantity(?bool $multiplyValueSpecifyingQuantity): VerifyStaminaMaxValueByUserIdRequest {
 		$this->multiplyValueSpecifyingQuantity = $multiplyValueSpecifyingQuantity;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return VerifyStaminaMaxValueByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): VerifyStaminaMaxValueByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

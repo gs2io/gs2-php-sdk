@@ -20,18 +20,29 @@ namespace Gs2\MegaField\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\MegaField\Model\LayerModel;
 
+/**
+ * Result of describeLayerModels: List Layer Models
+ *
+ * @see https://docs.gs2.io/api_reference/mega_field/sdk/#describelayermodels
+ */
 class DescribeLayerModelsResult implements IResult {
-    /** @var array */
+    /** @var array List of Layer Models */
     private $items;
 
+    /** @return array|null List of Layer Models */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Layer Models */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Layer Models
+     * @return DescribeLayerModelsResult
+     */
 	public function withItems(?array $items): DescribeLayerModelsResult {
 		$this->items = $items;
 		return $this;

@@ -19,53 +19,82 @@ namespace Gs2\Inbox\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for deleteMessageByUserId: Delete message by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/inbox/sdk/#deletemessagebyuserid
+ */
 class DeleteMessageByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Message name */
     private $messageName;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DeleteMessageByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DeleteMessageByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return DeleteMessageByUserIdRequest
+     */
 	public function withUserId(?string $userId): DeleteMessageByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Message name */
 	public function getMessageName(): ?string {
 		return $this->messageName;
 	}
+    /** @param string|null $messageName Message name */
 	public function setMessageName(?string $messageName) {
 		$this->messageName = $messageName;
 	}
+    /**
+     * @param string|null $messageName Message name
+     * @return DeleteMessageByUserIdRequest
+     */
 	public function withMessageName(?string $messageName): DeleteMessageByUserIdRequest {
 		$this->messageName = $messageName;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return DeleteMessageByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): DeleteMessageByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

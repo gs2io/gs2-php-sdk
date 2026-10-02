@@ -20,101 +20,148 @@ namespace Gs2\Inventory\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Inventory Model
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#inventorymodel
+ */
 class InventoryModel implements IModel {
 	/**
-     * @var string
+     * @var string Inventory Model GRN
 	 */
 	private $inventoryModelId;
 	/**
-     * @var string
+     * @var string Inventory Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var int
+     * @var int Initial Capacity
 	 */
 	private $initialCapacity;
 	/**
-     * @var int
+     * @var int Maximum Capacity
 	 */
 	private $maxCapacity;
 	/**
-     * @var bool
+     * @var bool Protect Referenced Items
 	 */
 	private $protectReferencedItem;
 	/**
-     * @var array
+     * @var array List of Item Models
 	 */
 	private $itemModels;
+    /** @return string|null Inventory Model GRN */
 	public function getInventoryModelId(): ?string {
 		return $this->inventoryModelId;
 	}
+    /** @param string|null $inventoryModelId Inventory Model GRN */
 	public function setInventoryModelId(?string $inventoryModelId) {
 		$this->inventoryModelId = $inventoryModelId;
 	}
+    /**
+     * @param string|null $inventoryModelId Inventory Model GRN
+     * @return InventoryModel
+     */
 	public function withInventoryModelId(?string $inventoryModelId): InventoryModel {
 		$this->inventoryModelId = $inventoryModelId;
 		return $this;
 	}
+    /** @return string|null Inventory Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Inventory Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Inventory Model name
+     * @return InventoryModel
+     */
 	public function withName(?string $name): InventoryModel {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return InventoryModel
+     */
 	public function withMetadata(?string $metadata): InventoryModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return int|null Initial Capacity */
 	public function getInitialCapacity(): ?int {
 		return $this->initialCapacity;
 	}
+    /** @param int|null $initialCapacity Initial Capacity */
 	public function setInitialCapacity(?int $initialCapacity) {
 		$this->initialCapacity = $initialCapacity;
 	}
+    /**
+     * @param int|null $initialCapacity Initial Capacity
+     * @return InventoryModel
+     */
 	public function withInitialCapacity(?int $initialCapacity): InventoryModel {
 		$this->initialCapacity = $initialCapacity;
 		return $this;
 	}
+    /** @return int|null Maximum Capacity */
 	public function getMaxCapacity(): ?int {
 		return $this->maxCapacity;
 	}
+    /** @param int|null $maxCapacity Maximum Capacity */
 	public function setMaxCapacity(?int $maxCapacity) {
 		$this->maxCapacity = $maxCapacity;
 	}
+    /**
+     * @param int|null $maxCapacity Maximum Capacity
+     * @return InventoryModel
+     */
 	public function withMaxCapacity(?int $maxCapacity): InventoryModel {
 		$this->maxCapacity = $maxCapacity;
 		return $this;
 	}
+    /** @return bool|null Protect Referenced Items */
 	public function getProtectReferencedItem(): ?bool {
 		return $this->protectReferencedItem;
 	}
+    /** @param bool|null $protectReferencedItem Protect Referenced Items */
 	public function setProtectReferencedItem(?bool $protectReferencedItem) {
 		$this->protectReferencedItem = $protectReferencedItem;
 	}
+    /**
+     * @param bool|null $protectReferencedItem Protect Referenced Items
+     * @return InventoryModel
+     */
 	public function withProtectReferencedItem(?bool $protectReferencedItem): InventoryModel {
 		$this->protectReferencedItem = $protectReferencedItem;
 		return $this;
 	}
+    /** @return array|null List of Item Models */
 	public function getItemModels(): ?array {
 		return $this->itemModels;
 	}
+    /** @param array|null $itemModels List of Item Models */
 	public function setItemModels(?array $itemModels) {
 		$this->itemModels = $itemModels;
 	}
+    /**
+     * @param array|null $itemModels List of Item Models
+     * @return InventoryModel
+     */
 	public function withItemModels(?array $itemModels): InventoryModel {
 		$this->itemModels = $itemModels;
 		return $this;

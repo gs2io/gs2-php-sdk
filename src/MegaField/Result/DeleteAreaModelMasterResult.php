@@ -20,18 +20,29 @@ namespace Gs2\MegaField\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\MegaField\Model\AreaModelMaster;
 
+/**
+ * Result of deleteAreaModelMaster: Delete Area Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/mega_field/sdk/#deleteareamodelmaster
+ */
 class DeleteAreaModelMasterResult implements IResult {
-    /** @var AreaModelMaster */
+    /** @var AreaModelMaster Area Model Master deleted */
     private $item;
 
+    /** @return AreaModelMaster|null Area Model Master deleted */
 	public function getItem(): ?AreaModelMaster {
 		return $this->item;
 	}
 
+    /** @param AreaModelMaster|null $item Area Model Master deleted */
 	public function setItem(?AreaModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param AreaModelMaster|null $item Area Model Master deleted
+     * @return DeleteAreaModelMasterResult
+     */
 	public function withItem(?AreaModelMaster $item): DeleteAreaModelMasterResult {
 		$this->item = $item;
 		return $this;

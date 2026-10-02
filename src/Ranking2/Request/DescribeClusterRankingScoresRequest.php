@@ -19,87 +19,134 @@ namespace Gs2\Ranking2\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for describeClusterRankingScores: List Cluster Ranking Scores
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/sdk/#describeclusterrankingscores
+ */
 class DescribeClusterRankingScoresRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Cluster Ranking Model name */
     private $rankingName;
-    /** @var string */
+    /** @var string Cluster Name */
     private $clusterName;
-    /** @var int */
+    /** @var int Season */
     private $season;
-    /** @var string */
+    /** @var string Token specifying the position from which to start acquiring data */
     private $pageToken;
-    /** @var int */
+    /** @var int Number of data items to retrieve */
     private $limit;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DescribeClusterRankingScoresRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DescribeClusterRankingScoresRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return DescribeClusterRankingScoresRequest
+     */
 	public function withAccessToken(?string $accessToken): DescribeClusterRankingScoresRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Cluster Ranking Model name */
 	public function getRankingName(): ?string {
 		return $this->rankingName;
 	}
+    /** @param string|null $rankingName Cluster Ranking Model name */
 	public function setRankingName(?string $rankingName) {
 		$this->rankingName = $rankingName;
 	}
+    /**
+     * @param string|null $rankingName Cluster Ranking Model name
+     * @return DescribeClusterRankingScoresRequest
+     */
 	public function withRankingName(?string $rankingName): DescribeClusterRankingScoresRequest {
 		$this->rankingName = $rankingName;
 		return $this;
 	}
+    /** @return string|null Cluster Name */
 	public function getClusterName(): ?string {
 		return $this->clusterName;
 	}
+    /** @param string|null $clusterName Cluster Name */
 	public function setClusterName(?string $clusterName) {
 		$this->clusterName = $clusterName;
 	}
+    /**
+     * @param string|null $clusterName Cluster Name
+     * @return DescribeClusterRankingScoresRequest
+     */
 	public function withClusterName(?string $clusterName): DescribeClusterRankingScoresRequest {
 		$this->clusterName = $clusterName;
 		return $this;
 	}
+    /** @return int|null Season */
 	public function getSeason(): ?int {
 		return $this->season;
 	}
+    /** @param int|null $season Season */
 	public function setSeason(?int $season) {
 		$this->season = $season;
 	}
+    /**
+     * @param int|null $season Season
+     * @return DescribeClusterRankingScoresRequest
+     */
 	public function withSeason(?int $season): DescribeClusterRankingScoresRequest {
 		$this->season = $season;
 		return $this;
 	}
+    /** @return string|null Token specifying the position from which to start acquiring data */
 	public function getPageToken(): ?string {
 		return $this->pageToken;
 	}
+    /** @param string|null $pageToken Token specifying the position from which to start acquiring data */
 	public function setPageToken(?string $pageToken) {
 		$this->pageToken = $pageToken;
 	}
+    /**
+     * @param string|null $pageToken Token specifying the position from which to start acquiring data
+     * @return DescribeClusterRankingScoresRequest
+     */
 	public function withPageToken(?string $pageToken): DescribeClusterRankingScoresRequest {
 		$this->pageToken = $pageToken;
 		return $this;
 	}
+    /** @return int|null Number of data items to retrieve */
 	public function getLimit(): ?int {
 		return $this->limit;
 	}
+    /** @param int|null $limit Number of data items to retrieve */
 	public function setLimit(?int $limit) {
 		$this->limit = $limit;
 	}
+    /**
+     * @param int|null $limit Number of data items to retrieve
+     * @return DescribeClusterRankingScoresRequest
+     */
 	public function withLimit(?int $limit): DescribeClusterRankingScoresRequest {
 		$this->limit = $limit;
 		return $this;

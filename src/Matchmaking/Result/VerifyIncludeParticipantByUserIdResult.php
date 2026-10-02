@@ -20,18 +20,29 @@ namespace Gs2\Matchmaking\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Matchmaking\Model\SeasonGathering;
 
+/**
+ * Result of verifyIncludeParticipantByUserId: Verify if persistent gathering includes user ID by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#verifyincludeparticipantbyuserid
+ */
 class VerifyIncludeParticipantByUserIdResult implements IResult {
-    /** @var SeasonGathering */
+    /** @var SeasonGathering SeasonGathering */
     private $item;
 
+    /** @return SeasonGathering|null SeasonGathering */
 	public function getItem(): ?SeasonGathering {
 		return $this->item;
 	}
 
+    /** @param SeasonGathering|null $item SeasonGathering */
 	public function setItem(?SeasonGathering $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param SeasonGathering|null $item SeasonGathering
+     * @return VerifyIncludeParticipantByUserIdResult
+     */
 	public function withItem(?SeasonGathering $item): VerifyIncludeParticipantByUserIdResult {
 		$this->item = $item;
 		return $this;

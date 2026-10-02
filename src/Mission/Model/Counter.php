@@ -20,101 +20,148 @@ namespace Gs2\Mission\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Counter
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#counter
+ */
 class Counter implements IModel {
 	/**
-     * @var string
+     * @var string Counter GRN
 	 */
 	private $counterId;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var string
+     * @var string Counter Model name
 	 */
 	private $name;
 	/**
-     * @var array
+     * @var array Values
 	 */
 	private $values;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Counter GRN */
 	public function getCounterId(): ?string {
 		return $this->counterId;
 	}
+    /** @param string|null $counterId Counter GRN */
 	public function setCounterId(?string $counterId) {
 		$this->counterId = $counterId;
 	}
+    /**
+     * @param string|null $counterId Counter GRN
+     * @return Counter
+     */
 	public function withCounterId(?string $counterId): Counter {
 		$this->counterId = $counterId;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return Counter
+     */
 	public function withUserId(?string $userId): Counter {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Counter Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Counter Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Counter Model name
+     * @return Counter
+     */
 	public function withName(?string $name): Counter {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return array|null Values */
 	public function getValues(): ?array {
 		return $this->values;
 	}
+    /** @param array|null $values Values */
 	public function setValues(?array $values) {
 		$this->values = $values;
 	}
+    /**
+     * @param array|null $values Values
+     * @return Counter
+     */
 	public function withValues(?array $values): Counter {
 		$this->values = $values;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return Counter
+     */
 	public function withCreatedAt(?int $createdAt): Counter {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return Counter
+     */
 	public function withUpdatedAt(?int $updatedAt): Counter {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return Counter
+     */
 	public function withRevision(?int $revision): Counter {
 		$this->revision = $revision;
 		return $this;

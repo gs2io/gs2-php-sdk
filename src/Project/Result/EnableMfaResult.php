@@ -21,33 +21,46 @@ use Gs2\Core\Model\IResult;
 use Gs2\Project\Model\TwoFactorAuthenticationSetting;
 use Gs2\Project\Model\Account;
 
+/** Result of enableMfa: Enable MFA */
 class EnableMfaResult implements IResult {
-    /** @var Account */
+    /** @var Account GS2 account updated */
     private $item;
-    /** @var string */
+    /** @var string Challenge Token */
     private $challengeToken;
 
+    /** @return Account|null GS2 account updated */
 	public function getItem(): ?Account {
 		return $this->item;
 	}
 
+    /** @param Account|null $item GS2 account updated */
 	public function setItem(?Account $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Account|null $item GS2 account updated
+     * @return EnableMfaResult
+     */
 	public function withItem(?Account $item): EnableMfaResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null Challenge Token */
 	public function getChallengeToken(): ?string {
 		return $this->challengeToken;
 	}
 
+    /** @param string|null $challengeToken Challenge Token */
 	public function setChallengeToken(?string $challengeToken) {
 		$this->challengeToken = $challengeToken;
 	}
 
+    /**
+     * @param string|null $challengeToken Challenge Token
+     * @return EnableMfaResult
+     */
 	public function withChallengeToken(?string $challengeToken): EnableMfaResult {
 		$this->challengeToken = $challengeToken;
 		return $this;

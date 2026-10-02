@@ -19,75 +19,116 @@ namespace Gs2\Stamina\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for createRecoverValueTableMaster: Create Stamina Recovery Amount Table Master
+ *
+ * @see https://docs.gs2.io/api_reference/stamina/sdk/#createrecovervaluetablemaster
+ */
 class CreateRecoverValueTableMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Stamina Recovery Amount Table name */
     private $name;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var string */
+    /** @var string Metadata */
     private $metadata;
-    /** @var string */
+    /** @var string Experience Model ID */
     private $experienceModelId;
-    /** @var array */
+    /** @var array Recovery Amount Values by Rank */
     private $values;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return CreateRecoverValueTableMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): CreateRecoverValueTableMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Stamina Recovery Amount Table name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Stamina Recovery Amount Table name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Stamina Recovery Amount Table name
+     * @return CreateRecoverValueTableMasterRequest
+     */
 	public function withName(?string $name): CreateRecoverValueTableMasterRequest {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return CreateRecoverValueTableMasterRequest
+     */
 	public function withDescription(?string $description): CreateRecoverValueTableMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return CreateRecoverValueTableMasterRequest
+     */
 	public function withMetadata(?string $metadata): CreateRecoverValueTableMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return string|null Experience Model ID */
 	public function getExperienceModelId(): ?string {
 		return $this->experienceModelId;
 	}
+    /** @param string|null $experienceModelId Experience Model ID */
 	public function setExperienceModelId(?string $experienceModelId) {
 		$this->experienceModelId = $experienceModelId;
 	}
+    /**
+     * @param string|null $experienceModelId Experience Model ID
+     * @return CreateRecoverValueTableMasterRequest
+     */
 	public function withExperienceModelId(?string $experienceModelId): CreateRecoverValueTableMasterRequest {
 		$this->experienceModelId = $experienceModelId;
 		return $this;
 	}
+    /** @return array|null Recovery Amount Values by Rank */
 	public function getValues(): ?array {
 		return $this->values;
 	}
+    /** @param array|null $values Recovery Amount Values by Rank */
 	public function setValues(?array $values) {
 		$this->values = $values;
 	}
+    /**
+     * @param array|null $values Recovery Amount Values by Rank
+     * @return CreateRecoverValueTableMasterRequest
+     */
 	public function withValues(?array $values): CreateRecoverValueTableMasterRequest {
 		$this->values = $values;
 		return $this;

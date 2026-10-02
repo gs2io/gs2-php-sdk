@@ -20,18 +20,29 @@ namespace Gs2\Inventory\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Inventory\Model\BigInventoryModelMaster;
 
+/**
+ * Result of updateBigInventoryModelMaster: Update Big Inventory Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#updatebiginventorymodelmaster
+ */
 class UpdateBigInventoryModelMasterResult implements IResult {
-    /** @var BigInventoryModelMaster */
+    /** @var BigInventoryModelMaster Big Inventory Model Master updated */
     private $item;
 
+    /** @return BigInventoryModelMaster|null Big Inventory Model Master updated */
 	public function getItem(): ?BigInventoryModelMaster {
 		return $this->item;
 	}
 
+    /** @param BigInventoryModelMaster|null $item Big Inventory Model Master updated */
 	public function setItem(?BigInventoryModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param BigInventoryModelMaster|null $item Big Inventory Model Master updated
+     * @return UpdateBigInventoryModelMasterResult
+     */
 	public function withItem(?BigInventoryModelMaster $item): UpdateBigInventoryModelMasterResult {
 		$this->item = $item;
 		return $this;

@@ -21,33 +21,50 @@ use Gs2\Core\Model\IResult;
 use Gs2\Money\Model\WalletDetail;
 use Gs2\Money\Model\Wallet;
 
+/**
+ * Result of describeWallets: List wallets
+ *
+ * @see https://docs.gs2.io/api_reference/money/sdk/#describewallets
+ */
 class DescribeWalletsResult implements IResult {
-    /** @var array */
+    /** @var array List of Wallets */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Wallets */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Wallets */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Wallets
+     * @return DescribeWalletsResult
+     */
 	public function withItems(?array $items): DescribeWalletsResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeWalletsResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeWalletsResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

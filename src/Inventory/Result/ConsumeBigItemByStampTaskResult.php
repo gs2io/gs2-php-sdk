@@ -20,33 +20,50 @@ namespace Gs2\Inventory\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Inventory\Model\BigItem;
 
+/**
+ * Result of consumeBigItemByStampTask: Execute consumption of Big Items as consume action
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventoryconsumebigitembyuserid
+ */
 class ConsumeBigItemByStampTaskResult implements IResult {
-    /** @var BigItem */
+    /** @var BigItem Big Item per post-consumption */
     private $item;
-    /** @var string */
+    /** @var string Context recording the execution results of Consume Actions */
     private $newContextStack;
 
+    /** @return BigItem|null Big Item per post-consumption */
 	public function getItem(): ?BigItem {
 		return $this->item;
 	}
 
+    /** @param BigItem|null $item Big Item per post-consumption */
 	public function setItem(?BigItem $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param BigItem|null $item Big Item per post-consumption
+     * @return ConsumeBigItemByStampTaskResult
+     */
 	public function withItem(?BigItem $item): ConsumeBigItemByStampTaskResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null Context recording the execution results of Consume Actions */
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
+    /** @param string|null $newContextStack Context recording the execution results of Consume Actions */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
+    /**
+     * @param string|null $newContextStack Context recording the execution results of Consume Actions
+     * @return ConsumeBigItemByStampTaskResult
+     */
 	public function withNewContextStack(?string $newContextStack): ConsumeBigItemByStampTaskResult {
 		$this->newContextStack = $newContextStack;
 		return $this;

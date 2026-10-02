@@ -19,39 +19,62 @@ namespace Gs2\Inventory\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getInventory: Get Inventory
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#getinventory
+ */
 class GetInventoryRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Inventory Model Name */
     private $inventoryName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetInventoryRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetInventoryRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Inventory Model Name */
 	public function getInventoryName(): ?string {
 		return $this->inventoryName;
 	}
+    /** @param string|null $inventoryName Inventory Model Name */
 	public function setInventoryName(?string $inventoryName) {
 		$this->inventoryName = $inventoryName;
 	}
+    /**
+     * @param string|null $inventoryName Inventory Model Name
+     * @return GetInventoryRequest
+     */
 	public function withInventoryName(?string $inventoryName): GetInventoryRequest {
 		$this->inventoryName = $inventoryName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return GetInventoryRequest
+     */
 	public function withAccessToken(?string $accessToken): GetInventoryRequest {
 		$this->accessToken = $accessToken;
 		return $this;

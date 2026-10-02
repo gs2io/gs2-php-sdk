@@ -20,115 +20,168 @@ namespace Gs2\Experience\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Rank Up Threshold Master
+ *
+ * @see https://docs.gs2.io/api_reference/experience/sdk/#thresholdmaster
+ */
 class ThresholdMaster implements IModel {
 	/**
-     * @var string
+     * @var string Rank Up Threshold Master GRN
 	 */
 	private $thresholdId;
 	/**
-     * @var string
+     * @var string Rank Up Threshold name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Description
 	 */
 	private $description;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var array
+     * @var array List of Rank Up Experience Threshold
 	 */
 	private $values;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Rank Up Threshold Master GRN */
 	public function getThresholdId(): ?string {
 		return $this->thresholdId;
 	}
+    /** @param string|null $thresholdId Rank Up Threshold Master GRN */
 	public function setThresholdId(?string $thresholdId) {
 		$this->thresholdId = $thresholdId;
 	}
+    /**
+     * @param string|null $thresholdId Rank Up Threshold Master GRN
+     * @return ThresholdMaster
+     */
 	public function withThresholdId(?string $thresholdId): ThresholdMaster {
 		$this->thresholdId = $thresholdId;
 		return $this;
 	}
+    /** @return string|null Rank Up Threshold name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Rank Up Threshold name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Rank Up Threshold name
+     * @return ThresholdMaster
+     */
 	public function withName(?string $name): ThresholdMaster {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return ThresholdMaster
+     */
 	public function withDescription(?string $description): ThresholdMaster {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return ThresholdMaster
+     */
 	public function withMetadata(?string $metadata): ThresholdMaster {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return array|null List of Rank Up Experience Threshold */
 	public function getValues(): ?array {
 		return $this->values;
 	}
+    /** @param array|null $values List of Rank Up Experience Threshold */
 	public function setValues(?array $values) {
 		$this->values = $values;
 	}
+    /**
+     * @param array|null $values List of Rank Up Experience Threshold
+     * @return ThresholdMaster
+     */
 	public function withValues(?array $values): ThresholdMaster {
 		$this->values = $values;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return ThresholdMaster
+     */
 	public function withCreatedAt(?int $createdAt): ThresholdMaster {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return ThresholdMaster
+     */
 	public function withUpdatedAt(?int $updatedAt): ThresholdMaster {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return ThresholdMaster
+     */
 	public function withRevision(?int $revision): ThresholdMaster {
 		$this->revision = $revision;
 		return $this;

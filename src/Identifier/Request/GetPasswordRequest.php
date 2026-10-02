@@ -19,15 +19,26 @@ namespace Gs2\Identifier\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getPassword: Get Password
+ *
+ * @see https://docs.gs2.io/api_reference/identifier/sdk/#getpassword
+ */
 class GetPasswordRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string User Name */
     private $userName;
+    /** @return string|null User Name */
 	public function getUserName(): ?string {
 		return $this->userName;
 	}
+    /** @param string|null $userName User Name */
 	public function setUserName(?string $userName) {
 		$this->userName = $userName;
 	}
+    /**
+     * @param string|null $userName User Name
+     * @return GetPasswordRequest
+     */
 	public function withUserName(?string $userName): GetPasswordRequest {
 		$this->userName = $userName;
 		return $this;

@@ -19,18 +19,29 @@ namespace Gs2\Script\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of getNamespaceStatus: Get Namespace Status
+ *
+ * @see https://docs.gs2.io/api_reference/script/sdk/#getnamespacestatus
+ */
 class GetNamespaceStatusResult implements IResult {
-    /** @var string */
+    /** @var string Namespace Status */
     private $status;
 
+    /** @return string|null Namespace Status */
 	public function getStatus(): ?string {
 		return $this->status;
 	}
 
+    /** @param string|null $status Namespace Status */
 	public function setStatus(?string $status) {
 		$this->status = $status;
 	}
 
+    /**
+     * @param string|null $status Namespace Status
+     * @return GetNamespaceStatusResult
+     */
 	public function withStatus(?string $status): GetNamespaceStatusResult {
 		$this->status = $status;
 		return $this;

@@ -19,27 +19,44 @@ namespace Gs2\SerialKey\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getCampaignModel: Get Campaign Model
+ *
+ * @see https://docs.gs2.io/api_reference/serial_key/sdk/#getcampaignmodel
+ */
 class GetCampaignModelRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Campaign Model name */
     private $campaignModelName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetCampaignModelRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetCampaignModelRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Campaign Model name */
 	public function getCampaignModelName(): ?string {
 		return $this->campaignModelName;
 	}
+    /** @param string|null $campaignModelName Campaign Model name */
 	public function setCampaignModelName(?string $campaignModelName) {
 		$this->campaignModelName = $campaignModelName;
 	}
+    /**
+     * @param string|null $campaignModelName Campaign Model name
+     * @return GetCampaignModelRequest
+     */
 	public function withCampaignModelName(?string $campaignModelName): GetCampaignModelRequest {
 		$this->campaignModelName = $campaignModelName;
 		return $this;

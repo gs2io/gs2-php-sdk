@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Showcase\Model\DisplayItemMaster;
 use Gs2\Showcase\Model\ShowcaseMaster;
 
+/**
+ * Result of deleteShowcaseMaster: Delete Showcase Master
+ *
+ * @see https://docs.gs2.io/api_reference/showcase/sdk/#deleteshowcasemaster
+ */
 class DeleteShowcaseMasterResult implements IResult {
-    /** @var ShowcaseMaster */
+    /** @var ShowcaseMaster Showcase Master deleted */
     private $item;
 
+    /** @return ShowcaseMaster|null Showcase Master deleted */
 	public function getItem(): ?ShowcaseMaster {
 		return $this->item;
 	}
 
+    /** @param ShowcaseMaster|null $item Showcase Master deleted */
 	public function setItem(?ShowcaseMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param ShowcaseMaster|null $item Showcase Master deleted
+     * @return DeleteShowcaseMasterResult
+     */
 	public function withItem(?ShowcaseMaster $item): DeleteShowcaseMasterResult {
 		$this->item = $item;
 		return $this;

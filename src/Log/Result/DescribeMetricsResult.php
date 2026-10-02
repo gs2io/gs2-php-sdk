@@ -20,33 +20,50 @@ namespace Gs2\Log\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Log\Model\MetricModel;
 
+/**
+ * Result of describeMetrics: Get list of metrics
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#describemetrics
+ */
 class DescribeMetricsResult implements IResult {
-    /** @var array */
+    /** @var array List of Metric Models */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Metric Models */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Metric Models */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Metric Models
+     * @return DescribeMetricsResult
+     */
 	public function withItems(?array $items): DescribeMetricsResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeMetricsResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeMetricsResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

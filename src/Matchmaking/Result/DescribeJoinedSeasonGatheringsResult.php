@@ -20,33 +20,50 @@ namespace Gs2\Matchmaking\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Matchmaking\Model\JoinedSeasonGathering;
 
+/**
+ * Result of describeJoinedSeasonGatherings: List joined Season Gatherings
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#describejoinedseasongatherings
+ */
 class DescribeJoinedSeasonGatheringsResult implements IResult {
-    /** @var array */
+    /** @var array List of Season Gathering */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Season Gathering */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Season Gathering */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Season Gathering
+     * @return DescribeJoinedSeasonGatheringsResult
+     */
 	public function withItems(?array $items): DescribeJoinedSeasonGatheringsResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeJoinedSeasonGatheringsResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeJoinedSeasonGatheringsResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

@@ -19,39 +19,62 @@ namespace Gs2\Matchmaking\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getRating: Get Rating
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#getrating
+ */
 class GetRatingRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Rating name */
     private $ratingName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetRatingRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetRatingRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return GetRatingRequest
+     */
 	public function withAccessToken(?string $accessToken): GetRatingRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Rating name */
 	public function getRatingName(): ?string {
 		return $this->ratingName;
 	}
+    /** @param string|null $ratingName Rating name */
 	public function setRatingName(?string $ratingName) {
 		$this->ratingName = $ratingName;
 	}
+    /**
+     * @param string|null $ratingName Rating name
+     * @return GetRatingRequest
+     */
 	public function withRatingName(?string $ratingName): GetRatingRequest {
 		$this->ratingName = $ratingName;
 		return $this;

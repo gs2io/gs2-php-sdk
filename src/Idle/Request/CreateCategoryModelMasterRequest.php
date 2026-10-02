@@ -21,123 +21,188 @@ use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Idle\Model\AcquireAction;
 use Gs2\Idle\Model\AcquireActionList;
 
+/**
+ * Request for createCategoryModelMaster: Create Category Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/idle/sdk/#createcategorymodelmaster
+ */
 class CreateCategoryModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Category Model name */
     private $name;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var string */
+    /** @var string Metadata */
     private $metadata;
-    /** @var int */
+    /** @var int Reward Interval (Minutes) */
     private $rewardIntervalMinutes;
-    /** @var int */
+    /** @var int Default Maximum Idle Time (Minutes) */
     private $defaultMaximumIdleMinutes;
-    /** @var string */
+    /** @var string Reward Reset Mode */
     private $rewardResetMode;
-    /** @var array */
+    /** @var array List of acquire actions for each idle time */
     private $acquireActions;
-    /** @var string */
+    /** @var string Idle Period Schedule ID */
     private $idlePeriodScheduleId;
-    /** @var string */
+    /** @var string Receive Period Schedule ID */
     private $receivePeriodScheduleId;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return CreateCategoryModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): CreateCategoryModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Category Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Category Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Category Model name
+     * @return CreateCategoryModelMasterRequest
+     */
 	public function withName(?string $name): CreateCategoryModelMasterRequest {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return CreateCategoryModelMasterRequest
+     */
 	public function withDescription(?string $description): CreateCategoryModelMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return CreateCategoryModelMasterRequest
+     */
 	public function withMetadata(?string $metadata): CreateCategoryModelMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return int|null Reward Interval (Minutes) */
 	public function getRewardIntervalMinutes(): ?int {
 		return $this->rewardIntervalMinutes;
 	}
+    /** @param int|null $rewardIntervalMinutes Reward Interval (Minutes) */
 	public function setRewardIntervalMinutes(?int $rewardIntervalMinutes) {
 		$this->rewardIntervalMinutes = $rewardIntervalMinutes;
 	}
+    /**
+     * @param int|null $rewardIntervalMinutes Reward Interval (Minutes)
+     * @return CreateCategoryModelMasterRequest
+     */
 	public function withRewardIntervalMinutes(?int $rewardIntervalMinutes): CreateCategoryModelMasterRequest {
 		$this->rewardIntervalMinutes = $rewardIntervalMinutes;
 		return $this;
 	}
+    /** @return int|null Default Maximum Idle Time (Minutes) */
 	public function getDefaultMaximumIdleMinutes(): ?int {
 		return $this->defaultMaximumIdleMinutes;
 	}
+    /** @param int|null $defaultMaximumIdleMinutes Default Maximum Idle Time (Minutes) */
 	public function setDefaultMaximumIdleMinutes(?int $defaultMaximumIdleMinutes) {
 		$this->defaultMaximumIdleMinutes = $defaultMaximumIdleMinutes;
 	}
+    /**
+     * @param int|null $defaultMaximumIdleMinutes Default Maximum Idle Time (Minutes)
+     * @return CreateCategoryModelMasterRequest
+     */
 	public function withDefaultMaximumIdleMinutes(?int $defaultMaximumIdleMinutes): CreateCategoryModelMasterRequest {
 		$this->defaultMaximumIdleMinutes = $defaultMaximumIdleMinutes;
 		return $this;
 	}
+    /** @return string|null Reward Reset Mode */
 	public function getRewardResetMode(): ?string {
 		return $this->rewardResetMode;
 	}
+    /** @param string|null $rewardResetMode Reward Reset Mode */
 	public function setRewardResetMode(?string $rewardResetMode) {
 		$this->rewardResetMode = $rewardResetMode;
 	}
+    /**
+     * @param string|null $rewardResetMode Reward Reset Mode
+     * @return CreateCategoryModelMasterRequest
+     */
 	public function withRewardResetMode(?string $rewardResetMode): CreateCategoryModelMasterRequest {
 		$this->rewardResetMode = $rewardResetMode;
 		return $this;
 	}
+    /** @return array|null List of acquire actions for each idle time */
 	public function getAcquireActions(): ?array {
 		return $this->acquireActions;
 	}
+    /** @param array|null $acquireActions List of acquire actions for each idle time */
 	public function setAcquireActions(?array $acquireActions) {
 		$this->acquireActions = $acquireActions;
 	}
+    /**
+     * @param array|null $acquireActions List of acquire actions for each idle time
+     * @return CreateCategoryModelMasterRequest
+     */
 	public function withAcquireActions(?array $acquireActions): CreateCategoryModelMasterRequest {
 		$this->acquireActions = $acquireActions;
 		return $this;
 	}
+    /** @return string|null Idle Period Schedule ID */
 	public function getIdlePeriodScheduleId(): ?string {
 		return $this->idlePeriodScheduleId;
 	}
+    /** @param string|null $idlePeriodScheduleId Idle Period Schedule ID */
 	public function setIdlePeriodScheduleId(?string $idlePeriodScheduleId) {
 		$this->idlePeriodScheduleId = $idlePeriodScheduleId;
 	}
+    /**
+     * @param string|null $idlePeriodScheduleId Idle Period Schedule ID
+     * @return CreateCategoryModelMasterRequest
+     */
 	public function withIdlePeriodScheduleId(?string $idlePeriodScheduleId): CreateCategoryModelMasterRequest {
 		$this->idlePeriodScheduleId = $idlePeriodScheduleId;
 		return $this;
 	}
+    /** @return string|null Receive Period Schedule ID */
 	public function getReceivePeriodScheduleId(): ?string {
 		return $this->receivePeriodScheduleId;
 	}
+    /** @param string|null $receivePeriodScheduleId Receive Period Schedule ID */
 	public function setReceivePeriodScheduleId(?string $receivePeriodScheduleId) {
 		$this->receivePeriodScheduleId = $receivePeriodScheduleId;
 	}
+    /**
+     * @param string|null $receivePeriodScheduleId Receive Period Schedule ID
+     * @return CreateCategoryModelMasterRequest
+     */
 	public function withReceivePeriodScheduleId(?string $receivePeriodScheduleId): CreateCategoryModelMasterRequest {
 		$this->receivePeriodScheduleId = $receivePeriodScheduleId;
 		return $this;

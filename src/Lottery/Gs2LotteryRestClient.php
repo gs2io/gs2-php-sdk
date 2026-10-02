@@ -3291,25 +3291,22 @@ class ResetByStampSheetTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 Lottery API クライアント
+ * GS2-Lottery API client
  *
- * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/lottery/sdk/
  */
 class Gs2LotteryRestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#describenamespaces
      */
     public function describeNamespacesAsync(
             DescribeNamespacesRequest $request
@@ -3323,8 +3320,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#describenamespaces
      */
     public function describeNamespaces (
             DescribeNamespacesRequest $request
@@ -3335,8 +3335,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#createnamespace
      */
     public function createNamespaceAsync(
             CreateNamespaceRequest $request
@@ -3350,8 +3353,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#createnamespace
      */
     public function createNamespace (
             CreateNamespaceRequest $request
@@ -3362,8 +3368,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#getnamespacestatus
      */
     public function getNamespaceStatusAsync(
             GetNamespaceStatusRequest $request
@@ -3377,8 +3386,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#getnamespacestatus
      */
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
@@ -3389,8 +3401,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#getnamespace
      */
     public function getNamespaceAsync(
             GetNamespaceRequest $request
@@ -3404,8 +3419,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#getnamespace
      */
     public function getNamespace (
             GetNamespaceRequest $request
@@ -3416,8 +3434,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#updatenamespace
      */
     public function updateNamespaceAsync(
             UpdateNamespaceRequest $request
@@ -3431,8 +3452,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#updatenamespace
      */
     public function updateNamespace (
             UpdateNamespaceRequest $request
@@ -3443,8 +3467,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#deletenamespace
      */
     public function deleteNamespaceAsync(
             DeleteNamespaceRequest $request
@@ -3458,8 +3485,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#deletenamespace
      */
     public function deleteNamespace (
             DeleteNamespaceRequest $request
@@ -3470,8 +3500,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#getserviceversion
      */
     public function getServiceVersionAsync(
             GetServiceVersionRequest $request
@@ -3485,8 +3518,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return GetServiceVersionResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#getserviceversion
      */
     public function getServiceVersion (
             GetServiceVersionRequest $request
@@ -3497,8 +3533,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserIdAsync(
             DumpUserDataByUserIdRequest $request
@@ -3512,8 +3551,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return DumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserId (
             DumpUserDataByUserIdRequest $request
@@ -3524,8 +3566,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserIdAsync(
             CheckDumpUserDataByUserIdRequest $request
@@ -3539,8 +3584,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return CheckDumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserId (
             CheckDumpUserDataByUserIdRequest $request
@@ -3551,8 +3599,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserIdAsync(
             CleanUserDataByUserIdRequest $request
@@ -3566,8 +3617,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return CleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserId (
             CleanUserDataByUserIdRequest $request
@@ -3578,8 +3632,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserIdAsync(
             CheckCleanUserDataByUserIdRequest $request
@@ -3593,8 +3650,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return CheckCleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserId (
             CheckCleanUserDataByUserIdRequest $request
@@ -3605,8 +3665,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserIdAsync(
             PrepareImportUserDataByUserIdRequest $request
@@ -3620,8 +3683,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PrepareImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserId (
             PrepareImportUserDataByUserIdRequest $request
@@ -3632,8 +3698,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserIdAsync(
             ImportUserDataByUserIdRequest $request
@@ -3647,8 +3716,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return ImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserId (
             ImportUserDataByUserIdRequest $request
@@ -3659,8 +3731,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserIdAsync(
             CheckImportUserDataByUserIdRequest $request
@@ -3674,8 +3749,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return CheckImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserId (
             CheckImportUserDataByUserIdRequest $request
@@ -3686,8 +3764,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Lottery Model Masters
+     *
      * @param DescribeLotteryModelMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#describelotterymodelmasters
      */
     public function describeLotteryModelMastersAsync(
             DescribeLotteryModelMastersRequest $request
@@ -3701,8 +3782,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Lottery Model Masters
+     *
      * @param DescribeLotteryModelMastersRequest $request
      * @return DescribeLotteryModelMastersResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#describelotterymodelmasters
      */
     public function describeLotteryModelMasters (
             DescribeLotteryModelMastersRequest $request
@@ -3713,8 +3797,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Lottery Model Master
+     *
      * @param CreateLotteryModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#createlotterymodelmaster
      */
     public function createLotteryModelMasterAsync(
             CreateLotteryModelMasterRequest $request
@@ -3728,8 +3815,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Lottery Model Master
+     *
      * @param CreateLotteryModelMasterRequest $request
      * @return CreateLotteryModelMasterResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#createlotterymodelmaster
      */
     public function createLotteryModelMaster (
             CreateLotteryModelMasterRequest $request
@@ -3740,8 +3830,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Lottery Model Master
+     *
      * @param GetLotteryModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#getlotterymodelmaster
      */
     public function getLotteryModelMasterAsync(
             GetLotteryModelMasterRequest $request
@@ -3755,8 +3848,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Lottery Model Master
+     *
      * @param GetLotteryModelMasterRequest $request
      * @return GetLotteryModelMasterResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#getlotterymodelmaster
      */
     public function getLotteryModelMaster (
             GetLotteryModelMasterRequest $request
@@ -3767,8 +3863,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Lottery Model Master
+     *
      * @param UpdateLotteryModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#updatelotterymodelmaster
      */
     public function updateLotteryModelMasterAsync(
             UpdateLotteryModelMasterRequest $request
@@ -3782,8 +3881,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Lottery Model Master
+     *
      * @param UpdateLotteryModelMasterRequest $request
      * @return UpdateLotteryModelMasterResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#updatelotterymodelmaster
      */
     public function updateLotteryModelMaster (
             UpdateLotteryModelMasterRequest $request
@@ -3794,8 +3896,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Lottery Model Master
+     *
      * @param DeleteLotteryModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#deletelotterymodelmaster
      */
     public function deleteLotteryModelMasterAsync(
             DeleteLotteryModelMasterRequest $request
@@ -3809,8 +3914,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Lottery Model Master
+     *
      * @param DeleteLotteryModelMasterRequest $request
      * @return DeleteLotteryModelMasterResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#deletelotterymodelmaster
      */
     public function deleteLotteryModelMaster (
             DeleteLotteryModelMasterRequest $request
@@ -3821,8 +3929,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Prize Table Masters
+     *
      * @param DescribePrizeTableMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#describeprizetablemasters
      */
     public function describePrizeTableMastersAsync(
             DescribePrizeTableMastersRequest $request
@@ -3836,8 +3947,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Prize Table Masters
+     *
      * @param DescribePrizeTableMastersRequest $request
      * @return DescribePrizeTableMastersResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#describeprizetablemasters
      */
     public function describePrizeTableMasters (
             DescribePrizeTableMastersRequest $request
@@ -3848,8 +3962,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Prize Table Master
+     *
      * @param CreatePrizeTableMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#createprizetablemaster
      */
     public function createPrizeTableMasterAsync(
             CreatePrizeTableMasterRequest $request
@@ -3863,8 +3980,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Prize Table Master
+     *
      * @param CreatePrizeTableMasterRequest $request
      * @return CreatePrizeTableMasterResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#createprizetablemaster
      */
     public function createPrizeTableMaster (
             CreatePrizeTableMasterRequest $request
@@ -3875,8 +3995,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Prize Table Master
+     *
      * @param GetPrizeTableMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#getprizetablemaster
      */
     public function getPrizeTableMasterAsync(
             GetPrizeTableMasterRequest $request
@@ -3890,8 +4013,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Prize Table Master
+     *
      * @param GetPrizeTableMasterRequest $request
      * @return GetPrizeTableMasterResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#getprizetablemaster
      */
     public function getPrizeTableMaster (
             GetPrizeTableMasterRequest $request
@@ -3902,8 +4028,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Prize Table Master
+     *
      * @param UpdatePrizeTableMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#updateprizetablemaster
      */
     public function updatePrizeTableMasterAsync(
             UpdatePrizeTableMasterRequest $request
@@ -3917,8 +4046,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Prize Table Master
+     *
      * @param UpdatePrizeTableMasterRequest $request
      * @return UpdatePrizeTableMasterResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#updateprizetablemaster
      */
     public function updatePrizeTableMaster (
             UpdatePrizeTableMasterRequest $request
@@ -3929,8 +4061,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Prize Table Master
+     *
      * @param DeletePrizeTableMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#deleteprizetablemaster
      */
     public function deletePrizeTableMasterAsync(
             DeletePrizeTableMasterRequest $request
@@ -3944,8 +4079,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Prize Table Master
+     *
      * @param DeletePrizeTableMasterRequest $request
      * @return DeletePrizeTableMasterResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#deleteprizetablemaster
      */
     public function deletePrizeTableMaster (
             DeletePrizeTableMasterRequest $request
@@ -3956,8 +4094,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Lottery Models
+     *
      * @param DescribeLotteryModelsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#describelotterymodels
      */
     public function describeLotteryModelsAsync(
             DescribeLotteryModelsRequest $request
@@ -3971,8 +4112,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Lottery Models
+     *
      * @param DescribeLotteryModelsRequest $request
      * @return DescribeLotteryModelsResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#describelotterymodels
      */
     public function describeLotteryModels (
             DescribeLotteryModelsRequest $request
@@ -3983,8 +4127,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Lottery Model
+     *
      * @param GetLotteryModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#getlotterymodel
      */
     public function getLotteryModelAsync(
             GetLotteryModelRequest $request
@@ -3998,8 +4145,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Lottery Model
+     *
      * @param GetLotteryModelRequest $request
      * @return GetLotteryModelResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#getlotterymodel
      */
     public function getLotteryModel (
             GetLotteryModelRequest $request
@@ -4010,8 +4160,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Prize Tables
+     *
      * @param DescribePrizeTablesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#describeprizetables
      */
     public function describePrizeTablesAsync(
             DescribePrizeTablesRequest $request
@@ -4025,8 +4178,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Prize Tables
+     *
      * @param DescribePrizeTablesRequest $request
      * @return DescribePrizeTablesResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#describeprizetables
      */
     public function describePrizeTables (
             DescribePrizeTablesRequest $request
@@ -4037,8 +4193,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Prize Table
+     *
      * @param GetPrizeTableRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#getprizetable
      */
     public function getPrizeTableAsync(
             GetPrizeTableRequest $request
@@ -4052,8 +4211,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Prize Table
+     *
      * @param GetPrizeTableRequest $request
      * @return GetPrizeTableResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#getprizetable
      */
     public function getPrizeTable (
             GetPrizeTableRequest $request
@@ -4064,8 +4226,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute a lottery by specifying a User ID
+     *
      * @param DrawByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#drawbyuserid
      */
     public function drawByUserIdAsync(
             DrawByUserIdRequest $request
@@ -4079,8 +4244,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute a lottery by specifying a User ID
+     *
      * @param DrawByUserIdRequest $request
      * @return DrawByUserIdResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#drawbyuserid
      */
     public function drawByUserId (
             DrawByUserIdRequest $request
@@ -4091,8 +4259,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get the prediction result of the lottery result
+     *
      * @param PredictionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#prediction
      */
     public function predictionAsync(
             PredictionRequest $request
@@ -4106,8 +4277,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get the prediction result of the lottery result
+     *
      * @param PredictionRequest $request
      * @return PredictionResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#prediction
      */
     public function prediction (
             PredictionRequest $request
@@ -4118,8 +4292,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get the prediction result of the lottery result by User ID
+     *
      * @param PredictionByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#predictionbyuserid
      */
     public function predictionByUserIdAsync(
             PredictionByUserIdRequest $request
@@ -4133,8 +4310,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get the prediction result of the lottery result by User ID
+     *
      * @param PredictionByUserIdRequest $request
      * @return PredictionByUserIdResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#predictionbyuserid
      */
     public function predictionByUserId (
             PredictionByUserIdRequest $request
@@ -4145,8 +4325,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute a lottery with a random seed by User ID
+     *
      * @param DrawWithRandomSeedByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#drawwithrandomseedbyuserid
      */
     public function drawWithRandomSeedByUserIdAsync(
             DrawWithRandomSeedByUserIdRequest $request
@@ -4160,8 +4343,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute a lottery with a random seed by User ID
+     *
      * @param DrawWithRandomSeedByUserIdRequest $request
      * @return DrawWithRandomSeedByUserIdResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#drawwithrandomseedbyuserid
      */
     public function drawWithRandomSeedByUserId (
             DrawWithRandomSeedByUserIdRequest $request
@@ -4172,8 +4358,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute lottery processing as an acquire action
+     *
      * @param DrawByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/stamp_sheet/#gs2lotterydrawbyuserid
      */
     public function drawByStampSheetAsync(
             DrawByStampSheetRequest $request
@@ -4187,8 +4376,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute lottery processing as an acquire action
+     *
      * @param DrawByStampSheetRequest $request
      * @return DrawByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/lottery/stamp_sheet/#gs2lotterydrawbyuserid
      */
     public function drawByStampSheet (
             DrawByStampSheetRequest $request
@@ -4199,8 +4391,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Draw Probabilities
+     *
      * @param DescribeProbabilitiesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#describeprobabilities
      */
     public function describeProbabilitiesAsync(
             DescribeProbabilitiesRequest $request
@@ -4214,8 +4409,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Draw Probabilities
+     *
      * @param DescribeProbabilitiesRequest $request
      * @return DescribeProbabilitiesResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#describeprobabilities
      */
     public function describeProbabilities (
             DescribeProbabilitiesRequest $request
@@ -4226,8 +4424,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Draw Probabilities by User ID
+     *
      * @param DescribeProbabilitiesByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#describeprobabilitiesbyuserid
      */
     public function describeProbabilitiesByUserIdAsync(
             DescribeProbabilitiesByUserIdRequest $request
@@ -4241,8 +4442,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Draw Probabilities by User ID
+     *
      * @param DescribeProbabilitiesByUserIdRequest $request
      * @return DescribeProbabilitiesByUserIdResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#describeprobabilitiesbyuserid
      */
     public function describeProbabilitiesByUserId (
             DescribeProbabilitiesByUserIdRequest $request
@@ -4253,8 +4457,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Lottery Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#exportmaster
      */
     public function exportMasterAsync(
             ExportMasterRequest $request
@@ -4268,8 +4475,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Lottery Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return ExportMasterResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#exportmaster
      */
     public function exportMaster (
             ExportMasterRequest $request
@@ -4280,8 +4490,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Lottery Model master data
+     *
      * @param GetCurrentLotteryMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#getcurrentlotterymaster
      */
     public function getCurrentLotteryMasterAsync(
             GetCurrentLotteryMasterRequest $request
@@ -4295,8 +4508,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Lottery Model master data
+     *
      * @param GetCurrentLotteryMasterRequest $request
      * @return GetCurrentLotteryMasterResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#getcurrentlotterymaster
      */
     public function getCurrentLotteryMaster (
             GetCurrentLotteryMasterRequest $request
@@ -4307,8 +4523,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Currently Active Lottery Model Master Data (3-phase version)
+     *
      * @param PreUpdateCurrentLotteryMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#preupdatecurrentlotterymaster
      */
     public function preUpdateCurrentLotteryMasterAsync(
             PreUpdateCurrentLotteryMasterRequest $request
@@ -4322,8 +4541,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Currently Active Lottery Model Master Data (3-phase version)
+     *
      * @param PreUpdateCurrentLotteryMasterRequest $request
      * @return PreUpdateCurrentLotteryMasterResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#preupdatecurrentlotterymaster
      */
     public function preUpdateCurrentLotteryMaster (
             PreUpdateCurrentLotteryMasterRequest $request
@@ -4334,8 +4556,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Currently Active Lottery Model Master Data
+     *
      * @param UpdateCurrentLotteryMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#updatecurrentlotterymaster
      */
     public function updateCurrentLotteryMasterAsync(
             UpdateCurrentLotteryMasterRequest $request
@@ -4349,8 +4574,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Currently Active Lottery Model Master Data
+     *
      * @param UpdateCurrentLotteryMasterRequest $request
      * @return UpdateCurrentLotteryMasterResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#updatecurrentlotterymaster
      */
     public function updateCurrentLotteryMaster (
             UpdateCurrentLotteryMasterRequest $request
@@ -4361,8 +4589,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Currently Active Lottery Model Master Data from GitHub
+     *
      * @param UpdateCurrentLotteryMasterFromGitHubRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#updatecurrentlotterymasterfromgithub
      */
     public function updateCurrentLotteryMasterFromGitHubAsync(
             UpdateCurrentLotteryMasterFromGitHubRequest $request
@@ -4376,8 +4607,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Currently Active Lottery Model Master Data from GitHub
+     *
      * @param UpdateCurrentLotteryMasterFromGitHubRequest $request
      * @return UpdateCurrentLotteryMasterFromGitHubResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#updatecurrentlotterymasterfromgithub
      */
     public function updateCurrentLotteryMasterFromGitHub (
             UpdateCurrentLotteryMasterFromGitHubRequest $request
@@ -4388,8 +4622,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Prize Limits
+     *
      * @param DescribePrizeLimitsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#describeprizelimits
      */
     public function describePrizeLimitsAsync(
             DescribePrizeLimitsRequest $request
@@ -4403,8 +4640,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Prize Limits
+     *
      * @param DescribePrizeLimitsRequest $request
      * @return DescribePrizeLimitsResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#describeprizelimits
      */
     public function describePrizeLimits (
             DescribePrizeLimitsRequest $request
@@ -4415,8 +4655,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Prize Limit
+     *
      * @param GetPrizeLimitRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#getprizelimit
      */
     public function getPrizeLimitAsync(
             GetPrizeLimitRequest $request
@@ -4430,8 +4673,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Prize Limit
+     *
      * @param GetPrizeLimitRequest $request
      * @return GetPrizeLimitResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#getprizelimit
      */
     public function getPrizeLimit (
             GetPrizeLimitRequest $request
@@ -4442,8 +4688,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Reset Prize Limit
+     *
      * @param ResetPrizeLimitRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#resetprizelimit
      */
     public function resetPrizeLimitAsync(
             ResetPrizeLimitRequest $request
@@ -4457,8 +4706,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Reset Prize Limit
+     *
      * @param ResetPrizeLimitRequest $request
      * @return ResetPrizeLimitResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#resetprizelimit
      */
     public function resetPrizeLimit (
             ResetPrizeLimitRequest $request
@@ -4469,8 +4721,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List items extracted from the box
+     *
      * @param DescribeBoxesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#describeboxes
      */
     public function describeBoxesAsync(
             DescribeBoxesRequest $request
@@ -4484,8 +4739,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List items extracted from the box
+     *
      * @param DescribeBoxesRequest $request
      * @return DescribeBoxesResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#describeboxes
      */
     public function describeBoxes (
             DescribeBoxesRequest $request
@@ -4496,8 +4754,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List boxes by User ID
+     *
      * @param DescribeBoxesByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#describeboxesbyuserid
      */
     public function describeBoxesByUserIdAsync(
             DescribeBoxesByUserIdRequest $request
@@ -4511,8 +4772,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List boxes by User ID
+     *
      * @param DescribeBoxesByUserIdRequest $request
      * @return DescribeBoxesByUserIdResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#describeboxesbyuserid
      */
     public function describeBoxesByUserId (
             DescribeBoxesByUserIdRequest $request
@@ -4523,8 +4787,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Box
+     *
      * @param GetBoxRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#getbox
      */
     public function getBoxAsync(
             GetBoxRequest $request
@@ -4538,8 +4805,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Box
+     *
      * @param GetBoxRequest $request
      * @return GetBoxResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#getbox
      */
     public function getBox (
             GetBoxRequest $request
@@ -4550,8 +4820,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Box by User ID
+     *
      * @param GetBoxByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#getboxbyuserid
      */
     public function getBoxByUserIdAsync(
             GetBoxByUserIdRequest $request
@@ -4565,8 +4838,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Box by User ID
+     *
      * @param GetBoxByUserIdRequest $request
      * @return GetBoxByUserIdResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#getboxbyuserid
      */
     public function getBoxByUserId (
             GetBoxByUserIdRequest $request
@@ -4577,8 +4853,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Reset Box
+     *
      * @param ResetBoxRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#resetbox
      */
     public function resetBoxAsync(
             ResetBoxRequest $request
@@ -4592,8 +4871,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Reset Box
+     *
      * @param ResetBoxRequest $request
      * @return ResetBoxResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#resetbox
      */
     public function resetBox (
             ResetBoxRequest $request
@@ -4604,8 +4886,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Reset box with specified user ID
+     *
      * @param ResetBoxByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#resetboxbyuserid
      */
     public function resetBoxByUserIdAsync(
             ResetBoxByUserIdRequest $request
@@ -4619,8 +4904,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Reset box with specified user ID
+     *
      * @param ResetBoxByUserIdRequest $request
      * @return ResetBoxByUserIdResult
+     * @see https://docs.gs2.io/api_reference/lottery/sdk/#resetboxbyuserid
      */
     public function resetBoxByUserId (
             ResetBoxByUserIdRequest $request
@@ -4631,8 +4919,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute box reset as acquire action
+     *
      * @param ResetByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/lottery/stamp_sheet/#gs2lotteryresetboxbyuserid
      */
     public function resetByStampSheetAsync(
             ResetByStampSheetRequest $request
@@ -4646,8 +4937,11 @@ class Gs2LotteryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute box reset as acquire action
+     *
      * @param ResetByStampSheetRequest $request
      * @return ResetByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/lottery/stamp_sheet/#gs2lotteryresetboxbyuserid
      */
     public function resetByStampSheet (
             ResetByStampSheetRequest $request

@@ -19,6 +19,11 @@ namespace Gs2\Grade\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of verifyGradeUpMaterialByUserId: Verify grade up material by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/grade/sdk/#verifygradeupmaterialbyuserid
+ */
 class VerifyGradeUpMaterialByUserIdResult implements IResult {
 
     public static function fromJson(?array $data): ?VerifyGradeUpMaterialByUserIdResult {

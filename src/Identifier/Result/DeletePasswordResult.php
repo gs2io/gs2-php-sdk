@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Identifier\Model\TwoFactorAuthenticationSetting;
 use Gs2\Identifier\Model\Password;
 
+/**
+ * Result of deletePassword: Delete password
+ *
+ * @see https://docs.gs2.io/api_reference/identifier/sdk/#deletepassword
+ */
 class DeletePasswordResult implements IResult {
-    /** @var Password */
+    /** @var Password Password */
     private $item;
 
+    /** @return Password|null Password */
 	public function getItem(): ?Password {
 		return $this->item;
 	}
 
+    /** @param Password|null $item Password */
 	public function setItem(?Password $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Password|null $item Password
+     * @return DeletePasswordResult
+     */
 	public function withItem(?Password $item): DeletePasswordResult {
 		$this->item = $item;
 		return $this;

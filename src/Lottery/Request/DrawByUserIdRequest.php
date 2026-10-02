@@ -20,77 +20,118 @@ namespace Gs2\Lottery\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Lottery\Model\Config;
 
+/**
+ * Request for drawByUserId: Execute a lottery by specifying a User ID
+ *
+ * @see https://docs.gs2.io/api_reference/lottery/sdk/#drawbyuserid
+ */
 class DrawByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Lottery Model name */
     private $lotteryName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var int */
+    /** @var int Number of draws */
     private $count;
-    /** @var array */
+    /** @var array Configuration values applied to transaction placeholders */
     private $config;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DrawByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DrawByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Lottery Model name */
 	public function getLotteryName(): ?string {
 		return $this->lotteryName;
 	}
+    /** @param string|null $lotteryName Lottery Model name */
 	public function setLotteryName(?string $lotteryName) {
 		$this->lotteryName = $lotteryName;
 	}
+    /**
+     * @param string|null $lotteryName Lottery Model name
+     * @return DrawByUserIdRequest
+     */
 	public function withLotteryName(?string $lotteryName): DrawByUserIdRequest {
 		$this->lotteryName = $lotteryName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return DrawByUserIdRequest
+     */
 	public function withUserId(?string $userId): DrawByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return int|null Number of draws */
 	public function getCount(): ?int {
 		return $this->count;
 	}
+    /** @param int|null $count Number of draws */
 	public function setCount(?int $count) {
 		$this->count = $count;
 	}
+    /**
+     * @param int|null $count Number of draws
+     * @return DrawByUserIdRequest
+     */
 	public function withCount(?int $count): DrawByUserIdRequest {
 		$this->count = $count;
 		return $this;
 	}
+    /** @return array|null Configuration values applied to transaction placeholders */
 	public function getConfig(): ?array {
 		return $this->config;
 	}
+    /** @param array|null $config Configuration values applied to transaction placeholders */
 	public function setConfig(?array $config) {
 		$this->config = $config;
 	}
+    /**
+     * @param array|null $config Configuration values applied to transaction placeholders
+     * @return DrawByUserIdRequest
+     */
 	public function withConfig(?array $config): DrawByUserIdRequest {
 		$this->config = $config;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return DrawByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): DrawByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

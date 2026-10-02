@@ -20,31 +20,48 @@ namespace Gs2\Distributor\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Distribute Resource
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#distributeresource
+ */
 class DistributeResource implements IModel {
 	/**
-     * @var string
+     * @var string Type of Acquire Action
 	 */
 	private $action;
 	/**
-     * @var string
+     * @var string JSON string of the request used when executing the action
 	 */
 	private $request;
+    /** @return string|null Type of Acquire Action */
 	public function getAction(): ?string {
 		return $this->action;
 	}
+    /** @param string|null $action Type of Acquire Action */
 	public function setAction(?string $action) {
 		$this->action = $action;
 	}
+    /**
+     * @param string|null $action Type of Acquire Action
+     * @return DistributeResource
+     */
 	public function withAction(?string $action): DistributeResource {
 		$this->action = $action;
 		return $this;
 	}
+    /** @return string|null JSON string of the request used when executing the action */
 	public function getRequest(): ?string {
 		return $this->request;
 	}
+    /** @param string|null $request JSON string of the request used when executing the action */
 	public function setRequest(?string $request) {
 		$this->request = $request;
 	}
+    /**
+     * @param string|null $request JSON string of the request used when executing the action
+     * @return DistributeResource
+     */
 	public function withRequest(?string $request): DistributeResource {
 		$this->request = $request;
 		return $this;

@@ -19,27 +19,44 @@ namespace Gs2\News\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getProgress: Get content generation progress
+ *
+ * @see https://docs.gs2.io/api_reference/news/sdk/#getprogress
+ */
 class GetProgressRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Upload Token */
     private $uploadToken;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetProgressRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetProgressRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Upload Token */
 	public function getUploadToken(): ?string {
 		return $this->uploadToken;
 	}
+    /** @param string|null $uploadToken Upload Token */
 	public function setUploadToken(?string $uploadToken) {
 		$this->uploadToken = $uploadToken;
 	}
+    /**
+     * @param string|null $uploadToken Upload Token
+     * @return GetProgressRequest
+     */
 	public function withUploadToken(?string $uploadToken): GetProgressRequest {
 		$this->uploadToken = $uploadToken;
 		return $this;

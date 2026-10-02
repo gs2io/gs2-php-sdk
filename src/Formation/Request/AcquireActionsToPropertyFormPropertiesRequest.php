@@ -21,89 +21,136 @@ use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Formation\Model\AcquireAction;
 use Gs2\Formation\Model\Config;
 
+/**
+ * Request for acquireActionsToPropertyFormProperties: Apply acquire action to property form properties
+ *
+ * @see https://docs.gs2.io/api_reference/formation/sdk/#acquireactionstopropertyformproperties
+ */
 class AcquireActionsToPropertyFormPropertiesRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Property Form Model name */
     private $propertyFormModelName;
-    /** @var string */
+    /** @var string Property ID */
     private $propertyId;
-    /** @var AcquireAction */
+    /** @var AcquireAction Get action to be applied to form properties */
     private $acquireAction;
-    /** @var array */
+    /** @var array List of Acquisition config */
     private $config;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return AcquireActionsToPropertyFormPropertiesRequest
+     */
 	public function withNamespaceName(?string $namespaceName): AcquireActionsToPropertyFormPropertiesRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return AcquireActionsToPropertyFormPropertiesRequest
+     */
 	public function withUserId(?string $userId): AcquireActionsToPropertyFormPropertiesRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Property Form Model name */
 	public function getPropertyFormModelName(): ?string {
 		return $this->propertyFormModelName;
 	}
+    /** @param string|null $propertyFormModelName Property Form Model name */
 	public function setPropertyFormModelName(?string $propertyFormModelName) {
 		$this->propertyFormModelName = $propertyFormModelName;
 	}
+    /**
+     * @param string|null $propertyFormModelName Property Form Model name
+     * @return AcquireActionsToPropertyFormPropertiesRequest
+     */
 	public function withPropertyFormModelName(?string $propertyFormModelName): AcquireActionsToPropertyFormPropertiesRequest {
 		$this->propertyFormModelName = $propertyFormModelName;
 		return $this;
 	}
+    /** @return string|null Property ID */
 	public function getPropertyId(): ?string {
 		return $this->propertyId;
 	}
+    /** @param string|null $propertyId Property ID */
 	public function setPropertyId(?string $propertyId) {
 		$this->propertyId = $propertyId;
 	}
+    /**
+     * @param string|null $propertyId Property ID
+     * @return AcquireActionsToPropertyFormPropertiesRequest
+     */
 	public function withPropertyId(?string $propertyId): AcquireActionsToPropertyFormPropertiesRequest {
 		$this->propertyId = $propertyId;
 		return $this;
 	}
+    /** @return AcquireAction|null Get action to be applied to form properties */
 	public function getAcquireAction(): ?AcquireAction {
 		return $this->acquireAction;
 	}
+    /** @param AcquireAction|null $acquireAction Get action to be applied to form properties */
 	public function setAcquireAction(?AcquireAction $acquireAction) {
 		$this->acquireAction = $acquireAction;
 	}
+    /**
+     * @param AcquireAction|null $acquireAction Get action to be applied to form properties
+     * @return AcquireActionsToPropertyFormPropertiesRequest
+     */
 	public function withAcquireAction(?AcquireAction $acquireAction): AcquireActionsToPropertyFormPropertiesRequest {
 		$this->acquireAction = $acquireAction;
 		return $this;
 	}
+    /** @return array|null List of Acquisition config */
 	public function getConfig(): ?array {
 		return $this->config;
 	}
+    /** @param array|null $config List of Acquisition config */
 	public function setConfig(?array $config) {
 		$this->config = $config;
 	}
+    /**
+     * @param array|null $config List of Acquisition config
+     * @return AcquireActionsToPropertyFormPropertiesRequest
+     */
 	public function withConfig(?array $config): AcquireActionsToPropertyFormPropertiesRequest {
 		$this->config = $config;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return AcquireActionsToPropertyFormPropertiesRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): AcquireActionsToPropertyFormPropertiesRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

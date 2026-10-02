@@ -19,53 +19,82 @@ namespace Gs2\Inventory\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for deleteSimpleItemsByUserId: Delete simple item possession quantities
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#deletesimpleitemsbyuserid
+ */
 class DeleteSimpleItemsByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Simple Inventory Model name */
     private $inventoryName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DeleteSimpleItemsByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DeleteSimpleItemsByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Simple Inventory Model name */
 	public function getInventoryName(): ?string {
 		return $this->inventoryName;
 	}
+    /** @param string|null $inventoryName Simple Inventory Model name */
 	public function setInventoryName(?string $inventoryName) {
 		$this->inventoryName = $inventoryName;
 	}
+    /**
+     * @param string|null $inventoryName Simple Inventory Model name
+     * @return DeleteSimpleItemsByUserIdRequest
+     */
 	public function withInventoryName(?string $inventoryName): DeleteSimpleItemsByUserIdRequest {
 		$this->inventoryName = $inventoryName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return DeleteSimpleItemsByUserIdRequest
+     */
 	public function withUserId(?string $userId): DeleteSimpleItemsByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return DeleteSimpleItemsByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): DeleteSimpleItemsByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

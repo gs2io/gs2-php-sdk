@@ -20,33 +20,50 @@ namespace Gs2\JobQueue\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\JobQueue\Model\Job;
 
+/**
+ * Result of deleteByStampTask: Execute job deletion as a consume action
+ *
+ * @see https://docs.gs2.io/api_reference/job_queue/stamp_sheet/#gs2jobqueuedeletejobbyuserid
+ */
 class DeleteByStampTaskResult implements IResult {
-    /** @var Job */
+    /** @var Job Job deleted */
     private $item;
-    /** @var string */
+    /** @var string Context recording the execution results of Consume Actions */
     private $newContextStack;
 
+    /** @return Job|null Job deleted */
 	public function getItem(): ?Job {
 		return $this->item;
 	}
 
+    /** @param Job|null $item Job deleted */
 	public function setItem(?Job $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Job|null $item Job deleted
+     * @return DeleteByStampTaskResult
+     */
 	public function withItem(?Job $item): DeleteByStampTaskResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null Context recording the execution results of Consume Actions */
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
+    /** @param string|null $newContextStack Context recording the execution results of Consume Actions */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
+    /**
+     * @param string|null $newContextStack Context recording the execution results of Consume Actions
+     * @return DeleteByStampTaskResult
+     */
 	public function withNewContextStack(?string $newContextStack): DeleteByStampTaskResult {
 		$this->newContextStack = $newContextStack;
 		return $this;

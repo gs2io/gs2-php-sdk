@@ -19,39 +19,62 @@ namespace Gs2\Log\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for createDashboard: Create new dashboard
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#createdashboard
+ */
 class CreateDashboardRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Display Name */
     private $displayName;
-    /** @var string */
+    /** @var string Description */
     private $description;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return CreateDashboardRequest
+     */
 	public function withNamespaceName(?string $namespaceName): CreateDashboardRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Display Name */
 	public function getDisplayName(): ?string {
 		return $this->displayName;
 	}
+    /** @param string|null $displayName Display Name */
 	public function setDisplayName(?string $displayName) {
 		$this->displayName = $displayName;
 	}
+    /**
+     * @param string|null $displayName Display Name
+     * @return CreateDashboardRequest
+     */
 	public function withDisplayName(?string $displayName): CreateDashboardRequest {
 		$this->displayName = $displayName;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return CreateDashboardRequest
+     */
 	public function withDescription(?string $description): CreateDashboardRequest {
 		$this->description = $description;
 		return $this;

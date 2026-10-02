@@ -20,31 +20,48 @@ namespace Gs2\Experience\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Rank Up Threshold
+ *
+ * @see https://docs.gs2.io/api_reference/experience/sdk/#threshold
+ */
 class Threshold implements IModel {
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var array
+     * @var array List of Rank Up Experience Threshold
 	 */
 	private $values;
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return Threshold
+     */
 	public function withMetadata(?string $metadata): Threshold {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return array|null List of Rank Up Experience Threshold */
 	public function getValues(): ?array {
 		return $this->values;
 	}
+    /** @param array|null $values List of Rank Up Experience Threshold */
 	public function setValues(?array $values) {
 		$this->values = $values;
 	}
+    /**
+     * @param array|null $values List of Rank Up Experience Threshold
+     * @return Threshold
+     */
 	public function withValues(?array $values): Threshold {
 		$this->values = $values;
 		return $this;

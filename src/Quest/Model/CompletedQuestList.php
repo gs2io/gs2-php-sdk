@@ -20,101 +20,148 @@ namespace Gs2\Quest\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Completed Quest List
+ *
+ * @see https://docs.gs2.io/api_reference/quest/sdk/#completedquestlist
+ */
 class CompletedQuestList implements IModel {
 	/**
-     * @var string
+     * @var string Completed Quest List GRN
 	 */
 	private $completedQuestListId;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var string
+     * @var string Quest Group Model Name
 	 */
 	private $questGroupName;
 	/**
-     * @var array
+     * @var array Completed Quest Names
 	 */
 	private $completeQuestNames;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Completed Quest List GRN */
 	public function getCompletedQuestListId(): ?string {
 		return $this->completedQuestListId;
 	}
+    /** @param string|null $completedQuestListId Completed Quest List GRN */
 	public function setCompletedQuestListId(?string $completedQuestListId) {
 		$this->completedQuestListId = $completedQuestListId;
 	}
+    /**
+     * @param string|null $completedQuestListId Completed Quest List GRN
+     * @return CompletedQuestList
+     */
 	public function withCompletedQuestListId(?string $completedQuestListId): CompletedQuestList {
 		$this->completedQuestListId = $completedQuestListId;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return CompletedQuestList
+     */
 	public function withUserId(?string $userId): CompletedQuestList {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Quest Group Model Name */
 	public function getQuestGroupName(): ?string {
 		return $this->questGroupName;
 	}
+    /** @param string|null $questGroupName Quest Group Model Name */
 	public function setQuestGroupName(?string $questGroupName) {
 		$this->questGroupName = $questGroupName;
 	}
+    /**
+     * @param string|null $questGroupName Quest Group Model Name
+     * @return CompletedQuestList
+     */
 	public function withQuestGroupName(?string $questGroupName): CompletedQuestList {
 		$this->questGroupName = $questGroupName;
 		return $this;
 	}
+    /** @return array|null Completed Quest Names */
 	public function getCompleteQuestNames(): ?array {
 		return $this->completeQuestNames;
 	}
+    /** @param array|null $completeQuestNames Completed Quest Names */
 	public function setCompleteQuestNames(?array $completeQuestNames) {
 		$this->completeQuestNames = $completeQuestNames;
 	}
+    /**
+     * @param array|null $completeQuestNames Completed Quest Names
+     * @return CompletedQuestList
+     */
 	public function withCompleteQuestNames(?array $completeQuestNames): CompletedQuestList {
 		$this->completeQuestNames = $completeQuestNames;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return CompletedQuestList
+     */
 	public function withCreatedAt(?int $createdAt): CompletedQuestList {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return CompletedQuestList
+     */
 	public function withUpdatedAt(?int $updatedAt): CompletedQuestList {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return CompletedQuestList
+     */
 	public function withRevision(?int $revision): CompletedQuestList {
 		$this->revision = $revision;
 		return $this;

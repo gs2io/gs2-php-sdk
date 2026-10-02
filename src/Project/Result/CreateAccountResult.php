@@ -21,18 +21,25 @@ use Gs2\Core\Model\IResult;
 use Gs2\Project\Model\TwoFactorAuthenticationSetting;
 use Gs2\Project\Model\Account;
 
+/** Result of createAccount: Create Account */
 class CreateAccountResult implements IResult {
-    /** @var Account */
+    /** @var Account GS2 account created */
     private $item;
 
+    /** @return Account|null GS2 account created */
 	public function getItem(): ?Account {
 		return $this->item;
 	}
 
+    /** @param Account|null $item GS2 account created */
 	public function setItem(?Account $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Account|null $item GS2 account created
+     * @return CreateAccountResult
+     */
 	public function withItem(?Account $item): CreateAccountResult {
 		$this->item = $item;
 		return $this;

@@ -19,39 +19,62 @@ namespace Gs2\SeasonRating\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for commitVote: Forced determination of voting status
+ *
+ * @see https://docs.gs2.io/api_reference/season_rating/sdk/#commitvote
+ */
 class CommitVoteRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Season Model name */
     private $seasonName;
-    /** @var string */
+    /** @var string Session Name */
     private $sessionName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return CommitVoteRequest
+     */
 	public function withNamespaceName(?string $namespaceName): CommitVoteRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Season Model name */
 	public function getSeasonName(): ?string {
 		return $this->seasonName;
 	}
+    /** @param string|null $seasonName Season Model name */
 	public function setSeasonName(?string $seasonName) {
 		$this->seasonName = $seasonName;
 	}
+    /**
+     * @param string|null $seasonName Season Model name
+     * @return CommitVoteRequest
+     */
 	public function withSeasonName(?string $seasonName): CommitVoteRequest {
 		$this->seasonName = $seasonName;
 		return $this;
 	}
+    /** @return string|null Session Name */
 	public function getSessionName(): ?string {
 		return $this->sessionName;
 	}
+    /** @param string|null $sessionName Session Name */
 	public function setSessionName(?string $sessionName) {
 		$this->sessionName = $sessionName;
 	}
+    /**
+     * @param string|null $sessionName Session Name
+     * @return CommitVoteRequest
+     */
 	public function withSessionName(?string $sessionName): CommitVoteRequest {
 		$this->sessionName = $sessionName;
 		return $this;

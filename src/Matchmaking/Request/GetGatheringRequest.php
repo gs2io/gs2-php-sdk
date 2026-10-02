@@ -19,27 +19,44 @@ namespace Gs2\Matchmaking\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getGathering: Get Gathering
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#getgathering
+ */
 class GetGatheringRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Gathering name */
     private $gatheringName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetGatheringRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetGatheringRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Gathering name */
 	public function getGatheringName(): ?string {
 		return $this->gatheringName;
 	}
+    /** @param string|null $gatheringName Gathering name */
 	public function setGatheringName(?string $gatheringName) {
 		$this->gatheringName = $gatheringName;
 	}
+    /**
+     * @param string|null $gatheringName Gathering name
+     * @return GetGatheringRequest
+     */
 	public function withGatheringName(?string $gatheringName): GetGatheringRequest {
 		$this->gatheringName = $gatheringName;
 		return $this;

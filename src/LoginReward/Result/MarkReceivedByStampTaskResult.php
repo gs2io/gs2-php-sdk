@@ -25,48 +25,71 @@ use Gs2\LoginReward\Model\VerifyAction;
 use Gs2\LoginReward\Model\ConsumeAction;
 use Gs2\LoginReward\Model\BonusModel;
 
+/**
+ * Result of markReceivedByStampTask: Execute mark as received as consume action
+ *
+ * @see https://docs.gs2.io/api_reference/login_reward/stamp_sheet/#gs2loginrewardmarkreceivedbyuserid
+ */
 class MarkReceivedByStampTaskResult implements IResult {
-    /** @var ReceiveStatus */
+    /** @var ReceiveStatus ReceiveStatus */
     private $item;
-    /** @var BonusModel */
+    /** @var BonusModel Login Bonus Model */
     private $bonusModel;
-    /** @var string */
+    /** @var string Context recording the execution results of Consume Actions */
     private $newContextStack;
 
+    /** @return ReceiveStatus|null ReceiveStatus */
 	public function getItem(): ?ReceiveStatus {
 		return $this->item;
 	}
 
+    /** @param ReceiveStatus|null $item ReceiveStatus */
 	public function setItem(?ReceiveStatus $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param ReceiveStatus|null $item ReceiveStatus
+     * @return MarkReceivedByStampTaskResult
+     */
 	public function withItem(?ReceiveStatus $item): MarkReceivedByStampTaskResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return BonusModel|null Login Bonus Model */
 	public function getBonusModel(): ?BonusModel {
 		return $this->bonusModel;
 	}
 
+    /** @param BonusModel|null $bonusModel Login Bonus Model */
 	public function setBonusModel(?BonusModel $bonusModel) {
 		$this->bonusModel = $bonusModel;
 	}
 
+    /**
+     * @param BonusModel|null $bonusModel Login Bonus Model
+     * @return MarkReceivedByStampTaskResult
+     */
 	public function withBonusModel(?BonusModel $bonusModel): MarkReceivedByStampTaskResult {
 		$this->bonusModel = $bonusModel;
 		return $this;
 	}
 
+    /** @return string|null Context recording the execution results of Consume Actions */
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
+    /** @param string|null $newContextStack Context recording the execution results of Consume Actions */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
+    /**
+     * @param string|null $newContextStack Context recording the execution results of Consume Actions
+     * @return MarkReceivedByStampTaskResult
+     */
 	public function withNewContextStack(?string $newContextStack): MarkReceivedByStampTaskResult {
 		$this->newContextStack = $newContextStack;
 		return $this;

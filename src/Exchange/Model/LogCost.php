@@ -20,45 +20,68 @@ namespace Gs2\Exchange\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Cost Calculation Result Using Logarithm
+ *
+ * @see https://docs.gs2.io/api_reference/exchange/sdk/#logcost
+ */
 class LogCost implements IModel {
 	/**
-     * @var float
+     * @var float Base
 	 */
 	private $base;
 	/**
-     * @var array
+     * @var array List of logs to be added
 	 */
 	private $adds;
 	/**
-     * @var array
+     * @var array List of logs to be subtracted
 	 */
 	private $subs;
+    /** @return float|null Base */
 	public function getBase(): ?float {
 		return $this->base;
 	}
+    /** @param float|null $base Base */
 	public function setBase(?float $base) {
 		$this->base = $base;
 	}
+    /**
+     * @param float|null $base Base
+     * @return LogCost
+     */
 	public function withBase(?float $base): LogCost {
 		$this->base = $base;
 		return $this;
 	}
+    /** @return array|null List of logs to be added */
 	public function getAdds(): ?array {
 		return $this->adds;
 	}
+    /** @param array|null $adds List of logs to be added */
 	public function setAdds(?array $adds) {
 		$this->adds = $adds;
 	}
+    /**
+     * @param array|null $adds List of logs to be added
+     * @return LogCost
+     */
 	public function withAdds(?array $adds): LogCost {
 		$this->adds = $adds;
 		return $this;
 	}
+    /** @return array|null List of logs to be subtracted */
 	public function getSubs(): ?array {
 		return $this->subs;
 	}
+    /** @param array|null $subs List of logs to be subtracted */
 	public function setSubs(?array $subs) {
 		$this->subs = $subs;
 	}
+    /**
+     * @param array|null $subs List of logs to be subtracted
+     * @return LogCost
+     */
 	public function withSubs(?array $subs): LogCost {
 		$this->subs = $subs;
 		return $this;

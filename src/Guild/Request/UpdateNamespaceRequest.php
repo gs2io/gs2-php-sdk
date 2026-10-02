@@ -25,240 +25,357 @@ use Gs2\Guild\Model\NotificationSetting;
 use Gs2\Guild\Model\ScriptSetting;
 use Gs2\Guild\Model\LogSetting;
 
+/**
+ * Request for updateNamespace: Update Namespace
+ *
+ * @see https://docs.gs2.io/api_reference/guild/sdk/#updatenamespace
+ */
 class UpdateNamespaceRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var TransactionSetting */
+    /** @var TransactionSetting Transaction Setting */
     private $transactionSetting;
-    /** @var TransactionSettingV2 */
+    /** @var TransactionSettingV2 Transaction Setting (V2) */
     private $transactionSettingV2;
-    /** @var NotificationSetting */
+    /** @var NotificationSetting Guild Change Notification */
     private $changeNotification;
-    /** @var NotificationSetting */
+    /** @var NotificationSetting Member Join Notification */
     private $joinNotification;
-    /** @var NotificationSetting */
+    /** @var NotificationSetting Member Leave Notification */
     private $leaveNotification;
-    /** @var NotificationSetting */
+    /** @var NotificationSetting Member Change Notification */
     private $changeMemberNotification;
-    /** @var bool */
+    /** @var bool Whether to ignore changes in metadata when issuing notifications when member metadata is updated */
     private $changeMemberNotificationIgnoreChangeMetadata;
-    /** @var NotificationSetting */
+    /** @var NotificationSetting Receive Request Notification */
     private $receiveRequestNotification;
-    /** @var NotificationSetting */
+    /** @var NotificationSetting Remove Request Notification */
     private $removeRequestNotification;
-    /** @var ScriptSetting */
+    /** @var ScriptSetting Script setting to execute when creating a Guild */
     private $createGuildScript;
-    /** @var ScriptSetting */
+    /** @var ScriptSetting Script setting to execute when updating a guild */
     private $updateGuildScript;
-    /** @var ScriptSetting */
+    /** @var ScriptSetting Script setting to execute when joining a guild */
     private $joinGuildScript;
-    /** @var ScriptSetting */
+    /** @var ScriptSetting Script setting to execute when receiving a guild join request */
     private $receiveJoinRequestScript;
-    /** @var ScriptSetting */
+    /** @var ScriptSetting Script setting to execute when leaving a guild */
     private $leaveGuildScript;
-    /** @var ScriptSetting */
+    /** @var ScriptSetting Script setting to execute when changing the role assigned to a member */
     private $changeRoleScript;
-    /** @var ScriptSetting */
+    /** @var ScriptSetting Script setting to execute when deleting a guild */
     private $deleteGuildScript;
-    /** @var LogSetting */
+    /** @var LogSetting Log Output Setting */
     private $logSetting;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UpdateNamespaceRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UpdateNamespaceRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return UpdateNamespaceRequest
+     */
 	public function withDescription(?string $description): UpdateNamespaceRequest {
 		$this->description = $description;
 		return $this;
 	}
     /**
+     * @return TransactionSetting|null Transaction Setting
      * @deprecated
      */
 	public function getTransactionSetting(): ?TransactionSetting {
 		return $this->transactionSetting;
 	}
     /**
+     * @param TransactionSetting|null $transactionSetting Transaction Setting
      * @deprecated
      */
 	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
 		$this->transactionSetting = $transactionSetting;
 	}
     /**
+     * @param TransactionSetting|null $transactionSetting Transaction Setting
+     * @return UpdateNamespaceRequest
      * @deprecated
      */
 	public function withTransactionSetting(?TransactionSetting $transactionSetting): UpdateNamespaceRequest {
 		$this->transactionSetting = $transactionSetting;
 		return $this;
 	}
+    /** @return TransactionSettingV2|null Transaction Setting (V2) */
 	public function getTransactionSettingV2(): ?TransactionSettingV2 {
 		return $this->transactionSettingV2;
 	}
+    /** @param TransactionSettingV2|null $transactionSettingV2 Transaction Setting (V2) */
 	public function setTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2) {
 		$this->transactionSettingV2 = $transactionSettingV2;
 	}
+    /**
+     * @param TransactionSettingV2|null $transactionSettingV2 Transaction Setting (V2)
+     * @return UpdateNamespaceRequest
+     */
 	public function withTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2): UpdateNamespaceRequest {
 		$this->transactionSettingV2 = $transactionSettingV2;
 		return $this;
 	}
+    /** @return NotificationSetting|null Guild Change Notification */
 	public function getChangeNotification(): ?NotificationSetting {
 		return $this->changeNotification;
 	}
+    /** @param NotificationSetting|null $changeNotification Guild Change Notification */
 	public function setChangeNotification(?NotificationSetting $changeNotification) {
 		$this->changeNotification = $changeNotification;
 	}
+    /**
+     * @param NotificationSetting|null $changeNotification Guild Change Notification
+     * @return UpdateNamespaceRequest
+     */
 	public function withChangeNotification(?NotificationSetting $changeNotification): UpdateNamespaceRequest {
 		$this->changeNotification = $changeNotification;
 		return $this;
 	}
+    /** @return NotificationSetting|null Member Join Notification */
 	public function getJoinNotification(): ?NotificationSetting {
 		return $this->joinNotification;
 	}
+    /** @param NotificationSetting|null $joinNotification Member Join Notification */
 	public function setJoinNotification(?NotificationSetting $joinNotification) {
 		$this->joinNotification = $joinNotification;
 	}
+    /**
+     * @param NotificationSetting|null $joinNotification Member Join Notification
+     * @return UpdateNamespaceRequest
+     */
 	public function withJoinNotification(?NotificationSetting $joinNotification): UpdateNamespaceRequest {
 		$this->joinNotification = $joinNotification;
 		return $this;
 	}
+    /** @return NotificationSetting|null Member Leave Notification */
 	public function getLeaveNotification(): ?NotificationSetting {
 		return $this->leaveNotification;
 	}
+    /** @param NotificationSetting|null $leaveNotification Member Leave Notification */
 	public function setLeaveNotification(?NotificationSetting $leaveNotification) {
 		$this->leaveNotification = $leaveNotification;
 	}
+    /**
+     * @param NotificationSetting|null $leaveNotification Member Leave Notification
+     * @return UpdateNamespaceRequest
+     */
 	public function withLeaveNotification(?NotificationSetting $leaveNotification): UpdateNamespaceRequest {
 		$this->leaveNotification = $leaveNotification;
 		return $this;
 	}
+    /** @return NotificationSetting|null Member Change Notification */
 	public function getChangeMemberNotification(): ?NotificationSetting {
 		return $this->changeMemberNotification;
 	}
+    /** @param NotificationSetting|null $changeMemberNotification Member Change Notification */
 	public function setChangeMemberNotification(?NotificationSetting $changeMemberNotification) {
 		$this->changeMemberNotification = $changeMemberNotification;
 	}
+    /**
+     * @param NotificationSetting|null $changeMemberNotification Member Change Notification
+     * @return UpdateNamespaceRequest
+     */
 	public function withChangeMemberNotification(?NotificationSetting $changeMemberNotification): UpdateNamespaceRequest {
 		$this->changeMemberNotification = $changeMemberNotification;
 		return $this;
 	}
+    /** @return bool|null Whether to ignore changes in metadata when issuing notifications when member metadata is updated */
 	public function getChangeMemberNotificationIgnoreChangeMetadata(): ?bool {
 		return $this->changeMemberNotificationIgnoreChangeMetadata;
 	}
+    /** @param bool|null $changeMemberNotificationIgnoreChangeMetadata Whether to ignore changes in metadata when issuing notifications when member metadata is updated */
 	public function setChangeMemberNotificationIgnoreChangeMetadata(?bool $changeMemberNotificationIgnoreChangeMetadata) {
 		$this->changeMemberNotificationIgnoreChangeMetadata = $changeMemberNotificationIgnoreChangeMetadata;
 	}
+    /**
+     * @param bool|null $changeMemberNotificationIgnoreChangeMetadata Whether to ignore changes in metadata when issuing notifications when member metadata is updated
+     * @return UpdateNamespaceRequest
+     */
 	public function withChangeMemberNotificationIgnoreChangeMetadata(?bool $changeMemberNotificationIgnoreChangeMetadata): UpdateNamespaceRequest {
 		$this->changeMemberNotificationIgnoreChangeMetadata = $changeMemberNotificationIgnoreChangeMetadata;
 		return $this;
 	}
+    /** @return NotificationSetting|null Receive Request Notification */
 	public function getReceiveRequestNotification(): ?NotificationSetting {
 		return $this->receiveRequestNotification;
 	}
+    /** @param NotificationSetting|null $receiveRequestNotification Receive Request Notification */
 	public function setReceiveRequestNotification(?NotificationSetting $receiveRequestNotification) {
 		$this->receiveRequestNotification = $receiveRequestNotification;
 	}
+    /**
+     * @param NotificationSetting|null $receiveRequestNotification Receive Request Notification
+     * @return UpdateNamespaceRequest
+     */
 	public function withReceiveRequestNotification(?NotificationSetting $receiveRequestNotification): UpdateNamespaceRequest {
 		$this->receiveRequestNotification = $receiveRequestNotification;
 		return $this;
 	}
+    /** @return NotificationSetting|null Remove Request Notification */
 	public function getRemoveRequestNotification(): ?NotificationSetting {
 		return $this->removeRequestNotification;
 	}
+    /** @param NotificationSetting|null $removeRequestNotification Remove Request Notification */
 	public function setRemoveRequestNotification(?NotificationSetting $removeRequestNotification) {
 		$this->removeRequestNotification = $removeRequestNotification;
 	}
+    /**
+     * @param NotificationSetting|null $removeRequestNotification Remove Request Notification
+     * @return UpdateNamespaceRequest
+     */
 	public function withRemoveRequestNotification(?NotificationSetting $removeRequestNotification): UpdateNamespaceRequest {
 		$this->removeRequestNotification = $removeRequestNotification;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to execute when creating a Guild */
 	public function getCreateGuildScript(): ?ScriptSetting {
 		return $this->createGuildScript;
 	}
+    /** @param ScriptSetting|null $createGuildScript Script setting to execute when creating a Guild */
 	public function setCreateGuildScript(?ScriptSetting $createGuildScript) {
 		$this->createGuildScript = $createGuildScript;
 	}
+    /**
+     * @param ScriptSetting|null $createGuildScript Script setting to execute when creating a Guild
+     * @return UpdateNamespaceRequest
+     */
 	public function withCreateGuildScript(?ScriptSetting $createGuildScript): UpdateNamespaceRequest {
 		$this->createGuildScript = $createGuildScript;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to execute when updating a guild */
 	public function getUpdateGuildScript(): ?ScriptSetting {
 		return $this->updateGuildScript;
 	}
+    /** @param ScriptSetting|null $updateGuildScript Script setting to execute when updating a guild */
 	public function setUpdateGuildScript(?ScriptSetting $updateGuildScript) {
 		$this->updateGuildScript = $updateGuildScript;
 	}
+    /**
+     * @param ScriptSetting|null $updateGuildScript Script setting to execute when updating a guild
+     * @return UpdateNamespaceRequest
+     */
 	public function withUpdateGuildScript(?ScriptSetting $updateGuildScript): UpdateNamespaceRequest {
 		$this->updateGuildScript = $updateGuildScript;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to execute when joining a guild */
 	public function getJoinGuildScript(): ?ScriptSetting {
 		return $this->joinGuildScript;
 	}
+    /** @param ScriptSetting|null $joinGuildScript Script setting to execute when joining a guild */
 	public function setJoinGuildScript(?ScriptSetting $joinGuildScript) {
 		$this->joinGuildScript = $joinGuildScript;
 	}
+    /**
+     * @param ScriptSetting|null $joinGuildScript Script setting to execute when joining a guild
+     * @return UpdateNamespaceRequest
+     */
 	public function withJoinGuildScript(?ScriptSetting $joinGuildScript): UpdateNamespaceRequest {
 		$this->joinGuildScript = $joinGuildScript;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to execute when receiving a guild join request */
 	public function getReceiveJoinRequestScript(): ?ScriptSetting {
 		return $this->receiveJoinRequestScript;
 	}
+    /** @param ScriptSetting|null $receiveJoinRequestScript Script setting to execute when receiving a guild join request */
 	public function setReceiveJoinRequestScript(?ScriptSetting $receiveJoinRequestScript) {
 		$this->receiveJoinRequestScript = $receiveJoinRequestScript;
 	}
+    /**
+     * @param ScriptSetting|null $receiveJoinRequestScript Script setting to execute when receiving a guild join request
+     * @return UpdateNamespaceRequest
+     */
 	public function withReceiveJoinRequestScript(?ScriptSetting $receiveJoinRequestScript): UpdateNamespaceRequest {
 		$this->receiveJoinRequestScript = $receiveJoinRequestScript;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to execute when leaving a guild */
 	public function getLeaveGuildScript(): ?ScriptSetting {
 		return $this->leaveGuildScript;
 	}
+    /** @param ScriptSetting|null $leaveGuildScript Script setting to execute when leaving a guild */
 	public function setLeaveGuildScript(?ScriptSetting $leaveGuildScript) {
 		$this->leaveGuildScript = $leaveGuildScript;
 	}
+    /**
+     * @param ScriptSetting|null $leaveGuildScript Script setting to execute when leaving a guild
+     * @return UpdateNamespaceRequest
+     */
 	public function withLeaveGuildScript(?ScriptSetting $leaveGuildScript): UpdateNamespaceRequest {
 		$this->leaveGuildScript = $leaveGuildScript;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to execute when changing the role assigned to a member */
 	public function getChangeRoleScript(): ?ScriptSetting {
 		return $this->changeRoleScript;
 	}
+    /** @param ScriptSetting|null $changeRoleScript Script setting to execute when changing the role assigned to a member */
 	public function setChangeRoleScript(?ScriptSetting $changeRoleScript) {
 		$this->changeRoleScript = $changeRoleScript;
 	}
+    /**
+     * @param ScriptSetting|null $changeRoleScript Script setting to execute when changing the role assigned to a member
+     * @return UpdateNamespaceRequest
+     */
 	public function withChangeRoleScript(?ScriptSetting $changeRoleScript): UpdateNamespaceRequest {
 		$this->changeRoleScript = $changeRoleScript;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to execute when deleting a guild */
 	public function getDeleteGuildScript(): ?ScriptSetting {
 		return $this->deleteGuildScript;
 	}
+    /** @param ScriptSetting|null $deleteGuildScript Script setting to execute when deleting a guild */
 	public function setDeleteGuildScript(?ScriptSetting $deleteGuildScript) {
 		$this->deleteGuildScript = $deleteGuildScript;
 	}
+    /**
+     * @param ScriptSetting|null $deleteGuildScript Script setting to execute when deleting a guild
+     * @return UpdateNamespaceRequest
+     */
 	public function withDeleteGuildScript(?ScriptSetting $deleteGuildScript): UpdateNamespaceRequest {
 		$this->deleteGuildScript = $deleteGuildScript;
 		return $this;
 	}
+    /** @return LogSetting|null Log Output Setting */
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
+    /** @param LogSetting|null $logSetting Log Output Setting */
 	public function setLogSetting(?LogSetting $logSetting) {
 		$this->logSetting = $logSetting;
 	}
+    /**
+     * @param LogSetting|null $logSetting Log Output Setting
+     * @return UpdateNamespaceRequest
+     */
 	public function withLogSetting(?LogSetting $logSetting): UpdateNamespaceRequest {
 		$this->logSetting = $logSetting;
 		return $this;

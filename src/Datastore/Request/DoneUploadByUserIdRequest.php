@@ -19,53 +19,82 @@ namespace Gs2\Datastore\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for doneUploadByUserId: Report completion of data object upload by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/datastore/sdk/#doneuploadbyuserid
+ */
 class DoneUploadByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Data Object Name */
     private $dataObjectName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DoneUploadByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DoneUploadByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Data Object Name */
 	public function getDataObjectName(): ?string {
 		return $this->dataObjectName;
 	}
+    /** @param string|null $dataObjectName Data Object Name */
 	public function setDataObjectName(?string $dataObjectName) {
 		$this->dataObjectName = $dataObjectName;
 	}
+    /**
+     * @param string|null $dataObjectName Data Object Name
+     * @return DoneUploadByUserIdRequest
+     */
 	public function withDataObjectName(?string $dataObjectName): DoneUploadByUserIdRequest {
 		$this->dataObjectName = $dataObjectName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return DoneUploadByUserIdRequest
+     */
 	public function withUserId(?string $userId): DoneUploadByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return DoneUploadByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): DoneUploadByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

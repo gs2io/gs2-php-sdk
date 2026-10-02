@@ -24,18 +24,29 @@ use Gs2\Quest\Model\VerifyAction;
 use Gs2\Quest\Model\ConsumeAction;
 use Gs2\Quest\Model\QuestModel;
 
+/**
+ * Result of getQuestModel: Get Quest Model
+ *
+ * @see https://docs.gs2.io/api_reference/quest/sdk/#getquestmodel
+ */
 class GetQuestModelResult implements IResult {
     /** @var QuestModel */
     private $item;
 
+    /** @return QuestModel|null */
 	public function getItem(): ?QuestModel {
 		return $this->item;
 	}
 
+    /** @param QuestModel|null $item */
 	public function setItem(?QuestModel $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param QuestModel|null $item
+     * @return GetQuestModelResult
+     */
 	public function withItem(?QuestModel $item): GetQuestModelResult {
 		$this->item = $item;
 		return $this;

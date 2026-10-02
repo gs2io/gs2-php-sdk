@@ -22,18 +22,29 @@ use Gs2\SkillTree\Model\VerifyAction;
 use Gs2\SkillTree\Model\ConsumeAction;
 use Gs2\SkillTree\Model\NodeModelMaster;
 
+/**
+ * Result of createNodeModelMaster: Create Node Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#createnodemodelmaster
+ */
 class CreateNodeModelMasterResult implements IResult {
-    /** @var NodeModelMaster */
+    /** @var NodeModelMaster Created Node Model Master */
     private $item;
 
+    /** @return NodeModelMaster|null Created Node Model Master */
 	public function getItem(): ?NodeModelMaster {
 		return $this->item;
 	}
 
+    /** @param NodeModelMaster|null $item Created Node Model Master */
 	public function setItem(?NodeModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param NodeModelMaster|null $item Created Node Model Master
+     * @return CreateNodeModelMasterResult
+     */
 	public function withItem(?NodeModelMaster $item): CreateNodeModelMasterResult {
 		$this->item = $item;
 		return $this;

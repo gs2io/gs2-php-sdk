@@ -20,65 +20,100 @@ namespace Gs2\Mission\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Mission\Model\Config;
 
+/**
+ * Request for batchComplete: Issue transactions to receive rewards for multiple mission tasks in bulk
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#batchcomplete
+ */
 class BatchCompleteRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Mission Group Name */
     private $missionGroupName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var array */
+    /** @var array Task name list */
     private $missionTaskNames;
-    /** @var array */
+    /** @var array Configuration values applied to transaction variables */
     private $config;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return BatchCompleteRequest
+     */
 	public function withNamespaceName(?string $namespaceName): BatchCompleteRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Mission Group Name */
 	public function getMissionGroupName(): ?string {
 		return $this->missionGroupName;
 	}
+    /** @param string|null $missionGroupName Mission Group Name */
 	public function setMissionGroupName(?string $missionGroupName) {
 		$this->missionGroupName = $missionGroupName;
 	}
+    /**
+     * @param string|null $missionGroupName Mission Group Name
+     * @return BatchCompleteRequest
+     */
 	public function withMissionGroupName(?string $missionGroupName): BatchCompleteRequest {
 		$this->missionGroupName = $missionGroupName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return BatchCompleteRequest
+     */
 	public function withAccessToken(?string $accessToken): BatchCompleteRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return array|null Task name list */
 	public function getMissionTaskNames(): ?array {
 		return $this->missionTaskNames;
 	}
+    /** @param array|null $missionTaskNames Task name list */
 	public function setMissionTaskNames(?array $missionTaskNames) {
 		$this->missionTaskNames = $missionTaskNames;
 	}
+    /**
+     * @param array|null $missionTaskNames Task name list
+     * @return BatchCompleteRequest
+     */
 	public function withMissionTaskNames(?array $missionTaskNames): BatchCompleteRequest {
 		$this->missionTaskNames = $missionTaskNames;
 		return $this;
 	}
+    /** @return array|null Configuration values applied to transaction variables */
 	public function getConfig(): ?array {
 		return $this->config;
 	}
+    /** @param array|null $config Configuration values applied to transaction variables */
 	public function setConfig(?array $config) {
 		$this->config = $config;
 	}
+    /**
+     * @param array|null $config Configuration values applied to transaction variables
+     * @return BatchCompleteRequest
+     */
 	public function withConfig(?array $config): BatchCompleteRequest {
 		$this->config = $config;
 		return $this;

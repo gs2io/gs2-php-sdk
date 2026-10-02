@@ -19,33 +19,50 @@ namespace Gs2\Version\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of calculateSignature: Calculate version signature
+ *
+ * @see https://docs.gs2.io/api_reference/version/sdk/#calculatesignature
+ */
 class CalculateSignatureResult implements IResult {
-    /** @var string */
+    /** @var string Body */
     private $body;
-    /** @var string */
+    /** @var string Signature */
     private $signature;
 
+    /** @return string|null Body */
 	public function getBody(): ?string {
 		return $this->body;
 	}
 
+    /** @param string|null $body Body */
 	public function setBody(?string $body) {
 		$this->body = $body;
 	}
 
+    /**
+     * @param string|null $body Body
+     * @return CalculateSignatureResult
+     */
 	public function withBody(?string $body): CalculateSignatureResult {
 		$this->body = $body;
 		return $this;
 	}
 
+    /** @return string|null Signature */
 	public function getSignature(): ?string {
 		return $this->signature;
 	}
 
+    /** @param string|null $signature Signature */
 	public function setSignature(?string $signature) {
 		$this->signature = $signature;
 	}
 
+    /**
+     * @param string|null $signature Signature
+     * @return CalculateSignatureResult
+     */
 	public function withSignature(?string $signature): CalculateSignatureResult {
 		$this->signature = $signature;
 		return $this;

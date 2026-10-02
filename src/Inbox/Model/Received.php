@@ -20,87 +20,128 @@ namespace Gs2\Inbox\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Received Global Message
+ *
+ * @see https://docs.gs2.io/api_reference/inbox/sdk/#received
+ */
 class Received implements IModel {
 	/**
-     * @var string
+     * @var string Received Global Message name GRN
 	 */
 	private $receivedId;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var array
+     * @var array List of Received Global Message names
 	 */
 	private $receivedGlobalMessageNames;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Received Global Message name GRN */
 	public function getReceivedId(): ?string {
 		return $this->receivedId;
 	}
+    /** @param string|null $receivedId Received Global Message name GRN */
 	public function setReceivedId(?string $receivedId) {
 		$this->receivedId = $receivedId;
 	}
+    /**
+     * @param string|null $receivedId Received Global Message name GRN
+     * @return Received
+     */
 	public function withReceivedId(?string $receivedId): Received {
 		$this->receivedId = $receivedId;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return Received
+     */
 	public function withUserId(?string $userId): Received {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return array|null List of Received Global Message names */
 	public function getReceivedGlobalMessageNames(): ?array {
 		return $this->receivedGlobalMessageNames;
 	}
+    /** @param array|null $receivedGlobalMessageNames List of Received Global Message names */
 	public function setReceivedGlobalMessageNames(?array $receivedGlobalMessageNames) {
 		$this->receivedGlobalMessageNames = $receivedGlobalMessageNames;
 	}
+    /**
+     * @param array|null $receivedGlobalMessageNames List of Received Global Message names
+     * @return Received
+     */
 	public function withReceivedGlobalMessageNames(?array $receivedGlobalMessageNames): Received {
 		$this->receivedGlobalMessageNames = $receivedGlobalMessageNames;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return Received
+     */
 	public function withCreatedAt(?int $createdAt): Received {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return Received
+     */
 	public function withUpdatedAt(?int $updatedAt): Received {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return Received
+     */
 	public function withRevision(?int $revision): Received {
 		$this->revision = $revision;
 		return $this;

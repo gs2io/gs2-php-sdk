@@ -20,18 +20,29 @@ namespace Gs2\Ranking2\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Ranking2\Model\SubscribeRankingModelMaster;
 
+/**
+ * Result of getSubscribeRankingModelMaster: Get Subscribe Ranking Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/sdk/#getsubscriberankingmodelmaster
+ */
 class GetSubscribeRankingModelMasterResult implements IResult {
-    /** @var SubscribeRankingModelMaster */
+    /** @var SubscribeRankingModelMaster Subscribe Ranking Model Master */
     private $item;
 
+    /** @return SubscribeRankingModelMaster|null Subscribe Ranking Model Master */
 	public function getItem(): ?SubscribeRankingModelMaster {
 		return $this->item;
 	}
 
+    /** @param SubscribeRankingModelMaster|null $item Subscribe Ranking Model Master */
 	public function setItem(?SubscribeRankingModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param SubscribeRankingModelMaster|null $item Subscribe Ranking Model Master
+     * @return GetSubscribeRankingModelMasterResult
+     */
 	public function withItem(?SubscribeRankingModelMaster $item): GetSubscribeRankingModelMasterResult {
 		$this->item = $item;
 		return $this;

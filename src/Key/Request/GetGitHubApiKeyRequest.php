@@ -19,27 +19,44 @@ namespace Gs2\Key\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getGitHubApiKey: Get GitHub API Key
+ *
+ * @see https://docs.gs2.io/api_reference/key/sdk/#getgithubapikey
+ */
 class GetGitHubApiKeyRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string GitHub API Key name */
     private $apiKeyName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetGitHubApiKeyRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetGitHubApiKeyRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null GitHub API Key name */
 	public function getApiKeyName(): ?string {
 		return $this->apiKeyName;
 	}
+    /** @param string|null $apiKeyName GitHub API Key name */
 	public function setApiKeyName(?string $apiKeyName) {
 		$this->apiKeyName = $apiKeyName;
 	}
+    /**
+     * @param string|null $apiKeyName GitHub API Key name
+     * @return GetGitHubApiKeyRequest
+     */
 	public function withApiKeyName(?string $apiKeyName): GetGitHubApiKeyRequest {
 		$this->apiKeyName = $apiKeyName;
 		return $this;

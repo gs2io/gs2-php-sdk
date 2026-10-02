@@ -20,18 +20,29 @@ namespace Gs2\Stamina\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Stamina\Model\StaminaModelMaster;
 
+/**
+ * Result of createStaminaModelMaster: Create Stamina Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/stamina/sdk/#createstaminamodelmaster
+ */
 class CreateStaminaModelMasterResult implements IResult {
-    /** @var StaminaModelMaster */
+    /** @var StaminaModelMaster Stamina Model Master created */
     private $item;
 
+    /** @return StaminaModelMaster|null Stamina Model Master created */
 	public function getItem(): ?StaminaModelMaster {
 		return $this->item;
 	}
 
+    /** @param StaminaModelMaster|null $item Stamina Model Master created */
 	public function setItem(?StaminaModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param StaminaModelMaster|null $item Stamina Model Master created
+     * @return CreateStaminaModelMasterResult
+     */
 	public function withItem(?StaminaModelMaster $item): CreateStaminaModelMasterResult {
 		$this->item = $item;
 		return $this;

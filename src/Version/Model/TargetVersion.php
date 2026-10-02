@@ -20,59 +20,88 @@ namespace Gs2\Version\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Version to be verified
+ *
+ * @see https://docs.gs2.io/api_reference/version/sdk/#targetversion
+ */
 class TargetVersion implements IModel {
 	/**
-     * @var string
+     * @var string Version Model name
 	 */
 	private $versionName;
 	/**
-     * @var string
+     * @var string Body
 	 */
 	private $body;
 	/**
-     * @var string
+     * @var string Signature
 	 */
 	private $signature;
 	/**
-     * @var Version
+     * @var Version Version
 	 */
 	private $version;
+    /** @return string|null Version Model name */
 	public function getVersionName(): ?string {
 		return $this->versionName;
 	}
+    /** @param string|null $versionName Version Model name */
 	public function setVersionName(?string $versionName) {
 		$this->versionName = $versionName;
 	}
+    /**
+     * @param string|null $versionName Version Model name
+     * @return TargetVersion
+     */
 	public function withVersionName(?string $versionName): TargetVersion {
 		$this->versionName = $versionName;
 		return $this;
 	}
+    /** @return string|null Body */
 	public function getBody(): ?string {
 		return $this->body;
 	}
+    /** @param string|null $body Body */
 	public function setBody(?string $body) {
 		$this->body = $body;
 	}
+    /**
+     * @param string|null $body Body
+     * @return TargetVersion
+     */
 	public function withBody(?string $body): TargetVersion {
 		$this->body = $body;
 		return $this;
 	}
+    /** @return string|null Signature */
 	public function getSignature(): ?string {
 		return $this->signature;
 	}
+    /** @param string|null $signature Signature */
 	public function setSignature(?string $signature) {
 		$this->signature = $signature;
 	}
+    /**
+     * @param string|null $signature Signature
+     * @return TargetVersion
+     */
 	public function withSignature(?string $signature): TargetVersion {
 		$this->signature = $signature;
 		return $this;
 	}
+    /** @return Version|null Version */
 	public function getVersion(): ?Version {
 		return $this->version;
 	}
+    /** @param Version|null $version Version */
 	public function setVersion(?Version $version) {
 		$this->version = $version;
 	}
+    /**
+     * @param Version|null $version Version
+     * @return TargetVersion
+     */
 	public function withVersion(?Version $version): TargetVersion {
 		$this->version = $version;
 		return $this;

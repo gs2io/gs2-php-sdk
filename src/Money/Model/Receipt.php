@@ -20,185 +20,268 @@ namespace Gs2\Money\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Receipt
+ *
+ * @see https://docs.gs2.io/api_reference/money/sdk/#receipt
+ */
 class Receipt implements IModel {
 	/**
-     * @var string
+     * @var string Receipt GRN
 	 */
 	private $receiptId;
 	/**
-     * @var string
+     * @var string Transaction ID
 	 */
 	private $transactionId;
 	/**
-     * @var string
+     * @var string Purchase Token
 	 */
 	private $purchaseToken;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var string
+     * @var string Receipt Type
 	 */
 	private $type;
 	/**
-     * @var int
+     * @var int Slot Number
 	 */
 	private $slot;
 	/**
-     * @var float
+     * @var float Unit Price
 	 */
 	private $price;
 	/**
-     * @var int
+     * @var int Paid Currency
 	 */
 	private $paid;
 	/**
-     * @var int
+     * @var int Free Currency
 	 */
 	private $free;
 	/**
-     * @var int
+     * @var int Total
 	 */
 	private $total;
 	/**
-     * @var string
+     * @var string Contents ID
 	 */
 	private $contentsId;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Receipt GRN */
 	public function getReceiptId(): ?string {
 		return $this->receiptId;
 	}
+    /** @param string|null $receiptId Receipt GRN */
 	public function setReceiptId(?string $receiptId) {
 		$this->receiptId = $receiptId;
 	}
+    /**
+     * @param string|null $receiptId Receipt GRN
+     * @return Receipt
+     */
 	public function withReceiptId(?string $receiptId): Receipt {
 		$this->receiptId = $receiptId;
 		return $this;
 	}
+    /** @return string|null Transaction ID */
 	public function getTransactionId(): ?string {
 		return $this->transactionId;
 	}
+    /** @param string|null $transactionId Transaction ID */
 	public function setTransactionId(?string $transactionId) {
 		$this->transactionId = $transactionId;
 	}
+    /**
+     * @param string|null $transactionId Transaction ID
+     * @return Receipt
+     */
 	public function withTransactionId(?string $transactionId): Receipt {
 		$this->transactionId = $transactionId;
 		return $this;
 	}
+    /** @return string|null Purchase Token */
 	public function getPurchaseToken(): ?string {
 		return $this->purchaseToken;
 	}
+    /** @param string|null $purchaseToken Purchase Token */
 	public function setPurchaseToken(?string $purchaseToken) {
 		$this->purchaseToken = $purchaseToken;
 	}
+    /**
+     * @param string|null $purchaseToken Purchase Token
+     * @return Receipt
+     */
 	public function withPurchaseToken(?string $purchaseToken): Receipt {
 		$this->purchaseToken = $purchaseToken;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return Receipt
+     */
 	public function withUserId(?string $userId): Receipt {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Receipt Type */
 	public function getType(): ?string {
 		return $this->type;
 	}
+    /** @param string|null $type Receipt Type */
 	public function setType(?string $type) {
 		$this->type = $type;
 	}
+    /**
+     * @param string|null $type Receipt Type
+     * @return Receipt
+     */
 	public function withType(?string $type): Receipt {
 		$this->type = $type;
 		return $this;
 	}
+    /** @return int|null Slot Number */
 	public function getSlot(): ?int {
 		return $this->slot;
 	}
+    /** @param int|null $slot Slot Number */
 	public function setSlot(?int $slot) {
 		$this->slot = $slot;
 	}
+    /**
+     * @param int|null $slot Slot Number
+     * @return Receipt
+     */
 	public function withSlot(?int $slot): Receipt {
 		$this->slot = $slot;
 		return $this;
 	}
+    /** @return float|null Unit Price */
 	public function getPrice(): ?float {
 		return $this->price;
 	}
+    /** @param float|null $price Unit Price */
 	public function setPrice(?float $price) {
 		$this->price = $price;
 	}
+    /**
+     * @param float|null $price Unit Price
+     * @return Receipt
+     */
 	public function withPrice(?float $price): Receipt {
 		$this->price = $price;
 		return $this;
 	}
+    /** @return int|null Paid Currency */
 	public function getPaid(): ?int {
 		return $this->paid;
 	}
+    /** @param int|null $paid Paid Currency */
 	public function setPaid(?int $paid) {
 		$this->paid = $paid;
 	}
+    /**
+     * @param int|null $paid Paid Currency
+     * @return Receipt
+     */
 	public function withPaid(?int $paid): Receipt {
 		$this->paid = $paid;
 		return $this;
 	}
+    /** @return int|null Free Currency */
 	public function getFree(): ?int {
 		return $this->free;
 	}
+    /** @param int|null $free Free Currency */
 	public function setFree(?int $free) {
 		$this->free = $free;
 	}
+    /**
+     * @param int|null $free Free Currency
+     * @return Receipt
+     */
 	public function withFree(?int $free): Receipt {
 		$this->free = $free;
 		return $this;
 	}
+    /** @return int|null Total */
 	public function getTotal(): ?int {
 		return $this->total;
 	}
+    /** @param int|null $total Total */
 	public function setTotal(?int $total) {
 		$this->total = $total;
 	}
+    /**
+     * @param int|null $total Total
+     * @return Receipt
+     */
 	public function withTotal(?int $total): Receipt {
 		$this->total = $total;
 		return $this;
 	}
+    /** @return string|null Contents ID */
 	public function getContentsId(): ?string {
 		return $this->contentsId;
 	}
+    /** @param string|null $contentsId Contents ID */
 	public function setContentsId(?string $contentsId) {
 		$this->contentsId = $contentsId;
 	}
+    /**
+     * @param string|null $contentsId Contents ID
+     * @return Receipt
+     */
 	public function withContentsId(?string $contentsId): Receipt {
 		$this->contentsId = $contentsId;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return Receipt
+     */
 	public function withCreatedAt(?int $createdAt): Receipt {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return Receipt
+     */
 	public function withRevision(?int $revision): Receipt {
 		$this->revision = $revision;
 		return $this;

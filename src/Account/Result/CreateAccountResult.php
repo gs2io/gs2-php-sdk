@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Account\Model\BanStatus;
 use Gs2\Account\Model\Account;
 
+/**
+ * Result of createAccount: Create Game Player Account
+ *
+ * @see https://docs.gs2.io/api_reference/account/sdk/#createaccount
+ */
 class CreateAccountResult implements IResult {
-    /** @var Account */
+    /** @var Account Game Player Account created */
     private $item;
 
+    /** @return Account|null Game Player Account created */
 	public function getItem(): ?Account {
 		return $this->item;
 	}
 
+    /** @param Account|null $item Game Player Account created */
 	public function setItem(?Account $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Account|null $item Game Player Account created
+     * @return CreateAccountResult
+     */
 	public function withItem(?Account $item): CreateAccountResult {
 		$this->item = $item;
 		return $this;

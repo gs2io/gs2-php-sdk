@@ -19,51 +19,80 @@ namespace Gs2\SerialKey\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for issue: Create Serial Code Issuance Job
+ *
+ * @see https://docs.gs2.io/api_reference/serial_key/sdk/#issue
+ */
 class IssueRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Campaign Model name */
     private $campaignModelName;
-    /** @var string */
+    /** @var string Metadata */
     private $metadata;
-    /** @var int */
+    /** @var int Quantity of Serial Codes to issue */
     private $issueRequestCount;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return IssueRequest
+     */
 	public function withNamespaceName(?string $namespaceName): IssueRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Campaign Model name */
 	public function getCampaignModelName(): ?string {
 		return $this->campaignModelName;
 	}
+    /** @param string|null $campaignModelName Campaign Model name */
 	public function setCampaignModelName(?string $campaignModelName) {
 		$this->campaignModelName = $campaignModelName;
 	}
+    /**
+     * @param string|null $campaignModelName Campaign Model name
+     * @return IssueRequest
+     */
 	public function withCampaignModelName(?string $campaignModelName): IssueRequest {
 		$this->campaignModelName = $campaignModelName;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return IssueRequest
+     */
 	public function withMetadata(?string $metadata): IssueRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return int|null Quantity of Serial Codes to issue */
 	public function getIssueRequestCount(): ?int {
 		return $this->issueRequestCount;
 	}
+    /** @param int|null $issueRequestCount Quantity of Serial Codes to issue */
 	public function setIssueRequestCount(?int $issueRequestCount) {
 		$this->issueRequestCount = $issueRequestCount;
 	}
+    /**
+     * @param int|null $issueRequestCount Quantity of Serial Codes to issue
+     * @return IssueRequest
+     */
 	public function withIssueRequestCount(?int $issueRequestCount): IssueRequest {
 		$this->issueRequestCount = $issueRequestCount;
 		return $this;

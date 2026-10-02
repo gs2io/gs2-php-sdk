@@ -20,65 +20,100 @@ namespace Gs2\Distributor\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Distributor\Model\DistributeResource;
 
+/**
+ * Request for distribute: Distribution of possessions
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#distribute
+ */
 class DistributeRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Distributor Model name */
     private $distributorName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var DistributeResource */
+    /** @var DistributeResource Resources to be added */
     private $distributeResource;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DistributeRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DistributeRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Distributor Model name */
 	public function getDistributorName(): ?string {
 		return $this->distributorName;
 	}
+    /** @param string|null $distributorName Distributor Model name */
 	public function setDistributorName(?string $distributorName) {
 		$this->distributorName = $distributorName;
 	}
+    /**
+     * @param string|null $distributorName Distributor Model name
+     * @return DistributeRequest
+     */
 	public function withDistributorName(?string $distributorName): DistributeRequest {
 		$this->distributorName = $distributorName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return DistributeRequest
+     */
 	public function withUserId(?string $userId): DistributeRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return DistributeResource|null Resources to be added */
 	public function getDistributeResource(): ?DistributeResource {
 		return $this->distributeResource;
 	}
+    /** @param DistributeResource|null $distributeResource Resources to be added */
 	public function setDistributeResource(?DistributeResource $distributeResource) {
 		$this->distributeResource = $distributeResource;
 	}
+    /**
+     * @param DistributeResource|null $distributeResource Resources to be added
+     * @return DistributeRequest
+     */
 	public function withDistributeResource(?DistributeResource $distributeResource): DistributeRequest {
 		$this->distributeResource = $distributeResource;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return DistributeRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): DistributeRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

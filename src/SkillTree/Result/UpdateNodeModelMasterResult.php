@@ -22,18 +22,29 @@ use Gs2\SkillTree\Model\VerifyAction;
 use Gs2\SkillTree\Model\ConsumeAction;
 use Gs2\SkillTree\Model\NodeModelMaster;
 
+/**
+ * Result of updateNodeModelMaster: Update Node Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#updatenodemodelmaster
+ */
 class UpdateNodeModelMasterResult implements IResult {
-    /** @var NodeModelMaster */
+    /** @var NodeModelMaster Node Model Master updated */
     private $item;
 
+    /** @return NodeModelMaster|null Node Model Master updated */
 	public function getItem(): ?NodeModelMaster {
 		return $this->item;
 	}
 
+    /** @param NodeModelMaster|null $item Node Model Master updated */
 	public function setItem(?NodeModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param NodeModelMaster|null $item Node Model Master updated
+     * @return UpdateNodeModelMasterResult
+     */
 	public function withItem(?NodeModelMaster $item): UpdateNodeModelMasterResult {
 		$this->item = $item;
 		return $this;

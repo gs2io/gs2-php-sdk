@@ -20,18 +20,29 @@ namespace Gs2\Matchmaking\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Matchmaking\Model\JoinedSeasonGathering;
 
+/**
+ * Result of getJoinedSeasonGatheringByUserId: Get joined Season Gathering by specifying the user ID
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#getjoinedseasongatheringbyuserid
+ */
 class GetJoinedSeasonGatheringByUserIdResult implements IResult {
-    /** @var JoinedSeasonGathering */
+    /** @var JoinedSeasonGathering JoinedSeasonGathering */
     private $item;
 
+    /** @return JoinedSeasonGathering|null JoinedSeasonGathering */
 	public function getItem(): ?JoinedSeasonGathering {
 		return $this->item;
 	}
 
+    /** @param JoinedSeasonGathering|null $item JoinedSeasonGathering */
 	public function setItem(?JoinedSeasonGathering $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param JoinedSeasonGathering|null $item JoinedSeasonGathering
+     * @return GetJoinedSeasonGatheringByUserIdResult
+     */
 	public function withItem(?JoinedSeasonGathering $item): GetJoinedSeasonGatheringByUserIdResult {
 		$this->item = $item;
 		return $this;

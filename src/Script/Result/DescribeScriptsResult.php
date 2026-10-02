@@ -20,33 +20,50 @@ namespace Gs2\Script\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Script\Model\Script;
 
+/**
+ * Result of describeScripts: List Scripts
+ *
+ * @see https://docs.gs2.io/api_reference/script/sdk/#describescripts
+ */
 class DescribeScriptsResult implements IResult {
-    /** @var array */
+    /** @var array List of Scripts */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Scripts */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Scripts */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Scripts
+     * @return DescribeScriptsResult
+     */
 	public function withItems(?array $items): DescribeScriptsResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeScriptsResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeScriptsResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

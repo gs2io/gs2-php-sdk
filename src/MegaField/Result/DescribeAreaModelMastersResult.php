@@ -20,33 +20,50 @@ namespace Gs2\MegaField\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\MegaField\Model\AreaModelMaster;
 
+/**
+ * Result of describeAreaModelMasters: List Area Model Masters
+ *
+ * @see https://docs.gs2.io/api_reference/mega_field/sdk/#describeareamodelmasters
+ */
 class DescribeAreaModelMastersResult implements IResult {
-    /** @var array */
+    /** @var array List of Area Model Masters */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Area Model Masters */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Area Model Masters */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Area Model Masters
+     * @return DescribeAreaModelMastersResult
+     */
 	public function withItems(?array $items): DescribeAreaModelMastersResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeAreaModelMastersResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeAreaModelMastersResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

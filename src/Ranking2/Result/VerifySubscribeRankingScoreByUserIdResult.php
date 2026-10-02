@@ -20,18 +20,29 @@ namespace Gs2\Ranking2\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Ranking2\Model\SubscribeRankingScore;
 
+/**
+ * Result of verifySubscribeRankingScoreByUserId: Verify the score of the subscribe ranking specifying User ID
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/sdk/#verifysubscriberankingscorebyuserid
+ */
 class VerifySubscribeRankingScoreByUserIdResult implements IResult {
-    /** @var SubscribeRankingScore */
+    /** @var SubscribeRankingScore Subscribe Ranking Score */
     private $item;
 
+    /** @return SubscribeRankingScore|null Subscribe Ranking Score */
 	public function getItem(): ?SubscribeRankingScore {
 		return $this->item;
 	}
 
+    /** @param SubscribeRankingScore|null $item Subscribe Ranking Score */
 	public function setItem(?SubscribeRankingScore $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param SubscribeRankingScore|null $item Subscribe Ranking Score
+     * @return VerifySubscribeRankingScoreByUserIdResult
+     */
 	public function withItem(?SubscribeRankingScore $item): VerifySubscribeRankingScoreByUserIdResult {
 		$this->item = $item;
 		return $this;

@@ -22,63 +22,92 @@ use Gs2\Inventory\Model\ItemSet;
 use Gs2\Inventory\Model\ItemModel;
 use Gs2\Inventory\Model\Inventory;
 
+/**
+ * Result of acquireItemSetByStampSheet: Execute Item Set acquisition as an acquire action
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventoryacquireitemsetbyuserid
+ */
 class AcquireItemSetByStampSheetResult implements IResult {
-    /** @var array */
+    /** @var array List of Item Sets after addition */
     private $items;
-    /** @var ItemModel */
+    /** @var ItemModel Item Model */
     private $itemModel;
-    /** @var Inventory */
+    /** @var Inventory Inventory */
     private $inventory;
-    /** @var int */
+    /** @var int Quantity of items transferred to GS2-Inbox that were not received beyond the possession limit */
     private $overflowCount;
 
+    /** @return array|null List of Item Sets after addition */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Item Sets after addition */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Item Sets after addition
+     * @return AcquireItemSetByStampSheetResult
+     */
 	public function withItems(?array $items): AcquireItemSetByStampSheetResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return ItemModel|null Item Model */
 	public function getItemModel(): ?ItemModel {
 		return $this->itemModel;
 	}
 
+    /** @param ItemModel|null $itemModel Item Model */
 	public function setItemModel(?ItemModel $itemModel) {
 		$this->itemModel = $itemModel;
 	}
 
+    /**
+     * @param ItemModel|null $itemModel Item Model
+     * @return AcquireItemSetByStampSheetResult
+     */
 	public function withItemModel(?ItemModel $itemModel): AcquireItemSetByStampSheetResult {
 		$this->itemModel = $itemModel;
 		return $this;
 	}
 
+    /** @return Inventory|null Inventory */
 	public function getInventory(): ?Inventory {
 		return $this->inventory;
 	}
 
+    /** @param Inventory|null $inventory Inventory */
 	public function setInventory(?Inventory $inventory) {
 		$this->inventory = $inventory;
 	}
 
+    /**
+     * @param Inventory|null $inventory Inventory
+     * @return AcquireItemSetByStampSheetResult
+     */
 	public function withInventory(?Inventory $inventory): AcquireItemSetByStampSheetResult {
 		$this->inventory = $inventory;
 		return $this;
 	}
 
+    /** @return int|null Quantity of items transferred to GS2-Inbox that were not received beyond the possession limit */
 	public function getOverflowCount(): ?int {
 		return $this->overflowCount;
 	}
 
+    /** @param int|null $overflowCount Quantity of items transferred to GS2-Inbox that were not received beyond the possession limit */
 	public function setOverflowCount(?int $overflowCount) {
 		$this->overflowCount = $overflowCount;
 	}
 
+    /**
+     * @param int|null $overflowCount Quantity of items transferred to GS2-Inbox that were not received beyond the possession limit
+     * @return AcquireItemSetByStampSheetResult
+     */
 	public function withOverflowCount(?int $overflowCount): AcquireItemSetByStampSheetResult {
 		$this->overflowCount = $overflowCount;
 		return $this;

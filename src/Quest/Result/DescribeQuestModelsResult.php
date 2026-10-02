@@ -24,18 +24,29 @@ use Gs2\Quest\Model\VerifyAction;
 use Gs2\Quest\Model\ConsumeAction;
 use Gs2\Quest\Model\QuestModel;
 
+/**
+ * Result of describeQuestModels: List Quest Models
+ *
+ * @see https://docs.gs2.io/api_reference/quest/sdk/#describequestmodels
+ */
 class DescribeQuestModelsResult implements IResult {
-    /** @var array */
+    /** @var array List of Quest Models */
     private $items;
 
+    /** @return array|null List of Quest Models */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Quest Models */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Quest Models
+     * @return DescribeQuestModelsResult
+     */
 	public function withItems(?array $items): DescribeQuestModelsResult {
 		$this->items = $items;
 		return $this;

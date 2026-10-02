@@ -20,18 +20,29 @@ namespace Gs2\Ranking2\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Ranking2\Model\ClusterRankingReceivedReward;
 
+/**
+ * Result of deleteClusterRankingReceivedRewardByUserId: Delete Cluster Ranking Reward Received History specifying User ID
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/sdk/#deleteclusterrankingreceivedrewardbyuserid
+ */
 class DeleteClusterRankingReceivedRewardByUserIdResult implements IResult {
-    /** @var ClusterRankingReceivedReward */
+    /** @var ClusterRankingReceivedReward Cluster Ranking Reward Received History deleted */
     private $item;
 
+    /** @return ClusterRankingReceivedReward|null Cluster Ranking Reward Received History deleted */
 	public function getItem(): ?ClusterRankingReceivedReward {
 		return $this->item;
 	}
 
+    /** @param ClusterRankingReceivedReward|null $item Cluster Ranking Reward Received History deleted */
 	public function setItem(?ClusterRankingReceivedReward $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param ClusterRankingReceivedReward|null $item Cluster Ranking Reward Received History deleted
+     * @return DeleteClusterRankingReceivedRewardByUserIdResult
+     */
 	public function withItem(?ClusterRankingReceivedReward $item): DeleteClusterRankingReceivedRewardByUserIdResult {
 		$this->item = $item;
 		return $this;

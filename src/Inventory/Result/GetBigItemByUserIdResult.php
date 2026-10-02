@@ -21,33 +21,50 @@ use Gs2\Core\Model\IResult;
 use Gs2\Inventory\Model\BigItem;
 use Gs2\Inventory\Model\BigItemModel;
 
+/**
+ * Result of getBigItemByUserId: Get a Big Item by specifying the user ID
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#getbigitembyuserid
+ */
 class GetBigItemByUserIdResult implements IResult {
-    /** @var BigItem */
+    /** @var BigItem Big Item */
     private $item;
-    /** @var BigItemModel */
+    /** @var BigItemModel Big Item Model */
     private $itemModel;
 
+    /** @return BigItem|null Big Item */
 	public function getItem(): ?BigItem {
 		return $this->item;
 	}
 
+    /** @param BigItem|null $item Big Item */
 	public function setItem(?BigItem $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param BigItem|null $item Big Item
+     * @return GetBigItemByUserIdResult
+     */
 	public function withItem(?BigItem $item): GetBigItemByUserIdResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return BigItemModel|null Big Item Model */
 	public function getItemModel(): ?BigItemModel {
 		return $this->itemModel;
 	}
 
+    /** @param BigItemModel|null $itemModel Big Item Model */
 	public function setItemModel(?BigItemModel $itemModel) {
 		$this->itemModel = $itemModel;
 	}
 
+    /**
+     * @param BigItemModel|null $itemModel Big Item Model
+     * @return GetBigItemByUserIdResult
+     */
 	public function withItemModel(?BigItemModel $itemModel): GetBigItemByUserIdResult {
 		$this->itemModel = $itemModel;
 		return $this;

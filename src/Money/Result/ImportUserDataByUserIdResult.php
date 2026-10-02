@@ -19,6 +19,11 @@ namespace Gs2\Money\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of importUserDataByUserId: Execute import of data associated with the specified user ID
+ *
+ * @see https://docs.gs2.io/api_reference/money/sdk/#importuserdatabyuserid
+ */
 class ImportUserDataByUserIdResult implements IResult {
 
     public static function fromJson(?array $data): ?ImportUserDataByUserIdResult {

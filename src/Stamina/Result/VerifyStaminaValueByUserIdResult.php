@@ -20,18 +20,29 @@ namespace Gs2\Stamina\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Stamina\Model\Stamina;
 
+/**
+ * Result of verifyStaminaValueByUserId: Verify the value of the current Stamina by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/stamina/sdk/#verifystaminavaluebyuserid
+ */
 class VerifyStaminaValueByUserIdResult implements IResult {
-    /** @var Stamina */
+    /** @var Stamina Stamina */
     private $item;
 
+    /** @return Stamina|null Stamina */
 	public function getItem(): ?Stamina {
 		return $this->item;
 	}
 
+    /** @param Stamina|null $item Stamina */
 	public function setItem(?Stamina $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Stamina|null $item Stamina
+     * @return VerifyStaminaValueByUserIdResult
+     */
 	public function withItem(?Stamina $item): VerifyStaminaValueByUserIdResult {
 		$this->item = $item;
 		return $this;

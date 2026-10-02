@@ -20,129 +20,188 @@ namespace Gs2\Realtime\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Room
+ *
+ * @see https://docs.gs2.io/api_reference/realtime/sdk/#room
+ */
 class Room implements IModel {
 	/**
-     * @var string
+     * @var string Room GRN
 	 */
 	private $roomId;
 	/**
-     * @var string
+     * @var string Room name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string IP Address
 	 */
 	private $ipAddress;
 	/**
-     * @var int
+     * @var int Port
 	 */
 	private $port;
 	/**
-     * @var string
+     * @var string Encryption Key
 	 */
 	private $encryptionKey;
 	/**
-     * @var array
+     * @var array Notification User IDs
 	 */
 	private $notificationUserIds;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Room GRN */
 	public function getRoomId(): ?string {
 		return $this->roomId;
 	}
+    /** @param string|null $roomId Room GRN */
 	public function setRoomId(?string $roomId) {
 		$this->roomId = $roomId;
 	}
+    /**
+     * @param string|null $roomId Room GRN
+     * @return Room
+     */
 	public function withRoomId(?string $roomId): Room {
 		$this->roomId = $roomId;
 		return $this;
 	}
+    /** @return string|null Room name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Room name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Room name
+     * @return Room
+     */
 	public function withName(?string $name): Room {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null IP Address */
 	public function getIpAddress(): ?string {
 		return $this->ipAddress;
 	}
+    /** @param string|null $ipAddress IP Address */
 	public function setIpAddress(?string $ipAddress) {
 		$this->ipAddress = $ipAddress;
 	}
+    /**
+     * @param string|null $ipAddress IP Address
+     * @return Room
+     */
 	public function withIpAddress(?string $ipAddress): Room {
 		$this->ipAddress = $ipAddress;
 		return $this;
 	}
+    /** @return int|null Port */
 	public function getPort(): ?int {
 		return $this->port;
 	}
+    /** @param int|null $port Port */
 	public function setPort(?int $port) {
 		$this->port = $port;
 	}
+    /**
+     * @param int|null $port Port
+     * @return Room
+     */
 	public function withPort(?int $port): Room {
 		$this->port = $port;
 		return $this;
 	}
+    /** @return string|null Encryption Key */
 	public function getEncryptionKey(): ?string {
 		return $this->encryptionKey;
 	}
+    /** @param string|null $encryptionKey Encryption Key */
 	public function setEncryptionKey(?string $encryptionKey) {
 		$this->encryptionKey = $encryptionKey;
 	}
+    /**
+     * @param string|null $encryptionKey Encryption Key
+     * @return Room
+     */
 	public function withEncryptionKey(?string $encryptionKey): Room {
 		$this->encryptionKey = $encryptionKey;
 		return $this;
 	}
+    /** @return array|null Notification User IDs */
 	public function getNotificationUserIds(): ?array {
 		return $this->notificationUserIds;
 	}
+    /** @param array|null $notificationUserIds Notification User IDs */
 	public function setNotificationUserIds(?array $notificationUserIds) {
 		$this->notificationUserIds = $notificationUserIds;
 	}
+    /**
+     * @param array|null $notificationUserIds Notification User IDs
+     * @return Room
+     */
 	public function withNotificationUserIds(?array $notificationUserIds): Room {
 		$this->notificationUserIds = $notificationUserIds;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return Room
+     */
 	public function withCreatedAt(?int $createdAt): Room {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return Room
+     */
 	public function withUpdatedAt(?int $updatedAt): Room {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return Room
+     */
 	public function withRevision(?int $revision): Room {
 		$this->revision = $revision;
 		return $this;

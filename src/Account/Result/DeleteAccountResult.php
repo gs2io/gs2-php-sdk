@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Account\Model\BanStatus;
 use Gs2\Account\Model\Account;
 
+/**
+ * Result of deleteAccount: Delete Game Player Account
+ *
+ * @see https://docs.gs2.io/api_reference/account/sdk/#deleteaccount
+ */
 class DeleteAccountResult implements IResult {
-    /** @var Account */
+    /** @var Account Game Player Account deleted */
     private $item;
 
+    /** @return Account|null Game Player Account deleted */
 	public function getItem(): ?Account {
 		return $this->item;
 	}
 
+    /** @param Account|null $item Game Player Account deleted */
 	public function setItem(?Account $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Account|null $item Game Player Account deleted
+     * @return DeleteAccountResult
+     */
 	public function withItem(?Account $item): DeleteAccountResult {
 		$this->item = $item;
 		return $this;

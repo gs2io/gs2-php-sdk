@@ -19,77 +19,118 @@ namespace Gs2\Chat\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for createRoom: Create Room
+ *
+ * @see https://docs.gs2.io/api_reference/chat/sdk/#createroom
+ */
 class CreateRoomRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Owner User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Room name */
     private $name;
-    /** @var string */
+    /** @var string Metadata */
     private $metadata;
-    /** @var string */
+    /** @var string Password required to access the room */
     private $password;
-    /** @var array */
+    /** @var array List of user IDs with access to the room */
     private $whiteListUserIds;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return CreateRoomRequest
+     */
 	public function withNamespaceName(?string $namespaceName): CreateRoomRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Owner User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken Owner User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken Owner User ID
+     * @return CreateRoomRequest
+     */
 	public function withAccessToken(?string $accessToken): CreateRoomRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Room name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Room name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Room name
+     * @return CreateRoomRequest
+     */
 	public function withName(?string $name): CreateRoomRequest {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return CreateRoomRequest
+     */
 	public function withMetadata(?string $metadata): CreateRoomRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return string|null Password required to access the room */
 	public function getPassword(): ?string {
 		return $this->password;
 	}
+    /** @param string|null $password Password required to access the room */
 	public function setPassword(?string $password) {
 		$this->password = $password;
 	}
+    /**
+     * @param string|null $password Password required to access the room
+     * @return CreateRoomRequest
+     */
 	public function withPassword(?string $password): CreateRoomRequest {
 		$this->password = $password;
 		return $this;
 	}
+    /** @return array|null List of user IDs with access to the room */
 	public function getWhiteListUserIds(): ?array {
 		return $this->whiteListUserIds;
 	}
+    /** @param array|null $whiteListUserIds List of user IDs with access to the room */
 	public function setWhiteListUserIds(?array $whiteListUserIds) {
 		$this->whiteListUserIds = $whiteListUserIds;
 	}
+    /**
+     * @param array|null $whiteListUserIds List of user IDs with access to the room
+     * @return CreateRoomRequest
+     */
 	public function withWhiteListUserIds(?array $whiteListUserIds): CreateRoomRequest {
 		$this->whiteListUserIds = $whiteListUserIds;
 		return $this;

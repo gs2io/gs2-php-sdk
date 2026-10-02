@@ -19,53 +19,82 @@ namespace Gs2\Account\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for createTakeOverOpenIdConnect: Create Takeover Information using OpenID Connect
+ *
+ * @see https://docs.gs2.io/api_reference/account/sdk/#createtakeoveropenidconnect
+ */
 class CreateTakeOverOpenIdConnectRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var int */
+    /** @var int Slot Number */
     private $type;
-    /** @var string */
+    /** @var string OpenID Connect ID Token */
     private $idToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return CreateTakeOverOpenIdConnectRequest
+     */
 	public function withNamespaceName(?string $namespaceName): CreateTakeOverOpenIdConnectRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return CreateTakeOverOpenIdConnectRequest
+     */
 	public function withAccessToken(?string $accessToken): CreateTakeOverOpenIdConnectRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return int|null Slot Number */
 	public function getType(): ?int {
 		return $this->type;
 	}
+    /** @param int|null $type Slot Number */
 	public function setType(?int $type) {
 		$this->type = $type;
 	}
+    /**
+     * @param int|null $type Slot Number
+     * @return CreateTakeOverOpenIdConnectRequest
+     */
 	public function withType(?int $type): CreateTakeOverOpenIdConnectRequest {
 		$this->type = $type;
 		return $this;
 	}
+    /** @return string|null OpenID Connect ID Token */
 	public function getIdToken(): ?string {
 		return $this->idToken;
 	}
+    /** @param string|null $idToken OpenID Connect ID Token */
 	public function setIdToken(?string $idToken) {
 		$this->idToken = $idToken;
 	}
+    /**
+     * @param string|null $idToken OpenID Connect ID Token
+     * @return CreateTakeOverOpenIdConnectRequest
+     */
 	public function withIdToken(?string $idToken): CreateTakeOverOpenIdConnectRequest {
 		$this->idToken = $idToken;
 		return $this;

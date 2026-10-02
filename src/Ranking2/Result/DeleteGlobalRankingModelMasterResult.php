@@ -22,18 +22,29 @@ use Gs2\Ranking2\Model\AcquireAction;
 use Gs2\Ranking2\Model\RankingReward;
 use Gs2\Ranking2\Model\GlobalRankingModelMaster;
 
+/**
+ * Result of deleteGlobalRankingModelMaster: Delete Global Ranking Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/sdk/#deleteglobalrankingmodelmaster
+ */
 class DeleteGlobalRankingModelMasterResult implements IResult {
-    /** @var GlobalRankingModelMaster */
+    /** @var GlobalRankingModelMaster Global Ranking Model Master deleted */
     private $item;
 
+    /** @return GlobalRankingModelMaster|null Global Ranking Model Master deleted */
 	public function getItem(): ?GlobalRankingModelMaster {
 		return $this->item;
 	}
 
+    /** @param GlobalRankingModelMaster|null $item Global Ranking Model Master deleted */
 	public function setItem(?GlobalRankingModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param GlobalRankingModelMaster|null $item Global Ranking Model Master deleted
+     * @return DeleteGlobalRankingModelMasterResult
+     */
 	public function withItem(?GlobalRankingModelMaster $item): DeleteGlobalRankingModelMasterResult {
 		$this->item = $item;
 		return $this;

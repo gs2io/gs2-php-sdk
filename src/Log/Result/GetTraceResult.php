@@ -22,48 +22,71 @@ use Gs2\Log\Model\Label;
 use Gs2\Log\Model\LogEntry;
 use Gs2\Log\Model\Trace;
 
+/**
+ * Result of getTrace: Get trace by trace ID
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#gettrace
+ */
 class GetTraceResult implements IResult {
-    /** @var Trace */
+    /** @var Trace Trace */
     private $trace;
-    /** @var array */
+    /** @var array List of traces that were run in parallel */
     private $parallels;
-    /** @var bool */
+    /** @var bool Indicates if the parallels list was truncated */
     private $parallelTruncated;
 
+    /** @return Trace|null Trace */
 	public function getTrace(): ?Trace {
 		return $this->trace;
 	}
 
+    /** @param Trace|null $trace Trace */
 	public function setTrace(?Trace $trace) {
 		$this->trace = $trace;
 	}
 
+    /**
+     * @param Trace|null $trace Trace
+     * @return GetTraceResult
+     */
 	public function withTrace(?Trace $trace): GetTraceResult {
 		$this->trace = $trace;
 		return $this;
 	}
 
+    /** @return array|null List of traces that were run in parallel */
 	public function getParallels(): ?array {
 		return $this->parallels;
 	}
 
+    /** @param array|null $parallels List of traces that were run in parallel */
 	public function setParallels(?array $parallels) {
 		$this->parallels = $parallels;
 	}
 
+    /**
+     * @param array|null $parallels List of traces that were run in parallel
+     * @return GetTraceResult
+     */
 	public function withParallels(?array $parallels): GetTraceResult {
 		$this->parallels = $parallels;
 		return $this;
 	}
 
+    /** @return bool|null Indicates if the parallels list was truncated */
 	public function getParallelTruncated(): ?bool {
 		return $this->parallelTruncated;
 	}
 
+    /** @param bool|null $parallelTruncated Indicates if the parallels list was truncated */
 	public function setParallelTruncated(?bool $parallelTruncated) {
 		$this->parallelTruncated = $parallelTruncated;
 	}
 
+    /**
+     * @param bool|null $parallelTruncated Indicates if the parallels list was truncated
+     * @return GetTraceResult
+     */
 	public function withParallelTruncated(?bool $parallelTruncated): GetTraceResult {
 		$this->parallelTruncated = $parallelTruncated;
 		return $this;

@@ -20,17 +20,28 @@ namespace Gs2\Money2\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Google Play Receipt Verification Event
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#googleplayverifyreceiptevent
+ */
 class GooglePlayVerifyReceiptEvent implements IModel {
 	/**
-     * @var string
+     * @var string Purchase Token
 	 */
 	private $purchaseToken;
+    /** @return string|null Purchase Token */
 	public function getPurchaseToken(): ?string {
 		return $this->purchaseToken;
 	}
+    /** @param string|null $purchaseToken Purchase Token */
 	public function setPurchaseToken(?string $purchaseToken) {
 		$this->purchaseToken = $purchaseToken;
 	}
+    /**
+     * @param string|null $purchaseToken Purchase Token
+     * @return GooglePlayVerifyReceiptEvent
+     */
 	public function withPurchaseToken(?string $purchaseToken): GooglePlayVerifyReceiptEvent {
 		$this->purchaseToken = $purchaseToken;
 		return $this;

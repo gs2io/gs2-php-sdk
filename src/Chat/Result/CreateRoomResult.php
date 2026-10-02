@@ -20,18 +20,29 @@ namespace Gs2\Chat\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Chat\Model\Room;
 
+/**
+ * Result of createRoom: Create Room
+ *
+ * @see https://docs.gs2.io/api_reference/chat/sdk/#createroom
+ */
 class CreateRoomResult implements IResult {
-    /** @var Room */
+    /** @var Room Room created */
     private $item;
 
+    /** @return Room|null Room created */
 	public function getItem(): ?Room {
 		return $this->item;
 	}
 
+    /** @param Room|null $item Room created */
 	public function setItem(?Room $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Room|null $item Room created
+     * @return CreateRoomResult
+     */
 	public function withItem(?Room $item): CreateRoomResult {
 		$this->item = $item;
 		return $this;

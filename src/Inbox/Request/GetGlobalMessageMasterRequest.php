@@ -19,27 +19,44 @@ namespace Gs2\Inbox\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getGlobalMessageMaster: Get a message for all users
+ *
+ * @see https://docs.gs2.io/api_reference/inbox/sdk/#getglobalmessagemaster
+ */
 class GetGlobalMessageMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Global Message name */
     private $globalMessageName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetGlobalMessageMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetGlobalMessageMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Global Message name */
 	public function getGlobalMessageName(): ?string {
 		return $this->globalMessageName;
 	}
+    /** @param string|null $globalMessageName Global Message name */
 	public function setGlobalMessageName(?string $globalMessageName) {
 		$this->globalMessageName = $globalMessageName;
 	}
+    /**
+     * @param string|null $globalMessageName Global Message name
+     * @return GetGlobalMessageMasterRequest
+     */
 	public function withGlobalMessageName(?string $globalMessageName): GetGlobalMessageMasterRequest {
 		$this->globalMessageName = $globalMessageName;
 		return $this;

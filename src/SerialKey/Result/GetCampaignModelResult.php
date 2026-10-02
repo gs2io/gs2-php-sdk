@@ -20,18 +20,29 @@ namespace Gs2\SerialKey\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\SerialKey\Model\CampaignModel;
 
+/**
+ * Result of getCampaignModel: Get Campaign Model
+ *
+ * @see https://docs.gs2.io/api_reference/serial_key/sdk/#getcampaignmodel
+ */
 class GetCampaignModelResult implements IResult {
-    /** @var CampaignModel */
+    /** @var CampaignModel Campaign Model */
     private $item;
 
+    /** @return CampaignModel|null Campaign Model */
 	public function getItem(): ?CampaignModel {
 		return $this->item;
 	}
 
+    /** @param CampaignModel|null $item Campaign Model */
 	public function setItem(?CampaignModel $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CampaignModel|null $item Campaign Model
+     * @return GetCampaignModelResult
+     */
 	public function withItem(?CampaignModel $item): GetCampaignModelResult {
 		$this->item = $item;
 		return $this;

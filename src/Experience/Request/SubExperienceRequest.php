@@ -19,65 +19,100 @@ namespace Gs2\Experience\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for subExperience: Subtract experience
+ *
+ * @see https://docs.gs2.io/api_reference/experience/sdk/#subexperience
+ */
 class SubExperienceRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Experience Model name */
     private $experienceName;
-    /** @var string */
+    /** @var string Property ID */
     private $propertyId;
-    /** @var int */
+    /** @var int Lost Experience */
     private $experienceValue;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return SubExperienceRequest
+     */
 	public function withNamespaceName(?string $namespaceName): SubExperienceRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return SubExperienceRequest
+     */
 	public function withAccessToken(?string $accessToken): SubExperienceRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Experience Model name */
 	public function getExperienceName(): ?string {
 		return $this->experienceName;
 	}
+    /** @param string|null $experienceName Experience Model name */
 	public function setExperienceName(?string $experienceName) {
 		$this->experienceName = $experienceName;
 	}
+    /**
+     * @param string|null $experienceName Experience Model name
+     * @return SubExperienceRequest
+     */
 	public function withExperienceName(?string $experienceName): SubExperienceRequest {
 		$this->experienceName = $experienceName;
 		return $this;
 	}
+    /** @return string|null Property ID */
 	public function getPropertyId(): ?string {
 		return $this->propertyId;
 	}
+    /** @param string|null $propertyId Property ID */
 	public function setPropertyId(?string $propertyId) {
 		$this->propertyId = $propertyId;
 	}
+    /**
+     * @param string|null $propertyId Property ID
+     * @return SubExperienceRequest
+     */
 	public function withPropertyId(?string $propertyId): SubExperienceRequest {
 		$this->propertyId = $propertyId;
 		return $this;
 	}
+    /** @return int|null Lost Experience */
 	public function getExperienceValue(): ?int {
 		return $this->experienceValue;
 	}
+    /** @param int|null $experienceValue Lost Experience */
 	public function setExperienceValue(?int $experienceValue) {
 		$this->experienceValue = $experienceValue;
 	}
+    /**
+     * @param int|null $experienceValue Lost Experience
+     * @return SubExperienceRequest
+     */
 	public function withExperienceValue(?int $experienceValue): SubExperienceRequest {
 		$this->experienceValue = $experienceValue;
 		return $this;

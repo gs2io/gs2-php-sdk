@@ -20,143 +20,208 @@ namespace Gs2\Enhance\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Unleash Rate Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/enhance/sdk/#unleashratemodelmaster
+ */
 class UnleashRateModelMaster implements IModel {
 	/**
-     * @var string
+     * @var string Unleash Rate Model Master GRN
 	 */
 	private $unleashRateModelId;
 	/**
-     * @var string
+     * @var string Unleash Rate Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Description
 	 */
 	private $description;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var string
+     * @var string GS2-Inventory Inventory Model GRN usable for unleash targets
 	 */
 	private $targetInventoryModelId;
 	/**
-     * @var string
+     * @var string Grade Model GRN
 	 */
 	private $gradeModelId;
 	/**
-     * @var array
+     * @var array List of Grade Entry
 	 */
 	private $gradeEntries;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Unleash Rate Model Master GRN */
 	public function getUnleashRateModelId(): ?string {
 		return $this->unleashRateModelId;
 	}
+    /** @param string|null $unleashRateModelId Unleash Rate Model Master GRN */
 	public function setUnleashRateModelId(?string $unleashRateModelId) {
 		$this->unleashRateModelId = $unleashRateModelId;
 	}
+    /**
+     * @param string|null $unleashRateModelId Unleash Rate Model Master GRN
+     * @return UnleashRateModelMaster
+     */
 	public function withUnleashRateModelId(?string $unleashRateModelId): UnleashRateModelMaster {
 		$this->unleashRateModelId = $unleashRateModelId;
 		return $this;
 	}
+    /** @return string|null Unleash Rate Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Unleash Rate Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Unleash Rate Model name
+     * @return UnleashRateModelMaster
+     */
 	public function withName(?string $name): UnleashRateModelMaster {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return UnleashRateModelMaster
+     */
 	public function withDescription(?string $description): UnleashRateModelMaster {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return UnleashRateModelMaster
+     */
 	public function withMetadata(?string $metadata): UnleashRateModelMaster {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return string|null GS2-Inventory Inventory Model GRN usable for unleash targets */
 	public function getTargetInventoryModelId(): ?string {
 		return $this->targetInventoryModelId;
 	}
+    /** @param string|null $targetInventoryModelId GS2-Inventory Inventory Model GRN usable for unleash targets */
 	public function setTargetInventoryModelId(?string $targetInventoryModelId) {
 		$this->targetInventoryModelId = $targetInventoryModelId;
 	}
+    /**
+     * @param string|null $targetInventoryModelId GS2-Inventory Inventory Model GRN usable for unleash targets
+     * @return UnleashRateModelMaster
+     */
 	public function withTargetInventoryModelId(?string $targetInventoryModelId): UnleashRateModelMaster {
 		$this->targetInventoryModelId = $targetInventoryModelId;
 		return $this;
 	}
+    /** @return string|null Grade Model GRN */
 	public function getGradeModelId(): ?string {
 		return $this->gradeModelId;
 	}
+    /** @param string|null $gradeModelId Grade Model GRN */
 	public function setGradeModelId(?string $gradeModelId) {
 		$this->gradeModelId = $gradeModelId;
 	}
+    /**
+     * @param string|null $gradeModelId Grade Model GRN
+     * @return UnleashRateModelMaster
+     */
 	public function withGradeModelId(?string $gradeModelId): UnleashRateModelMaster {
 		$this->gradeModelId = $gradeModelId;
 		return $this;
 	}
+    /** @return array|null List of Grade Entry */
 	public function getGradeEntries(): ?array {
 		return $this->gradeEntries;
 	}
+    /** @param array|null $gradeEntries List of Grade Entry */
 	public function setGradeEntries(?array $gradeEntries) {
 		$this->gradeEntries = $gradeEntries;
 	}
+    /**
+     * @param array|null $gradeEntries List of Grade Entry
+     * @return UnleashRateModelMaster
+     */
 	public function withGradeEntries(?array $gradeEntries): UnleashRateModelMaster {
 		$this->gradeEntries = $gradeEntries;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return UnleashRateModelMaster
+     */
 	public function withCreatedAt(?int $createdAt): UnleashRateModelMaster {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return UnleashRateModelMaster
+     */
 	public function withUpdatedAt(?int $updatedAt): UnleashRateModelMaster {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return UnleashRateModelMaster
+     */
 	public function withRevision(?int $revision): UnleashRateModelMaster {
 		$this->revision = $revision;
 		return $this;

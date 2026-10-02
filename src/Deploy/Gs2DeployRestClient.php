@@ -1609,25 +1609,22 @@ class GetOutputTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 Deploy API クライアント
+ * GS2-Deploy API client
  *
- * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/deploy/sdk/
  */
 class Gs2DeployRestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * List Stacks
+     *
      * @param DescribeStacksRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#describestacks
      */
     public function describeStacksAsync(
             DescribeStacksRequest $request
@@ -1641,8 +1638,11 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Stacks
+     *
      * @param DescribeStacksRequest $request
      * @return DescribeStacksResult
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#describestacks
      */
     public function describeStacks (
             DescribeStacksRequest $request
@@ -1653,8 +1653,11 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare to Create Stack (pre-upload)
+     *
      * @param PreCreateStackRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#precreatestack
      */
     public function preCreateStackAsync(
             PreCreateStackRequest $request
@@ -1668,8 +1671,11 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare to Create Stack (pre-upload)
+     *
      * @param PreCreateStackRequest $request
      * @return PreCreateStackResult
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#precreatestack
      */
     public function preCreateStack (
             PreCreateStackRequest $request
@@ -1680,8 +1686,11 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Stack
+     *
      * @param CreateStackRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#createstack
      */
     public function createStackAsync(
             CreateStackRequest $request
@@ -1695,8 +1704,11 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Stack
+     *
      * @param CreateStackRequest $request
      * @return CreateStackResult
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#createstack
      */
     public function createStack (
             CreateStackRequest $request
@@ -1707,8 +1719,11 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Stack from GitHub
+     *
      * @param CreateStackFromGitHubRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#createstackfromgithub
      */
     public function createStackFromGitHubAsync(
             CreateStackFromGitHubRequest $request
@@ -1722,8 +1737,11 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Stack from GitHub
+     *
      * @param CreateStackFromGitHubRequest $request
      * @return CreateStackFromGitHubResult
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#createstackfromgithub
      */
     public function createStackFromGitHub (
             CreateStackFromGitHubRequest $request
@@ -1734,8 +1752,11 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare to validate Template (pre-upload)
+     *
      * @param PreValidateRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#prevalidate
      */
     public function preValidateAsync(
             PreValidateRequest $request
@@ -1749,8 +1770,11 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare to validate Template (pre-upload)
+     *
      * @param PreValidateRequest $request
      * @return PreValidateResult
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#prevalidate
      */
     public function preValidate (
             PreValidateRequest $request
@@ -1761,8 +1785,11 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Validate Template
+     *
      * @param ValidateRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#validate
      */
     public function validateAsync(
             ValidateRequest $request
@@ -1776,8 +1803,11 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Validate Template
+     *
      * @param ValidateRequest $request
      * @return ValidateResult
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#validate
      */
     public function validate (
             ValidateRequest $request
@@ -1788,8 +1818,11 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Stack Status
+     *
      * @param GetStackStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#getstackstatus
      */
     public function getStackStatusAsync(
             GetStackStatusRequest $request
@@ -1803,8 +1836,11 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Stack Status
+     *
      * @param GetStackStatusRequest $request
      * @return GetStackStatusResult
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#getstackstatus
      */
     public function getStackStatus (
             GetStackStatusRequest $request
@@ -1815,8 +1851,11 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Stack
+     *
      * @param GetStackRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#getstack
      */
     public function getStackAsync(
             GetStackRequest $request
@@ -1830,8 +1869,11 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Stack
+     *
      * @param GetStackRequest $request
      * @return GetStackResult
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#getstack
      */
     public function getStack (
             GetStackRequest $request
@@ -1842,8 +1884,11 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare to update Stack (pre-upload)
+     *
      * @param PreUpdateStackRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#preupdatestack
      */
     public function preUpdateStackAsync(
             PreUpdateStackRequest $request
@@ -1857,8 +1902,11 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare to update Stack (pre-upload)
+     *
      * @param PreUpdateStackRequest $request
      * @return PreUpdateStackResult
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#preupdatestack
      */
     public function preUpdateStack (
             PreUpdateStackRequest $request
@@ -1869,8 +1917,11 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Stack
+     *
      * @param UpdateStackRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#updatestack
      */
     public function updateStackAsync(
             UpdateStackRequest $request
@@ -1884,8 +1935,11 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Stack
+     *
      * @param UpdateStackRequest $request
      * @return UpdateStackResult
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#updatestack
      */
     public function updateStack (
             UpdateStackRequest $request
@@ -1896,8 +1950,11 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare to get Change Set (pre-upload)
+     *
      * @param PreChangeSetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#prechangeset
      */
     public function preChangeSetAsync(
             PreChangeSetRequest $request
@@ -1911,8 +1968,11 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare to get Change Set (pre-upload)
+     *
      * @param PreChangeSetRequest $request
      * @return PreChangeSetResult
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#prechangeset
      */
     public function preChangeSet (
             PreChangeSetRequest $request
@@ -1923,8 +1983,11 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Change Set
+     *
      * @param ChangeSetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#changeset-1
      */
     public function changeSetAsync(
             ChangeSetRequest $request
@@ -1938,8 +2001,11 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Change Set
+     *
      * @param ChangeSetRequest $request
      * @return ChangeSetResult
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#changeset-1
      */
     public function changeSet (
             ChangeSetRequest $request
@@ -1950,8 +2016,11 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Stack from GitHub
+     *
      * @param UpdateStackFromGitHubRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#updatestackfromgithub
      */
     public function updateStackFromGitHubAsync(
             UpdateStackFromGitHubRequest $request
@@ -1965,8 +2034,11 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Stack from GitHub
+     *
      * @param UpdateStackFromGitHubRequest $request
      * @return UpdateStackFromGitHubResult
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#updatestackfromgithub
      */
     public function updateStackFromGitHub (
             UpdateStackFromGitHubRequest $request
@@ -1977,8 +2049,11 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Stack
+     *
      * @param DeleteStackRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#deletestack
      */
     public function deleteStackAsync(
             DeleteStackRequest $request
@@ -1992,8 +2067,11 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Stack
+     *
      * @param DeleteStackRequest $request
      * @return DeleteStackResult
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#deletestack
      */
     public function deleteStack (
             DeleteStackRequest $request
@@ -2004,8 +2082,11 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Force delete Stack
+     *
      * @param ForceDeleteStackRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#forcedeletestack
      */
     public function forceDeleteStackAsync(
             ForceDeleteStackRequest $request
@@ -2019,8 +2100,11 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Force delete Stack
+     *
      * @param ForceDeleteStackRequest $request
      * @return ForceDeleteStackResult
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#forcedeletestack
      */
     public function forceDeleteStack (
             ForceDeleteStackRequest $request
@@ -2031,8 +2115,11 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Stack Resources
+     *
      * @param DeleteStackResourcesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#deletestackresources
      */
     public function deleteStackResourcesAsync(
             DeleteStackResourcesRequest $request
@@ -2046,8 +2133,11 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Stack Resources
+     *
      * @param DeleteStackResourcesRequest $request
      * @return DeleteStackResourcesResult
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#deletestackresources
      */
     public function deleteStackResources (
             DeleteStackResourcesRequest $request
@@ -2058,8 +2148,11 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Final Stack Deletion
+     *
      * @param DeleteStackEntityRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#deletestackentity
      */
     public function deleteStackEntityAsync(
             DeleteStackEntityRequest $request
@@ -2073,8 +2166,11 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Final Stack Deletion
+     *
      * @param DeleteStackEntityRequest $request
      * @return DeleteStackEntityResult
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#deletestackentity
      */
     public function deleteStackEntity (
             DeleteStackEntityRequest $request
@@ -2085,8 +2181,11 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get microservice version
+     *
      * @param GetServiceVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#getserviceversion
      */
     public function getServiceVersionAsync(
             GetServiceVersionRequest $request
@@ -2100,8 +2199,11 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get microservice version
+     *
      * @param GetServiceVersionRequest $request
      * @return GetServiceVersionResult
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#getserviceversion
      */
     public function getServiceVersion (
             GetServiceVersionRequest $request
@@ -2112,8 +2214,11 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Resources
+     *
      * @param DescribeResourcesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#describeresources
      */
     public function describeResourcesAsync(
             DescribeResourcesRequest $request
@@ -2127,8 +2232,11 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Resources
+     *
      * @param DescribeResourcesRequest $request
      * @return DescribeResourcesResult
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#describeresources
      */
     public function describeResources (
             DescribeResourcesRequest $request
@@ -2139,8 +2247,11 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Resource
+     *
      * @param GetResourceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#getresource
      */
     public function getResourceAsync(
             GetResourceRequest $request
@@ -2154,8 +2265,11 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Resource
+     *
      * @param GetResourceRequest $request
      * @return GetResourceResult
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#getresource
      */
     public function getResource (
             GetResourceRequest $request
@@ -2166,8 +2280,11 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Events
+     *
      * @param DescribeEventsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#describeevents
      */
     public function describeEventsAsync(
             DescribeEventsRequest $request
@@ -2181,8 +2298,11 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Events
+     *
      * @param DescribeEventsRequest $request
      * @return DescribeEventsResult
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#describeevents
      */
     public function describeEvents (
             DescribeEventsRequest $request
@@ -2193,8 +2313,11 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Event
+     *
      * @param GetEventRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#getevent
      */
     public function getEventAsync(
             GetEventRequest $request
@@ -2208,8 +2331,11 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Event
+     *
      * @param GetEventRequest $request
      * @return GetEventResult
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#getevent
      */
     public function getEvent (
             GetEventRequest $request
@@ -2220,8 +2346,11 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Outputs
+     *
      * @param DescribeOutputsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#describeoutputs
      */
     public function describeOutputsAsync(
             DescribeOutputsRequest $request
@@ -2235,8 +2364,11 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Outputs
+     *
      * @param DescribeOutputsRequest $request
      * @return DescribeOutputsResult
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#describeoutputs
      */
     public function describeOutputs (
             DescribeOutputsRequest $request
@@ -2247,8 +2379,11 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Output
+     *
      * @param GetOutputRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#getoutput
      */
     public function getOutputAsync(
             GetOutputRequest $request
@@ -2262,8 +2397,11 @@ class Gs2DeployRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Output
+     *
      * @param GetOutputRequest $request
      * @return GetOutputResult
+     * @see https://docs.gs2.io/api_reference/deploy/sdk/#getoutput
      */
     public function getOutput (
             GetOutputRequest $request

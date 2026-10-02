@@ -3059,25 +3059,22 @@ class DescribeLabelValuesTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 Log API クライアント
+ * GS2-Log API client
  *
- * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/log/sdk/
  */
 class Gs2LogRestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/log/sdk/#describenamespaces
      */
     public function describeNamespacesAsync(
             DescribeNamespacesRequest $request
@@ -3091,8 +3088,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
+     * @see https://docs.gs2.io/api_reference/log/sdk/#describenamespaces
      */
     public function describeNamespaces (
             DescribeNamespacesRequest $request
@@ -3103,8 +3103,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/log/sdk/#createnamespace
      */
     public function createNamespaceAsync(
             CreateNamespaceRequest $request
@@ -3118,8 +3121,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/log/sdk/#createnamespace
      */
     public function createNamespace (
             CreateNamespaceRequest $request
@@ -3130,8 +3136,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/log/sdk/#getnamespacestatus
      */
     public function getNamespaceStatusAsync(
             GetNamespaceStatusRequest $request
@@ -3145,8 +3154,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
+     * @see https://docs.gs2.io/api_reference/log/sdk/#getnamespacestatus
      */
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
@@ -3157,8 +3169,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/log/sdk/#getnamespace
      */
     public function getNamespaceAsync(
             GetNamespaceRequest $request
@@ -3172,8 +3187,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
+     * @see https://docs.gs2.io/api_reference/log/sdk/#getnamespace
      */
     public function getNamespace (
             GetNamespaceRequest $request
@@ -3184,8 +3202,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/log/sdk/#updatenamespace
      */
     public function updateNamespaceAsync(
             UpdateNamespaceRequest $request
@@ -3199,8 +3220,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/log/sdk/#updatenamespace
      */
     public function updateNamespace (
             UpdateNamespaceRequest $request
@@ -3211,8 +3235,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/log/sdk/#deletenamespace
      */
     public function deleteNamespaceAsync(
             DeleteNamespaceRequest $request
@@ -3226,8 +3253,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
+     * @see https://docs.gs2.io/api_reference/log/sdk/#deletenamespace
      */
     public function deleteNamespace (
             DeleteNamespaceRequest $request
@@ -3238,8 +3268,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/log/sdk/#getserviceversion
      */
     public function getServiceVersionAsync(
             GetServiceVersionRequest $request
@@ -3253,8 +3286,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return GetServiceVersionResult
+     * @see https://docs.gs2.io/api_reference/log/sdk/#getserviceversion
      */
     public function getServiceVersion (
             GetServiceVersionRequest $request
@@ -3265,8 +3301,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List access logs
+     *
      * @param QueryAccessLogRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/log/sdk/#queryaccesslog
      */
     public function queryAccessLogAsync(
             QueryAccessLogRequest $request
@@ -3280,8 +3319,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List access logs
+     *
      * @param QueryAccessLogRequest $request
      * @return QueryAccessLogResult
+     * @see https://docs.gs2.io/api_reference/log/sdk/#queryaccesslog
      */
     public function queryAccessLog (
             QueryAccessLogRequest $request
@@ -3292,8 +3334,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get aggregate results of access logs
+     *
      * @param CountAccessLogRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/log/sdk/#countaccesslog
      */
     public function countAccessLogAsync(
             CountAccessLogRequest $request
@@ -3307,8 +3352,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get aggregate results of access logs
+     *
      * @param CountAccessLogRequest $request
      * @return CountAccessLogResult
+     * @see https://docs.gs2.io/api_reference/log/sdk/#countaccesslog
      */
     public function countAccessLog (
             CountAccessLogRequest $request
@@ -3319,8 +3367,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List transaction issue logs
+     *
      * @param QueryIssueStampSheetLogRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/log/sdk/#queryissuestampsheetlog
      */
     public function queryIssueStampSheetLogAsync(
             QueryIssueStampSheetLogRequest $request
@@ -3334,8 +3385,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List transaction issue logs
+     *
      * @param QueryIssueStampSheetLogRequest $request
      * @return QueryIssueStampSheetLogResult
+     * @see https://docs.gs2.io/api_reference/log/sdk/#queryissuestampsheetlog
      */
     public function queryIssueStampSheetLog (
             QueryIssueStampSheetLogRequest $request
@@ -3346,8 +3400,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get aggregate results of transaction issue logs
+     *
      * @param CountIssueStampSheetLogRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/log/sdk/#countissuestampsheetlog
      */
     public function countIssueStampSheetLogAsync(
             CountIssueStampSheetLogRequest $request
@@ -3361,8 +3418,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get aggregate results of transaction issue logs
+     *
      * @param CountIssueStampSheetLogRequest $request
      * @return CountIssueStampSheetLogResult
+     * @see https://docs.gs2.io/api_reference/log/sdk/#countissuestampsheetlog
      */
     public function countIssueStampSheetLog (
             CountIssueStampSheetLogRequest $request
@@ -3373,8 +3433,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List transaction execution logs
+     *
      * @param QueryExecuteStampSheetLogRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/log/sdk/#queryexecutestampsheetlog
      */
     public function queryExecuteStampSheetLogAsync(
             QueryExecuteStampSheetLogRequest $request
@@ -3388,8 +3451,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List transaction execution logs
+     *
      * @param QueryExecuteStampSheetLogRequest $request
      * @return QueryExecuteStampSheetLogResult
+     * @see https://docs.gs2.io/api_reference/log/sdk/#queryexecutestampsheetlog
      */
     public function queryExecuteStampSheetLog (
             QueryExecuteStampSheetLogRequest $request
@@ -3400,8 +3466,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get aggregate results of acquire action execution logs
+     *
      * @param CountExecuteStampSheetLogRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/log/sdk/#countexecutestampsheetlog
      */
     public function countExecuteStampSheetLogAsync(
             CountExecuteStampSheetLogRequest $request
@@ -3415,8 +3484,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get aggregate results of acquire action execution logs
+     *
      * @param CountExecuteStampSheetLogRequest $request
      * @return CountExecuteStampSheetLogResult
+     * @see https://docs.gs2.io/api_reference/log/sdk/#countexecutestampsheetlog
      */
     public function countExecuteStampSheetLog (
             CountExecuteStampSheetLogRequest $request
@@ -3427,8 +3499,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List consume action execution logs
+     *
      * @param QueryExecuteStampTaskLogRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/log/sdk/#queryexecutestamptasklog
      */
     public function queryExecuteStampTaskLogAsync(
             QueryExecuteStampTaskLogRequest $request
@@ -3442,8 +3517,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List consume action execution logs
+     *
      * @param QueryExecuteStampTaskLogRequest $request
      * @return QueryExecuteStampTaskLogResult
+     * @see https://docs.gs2.io/api_reference/log/sdk/#queryexecutestamptasklog
      */
     public function queryExecuteStampTaskLog (
             QueryExecuteStampTaskLogRequest $request
@@ -3454,8 +3532,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get aggregate results of consume action execution logs
+     *
      * @param CountExecuteStampTaskLogRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/log/sdk/#countexecutestamptasklog
      */
     public function countExecuteStampTaskLogAsync(
             CountExecuteStampTaskLogRequest $request
@@ -3469,8 +3550,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get aggregate results of consume action execution logs
+     *
      * @param CountExecuteStampTaskLogRequest $request
      * @return CountExecuteStampTaskLogResult
+     * @see https://docs.gs2.io/api_reference/log/sdk/#countexecutestamptasklog
      */
     public function countExecuteStampTaskLog (
             CountExecuteStampTaskLogRequest $request
@@ -3481,8 +3565,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List in-game logs
+     *
      * @param QueryInGameLogRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/log/sdk/#queryingamelog
      */
     public function queryInGameLogAsync(
             QueryInGameLogRequest $request
@@ -3496,8 +3583,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List in-game logs
+     *
      * @param QueryInGameLogRequest $request
      * @return QueryInGameLogResult
+     * @see https://docs.gs2.io/api_reference/log/sdk/#queryingamelog
      */
     public function queryInGameLog (
             QueryInGameLogRequest $request
@@ -3508,8 +3598,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Send in-game log
+     *
      * @param SendInGameLogRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/log/sdk/#sendingamelog
      */
     public function sendInGameLogAsync(
             SendInGameLogRequest $request
@@ -3523,8 +3616,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Send in-game log
+     *
      * @param SendInGameLogRequest $request
      * @return SendInGameLogResult
+     * @see https://docs.gs2.io/api_reference/log/sdk/#sendingamelog
      */
     public function sendInGameLog (
             SendInGameLogRequest $request
@@ -3535,8 +3631,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Send in-game log by User ID
+     *
      * @param SendInGameLogByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/log/sdk/#sendingamelogbyuserid
      */
     public function sendInGameLogByUserIdAsync(
             SendInGameLogByUserIdRequest $request
@@ -3550,8 +3649,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Send in-game log by User ID
+     *
      * @param SendInGameLogByUserIdRequest $request
      * @return SendInGameLogByUserIdResult
+     * @see https://docs.gs2.io/api_reference/log/sdk/#sendingamelogbyuserid
      */
     public function sendInGameLogByUserId (
             SendInGameLogByUserIdRequest $request
@@ -3562,8 +3664,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List access logs with telemetry
+     *
      * @param QueryAccessLogWithTelemetryRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/log/sdk/#queryaccesslogwithtelemetry
      */
     public function queryAccessLogWithTelemetryAsync(
             QueryAccessLogWithTelemetryRequest $request
@@ -3577,8 +3682,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List access logs with telemetry
+     *
      * @param QueryAccessLogWithTelemetryRequest $request
      * @return QueryAccessLogWithTelemetryResult
+     * @see https://docs.gs2.io/api_reference/log/sdk/#queryaccesslogwithtelemetry
      */
     public function queryAccessLogWithTelemetry (
             QueryAccessLogWithTelemetryRequest $request
@@ -3589,8 +3697,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List GS2-Insight instances
+     *
      * @param DescribeInsightsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/log/sdk/#describeinsights
      */
     public function describeInsightsAsync(
             DescribeInsightsRequest $request
@@ -3604,8 +3715,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List GS2-Insight instances
+     *
      * @param DescribeInsightsRequest $request
      * @return DescribeInsightsResult
+     * @see https://docs.gs2.io/api_reference/log/sdk/#describeinsights
      */
     public function describeInsights (
             DescribeInsightsRequest $request
@@ -3616,8 +3730,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Launch GS2-Insight
+     *
      * @param CreateInsightRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/log/sdk/#createinsight
      */
     public function createInsightAsync(
             CreateInsightRequest $request
@@ -3631,8 +3748,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Launch GS2-Insight
+     *
      * @param CreateInsightRequest $request
      * @return CreateInsightResult
+     * @see https://docs.gs2.io/api_reference/log/sdk/#createinsight
      */
     public function createInsight (
             CreateInsightRequest $request
@@ -3643,8 +3763,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get GS2-Insight
+     *
      * @param GetInsightRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/log/sdk/#getinsight
      */
     public function getInsightAsync(
             GetInsightRequest $request
@@ -3658,8 +3781,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get GS2-Insight
+     *
      * @param GetInsightRequest $request
      * @return GetInsightResult
+     * @see https://docs.gs2.io/api_reference/log/sdk/#getinsight
      */
     public function getInsight (
             GetInsightRequest $request
@@ -3670,8 +3796,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete a insight
+     *
      * @param DeleteInsightRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/log/sdk/#deleteinsight
      */
     public function deleteInsightAsync(
             DeleteInsightRequest $request
@@ -3685,8 +3814,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete a insight
+     *
      * @param DeleteInsightRequest $request
      * @return DeleteInsightResult
+     * @see https://docs.gs2.io/api_reference/log/sdk/#deleteinsight
      */
     public function deleteInsight (
             DeleteInsightRequest $request
@@ -3697,8 +3829,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get list of facet models
+     *
      * @param DescribeFacetModelsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/log/sdk/#describefacetmodels
      */
     public function describeFacetModelsAsync(
             DescribeFacetModelsRequest $request
@@ -3712,8 +3847,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get list of facet models
+     *
      * @param DescribeFacetModelsRequest $request
      * @return DescribeFacetModelsResult
+     * @see https://docs.gs2.io/api_reference/log/sdk/#describefacetmodels
      */
     public function describeFacetModels (
             DescribeFacetModelsRequest $request
@@ -3724,8 +3862,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create new facet model
+     *
      * @param CreateFacetModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/log/sdk/#createfacetmodel
      */
     public function createFacetModelAsync(
             CreateFacetModelRequest $request
@@ -3739,8 +3880,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create new facet model
+     *
      * @param CreateFacetModelRequest $request
      * @return CreateFacetModelResult
+     * @see https://docs.gs2.io/api_reference/log/sdk/#createfacetmodel
      */
     public function createFacetModel (
             CreateFacetModelRequest $request
@@ -3751,8 +3895,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Facet Model
+     *
      * @param GetFacetModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/log/sdk/#getfacetmodel
      */
     public function getFacetModelAsync(
             GetFacetModelRequest $request
@@ -3766,8 +3913,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Facet Model
+     *
      * @param GetFacetModelRequest $request
      * @return GetFacetModelResult
+     * @see https://docs.gs2.io/api_reference/log/sdk/#getfacetmodel
      */
     public function getFacetModel (
             GetFacetModelRequest $request
@@ -3778,8 +3928,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Facet Model
+     *
      * @param UpdateFacetModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/log/sdk/#updatefacetmodel
      */
     public function updateFacetModelAsync(
             UpdateFacetModelRequest $request
@@ -3793,8 +3946,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Facet Model
+     *
      * @param UpdateFacetModelRequest $request
      * @return UpdateFacetModelResult
+     * @see https://docs.gs2.io/api_reference/log/sdk/#updatefacetmodel
      */
     public function updateFacetModel (
             UpdateFacetModelRequest $request
@@ -3805,8 +3961,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Facet Model
+     *
      * @param DeleteFacetModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/log/sdk/#deletefacetmodel
      */
     public function deleteFacetModelAsync(
             DeleteFacetModelRequest $request
@@ -3820,8 +3979,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Facet Model
+     *
      * @param DeleteFacetModelRequest $request
      * @return DeleteFacetModelResult
+     * @see https://docs.gs2.io/api_reference/log/sdk/#deletefacetmodel
      */
     public function deleteFacetModel (
             DeleteFacetModelRequest $request
@@ -3832,8 +3994,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get list of dashboards
+     *
      * @param DescribeDashboardsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/log/sdk/#describedashboards
      */
     public function describeDashboardsAsync(
             DescribeDashboardsRequest $request
@@ -3847,8 +4012,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get list of dashboards
+     *
      * @param DescribeDashboardsRequest $request
      * @return DescribeDashboardsResult
+     * @see https://docs.gs2.io/api_reference/log/sdk/#describedashboards
      */
     public function describeDashboards (
             DescribeDashboardsRequest $request
@@ -3859,8 +4027,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create new dashboard
+     *
      * @param CreateDashboardRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/log/sdk/#createdashboard
      */
     public function createDashboardAsync(
             CreateDashboardRequest $request
@@ -3874,8 +4045,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create new dashboard
+     *
      * @param CreateDashboardRequest $request
      * @return CreateDashboardResult
+     * @see https://docs.gs2.io/api_reference/log/sdk/#createdashboard
      */
     public function createDashboard (
             CreateDashboardRequest $request
@@ -3886,8 +4060,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Dashboard
+     *
      * @param GetDashboardRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/log/sdk/#getdashboard
      */
     public function getDashboardAsync(
             GetDashboardRequest $request
@@ -3901,8 +4078,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Dashboard
+     *
      * @param GetDashboardRequest $request
      * @return GetDashboardResult
+     * @see https://docs.gs2.io/api_reference/log/sdk/#getdashboard
      */
     public function getDashboard (
             GetDashboardRequest $request
@@ -3913,8 +4093,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Dashboard
+     *
      * @param UpdateDashboardRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/log/sdk/#updatedashboard
      */
     public function updateDashboardAsync(
             UpdateDashboardRequest $request
@@ -3928,8 +4111,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Dashboard
+     *
      * @param UpdateDashboardRequest $request
      * @return UpdateDashboardResult
+     * @see https://docs.gs2.io/api_reference/log/sdk/#updatedashboard
      */
     public function updateDashboard (
             UpdateDashboardRequest $request
@@ -3940,8 +4126,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Duplicate Dashboard
+     *
      * @param DuplicateDashboardRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/log/sdk/#duplicatedashboard
      */
     public function duplicateDashboardAsync(
             DuplicateDashboardRequest $request
@@ -3955,8 +4144,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Duplicate Dashboard
+     *
      * @param DuplicateDashboardRequest $request
      * @return DuplicateDashboardResult
+     * @see https://docs.gs2.io/api_reference/log/sdk/#duplicatedashboard
      */
     public function duplicateDashboard (
             DuplicateDashboardRequest $request
@@ -3967,8 +4159,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Dashboard
+     *
      * @param DeleteDashboardRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/log/sdk/#deletedashboard
      */
     public function deleteDashboardAsync(
             DeleteDashboardRequest $request
@@ -3982,8 +4177,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Dashboard
+     *
      * @param DeleteDashboardRequest $request
      * @return DeleteDashboardResult
+     * @see https://docs.gs2.io/api_reference/log/sdk/#deletedashboard
      */
     public function deleteDashboard (
             DeleteDashboardRequest $request
@@ -3994,8 +4192,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Query log entries (v2)
+     *
      * @param QueryLogRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/log/sdk/#querylog
      */
     public function queryLogAsync(
             QueryLogRequest $request
@@ -4009,8 +4210,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Query log entries (v2)
+     *
      * @param QueryLogRequest $request
      * @return QueryLogResult
+     * @see https://docs.gs2.io/api_reference/log/sdk/#querylog
      */
     public function queryLog (
             QueryLogRequest $request
@@ -4021,8 +4225,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get a single log entry by request ID
+     *
      * @param GetLogRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/log/sdk/#getlog
      */
     public function getLogAsync(
             GetLogRequest $request
@@ -4036,8 +4243,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get a single log entry by request ID
+     *
      * @param GetLogRequest $request
      * @return GetLogResult
+     * @see https://docs.gs2.io/api_reference/log/sdk/#getlog
      */
     public function getLog (
             GetLogRequest $request
@@ -4048,8 +4258,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Facet Query
+     *
      * @param QueryFacetsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/log/sdk/#queryfacets
      */
     public function queryFacetsAsync(
             QueryFacetsRequest $request
@@ -4063,8 +4276,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Facet Query
+     *
      * @param QueryFacetsRequest $request
      * @return QueryFacetsResult
+     * @see https://docs.gs2.io/api_reference/log/sdk/#queryfacets
      */
     public function queryFacets (
             QueryFacetsRequest $request
@@ -4075,8 +4291,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Time Series Query (Log)
+     *
      * @param QueryTimeseriesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/log/sdk/#querytimeseries
      */
     public function queryTimeseriesAsync(
             QueryTimeseriesRequest $request
@@ -4090,8 +4309,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Time Series Query (Log)
+     *
      * @param QueryTimeseriesRequest $request
      * @return QueryTimeseriesResult
+     * @see https://docs.gs2.io/api_reference/log/sdk/#querytimeseries
      */
     public function queryTimeseries (
             QueryTimeseriesRequest $request
@@ -4102,8 +4324,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get trace by trace ID
+     *
      * @param GetTraceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/log/sdk/#gettrace
      */
     public function getTraceAsync(
             GetTraceRequest $request
@@ -4117,8 +4342,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get trace by trace ID
+     *
      * @param GetTraceRequest $request
      * @return GetTraceResult
+     * @see https://docs.gs2.io/api_reference/log/sdk/#gettrace
      */
     public function getTrace (
             GetTraceRequest $request
@@ -4129,8 +4357,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Time Series Query (Metrics)
+     *
      * @param QueryMetricsTimeseriesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/log/sdk/#querymetricstimeseries
      */
     public function queryMetricsTimeseriesAsync(
             QueryMetricsTimeseriesRequest $request
@@ -4144,8 +4375,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Time Series Query (Metrics)
+     *
      * @param QueryMetricsTimeseriesRequest $request
      * @return QueryMetricsTimeseriesResult
+     * @see https://docs.gs2.io/api_reference/log/sdk/#querymetricstimeseries
      */
     public function queryMetricsTimeseries (
             QueryMetricsTimeseriesRequest $request
@@ -4156,8 +4390,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get list of metrics
+     *
      * @param DescribeMetricsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/log/sdk/#describemetrics
      */
     public function describeMetricsAsync(
             DescribeMetricsRequest $request
@@ -4171,8 +4408,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get list of metrics
+     *
      * @param DescribeMetricsRequest $request
      * @return DescribeMetricsResult
+     * @see https://docs.gs2.io/api_reference/log/sdk/#describemetrics
      */
     public function describeMetrics (
             DescribeMetricsRequest $request
@@ -4183,8 +4423,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get list of label values for a specific metric
+     *
      * @param DescribeLabelValuesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/log/sdk/#describelabelvalues
      */
     public function describeLabelValuesAsync(
             DescribeLabelValuesRequest $request
@@ -4198,8 +4441,11 @@ class Gs2LogRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get list of label values for a specific metric
+     *
      * @param DescribeLabelValuesRequest $request
      * @return DescribeLabelValuesResult
+     * @see https://docs.gs2.io/api_reference/log/sdk/#describelabelvalues
      */
     public function describeLabelValues (
             DescribeLabelValuesRequest $request

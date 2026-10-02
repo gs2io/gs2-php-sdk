@@ -20,27 +20,44 @@ namespace Gs2\Version\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Version\Model\GitHubCheckoutSetting;
 
+/**
+ * Request for updateCurrentVersionMasterFromGitHub: Update currently active Version Model master data from GitHub
+ *
+ * @see https://docs.gs2.io/api_reference/version/sdk/#updatecurrentversionmasterfromgithub
+ */
 class UpdateCurrentVersionMasterFromGitHubRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var GitHubCheckoutSetting */
+    /** @var GitHubCheckoutSetting Setting for checking out master data from GitHub */
     private $checkoutSetting;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UpdateCurrentVersionMasterFromGitHubRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UpdateCurrentVersionMasterFromGitHubRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return GitHubCheckoutSetting|null Setting for checking out master data from GitHub */
 	public function getCheckoutSetting(): ?GitHubCheckoutSetting {
 		return $this->checkoutSetting;
 	}
+    /** @param GitHubCheckoutSetting|null $checkoutSetting Setting for checking out master data from GitHub */
 	public function setCheckoutSetting(?GitHubCheckoutSetting $checkoutSetting) {
 		$this->checkoutSetting = $checkoutSetting;
 	}
+    /**
+     * @param GitHubCheckoutSetting|null $checkoutSetting Setting for checking out master data from GitHub
+     * @return UpdateCurrentVersionMasterFromGitHubRequest
+     */
 	public function withCheckoutSetting(?GitHubCheckoutSetting $checkoutSetting): UpdateCurrentVersionMasterFromGitHubRequest {
 		$this->checkoutSetting = $checkoutSetting;
 		return $this;

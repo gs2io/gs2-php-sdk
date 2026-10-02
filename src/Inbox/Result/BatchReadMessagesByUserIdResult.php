@@ -25,123 +25,176 @@ use Gs2\Core\Model\ConsumeActionResult as CoreConsumeActionResult;
 use Gs2\Core\Model\AcquireActionResult as CoreAcquireActionResult;
 use Gs2\Core\Model\TransactionResult as CoreTransactionResult;
 
+/**
+ * Result of batchReadMessagesByUserId: Read messages by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/inbox/sdk/#batchreadmessagesbyuserid
+ */
 class BatchReadMessagesByUserIdResult implements IResult {
-    /** @var array */
+    /** @var array List of Messages */
     private $items;
-    /** @var string */
+    /** @var string Issued transaction ID */
     private $transactionId;
-    /** @var string */
+    /** @var string Stamp sheet */
     private $stampSheet;
-    /** @var string */
+    /** @var string Cryptographic key GRN used for stamp sheet signature calculations */
     private $stampSheetEncryptionKeyId;
-    /** @var bool */
+    /** @var bool Whether automatic transaction execution is enabled */
     private $autoRunStampSheet;
-    /** @var bool */
+    /** @var bool Whether to commit the transaction atomically */
     private $atomicCommit;
-    /** @var string */
+    /** @var string Issued transaction */
     private $transaction;
-    /** @var CoreTransactionResult */
+    /** @var CoreTransactionResult Transaction Execution Result */
     private $transactionResult;
 
+    /** @return array|null List of Messages */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Messages */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Messages
+     * @return BatchReadMessagesByUserIdResult
+     */
 	public function withItems(?array $items): BatchReadMessagesByUserIdResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Issued transaction ID */
 	public function getTransactionId(): ?string {
 		return $this->transactionId;
 	}
 
+    /** @param string|null $transactionId Issued transaction ID */
 	public function setTransactionId(?string $transactionId) {
 		$this->transactionId = $transactionId;
 	}
 
+    /**
+     * @param string|null $transactionId Issued transaction ID
+     * @return BatchReadMessagesByUserIdResult
+     */
 	public function withTransactionId(?string $transactionId): BatchReadMessagesByUserIdResult {
 		$this->transactionId = $transactionId;
 		return $this;
 	}
 
+    /** @return string|null Stamp sheet */
 	public function getStampSheet(): ?string {
 		return $this->stampSheet;
 	}
 
+    /** @param string|null $stampSheet Stamp sheet */
 	public function setStampSheet(?string $stampSheet) {
 		$this->stampSheet = $stampSheet;
 	}
 
+    /**
+     * @param string|null $stampSheet Stamp sheet
+     * @return BatchReadMessagesByUserIdResult
+     */
 	public function withStampSheet(?string $stampSheet): BatchReadMessagesByUserIdResult {
 		$this->stampSheet = $stampSheet;
 		return $this;
 	}
 
+    /** @return string|null Cryptographic key GRN used for stamp sheet signature calculations */
 	public function getStampSheetEncryptionKeyId(): ?string {
 		return $this->stampSheetEncryptionKeyId;
 	}
 
+    /** @param string|null $stampSheetEncryptionKeyId Cryptographic key GRN used for stamp sheet signature calculations */
 	public function setStampSheetEncryptionKeyId(?string $stampSheetEncryptionKeyId) {
 		$this->stampSheetEncryptionKeyId = $stampSheetEncryptionKeyId;
 	}
 
+    /**
+     * @param string|null $stampSheetEncryptionKeyId Cryptographic key GRN used for stamp sheet signature calculations
+     * @return BatchReadMessagesByUserIdResult
+     */
 	public function withStampSheetEncryptionKeyId(?string $stampSheetEncryptionKeyId): BatchReadMessagesByUserIdResult {
 		$this->stampSheetEncryptionKeyId = $stampSheetEncryptionKeyId;
 		return $this;
 	}
 
+    /** @return bool|null Whether automatic transaction execution is enabled */
 	public function getAutoRunStampSheet(): ?bool {
 		return $this->autoRunStampSheet;
 	}
 
+    /** @param bool|null $autoRunStampSheet Whether automatic transaction execution is enabled */
 	public function setAutoRunStampSheet(?bool $autoRunStampSheet) {
 		$this->autoRunStampSheet = $autoRunStampSheet;
 	}
 
+    /**
+     * @param bool|null $autoRunStampSheet Whether automatic transaction execution is enabled
+     * @return BatchReadMessagesByUserIdResult
+     */
 	public function withAutoRunStampSheet(?bool $autoRunStampSheet): BatchReadMessagesByUserIdResult {
 		$this->autoRunStampSheet = $autoRunStampSheet;
 		return $this;
 	}
 
+    /** @return bool|null Whether to commit the transaction atomically */
 	public function getAtomicCommit(): ?bool {
 		return $this->atomicCommit;
 	}
 
+    /** @param bool|null $atomicCommit Whether to commit the transaction atomically */
 	public function setAtomicCommit(?bool $atomicCommit) {
 		$this->atomicCommit = $atomicCommit;
 	}
 
+    /**
+     * @param bool|null $atomicCommit Whether to commit the transaction atomically
+     * @return BatchReadMessagesByUserIdResult
+     */
 	public function withAtomicCommit(?bool $atomicCommit): BatchReadMessagesByUserIdResult {
 		$this->atomicCommit = $atomicCommit;
 		return $this;
 	}
 
+    /** @return string|null Issued transaction */
 	public function getTransaction(): ?string {
 		return $this->transaction;
 	}
 
+    /** @param string|null $transaction Issued transaction */
 	public function setTransaction(?string $transaction) {
 		$this->transaction = $transaction;
 	}
 
+    /**
+     * @param string|null $transaction Issued transaction
+     * @return BatchReadMessagesByUserIdResult
+     */
 	public function withTransaction(?string $transaction): BatchReadMessagesByUserIdResult {
 		$this->transaction = $transaction;
 		return $this;
 	}
 
+    /** @return CoreTransactionResult|null Transaction Execution Result */
 	public function getTransactionResult(): ?CoreTransactionResult {
 		return $this->transactionResult;
 	}
 
+    /** @param CoreTransactionResult|null $transactionResult Transaction Execution Result */
 	public function setTransactionResult(?CoreTransactionResult $transactionResult) {
 		$this->transactionResult = $transactionResult;
 	}
 
+    /**
+     * @param CoreTransactionResult|null $transactionResult Transaction Execution Result
+     * @return BatchReadMessagesByUserIdResult
+     */
 	public function withTransactionResult(?CoreTransactionResult $transactionResult): BatchReadMessagesByUserIdResult {
 		$this->transactionResult = $transactionResult;
 		return $this;

@@ -20,73 +20,108 @@ namespace Gs2\Quest\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Quest Group Model
+ *
+ * @see https://docs.gs2.io/api_reference/quest/sdk/#questgroupmodel
+ */
 class QuestGroupModel implements IModel {
 	/**
-     * @var string
+     * @var string Quest Group Model GRN
 	 */
 	private $questGroupModelId;
 	/**
-     * @var string
+     * @var string Quest Group Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var array
+     * @var array Quests belonging to the group
 	 */
 	private $quests;
 	/**
-     * @var string
+     * @var string Challenge Period Event GRN
 	 */
 	private $challengePeriodEventId;
+    /** @return string|null Quest Group Model GRN */
 	public function getQuestGroupModelId(): ?string {
 		return $this->questGroupModelId;
 	}
+    /** @param string|null $questGroupModelId Quest Group Model GRN */
 	public function setQuestGroupModelId(?string $questGroupModelId) {
 		$this->questGroupModelId = $questGroupModelId;
 	}
+    /**
+     * @param string|null $questGroupModelId Quest Group Model GRN
+     * @return QuestGroupModel
+     */
 	public function withQuestGroupModelId(?string $questGroupModelId): QuestGroupModel {
 		$this->questGroupModelId = $questGroupModelId;
 		return $this;
 	}
+    /** @return string|null Quest Group Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Quest Group Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Quest Group Model name
+     * @return QuestGroupModel
+     */
 	public function withName(?string $name): QuestGroupModel {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return QuestGroupModel
+     */
 	public function withMetadata(?string $metadata): QuestGroupModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return array|null Quests belonging to the group */
 	public function getQuests(): ?array {
 		return $this->quests;
 	}
+    /** @param array|null $quests Quests belonging to the group */
 	public function setQuests(?array $quests) {
 		$this->quests = $quests;
 	}
+    /**
+     * @param array|null $quests Quests belonging to the group
+     * @return QuestGroupModel
+     */
 	public function withQuests(?array $quests): QuestGroupModel {
 		$this->quests = $quests;
 		return $this;
 	}
+    /** @return string|null Challenge Period Event GRN */
 	public function getChallengePeriodEventId(): ?string {
 		return $this->challengePeriodEventId;
 	}
+    /** @param string|null $challengePeriodEventId Challenge Period Event GRN */
 	public function setChallengePeriodEventId(?string $challengePeriodEventId) {
 		$this->challengePeriodEventId = $challengePeriodEventId;
 	}
+    /**
+     * @param string|null $challengePeriodEventId Challenge Period Event GRN
+     * @return QuestGroupModel
+     */
 	public function withChallengePeriodEventId(?string $challengePeriodEventId): QuestGroupModel {
 		$this->challengePeriodEventId = $challengePeriodEventId;
 		return $this;

@@ -19,6 +19,11 @@ namespace Gs2\JobQueue\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of cleanUserDataByUserId: Clean User Data by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/job_queue/sdk/#cleanuserdatabyuserid
+ */
 class CleanUserDataByUserIdResult implements IResult {
 
     public static function fromJson(?array $data): ?CleanUserDataByUserIdResult {

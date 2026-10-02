@@ -20,87 +20,128 @@ namespace Gs2\News\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * News Article
+ *
+ * @see https://docs.gs2.io/api_reference/news/sdk/#news
+ */
 class News implements IModel {
 	/**
-     * @var string
+     * @var string Section Name
 	 */
 	private $section;
 	/**
-     * @var string
+     * @var string Content
 	 */
 	private $content;
 	/**
-     * @var string
+     * @var string Article Headline
 	 */
 	private $title;
 	/**
-     * @var string
+     * @var string GS2-Schedule Event GRN
 	 */
 	private $scheduleEventId;
 	/**
-     * @var int
+     * @var int Timestamp
 	 */
 	private $timestamp;
 	/**
-     * @var string
+     * @var string Front Matter
 	 */
 	private $frontMatter;
+    /** @return string|null Section Name */
 	public function getSection(): ?string {
 		return $this->section;
 	}
+    /** @param string|null $section Section Name */
 	public function setSection(?string $section) {
 		$this->section = $section;
 	}
+    /**
+     * @param string|null $section Section Name
+     * @return News
+     */
 	public function withSection(?string $section): News {
 		$this->section = $section;
 		return $this;
 	}
+    /** @return string|null Content */
 	public function getContent(): ?string {
 		return $this->content;
 	}
+    /** @param string|null $content Content */
 	public function setContent(?string $content) {
 		$this->content = $content;
 	}
+    /**
+     * @param string|null $content Content
+     * @return News
+     */
 	public function withContent(?string $content): News {
 		$this->content = $content;
 		return $this;
 	}
+    /** @return string|null Article Headline */
 	public function getTitle(): ?string {
 		return $this->title;
 	}
+    /** @param string|null $title Article Headline */
 	public function setTitle(?string $title) {
 		$this->title = $title;
 	}
+    /**
+     * @param string|null $title Article Headline
+     * @return News
+     */
 	public function withTitle(?string $title): News {
 		$this->title = $title;
 		return $this;
 	}
+    /** @return string|null GS2-Schedule Event GRN */
 	public function getScheduleEventId(): ?string {
 		return $this->scheduleEventId;
 	}
+    /** @param string|null $scheduleEventId GS2-Schedule Event GRN */
 	public function setScheduleEventId(?string $scheduleEventId) {
 		$this->scheduleEventId = $scheduleEventId;
 	}
+    /**
+     * @param string|null $scheduleEventId GS2-Schedule Event GRN
+     * @return News
+     */
 	public function withScheduleEventId(?string $scheduleEventId): News {
 		$this->scheduleEventId = $scheduleEventId;
 		return $this;
 	}
+    /** @return int|null Timestamp */
 	public function getTimestamp(): ?int {
 		return $this->timestamp;
 	}
+    /** @param int|null $timestamp Timestamp */
 	public function setTimestamp(?int $timestamp) {
 		$this->timestamp = $timestamp;
 	}
+    /**
+     * @param int|null $timestamp Timestamp
+     * @return News
+     */
 	public function withTimestamp(?int $timestamp): News {
 		$this->timestamp = $timestamp;
 		return $this;
 	}
+    /** @return string|null Front Matter */
 	public function getFrontMatter(): ?string {
 		return $this->frontMatter;
 	}
+    /** @param string|null $frontMatter Front Matter */
 	public function setFrontMatter(?string $frontMatter) {
 		$this->frontMatter = $frontMatter;
 	}
+    /**
+     * @param string|null $frontMatter Front Matter
+     * @return News
+     */
 	public function withFrontMatter(?string $frontMatter): News {
 		$this->frontMatter = $frontMatter;
 		return $this;

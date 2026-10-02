@@ -19,63 +19,98 @@ namespace Gs2\Matchmaking\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getSeasonGathering: Get Season Gathering
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#getseasongathering
+ */
 class GetSeasonGatheringRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Season Model name */
     private $seasonName;
-    /** @var int */
+    /** @var int Season */
     private $season;
-    /** @var int */
+    /** @var int Tier */
     private $tier;
-    /** @var string */
+    /** @var string Season Gathering Name */
     private $seasonGatheringName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetSeasonGatheringRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetSeasonGatheringRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Season Model name */
 	public function getSeasonName(): ?string {
 		return $this->seasonName;
 	}
+    /** @param string|null $seasonName Season Model name */
 	public function setSeasonName(?string $seasonName) {
 		$this->seasonName = $seasonName;
 	}
+    /**
+     * @param string|null $seasonName Season Model name
+     * @return GetSeasonGatheringRequest
+     */
 	public function withSeasonName(?string $seasonName): GetSeasonGatheringRequest {
 		$this->seasonName = $seasonName;
 		return $this;
 	}
+    /** @return int|null Season */
 	public function getSeason(): ?int {
 		return $this->season;
 	}
+    /** @param int|null $season Season */
 	public function setSeason(?int $season) {
 		$this->season = $season;
 	}
+    /**
+     * @param int|null $season Season
+     * @return GetSeasonGatheringRequest
+     */
 	public function withSeason(?int $season): GetSeasonGatheringRequest {
 		$this->season = $season;
 		return $this;
 	}
+    /** @return int|null Tier */
 	public function getTier(): ?int {
 		return $this->tier;
 	}
+    /** @param int|null $tier Tier */
 	public function setTier(?int $tier) {
 		$this->tier = $tier;
 	}
+    /**
+     * @param int|null $tier Tier
+     * @return GetSeasonGatheringRequest
+     */
 	public function withTier(?int $tier): GetSeasonGatheringRequest {
 		$this->tier = $tier;
 		return $this;
 	}
+    /** @return string|null Season Gathering Name */
 	public function getSeasonGatheringName(): ?string {
 		return $this->seasonGatheringName;
 	}
+    /** @param string|null $seasonGatheringName Season Gathering Name */
 	public function setSeasonGatheringName(?string $seasonGatheringName) {
 		$this->seasonGatheringName = $seasonGatheringName;
 	}
+    /**
+     * @param string|null $seasonGatheringName Season Gathering Name
+     * @return GetSeasonGatheringRequest
+     */
 	public function withSeasonGatheringName(?string $seasonGatheringName): GetSeasonGatheringRequest {
 		$this->seasonGatheringName = $seasonGatheringName;
 		return $this;

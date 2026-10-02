@@ -19,27 +19,44 @@ namespace Gs2\Log\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getDashboard: Get Dashboard
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#getdashboard
+ */
 class GetDashboardRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Dashboard Name */
     private $dashboardName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetDashboardRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetDashboardRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Dashboard Name */
 	public function getDashboardName(): ?string {
 		return $this->dashboardName;
 	}
+    /** @param string|null $dashboardName Dashboard Name */
 	public function setDashboardName(?string $dashboardName) {
 		$this->dashboardName = $dashboardName;
 	}
+    /**
+     * @param string|null $dashboardName Dashboard Name
+     * @return GetDashboardRequest
+     */
 	public function withDashboardName(?string $dashboardName): GetDashboardRequest {
 		$this->dashboardName = $dashboardName;
 		return $this;

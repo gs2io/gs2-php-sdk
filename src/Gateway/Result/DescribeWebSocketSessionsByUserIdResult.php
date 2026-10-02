@@ -20,33 +20,50 @@ namespace Gs2\Gateway\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Gateway\Model\WebSocketSession;
 
+/**
+ * Result of describeWebSocketSessionsByUserId: List WebSocket sessions by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/gateway/sdk/#describewebsocketsessionsbyuserid
+ */
 class DescribeWebSocketSessionsByUserIdResult implements IResult {
-    /** @var array */
+    /** @var array List of WebSocket Session */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of WebSocket Session */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of WebSocket Session */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of WebSocket Session
+     * @return DescribeWebSocketSessionsByUserIdResult
+     */
 	public function withItems(?array $items): DescribeWebSocketSessionsByUserIdResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeWebSocketSessionsByUserIdResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeWebSocketSessionsByUserIdResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

@@ -24,18 +24,29 @@ use Gs2\Matchmaking\Model\Player;
 use Gs2\Matchmaking\Model\CapacityOfRole;
 use Gs2\Matchmaking\Model\Gathering;
 
+/**
+ * Result of createGatheringByUserId: Create a Gathering by User ID and start recruiting
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#creategatheringbyuserid
+ */
 class CreateGatheringByUserIdResult implements IResult {
-    /** @var Gathering */
+    /** @var Gathering Created Gathering */
     private $item;
 
+    /** @return Gathering|null Created Gathering */
 	public function getItem(): ?Gathering {
 		return $this->item;
 	}
 
+    /** @param Gathering|null $item Created Gathering */
 	public function setItem(?Gathering $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Gathering|null $item Created Gathering
+     * @return CreateGatheringByUserIdResult
+     */
 	public function withItem(?Gathering $item): CreateGatheringByUserIdResult {
 		$this->item = $item;
 		return $this;

@@ -19,27 +19,44 @@ namespace Gs2\SeasonRating\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for deleteMatchSession: Delete MatchSession
+ *
+ * @see https://docs.gs2.io/api_reference/season_rating/sdk/#deletematchsession
+ */
 class DeleteMatchSessionRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Session name */
     private $sessionName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DeleteMatchSessionRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DeleteMatchSessionRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Session name */
 	public function getSessionName(): ?string {
 		return $this->sessionName;
 	}
+    /** @param string|null $sessionName Session name */
 	public function setSessionName(?string $sessionName) {
 		$this->sessionName = $sessionName;
 	}
+    /**
+     * @param string|null $sessionName Session name
+     * @return DeleteMatchSessionRequest
+     */
 	public function withSessionName(?string $sessionName): DeleteMatchSessionRequest {
 		$this->sessionName = $sessionName;
 		return $this;

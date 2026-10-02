@@ -19,63 +19,98 @@ namespace Gs2\Money2\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getDailyTransactionHistory: Get daily transaction history by specifying date and currency
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#getdailytransactionhistory
+ */
 class GetDailyTransactionHistoryRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var int */
+    /** @var int Year */
     private $year;
-    /** @var int */
+    /** @var int Month */
     private $month;
-    /** @var int */
+    /** @var int Day */
     private $day;
-    /** @var string */
+    /** @var string Currency Code */
     private $currency;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetDailyTransactionHistoryRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetDailyTransactionHistoryRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return int|null Year */
 	public function getYear(): ?int {
 		return $this->year;
 	}
+    /** @param int|null $year Year */
 	public function setYear(?int $year) {
 		$this->year = $year;
 	}
+    /**
+     * @param int|null $year Year
+     * @return GetDailyTransactionHistoryRequest
+     */
 	public function withYear(?int $year): GetDailyTransactionHistoryRequest {
 		$this->year = $year;
 		return $this;
 	}
+    /** @return int|null Month */
 	public function getMonth(): ?int {
 		return $this->month;
 	}
+    /** @param int|null $month Month */
 	public function setMonth(?int $month) {
 		$this->month = $month;
 	}
+    /**
+     * @param int|null $month Month
+     * @return GetDailyTransactionHistoryRequest
+     */
 	public function withMonth(?int $month): GetDailyTransactionHistoryRequest {
 		$this->month = $month;
 		return $this;
 	}
+    /** @return int|null Day */
 	public function getDay(): ?int {
 		return $this->day;
 	}
+    /** @param int|null $day Day */
 	public function setDay(?int $day) {
 		$this->day = $day;
 	}
+    /**
+     * @param int|null $day Day
+     * @return GetDailyTransactionHistoryRequest
+     */
 	public function withDay(?int $day): GetDailyTransactionHistoryRequest {
 		$this->day = $day;
 		return $this;
 	}
+    /** @return string|null Currency Code */
 	public function getCurrency(): ?string {
 		return $this->currency;
 	}
+    /** @param string|null $currency Currency Code */
 	public function setCurrency(?string $currency) {
 		$this->currency = $currency;
 	}
+    /**
+     * @param string|null $currency Currency Code
+     * @return GetDailyTransactionHistoryRequest
+     */
 	public function withCurrency(?string $currency): GetDailyTransactionHistoryRequest {
 		$this->currency = $currency;
 		return $this;

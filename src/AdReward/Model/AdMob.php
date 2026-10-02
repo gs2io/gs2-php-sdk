@@ -20,17 +20,28 @@ namespace Gs2\AdReward\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * AdMob settings
+ *
+ * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#admob
+ */
 class AdMob implements IModel {
 	/**
-     * @var array
+     * @var array List of allowed ad unit IDs
 	 */
 	private $allowAdUnitIds;
+    /** @return array|null List of allowed ad unit IDs */
 	public function getAllowAdUnitIds(): ?array {
 		return $this->allowAdUnitIds;
 	}
+    /** @param array|null $allowAdUnitIds List of allowed ad unit IDs */
 	public function setAllowAdUnitIds(?array $allowAdUnitIds) {
 		$this->allowAdUnitIds = $allowAdUnitIds;
 	}
+    /**
+     * @param array|null $allowAdUnitIds List of allowed ad unit IDs
+     * @return AdMob
+     */
 	public function withAllowAdUnitIds(?array $allowAdUnitIds): AdMob {
 		$this->allowAdUnitIds = $allowAdUnitIds;
 		return $this;

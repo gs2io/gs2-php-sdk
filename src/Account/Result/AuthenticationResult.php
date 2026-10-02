@@ -21,63 +21,92 @@ use Gs2\Core\Model\IResult;
 use Gs2\Account\Model\BanStatus;
 use Gs2\Account\Model\Account;
 
+/**
+ * Result of authentication: Authenticate Game Player Account
+ *
+ * @see https://docs.gs2.io/api_reference/account/sdk/#authentication
+ */
 class AuthenticationResult implements IResult {
-    /** @var Account */
+    /** @var Account Game Player Account */
     private $item;
-    /** @var array */
+    /** @var array Ban status list */
     private $banStatuses;
-    /** @var string */
+    /** @var string Account information used for signing */
     private $body;
-    /** @var string */
+    /** @var string Signature */
     private $signature;
 
+    /** @return Account|null Game Player Account */
 	public function getItem(): ?Account {
 		return $this->item;
 	}
 
+    /** @param Account|null $item Game Player Account */
 	public function setItem(?Account $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Account|null $item Game Player Account
+     * @return AuthenticationResult
+     */
 	public function withItem(?Account $item): AuthenticationResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return array|null Ban status list */
 	public function getBanStatuses(): ?array {
 		return $this->banStatuses;
 	}
 
+    /** @param array|null $banStatuses Ban status list */
 	public function setBanStatuses(?array $banStatuses) {
 		$this->banStatuses = $banStatuses;
 	}
 
+    /**
+     * @param array|null $banStatuses Ban status list
+     * @return AuthenticationResult
+     */
 	public function withBanStatuses(?array $banStatuses): AuthenticationResult {
 		$this->banStatuses = $banStatuses;
 		return $this;
 	}
 
+    /** @return string|null Account information used for signing */
 	public function getBody(): ?string {
 		return $this->body;
 	}
 
+    /** @param string|null $body Account information used for signing */
 	public function setBody(?string $body) {
 		$this->body = $body;
 	}
 
+    /**
+     * @param string|null $body Account information used for signing
+     * @return AuthenticationResult
+     */
 	public function withBody(?string $body): AuthenticationResult {
 		$this->body = $body;
 		return $this;
 	}
 
+    /** @return string|null Signature */
 	public function getSignature(): ?string {
 		return $this->signature;
 	}
 
+    /** @param string|null $signature Signature */
 	public function setSignature(?string $signature) {
 		$this->signature = $signature;
 	}
 
+    /**
+     * @param string|null $signature Signature
+     * @return AuthenticationResult
+     */
 	public function withSignature(?string $signature): AuthenticationResult {
 		$this->signature = $signature;
 		return $this;

@@ -19,53 +19,82 @@ namespace Gs2\SkillTree\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for markRestrain: Revert a node to unreleased state
+ *
+ * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#markrestrain
+ */
 class MarkRestrainRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Property ID */
     private $propertyId;
-    /** @var array */
+    /** @var array List of node model names */
     private $nodeModelNames;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return MarkRestrainRequest
+     */
 	public function withNamespaceName(?string $namespaceName): MarkRestrainRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return MarkRestrainRequest
+     */
 	public function withAccessToken(?string $accessToken): MarkRestrainRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Property ID */
 	public function getPropertyId(): ?string {
 		return $this->propertyId;
 	}
+    /** @param string|null $propertyId Property ID */
 	public function setPropertyId(?string $propertyId) {
 		$this->propertyId = $propertyId;
 	}
+    /**
+     * @param string|null $propertyId Property ID
+     * @return MarkRestrainRequest
+     */
 	public function withPropertyId(?string $propertyId): MarkRestrainRequest {
 		$this->propertyId = $propertyId;
 		return $this;
 	}
+    /** @return array|null List of node model names */
 	public function getNodeModelNames(): ?array {
 		return $this->nodeModelNames;
 	}
+    /** @param array|null $nodeModelNames List of node model names */
 	public function setNodeModelNames(?array $nodeModelNames) {
 		$this->nodeModelNames = $nodeModelNames;
 	}
+    /**
+     * @param array|null $nodeModelNames List of node model names
+     * @return MarkRestrainRequest
+     */
 	public function withNodeModelNames(?array $nodeModelNames): MarkRestrainRequest {
 		$this->nodeModelNames = $nodeModelNames;
 		return $this;

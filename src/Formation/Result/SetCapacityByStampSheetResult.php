@@ -23,48 +23,71 @@ use Gs2\Formation\Model\SlotModel;
 use Gs2\Formation\Model\FormModel;
 use Gs2\Formation\Model\MoldModel;
 
+/**
+ * Result of setCapacityByStampSheet: Execute capacity size setting as acquire action
+ *
+ * @see https://docs.gs2.io/api_reference/formation/stamp_sheet/#gs2formationsetmoldcapacitybyuserid
+ */
 class SetCapacityByStampSheetResult implements IResult {
-    /** @var Mold */
+    /** @var Mold Form Storage Area after update */
     private $item;
-    /** @var Mold */
+    /** @var Mold Form Storage Area before update */
     private $old;
-    /** @var MoldModel */
+    /** @var MoldModel Form Storage Area */
     private $moldModel;
 
+    /** @return Mold|null Form Storage Area after update */
 	public function getItem(): ?Mold {
 		return $this->item;
 	}
 
+    /** @param Mold|null $item Form Storage Area after update */
 	public function setItem(?Mold $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Mold|null $item Form Storage Area after update
+     * @return SetCapacityByStampSheetResult
+     */
 	public function withItem(?Mold $item): SetCapacityByStampSheetResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return Mold|null Form Storage Area before update */
 	public function getOld(): ?Mold {
 		return $this->old;
 	}
 
+    /** @param Mold|null $old Form Storage Area before update */
 	public function setOld(?Mold $old) {
 		$this->old = $old;
 	}
 
+    /**
+     * @param Mold|null $old Form Storage Area before update
+     * @return SetCapacityByStampSheetResult
+     */
 	public function withOld(?Mold $old): SetCapacityByStampSheetResult {
 		$this->old = $old;
 		return $this;
 	}
 
+    /** @return MoldModel|null Form Storage Area */
 	public function getMoldModel(): ?MoldModel {
 		return $this->moldModel;
 	}
 
+    /** @param MoldModel|null $moldModel Form Storage Area */
 	public function setMoldModel(?MoldModel $moldModel) {
 		$this->moldModel = $moldModel;
 	}
 
+    /**
+     * @param MoldModel|null $moldModel Form Storage Area
+     * @return SetCapacityByStampSheetResult
+     */
 	public function withMoldModel(?MoldModel $moldModel): SetCapacityByStampSheetResult {
 		$this->moldModel = $moldModel;
 		return $this;

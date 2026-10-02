@@ -19,63 +19,98 @@ namespace Gs2\Log\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for updateDashboard: Update Dashboard
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#updatedashboard
+ */
 class UpdateDashboardRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Dashboard Name */
     private $dashboardName;
-    /** @var string */
+    /** @var string Display Name */
     private $displayName;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var string */
+    /** @var string Payload */
     private $payload;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UpdateDashboardRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UpdateDashboardRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Dashboard Name */
 	public function getDashboardName(): ?string {
 		return $this->dashboardName;
 	}
+    /** @param string|null $dashboardName Dashboard Name */
 	public function setDashboardName(?string $dashboardName) {
 		$this->dashboardName = $dashboardName;
 	}
+    /**
+     * @param string|null $dashboardName Dashboard Name
+     * @return UpdateDashboardRequest
+     */
 	public function withDashboardName(?string $dashboardName): UpdateDashboardRequest {
 		$this->dashboardName = $dashboardName;
 		return $this;
 	}
+    /** @return string|null Display Name */
 	public function getDisplayName(): ?string {
 		return $this->displayName;
 	}
+    /** @param string|null $displayName Display Name */
 	public function setDisplayName(?string $displayName) {
 		$this->displayName = $displayName;
 	}
+    /**
+     * @param string|null $displayName Display Name
+     * @return UpdateDashboardRequest
+     */
 	public function withDisplayName(?string $displayName): UpdateDashboardRequest {
 		$this->displayName = $displayName;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return UpdateDashboardRequest
+     */
 	public function withDescription(?string $description): UpdateDashboardRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Payload */
 	public function getPayload(): ?string {
 		return $this->payload;
 	}
+    /** @param string|null $payload Payload */
 	public function setPayload(?string $payload) {
 		$this->payload = $payload;
 	}
+    /**
+     * @param string|null $payload Payload
+     * @return UpdateDashboardRequest
+     */
 	public function withPayload(?string $payload): UpdateDashboardRequest {
 		$this->payload = $payload;
 		return $this;

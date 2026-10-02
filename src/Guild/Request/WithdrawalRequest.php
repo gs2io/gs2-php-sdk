@@ -19,53 +19,82 @@ namespace Gs2\Guild\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for withdrawal: Withdrawal from the Guild
+ *
+ * @see https://docs.gs2.io/api_reference/guild/sdk/#withdrawal
+ */
 class WithdrawalRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Guild Model name */
     private $guildModelName;
-    /** @var string */
+    /** @var string Guild Name */
     private $guildName;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return WithdrawalRequest
+     */
 	public function withNamespaceName(?string $namespaceName): WithdrawalRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return WithdrawalRequest
+     */
 	public function withAccessToken(?string $accessToken): WithdrawalRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Guild Model name */
 	public function getGuildModelName(): ?string {
 		return $this->guildModelName;
 	}
+    /** @param string|null $guildModelName Guild Model name */
 	public function setGuildModelName(?string $guildModelName) {
 		$this->guildModelName = $guildModelName;
 	}
+    /**
+     * @param string|null $guildModelName Guild Model name
+     * @return WithdrawalRequest
+     */
 	public function withGuildModelName(?string $guildModelName): WithdrawalRequest {
 		$this->guildModelName = $guildModelName;
 		return $this;
 	}
+    /** @return string|null Guild Name */
 	public function getGuildName(): ?string {
 		return $this->guildName;
 	}
+    /** @param string|null $guildName Guild Name */
 	public function setGuildName(?string $guildName) {
 		$this->guildName = $guildName;
 	}
+    /**
+     * @param string|null $guildName Guild Name
+     * @return WithdrawalRequest
+     */
 	public function withGuildName(?string $guildName): WithdrawalRequest {
 		$this->guildName = $guildName;
 		return $this;

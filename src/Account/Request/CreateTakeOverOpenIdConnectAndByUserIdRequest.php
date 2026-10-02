@@ -19,65 +19,100 @@ namespace Gs2\Account\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for createTakeOverOpenIdConnectAndByUserId: Create Takeover Information using OpenID Connect by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/account/sdk/#createtakeoveropenidconnectandbyuserid
+ */
 class CreateTakeOverOpenIdConnectAndByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var int */
+    /** @var int Slot Number */
     private $type;
-    /** @var string */
+    /** @var string OpenID Connect ID Token */
     private $idToken;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return CreateTakeOverOpenIdConnectAndByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): CreateTakeOverOpenIdConnectAndByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return CreateTakeOverOpenIdConnectAndByUserIdRequest
+     */
 	public function withUserId(?string $userId): CreateTakeOverOpenIdConnectAndByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return int|null Slot Number */
 	public function getType(): ?int {
 		return $this->type;
 	}
+    /** @param int|null $type Slot Number */
 	public function setType(?int $type) {
 		$this->type = $type;
 	}
+    /**
+     * @param int|null $type Slot Number
+     * @return CreateTakeOverOpenIdConnectAndByUserIdRequest
+     */
 	public function withType(?int $type): CreateTakeOverOpenIdConnectAndByUserIdRequest {
 		$this->type = $type;
 		return $this;
 	}
+    /** @return string|null OpenID Connect ID Token */
 	public function getIdToken(): ?string {
 		return $this->idToken;
 	}
+    /** @param string|null $idToken OpenID Connect ID Token */
 	public function setIdToken(?string $idToken) {
 		$this->idToken = $idToken;
 	}
+    /**
+     * @param string|null $idToken OpenID Connect ID Token
+     * @return CreateTakeOverOpenIdConnectAndByUserIdRequest
+     */
 	public function withIdToken(?string $idToken): CreateTakeOverOpenIdConnectAndByUserIdRequest {
 		$this->idToken = $idToken;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return CreateTakeOverOpenIdConnectAndByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): CreateTakeOverOpenIdConnectAndByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

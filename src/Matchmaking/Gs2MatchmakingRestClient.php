@@ -4969,25 +4969,22 @@ class CommitVoteTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 Matchmaking API クライアント
+ * GS2-Matchmaking API client
  *
- * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/
  */
 class Gs2MatchmakingRestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#describenamespaces
      */
     public function describeNamespacesAsync(
             DescribeNamespacesRequest $request
@@ -5001,8 +4998,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#describenamespaces
      */
     public function describeNamespaces (
             DescribeNamespacesRequest $request
@@ -5013,8 +5013,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#createnamespace
      */
     public function createNamespaceAsync(
             CreateNamespaceRequest $request
@@ -5028,8 +5031,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#createnamespace
      */
     public function createNamespace (
             CreateNamespaceRequest $request
@@ -5040,8 +5046,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#getnamespacestatus
      */
     public function getNamespaceStatusAsync(
             GetNamespaceStatusRequest $request
@@ -5055,8 +5064,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#getnamespacestatus
      */
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
@@ -5067,8 +5079,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#getnamespace
      */
     public function getNamespaceAsync(
             GetNamespaceRequest $request
@@ -5082,8 +5097,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#getnamespace
      */
     public function getNamespace (
             GetNamespaceRequest $request
@@ -5094,8 +5112,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#updatenamespace
      */
     public function updateNamespaceAsync(
             UpdateNamespaceRequest $request
@@ -5109,8 +5130,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#updatenamespace
      */
     public function updateNamespace (
             UpdateNamespaceRequest $request
@@ -5121,8 +5145,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#deletenamespace
      */
     public function deleteNamespaceAsync(
             DeleteNamespaceRequest $request
@@ -5136,8 +5163,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#deletenamespace
      */
     public function deleteNamespace (
             DeleteNamespaceRequest $request
@@ -5148,8 +5178,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#getserviceversion
      */
     public function getServiceVersionAsync(
             GetServiceVersionRequest $request
@@ -5163,8 +5196,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return GetServiceVersionResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#getserviceversion
      */
     public function getServiceVersion (
             GetServiceVersionRequest $request
@@ -5175,8 +5211,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserIdAsync(
             DumpUserDataByUserIdRequest $request
@@ -5190,8 +5229,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return DumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserId (
             DumpUserDataByUserIdRequest $request
@@ -5202,8 +5244,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserIdAsync(
             CheckDumpUserDataByUserIdRequest $request
@@ -5217,8 +5262,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return CheckDumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserId (
             CheckDumpUserDataByUserIdRequest $request
@@ -5229,8 +5277,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserIdAsync(
             CleanUserDataByUserIdRequest $request
@@ -5244,8 +5295,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return CleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserId (
             CleanUserDataByUserIdRequest $request
@@ -5256,8 +5310,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserIdAsync(
             CheckCleanUserDataByUserIdRequest $request
@@ -5271,8 +5328,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return CheckCleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserId (
             CheckCleanUserDataByUserIdRequest $request
@@ -5283,8 +5343,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserIdAsync(
             PrepareImportUserDataByUserIdRequest $request
@@ -5298,8 +5361,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PrepareImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserId (
             PrepareImportUserDataByUserIdRequest $request
@@ -5310,8 +5376,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserIdAsync(
             ImportUserDataByUserIdRequest $request
@@ -5325,8 +5394,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return ImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserId (
             ImportUserDataByUserIdRequest $request
@@ -5337,8 +5409,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserIdAsync(
             CheckImportUserDataByUserIdRequest $request
@@ -5352,8 +5427,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return CheckImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserId (
             CheckImportUserDataByUserIdRequest $request
@@ -5364,8 +5442,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Gatherings
+     *
      * @param DescribeGatheringsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#describegatherings
      */
     public function describeGatheringsAsync(
             DescribeGatheringsRequest $request
@@ -5379,8 +5460,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Gatherings
+     *
      * @param DescribeGatheringsRequest $request
      * @return DescribeGatheringsResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#describegatherings
      */
     public function describeGatherings (
             DescribeGatheringsRequest $request
@@ -5391,8 +5475,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create a Gathering and start recruiting
+     *
      * @param CreateGatheringRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#creategathering
      */
     public function createGatheringAsync(
             CreateGatheringRequest $request
@@ -5406,8 +5493,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create a Gathering and start recruiting
+     *
      * @param CreateGatheringRequest $request
      * @return CreateGatheringResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#creategathering
      */
     public function createGathering (
             CreateGatheringRequest $request
@@ -5418,8 +5508,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create a Gathering by User ID and start recruiting
+     *
      * @param CreateGatheringByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#creategatheringbyuserid
      */
     public function createGatheringByUserIdAsync(
             CreateGatheringByUserIdRequest $request
@@ -5433,8 +5526,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create a Gathering by User ID and start recruiting
+     *
      * @param CreateGatheringByUserIdRequest $request
      * @return CreateGatheringByUserIdResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#creategatheringbyuserid
      */
     public function createGatheringByUserId (
             CreateGatheringByUserIdRequest $request
@@ -5445,8 +5541,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Gathering
+     *
      * @param UpdateGatheringRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#updategathering
      */
     public function updateGatheringAsync(
             UpdateGatheringRequest $request
@@ -5460,8 +5559,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Gathering
+     *
      * @param UpdateGatheringRequest $request
      * @return UpdateGatheringResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#updategathering
      */
     public function updateGathering (
             UpdateGatheringRequest $request
@@ -5472,8 +5574,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Gathering with User ID
+     *
      * @param UpdateGatheringByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#updategatheringbyuserid
      */
     public function updateGatheringByUserIdAsync(
             UpdateGatheringByUserIdRequest $request
@@ -5487,8 +5592,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Gathering with User ID
+     *
      * @param UpdateGatheringByUserIdRequest $request
      * @return UpdateGatheringByUserIdResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#updategatheringbyuserid
      */
     public function updateGatheringByUserId (
             UpdateGatheringByUserIdRequest $request
@@ -5499,8 +5607,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Find a Gathering in which the Player can participate and join.
+     *
      * @param DoMatchmakingByPlayerRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#domatchmakingbyplayer
      */
     public function doMatchmakingByPlayerAsync(
             DoMatchmakingByPlayerRequest $request
@@ -5514,8 +5625,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Find a Gathering in which the Player can participate and join.
+     *
      * @param DoMatchmakingByPlayerRequest $request
      * @return DoMatchmakingByPlayerResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#domatchmakingbyplayer
      */
     public function doMatchmakingByPlayer (
             DoMatchmakingByPlayerRequest $request
@@ -5526,8 +5640,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Find a Gathering you can join and participate.
+     *
      * @param DoMatchmakingRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#domatchmaking
      */
     public function doMatchmakingAsync(
             DoMatchmakingRequest $request
@@ -5541,8 +5658,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Find a Gathering you can join and participate.
+     *
      * @param DoMatchmakingRequest $request
      * @return DoMatchmakingResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#domatchmaking
      */
     public function doMatchmaking (
             DoMatchmakingRequest $request
@@ -5553,8 +5673,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Find a Gathering you can join and participate.
+     *
      * @param DoMatchmakingByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#domatchmakingbyuserid
      */
     public function doMatchmakingByUserIdAsync(
             DoMatchmakingByUserIdRequest $request
@@ -5568,8 +5691,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Find a Gathering you can join and participate.
+     *
      * @param DoMatchmakingByUserIdRequest $request
      * @return DoMatchmakingByUserIdResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#domatchmakingbyuserid
      */
     public function doMatchmakingByUserId (
             DoMatchmakingByUserIdRequest $request
@@ -5580,8 +5706,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Notify that you are waiting for matchmaking
+     *
      * @param PingRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#ping
      */
     public function pingAsync(
             PingRequest $request
@@ -5595,8 +5724,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Notify that you are waiting for matchmaking
+     *
      * @param PingRequest $request
      * @return PingResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#ping
      */
     public function ping (
             PingRequest $request
@@ -5607,8 +5739,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Notify that you are waiting for matchmaking by specifying user ID
+     *
      * @param PingByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#pingbyuserid
      */
     public function pingByUserIdAsync(
             PingByUserIdRequest $request
@@ -5622,8 +5757,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Notify that you are waiting for matchmaking by specifying user ID
+     *
      * @param PingByUserIdRequest $request
      * @return PingByUserIdResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#pingbyuserid
      */
     public function pingByUserId (
             PingByUserIdRequest $request
@@ -5634,8 +5772,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Gathering
+     *
      * @param GetGatheringRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#getgathering
      */
     public function getGatheringAsync(
             GetGatheringRequest $request
@@ -5649,8 +5790,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Gathering
+     *
      * @param GetGatheringRequest $request
      * @return GetGatheringResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#getgathering
      */
     public function getGathering (
             GetGatheringRequest $request
@@ -5661,8 +5805,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Cancel Matchmaking
+     *
      * @param CancelMatchmakingRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#cancelmatchmaking
      */
     public function cancelMatchmakingAsync(
             CancelMatchmakingRequest $request
@@ -5676,8 +5823,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Cancel Matchmaking
+     *
      * @param CancelMatchmakingRequest $request
      * @return CancelMatchmakingResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#cancelmatchmaking
      */
     public function cancelMatchmaking (
             CancelMatchmakingRequest $request
@@ -5688,8 +5838,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Cancel matchmaking by specifying user ID
+     *
      * @param CancelMatchmakingByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#cancelmatchmakingbyuserid
      */
     public function cancelMatchmakingByUserIdAsync(
             CancelMatchmakingByUserIdRequest $request
@@ -5703,8 +5856,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Cancel matchmaking by specifying user ID
+     *
      * @param CancelMatchmakingByUserIdRequest $request
      * @return CancelMatchmakingByUserIdResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#cancelmatchmakingbyuserid
      */
     public function cancelMatchmakingByUserId (
             CancelMatchmakingByUserIdRequest $request
@@ -5715,8 +5871,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Early Complete Matchmaking
+     *
      * @param EarlyCompleteRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#earlycomplete
      */
     public function earlyCompleteAsync(
             EarlyCompleteRequest $request
@@ -5730,8 +5889,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Early Complete Matchmaking
+     *
      * @param EarlyCompleteRequest $request
      * @return EarlyCompleteResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#earlycomplete
      */
     public function earlyComplete (
             EarlyCompleteRequest $request
@@ -5742,8 +5904,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Early Complete Matchmaking by specifying user ID
+     *
      * @param EarlyCompleteByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#earlycompletebyuserid
      */
     public function earlyCompleteByUserIdAsync(
             EarlyCompleteByUserIdRequest $request
@@ -5757,8 +5922,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Early Complete Matchmaking by specifying user ID
+     *
      * @param EarlyCompleteByUserIdRequest $request
      * @return EarlyCompleteByUserIdResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#earlycompletebyuserid
      */
     public function earlyCompleteByUserId (
             EarlyCompleteByUserIdRequest $request
@@ -5769,8 +5937,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Gathering
+     *
      * @param DeleteGatheringRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#deletegathering
      */
     public function deleteGatheringAsync(
             DeleteGatheringRequest $request
@@ -5784,8 +5955,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Gathering
+     *
      * @param DeleteGatheringRequest $request
      * @return DeleteGatheringResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#deletegathering
      */
     public function deleteGathering (
             DeleteGatheringRequest $request
@@ -5796,8 +5970,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Rating Model Masters
+     *
      * @param DescribeRatingModelMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#describeratingmodelmasters
      */
     public function describeRatingModelMastersAsync(
             DescribeRatingModelMastersRequest $request
@@ -5811,8 +5988,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Rating Model Masters
+     *
      * @param DescribeRatingModelMastersRequest $request
      * @return DescribeRatingModelMastersResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#describeratingmodelmasters
      */
     public function describeRatingModelMasters (
             DescribeRatingModelMastersRequest $request
@@ -5823,8 +6003,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Rating Model Master
+     *
      * @param CreateRatingModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#createratingmodelmaster
      */
     public function createRatingModelMasterAsync(
             CreateRatingModelMasterRequest $request
@@ -5838,8 +6021,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Rating Model Master
+     *
      * @param CreateRatingModelMasterRequest $request
      * @return CreateRatingModelMasterResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#createratingmodelmaster
      */
     public function createRatingModelMaster (
             CreateRatingModelMasterRequest $request
@@ -5850,8 +6036,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Rating Model Master
+     *
      * @param GetRatingModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#getratingmodelmaster
      */
     public function getRatingModelMasterAsync(
             GetRatingModelMasterRequest $request
@@ -5865,8 +6054,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Rating Model Master
+     *
      * @param GetRatingModelMasterRequest $request
      * @return GetRatingModelMasterResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#getratingmodelmaster
      */
     public function getRatingModelMaster (
             GetRatingModelMasterRequest $request
@@ -5877,8 +6069,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Rating Model Master
+     *
      * @param UpdateRatingModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#updateratingmodelmaster
      */
     public function updateRatingModelMasterAsync(
             UpdateRatingModelMasterRequest $request
@@ -5892,8 +6087,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Rating Model Master
+     *
      * @param UpdateRatingModelMasterRequest $request
      * @return UpdateRatingModelMasterResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#updateratingmodelmaster
      */
     public function updateRatingModelMaster (
             UpdateRatingModelMasterRequest $request
@@ -5904,8 +6102,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Rating Model Master
+     *
      * @param DeleteRatingModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#deleteratingmodelmaster
      */
     public function deleteRatingModelMasterAsync(
             DeleteRatingModelMasterRequest $request
@@ -5919,8 +6120,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Rating Model Master
+     *
      * @param DeleteRatingModelMasterRequest $request
      * @return DeleteRatingModelMasterResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#deleteratingmodelmaster
      */
     public function deleteRatingModelMaster (
             DeleteRatingModelMasterRequest $request
@@ -5931,8 +6135,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Rating Models
+     *
      * @param DescribeRatingModelsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#describeratingmodels
      */
     public function describeRatingModelsAsync(
             DescribeRatingModelsRequest $request
@@ -5946,8 +6153,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Rating Models
+     *
      * @param DescribeRatingModelsRequest $request
      * @return DescribeRatingModelsResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#describeratingmodels
      */
     public function describeRatingModels (
             DescribeRatingModelsRequest $request
@@ -5958,8 +6168,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Rating Model
+     *
      * @param GetRatingModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#getratingmodel
      */
     public function getRatingModelAsync(
             GetRatingModelRequest $request
@@ -5973,8 +6186,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Rating Model
+     *
      * @param GetRatingModelRequest $request
      * @return GetRatingModelResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#getratingmodel
      */
     public function getRatingModel (
             GetRatingModelRequest $request
@@ -5985,8 +6201,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#exportmaster
      */
     public function exportMasterAsync(
             ExportMasterRequest $request
@@ -6000,8 +6219,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return ExportMasterResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#exportmaster
      */
     public function exportMaster (
             ExportMasterRequest $request
@@ -6012,8 +6234,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active model master data
+     *
      * @param GetCurrentModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#getcurrentmodelmaster
      */
     public function getCurrentModelMasterAsync(
             GetCurrentModelMasterRequest $request
@@ -6027,8 +6252,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active model master data
+     *
      * @param GetCurrentModelMasterRequest $request
      * @return GetCurrentModelMasterResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#getcurrentmodelmaster
      */
     public function getCurrentModelMaster (
             GetCurrentModelMasterRequest $request
@@ -6039,8 +6267,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Models master data (3-phase version)
+     *
      * @param PreUpdateCurrentModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#preupdatecurrentmodelmaster
      */
     public function preUpdateCurrentModelMasterAsync(
             PreUpdateCurrentModelMasterRequest $request
@@ -6054,8 +6285,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Models master data (3-phase version)
+     *
      * @param PreUpdateCurrentModelMasterRequest $request
      * @return PreUpdateCurrentModelMasterResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#preupdatecurrentmodelmaster
      */
     public function preUpdateCurrentModelMaster (
             PreUpdateCurrentModelMasterRequest $request
@@ -6066,8 +6300,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Models master data
+     *
      * @param UpdateCurrentModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#updatecurrentmodelmaster
      */
     public function updateCurrentModelMasterAsync(
             UpdateCurrentModelMasterRequest $request
@@ -6081,8 +6318,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Models master data
+     *
      * @param UpdateCurrentModelMasterRequest $request
      * @return UpdateCurrentModelMasterResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#updatecurrentmodelmaster
      */
     public function updateCurrentModelMaster (
             UpdateCurrentModelMasterRequest $request
@@ -6093,8 +6333,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Models master data from GitHub
+     *
      * @param UpdateCurrentModelMasterFromGitHubRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#updatecurrentmodelmasterfromgithub
      */
     public function updateCurrentModelMasterFromGitHubAsync(
             UpdateCurrentModelMasterFromGitHubRequest $request
@@ -6108,8 +6351,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Models master data from GitHub
+     *
      * @param UpdateCurrentModelMasterFromGitHubRequest $request
      * @return UpdateCurrentModelMasterFromGitHubResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#updatecurrentmodelmasterfromgithub
      */
     public function updateCurrentModelMasterFromGitHub (
             UpdateCurrentModelMasterFromGitHubRequest $request
@@ -6120,8 +6366,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Season Models
+     *
      * @param DescribeSeasonModelsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#describeseasonmodels
      */
     public function describeSeasonModelsAsync(
             DescribeSeasonModelsRequest $request
@@ -6135,8 +6384,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Season Models
+     *
      * @param DescribeSeasonModelsRequest $request
      * @return DescribeSeasonModelsResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#describeseasonmodels
      */
     public function describeSeasonModels (
             DescribeSeasonModelsRequest $request
@@ -6147,8 +6399,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Season Model
+     *
      * @param GetSeasonModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#getseasonmodel
      */
     public function getSeasonModelAsync(
             GetSeasonModelRequest $request
@@ -6162,8 +6417,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Season Model
+     *
      * @param GetSeasonModelRequest $request
      * @return GetSeasonModelResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#getseasonmodel
      */
     public function getSeasonModel (
             GetSeasonModelRequest $request
@@ -6174,8 +6432,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Season Model Masters
+     *
      * @param DescribeSeasonModelMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#describeseasonmodelmasters
      */
     public function describeSeasonModelMastersAsync(
             DescribeSeasonModelMastersRequest $request
@@ -6189,8 +6450,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Season Model Masters
+     *
      * @param DescribeSeasonModelMastersRequest $request
      * @return DescribeSeasonModelMastersResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#describeseasonmodelmasters
      */
     public function describeSeasonModelMasters (
             DescribeSeasonModelMastersRequest $request
@@ -6201,8 +6465,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Season Model Master
+     *
      * @param CreateSeasonModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#createseasonmodelmaster
      */
     public function createSeasonModelMasterAsync(
             CreateSeasonModelMasterRequest $request
@@ -6216,8 +6483,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Season Model Master
+     *
      * @param CreateSeasonModelMasterRequest $request
      * @return CreateSeasonModelMasterResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#createseasonmodelmaster
      */
     public function createSeasonModelMaster (
             CreateSeasonModelMasterRequest $request
@@ -6228,8 +6498,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Season Model Master
+     *
      * @param GetSeasonModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#getseasonmodelmaster
      */
     public function getSeasonModelMasterAsync(
             GetSeasonModelMasterRequest $request
@@ -6243,8 +6516,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Season Model Master
+     *
      * @param GetSeasonModelMasterRequest $request
      * @return GetSeasonModelMasterResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#getseasonmodelmaster
      */
     public function getSeasonModelMaster (
             GetSeasonModelMasterRequest $request
@@ -6255,8 +6531,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Season Model Master
+     *
      * @param UpdateSeasonModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#updateseasonmodelmaster
      */
     public function updateSeasonModelMasterAsync(
             UpdateSeasonModelMasterRequest $request
@@ -6270,8 +6549,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Season Model Master
+     *
      * @param UpdateSeasonModelMasterRequest $request
      * @return UpdateSeasonModelMasterResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#updateseasonmodelmaster
      */
     public function updateSeasonModelMaster (
             UpdateSeasonModelMasterRequest $request
@@ -6282,8 +6564,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Season Model Master
+     *
      * @param DeleteSeasonModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#deleteseasonmodelmaster
      */
     public function deleteSeasonModelMasterAsync(
             DeleteSeasonModelMasterRequest $request
@@ -6297,8 +6582,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Season Model Master
+     *
      * @param DeleteSeasonModelMasterRequest $request
      * @return DeleteSeasonModelMasterResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#deleteseasonmodelmaster
      */
     public function deleteSeasonModelMaster (
             DeleteSeasonModelMasterRequest $request
@@ -6309,8 +6597,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Season Gatherings
+     *
      * @param DescribeSeasonGatheringsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#describeseasongatherings
      */
     public function describeSeasonGatheringsAsync(
             DescribeSeasonGatheringsRequest $request
@@ -6324,8 +6615,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Season Gatherings
+     *
      * @param DescribeSeasonGatheringsRequest $request
      * @return DescribeSeasonGatheringsResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#describeseasongatherings
      */
     public function describeSeasonGatherings (
             DescribeSeasonGatheringsRequest $request
@@ -6336,8 +6630,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List matchmaking Season Gatherings
+     *
      * @param DescribeMatchmakingSeasonGatheringsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#describematchmakingseasongatherings
      */
     public function describeMatchmakingSeasonGatheringsAsync(
             DescribeMatchmakingSeasonGatheringsRequest $request
@@ -6351,8 +6648,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List matchmaking Season Gatherings
+     *
      * @param DescribeMatchmakingSeasonGatheringsRequest $request
      * @return DescribeMatchmakingSeasonGatheringsResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#describematchmakingseasongatherings
      */
     public function describeMatchmakingSeasonGatherings (
             DescribeMatchmakingSeasonGatheringsRequest $request
@@ -6363,8 +6663,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Find a Season Gathering you can join and participate.
+     *
      * @param DoSeasonMatchmakingRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#doseasonmatchmaking
      */
     public function doSeasonMatchmakingAsync(
             DoSeasonMatchmakingRequest $request
@@ -6378,8 +6681,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Find a Season Gathering you can join and participate.
+     *
      * @param DoSeasonMatchmakingRequest $request
      * @return DoSeasonMatchmakingResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#doseasonmatchmaking
      */
     public function doSeasonMatchmaking (
             DoSeasonMatchmakingRequest $request
@@ -6390,8 +6696,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Find a Season Gathering you can join and participate.
+     *
      * @param DoSeasonMatchmakingByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#doseasonmatchmakingbyuserid
      */
     public function doSeasonMatchmakingByUserIdAsync(
             DoSeasonMatchmakingByUserIdRequest $request
@@ -6405,8 +6714,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Find a Season Gathering you can join and participate.
+     *
      * @param DoSeasonMatchmakingByUserIdRequest $request
      * @return DoSeasonMatchmakingByUserIdResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#doseasonmatchmakingbyuserid
      */
     public function doSeasonMatchmakingByUserId (
             DoSeasonMatchmakingByUserIdRequest $request
@@ -6417,8 +6729,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Season Gathering
+     *
      * @param GetSeasonGatheringRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#getseasongathering
      */
     public function getSeasonGatheringAsync(
             GetSeasonGatheringRequest $request
@@ -6432,8 +6747,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Season Gathering
+     *
      * @param GetSeasonGatheringRequest $request
      * @return GetSeasonGatheringResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#getseasongathering
      */
     public function getSeasonGathering (
             GetSeasonGatheringRequest $request
@@ -6444,8 +6762,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify if persistent gathering includes user ID
+     *
      * @param VerifyIncludeParticipantRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#verifyincludeparticipant
      */
     public function verifyIncludeParticipantAsync(
             VerifyIncludeParticipantRequest $request
@@ -6459,8 +6780,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify if persistent gathering includes user ID
+     *
      * @param VerifyIncludeParticipantRequest $request
      * @return VerifyIncludeParticipantResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#verifyincludeparticipant
      */
     public function verifyIncludeParticipant (
             VerifyIncludeParticipantRequest $request
@@ -6471,8 +6795,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify if persistent gathering includes user ID by User ID
+     *
      * @param VerifyIncludeParticipantByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#verifyincludeparticipantbyuserid
      */
     public function verifyIncludeParticipantByUserIdAsync(
             VerifyIncludeParticipantByUserIdRequest $request
@@ -6486,8 +6813,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify if persistent gathering includes user ID by User ID
+     *
      * @param VerifyIncludeParticipantByUserIdRequest $request
      * @return VerifyIncludeParticipantByUserIdResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#verifyincludeparticipantbyuserid
      */
     public function verifyIncludeParticipantByUserId (
             VerifyIncludeParticipantByUserIdRequest $request
@@ -6498,8 +6828,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Season Gathering
+     *
      * @param DeleteSeasonGatheringRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#deleteseasongathering
      */
     public function deleteSeasonGatheringAsync(
             DeleteSeasonGatheringRequest $request
@@ -6513,8 +6846,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Season Gathering
+     *
      * @param DeleteSeasonGatheringRequest $request
      * @return DeleteSeasonGatheringResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#deleteseasongathering
      */
     public function deleteSeasonGathering (
             DeleteSeasonGatheringRequest $request
@@ -6525,8 +6861,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute verification to check if the user ID is included in the persistent gathering as a verify action
+     *
      * @param VerifyIncludeParticipantByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/stamp_sheet/#gs2matchmakingverifyincludeparticipantbyuserid
      */
     public function verifyIncludeParticipantByStampTaskAsync(
             VerifyIncludeParticipantByStampTaskRequest $request
@@ -6540,8 +6879,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute verification to check if the user ID is included in the persistent gathering as a verify action
+     *
      * @param VerifyIncludeParticipantByStampTaskRequest $request
      * @return VerifyIncludeParticipantByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/stamp_sheet/#gs2matchmakingverifyincludeparticipantbyuserid
      */
     public function verifyIncludeParticipantByStampTask (
             VerifyIncludeParticipantByStampTaskRequest $request
@@ -6552,8 +6894,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List joined Season Gatherings
+     *
      * @param DescribeJoinedSeasonGatheringsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#describejoinedseasongatherings
      */
     public function describeJoinedSeasonGatheringsAsync(
             DescribeJoinedSeasonGatheringsRequest $request
@@ -6567,8 +6912,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List joined Season Gatherings
+     *
      * @param DescribeJoinedSeasonGatheringsRequest $request
      * @return DescribeJoinedSeasonGatheringsResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#describejoinedseasongatherings
      */
     public function describeJoinedSeasonGatherings (
             DescribeJoinedSeasonGatheringsRequest $request
@@ -6579,8 +6927,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List joined Season Gatherings by User ID
+     *
      * @param DescribeJoinedSeasonGatheringsByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#describejoinedseasongatheringsbyuserid
      */
     public function describeJoinedSeasonGatheringsByUserIdAsync(
             DescribeJoinedSeasonGatheringsByUserIdRequest $request
@@ -6594,8 +6945,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List joined Season Gatherings by User ID
+     *
      * @param DescribeJoinedSeasonGatheringsByUserIdRequest $request
      * @return DescribeJoinedSeasonGatheringsByUserIdResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#describejoinedseasongatheringsbyuserid
      */
     public function describeJoinedSeasonGatheringsByUserId (
             DescribeJoinedSeasonGatheringsByUserIdRequest $request
@@ -6606,8 +6960,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get joined Season Gathering
+     *
      * @param GetJoinedSeasonGatheringRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#getjoinedseasongathering
      */
     public function getJoinedSeasonGatheringAsync(
             GetJoinedSeasonGatheringRequest $request
@@ -6621,8 +6978,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get joined Season Gathering
+     *
      * @param GetJoinedSeasonGatheringRequest $request
      * @return GetJoinedSeasonGatheringResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#getjoinedseasongathering
      */
     public function getJoinedSeasonGathering (
             GetJoinedSeasonGatheringRequest $request
@@ -6633,8 +6993,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get joined Season Gathering by specifying the user ID
+     *
      * @param GetJoinedSeasonGatheringByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#getjoinedseasongatheringbyuserid
      */
     public function getJoinedSeasonGatheringByUserIdAsync(
             GetJoinedSeasonGatheringByUserIdRequest $request
@@ -6648,8 +7011,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get joined Season Gathering by specifying the user ID
+     *
      * @param GetJoinedSeasonGatheringByUserIdRequest $request
      * @return GetJoinedSeasonGatheringByUserIdResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#getjoinedseasongatheringbyuserid
      */
     public function getJoinedSeasonGatheringByUserId (
             GetJoinedSeasonGatheringByUserIdRequest $request
@@ -6660,8 +7026,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List ratings
+     *
      * @param DescribeRatingsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#describeratings
      */
     public function describeRatingsAsync(
             DescribeRatingsRequest $request
@@ -6675,8 +7044,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List ratings
+     *
      * @param DescribeRatingsRequest $request
      * @return DescribeRatingsResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#describeratings
      */
     public function describeRatings (
             DescribeRatingsRequest $request
@@ -6687,8 +7059,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List ratings by User ID
+     *
      * @param DescribeRatingsByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#describeratingsbyuserid
      */
     public function describeRatingsByUserIdAsync(
             DescribeRatingsByUserIdRequest $request
@@ -6702,8 +7077,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List ratings by User ID
+     *
      * @param DescribeRatingsByUserIdRequest $request
      * @return DescribeRatingsByUserIdResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#describeratingsbyuserid
      */
     public function describeRatingsByUserId (
             DescribeRatingsByUserIdRequest $request
@@ -6714,8 +7092,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Rating
+     *
      * @param GetRatingRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#getrating
      */
     public function getRatingAsync(
             GetRatingRequest $request
@@ -6729,8 +7110,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Rating
+     *
      * @param GetRatingRequest $request
      * @return GetRatingResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#getrating
      */
     public function getRating (
             GetRatingRequest $request
@@ -6741,8 +7125,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Rating by User ID
+     *
      * @param GetRatingByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#getratingbyuserid
      */
     public function getRatingByUserIdAsync(
             GetRatingByUserIdRequest $request
@@ -6756,8 +7143,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Rating by User ID
+     *
      * @param GetRatingByUserIdRequest $request
      * @return GetRatingByUserIdResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#getratingbyuserid
      */
     public function getRatingByUserId (
             GetRatingByUserIdRequest $request
@@ -6768,8 +7158,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Recalculate rating values
+     *
      * @param PutResultRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#putresult
      */
     public function putResultAsync(
             PutResultRequest $request
@@ -6783,8 +7176,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Recalculate rating values
+     *
      * @param PutResultRequest $request
      * @return PutResultResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#putresult
      */
     public function putResult (
             PutResultRequest $request
@@ -6795,8 +7191,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Rating
+     *
      * @param DeleteRatingRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#deleterating
      */
     public function deleteRatingAsync(
             DeleteRatingRequest $request
@@ -6810,8 +7209,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Rating
+     *
      * @param DeleteRatingRequest $request
      * @return DeleteRatingResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#deleterating
      */
     public function deleteRating (
             DeleteRatingRequest $request
@@ -6822,8 +7224,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Ballot with Signatures
+     *
      * @param GetBallotRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#getballot
      */
     public function getBallotAsync(
             GetBallotRequest $request
@@ -6837,8 +7242,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Ballot with Signatures
+     *
      * @param GetBallotRequest $request
      * @return GetBallotResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#getballot
      */
     public function getBallot (
             GetBallotRequest $request
@@ -6849,8 +7257,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create ballot with signatures, specifying user ID
+     *
      * @param GetBallotByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#getballotbyuserid
      */
     public function getBallotByUserIdAsync(
             GetBallotByUserIdRequest $request
@@ -6864,8 +7275,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create ballot with signatures, specifying user ID
+     *
      * @param GetBallotByUserIdRequest $request
      * @return GetBallotByUserIdResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#getballotbyuserid
      */
     public function getBallotByUserId (
             GetBallotByUserIdRequest $request
@@ -6876,8 +7290,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Vote on match results
+     *
      * @param VoteRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#vote-1
      */
     public function voteAsync(
             VoteRequest $request
@@ -6891,8 +7308,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Vote on match results
+     *
      * @param VoteRequest $request
      * @return VoteResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#vote-1
      */
     public function vote (
             VoteRequest $request
@@ -6903,8 +7323,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Compile match results and vote
+     *
      * @param VoteMultipleRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#votemultiple
      */
     public function voteMultipleAsync(
             VoteMultipleRequest $request
@@ -6918,8 +7341,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Compile match results and vote
+     *
      * @param VoteMultipleRequest $request
      * @return VoteMultipleResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#votemultiple
      */
     public function voteMultiple (
             VoteMultipleRequest $request
@@ -6930,8 +7356,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Forced determination of voting status
+     *
      * @param CommitVoteRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#commitvote
      */
     public function commitVoteAsync(
             CommitVoteRequest $request
@@ -6945,8 +7374,11 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Forced determination of voting status
+     *
      * @param CommitVoteRequest $request
      * @return CommitVoteResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#commitvote
      */
     public function commitVote (
             CommitVoteRequest $request

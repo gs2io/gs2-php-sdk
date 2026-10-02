@@ -19,27 +19,44 @@ namespace Gs2\Identifier\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for describeAttachedGuards: List assigned GS2-Guard Namespace GRNs
+ *
+ * @see https://docs.gs2.io/api_reference/identifier/sdk/#describeattachedguards
+ */
 class DescribeAttachedGuardsRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Client ID */
     private $clientId;
-    /** @var string */
+    /** @var string GS2-Identifier User name */
     private $userName;
+    /** @return string|null Client ID */
 	public function getClientId(): ?string {
 		return $this->clientId;
 	}
+    /** @param string|null $clientId Client ID */
 	public function setClientId(?string $clientId) {
 		$this->clientId = $clientId;
 	}
+    /**
+     * @param string|null $clientId Client ID
+     * @return DescribeAttachedGuardsRequest
+     */
 	public function withClientId(?string $clientId): DescribeAttachedGuardsRequest {
 		$this->clientId = $clientId;
 		return $this;
 	}
+    /** @return string|null GS2-Identifier User name */
 	public function getUserName(): ?string {
 		return $this->userName;
 	}
+    /** @param string|null $userName GS2-Identifier User name */
 	public function setUserName(?string $userName) {
 		$this->userName = $userName;
 	}
+    /**
+     * @param string|null $userName GS2-Identifier User name
+     * @return DescribeAttachedGuardsRequest
+     */
 	public function withUserName(?string $userName): DescribeAttachedGuardsRequest {
 		$this->userName = $userName;
 		return $this;

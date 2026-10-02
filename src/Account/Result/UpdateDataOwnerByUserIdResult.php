@@ -20,18 +20,29 @@ namespace Gs2\Account\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Account\Model\DataOwner;
 
+/**
+ * Result of updateDataOwnerByUserId: Update Data Owner
+ *
+ * @see https://docs.gs2.io/api_reference/account/sdk/#updatedataownerbyuserid
+ */
 class UpdateDataOwnerByUserIdResult implements IResult {
-    /** @var DataOwner */
+    /** @var DataOwner DataOwner */
     private $item;
 
+    /** @return DataOwner|null DataOwner */
 	public function getItem(): ?DataOwner {
 		return $this->item;
 	}
 
+    /** @param DataOwner|null $item DataOwner */
 	public function setItem(?DataOwner $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param DataOwner|null $item DataOwner
+     * @return UpdateDataOwnerByUserIdResult
+     */
 	public function withItem(?DataOwner $item): UpdateDataOwnerByUserIdResult {
 		$this->item = $item;
 		return $this;

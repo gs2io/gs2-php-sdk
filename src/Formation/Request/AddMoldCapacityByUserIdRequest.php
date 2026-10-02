@@ -19,65 +19,100 @@ namespace Gs2\Formation\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for addMoldCapacityByUserId: Add capacity size by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/formation/sdk/#addmoldcapacitybyuserid
+ */
 class AddMoldCapacityByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Form Storage Area Model name */
     private $moldModelName;
-    /** @var int */
+    /** @var int Current Capacity */
     private $capacity;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return AddMoldCapacityByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): AddMoldCapacityByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return AddMoldCapacityByUserIdRequest
+     */
 	public function withUserId(?string $userId): AddMoldCapacityByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Form Storage Area Model name */
 	public function getMoldModelName(): ?string {
 		return $this->moldModelName;
 	}
+    /** @param string|null $moldModelName Form Storage Area Model name */
 	public function setMoldModelName(?string $moldModelName) {
 		$this->moldModelName = $moldModelName;
 	}
+    /**
+     * @param string|null $moldModelName Form Storage Area Model name
+     * @return AddMoldCapacityByUserIdRequest
+     */
 	public function withMoldModelName(?string $moldModelName): AddMoldCapacityByUserIdRequest {
 		$this->moldModelName = $moldModelName;
 		return $this;
 	}
+    /** @return int|null Current Capacity */
 	public function getCapacity(): ?int {
 		return $this->capacity;
 	}
+    /** @param int|null $capacity Current Capacity */
 	public function setCapacity(?int $capacity) {
 		$this->capacity = $capacity;
 	}
+    /**
+     * @param int|null $capacity Current Capacity
+     * @return AddMoldCapacityByUserIdRequest
+     */
 	public function withCapacity(?int $capacity): AddMoldCapacityByUserIdRequest {
 		$this->capacity = $capacity;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return AddMoldCapacityByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): AddMoldCapacityByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

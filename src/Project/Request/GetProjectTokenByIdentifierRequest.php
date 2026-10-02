@@ -19,63 +19,94 @@ namespace Gs2\Project\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/** Request for getProjectTokenByIdentifier: Issue project tokens */
 class GetProjectTokenByIdentifierRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string GS2 Account Name */
     private $accountName;
-    /** @var string */
+    /** @var string Project Name */
     private $projectName;
-    /** @var string */
+    /** @var string User Name */
     private $userName;
-    /** @var string */
+    /** @var string Password */
     private $password;
-    /** @var string */
+    /** @var string Passcode */
     private $otp;
+    /** @return string|null GS2 Account Name */
 	public function getAccountName(): ?string {
 		return $this->accountName;
 	}
+    /** @param string|null $accountName GS2 Account Name */
 	public function setAccountName(?string $accountName) {
 		$this->accountName = $accountName;
 	}
+    /**
+     * @param string|null $accountName GS2 Account Name
+     * @return GetProjectTokenByIdentifierRequest
+     */
 	public function withAccountName(?string $accountName): GetProjectTokenByIdentifierRequest {
 		$this->accountName = $accountName;
 		return $this;
 	}
+    /** @return string|null Project Name */
 	public function getProjectName(): ?string {
 		return $this->projectName;
 	}
+    /** @param string|null $projectName Project Name */
 	public function setProjectName(?string $projectName) {
 		$this->projectName = $projectName;
 	}
+    /**
+     * @param string|null $projectName Project Name
+     * @return GetProjectTokenByIdentifierRequest
+     */
 	public function withProjectName(?string $projectName): GetProjectTokenByIdentifierRequest {
 		$this->projectName = $projectName;
 		return $this;
 	}
+    /** @return string|null User Name */
 	public function getUserName(): ?string {
 		return $this->userName;
 	}
+    /** @param string|null $userName User Name */
 	public function setUserName(?string $userName) {
 		$this->userName = $userName;
 	}
+    /**
+     * @param string|null $userName User Name
+     * @return GetProjectTokenByIdentifierRequest
+     */
 	public function withUserName(?string $userName): GetProjectTokenByIdentifierRequest {
 		$this->userName = $userName;
 		return $this;
 	}
+    /** @return string|null Password */
 	public function getPassword(): ?string {
 		return $this->password;
 	}
+    /** @param string|null $password Password */
 	public function setPassword(?string $password) {
 		$this->password = $password;
 	}
+    /**
+     * @param string|null $password Password
+     * @return GetProjectTokenByIdentifierRequest
+     */
 	public function withPassword(?string $password): GetProjectTokenByIdentifierRequest {
 		$this->password = $password;
 		return $this;
 	}
+    /** @return string|null Passcode */
 	public function getOtp(): ?string {
 		return $this->otp;
 	}
+    /** @param string|null $otp Passcode */
 	public function setOtp(?string $otp) {
 		$this->otp = $otp;
 	}
+    /**
+     * @param string|null $otp Passcode
+     * @return GetProjectTokenByIdentifierRequest
+     */
 	public function withOtp(?string $otp): GetProjectTokenByIdentifierRequest {
 		$this->otp = $otp;
 		return $this;

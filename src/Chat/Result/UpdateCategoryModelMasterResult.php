@@ -20,18 +20,29 @@ namespace Gs2\Chat\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Chat\Model\CategoryModelMaster;
 
+/**
+ * Result of updateCategoryModelMaster: Update Message Category Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/chat/sdk/#updatecategorymodelmaster
+ */
 class UpdateCategoryModelMasterResult implements IResult {
-    /** @var CategoryModelMaster */
+    /** @var CategoryModelMaster Message Category Model Master updated */
     private $item;
 
+    /** @return CategoryModelMaster|null Message Category Model Master updated */
 	public function getItem(): ?CategoryModelMaster {
 		return $this->item;
 	}
 
+    /** @param CategoryModelMaster|null $item Message Category Model Master updated */
 	public function setItem(?CategoryModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CategoryModelMaster|null $item Message Category Model Master updated
+     * @return UpdateCategoryModelMasterResult
+     */
 	public function withItem(?CategoryModelMaster $item): UpdateCategoryModelMasterResult {
 		$this->item = $item;
 		return $this;

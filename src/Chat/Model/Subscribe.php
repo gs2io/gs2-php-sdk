@@ -20,87 +20,128 @@ namespace Gs2\Chat\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Room Subscription
+ *
+ * @see https://docs.gs2.io/api_reference/chat/sdk/#subscribe
+ */
 class Subscribe implements IModel {
 	/**
-     * @var string
+     * @var string Subscription GRN
 	 */
 	private $subscribeId;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var string
+     * @var string Room name to subscribe to
 	 */
 	private $roomName;
 	/**
-     * @var array
+     * @var array List of categories to receive notifications of new messages
 	 */
 	private $notificationTypes;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Subscription GRN */
 	public function getSubscribeId(): ?string {
 		return $this->subscribeId;
 	}
+    /** @param string|null $subscribeId Subscription GRN */
 	public function setSubscribeId(?string $subscribeId) {
 		$this->subscribeId = $subscribeId;
 	}
+    /**
+     * @param string|null $subscribeId Subscription GRN
+     * @return Subscribe
+     */
 	public function withSubscribeId(?string $subscribeId): Subscribe {
 		$this->subscribeId = $subscribeId;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return Subscribe
+     */
 	public function withUserId(?string $userId): Subscribe {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Room name to subscribe to */
 	public function getRoomName(): ?string {
 		return $this->roomName;
 	}
+    /** @param string|null $roomName Room name to subscribe to */
 	public function setRoomName(?string $roomName) {
 		$this->roomName = $roomName;
 	}
+    /**
+     * @param string|null $roomName Room name to subscribe to
+     * @return Subscribe
+     */
 	public function withRoomName(?string $roomName): Subscribe {
 		$this->roomName = $roomName;
 		return $this;
 	}
+    /** @return array|null List of categories to receive notifications of new messages */
 	public function getNotificationTypes(): ?array {
 		return $this->notificationTypes;
 	}
+    /** @param array|null $notificationTypes List of categories to receive notifications of new messages */
 	public function setNotificationTypes(?array $notificationTypes) {
 		$this->notificationTypes = $notificationTypes;
 	}
+    /**
+     * @param array|null $notificationTypes List of categories to receive notifications of new messages
+     * @return Subscribe
+     */
 	public function withNotificationTypes(?array $notificationTypes): Subscribe {
 		$this->notificationTypes = $notificationTypes;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return Subscribe
+     */
 	public function withCreatedAt(?int $createdAt): Subscribe {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return Subscribe
+     */
 	public function withRevision(?int $revision): Subscribe {
 		$this->revision = $revision;
 		return $this;

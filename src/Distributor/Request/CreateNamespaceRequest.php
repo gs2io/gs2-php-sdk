@@ -24,108 +24,159 @@ use Gs2\Distributor\Model\MobileNotificationMessage;
 use Gs2\Distributor\Model\NotificationSetting;
 use Gs2\Distributor\Model\LogSetting;
 
+/**
+ * Request for createNamespace: Create Namespace
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#createnamespace
+ */
 class CreateNamespaceRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $name;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var TransactionSetting */
+    /** @var TransactionSetting Transaction Settings */
     private $transactionSetting;
-    /** @var TransactionSettingV2 */
+    /** @var TransactionSettingV2 Transaction Setting (V2) */
     private $transactionSettingV2;
-    /** @var string */
+    /** @var string GS2-Identifier User GRN */
     private $assumeUserId;
-    /** @var NotificationSetting */
+    /** @var NotificationSetting Push notification when transaction auto-execution is complete(Legacy specification) */
     private $autoRunStampSheetNotification;
-    /** @var NotificationSetting */
+    /** @var NotificationSetting Push notification when transaction auto-execution is complete */
     private $autoRunTransactionNotification;
-    /** @var LogSetting */
+    /** @var LogSetting Log Output Setting */
     private $logSetting;
+    /** @return string|null Namespace name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Namespace name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Namespace name
+     * @return CreateNamespaceRequest
+     */
 	public function withName(?string $name): CreateNamespaceRequest {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return CreateNamespaceRequest
+     */
 	public function withDescription(?string $description): CreateNamespaceRequest {
 		$this->description = $description;
 		return $this;
 	}
     /**
+     * @return TransactionSetting|null Transaction Settings
      * @deprecated
      */
 	public function getTransactionSetting(): ?TransactionSetting {
 		return $this->transactionSetting;
 	}
     /**
+     * @param TransactionSetting|null $transactionSetting Transaction Settings
      * @deprecated
      */
 	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
 		$this->transactionSetting = $transactionSetting;
 	}
     /**
+     * @param TransactionSetting|null $transactionSetting Transaction Settings
+     * @return CreateNamespaceRequest
      * @deprecated
      */
 	public function withTransactionSetting(?TransactionSetting $transactionSetting): CreateNamespaceRequest {
 		$this->transactionSetting = $transactionSetting;
 		return $this;
 	}
+    /** @return TransactionSettingV2|null Transaction Setting (V2) */
 	public function getTransactionSettingV2(): ?TransactionSettingV2 {
 		return $this->transactionSettingV2;
 	}
+    /** @param TransactionSettingV2|null $transactionSettingV2 Transaction Setting (V2) */
 	public function setTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2) {
 		$this->transactionSettingV2 = $transactionSettingV2;
 	}
+    /**
+     * @param TransactionSettingV2|null $transactionSettingV2 Transaction Setting (V2)
+     * @return CreateNamespaceRequest
+     */
 	public function withTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2): CreateNamespaceRequest {
 		$this->transactionSettingV2 = $transactionSettingV2;
 		return $this;
 	}
+    /** @return string|null GS2-Identifier User GRN */
 	public function getAssumeUserId(): ?string {
 		return $this->assumeUserId;
 	}
+    /** @param string|null $assumeUserId GS2-Identifier User GRN */
 	public function setAssumeUserId(?string $assumeUserId) {
 		$this->assumeUserId = $assumeUserId;
 	}
+    /**
+     * @param string|null $assumeUserId GS2-Identifier User GRN
+     * @return CreateNamespaceRequest
+     */
 	public function withAssumeUserId(?string $assumeUserId): CreateNamespaceRequest {
 		$this->assumeUserId = $assumeUserId;
 		return $this;
 	}
+    /** @return NotificationSetting|null Push notification when transaction auto-execution is complete(Legacy specification) */
 	public function getAutoRunStampSheetNotification(): ?NotificationSetting {
 		return $this->autoRunStampSheetNotification;
 	}
+    /** @param NotificationSetting|null $autoRunStampSheetNotification Push notification when transaction auto-execution is complete(Legacy specification) */
 	public function setAutoRunStampSheetNotification(?NotificationSetting $autoRunStampSheetNotification) {
 		$this->autoRunStampSheetNotification = $autoRunStampSheetNotification;
 	}
+    /**
+     * @param NotificationSetting|null $autoRunStampSheetNotification Push notification when transaction auto-execution is complete(Legacy specification)
+     * @return CreateNamespaceRequest
+     */
 	public function withAutoRunStampSheetNotification(?NotificationSetting $autoRunStampSheetNotification): CreateNamespaceRequest {
 		$this->autoRunStampSheetNotification = $autoRunStampSheetNotification;
 		return $this;
 	}
+    /** @return NotificationSetting|null Push notification when transaction auto-execution is complete */
 	public function getAutoRunTransactionNotification(): ?NotificationSetting {
 		return $this->autoRunTransactionNotification;
 	}
+    /** @param NotificationSetting|null $autoRunTransactionNotification Push notification when transaction auto-execution is complete */
 	public function setAutoRunTransactionNotification(?NotificationSetting $autoRunTransactionNotification) {
 		$this->autoRunTransactionNotification = $autoRunTransactionNotification;
 	}
+    /**
+     * @param NotificationSetting|null $autoRunTransactionNotification Push notification when transaction auto-execution is complete
+     * @return CreateNamespaceRequest
+     */
 	public function withAutoRunTransactionNotification(?NotificationSetting $autoRunTransactionNotification): CreateNamespaceRequest {
 		$this->autoRunTransactionNotification = $autoRunTransactionNotification;
 		return $this;
 	}
+    /** @return LogSetting|null Log Output Setting */
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
+    /** @param LogSetting|null $logSetting Log Output Setting */
 	public function setLogSetting(?LogSetting $logSetting) {
 		$this->logSetting = $logSetting;
 	}
+    /**
+     * @param LogSetting|null $logSetting Log Output Setting
+     * @return CreateNamespaceRequest
+     */
 	public function withLogSetting(?LogSetting $logSetting): CreateNamespaceRequest {
 		$this->logSetting = $logSetting;
 		return $this;

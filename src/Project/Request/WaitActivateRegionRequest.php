@@ -19,39 +19,58 @@ namespace Gs2\Project\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/** Request for waitActivateRegion: Activate region */
 class WaitActivateRegionRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Owner ID */
     private $ownerId;
-    /** @var string */
+    /** @var string Project Name */
     private $projectName;
-    /** @var string */
+    /** @var string Region Name */
     private $regionName;
+    /** @return string|null Owner ID */
 	public function getOwnerId(): ?string {
 		return $this->ownerId;
 	}
+    /** @param string|null $ownerId Owner ID */
 	public function setOwnerId(?string $ownerId) {
 		$this->ownerId = $ownerId;
 	}
+    /**
+     * @param string|null $ownerId Owner ID
+     * @return WaitActivateRegionRequest
+     */
 	public function withOwnerId(?string $ownerId): WaitActivateRegionRequest {
 		$this->ownerId = $ownerId;
 		return $this;
 	}
+    /** @return string|null Project Name */
 	public function getProjectName(): ?string {
 		return $this->projectName;
 	}
+    /** @param string|null $projectName Project Name */
 	public function setProjectName(?string $projectName) {
 		$this->projectName = $projectName;
 	}
+    /**
+     * @param string|null $projectName Project Name
+     * @return WaitActivateRegionRequest
+     */
 	public function withProjectName(?string $projectName): WaitActivateRegionRequest {
 		$this->projectName = $projectName;
 		return $this;
 	}
+    /** @return string|null Region Name */
 	public function getRegionName(): ?string {
 		return $this->regionName;
 	}
+    /** @param string|null $regionName Region Name */
 	public function setRegionName(?string $regionName) {
 		$this->regionName = $regionName;
 	}
+    /**
+     * @param string|null $regionName Region Name
+     * @return WaitActivateRegionRequest
+     */
 	public function withRegionName(?string $regionName): WaitActivateRegionRequest {
 		$this->regionName = $regionName;
 		return $this;

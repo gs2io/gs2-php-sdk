@@ -23,18 +23,29 @@ use Gs2\Showcase\Model\ConsumeAction;
 use Gs2\Showcase\Model\AcquireAction;
 use Gs2\Showcase\Model\RandomDisplayItem;
 
+/**
+ * Result of incrementPurchaseCountByUserId: Increment the number of times a Random Displayed Item has been purchased by specifying the user ID
+ *
+ * @see https://docs.gs2.io/api_reference/showcase/sdk/#incrementpurchasecountbyuserid
+ */
 class IncrementPurchaseCountByUserIdResult implements IResult {
-    /** @var RandomDisplayItem */
+    /** @var RandomDisplayItem Randomly displayed items after purchase counts are added */
     private $item;
 
+    /** @return RandomDisplayItem|null Randomly displayed items after purchase counts are added */
 	public function getItem(): ?RandomDisplayItem {
 		return $this->item;
 	}
 
+    /** @param RandomDisplayItem|null $item Randomly displayed items after purchase counts are added */
 	public function setItem(?RandomDisplayItem $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param RandomDisplayItem|null $item Randomly displayed items after purchase counts are added
+     * @return IncrementPurchaseCountByUserIdResult
+     */
 	public function withItem(?RandomDisplayItem $item): IncrementPurchaseCountByUserIdResult {
 		$this->item = $item;
 		return $this;

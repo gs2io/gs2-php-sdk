@@ -19,75 +19,116 @@ namespace Gs2\Ranking2\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getSubscribeRankingByUserId: Get Subscribe Ranking by specifying the user ID
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/sdk/#getsubscriberankingbyuserid
+ */
 class GetSubscribeRankingByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Subscribe Ranking Model name */
     private $rankingName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var int */
+    /** @var int Season */
     private $season;
-    /** @var string */
+    /** @var string Scorer User ID */
     private $scorerUserId;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetSubscribeRankingByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetSubscribeRankingByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Subscribe Ranking Model name */
 	public function getRankingName(): ?string {
 		return $this->rankingName;
 	}
+    /** @param string|null $rankingName Subscribe Ranking Model name */
 	public function setRankingName(?string $rankingName) {
 		$this->rankingName = $rankingName;
 	}
+    /**
+     * @param string|null $rankingName Subscribe Ranking Model name
+     * @return GetSubscribeRankingByUserIdRequest
+     */
 	public function withRankingName(?string $rankingName): GetSubscribeRankingByUserIdRequest {
 		$this->rankingName = $rankingName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return GetSubscribeRankingByUserIdRequest
+     */
 	public function withUserId(?string $userId): GetSubscribeRankingByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return int|null Season */
 	public function getSeason(): ?int {
 		return $this->season;
 	}
+    /** @param int|null $season Season */
 	public function setSeason(?int $season) {
 		$this->season = $season;
 	}
+    /**
+     * @param int|null $season Season
+     * @return GetSubscribeRankingByUserIdRequest
+     */
 	public function withSeason(?int $season): GetSubscribeRankingByUserIdRequest {
 		$this->season = $season;
 		return $this;
 	}
+    /** @return string|null Scorer User ID */
 	public function getScorerUserId(): ?string {
 		return $this->scorerUserId;
 	}
+    /** @param string|null $scorerUserId Scorer User ID */
 	public function setScorerUserId(?string $scorerUserId) {
 		$this->scorerUserId = $scorerUserId;
 	}
+    /**
+     * @param string|null $scorerUserId Scorer User ID
+     * @return GetSubscribeRankingByUserIdRequest
+     */
 	public function withScorerUserId(?string $scorerUserId): GetSubscribeRankingByUserIdRequest {
 		$this->scorerUserId = $scorerUserId;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return GetSubscribeRankingByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): GetSubscribeRankingByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

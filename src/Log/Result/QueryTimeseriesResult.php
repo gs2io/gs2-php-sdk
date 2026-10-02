@@ -22,48 +22,71 @@ use Gs2\Log\Model\TimeseriesValue;
 use Gs2\Log\Model\TimeseriesPoint;
 use Gs2\Log\Model\TimeseriesMetadata;
 
+/**
+ * Result of queryTimeseries: Time Series Query (Log)
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#querytimeseries
+ */
 class QueryTimeseriesResult implements IResult {
-    /** @var array */
+    /** @var array List of Time Series Values */
     private $items;
-    /** @var TimeseriesMetadata */
+    /** @var TimeseriesMetadata Metadata of Time Series */
     private $timeseriesMetadata;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Time Series Values */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Time Series Values */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Time Series Values
+     * @return QueryTimeseriesResult
+     */
 	public function withItems(?array $items): QueryTimeseriesResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return TimeseriesMetadata|null Metadata of Time Series */
 	public function getTimeseriesMetadata(): ?TimeseriesMetadata {
 		return $this->timeseriesMetadata;
 	}
 
+    /** @param TimeseriesMetadata|null $timeseriesMetadata Metadata of Time Series */
 	public function setTimeseriesMetadata(?TimeseriesMetadata $timeseriesMetadata) {
 		$this->timeseriesMetadata = $timeseriesMetadata;
 	}
 
+    /**
+     * @param TimeseriesMetadata|null $timeseriesMetadata Metadata of Time Series
+     * @return QueryTimeseriesResult
+     */
 	public function withTimeseriesMetadata(?TimeseriesMetadata $timeseriesMetadata): QueryTimeseriesResult {
 		$this->timeseriesMetadata = $timeseriesMetadata;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return QueryTimeseriesResult
+     */
 	public function withNextPageToken(?string $nextPageToken): QueryTimeseriesResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

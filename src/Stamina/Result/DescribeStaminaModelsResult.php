@@ -23,18 +23,29 @@ use Gs2\Stamina\Model\RecoverIntervalTable;
 use Gs2\Stamina\Model\RecoverValueTable;
 use Gs2\Stamina\Model\StaminaModel;
 
+/**
+ * Result of describeStaminaModels: List Stamina Models
+ *
+ * @see https://docs.gs2.io/api_reference/stamina/sdk/#describestaminamodels
+ */
 class DescribeStaminaModelsResult implements IResult {
-    /** @var array */
+    /** @var array List of Stamina Models */
     private $items;
 
+    /** @return array|null List of Stamina Models */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Stamina Models */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Stamina Models
+     * @return DescribeStaminaModelsResult
+     */
 	public function withItems(?array $items): DescribeStaminaModelsResult {
 		$this->items = $items;
 		return $this;

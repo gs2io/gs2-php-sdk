@@ -20,18 +20,29 @@ namespace Gs2\Freeze\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Freeze\Model\Stage;
 
+/**
+ * Result of promoteStage: Promote stage
+ *
+ * @see https://docs.gs2.io/api_reference/freeze/sdk/#promotestage
+ */
 class PromoteStageResult implements IResult {
-    /** @var Stage */
+    /** @var Stage Stage updated */
     private $item;
 
+    /** @return Stage|null Stage updated */
 	public function getItem(): ?Stage {
 		return $this->item;
 	}
 
+    /** @param Stage|null $item Stage updated */
 	public function setItem(?Stage $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Stage|null $item Stage updated
+     * @return PromoteStageResult
+     */
 	public function withItem(?Stage $item): PromoteStageResult {
 		$this->item = $item;
 		return $this;

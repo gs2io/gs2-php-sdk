@@ -19,51 +19,80 @@ namespace Gs2\Grade\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getStatus: Get Status
+ *
+ * @see https://docs.gs2.io/api_reference/grade/sdk/#getstatus
+ */
 class GetStatusRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Grade Model Name */
     private $gradeName;
-    /** @var string */
+    /** @var string Property ID */
     private $propertyId;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetStatusRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetStatusRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return GetStatusRequest
+     */
 	public function withAccessToken(?string $accessToken): GetStatusRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Grade Model Name */
 	public function getGradeName(): ?string {
 		return $this->gradeName;
 	}
+    /** @param string|null $gradeName Grade Model Name */
 	public function setGradeName(?string $gradeName) {
 		$this->gradeName = $gradeName;
 	}
+    /**
+     * @param string|null $gradeName Grade Model Name
+     * @return GetStatusRequest
+     */
 	public function withGradeName(?string $gradeName): GetStatusRequest {
 		$this->gradeName = $gradeName;
 		return $this;
 	}
+    /** @return string|null Property ID */
 	public function getPropertyId(): ?string {
 		return $this->propertyId;
 	}
+    /** @param string|null $propertyId Property ID */
 	public function setPropertyId(?string $propertyId) {
 		$this->propertyId = $propertyId;
 	}
+    /**
+     * @param string|null $propertyId Property ID
+     * @return GetStatusRequest
+     */
 	public function withPropertyId(?string $propertyId): GetStatusRequest {
 		$this->propertyId = $propertyId;
 		return $this;

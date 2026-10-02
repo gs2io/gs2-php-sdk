@@ -20,17 +20,28 @@ namespace Gs2\AdReward\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Unity Ads settings
+ *
+ * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#unityad
+ */
 class UnityAd implements IModel {
 	/**
-     * @var array
+     * @var array List of cryptographic keys
 	 */
 	private $keys;
+    /** @return array|null List of cryptographic keys */
 	public function getKeys(): ?array {
 		return $this->keys;
 	}
+    /** @param array|null $keys List of cryptographic keys */
 	public function setKeys(?array $keys) {
 		$this->keys = $keys;
 	}
+    /**
+     * @param array|null $keys List of cryptographic keys
+     * @return UnityAd
+     */
 	public function withKeys(?array $keys): UnityAd {
 		$this->keys = $keys;
 		return $this;

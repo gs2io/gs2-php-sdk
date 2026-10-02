@@ -20,18 +20,29 @@ namespace Gs2\JobQueue\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\JobQueue\Model\Job;
 
+/**
+ * Result of getJobByUserId: Get Job
+ *
+ * @see https://docs.gs2.io/api_reference/job_queue/sdk/#getjobbyuserid
+ */
 class GetJobByUserIdResult implements IResult {
-    /** @var Job */
+    /** @var Job Job */
     private $item;
 
+    /** @return Job|null Job */
 	public function getItem(): ?Job {
 		return $this->item;
 	}
 
+    /** @param Job|null $item Job */
 	public function setItem(?Job $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Job|null $item Job
+     * @return GetJobByUserIdResult
+     */
 	public function withItem(?Job $item): GetJobByUserIdResult {
 		$this->item = $item;
 		return $this;

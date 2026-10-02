@@ -20,18 +20,29 @@ namespace Gs2\Ranking2\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Ranking2\Model\GlobalRankingScore;
 
+/**
+ * Result of deleteGlobalRankingScoreByUserId: Delete Global Ranking Score specifying User ID
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/sdk/#deleteglobalrankingscorebyuserid
+ */
 class DeleteGlobalRankingScoreByUserIdResult implements IResult {
-    /** @var GlobalRankingScore */
+    /** @var GlobalRankingScore Global Ranking Score deleted */
     private $item;
 
+    /** @return GlobalRankingScore|null Global Ranking Score deleted */
 	public function getItem(): ?GlobalRankingScore {
 		return $this->item;
 	}
 
+    /** @param GlobalRankingScore|null $item Global Ranking Score deleted */
 	public function setItem(?GlobalRankingScore $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param GlobalRankingScore|null $item Global Ranking Score deleted
+     * @return DeleteGlobalRankingScoreByUserIdResult
+     */
 	public function withItem(?GlobalRankingScore $item): DeleteGlobalRankingScoreByUserIdResult {
 		$this->item = $item;
 		return $this;

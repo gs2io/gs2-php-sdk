@@ -22,33 +22,50 @@ use Gs2\Guild\Model\RoleModel;
 use Gs2\Guild\Model\Member;
 use Gs2\Guild\Model\Guild;
 
+/**
+ * Result of setMaximumCurrentMaximumMemberCountByStampSheet: Execute setting the maximum number of members as an acquire action
+ *
+ * @see https://docs.gs2.io/api_reference/guild/stamp_sheet/#gs2guildsetmaximumcurrentmaximummembercountbyguildname
+ */
 class SetMaximumCurrentMaximumMemberCountByStampSheetResult implements IResult {
-    /** @var Guild */
+    /** @var Guild Guild updated */
     private $item;
-    /** @var Guild */
+    /** @var Guild Guild updated */
     private $old;
 
+    /** @return Guild|null Guild updated */
 	public function getItem(): ?Guild {
 		return $this->item;
 	}
 
+    /** @param Guild|null $item Guild updated */
 	public function setItem(?Guild $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Guild|null $item Guild updated
+     * @return SetMaximumCurrentMaximumMemberCountByStampSheetResult
+     */
 	public function withItem(?Guild $item): SetMaximumCurrentMaximumMemberCountByStampSheetResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return Guild|null Guild updated */
 	public function getOld(): ?Guild {
 		return $this->old;
 	}
 
+    /** @param Guild|null $old Guild updated */
 	public function setOld(?Guild $old) {
 		$this->old = $old;
 	}
 
+    /**
+     * @param Guild|null $old Guild updated
+     * @return SetMaximumCurrentMaximumMemberCountByStampSheetResult
+     */
 	public function withOld(?Guild $old): SetMaximumCurrentMaximumMemberCountByStampSheetResult {
 		$this->old = $old;
 		return $this;

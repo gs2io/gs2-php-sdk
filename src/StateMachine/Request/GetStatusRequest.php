@@ -19,39 +19,62 @@ namespace Gs2\StateMachine\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getStatus: Get State Machine Status
+ *
+ * @see https://docs.gs2.io/api_reference/state_machine/sdk/#getstatus
+ */
 class GetStatusRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Status name */
     private $statusName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetStatusRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetStatusRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return GetStatusRequest
+     */
 	public function withAccessToken(?string $accessToken): GetStatusRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Status name */
 	public function getStatusName(): ?string {
 		return $this->statusName;
 	}
+    /** @param string|null $statusName Status name */
 	public function setStatusName(?string $statusName) {
 		$this->statusName = $statusName;
 	}
+    /**
+     * @param string|null $statusName Status name
+     * @return GetStatusRequest
+     */
 	public function withStatusName(?string $statusName): GetStatusRequest {
 		$this->statusName = $statusName;
 		return $this;

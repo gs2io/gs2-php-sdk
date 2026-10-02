@@ -21,33 +21,50 @@ use Gs2\Core\Model\IResult;
 use Gs2\Enchant\Model\BalanceParameterValueModel;
 use Gs2\Enchant\Model\BalanceParameterModelMaster;
 
+/**
+ * Result of describeBalanceParameterModelMasters: List Balance Parameter Model Masters
+ *
+ * @see https://docs.gs2.io/api_reference/enchant/sdk/#describebalanceparametermodelmasters
+ */
 class DescribeBalanceParameterModelMastersResult implements IResult {
-    /** @var array */
+    /** @var array List of Balance Parameter Model Masters */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Balance Parameter Model Masters */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Balance Parameter Model Masters */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Balance Parameter Model Masters
+     * @return DescribeBalanceParameterModelMastersResult
+     */
 	public function withItems(?array $items): DescribeBalanceParameterModelMastersResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeBalanceParameterModelMastersResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeBalanceParameterModelMastersResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

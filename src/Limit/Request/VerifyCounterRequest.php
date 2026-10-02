@@ -19,89 +19,136 @@ namespace Gs2\Limit\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for verifyCounter: Verify Counter value
+ *
+ * @see https://docs.gs2.io/api_reference/limit/sdk/#verifycounter
+ */
 class VerifyCounterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Usage Limit Model Name */
     private $limitName;
-    /** @var string */
+    /** @var string Counter Name */
     private $counterName;
-    /** @var string */
+    /** @var string Type of verification */
     private $verifyType;
-    /** @var int */
+    /** @var int Count Value */
     private $count;
-    /** @var bool */
+    /** @var bool Whether to multiply the value used for verification when specifying the quantity */
     private $multiplyValueSpecifyingQuantity;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return VerifyCounterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): VerifyCounterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return VerifyCounterRequest
+     */
 	public function withAccessToken(?string $accessToken): VerifyCounterRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Usage Limit Model Name */
 	public function getLimitName(): ?string {
 		return $this->limitName;
 	}
+    /** @param string|null $limitName Usage Limit Model Name */
 	public function setLimitName(?string $limitName) {
 		$this->limitName = $limitName;
 	}
+    /**
+     * @param string|null $limitName Usage Limit Model Name
+     * @return VerifyCounterRequest
+     */
 	public function withLimitName(?string $limitName): VerifyCounterRequest {
 		$this->limitName = $limitName;
 		return $this;
 	}
+    /** @return string|null Counter Name */
 	public function getCounterName(): ?string {
 		return $this->counterName;
 	}
+    /** @param string|null $counterName Counter Name */
 	public function setCounterName(?string $counterName) {
 		$this->counterName = $counterName;
 	}
+    /**
+     * @param string|null $counterName Counter Name
+     * @return VerifyCounterRequest
+     */
 	public function withCounterName(?string $counterName): VerifyCounterRequest {
 		$this->counterName = $counterName;
 		return $this;
 	}
+    /** @return string|null Type of verification */
 	public function getVerifyType(): ?string {
 		return $this->verifyType;
 	}
+    /** @param string|null $verifyType Type of verification */
 	public function setVerifyType(?string $verifyType) {
 		$this->verifyType = $verifyType;
 	}
+    /**
+     * @param string|null $verifyType Type of verification
+     * @return VerifyCounterRequest
+     */
 	public function withVerifyType(?string $verifyType): VerifyCounterRequest {
 		$this->verifyType = $verifyType;
 		return $this;
 	}
+    /** @return int|null Count Value */
 	public function getCount(): ?int {
 		return $this->count;
 	}
+    /** @param int|null $count Count Value */
 	public function setCount(?int $count) {
 		$this->count = $count;
 	}
+    /**
+     * @param int|null $count Count Value
+     * @return VerifyCounterRequest
+     */
 	public function withCount(?int $count): VerifyCounterRequest {
 		$this->count = $count;
 		return $this;
 	}
+    /** @return bool|null Whether to multiply the value used for verification when specifying the quantity */
 	public function getMultiplyValueSpecifyingQuantity(): ?bool {
 		return $this->multiplyValueSpecifyingQuantity;
 	}
+    /** @param bool|null $multiplyValueSpecifyingQuantity Whether to multiply the value used for verification when specifying the quantity */
 	public function setMultiplyValueSpecifyingQuantity(?bool $multiplyValueSpecifyingQuantity) {
 		$this->multiplyValueSpecifyingQuantity = $multiplyValueSpecifyingQuantity;
 	}
+    /**
+     * @param bool|null $multiplyValueSpecifyingQuantity Whether to multiply the value used for verification when specifying the quantity
+     * @return VerifyCounterRequest
+     */
 	public function withMultiplyValueSpecifyingQuantity(?bool $multiplyValueSpecifyingQuantity): VerifyCounterRequest {
 		$this->multiplyValueSpecifyingQuantity = $multiplyValueSpecifyingQuantity;
 		return $this;

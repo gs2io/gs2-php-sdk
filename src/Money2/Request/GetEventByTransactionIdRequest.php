@@ -19,27 +19,44 @@ namespace Gs2\Money2\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getEventByTransactionId: Get Event by specifying transaction ID
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#geteventbytransactionid
+ */
 class GetEventByTransactionIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Transaction ID */
     private $transactionId;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetEventByTransactionIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetEventByTransactionIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Transaction ID */
 	public function getTransactionId(): ?string {
 		return $this->transactionId;
 	}
+    /** @param string|null $transactionId Transaction ID */
 	public function setTransactionId(?string $transactionId) {
 		$this->transactionId = $transactionId;
 	}
+    /**
+     * @param string|null $transactionId Transaction ID
+     * @return GetEventByTransactionIdRequest
+     */
 	public function withTransactionId(?string $transactionId): GetEventByTransactionIdRequest {
 		$this->transactionId = $transactionId;
 		return $this;

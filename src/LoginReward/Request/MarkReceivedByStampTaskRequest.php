@@ -19,27 +19,44 @@ namespace Gs2\LoginReward\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for markReceivedByStampTask: Execute mark as received as consume action
+ *
+ * @see https://docs.gs2.io/api_reference/login_reward/stamp_sheet/#gs2loginrewardmarkreceivedbyuserid
+ */
 class MarkReceivedByStampTaskRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Consume Action */
     private $stampTask;
-    /** @var string */
+    /** @var string Encryption Key GRN */
     private $keyId;
+    /** @return string|null Consume Action */
 	public function getStampTask(): ?string {
 		return $this->stampTask;
 	}
+    /** @param string|null $stampTask Consume Action */
 	public function setStampTask(?string $stampTask) {
 		$this->stampTask = $stampTask;
 	}
+    /**
+     * @param string|null $stampTask Consume Action
+     * @return MarkReceivedByStampTaskRequest
+     */
 	public function withStampTask(?string $stampTask): MarkReceivedByStampTaskRequest {
 		$this->stampTask = $stampTask;
 		return $this;
 	}
+    /** @return string|null Encryption Key GRN */
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
+    /** @param string|null $keyId Encryption Key GRN */
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
+    /**
+     * @param string|null $keyId Encryption Key GRN
+     * @return MarkReceivedByStampTaskRequest
+     */
 	public function withKeyId(?string $keyId): MarkReceivedByStampTaskRequest {
 		$this->keyId = $keyId;
 		return $this;

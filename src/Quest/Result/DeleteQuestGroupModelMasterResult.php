@@ -20,18 +20,29 @@ namespace Gs2\Quest\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Quest\Model\QuestGroupModelMaster;
 
+/**
+ * Result of deleteQuestGroupModelMaster: Delete Quest Group Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/quest/sdk/#deletequestgroupmodelmaster
+ */
 class DeleteQuestGroupModelMasterResult implements IResult {
-    /** @var QuestGroupModelMaster */
+    /** @var QuestGroupModelMaster Quest Group Model Master deleted */
     private $item;
 
+    /** @return QuestGroupModelMaster|null Quest Group Model Master deleted */
 	public function getItem(): ?QuestGroupModelMaster {
 		return $this->item;
 	}
 
+    /** @param QuestGroupModelMaster|null $item Quest Group Model Master deleted */
 	public function setItem(?QuestGroupModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param QuestGroupModelMaster|null $item Quest Group Model Master deleted
+     * @return DeleteQuestGroupModelMasterResult
+     */
 	public function withItem(?QuestGroupModelMaster $item): DeleteQuestGroupModelMasterResult {
 		$this->item = $item;
 		return $this;

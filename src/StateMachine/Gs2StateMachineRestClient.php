@@ -2065,25 +2065,22 @@ class ExitStateMachineByUserIdTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 StateMachine API クライアント
+ * GS2-StateMachine API client
  *
- * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/state_machine/sdk/
  */
 class Gs2StateMachineRestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#describenamespaces
      */
     public function describeNamespacesAsync(
             DescribeNamespacesRequest $request
@@ -2097,8 +2094,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#describenamespaces
      */
     public function describeNamespaces (
             DescribeNamespacesRequest $request
@@ -2109,8 +2109,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#createnamespace
      */
     public function createNamespaceAsync(
             CreateNamespaceRequest $request
@@ -2124,8 +2127,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#createnamespace
      */
     public function createNamespace (
             CreateNamespaceRequest $request
@@ -2136,8 +2142,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#getnamespacestatus
      */
     public function getNamespaceStatusAsync(
             GetNamespaceStatusRequest $request
@@ -2151,8 +2160,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#getnamespacestatus
      */
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
@@ -2163,8 +2175,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#getnamespace
      */
     public function getNamespaceAsync(
             GetNamespaceRequest $request
@@ -2178,8 +2193,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#getnamespace
      */
     public function getNamespace (
             GetNamespaceRequest $request
@@ -2190,8 +2208,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#updatenamespace
      */
     public function updateNamespaceAsync(
             UpdateNamespaceRequest $request
@@ -2205,8 +2226,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#updatenamespace
      */
     public function updateNamespace (
             UpdateNamespaceRequest $request
@@ -2217,8 +2241,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#deletenamespace
      */
     public function deleteNamespaceAsync(
             DeleteNamespaceRequest $request
@@ -2232,8 +2259,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#deletenamespace
      */
     public function deleteNamespace (
             DeleteNamespaceRequest $request
@@ -2244,8 +2274,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#getserviceversion
      */
     public function getServiceVersionAsync(
             GetServiceVersionRequest $request
@@ -2259,8 +2292,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return GetServiceVersionResult
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#getserviceversion
      */
     public function getServiceVersion (
             GetServiceVersionRequest $request
@@ -2271,8 +2307,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserIdAsync(
             DumpUserDataByUserIdRequest $request
@@ -2286,8 +2325,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return DumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserId (
             DumpUserDataByUserIdRequest $request
@@ -2298,8 +2340,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserIdAsync(
             CheckDumpUserDataByUserIdRequest $request
@@ -2313,8 +2358,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return CheckDumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserId (
             CheckDumpUserDataByUserIdRequest $request
@@ -2325,8 +2373,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserIdAsync(
             CleanUserDataByUserIdRequest $request
@@ -2340,8 +2391,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return CleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserId (
             CleanUserDataByUserIdRequest $request
@@ -2352,8 +2406,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the clean of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserIdAsync(
             CheckCleanUserDataByUserIdRequest $request
@@ -2367,8 +2424,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the clean of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return CheckCleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserId (
             CheckCleanUserDataByUserIdRequest $request
@@ -2379,8 +2439,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserIdAsync(
             PrepareImportUserDataByUserIdRequest $request
@@ -2394,8 +2457,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PrepareImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserId (
             PrepareImportUserDataByUserIdRequest $request
@@ -2406,8 +2472,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserIdAsync(
             ImportUserDataByUserIdRequest $request
@@ -2421,8 +2490,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return ImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserId (
             ImportUserDataByUserIdRequest $request
@@ -2433,8 +2505,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserIdAsync(
             CheckImportUserDataByUserIdRequest $request
@@ -2448,8 +2523,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return CheckImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserId (
             CheckImportUserDataByUserIdRequest $request
@@ -2460,8 +2538,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List State Machine Masters
+     *
      * @param DescribeStateMachineMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#describestatemachinemasters
      */
     public function describeStateMachineMastersAsync(
             DescribeStateMachineMastersRequest $request
@@ -2475,8 +2556,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List State Machine Masters
+     *
      * @param DescribeStateMachineMastersRequest $request
      * @return DescribeStateMachineMastersResult
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#describestatemachinemasters
      */
     public function describeStateMachineMasters (
             DescribeStateMachineMastersRequest $request
@@ -2487,8 +2571,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create or update a new State Machine Master
+     *
      * @param UpdateStateMachineMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#updatestatemachinemaster
      */
     public function updateStateMachineMasterAsync(
             UpdateStateMachineMasterRequest $request
@@ -2502,8 +2589,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create or update a new State Machine Master
+     *
      * @param UpdateStateMachineMasterRequest $request
      * @return UpdateStateMachineMasterResult
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#updatestatemachinemaster
      */
     public function updateStateMachineMaster (
             UpdateStateMachineMasterRequest $request
@@ -2514,8 +2604,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get State Machine Master
+     *
      * @param GetStateMachineMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#getstatemachinemaster
      */
     public function getStateMachineMasterAsync(
             GetStateMachineMasterRequest $request
@@ -2529,8 +2622,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get State Machine Master
+     *
      * @param GetStateMachineMasterRequest $request
      * @return GetStateMachineMasterResult
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#getstatemachinemaster
      */
     public function getStateMachineMaster (
             GetStateMachineMasterRequest $request
@@ -2541,8 +2637,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete State Machine Master
+     *
      * @param DeleteStateMachineMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#deletestatemachinemaster
      */
     public function deleteStateMachineMasterAsync(
             DeleteStateMachineMasterRequest $request
@@ -2556,8 +2655,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete State Machine Master
+     *
      * @param DeleteStateMachineMasterRequest $request
      * @return DeleteStateMachineMasterResult
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#deletestatemachinemaster
      */
     public function deleteStateMachineMaster (
             DeleteStateMachineMasterRequest $request
@@ -2568,8 +2670,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List State Machine Statuses
+     *
      * @param DescribeStatusesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#describestatuses
      */
     public function describeStatusesAsync(
             DescribeStatusesRequest $request
@@ -2583,8 +2688,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List State Machine Statuses
+     *
      * @param DescribeStatusesRequest $request
      * @return DescribeStatusesResult
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#describestatuses
      */
     public function describeStatuses (
             DescribeStatusesRequest $request
@@ -2595,8 +2703,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List State Machine Statuses by User ID
+     *
      * @param DescribeStatusesByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#describestatusesbyuserid
      */
     public function describeStatusesByUserIdAsync(
             DescribeStatusesByUserIdRequest $request
@@ -2610,8 +2721,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List State Machine Statuses by User ID
+     *
      * @param DescribeStatusesByUserIdRequest $request
      * @return DescribeStatusesByUserIdResult
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#describestatusesbyuserid
      */
     public function describeStatusesByUserId (
             DescribeStatusesByUserIdRequest $request
@@ -2622,8 +2736,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get State Machine Status
+     *
      * @param GetStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#getstatus
      */
     public function getStatusAsync(
             GetStatusRequest $request
@@ -2637,8 +2754,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get State Machine Status
+     *
      * @param GetStatusRequest $request
      * @return GetStatusResult
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#getstatus
      */
     public function getStatus (
             GetStatusRequest $request
@@ -2649,8 +2769,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get State Machine Status by User ID
+     *
      * @param GetStatusByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#getstatusbyuserid
      */
     public function getStatusByUserIdAsync(
             GetStatusByUserIdRequest $request
@@ -2664,8 +2787,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get State Machine Status by User ID
+     *
      * @param GetStatusByUserIdRequest $request
      * @return GetStatusByUserIdResult
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#getstatusbyuserid
      */
     public function getStatusByUserId (
             GetStatusByUserIdRequest $request
@@ -2676,8 +2802,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Start state machine by User ID
+     *
      * @param StartStateMachineByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#startstatemachinebyuserid
      */
     public function startStateMachineByUserIdAsync(
             StartStateMachineByUserIdRequest $request
@@ -2691,8 +2820,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Start state machine by User ID
+     *
      * @param StartStateMachineByUserIdRequest $request
      * @return StartStateMachineByUserIdResult
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#startstatemachinebyuserid
      */
     public function startStateMachineByUserId (
             StartStateMachineByUserIdRequest $request
@@ -2703,8 +2835,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the start of the state machine as an acquire action
+     *
      * @param StartStateMachineByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/state_machine/stamp_sheet/#gs2statemachinestartstatemachinebyuserid
      */
     public function startStateMachineByStampSheetAsync(
             StartStateMachineByStampSheetRequest $request
@@ -2718,8 +2853,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the start of the state machine as an acquire action
+     *
      * @param StartStateMachineByStampSheetRequest $request
      * @return StartStateMachineByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/state_machine/stamp_sheet/#gs2statemachinestartstatemachinebyuserid
      */
     public function startStateMachineByStampSheet (
             StartStateMachineByStampSheetRequest $request
@@ -2730,8 +2868,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Send an event to the state machine
+     *
      * @param EmitRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#emit
      */
     public function emitAsync(
             EmitRequest $request
@@ -2745,8 +2886,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Send an event to the state machine
+     *
      * @param EmitRequest $request
      * @return EmitResult
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#emit
      */
     public function emit (
             EmitRequest $request
@@ -2757,8 +2901,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Send an event to the state machine by User ID
+     *
      * @param EmitByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#emitbyuserid
      */
     public function emitByUserIdAsync(
             EmitByUserIdRequest $request
@@ -2772,8 +2919,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Send an event to the state machine by User ID
+     *
      * @param EmitByUserIdRequest $request
      * @return EmitByUserIdResult
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#emitbyuserid
      */
     public function emitByUserId (
             EmitByUserIdRequest $request
@@ -2784,8 +2934,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Report multiple events to the state machine
+     *
      * @param ReportRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#report
      */
     public function reportAsync(
             ReportRequest $request
@@ -2799,8 +2952,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Report multiple events to the state machine
+     *
      * @param ReportRequest $request
      * @return ReportResult
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#report
      */
     public function report (
             ReportRequest $request
@@ -2811,8 +2967,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Report multiple events to the state machine by User ID
+     *
      * @param ReportByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#reportbyuserid
      */
     public function reportByUserIdAsync(
             ReportByUserIdRequest $request
@@ -2826,8 +2985,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Report multiple events to the state machine by User ID
+     *
      * @param ReportByUserIdRequest $request
      * @return ReportByUserIdResult
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#reportbyuserid
      */
     public function reportByUserId (
             ReportByUserIdRequest $request
@@ -2838,8 +3000,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete state machine by User ID
+     *
      * @param DeleteStatusByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#deletestatusbyuserid
      */
     public function deleteStatusByUserIdAsync(
             DeleteStatusByUserIdRequest $request
@@ -2853,8 +3018,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete state machine by User ID
+     *
      * @param DeleteStatusByUserIdRequest $request
      * @return DeleteStatusByUserIdResult
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#deletestatusbyuserid
      */
     public function deleteStatusByUserId (
             DeleteStatusByUserIdRequest $request
@@ -2865,8 +3033,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Exit and delete state machine
+     *
      * @param ExitStateMachineRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#exitstatemachine
      */
     public function exitStateMachineAsync(
             ExitStateMachineRequest $request
@@ -2880,8 +3051,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Exit and delete state machine
+     *
      * @param ExitStateMachineRequest $request
      * @return ExitStateMachineResult
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#exitstatemachine
      */
     public function exitStateMachine (
             ExitStateMachineRequest $request
@@ -2892,8 +3066,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Exit and delete state machine by User ID
+     *
      * @param ExitStateMachineByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#exitstatemachinebyuserid
      */
     public function exitStateMachineByUserIdAsync(
             ExitStateMachineByUserIdRequest $request
@@ -2907,8 +3084,11 @@ class Gs2StateMachineRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Exit and delete state machine by User ID
+     *
      * @param ExitStateMachineByUserIdRequest $request
      * @return ExitStateMachineByUserIdResult
+     * @see https://docs.gs2.io/api_reference/state_machine/sdk/#exitstatemachinebyuserid
      */
     public function exitStateMachineByUserId (
             ExitStateMachineByUserIdRequest $request

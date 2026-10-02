@@ -19,63 +19,98 @@ namespace Gs2\Inventory\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getItemSet: Get Item Set
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#getitemset
+ */
 class GetItemSetRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Inventory Model Name */
     private $inventoryName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Item Model Name */
     private $itemName;
-    /** @var string */
+    /** @var string Name identifying the item set */
     private $itemSetName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetItemSetRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetItemSetRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Inventory Model Name */
 	public function getInventoryName(): ?string {
 		return $this->inventoryName;
 	}
+    /** @param string|null $inventoryName Inventory Model Name */
 	public function setInventoryName(?string $inventoryName) {
 		$this->inventoryName = $inventoryName;
 	}
+    /**
+     * @param string|null $inventoryName Inventory Model Name
+     * @return GetItemSetRequest
+     */
 	public function withInventoryName(?string $inventoryName): GetItemSetRequest {
 		$this->inventoryName = $inventoryName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return GetItemSetRequest
+     */
 	public function withAccessToken(?string $accessToken): GetItemSetRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Item Model Name */
 	public function getItemName(): ?string {
 		return $this->itemName;
 	}
+    /** @param string|null $itemName Item Model Name */
 	public function setItemName(?string $itemName) {
 		$this->itemName = $itemName;
 	}
+    /**
+     * @param string|null $itemName Item Model Name
+     * @return GetItemSetRequest
+     */
 	public function withItemName(?string $itemName): GetItemSetRequest {
 		$this->itemName = $itemName;
 		return $this;
 	}
+    /** @return string|null Name identifying the item set */
 	public function getItemSetName(): ?string {
 		return $this->itemSetName;
 	}
+    /** @param string|null $itemSetName Name identifying the item set */
 	public function setItemSetName(?string $itemSetName) {
 		$this->itemSetName = $itemSetName;
 	}
+    /**
+     * @param string|null $itemSetName Name identifying the item set
+     * @return GetItemSetRequest
+     */
 	public function withItemSetName(?string $itemSetName): GetItemSetRequest {
 		$this->itemSetName = $itemSetName;
 		return $this;

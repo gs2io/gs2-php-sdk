@@ -20,59 +20,88 @@ namespace Gs2\Stamina\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Recovery Interval Table
+ *
+ * @see https://docs.gs2.io/api_reference/stamina/sdk/#recoverintervaltable
+ */
 class RecoverIntervalTable implements IModel {
 	/**
-     * @var string
+     * @var string Stamina recovery interval table name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var string
+     * @var string Experience Model ID
 	 */
 	private $experienceModelId;
 	/**
-     * @var array
+     * @var array Recovery Interval Values by Rank (Minutes)
 	 */
 	private $values;
+    /** @return string|null Stamina recovery interval table name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Stamina recovery interval table name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Stamina recovery interval table name
+     * @return RecoverIntervalTable
+     */
 	public function withName(?string $name): RecoverIntervalTable {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return RecoverIntervalTable
+     */
 	public function withMetadata(?string $metadata): RecoverIntervalTable {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return string|null Experience Model ID */
 	public function getExperienceModelId(): ?string {
 		return $this->experienceModelId;
 	}
+    /** @param string|null $experienceModelId Experience Model ID */
 	public function setExperienceModelId(?string $experienceModelId) {
 		$this->experienceModelId = $experienceModelId;
 	}
+    /**
+     * @param string|null $experienceModelId Experience Model ID
+     * @return RecoverIntervalTable
+     */
 	public function withExperienceModelId(?string $experienceModelId): RecoverIntervalTable {
 		$this->experienceModelId = $experienceModelId;
 		return $this;
 	}
+    /** @return array|null Recovery Interval Values by Rank (Minutes) */
 	public function getValues(): ?array {
 		return $this->values;
 	}
+    /** @param array|null $values Recovery Interval Values by Rank (Minutes) */
 	public function setValues(?array $values) {
 		$this->values = $values;
 	}
+    /**
+     * @param array|null $values Recovery Interval Values by Rank (Minutes)
+     * @return RecoverIntervalTable
+     */
 	public function withValues(?array $values): RecoverIntervalTable {
 		$this->values = $values;
 		return $this;

@@ -20,48 +20,71 @@ namespace Gs2\SeasonRating\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\SeasonRating\Model\Ballot;
 
+/**
+ * Result of getBallotByUserId: Create ballot with signatures, specifying user ID
+ *
+ * @see https://docs.gs2.io/api_reference/season_rating/sdk/#getballotbyuserid
+ */
 class GetBallotByUserIdResult implements IResult {
-    /** @var Ballot */
+    /** @var Ballot Ballot */
     private $item;
-    /** @var string */
+    /** @var string Data to be signed */
     private $body;
-    /** @var string */
+    /** @var string Signature */
     private $signature;
 
+    /** @return Ballot|null Ballot */
 	public function getItem(): ?Ballot {
 		return $this->item;
 	}
 
+    /** @param Ballot|null $item Ballot */
 	public function setItem(?Ballot $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Ballot|null $item Ballot
+     * @return GetBallotByUserIdResult
+     */
 	public function withItem(?Ballot $item): GetBallotByUserIdResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null Data to be signed */
 	public function getBody(): ?string {
 		return $this->body;
 	}
 
+    /** @param string|null $body Data to be signed */
 	public function setBody(?string $body) {
 		$this->body = $body;
 	}
 
+    /**
+     * @param string|null $body Data to be signed
+     * @return GetBallotByUserIdResult
+     */
 	public function withBody(?string $body): GetBallotByUserIdResult {
 		$this->body = $body;
 		return $this;
 	}
 
+    /** @return string|null Signature */
 	public function getSignature(): ?string {
 		return $this->signature;
 	}
 
+    /** @param string|null $signature Signature */
 	public function setSignature(?string $signature) {
 		$this->signature = $signature;
 	}
 
+    /**
+     * @param string|null $signature Signature
+     * @return GetBallotByUserIdResult
+     */
 	public function withSignature(?string $signature): GetBallotByUserIdResult {
 		$this->signature = $signature;
 		return $this;

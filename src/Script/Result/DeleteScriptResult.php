@@ -20,18 +20,29 @@ namespace Gs2\Script\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Script\Model\Script;
 
+/**
+ * Result of deleteScript: Delete Script
+ *
+ * @see https://docs.gs2.io/api_reference/script/sdk/#deletescript
+ */
 class DeleteScriptResult implements IResult {
-    /** @var Script */
+    /** @var Script Script deleted */
     private $item;
 
+    /** @return Script|null Script deleted */
 	public function getItem(): ?Script {
 		return $this->item;
 	}
 
+    /** @param Script|null $item Script deleted */
 	public function setItem(?Script $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Script|null $item Script deleted
+     * @return DeleteScriptResult
+     */
 	public function withItem(?Script $item): DeleteScriptResult {
 		$this->item = $item;
 		return $this;

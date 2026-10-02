@@ -19,27 +19,44 @@ namespace Gs2\Lottery\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for deletePrizeTableMaster: Delete Prize Table Master
+ *
+ * @see https://docs.gs2.io/api_reference/lottery/sdk/#deleteprizetablemaster
+ */
 class DeletePrizeTableMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Prize Table Name */
     private $prizeTableName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DeletePrizeTableMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DeletePrizeTableMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Prize Table Name */
 	public function getPrizeTableName(): ?string {
 		return $this->prizeTableName;
 	}
+    /** @param string|null $prizeTableName Prize Table Name */
 	public function setPrizeTableName(?string $prizeTableName) {
 		$this->prizeTableName = $prizeTableName;
 	}
+    /**
+     * @param string|null $prizeTableName Prize Table Name
+     * @return DeletePrizeTableMasterRequest
+     */
 	public function withPrizeTableName(?string $prizeTableName): DeletePrizeTableMasterRequest {
 		$this->prizeTableName = $prizeTableName;
 		return $this;

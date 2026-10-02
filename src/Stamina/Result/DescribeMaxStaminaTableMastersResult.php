@@ -20,33 +20,50 @@ namespace Gs2\Stamina\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Stamina\Model\MaxStaminaTableMaster;
 
+/**
+ * Result of describeMaxStaminaTableMasters: List Maximum Stamina Table Masters
+ *
+ * @see https://docs.gs2.io/api_reference/stamina/sdk/#describemaxstaminatablemasters
+ */
 class DescribeMaxStaminaTableMastersResult implements IResult {
-    /** @var array */
+    /** @var array List of Maximum Stamina Table Masters */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Maximum Stamina Table Masters */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Maximum Stamina Table Masters */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Maximum Stamina Table Masters
+     * @return DescribeMaxStaminaTableMastersResult
+     */
 	public function withItems(?array $items): DescribeMaxStaminaTableMastersResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeMaxStaminaTableMastersResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeMaxStaminaTableMastersResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

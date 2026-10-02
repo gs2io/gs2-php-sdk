@@ -19,63 +19,94 @@ namespace Gs2\Project\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/** Request for updateAccount: Update GS2 account */
 class UpdateAccountRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string E-Mail */
     private $email;
-    /** @var string */
+    /** @var string Full Name */
     private $fullName;
-    /** @var string */
+    /** @var string Company Name */
     private $companyName;
-    /** @var string */
+    /** @var string Password */
     private $password;
-    /** @var string */
+    /** @var string Signed in to the account token. */
     private $accountToken;
+    /** @return string|null E-Mail */
 	public function getEmail(): ?string {
 		return $this->email;
 	}
+    /** @param string|null $email E-Mail */
 	public function setEmail(?string $email) {
 		$this->email = $email;
 	}
+    /**
+     * @param string|null $email E-Mail
+     * @return UpdateAccountRequest
+     */
 	public function withEmail(?string $email): UpdateAccountRequest {
 		$this->email = $email;
 		return $this;
 	}
+    /** @return string|null Full Name */
 	public function getFullName(): ?string {
 		return $this->fullName;
 	}
+    /** @param string|null $fullName Full Name */
 	public function setFullName(?string $fullName) {
 		$this->fullName = $fullName;
 	}
+    /**
+     * @param string|null $fullName Full Name
+     * @return UpdateAccountRequest
+     */
 	public function withFullName(?string $fullName): UpdateAccountRequest {
 		$this->fullName = $fullName;
 		return $this;
 	}
+    /** @return string|null Company Name */
 	public function getCompanyName(): ?string {
 		return $this->companyName;
 	}
+    /** @param string|null $companyName Company Name */
 	public function setCompanyName(?string $companyName) {
 		$this->companyName = $companyName;
 	}
+    /**
+     * @param string|null $companyName Company Name
+     * @return UpdateAccountRequest
+     */
 	public function withCompanyName(?string $companyName): UpdateAccountRequest {
 		$this->companyName = $companyName;
 		return $this;
 	}
+    /** @return string|null Password */
 	public function getPassword(): ?string {
 		return $this->password;
 	}
+    /** @param string|null $password Password */
 	public function setPassword(?string $password) {
 		$this->password = $password;
 	}
+    /**
+     * @param string|null $password Password
+     * @return UpdateAccountRequest
+     */
 	public function withPassword(?string $password): UpdateAccountRequest {
 		$this->password = $password;
 		return $this;
 	}
+    /** @return string|null Signed in to the account token. */
 	public function getAccountToken(): ?string {
 		return $this->accountToken;
 	}
+    /** @param string|null $accountToken Signed in to the account token. */
 	public function setAccountToken(?string $accountToken) {
 		$this->accountToken = $accountToken;
 	}
+    /**
+     * @param string|null $accountToken Signed in to the account token.
+     * @return UpdateAccountRequest
+     */
 	public function withAccountToken(?string $accountToken): UpdateAccountRequest {
 		$this->accountToken = $accountToken;
 		return $this;

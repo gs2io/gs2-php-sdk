@@ -20,18 +20,29 @@ namespace Gs2\Mission\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Mission\Model\Complete;
 
+/**
+ * Result of verifyCompleteByUserId: Verify Completion Status by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#verifycompletebyuserid
+ */
 class VerifyCompleteByUserIdResult implements IResult {
-    /** @var Complete */
+    /** @var Complete Completion Status deleted */
     private $item;
 
+    /** @return Complete|null Completion Status deleted */
 	public function getItem(): ?Complete {
 		return $this->item;
 	}
 
+    /** @param Complete|null $item Completion Status deleted */
 	public function setItem(?Complete $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Complete|null $item Completion Status deleted
+     * @return VerifyCompleteByUserIdResult
+     */
 	public function withItem(?Complete $item): VerifyCompleteByUserIdResult {
 		$this->item = $item;
 		return $this;

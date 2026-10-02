@@ -20,138 +20,195 @@ namespace Gs2\Inbox\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Global Message Master
+ *
+ * @see https://docs.gs2.io/api_reference/inbox/sdk/#globalmessagemaster
+ */
 class GlobalMessageMaster implements IModel {
 	/**
-     * @var string
+     * @var string GRN of the Global Message for all users
 	 */
 	private $globalMessageId;
 	/**
-     * @var string
+     * @var string Global Message name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var array
+     * @var array Acquire Actions on Open
 	 */
 	private $readAcquireActions;
 	/**
-     * @var TimeSpan
+     * @var TimeSpan Expiration Time Span
 	 */
 	private $expiresTimeSpan;
 	/**
-     * @var int
+     * @var int Message expiration time for all users
 	 */
 	private $expiresAt;
 	/**
-     * @var string
+     * @var string Message Reception Period Event ID
 	 */
 	private $messageReceptionPeriodEventId;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null GRN of the Global Message for all users */
 	public function getGlobalMessageId(): ?string {
 		return $this->globalMessageId;
 	}
+    /** @param string|null $globalMessageId GRN of the Global Message for all users */
 	public function setGlobalMessageId(?string $globalMessageId) {
 		$this->globalMessageId = $globalMessageId;
 	}
+    /**
+     * @param string|null $globalMessageId GRN of the Global Message for all users
+     * @return GlobalMessageMaster
+     */
 	public function withGlobalMessageId(?string $globalMessageId): GlobalMessageMaster {
 		$this->globalMessageId = $globalMessageId;
 		return $this;
 	}
+    /** @return string|null Global Message name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Global Message name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Global Message name
+     * @return GlobalMessageMaster
+     */
 	public function withName(?string $name): GlobalMessageMaster {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return GlobalMessageMaster
+     */
 	public function withMetadata(?string $metadata): GlobalMessageMaster {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return array|null Acquire Actions on Open */
 	public function getReadAcquireActions(): ?array {
 		return $this->readAcquireActions;
 	}
+    /** @param array|null $readAcquireActions Acquire Actions on Open */
 	public function setReadAcquireActions(?array $readAcquireActions) {
 		$this->readAcquireActions = $readAcquireActions;
 	}
+    /**
+     * @param array|null $readAcquireActions Acquire Actions on Open
+     * @return GlobalMessageMaster
+     */
 	public function withReadAcquireActions(?array $readAcquireActions): GlobalMessageMaster {
 		$this->readAcquireActions = $readAcquireActions;
 		return $this;
 	}
+    /** @return TimeSpan|null Expiration Time Span */
 	public function getExpiresTimeSpan(): ?TimeSpan {
 		return $this->expiresTimeSpan;
 	}
+    /** @param TimeSpan|null $expiresTimeSpan Expiration Time Span */
 	public function setExpiresTimeSpan(?TimeSpan $expiresTimeSpan) {
 		$this->expiresTimeSpan = $expiresTimeSpan;
 	}
+    /**
+     * @param TimeSpan|null $expiresTimeSpan Expiration Time Span
+     * @return GlobalMessageMaster
+     */
 	public function withExpiresTimeSpan(?TimeSpan $expiresTimeSpan): GlobalMessageMaster {
 		$this->expiresTimeSpan = $expiresTimeSpan;
 		return $this;
 	}
     /**
+     * @return int|null Message expiration time for all users
      * @deprecated
      */
 	public function getExpiresAt(): ?int {
 		return $this->expiresAt;
 	}
     /**
+     * @param int|null $expiresAt Message expiration time for all users
      * @deprecated
      */
 	public function setExpiresAt(?int $expiresAt) {
 		$this->expiresAt = $expiresAt;
 	}
     /**
+     * @param int|null $expiresAt Message expiration time for all users
+     * @return GlobalMessageMaster
      * @deprecated
      */
 	public function withExpiresAt(?int $expiresAt): GlobalMessageMaster {
 		$this->expiresAt = $expiresAt;
 		return $this;
 	}
+    /** @return string|null Message Reception Period Event ID */
 	public function getMessageReceptionPeriodEventId(): ?string {
 		return $this->messageReceptionPeriodEventId;
 	}
+    /** @param string|null $messageReceptionPeriodEventId Message Reception Period Event ID */
 	public function setMessageReceptionPeriodEventId(?string $messageReceptionPeriodEventId) {
 		$this->messageReceptionPeriodEventId = $messageReceptionPeriodEventId;
 	}
+    /**
+     * @param string|null $messageReceptionPeriodEventId Message Reception Period Event ID
+     * @return GlobalMessageMaster
+     */
 	public function withMessageReceptionPeriodEventId(?string $messageReceptionPeriodEventId): GlobalMessageMaster {
 		$this->messageReceptionPeriodEventId = $messageReceptionPeriodEventId;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return GlobalMessageMaster
+     */
 	public function withCreatedAt(?int $createdAt): GlobalMessageMaster {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return GlobalMessageMaster
+     */
 	public function withRevision(?int $revision): GlobalMessageMaster {
 		$this->revision = $revision;
 		return $this;

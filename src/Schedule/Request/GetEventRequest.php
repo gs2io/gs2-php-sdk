@@ -19,51 +19,80 @@ namespace Gs2\Schedule\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getEvent: Get Event
+ *
+ * @see https://docs.gs2.io/api_reference/schedule/sdk/#getevent
+ */
 class GetEventRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Event name */
     private $eventName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var bool */
+    /** @var bool Are only current events eligible for acquisition */
     private $isInSchedule;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetEventRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetEventRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Event name */
 	public function getEventName(): ?string {
 		return $this->eventName;
 	}
+    /** @param string|null $eventName Event name */
 	public function setEventName(?string $eventName) {
 		$this->eventName = $eventName;
 	}
+    /**
+     * @param string|null $eventName Event name
+     * @return GetEventRequest
+     */
 	public function withEventName(?string $eventName): GetEventRequest {
 		$this->eventName = $eventName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return GetEventRequest
+     */
 	public function withAccessToken(?string $accessToken): GetEventRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return bool|null Are only current events eligible for acquisition */
 	public function getIsInSchedule(): ?bool {
 		return $this->isInSchedule;
 	}
+    /** @param bool|null $isInSchedule Are only current events eligible for acquisition */
 	public function setIsInSchedule(?bool $isInSchedule) {
 		$this->isInSchedule = $isInSchedule;
 	}
+    /**
+     * @param bool|null $isInSchedule Are only current events eligible for acquisition
+     * @return GetEventRequest
+     */
 	public function withIsInSchedule(?bool $isInSchedule): GetEventRequest {
 		$this->isInSchedule = $isInSchedule;
 		return $this;

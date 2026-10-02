@@ -3715,25 +3715,22 @@ class UpdateCurrentModelMasterFromGitHubTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 Chat API クライアント
+ * GS2-Chat API client
  *
- * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/chat/sdk/
  */
 class Gs2ChatRestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#describenamespaces
      */
     public function describeNamespacesAsync(
             DescribeNamespacesRequest $request
@@ -3747,8 +3744,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#describenamespaces
      */
     public function describeNamespaces (
             DescribeNamespacesRequest $request
@@ -3759,8 +3759,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#createnamespace
      */
     public function createNamespaceAsync(
             CreateNamespaceRequest $request
@@ -3774,8 +3777,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#createnamespace
      */
     public function createNamespace (
             CreateNamespaceRequest $request
@@ -3786,8 +3792,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#getnamespacestatus
      */
     public function getNamespaceStatusAsync(
             GetNamespaceStatusRequest $request
@@ -3801,8 +3810,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#getnamespacestatus
      */
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
@@ -3813,8 +3825,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#getnamespace
      */
     public function getNamespaceAsync(
             GetNamespaceRequest $request
@@ -3828,8 +3843,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#getnamespace
      */
     public function getNamespace (
             GetNamespaceRequest $request
@@ -3840,8 +3858,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#updatenamespace
      */
     public function updateNamespaceAsync(
             UpdateNamespaceRequest $request
@@ -3855,8 +3876,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#updatenamespace
      */
     public function updateNamespace (
             UpdateNamespaceRequest $request
@@ -3867,8 +3891,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#deletenamespace
      */
     public function deleteNamespaceAsync(
             DeleteNamespaceRequest $request
@@ -3882,8 +3909,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#deletenamespace
      */
     public function deleteNamespace (
             DeleteNamespaceRequest $request
@@ -3894,8 +3924,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get microservice version
+     *
      * @param GetServiceVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#getserviceversion
      */
     public function getServiceVersionAsync(
             GetServiceVersionRequest $request
@@ -3909,8 +3942,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get microservice version
+     *
      * @param GetServiceVersionRequest $request
      * @return GetServiceVersionResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#getserviceversion
      */
     public function getServiceVersion (
             GetServiceVersionRequest $request
@@ -3921,8 +3957,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserIdAsync(
             DumpUserDataByUserIdRequest $request
@@ -3936,8 +3975,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return DumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserId (
             DumpUserDataByUserIdRequest $request
@@ -3948,8 +3990,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserIdAsync(
             CheckDumpUserDataByUserIdRequest $request
@@ -3963,8 +4008,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return CheckDumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserId (
             CheckDumpUserDataByUserIdRequest $request
@@ -3975,8 +4023,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserIdAsync(
             CleanUserDataByUserIdRequest $request
@@ -3990,8 +4041,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return CleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserId (
             CleanUserDataByUserIdRequest $request
@@ -4002,8 +4056,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserIdAsync(
             CheckCleanUserDataByUserIdRequest $request
@@ -4017,8 +4074,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return CheckCleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserId (
             CheckCleanUserDataByUserIdRequest $request
@@ -4029,8 +4089,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserIdAsync(
             PrepareImportUserDataByUserIdRequest $request
@@ -4044,8 +4107,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PrepareImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserId (
             PrepareImportUserDataByUserIdRequest $request
@@ -4056,8 +4122,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserIdAsync(
             ImportUserDataByUserIdRequest $request
@@ -4071,8 +4140,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return ImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserId (
             ImportUserDataByUserIdRequest $request
@@ -4083,8 +4155,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserIdAsync(
             CheckImportUserDataByUserIdRequest $request
@@ -4098,8 +4173,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return CheckImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserId (
             CheckImportUserDataByUserIdRequest $request
@@ -4110,8 +4188,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Rooms
+     *
      * @param DescribeRoomsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#describerooms
      */
     public function describeRoomsAsync(
             DescribeRoomsRequest $request
@@ -4125,8 +4206,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Rooms
+     *
      * @param DescribeRoomsRequest $request
      * @return DescribeRoomsResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#describerooms
      */
     public function describeRooms (
             DescribeRoomsRequest $request
@@ -4137,8 +4221,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Room
+     *
      * @param CreateRoomRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#createroom
      */
     public function createRoomAsync(
             CreateRoomRequest $request
@@ -4152,8 +4239,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Room
+     *
      * @param CreateRoomRequest $request
      * @return CreateRoomResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#createroom
      */
     public function createRoom (
             CreateRoomRequest $request
@@ -4164,8 +4254,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Room from Backend
+     *
      * @param CreateRoomFromBackendRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#createroomfrombackend
      */
     public function createRoomFromBackendAsync(
             CreateRoomFromBackendRequest $request
@@ -4179,8 +4272,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Room from Backend
+     *
      * @param CreateRoomFromBackendRequest $request
      * @return CreateRoomFromBackendResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#createroomfrombackend
      */
     public function createRoomFromBackend (
             CreateRoomFromBackendRequest $request
@@ -4191,8 +4287,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Room Information
+     *
      * @param GetRoomRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#getroom
      */
     public function getRoomAsync(
             GetRoomRequest $request
@@ -4206,8 +4305,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Room Information
+     *
      * @param GetRoomRequest $request
      * @return GetRoomResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#getroom
      */
     public function getRoom (
             GetRoomRequest $request
@@ -4218,8 +4320,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Room
+     *
      * @param UpdateRoomRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#updateroom
      */
     public function updateRoomAsync(
             UpdateRoomRequest $request
@@ -4233,8 +4338,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Room
+     *
      * @param UpdateRoomRequest $request
      * @return UpdateRoomResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#updateroom
      */
     public function updateRoom (
             UpdateRoomRequest $request
@@ -4245,8 +4353,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Room from Backend
+     *
      * @param UpdateRoomFromBackendRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#updateroomfrombackend
      */
     public function updateRoomFromBackendAsync(
             UpdateRoomFromBackendRequest $request
@@ -4260,8 +4371,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Room from Backend
+     *
      * @param UpdateRoomFromBackendRequest $request
      * @return UpdateRoomFromBackendResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#updateroomfrombackend
      */
     public function updateRoomFromBackend (
             UpdateRoomFromBackendRequest $request
@@ -4272,8 +4386,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Room
+     *
      * @param DeleteRoomRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#deleteroom
      */
     public function deleteRoomAsync(
             DeleteRoomRequest $request
@@ -4287,8 +4404,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Room
+     *
      * @param DeleteRoomRequest $request
      * @return DeleteRoomResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#deleteroom
      */
     public function deleteRoom (
             DeleteRoomRequest $request
@@ -4299,8 +4419,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Room from Backend
+     *
      * @param DeleteRoomFromBackendRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#deleteroomfrombackend
      */
     public function deleteRoomFromBackendAsync(
             DeleteRoomFromBackendRequest $request
@@ -4314,8 +4437,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Room from Backend
+     *
      * @param DeleteRoomFromBackendRequest $request
      * @return DeleteRoomFromBackendResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#deleteroomfrombackend
      */
     public function deleteRoomFromBackend (
             DeleteRoomFromBackendRequest $request
@@ -4326,8 +4452,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Messages
+     *
      * @param DescribeMessagesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#describemessages
      */
     public function describeMessagesAsync(
             DescribeMessagesRequest $request
@@ -4341,8 +4470,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Messages
+     *
      * @param DescribeMessagesRequest $request
      * @return DescribeMessagesResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#describemessages
      */
     public function describeMessages (
             DescribeMessagesRequest $request
@@ -4353,8 +4485,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Messages by User ID
+     *
      * @param DescribeMessagesByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#describemessagesbyuserid
      */
     public function describeMessagesByUserIdAsync(
             DescribeMessagesByUserIdRequest $request
@@ -4368,8 +4503,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Messages by User ID
+     *
      * @param DescribeMessagesByUserIdRequest $request
      * @return DescribeMessagesByUserIdResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#describemessagesbyuserid
      */
     public function describeMessagesByUserId (
             DescribeMessagesByUserIdRequest $request
@@ -4380,8 +4518,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List latest Messages
+     *
      * @param DescribeLatestMessagesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#describelatestmessages
      */
     public function describeLatestMessagesAsync(
             DescribeLatestMessagesRequest $request
@@ -4395,8 +4536,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List latest Messages
+     *
      * @param DescribeLatestMessagesRequest $request
      * @return DescribeLatestMessagesResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#describelatestmessages
      */
     public function describeLatestMessages (
             DescribeLatestMessagesRequest $request
@@ -4407,8 +4551,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List latest Messages by User ID
+     *
      * @param DescribeLatestMessagesByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#describelatestmessagesbyuserid
      */
     public function describeLatestMessagesByUserIdAsync(
             DescribeLatestMessagesByUserIdRequest $request
@@ -4422,8 +4569,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List latest Messages by User ID
+     *
      * @param DescribeLatestMessagesByUserIdRequest $request
      * @return DescribeLatestMessagesByUserIdResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#describelatestmessagesbyuserid
      */
     public function describeLatestMessagesByUserId (
             DescribeLatestMessagesByUserIdRequest $request
@@ -4434,8 +4584,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Post a message
+     *
      * @param PostRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#post
      */
     public function postAsync(
             PostRequest $request
@@ -4449,8 +4602,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Post a message
+     *
      * @param PostRequest $request
      * @return PostResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#post
      */
     public function post (
             PostRequest $request
@@ -4461,8 +4617,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Post Message by User ID
+     *
      * @param PostByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#postbyuserid
      */
     public function postByUserIdAsync(
             PostByUserIdRequest $request
@@ -4476,8 +4635,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Post Message by User ID
+     *
      * @param PostByUserIdRequest $request
      * @return PostByUserIdResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#postbyuserid
      */
     public function postByUserId (
             PostByUserIdRequest $request
@@ -4488,8 +4650,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Message
+     *
      * @param GetMessageRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#getmessage
      */
     public function getMessageAsync(
             GetMessageRequest $request
@@ -4503,8 +4668,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Message
+     *
      * @param GetMessageRequest $request
      * @return GetMessageResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#getmessage
      */
     public function getMessage (
             GetMessageRequest $request
@@ -4515,8 +4683,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Message by User ID
+     *
      * @param GetMessageByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#getmessagebyuserid
      */
     public function getMessageByUserIdAsync(
             GetMessageByUserIdRequest $request
@@ -4530,8 +4701,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Message by User ID
+     *
      * @param GetMessageByUserIdRequest $request
      * @return GetMessageByUserIdResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#getmessagebyuserid
      */
     public function getMessageByUserId (
             GetMessageByUserIdRequest $request
@@ -4542,8 +4716,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete message
+     *
      * @param DeleteMessageRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#deletemessage
      */
     public function deleteMessageAsync(
             DeleteMessageRequest $request
@@ -4557,8 +4734,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete message
+     *
      * @param DeleteMessageRequest $request
      * @return DeleteMessageResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#deletemessage
      */
     public function deleteMessage (
             DeleteMessageRequest $request
@@ -4569,8 +4749,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Room Subscriptions
+     *
      * @param DescribeSubscribesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#describesubscribes
      */
     public function describeSubscribesAsync(
             DescribeSubscribesRequest $request
@@ -4584,8 +4767,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Room Subscriptions
+     *
      * @param DescribeSubscribesRequest $request
      * @return DescribeSubscribesResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#describesubscribes
      */
     public function describeSubscribes (
             DescribeSubscribesRequest $request
@@ -4596,8 +4782,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Room Subscriptions by User ID
+     *
      * @param DescribeSubscribesByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#describesubscribesbyuserid
      */
     public function describeSubscribesByUserIdAsync(
             DescribeSubscribesByUserIdRequest $request
@@ -4611,8 +4800,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Room Subscriptions by User ID
+     *
      * @param DescribeSubscribesByUserIdRequest $request
      * @return DescribeSubscribesByUserIdResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#describesubscribesbyuserid
      */
     public function describeSubscribesByUserId (
             DescribeSubscribesByUserIdRequest $request
@@ -4623,8 +4815,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List users subscribed to a room by specifying Room name
+     *
      * @param DescribeSubscribesByRoomNameRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#describesubscribesbyroomname
      */
     public function describeSubscribesByRoomNameAsync(
             DescribeSubscribesByRoomNameRequest $request
@@ -4638,8 +4833,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List users subscribed to a room by specifying Room name
+     *
      * @param DescribeSubscribesByRoomNameRequest $request
      * @return DescribeSubscribesByRoomNameResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#describesubscribesbyroomname
      */
     public function describeSubscribesByRoomName (
             DescribeSubscribesByRoomNameRequest $request
@@ -4650,8 +4848,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Subscribe to a room
+     *
      * @param SubscribeRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#subscribe-1
      */
     public function subscribeAsync(
             SubscribeRequest $request
@@ -4665,8 +4866,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Subscribe to a room
+     *
      * @param SubscribeRequest $request
      * @return SubscribeResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#subscribe-1
      */
     public function subscribe (
             SubscribeRequest $request
@@ -4677,8 +4881,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Subscribe to a room by User ID
+     *
      * @param SubscribeByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#subscribebyuserid
      */
     public function subscribeByUserIdAsync(
             SubscribeByUserIdRequest $request
@@ -4692,8 +4899,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Subscribe to a room by User ID
+     *
      * @param SubscribeByUserIdRequest $request
      * @return SubscribeByUserIdResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#subscribebyuserid
      */
     public function subscribeByUserId (
             SubscribeByUserIdRequest $request
@@ -4704,8 +4914,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Room Subscription
+     *
      * @param GetSubscribeRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#getsubscribe
      */
     public function getSubscribeAsync(
             GetSubscribeRequest $request
@@ -4719,8 +4932,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Room Subscription
+     *
      * @param GetSubscribeRequest $request
      * @return GetSubscribeResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#getsubscribe
      */
     public function getSubscribe (
             GetSubscribeRequest $request
@@ -4731,8 +4947,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Room Subscription by User ID
+     *
      * @param GetSubscribeByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#getsubscribebyuserid
      */
     public function getSubscribeByUserIdAsync(
             GetSubscribeByUserIdRequest $request
@@ -4746,8 +4965,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Room Subscription by User ID
+     *
      * @param GetSubscribeByUserIdRequest $request
      * @return GetSubscribeByUserIdResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#getsubscribebyuserid
      */
     public function getSubscribeByUserId (
             GetSubscribeByUserIdRequest $request
@@ -4758,8 +4980,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update notification methods
+     *
      * @param UpdateNotificationTypeRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#updatenotificationtype
      */
     public function updateNotificationTypeAsync(
             UpdateNotificationTypeRequest $request
@@ -4773,8 +4998,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update notification methods
+     *
      * @param UpdateNotificationTypeRequest $request
      * @return UpdateNotificationTypeResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#updatenotificationtype
      */
     public function updateNotificationType (
             UpdateNotificationTypeRequest $request
@@ -4785,8 +5013,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update notification methods by User ID
+     *
      * @param UpdateNotificationTypeByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#updatenotificationtypebyuserid
      */
     public function updateNotificationTypeByUserIdAsync(
             UpdateNotificationTypeByUserIdRequest $request
@@ -4800,8 +5031,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update notification methods by User ID
+     *
      * @param UpdateNotificationTypeByUserIdRequest $request
      * @return UpdateNotificationTypeByUserIdResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#updatenotificationtypebyuserid
      */
     public function updateNotificationTypeByUserId (
             UpdateNotificationTypeByUserIdRequest $request
@@ -4812,8 +5046,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Unsubscribe from a room
+     *
      * @param UnsubscribeRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#unsubscribe
      */
     public function unsubscribeAsync(
             UnsubscribeRequest $request
@@ -4827,8 +5064,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Unsubscribe from a room
+     *
      * @param UnsubscribeRequest $request
      * @return UnsubscribeResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#unsubscribe
      */
     public function unsubscribe (
             UnsubscribeRequest $request
@@ -4839,8 +5079,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Unsubscribe from a subscription by User ID
+     *
      * @param UnsubscribeByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#unsubscribebyuserid
      */
     public function unsubscribeByUserIdAsync(
             UnsubscribeByUserIdRequest $request
@@ -4854,8 +5097,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Unsubscribe from a subscription by User ID
+     *
      * @param UnsubscribeByUserIdRequest $request
      * @return UnsubscribeByUserIdResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#unsubscribebyuserid
      */
     public function unsubscribeByUserId (
             UnsubscribeByUserIdRequest $request
@@ -4866,8 +5112,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Message Category Models
+     *
      * @param DescribeCategoryModelsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#describecategorymodels
      */
     public function describeCategoryModelsAsync(
             DescribeCategoryModelsRequest $request
@@ -4881,8 +5130,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Message Category Models
+     *
      * @param DescribeCategoryModelsRequest $request
      * @return DescribeCategoryModelsResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#describecategorymodels
      */
     public function describeCategoryModels (
             DescribeCategoryModelsRequest $request
@@ -4893,8 +5145,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Message Category Model
+     *
      * @param GetCategoryModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#getcategorymodel
      */
     public function getCategoryModelAsync(
             GetCategoryModelRequest $request
@@ -4908,8 +5163,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Message Category Model
+     *
      * @param GetCategoryModelRequest $request
      * @return GetCategoryModelResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#getcategorymodel
      */
     public function getCategoryModel (
             GetCategoryModelRequest $request
@@ -4920,8 +5178,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Message Category Model Masters
+     *
      * @param DescribeCategoryModelMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#describecategorymodelmasters
      */
     public function describeCategoryModelMastersAsync(
             DescribeCategoryModelMastersRequest $request
@@ -4935,8 +5196,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Message Category Model Masters
+     *
      * @param DescribeCategoryModelMastersRequest $request
      * @return DescribeCategoryModelMastersResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#describecategorymodelmasters
      */
     public function describeCategoryModelMasters (
             DescribeCategoryModelMastersRequest $request
@@ -4947,8 +5211,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Message Category Model Master
+     *
      * @param CreateCategoryModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#createcategorymodelmaster
      */
     public function createCategoryModelMasterAsync(
             CreateCategoryModelMasterRequest $request
@@ -4962,8 +5229,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Message Category Model Master
+     *
      * @param CreateCategoryModelMasterRequest $request
      * @return CreateCategoryModelMasterResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#createcategorymodelmaster
      */
     public function createCategoryModelMaster (
             CreateCategoryModelMasterRequest $request
@@ -4974,8 +5244,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Message Category Model Master
+     *
      * @param GetCategoryModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#getcategorymodelmaster
      */
     public function getCategoryModelMasterAsync(
             GetCategoryModelMasterRequest $request
@@ -4989,8 +5262,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Message Category Model Master
+     *
      * @param GetCategoryModelMasterRequest $request
      * @return GetCategoryModelMasterResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#getcategorymodelmaster
      */
     public function getCategoryModelMaster (
             GetCategoryModelMasterRequest $request
@@ -5001,8 +5277,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Message Category Model Master
+     *
      * @param UpdateCategoryModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#updatecategorymodelmaster
      */
     public function updateCategoryModelMasterAsync(
             UpdateCategoryModelMasterRequest $request
@@ -5016,8 +5295,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Message Category Model Master
+     *
      * @param UpdateCategoryModelMasterRequest $request
      * @return UpdateCategoryModelMasterResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#updatecategorymodelmaster
      */
     public function updateCategoryModelMaster (
             UpdateCategoryModelMasterRequest $request
@@ -5028,8 +5310,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Message Category Model Master
+     *
      * @param DeleteCategoryModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#deletecategorymodelmaster
      */
     public function deleteCategoryModelMasterAsync(
             DeleteCategoryModelMasterRequest $request
@@ -5043,8 +5328,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Message Category Model Master
+     *
      * @param DeleteCategoryModelMasterRequest $request
      * @return DeleteCategoryModelMasterResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#deletecategorymodelmaster
      */
     public function deleteCategoryModelMaster (
             DeleteCategoryModelMasterRequest $request
@@ -5055,8 +5343,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Message Category Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#exportmaster
      */
     public function exportMasterAsync(
             ExportMasterRequest $request
@@ -5070,8 +5361,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Message Category Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return ExportMasterResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#exportmaster
      */
     public function exportMaster (
             ExportMasterRequest $request
@@ -5082,8 +5376,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Message Category Model master data
+     *
      * @param GetCurrentModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#getcurrentmodelmaster
      */
     public function getCurrentModelMasterAsync(
             GetCurrentModelMasterRequest $request
@@ -5097,8 +5394,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Message Category Model master data
+     *
      * @param GetCurrentModelMasterRequest $request
      * @return GetCurrentModelMasterResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#getcurrentmodelmaster
      */
     public function getCurrentModelMaster (
             GetCurrentModelMasterRequest $request
@@ -5109,8 +5409,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Message Category Model master data (3-phase version)
+     *
      * @param PreUpdateCurrentModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#preupdatecurrentmodelmaster
      */
     public function preUpdateCurrentModelMasterAsync(
             PreUpdateCurrentModelMasterRequest $request
@@ -5124,8 +5427,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Message Category Model master data (3-phase version)
+     *
      * @param PreUpdateCurrentModelMasterRequest $request
      * @return PreUpdateCurrentModelMasterResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#preupdatecurrentmodelmaster
      */
     public function preUpdateCurrentModelMaster (
             PreUpdateCurrentModelMasterRequest $request
@@ -5136,8 +5442,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Message Category Model master data
+     *
      * @param UpdateCurrentModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#updatecurrentmodelmaster
      */
     public function updateCurrentModelMasterAsync(
             UpdateCurrentModelMasterRequest $request
@@ -5151,8 +5460,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Message Category Model master data
+     *
      * @param UpdateCurrentModelMasterRequest $request
      * @return UpdateCurrentModelMasterResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#updatecurrentmodelmaster
      */
     public function updateCurrentModelMaster (
             UpdateCurrentModelMasterRequest $request
@@ -5163,8 +5475,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Message Category Model master data from GitHub
+     *
      * @param UpdateCurrentModelMasterFromGitHubRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#updatecurrentmodelmasterfromgithub
      */
     public function updateCurrentModelMasterFromGitHubAsync(
             UpdateCurrentModelMasterFromGitHubRequest $request
@@ -5178,8 +5493,11 @@ class Gs2ChatRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Message Category Model master data from GitHub
+     *
      * @param UpdateCurrentModelMasterFromGitHubRequest $request
      * @return UpdateCurrentModelMasterFromGitHubResult
+     * @see https://docs.gs2.io/api_reference/chat/sdk/#updatecurrentmodelmasterfromgithub
      */
     public function updateCurrentModelMasterFromGitHub (
             UpdateCurrentModelMasterFromGitHubRequest $request

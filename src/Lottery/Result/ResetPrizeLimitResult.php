@@ -19,6 +19,11 @@ namespace Gs2\Lottery\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of resetPrizeLimit: Reset Prize Limit
+ *
+ * @see https://docs.gs2.io/api_reference/lottery/sdk/#resetprizelimit
+ */
 class ResetPrizeLimitResult implements IResult {
 
     public static function fromJson(?array $data): ?ResetPrizeLimitResult {

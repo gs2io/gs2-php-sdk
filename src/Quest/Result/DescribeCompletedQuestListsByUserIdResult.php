@@ -20,33 +20,50 @@ namespace Gs2\Quest\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Quest\Model\CompletedQuestList;
 
+/**
+ * Result of describeCompletedQuestListsByUserId: List Completed Quest Lists by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/quest/sdk/#describecompletedquestlistsbyuserid
+ */
 class DescribeCompletedQuestListsByUserIdResult implements IResult {
-    /** @var array */
+    /** @var array List of Completed Quest lists */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Completed Quest lists */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Completed Quest lists */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Completed Quest lists
+     * @return DescribeCompletedQuestListsByUserIdResult
+     */
 	public function withItems(?array $items): DescribeCompletedQuestListsByUserIdResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeCompletedQuestListsByUserIdResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeCompletedQuestListsByUserIdResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

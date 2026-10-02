@@ -19,27 +19,44 @@ namespace Gs2\LoginReward\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getBonusModel: Get Login Bonus Model
+ *
+ * @see https://docs.gs2.io/api_reference/login_reward/sdk/#getbonusmodel
+ */
 class GetBonusModelRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Login Bonus Model name */
     private $bonusModelName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetBonusModelRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetBonusModelRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Login Bonus Model name */
 	public function getBonusModelName(): ?string {
 		return $this->bonusModelName;
 	}
+    /** @param string|null $bonusModelName Login Bonus Model name */
 	public function setBonusModelName(?string $bonusModelName) {
 		$this->bonusModelName = $bonusModelName;
 	}
+    /**
+     * @param string|null $bonusModelName Login Bonus Model name
+     * @return GetBonusModelRequest
+     */
 	public function withBonusModelName(?string $bonusModelName): GetBonusModelRequest {
 		$this->bonusModelName = $bonusModelName;
 		return $this;

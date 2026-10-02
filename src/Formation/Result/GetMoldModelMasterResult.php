@@ -20,18 +20,29 @@ namespace Gs2\Formation\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Formation\Model\MoldModelMaster;
 
+/**
+ * Result of getMoldModelMaster: Get Form Storage Area Master
+ *
+ * @see https://docs.gs2.io/api_reference/formation/sdk/#getmoldmodelmaster
+ */
 class GetMoldModelMasterResult implements IResult {
-    /** @var MoldModelMaster */
+    /** @var MoldModelMaster Form Storage Area Master */
     private $item;
 
+    /** @return MoldModelMaster|null Form Storage Area Master */
 	public function getItem(): ?MoldModelMaster {
 		return $this->item;
 	}
 
+    /** @param MoldModelMaster|null $item Form Storage Area Master */
 	public function setItem(?MoldModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param MoldModelMaster|null $item Form Storage Area Master
+     * @return GetMoldModelMasterResult
+     */
 	public function withItem(?MoldModelMaster $item): GetMoldModelMasterResult {
 		$this->item = $item;
 		return $this;

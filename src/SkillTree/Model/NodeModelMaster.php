@@ -20,157 +20,228 @@ namespace Gs2\SkillTree\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Node Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#nodemodelmaster
+ */
 class NodeModelMaster implements IModel {
 	/**
-     * @var string
+     * @var string Node Model Master GRN
 	 */
 	private $nodeModelId;
 	/**
-     * @var string
+     * @var string Node Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Description
 	 */
 	private $description;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var array
+     * @var array list of Release Verify Actions
 	 */
 	private $releaseVerifyActions;
 	/**
-     * @var array
+     * @var array Release Consume Actions
 	 */
 	private $releaseConsumeActions;
 	/**
-     * @var float
+     * @var float Restrain Return Rate
 	 */
 	private $restrainReturnRate;
 	/**
-     * @var array
+     * @var array List of Premise Node Names
 	 */
 	private $premiseNodeNames;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Node Model Master GRN */
 	public function getNodeModelId(): ?string {
 		return $this->nodeModelId;
 	}
+    /** @param string|null $nodeModelId Node Model Master GRN */
 	public function setNodeModelId(?string $nodeModelId) {
 		$this->nodeModelId = $nodeModelId;
 	}
+    /**
+     * @param string|null $nodeModelId Node Model Master GRN
+     * @return NodeModelMaster
+     */
 	public function withNodeModelId(?string $nodeModelId): NodeModelMaster {
 		$this->nodeModelId = $nodeModelId;
 		return $this;
 	}
+    /** @return string|null Node Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Node Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Node Model name
+     * @return NodeModelMaster
+     */
 	public function withName(?string $name): NodeModelMaster {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return NodeModelMaster
+     */
 	public function withDescription(?string $description): NodeModelMaster {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return NodeModelMaster
+     */
 	public function withMetadata(?string $metadata): NodeModelMaster {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return array|null list of Release Verify Actions */
 	public function getReleaseVerifyActions(): ?array {
 		return $this->releaseVerifyActions;
 	}
+    /** @param array|null $releaseVerifyActions list of Release Verify Actions */
 	public function setReleaseVerifyActions(?array $releaseVerifyActions) {
 		$this->releaseVerifyActions = $releaseVerifyActions;
 	}
+    /**
+     * @param array|null $releaseVerifyActions list of Release Verify Actions
+     * @return NodeModelMaster
+     */
 	public function withReleaseVerifyActions(?array $releaseVerifyActions): NodeModelMaster {
 		$this->releaseVerifyActions = $releaseVerifyActions;
 		return $this;
 	}
+    /** @return array|null Release Consume Actions */
 	public function getReleaseConsumeActions(): ?array {
 		return $this->releaseConsumeActions;
 	}
+    /** @param array|null $releaseConsumeActions Release Consume Actions */
 	public function setReleaseConsumeActions(?array $releaseConsumeActions) {
 		$this->releaseConsumeActions = $releaseConsumeActions;
 	}
+    /**
+     * @param array|null $releaseConsumeActions Release Consume Actions
+     * @return NodeModelMaster
+     */
 	public function withReleaseConsumeActions(?array $releaseConsumeActions): NodeModelMaster {
 		$this->releaseConsumeActions = $releaseConsumeActions;
 		return $this;
 	}
+    /** @return float|null Restrain Return Rate */
 	public function getRestrainReturnRate(): ?float {
 		return $this->restrainReturnRate;
 	}
+    /** @param float|null $restrainReturnRate Restrain Return Rate */
 	public function setRestrainReturnRate(?float $restrainReturnRate) {
 		$this->restrainReturnRate = $restrainReturnRate;
 	}
+    /**
+     * @param float|null $restrainReturnRate Restrain Return Rate
+     * @return NodeModelMaster
+     */
 	public function withRestrainReturnRate(?float $restrainReturnRate): NodeModelMaster {
 		$this->restrainReturnRate = $restrainReturnRate;
 		return $this;
 	}
+    /** @return array|null List of Premise Node Names */
 	public function getPremiseNodeNames(): ?array {
 		return $this->premiseNodeNames;
 	}
+    /** @param array|null $premiseNodeNames List of Premise Node Names */
 	public function setPremiseNodeNames(?array $premiseNodeNames) {
 		$this->premiseNodeNames = $premiseNodeNames;
 	}
+    /**
+     * @param array|null $premiseNodeNames List of Premise Node Names
+     * @return NodeModelMaster
+     */
 	public function withPremiseNodeNames(?array $premiseNodeNames): NodeModelMaster {
 		$this->premiseNodeNames = $premiseNodeNames;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return NodeModelMaster
+     */
 	public function withCreatedAt(?int $createdAt): NodeModelMaster {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return NodeModelMaster
+     */
 	public function withUpdatedAt(?int $updatedAt): NodeModelMaster {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return NodeModelMaster
+     */
 	public function withRevision(?int $revision): NodeModelMaster {
 		$this->revision = $revision;
 		return $this;

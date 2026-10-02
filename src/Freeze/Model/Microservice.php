@@ -20,31 +20,48 @@ namespace Gs2\Freeze\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Microservice
+ *
+ * @see https://docs.gs2.io/api_reference/freeze/sdk/#microservice
+ */
 class Microservice implements IModel {
 	/**
-     * @var string
+     * @var string Microservice name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Microservice version
 	 */
 	private $version;
+    /** @return string|null Microservice name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Microservice name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Microservice name
+     * @return Microservice
+     */
 	public function withName(?string $name): Microservice {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Microservice version */
 	public function getVersion(): ?string {
 		return $this->version;
 	}
+    /** @param string|null $version Microservice version */
 	public function setVersion(?string $version) {
 		$this->version = $version;
 	}
+    /**
+     * @param string|null $version Microservice version
+     * @return Microservice
+     */
 	public function withVersion(?string $version): Microservice {
 		$this->version = $version;
 		return $this;

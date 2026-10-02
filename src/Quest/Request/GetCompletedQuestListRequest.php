@@ -19,39 +19,62 @@ namespace Gs2\Quest\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getCompletedQuestList: Get Completed Quest List
+ *
+ * @see https://docs.gs2.io/api_reference/quest/sdk/#getcompletedquestlist
+ */
 class GetCompletedQuestListRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Quest Group Model Name */
     private $questGroupName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetCompletedQuestListRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetCompletedQuestListRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Quest Group Model Name */
 	public function getQuestGroupName(): ?string {
 		return $this->questGroupName;
 	}
+    /** @param string|null $questGroupName Quest Group Model Name */
 	public function setQuestGroupName(?string $questGroupName) {
 		$this->questGroupName = $questGroupName;
 	}
+    /**
+     * @param string|null $questGroupName Quest Group Model Name
+     * @return GetCompletedQuestListRequest
+     */
 	public function withQuestGroupName(?string $questGroupName): GetCompletedQuestListRequest {
 		$this->questGroupName = $questGroupName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return GetCompletedQuestListRequest
+     */
 	public function withAccessToken(?string $accessToken): GetCompletedQuestListRequest {
 		$this->accessToken = $accessToken;
 		return $this;

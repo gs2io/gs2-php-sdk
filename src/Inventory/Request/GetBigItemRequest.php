@@ -19,51 +19,80 @@ namespace Gs2\Inventory\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getBigItem: Get a Big Item
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#getbigitem
+ */
 class GetBigItemRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Big Inventory Model name */
     private $inventoryName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Big Item Model Name */
     private $itemName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetBigItemRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetBigItemRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Big Inventory Model name */
 	public function getInventoryName(): ?string {
 		return $this->inventoryName;
 	}
+    /** @param string|null $inventoryName Big Inventory Model name */
 	public function setInventoryName(?string $inventoryName) {
 		$this->inventoryName = $inventoryName;
 	}
+    /**
+     * @param string|null $inventoryName Big Inventory Model name
+     * @return GetBigItemRequest
+     */
 	public function withInventoryName(?string $inventoryName): GetBigItemRequest {
 		$this->inventoryName = $inventoryName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return GetBigItemRequest
+     */
 	public function withAccessToken(?string $accessToken): GetBigItemRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Big Item Model Name */
 	public function getItemName(): ?string {
 		return $this->itemName;
 	}
+    /** @param string|null $itemName Big Item Model Name */
 	public function setItemName(?string $itemName) {
 		$this->itemName = $itemName;
 	}
+    /**
+     * @param string|null $itemName Big Item Model Name
+     * @return GetBigItemRequest
+     */
 	public function withItemName(?string $itemName): GetBigItemRequest {
 		$this->itemName = $itemName;
 		return $this;

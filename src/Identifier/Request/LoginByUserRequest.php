@@ -19,39 +19,62 @@ namespace Gs2\Identifier\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for loginByUser: Get a Project Token by specifying a GS2-Identifier user
+ *
+ * @see https://docs.gs2.io/api_reference/identifier/sdk/#loginbyuser
+ */
 class LoginByUserRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string GS2-Identifier username */
     private $userName;
-    /** @var string */
+    /** @var string Password for GS2-Identifier user */
     private $password;
-    /** @var string */
+    /** @var string Passcode */
     private $otp;
+    /** @return string|null GS2-Identifier username */
 	public function getUserName(): ?string {
 		return $this->userName;
 	}
+    /** @param string|null $userName GS2-Identifier username */
 	public function setUserName(?string $userName) {
 		$this->userName = $userName;
 	}
+    /**
+     * @param string|null $userName GS2-Identifier username
+     * @return LoginByUserRequest
+     */
 	public function withUserName(?string $userName): LoginByUserRequest {
 		$this->userName = $userName;
 		return $this;
 	}
+    /** @return string|null Password for GS2-Identifier user */
 	public function getPassword(): ?string {
 		return $this->password;
 	}
+    /** @param string|null $password Password for GS2-Identifier user */
 	public function setPassword(?string $password) {
 		$this->password = $password;
 	}
+    /**
+     * @param string|null $password Password for GS2-Identifier user
+     * @return LoginByUserRequest
+     */
 	public function withPassword(?string $password): LoginByUserRequest {
 		$this->password = $password;
 		return $this;
 	}
+    /** @return string|null Passcode */
 	public function getOtp(): ?string {
 		return $this->otp;
 	}
+    /** @param string|null $otp Passcode */
 	public function setOtp(?string $otp) {
 		$this->otp = $otp;
 	}
+    /**
+     * @param string|null $otp Passcode
+     * @return LoginByUserRequest
+     */
 	public function withOtp(?string $otp): LoginByUserRequest {
 		$this->otp = $otp;
 		return $this;

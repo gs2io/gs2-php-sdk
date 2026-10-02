@@ -20,101 +20,148 @@ namespace Gs2\Identifier\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Password
+ *
+ * @see https://docs.gs2.io/api_reference/identifier/sdk/#password
+ */
 class Password implements IModel {
 	/**
-     * @var string
+     * @var string Password GRN
 	 */
 	private $passwordId;
 	/**
-     * @var string
+     * @var string GS2-Identifier User GRN
 	 */
 	private $userId;
 	/**
-     * @var string
+     * @var string User Name
 	 */
 	private $userName;
 	/**
-     * @var string
+     * @var string Two-Factor Authentication
 	 */
 	private $enableTwoFactorAuthentication;
 	/**
-     * @var TwoFactorAuthenticationSetting
+     * @var TwoFactorAuthenticationSetting Two-Factor Authentication Setting
 	 */
 	private $twoFactorAuthenticationSetting;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Password GRN */
 	public function getPasswordId(): ?string {
 		return $this->passwordId;
 	}
+    /** @param string|null $passwordId Password GRN */
 	public function setPasswordId(?string $passwordId) {
 		$this->passwordId = $passwordId;
 	}
+    /**
+     * @param string|null $passwordId Password GRN
+     * @return Password
+     */
 	public function withPasswordId(?string $passwordId): Password {
 		$this->passwordId = $passwordId;
 		return $this;
 	}
+    /** @return string|null GS2-Identifier User GRN */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId GS2-Identifier User GRN */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId GS2-Identifier User GRN
+     * @return Password
+     */
 	public function withUserId(?string $userId): Password {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null User Name */
 	public function getUserName(): ?string {
 		return $this->userName;
 	}
+    /** @param string|null $userName User Name */
 	public function setUserName(?string $userName) {
 		$this->userName = $userName;
 	}
+    /**
+     * @param string|null $userName User Name
+     * @return Password
+     */
 	public function withUserName(?string $userName): Password {
 		$this->userName = $userName;
 		return $this;
 	}
+    /** @return string|null Two-Factor Authentication */
 	public function getEnableTwoFactorAuthentication(): ?string {
 		return $this->enableTwoFactorAuthentication;
 	}
+    /** @param string|null $enableTwoFactorAuthentication Two-Factor Authentication */
 	public function setEnableTwoFactorAuthentication(?string $enableTwoFactorAuthentication) {
 		$this->enableTwoFactorAuthentication = $enableTwoFactorAuthentication;
 	}
+    /**
+     * @param string|null $enableTwoFactorAuthentication Two-Factor Authentication
+     * @return Password
+     */
 	public function withEnableTwoFactorAuthentication(?string $enableTwoFactorAuthentication): Password {
 		$this->enableTwoFactorAuthentication = $enableTwoFactorAuthentication;
 		return $this;
 	}
+    /** @return TwoFactorAuthenticationSetting|null Two-Factor Authentication Setting */
 	public function getTwoFactorAuthenticationSetting(): ?TwoFactorAuthenticationSetting {
 		return $this->twoFactorAuthenticationSetting;
 	}
+    /** @param TwoFactorAuthenticationSetting|null $twoFactorAuthenticationSetting Two-Factor Authentication Setting */
 	public function setTwoFactorAuthenticationSetting(?TwoFactorAuthenticationSetting $twoFactorAuthenticationSetting) {
 		$this->twoFactorAuthenticationSetting = $twoFactorAuthenticationSetting;
 	}
+    /**
+     * @param TwoFactorAuthenticationSetting|null $twoFactorAuthenticationSetting Two-Factor Authentication Setting
+     * @return Password
+     */
 	public function withTwoFactorAuthenticationSetting(?TwoFactorAuthenticationSetting $twoFactorAuthenticationSetting): Password {
 		$this->twoFactorAuthenticationSetting = $twoFactorAuthenticationSetting;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return Password
+     */
 	public function withCreatedAt(?int $createdAt): Password {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return Password
+     */
 	public function withRevision(?int $revision): Password {
 		$this->revision = $revision;
 		return $this;

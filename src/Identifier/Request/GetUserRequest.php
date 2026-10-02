@@ -19,15 +19,26 @@ namespace Gs2\Identifier\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getUser: Get User
+ *
+ * @see https://docs.gs2.io/api_reference/identifier/sdk/#getuser
+ */
 class GetUserRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string GS2-Identifier User name */
     private $userName;
+    /** @return string|null GS2-Identifier User name */
 	public function getUserName(): ?string {
 		return $this->userName;
 	}
+    /** @param string|null $userName GS2-Identifier User name */
 	public function setUserName(?string $userName) {
 		$this->userName = $userName;
 	}
+    /**
+     * @param string|null $userName GS2-Identifier User name
+     * @return GetUserRequest
+     */
 	public function withUserName(?string $userName): GetUserRequest {
 		$this->userName = $userName;
 		return $this;

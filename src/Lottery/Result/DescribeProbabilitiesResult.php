@@ -22,18 +22,29 @@ use Gs2\Lottery\Model\AcquireAction;
 use Gs2\Lottery\Model\DrawnPrize;
 use Gs2\Lottery\Model\Probability;
 
+/**
+ * Result of describeProbabilities: List Draw Probabilities
+ *
+ * @see https://docs.gs2.io/api_reference/lottery/sdk/#describeprobabilities
+ */
 class DescribeProbabilitiesResult implements IResult {
-    /** @var array */
+    /** @var array List of draw probabilities */
     private $items;
 
+    /** @return array|null List of draw probabilities */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of draw probabilities */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of draw probabilities
+     * @return DescribeProbabilitiesResult
+     */
 	public function withItems(?array $items): DescribeProbabilitiesResult {
 		$this->items = $items;
 		return $this;

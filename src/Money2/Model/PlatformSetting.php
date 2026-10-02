@@ -20,45 +20,68 @@ namespace Gs2\Money2\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Platform Setting
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#platformsetting
+ */
 class PlatformSetting implements IModel {
 	/**
-     * @var AppleAppStoreSetting
+     * @var AppleAppStoreSetting Apple App Store Setting
 	 */
 	private $appleAppStore;
 	/**
-     * @var GooglePlaySetting
+     * @var GooglePlaySetting Google Play Setting
 	 */
 	private $googlePlay;
 	/**
-     * @var FakeSetting
+     * @var FakeSetting Fake (Unity Editor) Setting
 	 */
 	private $fake;
+    /** @return AppleAppStoreSetting|null Apple App Store Setting */
 	public function getAppleAppStore(): ?AppleAppStoreSetting {
 		return $this->appleAppStore;
 	}
+    /** @param AppleAppStoreSetting|null $appleAppStore Apple App Store Setting */
 	public function setAppleAppStore(?AppleAppStoreSetting $appleAppStore) {
 		$this->appleAppStore = $appleAppStore;
 	}
+    /**
+     * @param AppleAppStoreSetting|null $appleAppStore Apple App Store Setting
+     * @return PlatformSetting
+     */
 	public function withAppleAppStore(?AppleAppStoreSetting $appleAppStore): PlatformSetting {
 		$this->appleAppStore = $appleAppStore;
 		return $this;
 	}
+    /** @return GooglePlaySetting|null Google Play Setting */
 	public function getGooglePlay(): ?GooglePlaySetting {
 		return $this->googlePlay;
 	}
+    /** @param GooglePlaySetting|null $googlePlay Google Play Setting */
 	public function setGooglePlay(?GooglePlaySetting $googlePlay) {
 		$this->googlePlay = $googlePlay;
 	}
+    /**
+     * @param GooglePlaySetting|null $googlePlay Google Play Setting
+     * @return PlatformSetting
+     */
 	public function withGooglePlay(?GooglePlaySetting $googlePlay): PlatformSetting {
 		$this->googlePlay = $googlePlay;
 		return $this;
 	}
+    /** @return FakeSetting|null Fake (Unity Editor) Setting */
 	public function getFake(): ?FakeSetting {
 		return $this->fake;
 	}
+    /** @param FakeSetting|null $fake Fake (Unity Editor) Setting */
 	public function setFake(?FakeSetting $fake) {
 		$this->fake = $fake;
 	}
+    /**
+     * @param FakeSetting|null $fake Fake (Unity Editor) Setting
+     * @return PlatformSetting
+     */
 	public function withFake(?FakeSetting $fake): PlatformSetting {
 		$this->fake = $fake;
 		return $this;

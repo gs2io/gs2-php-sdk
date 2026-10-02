@@ -21,48 +21,71 @@ use Gs2\Core\Model\IResult;
 use Gs2\Freeze\Model\Stage;
 use Gs2\Freeze\Model\Microservice;
 
+/**
+ * Result of getStage: Get stage
+ *
+ * @see https://docs.gs2.io/api_reference/freeze/sdk/#getstage
+ */
 class GetStageResult implements IResult {
-    /** @var Stage */
+    /** @var Stage Stage */
     private $item;
-    /** @var array */
+    /** @var array List of source microservice versions */
     private $source;
-    /** @var array */
+    /** @var array List of current microservice versions */
     private $current;
 
+    /** @return Stage|null Stage */
 	public function getItem(): ?Stage {
 		return $this->item;
 	}
 
+    /** @param Stage|null $item Stage */
 	public function setItem(?Stage $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Stage|null $item Stage
+     * @return GetStageResult
+     */
 	public function withItem(?Stage $item): GetStageResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return array|null List of source microservice versions */
 	public function getSource(): ?array {
 		return $this->source;
 	}
 
+    /** @param array|null $source List of source microservice versions */
 	public function setSource(?array $source) {
 		$this->source = $source;
 	}
 
+    /**
+     * @param array|null $source List of source microservice versions
+     * @return GetStageResult
+     */
 	public function withSource(?array $source): GetStageResult {
 		$this->source = $source;
 		return $this;
 	}
 
+    /** @return array|null List of current microservice versions */
 	public function getCurrent(): ?array {
 		return $this->current;
 	}
 
+    /** @param array|null $current List of current microservice versions */
 	public function setCurrent(?array $current) {
 		$this->current = $current;
 	}
 
+    /**
+     * @param array|null $current List of current microservice versions
+     * @return GetStageResult
+     */
 	public function withCurrent(?array $current): GetStageResult {
 		$this->current = $current;
 		return $this;

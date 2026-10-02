@@ -20,31 +20,48 @@ namespace Gs2\Enhance\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Unleash Rate Entry Model
+ *
+ * @see https://docs.gs2.io/api_reference/enhance/sdk/#unleashrateentrymodel
+ */
 class UnleashRateEntryModel implements IModel {
 	/**
-     * @var int
+     * @var int Target grade
 	 */
 	private $gradeValue;
 	/**
-     * @var int
+     * @var int How many items of the same type to consume
 	 */
 	private $needCount;
+    /** @return int|null Target grade */
 	public function getGradeValue(): ?int {
 		return $this->gradeValue;
 	}
+    /** @param int|null $gradeValue Target grade */
 	public function setGradeValue(?int $gradeValue) {
 		$this->gradeValue = $gradeValue;
 	}
+    /**
+     * @param int|null $gradeValue Target grade
+     * @return UnleashRateEntryModel
+     */
 	public function withGradeValue(?int $gradeValue): UnleashRateEntryModel {
 		$this->gradeValue = $gradeValue;
 		return $this;
 	}
+    /** @return int|null How many items of the same type to consume */
 	public function getNeedCount(): ?int {
 		return $this->needCount;
 	}
+    /** @param int|null $needCount How many items of the same type to consume */
 	public function setNeedCount(?int $needCount) {
 		$this->needCount = $needCount;
 	}
+    /**
+     * @param int|null $needCount How many items of the same type to consume
+     * @return UnleashRateEntryModel
+     */
 	public function withNeedCount(?int $needCount): UnleashRateEntryModel {
 		$this->needCount = $needCount;
 		return $this;

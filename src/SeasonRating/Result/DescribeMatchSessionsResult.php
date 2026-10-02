@@ -20,33 +20,50 @@ namespace Gs2\SeasonRating\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\SeasonRating\Model\MatchSession;
 
+/**
+ * Result of describeMatchSessions: List Match Sessions
+ *
+ * @see https://docs.gs2.io/api_reference/season_rating/sdk/#describematchsessions
+ */
 class DescribeMatchSessionsResult implements IResult {
-    /** @var array */
+    /** @var array List of MatchSession */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of MatchSession */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of MatchSession */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of MatchSession
+     * @return DescribeMatchSessionsResult
+     */
 	public function withItems(?array $items): DescribeMatchSessionsResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeMatchSessionsResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeMatchSessionsResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

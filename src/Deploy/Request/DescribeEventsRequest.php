@@ -19,39 +19,62 @@ namespace Gs2\Deploy\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for describeEvents: List Events
+ *
+ * @see https://docs.gs2.io/api_reference/deploy/sdk/#describeevents
+ */
 class DescribeEventsRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Stack name */
     private $stackName;
-    /** @var string */
+    /** @var string Token specifying the position from which to start acquiring data */
     private $pageToken;
-    /** @var int */
+    /** @var int Number of data items to retrieve */
     private $limit;
+    /** @return string|null Stack name */
 	public function getStackName(): ?string {
 		return $this->stackName;
 	}
+    /** @param string|null $stackName Stack name */
 	public function setStackName(?string $stackName) {
 		$this->stackName = $stackName;
 	}
+    /**
+     * @param string|null $stackName Stack name
+     * @return DescribeEventsRequest
+     */
 	public function withStackName(?string $stackName): DescribeEventsRequest {
 		$this->stackName = $stackName;
 		return $this;
 	}
+    /** @return string|null Token specifying the position from which to start acquiring data */
 	public function getPageToken(): ?string {
 		return $this->pageToken;
 	}
+    /** @param string|null $pageToken Token specifying the position from which to start acquiring data */
 	public function setPageToken(?string $pageToken) {
 		$this->pageToken = $pageToken;
 	}
+    /**
+     * @param string|null $pageToken Token specifying the position from which to start acquiring data
+     * @return DescribeEventsRequest
+     */
 	public function withPageToken(?string $pageToken): DescribeEventsRequest {
 		$this->pageToken = $pageToken;
 		return $this;
 	}
+    /** @return int|null Number of data items to retrieve */
 	public function getLimit(): ?int {
 		return $this->limit;
 	}
+    /** @param int|null $limit Number of data items to retrieve */
 	public function setLimit(?int $limit) {
 		$this->limit = $limit;
 	}
+    /**
+     * @param int|null $limit Number of data items to retrieve
+     * @return DescribeEventsRequest
+     */
 	public function withLimit(?int $limit): DescribeEventsRequest {
 		$this->limit = $limit;
 		return $this;

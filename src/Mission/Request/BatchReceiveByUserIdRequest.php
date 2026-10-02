@@ -19,65 +19,100 @@ namespace Gs2\Mission\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for batchReceiveByUserId: Receive rewards for multiple mission tasks in bulk
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#batchreceivebyuserid
+ */
 class BatchReceiveByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Mission Group Name */
     private $missionGroupName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var array */
+    /** @var array Task name list */
     private $missionTaskNames;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return BatchReceiveByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): BatchReceiveByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Mission Group Name */
 	public function getMissionGroupName(): ?string {
 		return $this->missionGroupName;
 	}
+    /** @param string|null $missionGroupName Mission Group Name */
 	public function setMissionGroupName(?string $missionGroupName) {
 		$this->missionGroupName = $missionGroupName;
 	}
+    /**
+     * @param string|null $missionGroupName Mission Group Name
+     * @return BatchReceiveByUserIdRequest
+     */
 	public function withMissionGroupName(?string $missionGroupName): BatchReceiveByUserIdRequest {
 		$this->missionGroupName = $missionGroupName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return BatchReceiveByUserIdRequest
+     */
 	public function withUserId(?string $userId): BatchReceiveByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return array|null Task name list */
 	public function getMissionTaskNames(): ?array {
 		return $this->missionTaskNames;
 	}
+    /** @param array|null $missionTaskNames Task name list */
 	public function setMissionTaskNames(?array $missionTaskNames) {
 		$this->missionTaskNames = $missionTaskNames;
 	}
+    /**
+     * @param array|null $missionTaskNames Task name list
+     * @return BatchReceiveByUserIdRequest
+     */
 	public function withMissionTaskNames(?array $missionTaskNames): BatchReceiveByUserIdRequest {
 		$this->missionTaskNames = $missionTaskNames;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return BatchReceiveByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): BatchReceiveByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

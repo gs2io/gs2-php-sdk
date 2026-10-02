@@ -22,105 +22,148 @@ use Gs2\Lottery\Model\TransactionSetting;
 use Gs2\Lottery\Model\TransactionSettingV2;
 use Gs2\Lottery\Model\LogSetting;
 
+/**
+ * Request for createNamespace: Create Namespace
+ *
+ * @see https://docs.gs2.io/api_reference/lottery/sdk/#createnamespace
+ */
 class CreateNamespaceRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $name;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var TransactionSetting */
+    /** @var TransactionSetting Transaction Setting */
     private $transactionSetting;
-    /** @var TransactionSettingV2 */
+    /** @var TransactionSettingV2 Transaction Setting (V2) */
     private $transactionSettingV2;
-    /** @var string */
+    /** @var string GS2-Script script GRN to be called when the lottery is executed */
     private $lotteryTriggerScriptId;
-    /** @var LogSetting */
+    /** @var LogSetting Log Output Setting */
     private $logSetting;
-    /** @var string */
+    /** @var string GS2-JobQueue Namespace GRN used to execute transactions */
     private $queueNamespaceId;
-    /** @var string */
+    /** @var string GS2-Key Namespace used to issue transactions */
     private $keyId;
+    /** @return string|null Namespace name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Namespace name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Namespace name
+     * @return CreateNamespaceRequest
+     */
 	public function withName(?string $name): CreateNamespaceRequest {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return CreateNamespaceRequest
+     */
 	public function withDescription(?string $description): CreateNamespaceRequest {
 		$this->description = $description;
 		return $this;
 	}
     /**
+     * @return TransactionSetting|null Transaction Setting
      * @deprecated
      */
 	public function getTransactionSetting(): ?TransactionSetting {
 		return $this->transactionSetting;
 	}
     /**
+     * @param TransactionSetting|null $transactionSetting Transaction Setting
      * @deprecated
      */
 	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
 		$this->transactionSetting = $transactionSetting;
 	}
     /**
+     * @param TransactionSetting|null $transactionSetting Transaction Setting
+     * @return CreateNamespaceRequest
      * @deprecated
      */
 	public function withTransactionSetting(?TransactionSetting $transactionSetting): CreateNamespaceRequest {
 		$this->transactionSetting = $transactionSetting;
 		return $this;
 	}
+    /** @return TransactionSettingV2|null Transaction Setting (V2) */
 	public function getTransactionSettingV2(): ?TransactionSettingV2 {
 		return $this->transactionSettingV2;
 	}
+    /** @param TransactionSettingV2|null $transactionSettingV2 Transaction Setting (V2) */
 	public function setTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2) {
 		$this->transactionSettingV2 = $transactionSettingV2;
 	}
+    /**
+     * @param TransactionSettingV2|null $transactionSettingV2 Transaction Setting (V2)
+     * @return CreateNamespaceRequest
+     */
 	public function withTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2): CreateNamespaceRequest {
 		$this->transactionSettingV2 = $transactionSettingV2;
 		return $this;
 	}
+    /** @return string|null GS2-Script script GRN to be called when the lottery is executed */
 	public function getLotteryTriggerScriptId(): ?string {
 		return $this->lotteryTriggerScriptId;
 	}
+    /** @param string|null $lotteryTriggerScriptId GS2-Script script GRN to be called when the lottery is executed */
 	public function setLotteryTriggerScriptId(?string $lotteryTriggerScriptId) {
 		$this->lotteryTriggerScriptId = $lotteryTriggerScriptId;
 	}
+    /**
+     * @param string|null $lotteryTriggerScriptId GS2-Script script GRN to be called when the lottery is executed
+     * @return CreateNamespaceRequest
+     */
 	public function withLotteryTriggerScriptId(?string $lotteryTriggerScriptId): CreateNamespaceRequest {
 		$this->lotteryTriggerScriptId = $lotteryTriggerScriptId;
 		return $this;
 	}
+    /** @return LogSetting|null Log Output Setting */
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
+    /** @param LogSetting|null $logSetting Log Output Setting */
 	public function setLogSetting(?LogSetting $logSetting) {
 		$this->logSetting = $logSetting;
 	}
+    /**
+     * @param LogSetting|null $logSetting Log Output Setting
+     * @return CreateNamespaceRequest
+     */
 	public function withLogSetting(?LogSetting $logSetting): CreateNamespaceRequest {
 		$this->logSetting = $logSetting;
 		return $this;
 	}
     /**
+     * @return string|null GS2-JobQueue Namespace GRN used to execute transactions
      * @deprecated
      */
 	public function getQueueNamespaceId(): ?string {
 		return $this->queueNamespaceId;
 	}
     /**
+     * @param string|null $queueNamespaceId GS2-JobQueue Namespace GRN used to execute transactions
      * @deprecated
      */
 	public function setQueueNamespaceId(?string $queueNamespaceId) {
 		$this->queueNamespaceId = $queueNamespaceId;
 	}
     /**
+     * @param string|null $queueNamespaceId GS2-JobQueue Namespace GRN used to execute transactions
+     * @return CreateNamespaceRequest
      * @deprecated
      */
 	public function withQueueNamespaceId(?string $queueNamespaceId): CreateNamespaceRequest {
@@ -128,18 +171,22 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
 		return $this;
 	}
     /**
+     * @return string|null GS2-Key Namespace used to issue transactions
      * @deprecated
      */
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
     /**
+     * @param string|null $keyId GS2-Key Namespace used to issue transactions
      * @deprecated
      */
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
     /**
+     * @param string|null $keyId GS2-Key Namespace used to issue transactions
+     * @return CreateNamespaceRequest
      * @deprecated
      */
 	public function withKeyId(?string $keyId): CreateNamespaceRequest {

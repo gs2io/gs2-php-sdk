@@ -20,73 +20,108 @@ namespace Gs2\Mission\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Counter Model
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#countermodel
+ */
 class CounterModel implements IModel {
 	/**
-     * @var string
+     * @var string Counter Model GRN
 	 */
 	private $counterId;
 	/**
-     * @var string
+     * @var string Counter Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var array
+     * @var array List of Counter reset timing
 	 */
 	private $scopes;
 	/**
-     * @var string
+     * @var string GS2-Schedule event GRN that sets the period during which the counter can be operated
 	 */
 	private $challengePeriodEventId;
+    /** @return string|null Counter Model GRN */
 	public function getCounterId(): ?string {
 		return $this->counterId;
 	}
+    /** @param string|null $counterId Counter Model GRN */
 	public function setCounterId(?string $counterId) {
 		$this->counterId = $counterId;
 	}
+    /**
+     * @param string|null $counterId Counter Model GRN
+     * @return CounterModel
+     */
 	public function withCounterId(?string $counterId): CounterModel {
 		$this->counterId = $counterId;
 		return $this;
 	}
+    /** @return string|null Counter Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Counter Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Counter Model name
+     * @return CounterModel
+     */
 	public function withName(?string $name): CounterModel {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return CounterModel
+     */
 	public function withMetadata(?string $metadata): CounterModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return array|null List of Counter reset timing */
 	public function getScopes(): ?array {
 		return $this->scopes;
 	}
+    /** @param array|null $scopes List of Counter reset timing */
 	public function setScopes(?array $scopes) {
 		$this->scopes = $scopes;
 	}
+    /**
+     * @param array|null $scopes List of Counter reset timing
+     * @return CounterModel
+     */
 	public function withScopes(?array $scopes): CounterModel {
 		$this->scopes = $scopes;
 		return $this;
 	}
+    /** @return string|null GS2-Schedule event GRN that sets the period during which the counter can be operated */
 	public function getChallengePeriodEventId(): ?string {
 		return $this->challengePeriodEventId;
 	}
+    /** @param string|null $challengePeriodEventId GS2-Schedule event GRN that sets the period during which the counter can be operated */
 	public function setChallengePeriodEventId(?string $challengePeriodEventId) {
 		$this->challengePeriodEventId = $challengePeriodEventId;
 	}
+    /**
+     * @param string|null $challengePeriodEventId GS2-Schedule event GRN that sets the period during which the counter can be operated
+     * @return CounterModel
+     */
 	public function withChallengePeriodEventId(?string $challengePeriodEventId): CounterModel {
 		$this->challengePeriodEventId = $challengePeriodEventId;
 		return $this;

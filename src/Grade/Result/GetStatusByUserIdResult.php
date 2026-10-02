@@ -20,18 +20,29 @@ namespace Gs2\Grade\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Grade\Model\Status;
 
+/**
+ * Result of getStatusByUserId: Get Status by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/grade/sdk/#getstatusbyuserid
+ */
 class GetStatusByUserIdResult implements IResult {
-    /** @var Status */
+    /** @var Status Status */
     private $item;
 
+    /** @return Status|null Status */
 	public function getItem(): ?Status {
 		return $this->item;
 	}
 
+    /** @param Status|null $item Status */
 	public function setItem(?Status $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Status|null $item Status
+     * @return GetStatusByUserIdResult
+     */
 	public function withItem(?Status $item): GetStatusByUserIdResult {
 		$this->item = $item;
 		return $this;

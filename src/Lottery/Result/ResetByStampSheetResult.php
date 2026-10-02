@@ -22,18 +22,29 @@ use Gs2\Lottery\Model\AcquireAction;
 use Gs2\Lottery\Model\BoxItem;
 use Gs2\Lottery\Model\BoxItems;
 
+/**
+ * Result of resetByStampSheet: Execute box reset as acquire action
+ *
+ * @see https://docs.gs2.io/api_reference/lottery/stamp_sheet/#gs2lotteryresetboxbyuserid
+ */
 class ResetByStampSheetResult implements IResult {
-    /** @var BoxItems */
+    /** @var BoxItems List of items taken out of the box */
     private $item;
 
+    /** @return BoxItems|null List of items taken out of the box */
 	public function getItem(): ?BoxItems {
 		return $this->item;
 	}
 
+    /** @param BoxItems|null $item List of items taken out of the box */
 	public function setItem(?BoxItems $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param BoxItems|null $item List of items taken out of the box
+     * @return ResetByStampSheetResult
+     */
 	public function withItem(?BoxItems $item): ResetByStampSheetResult {
 		$this->item = $item;
 		return $this;

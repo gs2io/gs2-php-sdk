@@ -25,63 +25,92 @@ use Gs2\Formation\Model\SlotModel;
 use Gs2\Formation\Model\FormModel;
 use Gs2\Formation\Model\MoldModel;
 
+/**
+ * Result of deleteFormByUserId: Delete Form by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/formation/sdk/#deleteformbyuserid
+ */
 class DeleteFormByUserIdResult implements IResult {
-    /** @var Form */
+    /** @var Form Form */
     private $item;
-    /** @var Mold */
+    /** @var Mold Form Storage Area */
     private $mold;
-    /** @var MoldModel */
+    /** @var MoldModel Form Storage Area Model */
     private $moldModel;
-    /** @var FormModel */
+    /** @var FormModel Form Model */
     private $formModel;
 
+    /** @return Form|null Form */
 	public function getItem(): ?Form {
 		return $this->item;
 	}
 
+    /** @param Form|null $item Form */
 	public function setItem(?Form $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Form|null $item Form
+     * @return DeleteFormByUserIdResult
+     */
 	public function withItem(?Form $item): DeleteFormByUserIdResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return Mold|null Form Storage Area */
 	public function getMold(): ?Mold {
 		return $this->mold;
 	}
 
+    /** @param Mold|null $mold Form Storage Area */
 	public function setMold(?Mold $mold) {
 		$this->mold = $mold;
 	}
 
+    /**
+     * @param Mold|null $mold Form Storage Area
+     * @return DeleteFormByUserIdResult
+     */
 	public function withMold(?Mold $mold): DeleteFormByUserIdResult {
 		$this->mold = $mold;
 		return $this;
 	}
 
+    /** @return MoldModel|null Form Storage Area Model */
 	public function getMoldModel(): ?MoldModel {
 		return $this->moldModel;
 	}
 
+    /** @param MoldModel|null $moldModel Form Storage Area Model */
 	public function setMoldModel(?MoldModel $moldModel) {
 		$this->moldModel = $moldModel;
 	}
 
+    /**
+     * @param MoldModel|null $moldModel Form Storage Area Model
+     * @return DeleteFormByUserIdResult
+     */
 	public function withMoldModel(?MoldModel $moldModel): DeleteFormByUserIdResult {
 		$this->moldModel = $moldModel;
 		return $this;
 	}
 
+    /** @return FormModel|null Form Model */
 	public function getFormModel(): ?FormModel {
 		return $this->formModel;
 	}
 
+    /** @param FormModel|null $formModel Form Model */
 	public function setFormModel(?FormModel $formModel) {
 		$this->formModel = $formModel;
 	}
 
+    /**
+     * @param FormModel|null $formModel Form Model
+     * @return DeleteFormByUserIdResult
+     */
 	public function withFormModel(?FormModel $formModel): DeleteFormByUserIdResult {
 		$this->formModel = $formModel;
 		return $this;

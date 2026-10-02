@@ -19,27 +19,44 @@ namespace Gs2\Guild\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getGuildModel: Get Guild Model
+ *
+ * @see https://docs.gs2.io/api_reference/guild/sdk/#getguildmodel
+ */
 class GetGuildModelRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Guild Model name */
     private $guildModelName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetGuildModelRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetGuildModelRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Guild Model name */
 	public function getGuildModelName(): ?string {
 		return $this->guildModelName;
 	}
+    /** @param string|null $guildModelName Guild Model name */
 	public function setGuildModelName(?string $guildModelName) {
 		$this->guildModelName = $guildModelName;
 	}
+    /**
+     * @param string|null $guildModelName Guild Model name
+     * @return GetGuildModelRequest
+     */
 	public function withGuildModelName(?string $guildModelName): GetGuildModelRequest {
 		$this->guildModelName = $guildModelName;
 		return $this;

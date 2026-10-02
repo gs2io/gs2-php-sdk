@@ -24,18 +24,29 @@ use Gs2\StateMachine\Model\StackEntry;
 use Gs2\StateMachine\Model\Variable;
 use Gs2\StateMachine\Model\Status;
 
+/**
+ * Result of exitStateMachineByUserId: Exit and delete state machine by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/state_machine/sdk/#exitstatemachinebyuserid
+ */
 class ExitStateMachineByUserIdResult implements IResult {
-    /** @var Status */
+    /** @var Status Exited state machine */
     private $item;
 
+    /** @return Status|null Exited state machine */
 	public function getItem(): ?Status {
 		return $this->item;
 	}
 
+    /** @param Status|null $item Exited state machine */
 	public function setItem(?Status $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Status|null $item Exited state machine
+     * @return ExitStateMachineByUserIdResult
+     */
 	public function withItem(?Status $item): ExitStateMachineByUserIdResult {
 		$this->item = $item;
 		return $this;

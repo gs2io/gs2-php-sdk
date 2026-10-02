@@ -20,115 +20,168 @@ namespace Gs2\Version\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Approved Version
+ *
+ * @see https://docs.gs2.io/api_reference/version/sdk/#acceptversion
+ */
 class AcceptVersion implements IModel {
 	/**
-     * @var string
+     * @var string Approved Version GRN
 	 */
 	private $acceptVersionId;
 	/**
-     * @var string
+     * @var string Version Name
 	 */
 	private $versionName;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var Version
+     * @var Version Version
 	 */
 	private $version;
 	/**
-     * @var string
+     * @var string Status
 	 */
 	private $status;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Approved Version GRN */
 	public function getAcceptVersionId(): ?string {
 		return $this->acceptVersionId;
 	}
+    /** @param string|null $acceptVersionId Approved Version GRN */
 	public function setAcceptVersionId(?string $acceptVersionId) {
 		$this->acceptVersionId = $acceptVersionId;
 	}
+    /**
+     * @param string|null $acceptVersionId Approved Version GRN
+     * @return AcceptVersion
+     */
 	public function withAcceptVersionId(?string $acceptVersionId): AcceptVersion {
 		$this->acceptVersionId = $acceptVersionId;
 		return $this;
 	}
+    /** @return string|null Version Name */
 	public function getVersionName(): ?string {
 		return $this->versionName;
 	}
+    /** @param string|null $versionName Version Name */
 	public function setVersionName(?string $versionName) {
 		$this->versionName = $versionName;
 	}
+    /**
+     * @param string|null $versionName Version Name
+     * @return AcceptVersion
+     */
 	public function withVersionName(?string $versionName): AcceptVersion {
 		$this->versionName = $versionName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return AcceptVersion
+     */
 	public function withUserId(?string $userId): AcceptVersion {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return Version|null Version */
 	public function getVersion(): ?Version {
 		return $this->version;
 	}
+    /** @param Version|null $version Version */
 	public function setVersion(?Version $version) {
 		$this->version = $version;
 	}
+    /**
+     * @param Version|null $version Version
+     * @return AcceptVersion
+     */
 	public function withVersion(?Version $version): AcceptVersion {
 		$this->version = $version;
 		return $this;
 	}
+    /** @return string|null Status */
 	public function getStatus(): ?string {
 		return $this->status;
 	}
+    /** @param string|null $status Status */
 	public function setStatus(?string $status) {
 		$this->status = $status;
 	}
+    /**
+     * @param string|null $status Status
+     * @return AcceptVersion
+     */
 	public function withStatus(?string $status): AcceptVersion {
 		$this->status = $status;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return AcceptVersion
+     */
 	public function withCreatedAt(?int $createdAt): AcceptVersion {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return AcceptVersion
+     */
 	public function withUpdatedAt(?int $updatedAt): AcceptVersion {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return AcceptVersion
+     */
 	public function withRevision(?int $revision): AcceptVersion {
 		$this->revision = $revision;
 		return $this;

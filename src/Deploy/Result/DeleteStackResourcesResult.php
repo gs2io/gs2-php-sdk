@@ -20,18 +20,29 @@ namespace Gs2\Deploy\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Deploy\Model\Stack;
 
+/**
+ * Result of deleteStackResources: Delete Stack Resources
+ *
+ * @see https://docs.gs2.io/api_reference/deploy/sdk/#deletestackresources
+ */
 class DeleteStackResourcesResult implements IResult {
-    /** @var Stack */
+    /** @var Stack Stack of deleted resources */
     private $item;
 
+    /** @return Stack|null Stack of deleted resources */
 	public function getItem(): ?Stack {
 		return $this->item;
 	}
 
+    /** @param Stack|null $item Stack of deleted resources */
 	public function setItem(?Stack $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Stack|null $item Stack of deleted resources
+     * @return DeleteStackResourcesResult
+     */
 	public function withItem(?Stack $item): DeleteStackResourcesResult {
 		$this->item = $item;
 		return $this;

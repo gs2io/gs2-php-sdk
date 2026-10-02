@@ -19,75 +19,116 @@ namespace Gs2\Chat\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getMessageByUserId: Get Message by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/chat/sdk/#getmessagebyuserid
+ */
 class GetMessageByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Room name */
     private $roomName;
-    /** @var string */
+    /** @var string Message name */
     private $messageName;
-    /** @var string */
+    /** @var string Password */
     private $password;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetMessageByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetMessageByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Room name */
 	public function getRoomName(): ?string {
 		return $this->roomName;
 	}
+    /** @param string|null $roomName Room name */
 	public function setRoomName(?string $roomName) {
 		$this->roomName = $roomName;
 	}
+    /**
+     * @param string|null $roomName Room name
+     * @return GetMessageByUserIdRequest
+     */
 	public function withRoomName(?string $roomName): GetMessageByUserIdRequest {
 		$this->roomName = $roomName;
 		return $this;
 	}
+    /** @return string|null Message name */
 	public function getMessageName(): ?string {
 		return $this->messageName;
 	}
+    /** @param string|null $messageName Message name */
 	public function setMessageName(?string $messageName) {
 		$this->messageName = $messageName;
 	}
+    /**
+     * @param string|null $messageName Message name
+     * @return GetMessageByUserIdRequest
+     */
 	public function withMessageName(?string $messageName): GetMessageByUserIdRequest {
 		$this->messageName = $messageName;
 		return $this;
 	}
+    /** @return string|null Password */
 	public function getPassword(): ?string {
 		return $this->password;
 	}
+    /** @param string|null $password Password */
 	public function setPassword(?string $password) {
 		$this->password = $password;
 	}
+    /**
+     * @param string|null $password Password
+     * @return GetMessageByUserIdRequest
+     */
 	public function withPassword(?string $password): GetMessageByUserIdRequest {
 		$this->password = $password;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return GetMessageByUserIdRequest
+     */
 	public function withUserId(?string $userId): GetMessageByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return GetMessageByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): GetMessageByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

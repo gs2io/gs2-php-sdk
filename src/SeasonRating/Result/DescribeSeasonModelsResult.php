@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\SeasonRating\Model\TierModel;
 use Gs2\SeasonRating\Model\SeasonModel;
 
+/**
+ * Result of describeSeasonModels: List Season Models
+ *
+ * @see https://docs.gs2.io/api_reference/season_rating/sdk/#describeseasonmodels
+ */
 class DescribeSeasonModelsResult implements IResult {
-    /** @var array */
+    /** @var array List of Season Model */
     private $items;
 
+    /** @return array|null List of Season Model */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Season Model */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Season Model
+     * @return DescribeSeasonModelsResult
+     */
 	public function withItems(?array $items): DescribeSeasonModelsResult {
 		$this->items = $items;
 		return $this;

@@ -20,18 +20,29 @@ namespace Gs2\Dictionary\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Dictionary\Model\CurrentEntryMaster;
 
+/**
+ * Result of exportMaster: Export Entry Model Master in a master data format that can be activated
+ *
+ * @see https://docs.gs2.io/api_reference/dictionary/sdk/#exportmaster
+ */
 class ExportMasterResult implements IResult {
-    /** @var CurrentEntryMaster */
+    /** @var CurrentEntryMaster Entry Model master data that can be activated */
     private $item;
 
+    /** @return CurrentEntryMaster|null Entry Model master data that can be activated */
 	public function getItem(): ?CurrentEntryMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentEntryMaster|null $item Entry Model master data that can be activated */
 	public function setItem(?CurrentEntryMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentEntryMaster|null $item Entry Model master data that can be activated
+     * @return ExportMasterResult
+     */
 	public function withItem(?CurrentEntryMaster $item): ExportMasterResult {
 		$this->item = $item;
 		return $this;

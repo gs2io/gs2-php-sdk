@@ -19,15 +19,26 @@ namespace Gs2\Inventory\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for describeBigInventoryModels: List Big Inventory Models
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#describebiginventorymodels
+ */
 class DescribeBigInventoryModelsRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DescribeBigInventoryModelsRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DescribeBigInventoryModelsRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;

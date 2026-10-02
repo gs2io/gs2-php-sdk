@@ -20,45 +20,68 @@ namespace Gs2\MegaField\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Layers allow for multiple logical hierarchies within a single space.
+ *
+ * @see https://docs.gs2.io/api_reference/mega_field/sdk/#layermodel
+ */
 class LayerModel implements IModel {
 	/**
-     * @var string
+     * @var string Layer Model GRN
 	 */
 	private $layerModelId;
 	/**
-     * @var string
+     * @var string Layer Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
+    /** @return string|null Layer Model GRN */
 	public function getLayerModelId(): ?string {
 		return $this->layerModelId;
 	}
+    /** @param string|null $layerModelId Layer Model GRN */
 	public function setLayerModelId(?string $layerModelId) {
 		$this->layerModelId = $layerModelId;
 	}
+    /**
+     * @param string|null $layerModelId Layer Model GRN
+     * @return LayerModel
+     */
 	public function withLayerModelId(?string $layerModelId): LayerModel {
 		$this->layerModelId = $layerModelId;
 		return $this;
 	}
+    /** @return string|null Layer Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Layer Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Layer Model name
+     * @return LayerModel
+     */
 	public function withName(?string $name): LayerModel {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return LayerModel
+     */
 	public function withMetadata(?string $metadata): LayerModel {
 		$this->metadata = $metadata;
 		return $this;

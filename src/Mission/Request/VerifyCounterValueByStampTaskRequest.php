@@ -19,27 +19,44 @@ namespace Gs2\Mission\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for verifyCounterValueByStampTask: Execute counter value verification as a verify action within a distributed transaction (verify task)
+ *
+ * @see https://docs.gs2.io/api_reference/mission/stamp_sheet/#gs2missionverifycountervaluebyuserid
+ */
 class VerifyCounterValueByStampTaskRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Verify Action */
     private $stampTask;
-    /** @var string */
+    /** @var string Encryption Key GRN */
     private $keyId;
+    /** @return string|null Verify Action */
 	public function getStampTask(): ?string {
 		return $this->stampTask;
 	}
+    /** @param string|null $stampTask Verify Action */
 	public function setStampTask(?string $stampTask) {
 		$this->stampTask = $stampTask;
 	}
+    /**
+     * @param string|null $stampTask Verify Action
+     * @return VerifyCounterValueByStampTaskRequest
+     */
 	public function withStampTask(?string $stampTask): VerifyCounterValueByStampTaskRequest {
 		$this->stampTask = $stampTask;
 		return $this;
 	}
+    /** @return string|null Encryption Key GRN */
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
+    /** @param string|null $keyId Encryption Key GRN */
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
+    /**
+     * @param string|null $keyId Encryption Key GRN
+     * @return VerifyCounterValueByStampTaskRequest
+     */
 	public function withKeyId(?string $keyId): VerifyCounterValueByStampTaskRequest {
 		$this->keyId = $keyId;
 		return $this;

@@ -20,18 +20,29 @@ namespace Gs2\Key\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Key\Model\Key;
 
+/**
+ * Result of deleteKey: Delete Encryption Key
+ *
+ * @see https://docs.gs2.io/api_reference/key/sdk/#deletekey
+ */
 class DeleteKeyResult implements IResult {
-    /** @var Key */
+    /** @var Key Encryption Key deleted */
     private $item;
 
+    /** @return Key|null Encryption Key deleted */
 	public function getItem(): ?Key {
 		return $this->item;
 	}
 
+    /** @param Key|null $item Encryption Key deleted */
 	public function setItem(?Key $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Key|null $item Encryption Key deleted
+     * @return DeleteKeyResult
+     */
 	public function withItem(?Key $item): DeleteKeyResult {
 		$this->item = $item;
 		return $this;

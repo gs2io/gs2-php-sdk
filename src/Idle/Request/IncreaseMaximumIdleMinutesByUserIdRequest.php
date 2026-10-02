@@ -19,65 +19,100 @@ namespace Gs2\Idle\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for increaseMaximumIdleMinutesByUserId: Increase the maximum idle time by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/idle/sdk/#increasemaximumidleminutesbyuserid
+ */
 class IncreaseMaximumIdleMinutesByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Category Model Name */
     private $categoryName;
-    /** @var int */
+    /** @var int Minutes to increase the maximum idle time */
     private $increaseMinutes;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return IncreaseMaximumIdleMinutesByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): IncreaseMaximumIdleMinutesByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return IncreaseMaximumIdleMinutesByUserIdRequest
+     */
 	public function withUserId(?string $userId): IncreaseMaximumIdleMinutesByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Category Model Name */
 	public function getCategoryName(): ?string {
 		return $this->categoryName;
 	}
+    /** @param string|null $categoryName Category Model Name */
 	public function setCategoryName(?string $categoryName) {
 		$this->categoryName = $categoryName;
 	}
+    /**
+     * @param string|null $categoryName Category Model Name
+     * @return IncreaseMaximumIdleMinutesByUserIdRequest
+     */
 	public function withCategoryName(?string $categoryName): IncreaseMaximumIdleMinutesByUserIdRequest {
 		$this->categoryName = $categoryName;
 		return $this;
 	}
+    /** @return int|null Minutes to increase the maximum idle time */
 	public function getIncreaseMinutes(): ?int {
 		return $this->increaseMinutes;
 	}
+    /** @param int|null $increaseMinutes Minutes to increase the maximum idle time */
 	public function setIncreaseMinutes(?int $increaseMinutes) {
 		$this->increaseMinutes = $increaseMinutes;
 	}
+    /**
+     * @param int|null $increaseMinutes Minutes to increase the maximum idle time
+     * @return IncreaseMaximumIdleMinutesByUserIdRequest
+     */
 	public function withIncreaseMinutes(?int $increaseMinutes): IncreaseMaximumIdleMinutesByUserIdRequest {
 		$this->increaseMinutes = $increaseMinutes;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return IncreaseMaximumIdleMinutesByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): IncreaseMaximumIdleMinutesByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

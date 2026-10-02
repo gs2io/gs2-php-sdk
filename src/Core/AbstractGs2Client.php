@@ -20,7 +20,7 @@ use Gs2\Core\Net\Gs2Session;
 
 abstract class AbstractGs2Client {
 
-	/** @var Gs2Session セッション */
+	/** @var Gs2Session Session */
 	protected $session;
 
 	protected function __construct(Gs2Session $session)

@@ -20,18 +20,29 @@ namespace Gs2\Showcase\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Showcase\Model\CurrentShowcaseMaster;
 
+/**
+ * Result of exportMaster: Export Showcase Master in a master data format that can be activated
+ *
+ * @see https://docs.gs2.io/api_reference/showcase/sdk/#exportmaster
+ */
 class ExportMasterResult implements IResult {
-    /** @var CurrentShowcaseMaster */
+    /** @var CurrentShowcaseMaster Showcase master data that can be activated */
     private $item;
 
+    /** @return CurrentShowcaseMaster|null Showcase master data that can be activated */
 	public function getItem(): ?CurrentShowcaseMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentShowcaseMaster|null $item Showcase master data that can be activated */
 	public function setItem(?CurrentShowcaseMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentShowcaseMaster|null $item Showcase master data that can be activated
+     * @return ExportMasterResult
+     */
 	public function withItem(?CurrentShowcaseMaster $item): ExportMasterResult {
 		$this->item = $item;
 		return $this;

@@ -24,18 +24,29 @@ use Gs2\StateMachine\Model\StackEntry;
 use Gs2\StateMachine\Model\Variable;
 use Gs2\StateMachine\Model\Status;
 
+/**
+ * Result of getStatusByUserId: Get State Machine Status by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/state_machine/sdk/#getstatusbyuserid
+ */
 class GetStatusByUserIdResult implements IResult {
-    /** @var Status */
+    /** @var Status State Machine Status */
     private $item;
 
+    /** @return Status|null State Machine Status */
 	public function getItem(): ?Status {
 		return $this->item;
 	}
 
+    /** @param Status|null $item State Machine Status */
 	public function setItem(?Status $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Status|null $item State Machine Status
+     * @return GetStatusByUserIdResult
+     */
 	public function withItem(?Status $item): GetStatusByUserIdResult {
 		$this->item = $item;
 		return $this;

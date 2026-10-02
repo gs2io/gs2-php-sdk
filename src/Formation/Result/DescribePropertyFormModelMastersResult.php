@@ -21,33 +21,50 @@ use Gs2\Core\Model\IResult;
 use Gs2\Formation\Model\SlotModel;
 use Gs2\Formation\Model\PropertyFormModelMaster;
 
+/**
+ * Result of describePropertyFormModelMasters: List Property Form Model Masters
+ *
+ * @see https://docs.gs2.io/api_reference/formation/sdk/#describepropertyformmodelmasters
+ */
 class DescribePropertyFormModelMastersResult implements IResult {
-    /** @var array */
+    /** @var array List of Form Model Masters */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Form Model Masters */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Form Model Masters */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Form Model Masters
+     * @return DescribePropertyFormModelMastersResult
+     */
 	public function withItems(?array $items): DescribePropertyFormModelMastersResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribePropertyFormModelMastersResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribePropertyFormModelMastersResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

@@ -20,18 +20,25 @@ namespace Gs2\Project\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Project\Model\BillingMethod;
 
+/** Result of updateBillingMethod: Update payment method */
 class UpdateBillingMethodResult implements IResult {
-    /** @var BillingMethod */
+    /** @var BillingMethod Payment method updated */
     private $item;
 
+    /** @return BillingMethod|null Payment method updated */
 	public function getItem(): ?BillingMethod {
 		return $this->item;
 	}
 
+    /** @param BillingMethod|null $item Payment method updated */
 	public function setItem(?BillingMethod $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param BillingMethod|null $item Payment method updated
+     * @return UpdateBillingMethodResult
+     */
 	public function withItem(?BillingMethod $item): UpdateBillingMethodResult {
 		$this->item = $item;
 		return $this;

@@ -22,158 +22,233 @@ use Gs2\Mission\Model\TargetCounterModel;
 use Gs2\Mission\Model\VerifyAction;
 use Gs2\Mission\Model\AcquireAction;
 
+/**
+ * Request for createMissionTaskModelMaster: Create Mission Task Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#createmissiontaskmodelmaster
+ */
 class CreateMissionTaskModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Mission Group Model name */
     private $missionGroupName;
-    /** @var string */
+    /** @var string Mission Task Model name */
     private $name;
-    /** @var string */
+    /** @var string Metadata */
     private $metadata;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var string */
+    /** @var string Completion condition type */
     private $verifyCompleteType;
-    /** @var TargetCounterModel */
+    /** @var TargetCounterModel Target Counter */
     private $targetCounter;
-    /** @var array */
+    /** @var array Verify Actions when task is accomplished */
     private $verifyCompleteConsumeActions;
-    /** @var array */
+    /** @var array Rewards for mission accomplishment */
     private $completeAcquireActions;
-    /** @var string */
+    /** @var string GS2-Schedule event GRN with a set period of time during which rewards can be received */
     private $challengePeriodEventId;
-    /** @var string */
+    /** @var string Name of the task that must be accomplished to attempt this task */
     private $premiseMissionTaskName;
-    /** @var string */
+    /** @var string Counter Model name */
     private $counterName;
-    /** @var string */
+    /** @var string Target Reset timing */
     private $targetResetType;
-    /** @var int */
+    /** @var int Target value */
     private $targetValue;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return CreateMissionTaskModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): CreateMissionTaskModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Mission Group Model name */
 	public function getMissionGroupName(): ?string {
 		return $this->missionGroupName;
 	}
+    /** @param string|null $missionGroupName Mission Group Model name */
 	public function setMissionGroupName(?string $missionGroupName) {
 		$this->missionGroupName = $missionGroupName;
 	}
+    /**
+     * @param string|null $missionGroupName Mission Group Model name
+     * @return CreateMissionTaskModelMasterRequest
+     */
 	public function withMissionGroupName(?string $missionGroupName): CreateMissionTaskModelMasterRequest {
 		$this->missionGroupName = $missionGroupName;
 		return $this;
 	}
+    /** @return string|null Mission Task Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Mission Task Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Mission Task Model name
+     * @return CreateMissionTaskModelMasterRequest
+     */
 	public function withName(?string $name): CreateMissionTaskModelMasterRequest {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return CreateMissionTaskModelMasterRequest
+     */
 	public function withMetadata(?string $metadata): CreateMissionTaskModelMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return CreateMissionTaskModelMasterRequest
+     */
 	public function withDescription(?string $description): CreateMissionTaskModelMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Completion condition type */
 	public function getVerifyCompleteType(): ?string {
 		return $this->verifyCompleteType;
 	}
+    /** @param string|null $verifyCompleteType Completion condition type */
 	public function setVerifyCompleteType(?string $verifyCompleteType) {
 		$this->verifyCompleteType = $verifyCompleteType;
 	}
+    /**
+     * @param string|null $verifyCompleteType Completion condition type
+     * @return CreateMissionTaskModelMasterRequest
+     */
 	public function withVerifyCompleteType(?string $verifyCompleteType): CreateMissionTaskModelMasterRequest {
 		$this->verifyCompleteType = $verifyCompleteType;
 		return $this;
 	}
+    /** @return TargetCounterModel|null Target Counter */
 	public function getTargetCounter(): ?TargetCounterModel {
 		return $this->targetCounter;
 	}
+    /** @param TargetCounterModel|null $targetCounter Target Counter */
 	public function setTargetCounter(?TargetCounterModel $targetCounter) {
 		$this->targetCounter = $targetCounter;
 	}
+    /**
+     * @param TargetCounterModel|null $targetCounter Target Counter
+     * @return CreateMissionTaskModelMasterRequest
+     */
 	public function withTargetCounter(?TargetCounterModel $targetCounter): CreateMissionTaskModelMasterRequest {
 		$this->targetCounter = $targetCounter;
 		return $this;
 	}
+    /** @return array|null Verify Actions when task is accomplished */
 	public function getVerifyCompleteConsumeActions(): ?array {
 		return $this->verifyCompleteConsumeActions;
 	}
+    /** @param array|null $verifyCompleteConsumeActions Verify Actions when task is accomplished */
 	public function setVerifyCompleteConsumeActions(?array $verifyCompleteConsumeActions) {
 		$this->verifyCompleteConsumeActions = $verifyCompleteConsumeActions;
 	}
+    /**
+     * @param array|null $verifyCompleteConsumeActions Verify Actions when task is accomplished
+     * @return CreateMissionTaskModelMasterRequest
+     */
 	public function withVerifyCompleteConsumeActions(?array $verifyCompleteConsumeActions): CreateMissionTaskModelMasterRequest {
 		$this->verifyCompleteConsumeActions = $verifyCompleteConsumeActions;
 		return $this;
 	}
+    /** @return array|null Rewards for mission accomplishment */
 	public function getCompleteAcquireActions(): ?array {
 		return $this->completeAcquireActions;
 	}
+    /** @param array|null $completeAcquireActions Rewards for mission accomplishment */
 	public function setCompleteAcquireActions(?array $completeAcquireActions) {
 		$this->completeAcquireActions = $completeAcquireActions;
 	}
+    /**
+     * @param array|null $completeAcquireActions Rewards for mission accomplishment
+     * @return CreateMissionTaskModelMasterRequest
+     */
 	public function withCompleteAcquireActions(?array $completeAcquireActions): CreateMissionTaskModelMasterRequest {
 		$this->completeAcquireActions = $completeAcquireActions;
 		return $this;
 	}
+    /** @return string|null GS2-Schedule event GRN with a set period of time during which rewards can be received */
 	public function getChallengePeriodEventId(): ?string {
 		return $this->challengePeriodEventId;
 	}
+    /** @param string|null $challengePeriodEventId GS2-Schedule event GRN with a set period of time during which rewards can be received */
 	public function setChallengePeriodEventId(?string $challengePeriodEventId) {
 		$this->challengePeriodEventId = $challengePeriodEventId;
 	}
+    /**
+     * @param string|null $challengePeriodEventId GS2-Schedule event GRN with a set period of time during which rewards can be received
+     * @return CreateMissionTaskModelMasterRequest
+     */
 	public function withChallengePeriodEventId(?string $challengePeriodEventId): CreateMissionTaskModelMasterRequest {
 		$this->challengePeriodEventId = $challengePeriodEventId;
 		return $this;
 	}
+    /** @return string|null Name of the task that must be accomplished to attempt this task */
 	public function getPremiseMissionTaskName(): ?string {
 		return $this->premiseMissionTaskName;
 	}
+    /** @param string|null $premiseMissionTaskName Name of the task that must be accomplished to attempt this task */
 	public function setPremiseMissionTaskName(?string $premiseMissionTaskName) {
 		$this->premiseMissionTaskName = $premiseMissionTaskName;
 	}
+    /**
+     * @param string|null $premiseMissionTaskName Name of the task that must be accomplished to attempt this task
+     * @return CreateMissionTaskModelMasterRequest
+     */
 	public function withPremiseMissionTaskName(?string $premiseMissionTaskName): CreateMissionTaskModelMasterRequest {
 		$this->premiseMissionTaskName = $premiseMissionTaskName;
 		return $this;
 	}
     /**
+     * @return string|null Counter Model name
      * @deprecated
      */
 	public function getCounterName(): ?string {
 		return $this->counterName;
 	}
     /**
+     * @param string|null $counterName Counter Model name
      * @deprecated
      */
 	public function setCounterName(?string $counterName) {
 		$this->counterName = $counterName;
 	}
     /**
+     * @param string|null $counterName Counter Model name
+     * @return CreateMissionTaskModelMasterRequest
      * @deprecated
      */
 	public function withCounterName(?string $counterName): CreateMissionTaskModelMasterRequest {
@@ -181,18 +256,22 @@ class CreateMissionTaskModelMasterRequest extends Gs2BasicRequest {
 		return $this;
 	}
     /**
+     * @return string|null Target Reset timing
      * @deprecated
      */
 	public function getTargetResetType(): ?string {
 		return $this->targetResetType;
 	}
     /**
+     * @param string|null $targetResetType Target Reset timing
      * @deprecated
      */
 	public function setTargetResetType(?string $targetResetType) {
 		$this->targetResetType = $targetResetType;
 	}
     /**
+     * @param string|null $targetResetType Target Reset timing
+     * @return CreateMissionTaskModelMasterRequest
      * @deprecated
      */
 	public function withTargetResetType(?string $targetResetType): CreateMissionTaskModelMasterRequest {
@@ -200,18 +279,22 @@ class CreateMissionTaskModelMasterRequest extends Gs2BasicRequest {
 		return $this;
 	}
     /**
+     * @return int|null Target value
      * @deprecated
      */
 	public function getTargetValue(): ?int {
 		return $this->targetValue;
 	}
     /**
+     * @param int|null $targetValue Target value
      * @deprecated
      */
 	public function setTargetValue(?int $targetValue) {
 		$this->targetValue = $targetValue;
 	}
     /**
+     * @param int|null $targetValue Target value
+     * @return CreateMissionTaskModelMasterRequest
      * @deprecated
      */
 	public function withTargetValue(?int $targetValue): CreateMissionTaskModelMasterRequest {

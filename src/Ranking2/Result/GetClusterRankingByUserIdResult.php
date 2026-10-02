@@ -20,18 +20,29 @@ namespace Gs2\Ranking2\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Ranking2\Model\ClusterRankingData;
 
+/**
+ * Result of getClusterRankingByUserId: Get Cluster Ranking by specifying the user ID
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/sdk/#getclusterrankingbyuserid
+ */
 class GetClusterRankingByUserIdResult implements IResult {
-    /** @var ClusterRankingData */
+    /** @var ClusterRankingData Cluster Ranking */
     private $item;
 
+    /** @return ClusterRankingData|null Cluster Ranking */
 	public function getItem(): ?ClusterRankingData {
 		return $this->item;
 	}
 
+    /** @param ClusterRankingData|null $item Cluster Ranking */
 	public function setItem(?ClusterRankingData $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param ClusterRankingData|null $item Cluster Ranking
+     * @return GetClusterRankingByUserIdResult
+     */
 	public function withItem(?ClusterRankingData $item): GetClusterRankingByUserIdResult {
 		$this->item = $item;
 		return $this;

@@ -20,33 +20,50 @@ namespace Gs2\Datastore\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Datastore\Model\DataObject;
 
+/**
+ * Result of prepareReUpload: Prepare to re-upload data object
+ *
+ * @see https://docs.gs2.io/api_reference/datastore/sdk/#preparereupload
+ */
 class PrepareReUploadResult implements IResult {
-    /** @var DataObject */
+    /** @var DataObject Data object */
     private $item;
-    /** @var string */
+    /** @var string URL used to execute the upload process */
     private $uploadUrl;
 
+    /** @return DataObject|null Data object */
 	public function getItem(): ?DataObject {
 		return $this->item;
 	}
 
+    /** @param DataObject|null $item Data object */
 	public function setItem(?DataObject $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param DataObject|null $item Data object
+     * @return PrepareReUploadResult
+     */
 	public function withItem(?DataObject $item): PrepareReUploadResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null URL used to execute the upload process */
 	public function getUploadUrl(): ?string {
 		return $this->uploadUrl;
 	}
 
+    /** @param string|null $uploadUrl URL used to execute the upload process */
 	public function setUploadUrl(?string $uploadUrl) {
 		$this->uploadUrl = $uploadUrl;
 	}
 
+    /**
+     * @param string|null $uploadUrl URL used to execute the upload process
+     * @return PrepareReUploadResult
+     */
 	public function withUploadUrl(?string $uploadUrl): PrepareReUploadResult {
 		$this->uploadUrl = $uploadUrl;
 		return $this;

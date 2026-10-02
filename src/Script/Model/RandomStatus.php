@@ -20,31 +20,48 @@ namespace Gs2\Script\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Random Number Status
+ *
+ * @see https://docs.gs2.io/api_reference/script/sdk/#randomstatus
+ */
 class RandomStatus implements IModel {
 	/**
-     * @var int
+     * @var int Random Seed
 	 */
 	private $seed;
 	/**
-     * @var array
+     * @var array Used Random Numbers
 	 */
 	private $used;
+    /** @return int|null Random Seed */
 	public function getSeed(): ?int {
 		return $this->seed;
 	}
+    /** @param int|null $seed Random Seed */
 	public function setSeed(?int $seed) {
 		$this->seed = $seed;
 	}
+    /**
+     * @param int|null $seed Random Seed
+     * @return RandomStatus
+     */
 	public function withSeed(?int $seed): RandomStatus {
 		$this->seed = $seed;
 		return $this;
 	}
+    /** @return array|null Used Random Numbers */
 	public function getUsed(): ?array {
 		return $this->used;
 	}
+    /** @param array|null $used Used Random Numbers */
 	public function setUsed(?array $used) {
 		$this->used = $used;
 	}
+    /**
+     * @param array|null $used Used Random Numbers
+     * @return RandomStatus
+     */
 	public function withUsed(?array $used): RandomStatus {
 		$this->used = $used;
 		return $this;

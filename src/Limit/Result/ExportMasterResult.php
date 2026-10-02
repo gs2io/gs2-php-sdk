@@ -20,18 +20,29 @@ namespace Gs2\Limit\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Limit\Model\CurrentLimitMaster;
 
+/**
+ * Result of exportMaster: Export Usage Limit Model Master in a master data format that can be activated
+ *
+ * @see https://docs.gs2.io/api_reference/limit/sdk/#exportmaster
+ */
 class ExportMasterResult implements IResult {
-    /** @var CurrentLimitMaster */
+    /** @var CurrentLimitMaster Usage Limit Model Master that can be activated */
     private $item;
 
+    /** @return CurrentLimitMaster|null Usage Limit Model Master that can be activated */
 	public function getItem(): ?CurrentLimitMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentLimitMaster|null $item Usage Limit Model Master that can be activated */
 	public function setItem(?CurrentLimitMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentLimitMaster|null $item Usage Limit Model Master that can be activated
+     * @return ExportMasterResult
+     */
 	public function withItem(?CurrentLimitMaster $item): ExportMasterResult {
 		$this->item = $item;
 		return $this;

@@ -20,18 +20,29 @@ namespace Gs2\Inventory\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Inventory\Model\BigItemModelMaster;
 
+/**
+ * Result of createBigItemModelMaster: Create Big Item Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#createbigitemmodelmaster
+ */
 class CreateBigItemModelMasterResult implements IResult {
-    /** @var BigItemModelMaster */
+    /** @var BigItemModelMaster Item Model Master created */
     private $item;
 
+    /** @return BigItemModelMaster|null Item Model Master created */
 	public function getItem(): ?BigItemModelMaster {
 		return $this->item;
 	}
 
+    /** @param BigItemModelMaster|null $item Item Model Master created */
 	public function setItem(?BigItemModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param BigItemModelMaster|null $item Item Model Master created
+     * @return CreateBigItemModelMasterResult
+     */
 	public function withItem(?BigItemModelMaster $item): CreateBigItemModelMasterResult {
 		$this->item = $item;
 		return $this;

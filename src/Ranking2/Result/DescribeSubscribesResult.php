@@ -20,33 +20,50 @@ namespace Gs2\Ranking2\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Ranking2\Model\SubscribeUser;
 
+/**
+ * Result of describeSubscribes: List Subscribed User Information
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/sdk/#describesubscribes
+ */
 class DescribeSubscribesResult implements IResult {
-    /** @var array */
+    /** @var array List of Subscribed User Information */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Subscribed User Information */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Subscribed User Information */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Subscribed User Information
+     * @return DescribeSubscribesResult
+     */
 	public function withItems(?array $items): DescribeSubscribesResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeSubscribesResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeSubscribesResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

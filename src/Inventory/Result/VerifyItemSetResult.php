@@ -20,18 +20,29 @@ namespace Gs2\Inventory\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Inventory\Model\ItemSet;
 
+/**
+ * Result of verifyItemSet: Verify the quantity of Item Sets in possession
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#verifyitemset
+ */
 class VerifyItemSetResult implements IResult {
-    /** @var array */
+    /** @var array List of deleted Item Sets */
     private $items;
 
+    /** @return array|null List of deleted Item Sets */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of deleted Item Sets */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of deleted Item Sets
+     * @return VerifyItemSetResult
+     */
 	public function withItems(?array $items): VerifyItemSetResult {
 		$this->items = $items;
 		return $this;

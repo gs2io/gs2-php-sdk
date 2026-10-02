@@ -21,18 +21,25 @@ use Gs2\Core\Model\IResult;
 use Gs2\Project\Model\TwoFactorAuthenticationSetting;
 use Gs2\Project\Model\Account;
 
+/** Result of deleteAccount: Delete GS2 account */
 class DeleteAccountResult implements IResult {
-    /** @var Account */
+    /** @var Account GS2 Account deleted */
     private $item;
 
+    /** @return Account|null GS2 Account deleted */
 	public function getItem(): ?Account {
 		return $this->item;
 	}
 
+    /** @param Account|null $item GS2 Account deleted */
 	public function setItem(?Account $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Account|null $item GS2 Account deleted
+     * @return DeleteAccountResult
+     */
 	public function withItem(?Account $item): DeleteAccountResult {
 		$this->item = $item;
 		return $this;

@@ -22,78 +22,113 @@ use Gs2\Inventory\Model\ItemSet;
 use Gs2\Inventory\Model\ItemModel;
 use Gs2\Inventory\Model\Inventory;
 
+/**
+ * Result of getItemWithSignatureByUserId: Get Item Set with signature by specifying the user ID
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#getitemwithsignaturebyuserid
+ */
 class GetItemWithSignatureByUserIdResult implements IResult {
-    /** @var array */
+    /** @var array List of Item Sets */
     private $items;
-    /** @var ItemModel */
+    /** @var ItemModel Item Model */
     private $itemModel;
-    /** @var Inventory */
+    /** @var Inventory Inventory */
     private $inventory;
-    /** @var string */
+    /** @var string Item Set Information for Signature Subject */
     private $body;
-    /** @var string */
+    /** @var string Signature */
     private $signature;
 
+    /** @return array|null List of Item Sets */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Item Sets */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Item Sets
+     * @return GetItemWithSignatureByUserIdResult
+     */
 	public function withItems(?array $items): GetItemWithSignatureByUserIdResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return ItemModel|null Item Model */
 	public function getItemModel(): ?ItemModel {
 		return $this->itemModel;
 	}
 
+    /** @param ItemModel|null $itemModel Item Model */
 	public function setItemModel(?ItemModel $itemModel) {
 		$this->itemModel = $itemModel;
 	}
 
+    /**
+     * @param ItemModel|null $itemModel Item Model
+     * @return GetItemWithSignatureByUserIdResult
+     */
 	public function withItemModel(?ItemModel $itemModel): GetItemWithSignatureByUserIdResult {
 		$this->itemModel = $itemModel;
 		return $this;
 	}
 
+    /** @return Inventory|null Inventory */
 	public function getInventory(): ?Inventory {
 		return $this->inventory;
 	}
 
+    /** @param Inventory|null $inventory Inventory */
 	public function setInventory(?Inventory $inventory) {
 		$this->inventory = $inventory;
 	}
 
+    /**
+     * @param Inventory|null $inventory Inventory
+     * @return GetItemWithSignatureByUserIdResult
+     */
 	public function withInventory(?Inventory $inventory): GetItemWithSignatureByUserIdResult {
 		$this->inventory = $inventory;
 		return $this;
 	}
 
+    /** @return string|null Item Set Information for Signature Subject */
 	public function getBody(): ?string {
 		return $this->body;
 	}
 
+    /** @param string|null $body Item Set Information for Signature Subject */
 	public function setBody(?string $body) {
 		$this->body = $body;
 	}
 
+    /**
+     * @param string|null $body Item Set Information for Signature Subject
+     * @return GetItemWithSignatureByUserIdResult
+     */
 	public function withBody(?string $body): GetItemWithSignatureByUserIdResult {
 		$this->body = $body;
 		return $this;
 	}
 
+    /** @return string|null Signature */
 	public function getSignature(): ?string {
 		return $this->signature;
 	}
 
+    /** @param string|null $signature Signature */
 	public function setSignature(?string $signature) {
 		$this->signature = $signature;
 	}
 
+    /**
+     * @param string|null $signature Signature
+     * @return GetItemWithSignatureByUserIdResult
+     */
 	public function withSignature(?string $signature): GetItemWithSignatureByUserIdResult {
 		$this->signature = $signature;
 		return $this;

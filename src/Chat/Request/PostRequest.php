@@ -19,77 +19,118 @@ namespace Gs2\Chat\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for post: Post a message
+ *
+ * @see https://docs.gs2.io/api_reference/chat/sdk/#post
+ */
 class PostRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Room name */
     private $roomName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var int */
+    /** @var int Category number for classifying messages */
     private $category;
-    /** @var string */
+    /** @var string Metadata */
     private $metadata;
-    /** @var string */
+    /** @var string Password */
     private $password;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return PostRequest
+     */
 	public function withNamespaceName(?string $namespaceName): PostRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Room name */
 	public function getRoomName(): ?string {
 		return $this->roomName;
 	}
+    /** @param string|null $roomName Room name */
 	public function setRoomName(?string $roomName) {
 		$this->roomName = $roomName;
 	}
+    /**
+     * @param string|null $roomName Room name
+     * @return PostRequest
+     */
 	public function withRoomName(?string $roomName): PostRequest {
 		$this->roomName = $roomName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return PostRequest
+     */
 	public function withAccessToken(?string $accessToken): PostRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return int|null Category number for classifying messages */
 	public function getCategory(): ?int {
 		return $this->category;
 	}
+    /** @param int|null $category Category number for classifying messages */
 	public function setCategory(?int $category) {
 		$this->category = $category;
 	}
+    /**
+     * @param int|null $category Category number for classifying messages
+     * @return PostRequest
+     */
 	public function withCategory(?int $category): PostRequest {
 		$this->category = $category;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return PostRequest
+     */
 	public function withMetadata(?string $metadata): PostRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return string|null Password */
 	public function getPassword(): ?string {
 		return $this->password;
 	}
+    /** @param string|null $password Password */
 	public function setPassword(?string $password) {
 		$this->password = $password;
 	}
+    /**
+     * @param string|null $password Password
+     * @return PostRequest
+     */
 	public function withPassword(?string $password): PostRequest {
 		$this->password = $password;
 		return $this;

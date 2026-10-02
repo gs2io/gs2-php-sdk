@@ -19,27 +19,40 @@ namespace Gs2\Project\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/** Request for challengeMfa: Verify MFA */
 class ChallengeMfaRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Signed in to the account token. */
     private $accountToken;
-    /** @var string */
+    /** @var string One-time password code */
     private $passcode;
+    /** @return string|null Signed in to the account token. */
 	public function getAccountToken(): ?string {
 		return $this->accountToken;
 	}
+    /** @param string|null $accountToken Signed in to the account token. */
 	public function setAccountToken(?string $accountToken) {
 		$this->accountToken = $accountToken;
 	}
+    /**
+     * @param string|null $accountToken Signed in to the account token.
+     * @return ChallengeMfaRequest
+     */
 	public function withAccountToken(?string $accountToken): ChallengeMfaRequest {
 		$this->accountToken = $accountToken;
 		return $this;
 	}
+    /** @return string|null One-time password code */
 	public function getPasscode(): ?string {
 		return $this->passcode;
 	}
+    /** @param string|null $passcode One-time password code */
 	public function setPasscode(?string $passcode) {
 		$this->passcode = $passcode;
 	}
+    /**
+     * @param string|null $passcode One-time password code
+     * @return ChallengeMfaRequest
+     */
 	public function withPasscode(?string $passcode): ChallengeMfaRequest {
 		$this->passcode = $passcode;
 		return $this;

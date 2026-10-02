@@ -20,18 +20,29 @@ namespace Gs2\Enhance\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Enhance\Model\CurrentRateMaster;
 
+/**
+ * Result of getCurrentRateMaster: Get currently active Rate Model master data
+ *
+ * @see https://docs.gs2.io/api_reference/enhance/sdk/#getcurrentratemaster
+ */
 class GetCurrentRateMasterResult implements IResult {
-    /** @var CurrentRateMaster */
+    /** @var CurrentRateMaster Currently active Rate Model master data */
     private $item;
 
+    /** @return CurrentRateMaster|null Currently active Rate Model master data */
 	public function getItem(): ?CurrentRateMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentRateMaster|null $item Currently active Rate Model master data */
 	public function setItem(?CurrentRateMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentRateMaster|null $item Currently active Rate Model master data
+     * @return GetCurrentRateMasterResult
+     */
 	public function withItem(?CurrentRateMaster $item): GetCurrentRateMasterResult {
 		$this->item = $item;
 		return $this;

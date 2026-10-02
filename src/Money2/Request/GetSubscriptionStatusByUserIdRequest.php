@@ -19,51 +19,80 @@ namespace Gs2\Money2\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getSubscriptionStatusByUserId: Get subscription status by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#getsubscriptionstatusbyuserid
+ */
 class GetSubscriptionStatusByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Store Subscription Content Model name */
     private $contentName;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetSubscriptionStatusByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetSubscriptionStatusByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return GetSubscriptionStatusByUserIdRequest
+     */
 	public function withUserId(?string $userId): GetSubscriptionStatusByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Store Subscription Content Model name */
 	public function getContentName(): ?string {
 		return $this->contentName;
 	}
+    /** @param string|null $contentName Store Subscription Content Model name */
 	public function setContentName(?string $contentName) {
 		$this->contentName = $contentName;
 	}
+    /**
+     * @param string|null $contentName Store Subscription Content Model name
+     * @return GetSubscriptionStatusByUserIdRequest
+     */
 	public function withContentName(?string $contentName): GetSubscriptionStatusByUserIdRequest {
 		$this->contentName = $contentName;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return GetSubscriptionStatusByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): GetSubscriptionStatusByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

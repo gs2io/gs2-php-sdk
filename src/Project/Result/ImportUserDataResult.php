@@ -20,18 +20,25 @@ namespace Gs2\Project\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Project\Model\ImportProgress;
 
+/** Result of importUserData: Start import user data */
 class ImportUserDataResult implements IResult {
-    /** @var ImportProgress */
+    /** @var ImportProgress ImportProgress */
     private $item;
 
+    /** @return ImportProgress|null ImportProgress */
 	public function getItem(): ?ImportProgress {
 		return $this->item;
 	}
 
+    /** @param ImportProgress|null $item ImportProgress */
 	public function setItem(?ImportProgress $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param ImportProgress|null $item ImportProgress
+     * @return ImportUserDataResult
+     */
 	public function withItem(?ImportProgress $item): ImportUserDataResult {
 		$this->item = $item;
 		return $this;

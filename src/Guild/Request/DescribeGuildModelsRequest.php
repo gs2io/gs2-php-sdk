@@ -19,15 +19,26 @@ namespace Gs2\Guild\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for describeGuildModels: List Guild Models
+ *
+ * @see https://docs.gs2.io/api_reference/guild/sdk/#describeguildmodels
+ */
 class DescribeGuildModelsRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DescribeGuildModelsRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DescribeGuildModelsRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;

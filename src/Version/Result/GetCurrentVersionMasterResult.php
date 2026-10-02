@@ -20,18 +20,29 @@ namespace Gs2\Version\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Version\Model\CurrentVersionMaster;
 
+/**
+ * Result of getCurrentVersionMaster: Get currently active Version Model master data
+ *
+ * @see https://docs.gs2.io/api_reference/version/sdk/#getcurrentversionmaster
+ */
 class GetCurrentVersionMasterResult implements IResult {
-    /** @var CurrentVersionMaster */
+    /** @var CurrentVersionMaster Currently active Version Model master data */
     private $item;
 
+    /** @return CurrentVersionMaster|null Currently active Version Model master data */
 	public function getItem(): ?CurrentVersionMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentVersionMaster|null $item Currently active Version Model master data */
 	public function setItem(?CurrentVersionMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentVersionMaster|null $item Currently active Version Model master data
+     * @return GetCurrentVersionMasterResult
+     */
 	public function withItem(?CurrentVersionMaster $item): GetCurrentVersionMasterResult {
 		$this->item = $item;
 		return $this;

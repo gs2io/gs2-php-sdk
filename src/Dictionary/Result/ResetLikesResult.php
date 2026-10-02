@@ -19,6 +19,11 @@ namespace Gs2\Dictionary\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of resetLikes: Reset likes
+ *
+ * @see https://docs.gs2.io/api_reference/dictionary/sdk/#resetlikes
+ */
 class ResetLikesResult implements IResult {
 
     public static function fromJson(?array $data): ?ResetLikesResult {

@@ -19,27 +19,44 @@ namespace Gs2\Stamina\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getRecoverValueTableMaster: Get Stamina Recovery Amount Table Master
+ *
+ * @see https://docs.gs2.io/api_reference/stamina/sdk/#getrecovervaluetablemaster
+ */
 class GetRecoverValueTableMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Stamina Recovery Amount Table name */
     private $recoverValueTableName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetRecoverValueTableMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetRecoverValueTableMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Stamina Recovery Amount Table name */
 	public function getRecoverValueTableName(): ?string {
 		return $this->recoverValueTableName;
 	}
+    /** @param string|null $recoverValueTableName Stamina Recovery Amount Table name */
 	public function setRecoverValueTableName(?string $recoverValueTableName) {
 		$this->recoverValueTableName = $recoverValueTableName;
 	}
+    /**
+     * @param string|null $recoverValueTableName Stamina Recovery Amount Table name
+     * @return GetRecoverValueTableMasterRequest
+     */
 	public function withRecoverValueTableName(?string $recoverValueTableName): GetRecoverValueTableMasterRequest {
 		$this->recoverValueTableName = $recoverValueTableName;
 		return $this;

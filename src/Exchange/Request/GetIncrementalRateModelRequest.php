@@ -19,27 +19,44 @@ namespace Gs2\Exchange\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getIncrementalRateModel: Get an Incremental Cost Exchange Rate Model
+ *
+ * @see https://docs.gs2.io/api_reference/exchange/sdk/#getincrementalratemodel
+ */
 class GetIncrementalRateModelRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Incremental Cost Exchange Rate Model name */
     private $rateName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetIncrementalRateModelRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetIncrementalRateModelRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Incremental Cost Exchange Rate Model name */
 	public function getRateName(): ?string {
 		return $this->rateName;
 	}
+    /** @param string|null $rateName Incremental Cost Exchange Rate Model name */
 	public function setRateName(?string $rateName) {
 		$this->rateName = $rateName;
 	}
+    /**
+     * @param string|null $rateName Incremental Cost Exchange Rate Model name
+     * @return GetIncrementalRateModelRequest
+     */
 	public function withRateName(?string $rateName): GetIncrementalRateModelRequest {
 		$this->rateName = $rateName;
 		return $this;

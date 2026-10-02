@@ -20,18 +20,29 @@ namespace Gs2\Matchmaking\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Matchmaking\Model\Ballot;
 
+/**
+ * Result of vote: Vote on match results
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#vote-1
+ */
 class VoteResult implements IResult {
-    /** @var Ballot */
+    /** @var Ballot Ballot */
     private $item;
 
+    /** @return Ballot|null Ballot */
 	public function getItem(): ?Ballot {
 		return $this->item;
 	}
 
+    /** @param Ballot|null $item Ballot */
 	public function setItem(?Ballot $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Ballot|null $item Ballot
+     * @return VoteResult
+     */
 	public function withItem(?Ballot $item): VoteResult {
 		$this->item = $item;
 		return $this;

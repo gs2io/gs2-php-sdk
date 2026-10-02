@@ -23,33 +23,50 @@ use Gs2\Guild\Model\RoleModel;
 use Gs2\Guild\Model\Member;
 use Gs2\Guild\Model\Guild;
 
+/**
+ * Result of promoteSeniorMember: Promote the most senior guild member to guild master if the guild master has not logged in for a certain period of time
+ *
+ * @see https://docs.gs2.io/api_reference/guild/sdk/#promoteseniormember
+ */
 class PromoteSeniorMemberResult implements IResult {
-    /** @var LastGuildMasterActivity */
+    /** @var LastGuildMasterActivity Last Guild Master Activity */
     private $item;
-    /** @var Guild */
+    /** @var Guild Guild */
     private $guild;
 
+    /** @return LastGuildMasterActivity|null Last Guild Master Activity */
 	public function getItem(): ?LastGuildMasterActivity {
 		return $this->item;
 	}
 
+    /** @param LastGuildMasterActivity|null $item Last Guild Master Activity */
 	public function setItem(?LastGuildMasterActivity $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param LastGuildMasterActivity|null $item Last Guild Master Activity
+     * @return PromoteSeniorMemberResult
+     */
 	public function withItem(?LastGuildMasterActivity $item): PromoteSeniorMemberResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return Guild|null Guild */
 	public function getGuild(): ?Guild {
 		return $this->guild;
 	}
 
+    /** @param Guild|null $guild Guild */
 	public function setGuild(?Guild $guild) {
 		$this->guild = $guild;
 	}
 
+    /**
+     * @param Guild|null $guild Guild
+     * @return PromoteSeniorMemberResult
+     */
 	public function withGuild(?Guild $guild): PromoteSeniorMemberResult {
 		$this->guild = $guild;
 		return $this;

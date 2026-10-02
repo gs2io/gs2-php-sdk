@@ -21,48 +21,71 @@ use Gs2\Core\Model\IResult;
 use Gs2\SerialKey\Model\SerialKey;
 use Gs2\SerialKey\Model\CampaignModel;
 
+/**
+ * Result of useByStampTask: Execute serial code set to used as consume action
+ *
+ * @see https://docs.gs2.io/api_reference/serial_key/stamp_sheet/#gs2serialkeyusebyuserid
+ */
 class UseByStampTaskResult implements IResult {
-    /** @var SerialKey */
+    /** @var SerialKey SerialKey */
     private $item;
-    /** @var CampaignModel */
+    /** @var CampaignModel Campaign Model */
     private $campaignModel;
-    /** @var string */
+    /** @var string Context recording the execution results of Consume Actions */
     private $newContextStack;
 
+    /** @return SerialKey|null SerialKey */
 	public function getItem(): ?SerialKey {
 		return $this->item;
 	}
 
+    /** @param SerialKey|null $item SerialKey */
 	public function setItem(?SerialKey $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param SerialKey|null $item SerialKey
+     * @return UseByStampTaskResult
+     */
 	public function withItem(?SerialKey $item): UseByStampTaskResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return CampaignModel|null Campaign Model */
 	public function getCampaignModel(): ?CampaignModel {
 		return $this->campaignModel;
 	}
 
+    /** @param CampaignModel|null $campaignModel Campaign Model */
 	public function setCampaignModel(?CampaignModel $campaignModel) {
 		$this->campaignModel = $campaignModel;
 	}
 
+    /**
+     * @param CampaignModel|null $campaignModel Campaign Model
+     * @return UseByStampTaskResult
+     */
 	public function withCampaignModel(?CampaignModel $campaignModel): UseByStampTaskResult {
 		$this->campaignModel = $campaignModel;
 		return $this;
 	}
 
+    /** @return string|null Context recording the execution results of Consume Actions */
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
+    /** @param string|null $newContextStack Context recording the execution results of Consume Actions */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
+    /**
+     * @param string|null $newContextStack Context recording the execution results of Consume Actions
+     * @return UseByStampTaskResult
+     */
 	public function withNewContextStack(?string $newContextStack): UseByStampTaskResult {
 		$this->newContextStack = $newContextStack;
 		return $this;

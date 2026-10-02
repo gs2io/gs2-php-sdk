@@ -21,48 +21,71 @@ use Gs2\Core\Model\IResult;
 use Gs2\JobQueue\Model\Job;
 use Gs2\JobQueue\Model\JobResultBody;
 
+/**
+ * Result of runByUserId: Execute a job by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/job_queue/sdk/#runbyuserid
+ */
 class RunByUserIdResult implements IResult {
-    /** @var Job */
+    /** @var Job Job */
     private $item;
-    /** @var JobResultBody */
+    /** @var JobResultBody Job execution result body */
     private $result;
     /** @var bool */
     private $isLastJob;
 
+    /** @return Job|null Job */
 	public function getItem(): ?Job {
 		return $this->item;
 	}
 
+    /** @param Job|null $item Job */
 	public function setItem(?Job $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Job|null $item Job
+     * @return RunByUserIdResult
+     */
 	public function withItem(?Job $item): RunByUserIdResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return JobResultBody|null Job execution result body */
 	public function getResult(): ?JobResultBody {
 		return $this->result;
 	}
 
+    /** @param JobResultBody|null $result Job execution result body */
 	public function setResult(?JobResultBody $result) {
 		$this->result = $result;
 	}
 
+    /**
+     * @param JobResultBody|null $result Job execution result body
+     * @return RunByUserIdResult
+     */
 	public function withResult(?JobResultBody $result): RunByUserIdResult {
 		$this->result = $result;
 		return $this;
 	}
 
+    /** @return bool|null */
 	public function getIsLastJob(): ?bool {
 		return $this->isLastJob;
 	}
 
+    /** @param bool|null $isLastJob */
 	public function setIsLastJob(?bool $isLastJob) {
 		$this->isLastJob = $isLastJob;
 	}
 
+    /**
+     * @param bool|null $isLastJob
+     * @return RunByUserIdResult
+     */
 	public function withIsLastJob(?bool $isLastJob): RunByUserIdResult {
 		$this->isLastJob = $isLastJob;
 		return $this;

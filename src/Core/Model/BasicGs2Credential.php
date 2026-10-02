@@ -19,7 +19,7 @@ namespace Gs2\Core\Model;
 use InvalidArgumentException;
 
 /**
- * アクセスキーによる認証。
+ * Credential based on an access key.
  * 
  * @author Game Server Services, Inc.
  *
@@ -27,28 +27,28 @@ use InvalidArgumentException;
 class BasicGs2Credential implements IGs2Credential {
 	
 	/**
-     * クライアントID
+     * Client ID
      * @var string
      */
     private $clientId;
 
     /**
-     * クライアントシークレット
+     * Client secret
      * @var string
      */
     private $clientSecret;
 
     /**
-     * クライアントシークレット
+     * Project token
      * @var string
      */
     private $projectToken;
 
     /**
-	 * コンストラクタ。
+	 * Constructor.
 	 * 
-	 * @param string $clientId クライアントID
-	 * @param string $clientSecret クライアントシークレット
+	 * @param string $clientId Client ID
+	 * @param string $clientSecret Client secret
 	 */
 	public function __construct(string $clientId, string $clientSecret) {
 		if($clientId == null || $clientSecret == null) {
@@ -59,35 +59,35 @@ class BasicGs2Credential implements IGs2Credential {
 	}
 
 	/**
-	 * クライアントIDを取得。
+	 * Get the client ID.
 	 * 
-	 * @return string クライアントID
+	 * @return string Client ID
 	 */
 	public function getClientId(): string {
 		return $this->clientId;
 	}
 	
 	/**
-	 * クライアントシークレットを取得。
+	 * Get the client secret.
 	 * 
-	 * @return string クライアントシークレット
+	 * @return string Client secret
 	 */
 	public function getClientSecret(): string {
 		return $this->clientSecret;
 	}
 
     /**
-     * プロジェクトトークンを取得。
+     * Get the project token.
      *
-     * @return string プロジェクトトークン
+     * @return string Project token
      */
     public function getProjectToken() {
 		return $this->projectToken;
 	}
 
     /**
-     * プロジェクトトークンを設定。
-     * @param string $projectToken プロジェクトトークン
+     * Set the project token.
+     * @param string $projectToken Project token
      */
     public function setProjectToken(string $projectToken) {
 		$this->projectToken = $projectToken;

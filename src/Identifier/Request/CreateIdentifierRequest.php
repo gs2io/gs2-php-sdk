@@ -19,15 +19,26 @@ namespace Gs2\Identifier\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for createIdentifier: Create Credential
+ *
+ * @see https://docs.gs2.io/api_reference/identifier/sdk/#createidentifier
+ */
 class CreateIdentifierRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string User Name */
     private $userName;
+    /** @return string|null User Name */
 	public function getUserName(): ?string {
 		return $this->userName;
 	}
+    /** @param string|null $userName User Name */
 	public function setUserName(?string $userName) {
 		$this->userName = $userName;
 	}
+    /**
+     * @param string|null $userName User Name
+     * @return CreateIdentifierRequest
+     */
 	public function withUserName(?string $userName): CreateIdentifierRequest {
 		$this->userName = $userName;
 		return $this;

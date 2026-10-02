@@ -20,87 +20,128 @@ namespace Gs2\Enchant\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Balance Parameter Model
+ *
+ * @see https://docs.gs2.io/api_reference/enchant/sdk/#balanceparametermodel
+ */
 class BalanceParameterModel implements IModel {
 	/**
-     * @var string
+     * @var string Balance Parameter Model GRN
 	 */
 	private $balanceParameterModelId;
 	/**
-     * @var string
+     * @var string Balance Parameter Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var int
+     * @var int Total value
 	 */
 	private $totalValue;
 	/**
-     * @var string
+     * @var string Initial value setting policy
 	 */
 	private $initialValueStrategy;
 	/**
-     * @var array
+     * @var array Balance parameter value model list
 	 */
 	private $parameters;
+    /** @return string|null Balance Parameter Model GRN */
 	public function getBalanceParameterModelId(): ?string {
 		return $this->balanceParameterModelId;
 	}
+    /** @param string|null $balanceParameterModelId Balance Parameter Model GRN */
 	public function setBalanceParameterModelId(?string $balanceParameterModelId) {
 		$this->balanceParameterModelId = $balanceParameterModelId;
 	}
+    /**
+     * @param string|null $balanceParameterModelId Balance Parameter Model GRN
+     * @return BalanceParameterModel
+     */
 	public function withBalanceParameterModelId(?string $balanceParameterModelId): BalanceParameterModel {
 		$this->balanceParameterModelId = $balanceParameterModelId;
 		return $this;
 	}
+    /** @return string|null Balance Parameter Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Balance Parameter Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Balance Parameter Model name
+     * @return BalanceParameterModel
+     */
 	public function withName(?string $name): BalanceParameterModel {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return BalanceParameterModel
+     */
 	public function withMetadata(?string $metadata): BalanceParameterModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return int|null Total value */
 	public function getTotalValue(): ?int {
 		return $this->totalValue;
 	}
+    /** @param int|null $totalValue Total value */
 	public function setTotalValue(?int $totalValue) {
 		$this->totalValue = $totalValue;
 	}
+    /**
+     * @param int|null $totalValue Total value
+     * @return BalanceParameterModel
+     */
 	public function withTotalValue(?int $totalValue): BalanceParameterModel {
 		$this->totalValue = $totalValue;
 		return $this;
 	}
+    /** @return string|null Initial value setting policy */
 	public function getInitialValueStrategy(): ?string {
 		return $this->initialValueStrategy;
 	}
+    /** @param string|null $initialValueStrategy Initial value setting policy */
 	public function setInitialValueStrategy(?string $initialValueStrategy) {
 		$this->initialValueStrategy = $initialValueStrategy;
 	}
+    /**
+     * @param string|null $initialValueStrategy Initial value setting policy
+     * @return BalanceParameterModel
+     */
 	public function withInitialValueStrategy(?string $initialValueStrategy): BalanceParameterModel {
 		$this->initialValueStrategy = $initialValueStrategy;
 		return $this;
 	}
+    /** @return array|null Balance parameter value model list */
 	public function getParameters(): ?array {
 		return $this->parameters;
 	}
+    /** @param array|null $parameters Balance parameter value model list */
 	public function setParameters(?array $parameters) {
 		$this->parameters = $parameters;
 	}
+    /**
+     * @param array|null $parameters Balance parameter value model list
+     * @return BalanceParameterModel
+     */
 	public function withParameters(?array $parameters): BalanceParameterModel {
 		$this->parameters = $parameters;
 		return $this;

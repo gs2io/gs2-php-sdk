@@ -20,33 +20,50 @@ namespace Gs2\Formation\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Formation\Model\MoldModelMaster;
 
+/**
+ * Result of describeMoldModelMasters: List Form Storage Area Masters
+ *
+ * @see https://docs.gs2.io/api_reference/formation/sdk/#describemoldmodelmasters
+ */
 class DescribeMoldModelMastersResult implements IResult {
-    /** @var array */
+    /** @var array List of Form Storage Area Masters */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Form Storage Area Masters */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Form Storage Area Masters */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Form Storage Area Masters
+     * @return DescribeMoldModelMastersResult
+     */
 	public function withItems(?array $items): DescribeMoldModelMastersResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeMoldModelMastersResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeMoldModelMastersResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

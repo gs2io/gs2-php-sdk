@@ -23,48 +23,71 @@ use Gs2\Formation\Model\SlotModel;
 use Gs2\Formation\Model\FormModel;
 use Gs2\Formation\Model\MoldModel;
 
+/**
+ * Result of setMoldCapacityByUserId: Set capacity size with specified user ID
+ *
+ * @see https://docs.gs2.io/api_reference/formation/sdk/#setmoldcapacitybyuserid
+ */
 class SetMoldCapacityByUserIdResult implements IResult {
-    /** @var Mold */
+    /** @var Mold Form Storage Area with updated capacity */
     private $item;
-    /** @var Mold */
+    /** @var Mold Form Storage Area before updating capacity */
     private $old;
-    /** @var MoldModel */
+    /** @var MoldModel Form Storage Area */
     private $moldModel;
 
+    /** @return Mold|null Form Storage Area with updated capacity */
 	public function getItem(): ?Mold {
 		return $this->item;
 	}
 
+    /** @param Mold|null $item Form Storage Area with updated capacity */
 	public function setItem(?Mold $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Mold|null $item Form Storage Area with updated capacity
+     * @return SetMoldCapacityByUserIdResult
+     */
 	public function withItem(?Mold $item): SetMoldCapacityByUserIdResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return Mold|null Form Storage Area before updating capacity */
 	public function getOld(): ?Mold {
 		return $this->old;
 	}
 
+    /** @param Mold|null $old Form Storage Area before updating capacity */
 	public function setOld(?Mold $old) {
 		$this->old = $old;
 	}
 
+    /**
+     * @param Mold|null $old Form Storage Area before updating capacity
+     * @return SetMoldCapacityByUserIdResult
+     */
 	public function withOld(?Mold $old): SetMoldCapacityByUserIdResult {
 		$this->old = $old;
 		return $this;
 	}
 
+    /** @return MoldModel|null Form Storage Area */
 	public function getMoldModel(): ?MoldModel {
 		return $this->moldModel;
 	}
 
+    /** @param MoldModel|null $moldModel Form Storage Area */
 	public function setMoldModel(?MoldModel $moldModel) {
 		$this->moldModel = $moldModel;
 	}
 
+    /**
+     * @param MoldModel|null $moldModel Form Storage Area
+     * @return SetMoldCapacityByUserIdResult
+     */
 	public function withMoldModel(?MoldModel $moldModel): SetMoldCapacityByUserIdResult {
 		$this->moldModel = $moldModel;
 		return $this;

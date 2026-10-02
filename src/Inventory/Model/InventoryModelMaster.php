@@ -20,143 +20,208 @@ namespace Gs2\Inventory\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Inventory Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#inventorymodelmaster
+ */
 class InventoryModelMaster implements IModel {
 	/**
-     * @var string
+     * @var string Inventory Model Master GRN
 	 */
 	private $inventoryModelId;
 	/**
-     * @var string
+     * @var string Inventory Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var string
+     * @var string Description
 	 */
 	private $description;
 	/**
-     * @var int
+     * @var int Initial Capacity
 	 */
 	private $initialCapacity;
 	/**
-     * @var int
+     * @var int Maximum Capacity
 	 */
 	private $maxCapacity;
 	/**
-     * @var bool
+     * @var bool Protect Referenced Items
 	 */
 	private $protectReferencedItem;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Inventory Model Master GRN */
 	public function getInventoryModelId(): ?string {
 		return $this->inventoryModelId;
 	}
+    /** @param string|null $inventoryModelId Inventory Model Master GRN */
 	public function setInventoryModelId(?string $inventoryModelId) {
 		$this->inventoryModelId = $inventoryModelId;
 	}
+    /**
+     * @param string|null $inventoryModelId Inventory Model Master GRN
+     * @return InventoryModelMaster
+     */
 	public function withInventoryModelId(?string $inventoryModelId): InventoryModelMaster {
 		$this->inventoryModelId = $inventoryModelId;
 		return $this;
 	}
+    /** @return string|null Inventory Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Inventory Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Inventory Model name
+     * @return InventoryModelMaster
+     */
 	public function withName(?string $name): InventoryModelMaster {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return InventoryModelMaster
+     */
 	public function withMetadata(?string $metadata): InventoryModelMaster {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return InventoryModelMaster
+     */
 	public function withDescription(?string $description): InventoryModelMaster {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return int|null Initial Capacity */
 	public function getInitialCapacity(): ?int {
 		return $this->initialCapacity;
 	}
+    /** @param int|null $initialCapacity Initial Capacity */
 	public function setInitialCapacity(?int $initialCapacity) {
 		$this->initialCapacity = $initialCapacity;
 	}
+    /**
+     * @param int|null $initialCapacity Initial Capacity
+     * @return InventoryModelMaster
+     */
 	public function withInitialCapacity(?int $initialCapacity): InventoryModelMaster {
 		$this->initialCapacity = $initialCapacity;
 		return $this;
 	}
+    /** @return int|null Maximum Capacity */
 	public function getMaxCapacity(): ?int {
 		return $this->maxCapacity;
 	}
+    /** @param int|null $maxCapacity Maximum Capacity */
 	public function setMaxCapacity(?int $maxCapacity) {
 		$this->maxCapacity = $maxCapacity;
 	}
+    /**
+     * @param int|null $maxCapacity Maximum Capacity
+     * @return InventoryModelMaster
+     */
 	public function withMaxCapacity(?int $maxCapacity): InventoryModelMaster {
 		$this->maxCapacity = $maxCapacity;
 		return $this;
 	}
+    /** @return bool|null Protect Referenced Items */
 	public function getProtectReferencedItem(): ?bool {
 		return $this->protectReferencedItem;
 	}
+    /** @param bool|null $protectReferencedItem Protect Referenced Items */
 	public function setProtectReferencedItem(?bool $protectReferencedItem) {
 		$this->protectReferencedItem = $protectReferencedItem;
 	}
+    /**
+     * @param bool|null $protectReferencedItem Protect Referenced Items
+     * @return InventoryModelMaster
+     */
 	public function withProtectReferencedItem(?bool $protectReferencedItem): InventoryModelMaster {
 		$this->protectReferencedItem = $protectReferencedItem;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return InventoryModelMaster
+     */
 	public function withCreatedAt(?int $createdAt): InventoryModelMaster {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return InventoryModelMaster
+     */
 	public function withUpdatedAt(?int $updatedAt): InventoryModelMaster {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return InventoryModelMaster
+     */
 	public function withRevision(?int $revision): InventoryModelMaster {
 		$this->revision = $revision;
 		return $this;

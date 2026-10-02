@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Money\Model\WalletDetail;
 use Gs2\Money\Model\Wallet;
 
+/**
+ * Result of depositByUserId: Deposit balance to Wallet by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/money/sdk/#depositbyuserid
+ */
 class DepositByUserIdResult implements IResult {
-    /** @var Wallet */
+    /** @var Wallet Wallet after deposit */
     private $item;
 
+    /** @return Wallet|null Wallet after deposit */
 	public function getItem(): ?Wallet {
 		return $this->item;
 	}
 
+    /** @param Wallet|null $item Wallet after deposit */
 	public function setItem(?Wallet $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Wallet|null $item Wallet after deposit
+     * @return DepositByUserIdResult
+     */
 	public function withItem(?Wallet $item): DepositByUserIdResult {
 		$this->item = $item;
 		return $this;

@@ -20,18 +20,29 @@ namespace Gs2\Chat\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Chat\Model\CurrentModelMaster;
 
+/**
+ * Result of updateCurrentModelMaster: Update currently active Message Category Model master data
+ *
+ * @see https://docs.gs2.io/api_reference/chat/sdk/#updatecurrentmodelmaster
+ */
 class UpdateCurrentModelMasterResult implements IResult {
-    /** @var CurrentModelMaster */
+    /** @var CurrentModelMaster Updated master data of the currently active Message Category Models */
     private $item;
 
+    /** @return CurrentModelMaster|null Updated master data of the currently active Message Category Models */
 	public function getItem(): ?CurrentModelMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentModelMaster|null $item Updated master data of the currently active Message Category Models */
 	public function setItem(?CurrentModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentModelMaster|null $item Updated master data of the currently active Message Category Models
+     * @return UpdateCurrentModelMasterResult
+     */
 	public function withItem(?CurrentModelMaster $item): UpdateCurrentModelMasterResult {
 		$this->item = $item;
 		return $this;

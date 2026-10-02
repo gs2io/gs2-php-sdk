@@ -20,18 +20,29 @@ namespace Gs2\Money\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Money\Model\Receipt;
 
+/**
+ * Result of getByUserIdAndTransactionId: Get receipt by specifying user ID and transaction ID
+ *
+ * @see https://docs.gs2.io/api_reference/money/sdk/#getbyuseridandtransactionid
+ */
 class GetByUserIdAndTransactionIdResult implements IResult {
-    /** @var Receipt */
+    /** @var Receipt Receipt */
     private $item;
 
+    /** @return Receipt|null Receipt */
 	public function getItem(): ?Receipt {
 		return $this->item;
 	}
 
+    /** @param Receipt|null $item Receipt */
 	public function setItem(?Receipt $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Receipt|null $item Receipt
+     * @return GetByUserIdAndTransactionIdResult
+     */
 	public function withItem(?Receipt $item): GetByUserIdAndTransactionIdResult {
 		$this->item = $item;
 		return $this;

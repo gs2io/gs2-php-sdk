@@ -19,27 +19,44 @@ namespace Gs2\Dictionary\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getEntryModelMaster: Get Entry Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/dictionary/sdk/#getentrymodelmaster
+ */
 class GetEntryModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Entry Model name */
     private $entryName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetEntryModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetEntryModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Entry Model name */
 	public function getEntryName(): ?string {
 		return $this->entryName;
 	}
+    /** @param string|null $entryName Entry Model name */
 	public function setEntryName(?string $entryName) {
 		$this->entryName = $entryName;
 	}
+    /**
+     * @param string|null $entryName Entry Model name
+     * @return GetEntryModelMasterRequest
+     */
 	public function withEntryName(?string $entryName): GetEntryModelMasterRequest {
 		$this->entryName = $entryName;
 		return $this;

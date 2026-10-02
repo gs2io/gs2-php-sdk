@@ -20,45 +20,68 @@ namespace Gs2\StateMachine\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Send a message event
+ *
+ * @see https://docs.gs2.io/api_reference/state_machine/sdk/#emitevent
+ */
 class EmitEvent implements IModel {
 	/**
-     * @var string
+     * @var string Event name
 	 */
 	private $event;
 	/**
-     * @var string
+     * @var string Parameters
 	 */
 	private $parameters;
 	/**
-     * @var int
+     * @var int Timestamp
 	 */
 	private $timestamp;
+    /** @return string|null Event name */
 	public function getEvent(): ?string {
 		return $this->event;
 	}
+    /** @param string|null $event Event name */
 	public function setEvent(?string $event) {
 		$this->event = $event;
 	}
+    /**
+     * @param string|null $event Event name
+     * @return EmitEvent
+     */
 	public function withEvent(?string $event): EmitEvent {
 		$this->event = $event;
 		return $this;
 	}
+    /** @return string|null Parameters */
 	public function getParameters(): ?string {
 		return $this->parameters;
 	}
+    /** @param string|null $parameters Parameters */
 	public function setParameters(?string $parameters) {
 		$this->parameters = $parameters;
 	}
+    /**
+     * @param string|null $parameters Parameters
+     * @return EmitEvent
+     */
 	public function withParameters(?string $parameters): EmitEvent {
 		$this->parameters = $parameters;
 		return $this;
 	}
+    /** @return int|null Timestamp */
 	public function getTimestamp(): ?int {
 		return $this->timestamp;
 	}
+    /** @param int|null $timestamp Timestamp */
 	public function setTimestamp(?int $timestamp) {
 		$this->timestamp = $timestamp;
 	}
+    /**
+     * @param int|null $timestamp Timestamp
+     * @return EmitEvent
+     */
 	public function withTimestamp(?int $timestamp): EmitEvent {
 		$this->timestamp = $timestamp;
 		return $this;

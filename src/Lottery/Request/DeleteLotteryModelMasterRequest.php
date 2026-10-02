@@ -19,27 +19,44 @@ namespace Gs2\Lottery\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for deleteLotteryModelMaster: Delete Lottery Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/lottery/sdk/#deletelotterymodelmaster
+ */
 class DeleteLotteryModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Lottery Model name */
     private $lotteryName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DeleteLotteryModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DeleteLotteryModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Lottery Model name */
 	public function getLotteryName(): ?string {
 		return $this->lotteryName;
 	}
+    /** @param string|null $lotteryName Lottery Model name */
 	public function setLotteryName(?string $lotteryName) {
 		$this->lotteryName = $lotteryName;
 	}
+    /**
+     * @param string|null $lotteryName Lottery Model name
+     * @return DeleteLotteryModelMasterRequest
+     */
 	public function withLotteryName(?string $lotteryName): DeleteLotteryModelMasterRequest {
 		$this->lotteryName = $lotteryName;
 		return $this;

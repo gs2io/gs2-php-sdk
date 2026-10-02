@@ -20,18 +20,29 @@ namespace Gs2\Stamina\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Stamina\Model\RecoverValueTableMaster;
 
+/**
+ * Result of getRecoverValueTableMaster: Get Stamina Recovery Amount Table Master
+ *
+ * @see https://docs.gs2.io/api_reference/stamina/sdk/#getrecovervaluetablemaster
+ */
 class GetRecoverValueTableMasterResult implements IResult {
-    /** @var RecoverValueTableMaster */
+    /** @var RecoverValueTableMaster Stamina recovery amount table master */
     private $item;
 
+    /** @return RecoverValueTableMaster|null Stamina recovery amount table master */
 	public function getItem(): ?RecoverValueTableMaster {
 		return $this->item;
 	}
 
+    /** @param RecoverValueTableMaster|null $item Stamina recovery amount table master */
 	public function setItem(?RecoverValueTableMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param RecoverValueTableMaster|null $item Stamina recovery amount table master
+     * @return GetRecoverValueTableMasterResult
+     */
 	public function withItem(?RecoverValueTableMaster $item): GetRecoverValueTableMasterResult {
 		$this->item = $item;
 		return $this;

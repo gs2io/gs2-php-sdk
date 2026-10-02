@@ -23,18 +23,29 @@ use Gs2\Mission\Model\VerifyAction;
 use Gs2\Mission\Model\AcquireAction;
 use Gs2\Mission\Model\MissionTaskModel;
 
+/**
+ * Result of describeMissionTaskModels: List Mission Task Models
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#describemissiontaskmodels
+ */
 class DescribeMissionTaskModelsResult implements IResult {
-    /** @var array */
+    /** @var array List of Mission Task Model */
     private $items;
 
+    /** @return array|null List of Mission Task Model */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Mission Task Model */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Mission Task Model
+     * @return DescribeMissionTaskModelsResult
+     */
 	public function withItems(?array $items): DescribeMissionTaskModelsResult {
 		$this->items = $items;
 		return $this;

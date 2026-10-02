@@ -23,18 +23,29 @@ use Gs2\Showcase\Model\ConsumeAction;
 use Gs2\Showcase\Model\AcquireAction;
 use Gs2\Showcase\Model\RandomDisplayItem;
 
+/**
+ * Result of decrementPurchaseCountByUserId: Decrement the number of times a Random Displayed Item has been purchased by specifying the user ID
+ *
+ * @see https://docs.gs2.io/api_reference/showcase/sdk/#decrementpurchasecountbyuserid
+ */
 class DecrementPurchaseCountByUserIdResult implements IResult {
-    /** @var RandomDisplayItem */
+    /** @var RandomDisplayItem Random Displayed Item after purchase counts are subtracted */
     private $item;
 
+    /** @return RandomDisplayItem|null Random Displayed Item after purchase counts are subtracted */
 	public function getItem(): ?RandomDisplayItem {
 		return $this->item;
 	}
 
+    /** @param RandomDisplayItem|null $item Random Displayed Item after purchase counts are subtracted */
 	public function setItem(?RandomDisplayItem $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param RandomDisplayItem|null $item Random Displayed Item after purchase counts are subtracted
+     * @return DecrementPurchaseCountByUserIdResult
+     */
 	public function withItem(?RandomDisplayItem $item): DecrementPurchaseCountByUserIdResult {
 		$this->item = $item;
 		return $this;

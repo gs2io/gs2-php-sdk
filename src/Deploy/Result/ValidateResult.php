@@ -19,6 +19,11 @@ namespace Gs2\Deploy\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of validate: Validate Template
+ *
+ * @see https://docs.gs2.io/api_reference/deploy/sdk/#validate
+ */
 class ValidateResult implements IResult {
 
     public static function fromJson(?array $data): ?ValidateResult {

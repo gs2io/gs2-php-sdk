@@ -22,18 +22,29 @@ use Gs2\Account\Model\ScopeValue;
 use Gs2\Account\Model\OpenIdConnectSetting;
 use Gs2\Account\Model\TakeOverTypeModelMaster;
 
+/**
+ * Result of createTakeOverTypeModelMaster: Create Takeover Type Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/account/sdk/#createtakeovertypemodelmaster
+ */
 class CreateTakeOverTypeModelMasterResult implements IResult {
-    /** @var TakeOverTypeModelMaster */
+    /** @var TakeOverTypeModelMaster Takeover Type Model Master created */
     private $item;
 
+    /** @return TakeOverTypeModelMaster|null Takeover Type Model Master created */
 	public function getItem(): ?TakeOverTypeModelMaster {
 		return $this->item;
 	}
 
+    /** @param TakeOverTypeModelMaster|null $item Takeover Type Model Master created */
 	public function setItem(?TakeOverTypeModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param TakeOverTypeModelMaster|null $item Takeover Type Model Master created
+     * @return CreateTakeOverTypeModelMasterResult
+     */
 	public function withItem(?TakeOverTypeModelMaster $item): CreateTakeOverTypeModelMasterResult {
 		$this->item = $item;
 		return $this;

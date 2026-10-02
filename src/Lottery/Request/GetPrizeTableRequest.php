@@ -19,27 +19,44 @@ namespace Gs2\Lottery\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getPrizeTable: Get Prize Table
+ *
+ * @see https://docs.gs2.io/api_reference/lottery/sdk/#getprizetable
+ */
 class GetPrizeTableRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Prize Table name */
     private $prizeTableName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetPrizeTableRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetPrizeTableRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Prize Table name */
 	public function getPrizeTableName(): ?string {
 		return $this->prizeTableName;
 	}
+    /** @param string|null $prizeTableName Prize Table name */
 	public function setPrizeTableName(?string $prizeTableName) {
 		$this->prizeTableName = $prizeTableName;
 	}
+    /**
+     * @param string|null $prizeTableName Prize Table name
+     * @return GetPrizeTableRequest
+     */
 	public function withPrizeTableName(?string $prizeTableName): GetPrizeTableRequest {
 		$this->prizeTableName = $prizeTableName;
 		return $this;

@@ -19,63 +19,98 @@ namespace Gs2\Formation\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for describeForms: List Forms
+ *
+ * @see https://docs.gs2.io/api_reference/formation/sdk/#describeforms
+ */
 class DescribeFormsRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Form Storage Area Model name */
     private $moldModelName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Token specifying the position from which to start acquiring data */
     private $pageToken;
-    /** @var int */
+    /** @var int Number of data items to retrieve */
     private $limit;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DescribeFormsRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DescribeFormsRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Form Storage Area Model name */
 	public function getMoldModelName(): ?string {
 		return $this->moldModelName;
 	}
+    /** @param string|null $moldModelName Form Storage Area Model name */
 	public function setMoldModelName(?string $moldModelName) {
 		$this->moldModelName = $moldModelName;
 	}
+    /**
+     * @param string|null $moldModelName Form Storage Area Model name
+     * @return DescribeFormsRequest
+     */
 	public function withMoldModelName(?string $moldModelName): DescribeFormsRequest {
 		$this->moldModelName = $moldModelName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return DescribeFormsRequest
+     */
 	public function withAccessToken(?string $accessToken): DescribeFormsRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Token specifying the position from which to start acquiring data */
 	public function getPageToken(): ?string {
 		return $this->pageToken;
 	}
+    /** @param string|null $pageToken Token specifying the position from which to start acquiring data */
 	public function setPageToken(?string $pageToken) {
 		$this->pageToken = $pageToken;
 	}
+    /**
+     * @param string|null $pageToken Token specifying the position from which to start acquiring data
+     * @return DescribeFormsRequest
+     */
 	public function withPageToken(?string $pageToken): DescribeFormsRequest {
 		$this->pageToken = $pageToken;
 		return $this;
 	}
+    /** @return int|null Number of data items to retrieve */
 	public function getLimit(): ?int {
 		return $this->limit;
 	}
+    /** @param int|null $limit Number of data items to retrieve */
 	public function setLimit(?int $limit) {
 		$this->limit = $limit;
 	}
+    /**
+     * @param int|null $limit Number of data items to retrieve
+     * @return DescribeFormsRequest
+     */
 	public function withLimit(?int $limit): DescribeFormsRequest {
 		$this->limit = $limit;
 		return $this;

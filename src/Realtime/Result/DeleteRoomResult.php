@@ -20,18 +20,29 @@ namespace Gs2\Realtime\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Realtime\Model\Room;
 
+/**
+ * Result of deleteRoom: Delete Room
+ *
+ * @see https://docs.gs2.io/api_reference/realtime/sdk/#deleteroom
+ */
 class DeleteRoomResult implements IResult {
-    /** @var Room */
+    /** @var Room Room Information */
     private $item;
 
+    /** @return Room|null Room Information */
 	public function getItem(): ?Room {
 		return $this->item;
 	}
 
+    /** @param Room|null $item Room Information */
 	public function setItem(?Room $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Room|null $item Room Information
+     * @return DeleteRoomResult
+     */
 	public function withItem(?Room $item): DeleteRoomResult {
 		$this->item = $item;
 		return $this;

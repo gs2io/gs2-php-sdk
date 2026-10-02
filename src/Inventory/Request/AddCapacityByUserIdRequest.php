@@ -19,65 +19,100 @@ namespace Gs2\Inventory\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for addCapacityByUserId: Add inventory capacity size by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#addcapacitybyuserid
+ */
 class AddCapacityByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Inventory Model Name */
     private $inventoryName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var int */
+    /** @var int Capacity size to be added */
     private $addCapacityValue;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return AddCapacityByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): AddCapacityByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Inventory Model Name */
 	public function getInventoryName(): ?string {
 		return $this->inventoryName;
 	}
+    /** @param string|null $inventoryName Inventory Model Name */
 	public function setInventoryName(?string $inventoryName) {
 		$this->inventoryName = $inventoryName;
 	}
+    /**
+     * @param string|null $inventoryName Inventory Model Name
+     * @return AddCapacityByUserIdRequest
+     */
 	public function withInventoryName(?string $inventoryName): AddCapacityByUserIdRequest {
 		$this->inventoryName = $inventoryName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return AddCapacityByUserIdRequest
+     */
 	public function withUserId(?string $userId): AddCapacityByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return int|null Capacity size to be added */
 	public function getAddCapacityValue(): ?int {
 		return $this->addCapacityValue;
 	}
+    /** @param int|null $addCapacityValue Capacity size to be added */
 	public function setAddCapacityValue(?int $addCapacityValue) {
 		$this->addCapacityValue = $addCapacityValue;
 	}
+    /**
+     * @param int|null $addCapacityValue Capacity size to be added
+     * @return AddCapacityByUserIdRequest
+     */
 	public function withAddCapacityValue(?int $addCapacityValue): AddCapacityByUserIdRequest {
 		$this->addCapacityValue = $addCapacityValue;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return AddCapacityByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): AddCapacityByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

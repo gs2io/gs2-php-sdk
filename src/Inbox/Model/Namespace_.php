@@ -20,223 +20,308 @@ namespace Gs2\Inbox\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Namespace
+ *
+ * @see https://docs.gs2.io/api_reference/inbox/sdk/#namespace
+ */
 class Namespace_ implements IModel {
 	/**
-     * @var string
+     * @var string Namespace GRN
 	 */
 	private $namespaceId;
 	/**
-     * @var string
+     * @var string Namespace name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Description
 	 */
 	private $description;
 	/**
-     * @var bool
+     * @var bool Automatic Deletion
 	 */
 	private $isAutomaticDeletingEnabled;
 	/**
-     * @var TransactionSetting
+     * @var TransactionSetting Transaction Setting
 	 */
 	private $transactionSetting;
 	/**
-     * @var TransactionSettingV2
+     * @var TransactionSettingV2 Transaction Setting (V2)
 	 */
 	private $transactionSettingV2;
 	/**
-     * @var ScriptSetting
+     * @var ScriptSetting Script setting to be executed when a message is received
 	 */
 	private $receiveMessageScript;
 	/**
-     * @var ScriptSetting
+     * @var ScriptSetting Script setting to be executed when a message is opened
 	 */
 	private $readMessageScript;
 	/**
-     * @var ScriptSetting
+     * @var ScriptSetting Script setting to be executed when a message is deleted
 	 */
 	private $deleteMessageScript;
 	/**
-     * @var NotificationSetting
+     * @var NotificationSetting Receive Notification
 	 */
 	private $receiveNotification;
 	/**
-     * @var LogSetting
+     * @var LogSetting Log Output Setting
 	 */
 	private $logSetting;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var string
+     * @var string GS2-JobQueue Namespace GRN used to execute transactions
 	 */
 	private $queueNamespaceId;
 	/**
-     * @var string
+     * @var string GS2-Key Namespace used to issue transactions
 	 */
 	private $keyId;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Namespace GRN */
 	public function getNamespaceId(): ?string {
 		return $this->namespaceId;
 	}
+    /** @param string|null $namespaceId Namespace GRN */
 	public function setNamespaceId(?string $namespaceId) {
 		$this->namespaceId = $namespaceId;
 	}
+    /**
+     * @param string|null $namespaceId Namespace GRN
+     * @return Namespace_
+     */
 	public function withNamespaceId(?string $namespaceId): Namespace_ {
 		$this->namespaceId = $namespaceId;
 		return $this;
 	}
+    /** @return string|null Namespace name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Namespace name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Namespace name
+     * @return Namespace_
+     */
 	public function withName(?string $name): Namespace_ {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return Namespace_
+     */
 	public function withDescription(?string $description): Namespace_ {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return bool|null Automatic Deletion */
 	public function getIsAutomaticDeletingEnabled(): ?bool {
 		return $this->isAutomaticDeletingEnabled;
 	}
+    /** @param bool|null $isAutomaticDeletingEnabled Automatic Deletion */
 	public function setIsAutomaticDeletingEnabled(?bool $isAutomaticDeletingEnabled) {
 		$this->isAutomaticDeletingEnabled = $isAutomaticDeletingEnabled;
 	}
+    /**
+     * @param bool|null $isAutomaticDeletingEnabled Automatic Deletion
+     * @return Namespace_
+     */
 	public function withIsAutomaticDeletingEnabled(?bool $isAutomaticDeletingEnabled): Namespace_ {
 		$this->isAutomaticDeletingEnabled = $isAutomaticDeletingEnabled;
 		return $this;
 	}
     /**
+     * @return TransactionSetting|null Transaction Setting
      * @deprecated
      */
 	public function getTransactionSetting(): ?TransactionSetting {
 		return $this->transactionSetting;
 	}
     /**
+     * @param TransactionSetting|null $transactionSetting Transaction Setting
      * @deprecated
      */
 	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
 		$this->transactionSetting = $transactionSetting;
 	}
     /**
+     * @param TransactionSetting|null $transactionSetting Transaction Setting
+     * @return Namespace_
      * @deprecated
      */
 	public function withTransactionSetting(?TransactionSetting $transactionSetting): Namespace_ {
 		$this->transactionSetting = $transactionSetting;
 		return $this;
 	}
+    /** @return TransactionSettingV2|null Transaction Setting (V2) */
 	public function getTransactionSettingV2(): ?TransactionSettingV2 {
 		return $this->transactionSettingV2;
 	}
+    /** @param TransactionSettingV2|null $transactionSettingV2 Transaction Setting (V2) */
 	public function setTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2) {
 		$this->transactionSettingV2 = $transactionSettingV2;
 	}
+    /**
+     * @param TransactionSettingV2|null $transactionSettingV2 Transaction Setting (V2)
+     * @return Namespace_
+     */
 	public function withTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2): Namespace_ {
 		$this->transactionSettingV2 = $transactionSettingV2;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to be executed when a message is received */
 	public function getReceiveMessageScript(): ?ScriptSetting {
 		return $this->receiveMessageScript;
 	}
+    /** @param ScriptSetting|null $receiveMessageScript Script setting to be executed when a message is received */
 	public function setReceiveMessageScript(?ScriptSetting $receiveMessageScript) {
 		$this->receiveMessageScript = $receiveMessageScript;
 	}
+    /**
+     * @param ScriptSetting|null $receiveMessageScript Script setting to be executed when a message is received
+     * @return Namespace_
+     */
 	public function withReceiveMessageScript(?ScriptSetting $receiveMessageScript): Namespace_ {
 		$this->receiveMessageScript = $receiveMessageScript;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to be executed when a message is opened */
 	public function getReadMessageScript(): ?ScriptSetting {
 		return $this->readMessageScript;
 	}
+    /** @param ScriptSetting|null $readMessageScript Script setting to be executed when a message is opened */
 	public function setReadMessageScript(?ScriptSetting $readMessageScript) {
 		$this->readMessageScript = $readMessageScript;
 	}
+    /**
+     * @param ScriptSetting|null $readMessageScript Script setting to be executed when a message is opened
+     * @return Namespace_
+     */
 	public function withReadMessageScript(?ScriptSetting $readMessageScript): Namespace_ {
 		$this->readMessageScript = $readMessageScript;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to be executed when a message is deleted */
 	public function getDeleteMessageScript(): ?ScriptSetting {
 		return $this->deleteMessageScript;
 	}
+    /** @param ScriptSetting|null $deleteMessageScript Script setting to be executed when a message is deleted */
 	public function setDeleteMessageScript(?ScriptSetting $deleteMessageScript) {
 		$this->deleteMessageScript = $deleteMessageScript;
 	}
+    /**
+     * @param ScriptSetting|null $deleteMessageScript Script setting to be executed when a message is deleted
+     * @return Namespace_
+     */
 	public function withDeleteMessageScript(?ScriptSetting $deleteMessageScript): Namespace_ {
 		$this->deleteMessageScript = $deleteMessageScript;
 		return $this;
 	}
+    /** @return NotificationSetting|null Receive Notification */
 	public function getReceiveNotification(): ?NotificationSetting {
 		return $this->receiveNotification;
 	}
+    /** @param NotificationSetting|null $receiveNotification Receive Notification */
 	public function setReceiveNotification(?NotificationSetting $receiveNotification) {
 		$this->receiveNotification = $receiveNotification;
 	}
+    /**
+     * @param NotificationSetting|null $receiveNotification Receive Notification
+     * @return Namespace_
+     */
 	public function withReceiveNotification(?NotificationSetting $receiveNotification): Namespace_ {
 		$this->receiveNotification = $receiveNotification;
 		return $this;
 	}
+    /** @return LogSetting|null Log Output Setting */
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
+    /** @param LogSetting|null $logSetting Log Output Setting */
 	public function setLogSetting(?LogSetting $logSetting) {
 		$this->logSetting = $logSetting;
 	}
+    /**
+     * @param LogSetting|null $logSetting Log Output Setting
+     * @return Namespace_
+     */
 	public function withLogSetting(?LogSetting $logSetting): Namespace_ {
 		$this->logSetting = $logSetting;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return Namespace_
+     */
 	public function withCreatedAt(?int $createdAt): Namespace_ {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return Namespace_
+     */
 	public function withUpdatedAt(?int $updatedAt): Namespace_ {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
     /**
+     * @return string|null GS2-JobQueue Namespace GRN used to execute transactions
      * @deprecated
      */
 	public function getQueueNamespaceId(): ?string {
 		return $this->queueNamespaceId;
 	}
     /**
+     * @param string|null $queueNamespaceId GS2-JobQueue Namespace GRN used to execute transactions
      * @deprecated
      */
 	public function setQueueNamespaceId(?string $queueNamespaceId) {
 		$this->queueNamespaceId = $queueNamespaceId;
 	}
     /**
+     * @param string|null $queueNamespaceId GS2-JobQueue Namespace GRN used to execute transactions
+     * @return Namespace_
      * @deprecated
      */
 	public function withQueueNamespaceId(?string $queueNamespaceId): Namespace_ {
@@ -244,30 +329,40 @@ class Namespace_ implements IModel {
 		return $this;
 	}
     /**
+     * @return string|null GS2-Key Namespace used to issue transactions
      * @deprecated
      */
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
     /**
+     * @param string|null $keyId GS2-Key Namespace used to issue transactions
      * @deprecated
      */
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
     /**
+     * @param string|null $keyId GS2-Key Namespace used to issue transactions
+     * @return Namespace_
      * @deprecated
      */
 	public function withKeyId(?string $keyId): Namespace_ {
 		$this->keyId = $keyId;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return Namespace_
+     */
 	public function withRevision(?int $revision): Namespace_ {
 		$this->revision = $revision;
 		return $this;

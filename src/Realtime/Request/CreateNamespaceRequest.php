@@ -24,108 +24,159 @@ use Gs2\Realtime\Model\MobileNotificationMessage;
 use Gs2\Realtime\Model\NotificationSetting;
 use Gs2\Realtime\Model\LogSetting;
 
+/**
+ * Request for createNamespace: Create Namespace
+ *
+ * @see https://docs.gs2.io/api_reference/realtime/sdk/#createnamespace
+ */
 class CreateNamespaceRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $name;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var TransactionSetting */
+    /** @var TransactionSetting Transaction Setting */
     private $transactionSetting;
-    /** @var TransactionSettingV2 */
+    /** @var TransactionSettingV2 Transaction Setting (V2) */
     private $transactionSettingV2;
-    /** @var string */
+    /** @var string Server Type */
     private $serverType;
-    /** @var string */
+    /** @var string Server Spec */
     private $serverSpec;
-    /** @var NotificationSetting */
+    /** @var NotificationSetting Create Notification */
     private $createNotification;
-    /** @var LogSetting */
+    /** @var LogSetting Log Setting */
     private $logSetting;
+    /** @return string|null Namespace name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Namespace name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Namespace name
+     * @return CreateNamespaceRequest
+     */
 	public function withName(?string $name): CreateNamespaceRequest {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return CreateNamespaceRequest
+     */
 	public function withDescription(?string $description): CreateNamespaceRequest {
 		$this->description = $description;
 		return $this;
 	}
     /**
+     * @return TransactionSetting|null Transaction Setting
      * @deprecated
      */
 	public function getTransactionSetting(): ?TransactionSetting {
 		return $this->transactionSetting;
 	}
     /**
+     * @param TransactionSetting|null $transactionSetting Transaction Setting
      * @deprecated
      */
 	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
 		$this->transactionSetting = $transactionSetting;
 	}
     /**
+     * @param TransactionSetting|null $transactionSetting Transaction Setting
+     * @return CreateNamespaceRequest
      * @deprecated
      */
 	public function withTransactionSetting(?TransactionSetting $transactionSetting): CreateNamespaceRequest {
 		$this->transactionSetting = $transactionSetting;
 		return $this;
 	}
+    /** @return TransactionSettingV2|null Transaction Setting (V2) */
 	public function getTransactionSettingV2(): ?TransactionSettingV2 {
 		return $this->transactionSettingV2;
 	}
+    /** @param TransactionSettingV2|null $transactionSettingV2 Transaction Setting (V2) */
 	public function setTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2) {
 		$this->transactionSettingV2 = $transactionSettingV2;
 	}
+    /**
+     * @param TransactionSettingV2|null $transactionSettingV2 Transaction Setting (V2)
+     * @return CreateNamespaceRequest
+     */
 	public function withTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2): CreateNamespaceRequest {
 		$this->transactionSettingV2 = $transactionSettingV2;
 		return $this;
 	}
+    /** @return string|null Server Type */
 	public function getServerType(): ?string {
 		return $this->serverType;
 	}
+    /** @param string|null $serverType Server Type */
 	public function setServerType(?string $serverType) {
 		$this->serverType = $serverType;
 	}
+    /**
+     * @param string|null $serverType Server Type
+     * @return CreateNamespaceRequest
+     */
 	public function withServerType(?string $serverType): CreateNamespaceRequest {
 		$this->serverType = $serverType;
 		return $this;
 	}
+    /** @return string|null Server Spec */
 	public function getServerSpec(): ?string {
 		return $this->serverSpec;
 	}
+    /** @param string|null $serverSpec Server Spec */
 	public function setServerSpec(?string $serverSpec) {
 		$this->serverSpec = $serverSpec;
 	}
+    /**
+     * @param string|null $serverSpec Server Spec
+     * @return CreateNamespaceRequest
+     */
 	public function withServerSpec(?string $serverSpec): CreateNamespaceRequest {
 		$this->serverSpec = $serverSpec;
 		return $this;
 	}
+    /** @return NotificationSetting|null Create Notification */
 	public function getCreateNotification(): ?NotificationSetting {
 		return $this->createNotification;
 	}
+    /** @param NotificationSetting|null $createNotification Create Notification */
 	public function setCreateNotification(?NotificationSetting $createNotification) {
 		$this->createNotification = $createNotification;
 	}
+    /**
+     * @param NotificationSetting|null $createNotification Create Notification
+     * @return CreateNamespaceRequest
+     */
 	public function withCreateNotification(?NotificationSetting $createNotification): CreateNamespaceRequest {
 		$this->createNotification = $createNotification;
 		return $this;
 	}
+    /** @return LogSetting|null Log Setting */
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
+    /** @param LogSetting|null $logSetting Log Setting */
 	public function setLogSetting(?LogSetting $logSetting) {
 		$this->logSetting = $logSetting;
 	}
+    /**
+     * @param LogSetting|null $logSetting Log Setting
+     * @return CreateNamespaceRequest
+     */
 	public function withLogSetting(?LogSetting $logSetting): CreateNamespaceRequest {
 		$this->logSetting = $logSetting;
 		return $this;

@@ -20,33 +20,50 @@ namespace Gs2\Inventory\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Inventory\Model\ItemSet;
 
+/**
+ * Result of verifyItemSetByStampTask: As a verification action, execute the verification of the Item Set
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventoryverifyitemsetbyuserid
+ */
 class VerifyItemSetByStampTaskResult implements IResult {
-    /** @var array */
+    /** @var array List of deleted Item Sets */
     private $items;
-    /** @var string */
+    /** @var string Context recording the execution results of verification actions */
     private $newContextStack;
 
+    /** @return array|null List of deleted Item Sets */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of deleted Item Sets */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of deleted Item Sets
+     * @return VerifyItemSetByStampTaskResult
+     */
 	public function withItems(?array $items): VerifyItemSetByStampTaskResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Context recording the execution results of verification actions */
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
+    /** @param string|null $newContextStack Context recording the execution results of verification actions */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
+    /**
+     * @param string|null $newContextStack Context recording the execution results of verification actions
+     * @return VerifyItemSetByStampTaskResult
+     */
 	public function withNewContextStack(?string $newContextStack): VerifyItemSetByStampTaskResult {
 		$this->newContextStack = $newContextStack;
 		return $this;

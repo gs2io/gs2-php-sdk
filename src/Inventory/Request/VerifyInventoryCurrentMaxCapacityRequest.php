@@ -19,77 +19,118 @@ namespace Gs2\Inventory\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for verifyInventoryCurrentMaxCapacity: Verify current max inventory capacity
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#verifyinventorycurrentmaxcapacity
+ */
 class VerifyInventoryCurrentMaxCapacityRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Inventory Model Name */
     private $inventoryName;
-    /** @var string */
+    /** @var string Type of verification */
     private $verifyType;
-    /** @var int */
+    /** @var int Current max inventory capacity */
     private $currentInventoryMaxCapacity;
-    /** @var bool */
+    /** @var bool Whether to multiply the value used for verification when specifying the quantity */
     private $multiplyValueSpecifyingQuantity;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return VerifyInventoryCurrentMaxCapacityRequest
+     */
 	public function withNamespaceName(?string $namespaceName): VerifyInventoryCurrentMaxCapacityRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return VerifyInventoryCurrentMaxCapacityRequest
+     */
 	public function withAccessToken(?string $accessToken): VerifyInventoryCurrentMaxCapacityRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Inventory Model Name */
 	public function getInventoryName(): ?string {
 		return $this->inventoryName;
 	}
+    /** @param string|null $inventoryName Inventory Model Name */
 	public function setInventoryName(?string $inventoryName) {
 		$this->inventoryName = $inventoryName;
 	}
+    /**
+     * @param string|null $inventoryName Inventory Model Name
+     * @return VerifyInventoryCurrentMaxCapacityRequest
+     */
 	public function withInventoryName(?string $inventoryName): VerifyInventoryCurrentMaxCapacityRequest {
 		$this->inventoryName = $inventoryName;
 		return $this;
 	}
+    /** @return string|null Type of verification */
 	public function getVerifyType(): ?string {
 		return $this->verifyType;
 	}
+    /** @param string|null $verifyType Type of verification */
 	public function setVerifyType(?string $verifyType) {
 		$this->verifyType = $verifyType;
 	}
+    /**
+     * @param string|null $verifyType Type of verification
+     * @return VerifyInventoryCurrentMaxCapacityRequest
+     */
 	public function withVerifyType(?string $verifyType): VerifyInventoryCurrentMaxCapacityRequest {
 		$this->verifyType = $verifyType;
 		return $this;
 	}
+    /** @return int|null Current max inventory capacity */
 	public function getCurrentInventoryMaxCapacity(): ?int {
 		return $this->currentInventoryMaxCapacity;
 	}
+    /** @param int|null $currentInventoryMaxCapacity Current max inventory capacity */
 	public function setCurrentInventoryMaxCapacity(?int $currentInventoryMaxCapacity) {
 		$this->currentInventoryMaxCapacity = $currentInventoryMaxCapacity;
 	}
+    /**
+     * @param int|null $currentInventoryMaxCapacity Current max inventory capacity
+     * @return VerifyInventoryCurrentMaxCapacityRequest
+     */
 	public function withCurrentInventoryMaxCapacity(?int $currentInventoryMaxCapacity): VerifyInventoryCurrentMaxCapacityRequest {
 		$this->currentInventoryMaxCapacity = $currentInventoryMaxCapacity;
 		return $this;
 	}
+    /** @return bool|null Whether to multiply the value used for verification when specifying the quantity */
 	public function getMultiplyValueSpecifyingQuantity(): ?bool {
 		return $this->multiplyValueSpecifyingQuantity;
 	}
+    /** @param bool|null $multiplyValueSpecifyingQuantity Whether to multiply the value used for verification when specifying the quantity */
 	public function setMultiplyValueSpecifyingQuantity(?bool $multiplyValueSpecifyingQuantity) {
 		$this->multiplyValueSpecifyingQuantity = $multiplyValueSpecifyingQuantity;
 	}
+    /**
+     * @param bool|null $multiplyValueSpecifyingQuantity Whether to multiply the value used for verification when specifying the quantity
+     * @return VerifyInventoryCurrentMaxCapacityRequest
+     */
 	public function withMultiplyValueSpecifyingQuantity(?bool $multiplyValueSpecifyingQuantity): VerifyInventoryCurrentMaxCapacityRequest {
 		$this->multiplyValueSpecifyingQuantity = $multiplyValueSpecifyingQuantity;
 		return $this;

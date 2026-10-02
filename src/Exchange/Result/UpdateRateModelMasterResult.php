@@ -23,18 +23,29 @@ use Gs2\Exchange\Model\ConsumeAction;
 use Gs2\Exchange\Model\AcquireAction;
 use Gs2\Exchange\Model\RateModelMaster;
 
+/**
+ * Result of updateRateModelMaster: Update Exchange Rate Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/exchange/sdk/#updateratemodelmaster
+ */
 class UpdateRateModelMasterResult implements IResult {
-    /** @var RateModelMaster */
+    /** @var RateModelMaster Exchange Rate Model Master updated */
     private $item;
 
+    /** @return RateModelMaster|null Exchange Rate Model Master updated */
 	public function getItem(): ?RateModelMaster {
 		return $this->item;
 	}
 
+    /** @param RateModelMaster|null $item Exchange Rate Model Master updated */
 	public function setItem(?RateModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param RateModelMaster|null $item Exchange Rate Model Master updated
+     * @return UpdateRateModelMasterResult
+     */
 	public function withItem(?RateModelMaster $item): UpdateRateModelMasterResult {
 		$this->item = $item;
 		return $this;

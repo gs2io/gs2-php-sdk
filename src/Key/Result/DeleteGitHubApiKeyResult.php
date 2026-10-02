@@ -20,18 +20,29 @@ namespace Gs2\Key\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Key\Model\GitHubApiKey;
 
+/**
+ * Result of deleteGitHubApiKey: Delete GitHub API Key
+ *
+ * @see https://docs.gs2.io/api_reference/key/sdk/#deletegithubapikey
+ */
 class DeleteGitHubApiKeyResult implements IResult {
-    /** @var GitHubApiKey */
+    /** @var GitHubApiKey GitHub API Key deleted */
     private $item;
 
+    /** @return GitHubApiKey|null GitHub API Key deleted */
 	public function getItem(): ?GitHubApiKey {
 		return $this->item;
 	}
 
+    /** @param GitHubApiKey|null $item GitHub API Key deleted */
 	public function setItem(?GitHubApiKey $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param GitHubApiKey|null $item GitHub API Key deleted
+     * @return DeleteGitHubApiKeyResult
+     */
 	public function withItem(?GitHubApiKey $item): DeleteGitHubApiKeyResult {
 		$this->item = $item;
 		return $this;

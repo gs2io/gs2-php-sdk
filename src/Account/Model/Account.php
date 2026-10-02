@@ -20,129 +20,188 @@ namespace Gs2\Account\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Game Player Account
+ *
+ * @see https://docs.gs2.io/api_reference/account/sdk/#account
+ */
 class Account implements IModel {
 	/**
-     * @var string
+     * @var string Game Player Account GRN
 	 */
 	private $accountId;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var string
+     * @var string Password
 	 */
 	private $password;
 	/**
-     * @var int
+     * @var int Time offset from the current time (number of seconds relative to the current time)
 	 */
 	private $timeOffset;
 	/**
-     * @var array
+     * @var array List of Account Ban Statuses
 	 */
 	private $banStatuses;
 	/**
-     * @var bool
+     * @var bool Whether the Account is currently banned
 	 */
 	private $banned;
 	/**
-     * @var int
+     * @var int Last authenticated time
 	 */
 	private $lastAuthenticatedAt;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Game Player Account GRN */
 	public function getAccountId(): ?string {
 		return $this->accountId;
 	}
+    /** @param string|null $accountId Game Player Account GRN */
 	public function setAccountId(?string $accountId) {
 		$this->accountId = $accountId;
 	}
+    /**
+     * @param string|null $accountId Game Player Account GRN
+     * @return Account
+     */
 	public function withAccountId(?string $accountId): Account {
 		$this->accountId = $accountId;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return Account
+     */
 	public function withUserId(?string $userId): Account {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Password */
 	public function getPassword(): ?string {
 		return $this->password;
 	}
+    /** @param string|null $password Password */
 	public function setPassword(?string $password) {
 		$this->password = $password;
 	}
+    /**
+     * @param string|null $password Password
+     * @return Account
+     */
 	public function withPassword(?string $password): Account {
 		$this->password = $password;
 		return $this;
 	}
+    /** @return int|null Time offset from the current time (number of seconds relative to the current time) */
 	public function getTimeOffset(): ?int {
 		return $this->timeOffset;
 	}
+    /** @param int|null $timeOffset Time offset from the current time (number of seconds relative to the current time) */
 	public function setTimeOffset(?int $timeOffset) {
 		$this->timeOffset = $timeOffset;
 	}
+    /**
+     * @param int|null $timeOffset Time offset from the current time (number of seconds relative to the current time)
+     * @return Account
+     */
 	public function withTimeOffset(?int $timeOffset): Account {
 		$this->timeOffset = $timeOffset;
 		return $this;
 	}
+    /** @return array|null List of Account Ban Statuses */
 	public function getBanStatuses(): ?array {
 		return $this->banStatuses;
 	}
+    /** @param array|null $banStatuses List of Account Ban Statuses */
 	public function setBanStatuses(?array $banStatuses) {
 		$this->banStatuses = $banStatuses;
 	}
+    /**
+     * @param array|null $banStatuses List of Account Ban Statuses
+     * @return Account
+     */
 	public function withBanStatuses(?array $banStatuses): Account {
 		$this->banStatuses = $banStatuses;
 		return $this;
 	}
+    /** @return bool|null Whether the Account is currently banned */
 	public function getBanned(): ?bool {
 		return $this->banned;
 	}
+    /** @param bool|null $banned Whether the Account is currently banned */
 	public function setBanned(?bool $banned) {
 		$this->banned = $banned;
 	}
+    /**
+     * @param bool|null $banned Whether the Account is currently banned
+     * @return Account
+     */
 	public function withBanned(?bool $banned): Account {
 		$this->banned = $banned;
 		return $this;
 	}
+    /** @return int|null Last authenticated time */
 	public function getLastAuthenticatedAt(): ?int {
 		return $this->lastAuthenticatedAt;
 	}
+    /** @param int|null $lastAuthenticatedAt Last authenticated time */
 	public function setLastAuthenticatedAt(?int $lastAuthenticatedAt) {
 		$this->lastAuthenticatedAt = $lastAuthenticatedAt;
 	}
+    /**
+     * @param int|null $lastAuthenticatedAt Last authenticated time
+     * @return Account
+     */
 	public function withLastAuthenticatedAt(?int $lastAuthenticatedAt): Account {
 		$this->lastAuthenticatedAt = $lastAuthenticatedAt;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return Account
+     */
 	public function withCreatedAt(?int $createdAt): Account {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return Account
+     */
 	public function withRevision(?int $revision): Account {
 		$this->revision = $revision;
 		return $this;

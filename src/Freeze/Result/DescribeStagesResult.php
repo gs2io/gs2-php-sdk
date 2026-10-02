@@ -20,18 +20,29 @@ namespace Gs2\Freeze\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Freeze\Model\Stage;
 
+/**
+ * Result of describeStages: List stages
+ *
+ * @see https://docs.gs2.io/api_reference/freeze/sdk/#describestages
+ */
 class DescribeStagesResult implements IResult {
-    /** @var array */
+    /** @var array List of Stage */
     private $items;
 
+    /** @return array|null List of Stage */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Stage */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Stage
+     * @return DescribeStagesResult
+     */
 	public function withItems(?array $items): DescribeStagesResult {
 		$this->items = $items;
 		return $this;

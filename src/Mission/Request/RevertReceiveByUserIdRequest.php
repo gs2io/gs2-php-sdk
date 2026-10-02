@@ -19,65 +19,100 @@ namespace Gs2\Mission\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for revertReceiveByUserId: Revert the status of mission accomplishment to unreceived
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#revertreceivebyuserid
+ */
 class RevertReceiveByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Mission Group Name */
     private $missionGroupName;
-    /** @var string */
+    /** @var string Task Name */
     private $missionTaskName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return RevertReceiveByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): RevertReceiveByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Mission Group Name */
 	public function getMissionGroupName(): ?string {
 		return $this->missionGroupName;
 	}
+    /** @param string|null $missionGroupName Mission Group Name */
 	public function setMissionGroupName(?string $missionGroupName) {
 		$this->missionGroupName = $missionGroupName;
 	}
+    /**
+     * @param string|null $missionGroupName Mission Group Name
+     * @return RevertReceiveByUserIdRequest
+     */
 	public function withMissionGroupName(?string $missionGroupName): RevertReceiveByUserIdRequest {
 		$this->missionGroupName = $missionGroupName;
 		return $this;
 	}
+    /** @return string|null Task Name */
 	public function getMissionTaskName(): ?string {
 		return $this->missionTaskName;
 	}
+    /** @param string|null $missionTaskName Task Name */
 	public function setMissionTaskName(?string $missionTaskName) {
 		$this->missionTaskName = $missionTaskName;
 	}
+    /**
+     * @param string|null $missionTaskName Task Name
+     * @return RevertReceiveByUserIdRequest
+     */
 	public function withMissionTaskName(?string $missionTaskName): RevertReceiveByUserIdRequest {
 		$this->missionTaskName = $missionTaskName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return RevertReceiveByUserIdRequest
+     */
 	public function withUserId(?string $userId): RevertReceiveByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return RevertReceiveByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): RevertReceiveByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

@@ -20,31 +20,48 @@ namespace Gs2\Lottery\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Draw Probability
+ *
+ * @see https://docs.gs2.io/api_reference/lottery/sdk/#probability
+ */
 class Probability implements IModel {
 	/**
-     * @var DrawnPrize
+     * @var DrawnPrize Prize
 	 */
 	private $prize;
 	/**
-     * @var float
+     * @var float Draw Probability (0.0-1.0)
 	 */
 	private $rate;
+    /** @return DrawnPrize|null Prize */
 	public function getPrize(): ?DrawnPrize {
 		return $this->prize;
 	}
+    /** @param DrawnPrize|null $prize Prize */
 	public function setPrize(?DrawnPrize $prize) {
 		$this->prize = $prize;
 	}
+    /**
+     * @param DrawnPrize|null $prize Prize
+     * @return Probability
+     */
 	public function withPrize(?DrawnPrize $prize): Probability {
 		$this->prize = $prize;
 		return $this;
 	}
+    /** @return float|null Draw Probability (0.0-1.0) */
 	public function getRate(): ?float {
 		return $this->rate;
 	}
+    /** @param float|null $rate Draw Probability (0.0-1.0) */
 	public function setRate(?float $rate) {
 		$this->rate = $rate;
 	}
+    /**
+     * @param float|null $rate Draw Probability (0.0-1.0)
+     * @return Probability
+     */
 	public function withRate(?float $rate): Probability {
 		$this->rate = $rate;
 		return $this;

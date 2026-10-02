@@ -23,78 +23,113 @@ use Gs2\Grade\Model\Status as GradeStatus;
 use Gs2\Inventory\Model\ItemModel;
 use Gs2\Inventory\Model\Inventory;
 
+/**
+ * Result of acquireItemSetWithGradeByStampSheet: As an Acquire Action, set the grade to GS2-Grade while acquiring one Item Set
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventoryacquireitemsetwithgradebyuserid
+ */
 class AcquireItemSetWithGradeByStampSheetResult implements IResult {
-    /** @var ItemSet */
+    /** @var ItemSet Item Set after addition */
     private $item;
-    /** @var GradeStatus */
+    /** @var GradeStatus Grade status set */
     private $status;
-    /** @var ItemModel */
+    /** @var ItemModel Item Model */
     private $itemModel;
-    /** @var Inventory */
+    /** @var Inventory Inventory */
     private $inventory;
-    /** @var int */
+    /** @var int Quantity of items transferred to GS2-Inbox that were not received beyond the possession limit */
     private $overflowCount;
 
+    /** @return ItemSet|null Item Set after addition */
 	public function getItem(): ?ItemSet {
 		return $this->item;
 	}
 
+    /** @param ItemSet|null $item Item Set after addition */
 	public function setItem(?ItemSet $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param ItemSet|null $item Item Set after addition
+     * @return AcquireItemSetWithGradeByStampSheetResult
+     */
 	public function withItem(?ItemSet $item): AcquireItemSetWithGradeByStampSheetResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return GradeStatus|null Grade status set */
 	public function getStatus(): ?GradeStatus {
 		return $this->status;
 	}
 
+    /** @param GradeStatus|null $status Grade status set */
 	public function setStatus(?GradeStatus $status) {
 		$this->status = $status;
 	}
 
+    /**
+     * @param GradeStatus|null $status Grade status set
+     * @return AcquireItemSetWithGradeByStampSheetResult
+     */
 	public function withStatus(?GradeStatus $status): AcquireItemSetWithGradeByStampSheetResult {
 		$this->status = $status;
 		return $this;
 	}
 
+    /** @return ItemModel|null Item Model */
 	public function getItemModel(): ?ItemModel {
 		return $this->itemModel;
 	}
 
+    /** @param ItemModel|null $itemModel Item Model */
 	public function setItemModel(?ItemModel $itemModel) {
 		$this->itemModel = $itemModel;
 	}
 
+    /**
+     * @param ItemModel|null $itemModel Item Model
+     * @return AcquireItemSetWithGradeByStampSheetResult
+     */
 	public function withItemModel(?ItemModel $itemModel): AcquireItemSetWithGradeByStampSheetResult {
 		$this->itemModel = $itemModel;
 		return $this;
 	}
 
+    /** @return Inventory|null Inventory */
 	public function getInventory(): ?Inventory {
 		return $this->inventory;
 	}
 
+    /** @param Inventory|null $inventory Inventory */
 	public function setInventory(?Inventory $inventory) {
 		$this->inventory = $inventory;
 	}
 
+    /**
+     * @param Inventory|null $inventory Inventory
+     * @return AcquireItemSetWithGradeByStampSheetResult
+     */
 	public function withInventory(?Inventory $inventory): AcquireItemSetWithGradeByStampSheetResult {
 		$this->inventory = $inventory;
 		return $this;
 	}
 
+    /** @return int|null Quantity of items transferred to GS2-Inbox that were not received beyond the possession limit */
 	public function getOverflowCount(): ?int {
 		return $this->overflowCount;
 	}
 
+    /** @param int|null $overflowCount Quantity of items transferred to GS2-Inbox that were not received beyond the possession limit */
 	public function setOverflowCount(?int $overflowCount) {
 		$this->overflowCount = $overflowCount;
 	}
 
+    /**
+     * @param int|null $overflowCount Quantity of items transferred to GS2-Inbox that were not received beyond the possession limit
+     * @return AcquireItemSetWithGradeByStampSheetResult
+     */
 	public function withOverflowCount(?int $overflowCount): AcquireItemSetWithGradeByStampSheetResult {
 		$this->overflowCount = $overflowCount;
 		return $this;

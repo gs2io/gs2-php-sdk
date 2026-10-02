@@ -19,63 +19,98 @@ namespace Gs2\JobQueue\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getJobResultByUserId: Get job execution result by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/job_queue/sdk/#getjobresultbyuserid
+ */
 class GetJobResultByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Job Name */
     private $jobName;
-    /** @var int */
+    /** @var int Number of attempts */
     private $tryNumber;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetJobResultByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetJobResultByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return GetJobResultByUserIdRequest
+     */
 	public function withUserId(?string $userId): GetJobResultByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Job Name */
 	public function getJobName(): ?string {
 		return $this->jobName;
 	}
+    /** @param string|null $jobName Job Name */
 	public function setJobName(?string $jobName) {
 		$this->jobName = $jobName;
 	}
+    /**
+     * @param string|null $jobName Job Name
+     * @return GetJobResultByUserIdRequest
+     */
 	public function withJobName(?string $jobName): GetJobResultByUserIdRequest {
 		$this->jobName = $jobName;
 		return $this;
 	}
+    /** @return int|null Number of attempts */
 	public function getTryNumber(): ?int {
 		return $this->tryNumber;
 	}
+    /** @param int|null $tryNumber Number of attempts */
 	public function setTryNumber(?int $tryNumber) {
 		$this->tryNumber = $tryNumber;
 	}
+    /**
+     * @param int|null $tryNumber Number of attempts
+     * @return GetJobResultByUserIdRequest
+     */
 	public function withTryNumber(?int $tryNumber): GetJobResultByUserIdRequest {
 		$this->tryNumber = $tryNumber;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return GetJobResultByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): GetJobResultByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

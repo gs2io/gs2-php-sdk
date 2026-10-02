@@ -20,33 +20,50 @@ namespace Gs2\Inventory\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Inventory\Model\Inventory;
 
+/**
+ * Result of verifyInventoryCurrentMaxCapacityByStampTask: Execute verification of current max inventory capacity as verify action
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventoryverifyinventorycurrentmaxcapacitybyuserid
+ */
 class VerifyInventoryCurrentMaxCapacityByStampTaskResult implements IResult {
-    /** @var Inventory */
+    /** @var Inventory Inventory */
     private $item;
-    /** @var string */
+    /** @var string Context recording the execution results of verification actions */
     private $newContextStack;
 
+    /** @return Inventory|null Inventory */
 	public function getItem(): ?Inventory {
 		return $this->item;
 	}
 
+    /** @param Inventory|null $item Inventory */
 	public function setItem(?Inventory $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Inventory|null $item Inventory
+     * @return VerifyInventoryCurrentMaxCapacityByStampTaskResult
+     */
 	public function withItem(?Inventory $item): VerifyInventoryCurrentMaxCapacityByStampTaskResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null Context recording the execution results of verification actions */
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
+    /** @param string|null $newContextStack Context recording the execution results of verification actions */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
+    /**
+     * @param string|null $newContextStack Context recording the execution results of verification actions
+     * @return VerifyInventoryCurrentMaxCapacityByStampTaskResult
+     */
 	public function withNewContextStack(?string $newContextStack): VerifyInventoryCurrentMaxCapacityByStampTaskResult {
 		$this->newContextStack = $newContextStack;
 		return $this;

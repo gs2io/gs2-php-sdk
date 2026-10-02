@@ -20,115 +20,168 @@ namespace Gs2\Lottery\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Prize Table Master
+ *
+ * @see https://docs.gs2.io/api_reference/lottery/sdk/#prizetablemaster
+ */
 class PrizeTableMaster implements IModel {
 	/**
-     * @var string
+     * @var string Prize Table Master GRN
 	 */
 	private $prizeTableId;
 	/**
-     * @var string
+     * @var string Prize Table Name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var string
+     * @var string Description
 	 */
 	private $description;
 	/**
-     * @var array
+     * @var array Prizes
 	 */
 	private $prizes;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Prize Table Master GRN */
 	public function getPrizeTableId(): ?string {
 		return $this->prizeTableId;
 	}
+    /** @param string|null $prizeTableId Prize Table Master GRN */
 	public function setPrizeTableId(?string $prizeTableId) {
 		$this->prizeTableId = $prizeTableId;
 	}
+    /**
+     * @param string|null $prizeTableId Prize Table Master GRN
+     * @return PrizeTableMaster
+     */
 	public function withPrizeTableId(?string $prizeTableId): PrizeTableMaster {
 		$this->prizeTableId = $prizeTableId;
 		return $this;
 	}
+    /** @return string|null Prize Table Name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Prize Table Name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Prize Table Name
+     * @return PrizeTableMaster
+     */
 	public function withName(?string $name): PrizeTableMaster {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return PrizeTableMaster
+     */
 	public function withMetadata(?string $metadata): PrizeTableMaster {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return PrizeTableMaster
+     */
 	public function withDescription(?string $description): PrizeTableMaster {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return array|null Prizes */
 	public function getPrizes(): ?array {
 		return $this->prizes;
 	}
+    /** @param array|null $prizes Prizes */
 	public function setPrizes(?array $prizes) {
 		$this->prizes = $prizes;
 	}
+    /**
+     * @param array|null $prizes Prizes
+     * @return PrizeTableMaster
+     */
 	public function withPrizes(?array $prizes): PrizeTableMaster {
 		$this->prizes = $prizes;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return PrizeTableMaster
+     */
 	public function withCreatedAt(?int $createdAt): PrizeTableMaster {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return PrizeTableMaster
+     */
 	public function withUpdatedAt(?int $updatedAt): PrizeTableMaster {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return PrizeTableMaster
+     */
 	public function withRevision(?int $revision): PrizeTableMaster {
 		$this->revision = $revision;
 		return $this;

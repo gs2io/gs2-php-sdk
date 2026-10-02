@@ -20,87 +20,128 @@ namespace Gs2\Guild\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Joined Guild
+ *
+ * @see https://docs.gs2.io/api_reference/guild/sdk/#joinedguild
+ */
 class JoinedGuild implements IModel {
 	/**
-     * @var string
+     * @var string Joined Guild GRN
 	 */
 	private $joinedGuildId;
 	/**
-     * @var string
+     * @var string Guild Model Name
 	 */
 	private $guildModelName;
 	/**
-     * @var string
+     * @var string Guild Name
 	 */
 	private $guildName;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Joined Guild GRN */
 	public function getJoinedGuildId(): ?string {
 		return $this->joinedGuildId;
 	}
+    /** @param string|null $joinedGuildId Joined Guild GRN */
 	public function setJoinedGuildId(?string $joinedGuildId) {
 		$this->joinedGuildId = $joinedGuildId;
 	}
+    /**
+     * @param string|null $joinedGuildId Joined Guild GRN
+     * @return JoinedGuild
+     */
 	public function withJoinedGuildId(?string $joinedGuildId): JoinedGuild {
 		$this->joinedGuildId = $joinedGuildId;
 		return $this;
 	}
+    /** @return string|null Guild Model Name */
 	public function getGuildModelName(): ?string {
 		return $this->guildModelName;
 	}
+    /** @param string|null $guildModelName Guild Model Name */
 	public function setGuildModelName(?string $guildModelName) {
 		$this->guildModelName = $guildModelName;
 	}
+    /**
+     * @param string|null $guildModelName Guild Model Name
+     * @return JoinedGuild
+     */
 	public function withGuildModelName(?string $guildModelName): JoinedGuild {
 		$this->guildModelName = $guildModelName;
 		return $this;
 	}
+    /** @return string|null Guild Name */
 	public function getGuildName(): ?string {
 		return $this->guildName;
 	}
+    /** @param string|null $guildName Guild Name */
 	public function setGuildName(?string $guildName) {
 		$this->guildName = $guildName;
 	}
+    /**
+     * @param string|null $guildName Guild Name
+     * @return JoinedGuild
+     */
 	public function withGuildName(?string $guildName): JoinedGuild {
 		$this->guildName = $guildName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return JoinedGuild
+     */
 	public function withUserId(?string $userId): JoinedGuild {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return JoinedGuild
+     */
 	public function withCreatedAt(?int $createdAt): JoinedGuild {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return JoinedGuild
+     */
 	public function withRevision(?int $revision): JoinedGuild {
 		$this->revision = $revision;
 		return $this;

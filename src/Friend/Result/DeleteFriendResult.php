@@ -20,18 +20,29 @@ namespace Gs2\Friend\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Friend\Model\FriendUser;
 
+/**
+ * Result of deleteFriend: Delete friend
+ *
+ * @see https://docs.gs2.io/api_reference/friend/sdk/#deletefriend
+ */
 class DeleteFriendResult implements IResult {
-    /** @var FriendUser */
+    /** @var FriendUser Friend deleted */
     private $item;
 
+    /** @return FriendUser|null Friend deleted */
 	public function getItem(): ?FriendUser {
 		return $this->item;
 	}
 
+    /** @param FriendUser|null $item Friend deleted */
 	public function setItem(?FriendUser $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param FriendUser|null $item Friend deleted
+     * @return DeleteFriendResult
+     */
 	public function withItem(?FriendUser $item): DeleteFriendResult {
 		$this->item = $item;
 		return $this;

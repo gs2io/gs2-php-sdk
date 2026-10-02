@@ -20,7 +20,7 @@ namespace Gs2\Core\Exception;
 use Gs2\Core\Model\RequestError;
 
 /**
- * NotFoundException(404) エラーを表現するためのクラス
+ * Exception for 404 Not Found errors
  * 
  * @author Game Server Services, inc. <contact@gs2.io>
  * @copyright Game Server Services, Inc.
@@ -29,9 +29,9 @@ use Gs2\Core\Model\RequestError;
 class NotFoundException extends Gs2Exception {
 
     /**
-     * コンストラクタ
+     * Constructor
      *
-     * @param array $errors エラーリスト
+     * @param array $errors List of errors
      */
     function __construct($errors) {
         if(is_null($errors)) {
@@ -41,9 +41,9 @@ class NotFoundException extends Gs2Exception {
     }
 
     /**
-     * エラーリストを取得する
+     * Get the list of errors
      *
-     * @return RequestError[] エラーリスト
+     * @return RequestError[] List of errors
      */
     function getErrors(): array {
         return $this->errors;

@@ -20,18 +20,29 @@ namespace Gs2\Limit\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Limit\Model\LimitModelMaster;
 
+/**
+ * Result of createLimitModelMaster: Create Usage Limit Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/limit/sdk/#createlimitmodelmaster
+ */
 class CreateLimitModelMasterResult implements IResult {
-    /** @var LimitModelMaster */
+    /** @var LimitModelMaster Usage Limit Model Master created */
     private $item;
 
+    /** @return LimitModelMaster|null Usage Limit Model Master created */
 	public function getItem(): ?LimitModelMaster {
 		return $this->item;
 	}
 
+    /** @param LimitModelMaster|null $item Usage Limit Model Master created */
 	public function setItem(?LimitModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param LimitModelMaster|null $item Usage Limit Model Master created
+     * @return CreateLimitModelMasterResult
+     */
 	public function withItem(?LimitModelMaster $item): CreateLimitModelMasterResult {
 		$this->item = $item;
 		return $this;

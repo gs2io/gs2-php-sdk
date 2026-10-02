@@ -19,53 +19,82 @@ namespace Gs2\Stamina\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for decreaseMaxValue: Subtract the maximum value of stamina
+ *
+ * @see https://docs.gs2.io/api_reference/stamina/sdk/#decreasemaxvalue
+ */
 class DecreaseMaxValueRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Stamina Model Name */
     private $staminaName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var int */
+    /** @var int Maximum amount of stamina to be decreased */
     private $decreaseValue;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DecreaseMaxValueRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DecreaseMaxValueRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Stamina Model Name */
 	public function getStaminaName(): ?string {
 		return $this->staminaName;
 	}
+    /** @param string|null $staminaName Stamina Model Name */
 	public function setStaminaName(?string $staminaName) {
 		$this->staminaName = $staminaName;
 	}
+    /**
+     * @param string|null $staminaName Stamina Model Name
+     * @return DecreaseMaxValueRequest
+     */
 	public function withStaminaName(?string $staminaName): DecreaseMaxValueRequest {
 		$this->staminaName = $staminaName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return DecreaseMaxValueRequest
+     */
 	public function withAccessToken(?string $accessToken): DecreaseMaxValueRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return int|null Maximum amount of stamina to be decreased */
 	public function getDecreaseValue(): ?int {
 		return $this->decreaseValue;
 	}
+    /** @param int|null $decreaseValue Maximum amount of stamina to be decreased */
 	public function setDecreaseValue(?int $decreaseValue) {
 		$this->decreaseValue = $decreaseValue;
 	}
+    /**
+     * @param int|null $decreaseValue Maximum amount of stamina to be decreased
+     * @return DecreaseMaxValueRequest
+     */
 	public function withDecreaseValue(?int $decreaseValue): DecreaseMaxValueRequest {
 		$this->decreaseValue = $decreaseValue;
 		return $this;

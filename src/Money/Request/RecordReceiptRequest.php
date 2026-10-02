@@ -19,65 +19,100 @@ namespace Gs2\Money\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for recordReceipt: Record receipt
+ *
+ * @see https://docs.gs2.io/api_reference/money/sdk/#recordreceipt
+ */
 class RecordReceiptRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Content IDs sold on the store platform */
     private $contentsId;
-    /** @var string */
+    /** @var string Receipt */
     private $receipt;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return RecordReceiptRequest
+     */
 	public function withNamespaceName(?string $namespaceName): RecordReceiptRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return RecordReceiptRequest
+     */
 	public function withUserId(?string $userId): RecordReceiptRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Content IDs sold on the store platform */
 	public function getContentsId(): ?string {
 		return $this->contentsId;
 	}
+    /** @param string|null $contentsId Content IDs sold on the store platform */
 	public function setContentsId(?string $contentsId) {
 		$this->contentsId = $contentsId;
 	}
+    /**
+     * @param string|null $contentsId Content IDs sold on the store platform
+     * @return RecordReceiptRequest
+     */
 	public function withContentsId(?string $contentsId): RecordReceiptRequest {
 		$this->contentsId = $contentsId;
 		return $this;
 	}
+    /** @return string|null Receipt */
 	public function getReceipt(): ?string {
 		return $this->receipt;
 	}
+    /** @param string|null $receipt Receipt */
 	public function setReceipt(?string $receipt) {
 		$this->receipt = $receipt;
 	}
+    /**
+     * @param string|null $receipt Receipt
+     * @return RecordReceiptRequest
+     */
 	public function withReceipt(?string $receipt): RecordReceiptRequest {
 		$this->receipt = $receipt;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return RecordReceiptRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): RecordReceiptRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

@@ -20,33 +20,50 @@ namespace Gs2\Chat\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Chat\Model\CategoryModelMaster;
 
+/**
+ * Result of describeCategoryModelMasters: List Message Category Model Masters
+ *
+ * @see https://docs.gs2.io/api_reference/chat/sdk/#describecategorymodelmasters
+ */
 class DescribeCategoryModelMastersResult implements IResult {
-    /** @var array */
+    /** @var array List of Message Category Model Masters */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Message Category Model Masters */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Message Category Model Masters */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Message Category Model Masters
+     * @return DescribeCategoryModelMastersResult
+     */
 	public function withItems(?array $items): DescribeCategoryModelMastersResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeCategoryModelMastersResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeCategoryModelMastersResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

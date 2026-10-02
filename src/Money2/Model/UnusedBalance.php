@@ -20,73 +20,108 @@ namespace Gs2\Money2\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Unused Balance
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#unusedbalance
+ */
 class UnusedBalance implements IModel {
 	/**
-     * @var string
+     * @var string Unused Balance GRN
 	 */
 	private $unusedBalanceId;
 	/**
-     * @var string
+     * @var string Currency Code
 	 */
 	private $currency;
 	/**
-     * @var float
+     * @var float Unused balance
 	 */
 	private $balance;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Unused Balance GRN */
 	public function getUnusedBalanceId(): ?string {
 		return $this->unusedBalanceId;
 	}
+    /** @param string|null $unusedBalanceId Unused Balance GRN */
 	public function setUnusedBalanceId(?string $unusedBalanceId) {
 		$this->unusedBalanceId = $unusedBalanceId;
 	}
+    /**
+     * @param string|null $unusedBalanceId Unused Balance GRN
+     * @return UnusedBalance
+     */
 	public function withUnusedBalanceId(?string $unusedBalanceId): UnusedBalance {
 		$this->unusedBalanceId = $unusedBalanceId;
 		return $this;
 	}
+    /** @return string|null Currency Code */
 	public function getCurrency(): ?string {
 		return $this->currency;
 	}
+    /** @param string|null $currency Currency Code */
 	public function setCurrency(?string $currency) {
 		$this->currency = $currency;
 	}
+    /**
+     * @param string|null $currency Currency Code
+     * @return UnusedBalance
+     */
 	public function withCurrency(?string $currency): UnusedBalance {
 		$this->currency = $currency;
 		return $this;
 	}
+    /** @return float|null Unused balance */
 	public function getBalance(): ?float {
 		return $this->balance;
 	}
+    /** @param float|null $balance Unused balance */
 	public function setBalance(?float $balance) {
 		$this->balance = $balance;
 	}
+    /**
+     * @param float|null $balance Unused balance
+     * @return UnusedBalance
+     */
 	public function withBalance(?float $balance): UnusedBalance {
 		$this->balance = $balance;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return UnusedBalance
+     */
 	public function withUpdatedAt(?int $updatedAt): UnusedBalance {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return UnusedBalance
+     */
 	public function withRevision(?int $revision): UnusedBalance {
 		$this->revision = $revision;
 		return $this;

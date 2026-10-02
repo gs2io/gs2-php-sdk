@@ -20,31 +20,48 @@ namespace Gs2\Inventory\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Acquisition quantity of Simple Item
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#acquirecount
+ */
 class AcquireCount implements IModel {
 	/**
-     * @var string
+     * @var string Simple Item Model Name
 	 */
 	private $itemName;
 	/**
-     * @var int
+     * @var int Acquisition quantity
 	 */
 	private $count;
+    /** @return string|null Simple Item Model Name */
 	public function getItemName(): ?string {
 		return $this->itemName;
 	}
+    /** @param string|null $itemName Simple Item Model Name */
 	public function setItemName(?string $itemName) {
 		$this->itemName = $itemName;
 	}
+    /**
+     * @param string|null $itemName Simple Item Model Name
+     * @return AcquireCount
+     */
 	public function withItemName(?string $itemName): AcquireCount {
 		$this->itemName = $itemName;
 		return $this;
 	}
+    /** @return int|null Acquisition quantity */
 	public function getCount(): ?int {
 		return $this->count;
 	}
+    /** @param int|null $count Acquisition quantity */
 	public function setCount(?int $count) {
 		$this->count = $count;
 	}
+    /**
+     * @param int|null $count Acquisition quantity
+     * @return AcquireCount
+     */
 	public function withCount(?int $count): AcquireCount {
 		$this->count = $count;
 		return $this;

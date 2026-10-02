@@ -2288,25 +2288,22 @@ class CommitVoteTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 SeasonRating API クライアント
+ * GS2-SeasonRating API client
  *
- * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/season_rating/sdk/
  */
 class Gs2SeasonRatingRestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#describenamespaces
      */
     public function describeNamespacesAsync(
             DescribeNamespacesRequest $request
@@ -2320,8 +2317,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#describenamespaces
      */
     public function describeNamespaces (
             DescribeNamespacesRequest $request
@@ -2332,8 +2332,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#createnamespace
      */
     public function createNamespaceAsync(
             CreateNamespaceRequest $request
@@ -2347,8 +2350,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#createnamespace
      */
     public function createNamespace (
             CreateNamespaceRequest $request
@@ -2359,8 +2365,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#getnamespacestatus
      */
     public function getNamespaceStatusAsync(
             GetNamespaceStatusRequest $request
@@ -2374,8 +2383,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#getnamespacestatus
      */
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
@@ -2386,8 +2398,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#getnamespace
      */
     public function getNamespaceAsync(
             GetNamespaceRequest $request
@@ -2401,8 +2416,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#getnamespace
      */
     public function getNamespace (
             GetNamespaceRequest $request
@@ -2413,8 +2431,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#updatenamespace
      */
     public function updateNamespaceAsync(
             UpdateNamespaceRequest $request
@@ -2428,8 +2449,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#updatenamespace
      */
     public function updateNamespace (
             UpdateNamespaceRequest $request
@@ -2440,8 +2464,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#deletenamespace
      */
     public function deleteNamespaceAsync(
             DeleteNamespaceRequest $request
@@ -2455,8 +2482,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#deletenamespace
      */
     public function deleteNamespace (
             DeleteNamespaceRequest $request
@@ -2467,8 +2497,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#getserviceversion
      */
     public function getServiceVersionAsync(
             GetServiceVersionRequest $request
@@ -2482,8 +2515,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return GetServiceVersionResult
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#getserviceversion
      */
     public function getServiceVersion (
             GetServiceVersionRequest $request
@@ -2494,8 +2530,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserIdAsync(
             DumpUserDataByUserIdRequest $request
@@ -2509,8 +2548,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return DumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserId (
             DumpUserDataByUserIdRequest $request
@@ -2521,8 +2563,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserIdAsync(
             CheckDumpUserDataByUserIdRequest $request
@@ -2536,8 +2581,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return CheckDumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserId (
             CheckDumpUserDataByUserIdRequest $request
@@ -2548,8 +2596,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserIdAsync(
             CleanUserDataByUserIdRequest $request
@@ -2563,8 +2614,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return CleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserId (
             CleanUserDataByUserIdRequest $request
@@ -2575,8 +2629,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the clean of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserIdAsync(
             CheckCleanUserDataByUserIdRequest $request
@@ -2590,8 +2647,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the clean of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return CheckCleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserId (
             CheckCleanUserDataByUserIdRequest $request
@@ -2602,8 +2662,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserIdAsync(
             PrepareImportUserDataByUserIdRequest $request
@@ -2617,8 +2680,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PrepareImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserId (
             PrepareImportUserDataByUserIdRequest $request
@@ -2629,8 +2695,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserIdAsync(
             ImportUserDataByUserIdRequest $request
@@ -2644,8 +2713,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return ImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserId (
             ImportUserDataByUserIdRequest $request
@@ -2656,8 +2728,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserIdAsync(
             CheckImportUserDataByUserIdRequest $request
@@ -2671,8 +2746,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return CheckImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserId (
             CheckImportUserDataByUserIdRequest $request
@@ -2683,8 +2761,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Match Sessions
+     *
      * @param DescribeMatchSessionsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#describematchsessions
      */
     public function describeMatchSessionsAsync(
             DescribeMatchSessionsRequest $request
@@ -2698,8 +2779,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Match Sessions
+     *
      * @param DescribeMatchSessionsRequest $request
      * @return DescribeMatchSessionsResult
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#describematchsessions
      */
     public function describeMatchSessions (
             DescribeMatchSessionsRequest $request
@@ -2710,8 +2794,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create a MatchSession
+     *
      * @param CreateMatchSessionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#creatematchsession
      */
     public function createMatchSessionAsync(
             CreateMatchSessionRequest $request
@@ -2725,8 +2812,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create a MatchSession
+     *
      * @param CreateMatchSessionRequest $request
      * @return CreateMatchSessionResult
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#creatematchsession
      */
     public function createMatchSession (
             CreateMatchSessionRequest $request
@@ -2737,8 +2827,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get MatchSession
+     *
      * @param GetMatchSessionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#getmatchsession
      */
     public function getMatchSessionAsync(
             GetMatchSessionRequest $request
@@ -2752,8 +2845,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get MatchSession
+     *
      * @param GetMatchSessionRequest $request
      * @return GetMatchSessionResult
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#getmatchsession
      */
     public function getMatchSession (
             GetMatchSessionRequest $request
@@ -2764,8 +2860,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete MatchSession
+     *
      * @param DeleteMatchSessionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#deletematchsession
      */
     public function deleteMatchSessionAsync(
             DeleteMatchSessionRequest $request
@@ -2779,8 +2878,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete MatchSession
+     *
      * @param DeleteMatchSessionRequest $request
      * @return DeleteMatchSessionResult
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#deletematchsession
      */
     public function deleteMatchSession (
             DeleteMatchSessionRequest $request
@@ -2791,8 +2893,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Season Model Masters
+     *
      * @param DescribeSeasonModelMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#describeseasonmodelmasters
      */
     public function describeSeasonModelMastersAsync(
             DescribeSeasonModelMastersRequest $request
@@ -2806,8 +2911,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Season Model Masters
+     *
      * @param DescribeSeasonModelMastersRequest $request
      * @return DescribeSeasonModelMastersResult
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#describeseasonmodelmasters
      */
     public function describeSeasonModelMasters (
             DescribeSeasonModelMastersRequest $request
@@ -2818,8 +2926,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Season Model Master
+     *
      * @param CreateSeasonModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#createseasonmodelmaster
      */
     public function createSeasonModelMasterAsync(
             CreateSeasonModelMasterRequest $request
@@ -2833,8 +2944,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Season Model Master
+     *
      * @param CreateSeasonModelMasterRequest $request
      * @return CreateSeasonModelMasterResult
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#createseasonmodelmaster
      */
     public function createSeasonModelMaster (
             CreateSeasonModelMasterRequest $request
@@ -2845,8 +2959,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Season Model Master
+     *
      * @param GetSeasonModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#getseasonmodelmaster
      */
     public function getSeasonModelMasterAsync(
             GetSeasonModelMasterRequest $request
@@ -2860,8 +2977,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Season Model Master
+     *
      * @param GetSeasonModelMasterRequest $request
      * @return GetSeasonModelMasterResult
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#getseasonmodelmaster
      */
     public function getSeasonModelMaster (
             GetSeasonModelMasterRequest $request
@@ -2872,8 +2992,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Season Model Master
+     *
      * @param UpdateSeasonModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#updateseasonmodelmaster
      */
     public function updateSeasonModelMasterAsync(
             UpdateSeasonModelMasterRequest $request
@@ -2887,8 +3010,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Season Model Master
+     *
      * @param UpdateSeasonModelMasterRequest $request
      * @return UpdateSeasonModelMasterResult
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#updateseasonmodelmaster
      */
     public function updateSeasonModelMaster (
             UpdateSeasonModelMasterRequest $request
@@ -2899,8 +3025,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Season Model Master
+     *
      * @param DeleteSeasonModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#deleteseasonmodelmaster
      */
     public function deleteSeasonModelMasterAsync(
             DeleteSeasonModelMasterRequest $request
@@ -2914,8 +3043,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Season Model Master
+     *
      * @param DeleteSeasonModelMasterRequest $request
      * @return DeleteSeasonModelMasterResult
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#deleteseasonmodelmaster
      */
     public function deleteSeasonModelMaster (
             DeleteSeasonModelMasterRequest $request
@@ -2926,8 +3058,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Season Models
+     *
      * @param DescribeSeasonModelsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#describeseasonmodels
      */
     public function describeSeasonModelsAsync(
             DescribeSeasonModelsRequest $request
@@ -2941,8 +3076,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Season Models
+     *
      * @param DescribeSeasonModelsRequest $request
      * @return DescribeSeasonModelsResult
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#describeseasonmodels
      */
     public function describeSeasonModels (
             DescribeSeasonModelsRequest $request
@@ -2953,8 +3091,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Season Model
+     *
      * @param GetSeasonModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#getseasonmodel
      */
     public function getSeasonModelAsync(
             GetSeasonModelRequest $request
@@ -2968,8 +3109,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Season Model
+     *
      * @param GetSeasonModelRequest $request
      * @return GetSeasonModelResult
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#getseasonmodel
      */
     public function getSeasonModel (
             GetSeasonModelRequest $request
@@ -2980,8 +3124,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#exportmaster
      */
     public function exportMasterAsync(
             ExportMasterRequest $request
@@ -2995,8 +3142,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return ExportMasterResult
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#exportmaster
      */
     public function exportMaster (
             ExportMasterRequest $request
@@ -3007,8 +3157,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Season Model master data
+     *
      * @param GetCurrentSeasonModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#getcurrentseasonmodelmaster
      */
     public function getCurrentSeasonModelMasterAsync(
             GetCurrentSeasonModelMasterRequest $request
@@ -3022,8 +3175,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Season Model master data
+     *
      * @param GetCurrentSeasonModelMasterRequest $request
      * @return GetCurrentSeasonModelMasterResult
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#getcurrentseasonmodelmaster
      */
     public function getCurrentSeasonModelMaster (
             GetCurrentSeasonModelMasterRequest $request
@@ -3034,8 +3190,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Season Model master data (3-phase version)
+     *
      * @param PreUpdateCurrentSeasonModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#preupdatecurrentseasonmodelmaster
      */
     public function preUpdateCurrentSeasonModelMasterAsync(
             PreUpdateCurrentSeasonModelMasterRequest $request
@@ -3049,8 +3208,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Season Model master data (3-phase version)
+     *
      * @param PreUpdateCurrentSeasonModelMasterRequest $request
      * @return PreUpdateCurrentSeasonModelMasterResult
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#preupdatecurrentseasonmodelmaster
      */
     public function preUpdateCurrentSeasonModelMaster (
             PreUpdateCurrentSeasonModelMasterRequest $request
@@ -3061,8 +3223,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Season Model master data
+     *
      * @param UpdateCurrentSeasonModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#updatecurrentseasonmodelmaster
      */
     public function updateCurrentSeasonModelMasterAsync(
             UpdateCurrentSeasonModelMasterRequest $request
@@ -3076,8 +3241,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Season Model master data
+     *
      * @param UpdateCurrentSeasonModelMasterRequest $request
      * @return UpdateCurrentSeasonModelMasterResult
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#updatecurrentseasonmodelmaster
      */
     public function updateCurrentSeasonModelMaster (
             UpdateCurrentSeasonModelMasterRequest $request
@@ -3088,8 +3256,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Season Model master data from GitHub
+     *
      * @param UpdateCurrentSeasonModelMasterFromGitHubRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#updatecurrentseasonmodelmasterfromgithub
      */
     public function updateCurrentSeasonModelMasterFromGitHubAsync(
             UpdateCurrentSeasonModelMasterFromGitHubRequest $request
@@ -3103,8 +3274,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Season Model master data from GitHub
+     *
      * @param UpdateCurrentSeasonModelMasterFromGitHubRequest $request
      * @return UpdateCurrentSeasonModelMasterFromGitHubResult
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#updatecurrentseasonmodelmasterfromgithub
      */
     public function updateCurrentSeasonModelMasterFromGitHub (
             UpdateCurrentSeasonModelMasterFromGitHubRequest $request
@@ -3115,8 +3289,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepared ballot along with signatures
+     *
      * @param GetBallotRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#getballot
      */
     public function getBallotAsync(
             GetBallotRequest $request
@@ -3130,8 +3307,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepared ballot along with signatures
+     *
      * @param GetBallotRequest $request
      * @return GetBallotResult
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#getballot
      */
     public function getBallot (
             GetBallotRequest $request
@@ -3142,8 +3322,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create ballot with signatures, specifying user ID
+     *
      * @param GetBallotByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#getballotbyuserid
      */
     public function getBallotByUserIdAsync(
             GetBallotByUserIdRequest $request
@@ -3157,8 +3340,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create ballot with signatures, specifying user ID
+     *
      * @param GetBallotByUserIdRequest $request
      * @return GetBallotByUserIdResult
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#getballotbyuserid
      */
     public function getBallotByUserId (
             GetBallotByUserIdRequest $request
@@ -3169,8 +3355,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Vote on match results
+     *
      * @param VoteRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#vote-1
      */
     public function voteAsync(
             VoteRequest $request
@@ -3184,8 +3373,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Vote on match results
+     *
      * @param VoteRequest $request
      * @return VoteResult
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#vote-1
      */
     public function vote (
             VoteRequest $request
@@ -3196,8 +3388,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Compile match results and vote
+     *
      * @param VoteMultipleRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#votemultiple
      */
     public function voteMultipleAsync(
             VoteMultipleRequest $request
@@ -3211,8 +3406,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Compile match results and vote
+     *
      * @param VoteMultipleRequest $request
      * @return VoteMultipleResult
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#votemultiple
      */
     public function voteMultiple (
             VoteMultipleRequest $request
@@ -3223,8 +3421,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Forced determination of voting status
+     *
      * @param CommitVoteRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#commitvote
      */
     public function commitVoteAsync(
             CommitVoteRequest $request
@@ -3238,8 +3439,11 @@ class Gs2SeasonRatingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Forced determination of voting status
+     *
      * @param CommitVoteRequest $request
      * @return CommitVoteResult
+     * @see https://docs.gs2.io/api_reference/season_rating/sdk/#commitvote
      */
     public function commitVote (
             CommitVoteRequest $request

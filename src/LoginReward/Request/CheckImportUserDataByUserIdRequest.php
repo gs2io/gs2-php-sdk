@@ -19,39 +19,62 @@ namespace Gs2\LoginReward\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for checkImportUserDataByUserId: Check if the import of the data associated with the specified user ID is complete
+ *
+ * @see https://docs.gs2.io/api_reference/login_reward/sdk/#checkimportuserdatabyuserid
+ */
 class CheckImportUserDataByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Token received in preparation for upload */
     private $uploadToken;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return CheckImportUserDataByUserIdRequest
+     */
 	public function withUserId(?string $userId): CheckImportUserDataByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Token received in preparation for upload */
 	public function getUploadToken(): ?string {
 		return $this->uploadToken;
 	}
+    /** @param string|null $uploadToken Token received in preparation for upload */
 	public function setUploadToken(?string $uploadToken) {
 		$this->uploadToken = $uploadToken;
 	}
+    /**
+     * @param string|null $uploadToken Token received in preparation for upload
+     * @return CheckImportUserDataByUserIdRequest
+     */
 	public function withUploadToken(?string $uploadToken): CheckImportUserDataByUserIdRequest {
 		$this->uploadToken = $uploadToken;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return CheckImportUserDataByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): CheckImportUserDataByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

@@ -1137,25 +1137,22 @@ class WantGrantByUserIdTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 News API クライアント
+ * GS2-News API client
  *
- * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/news/sdk/
  */
 class Gs2NewsRestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/news/sdk/#describenamespaces
      */
     public function describeNamespacesAsync(
             DescribeNamespacesRequest $request
@@ -1169,8 +1166,11 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
+     * @see https://docs.gs2.io/api_reference/news/sdk/#describenamespaces
      */
     public function describeNamespaces (
             DescribeNamespacesRequest $request
@@ -1181,8 +1181,11 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/news/sdk/#createnamespace
      */
     public function createNamespaceAsync(
             CreateNamespaceRequest $request
@@ -1196,8 +1199,11 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/news/sdk/#createnamespace
      */
     public function createNamespace (
             CreateNamespaceRequest $request
@@ -1208,8 +1214,11 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/news/sdk/#getnamespacestatus
      */
     public function getNamespaceStatusAsync(
             GetNamespaceStatusRequest $request
@@ -1223,8 +1232,11 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
+     * @see https://docs.gs2.io/api_reference/news/sdk/#getnamespacestatus
      */
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
@@ -1235,8 +1247,11 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/news/sdk/#getnamespace
      */
     public function getNamespaceAsync(
             GetNamespaceRequest $request
@@ -1250,8 +1265,11 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
+     * @see https://docs.gs2.io/api_reference/news/sdk/#getnamespace
      */
     public function getNamespace (
             GetNamespaceRequest $request
@@ -1262,8 +1280,11 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/news/sdk/#updatenamespace
      */
     public function updateNamespaceAsync(
             UpdateNamespaceRequest $request
@@ -1277,8 +1298,11 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/news/sdk/#updatenamespace
      */
     public function updateNamespace (
             UpdateNamespaceRequest $request
@@ -1289,8 +1313,11 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/news/sdk/#deletenamespace
      */
     public function deleteNamespaceAsync(
             DeleteNamespaceRequest $request
@@ -1304,8 +1331,11 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
+     * @see https://docs.gs2.io/api_reference/news/sdk/#deletenamespace
      */
     public function deleteNamespace (
             DeleteNamespaceRequest $request
@@ -1316,8 +1346,11 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/news/sdk/#getserviceversion
      */
     public function getServiceVersionAsync(
             GetServiceVersionRequest $request
@@ -1331,8 +1364,11 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return GetServiceVersionResult
+     * @see https://docs.gs2.io/api_reference/news/sdk/#getserviceversion
      */
     public function getServiceVersion (
             GetServiceVersionRequest $request
@@ -1343,8 +1379,11 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List content generation progress
+     *
      * @param DescribeProgressesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/news/sdk/#describeprogresses
      */
     public function describeProgressesAsync(
             DescribeProgressesRequest $request
@@ -1358,8 +1397,11 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List content generation progress
+     *
      * @param DescribeProgressesRequest $request
      * @return DescribeProgressesResult
+     * @see https://docs.gs2.io/api_reference/news/sdk/#describeprogresses
      */
     public function describeProgresses (
             DescribeProgressesRequest $request
@@ -1370,8 +1412,11 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get content generation progress
+     *
      * @param GetProgressRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/news/sdk/#getprogress
      */
     public function getProgressAsync(
             GetProgressRequest $request
@@ -1385,8 +1430,11 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get content generation progress
+     *
      * @param GetProgressRequest $request
      * @return GetProgressResult
+     * @see https://docs.gs2.io/api_reference/news/sdk/#getprogress
      */
     public function getProgress (
             GetProgressRequest $request
@@ -1397,8 +1445,11 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List output of content generation progress
+     *
      * @param DescribeOutputsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/news/sdk/#describeoutputs
      */
     public function describeOutputsAsync(
             DescribeOutputsRequest $request
@@ -1412,8 +1463,11 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List output of content generation progress
+     *
      * @param DescribeOutputsRequest $request
      * @return DescribeOutputsResult
+     * @see https://docs.gs2.io/api_reference/news/sdk/#describeoutputs
      */
     public function describeOutputs (
             DescribeOutputsRequest $request
@@ -1424,8 +1478,11 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get output of content generation progress
+     *
      * @param GetOutputRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/news/sdk/#getoutput
      */
     public function getOutputAsync(
             GetOutputRequest $request
@@ -1439,8 +1496,11 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get output of content generation progress
+     *
      * @param GetOutputRequest $request
      * @return GetOutputResult
+     * @see https://docs.gs2.io/api_reference/news/sdk/#getoutput
      */
     public function getOutput (
             GetOutputRequest $request
@@ -1451,8 +1511,11 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare updates to Currently Active Notice
+     *
      * @param PrepareUpdateCurrentNewsMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/news/sdk/#prepareupdatecurrentnewsmaster
      */
     public function prepareUpdateCurrentNewsMasterAsync(
             PrepareUpdateCurrentNewsMasterRequest $request
@@ -1466,8 +1529,11 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare updates to Currently Active Notice
+     *
      * @param PrepareUpdateCurrentNewsMasterRequest $request
      * @return PrepareUpdateCurrentNewsMasterResult
+     * @see https://docs.gs2.io/api_reference/news/sdk/#prepareupdatecurrentnewsmaster
      */
     public function prepareUpdateCurrentNewsMaster (
             PrepareUpdateCurrentNewsMasterRequest $request
@@ -1478,8 +1544,11 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently available notices
+     *
      * @param UpdateCurrentNewsMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/news/sdk/#updatecurrentnewsmaster
      */
     public function updateCurrentNewsMasterAsync(
             UpdateCurrentNewsMasterRequest $request
@@ -1493,8 +1562,11 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently available notices
+     *
      * @param UpdateCurrentNewsMasterRequest $request
      * @return UpdateCurrentNewsMasterResult
+     * @see https://docs.gs2.io/api_reference/news/sdk/#updatecurrentnewsmaster
      */
     public function updateCurrentNewsMaster (
             UpdateCurrentNewsMasterRequest $request
@@ -1505,8 +1577,11 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently available notices from GitHub
+     *
      * @param PrepareUpdateCurrentNewsMasterFromGitHubRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/news/sdk/#prepareupdatecurrentnewsmasterfromgithub
      */
     public function prepareUpdateCurrentNewsMasterFromGitHubAsync(
             PrepareUpdateCurrentNewsMasterFromGitHubRequest $request
@@ -1520,8 +1595,11 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently available notices from GitHub
+     *
      * @param PrepareUpdateCurrentNewsMasterFromGitHubRequest $request
      * @return PrepareUpdateCurrentNewsMasterFromGitHubResult
+     * @see https://docs.gs2.io/api_reference/news/sdk/#prepareupdatecurrentnewsmasterfromgithub
      */
     public function prepareUpdateCurrentNewsMasterFromGitHub (
             PrepareUpdateCurrentNewsMasterFromGitHubRequest $request
@@ -1532,8 +1610,11 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List News Articles
+     *
      * @param DescribeNewsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/news/sdk/#describenews
      */
     public function describeNewsAsync(
             DescribeNewsRequest $request
@@ -1547,8 +1628,11 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List News Articles
+     *
      * @param DescribeNewsRequest $request
      * @return DescribeNewsResult
+     * @see https://docs.gs2.io/api_reference/news/sdk/#describenews
      */
     public function describeNews (
             DescribeNewsRequest $request
@@ -1559,8 +1643,11 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List News Articles by User ID
+     *
      * @param DescribeNewsByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/news/sdk/#describenewsbyuserid
      */
     public function describeNewsByUserIdAsync(
             DescribeNewsByUserIdRequest $request
@@ -1574,8 +1661,11 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List News Articles by User ID
+     *
      * @param DescribeNewsByUserIdRequest $request
      * @return DescribeNewsByUserIdResult
+     * @see https://docs.gs2.io/api_reference/news/sdk/#describenewsbyuserid
      */
     public function describeNewsByUserId (
             DescribeNewsByUserIdRequest $request
@@ -1586,8 +1676,11 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get the information needed to access the News Article
+     *
      * @param WantGrantRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/news/sdk/#wantgrant
      */
     public function wantGrantAsync(
             WantGrantRequest $request
@@ -1601,8 +1694,11 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get the information needed to access the News Article
+     *
      * @param WantGrantRequest $request
      * @return WantGrantResult
+     * @see https://docs.gs2.io/api_reference/news/sdk/#wantgrant
      */
     public function wantGrant (
             WantGrantRequest $request
@@ -1613,8 +1709,11 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get the information necessary to access a News Article by User ID
+     *
      * @param WantGrantByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/news/sdk/#wantgrantbyuserid
      */
     public function wantGrantByUserIdAsync(
             WantGrantByUserIdRequest $request
@@ -1628,8 +1727,11 @@ class Gs2NewsRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get the information necessary to access a News Article by User ID
+     *
      * @param WantGrantByUserIdRequest $request
      * @return WantGrantByUserIdResult
+     * @see https://docs.gs2.io/api_reference/news/sdk/#wantgrantbyuserid
      */
     public function wantGrantByUserId (
             WantGrantByUserIdRequest $request

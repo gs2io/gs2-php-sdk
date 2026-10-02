@@ -20,18 +20,29 @@ namespace Gs2\Deploy\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Deploy\Model\Stack;
 
+/**
+ * Result of getStack: Get Stack
+ *
+ * @see https://docs.gs2.io/api_reference/deploy/sdk/#getstack
+ */
 class GetStackResult implements IResult {
-    /** @var Stack */
+    /** @var Stack Stack */
     private $item;
 
+    /** @return Stack|null Stack */
 	public function getItem(): ?Stack {
 		return $this->item;
 	}
 
+    /** @param Stack|null $item Stack */
 	public function setItem(?Stack $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Stack|null $item Stack
+     * @return GetStackResult
+     */
 	public function withItem(?Stack $item): GetStackResult {
 		$this->item = $item;
 		return $this;

@@ -24,18 +24,29 @@ use Gs2\Quest\Model\VerifyAction;
 use Gs2\Quest\Model\ConsumeAction;
 use Gs2\Quest\Model\QuestModelMaster;
 
+/**
+ * Result of updateQuestModelMaster: Update Quest Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/quest/sdk/#updatequestmodelmaster
+ */
 class UpdateQuestModelMasterResult implements IResult {
-    /** @var QuestModelMaster */
+    /** @var QuestModelMaster Quest Model Master updated */
     private $item;
 
+    /** @return QuestModelMaster|null Quest Model Master updated */
 	public function getItem(): ?QuestModelMaster {
 		return $this->item;
 	}
 
+    /** @param QuestModelMaster|null $item Quest Model Master updated */
 	public function setItem(?QuestModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param QuestModelMaster|null $item Quest Model Master updated
+     * @return UpdateQuestModelMasterResult
+     */
 	public function withItem(?QuestModelMaster $item): UpdateQuestModelMasterResult {
 		$this->item = $item;
 		return $this;

@@ -20,115 +20,164 @@ namespace Gs2\Project\Model;
 use Gs2\Core\Model\IModel;
 
 
+/** Clean User Data Progress */
 class CleanProgress implements IModel {
 	/**
-     * @var string
+     * @var string Clean User Data Progress GRN
 	 */
 	private $cleanProgressId;
 	/**
-     * @var string
+     * @var string Transaction ID
 	 */
 	private $transactionId;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var int
+     * @var int Number of cleaned microservices
 	 */
 	private $cleaned;
 	/**
-     * @var int
+     * @var int Number of microservices
 	 */
 	private $microserviceCount;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Clean User Data Progress GRN */
 	public function getCleanProgressId(): ?string {
 		return $this->cleanProgressId;
 	}
+    /** @param string|null $cleanProgressId Clean User Data Progress GRN */
 	public function setCleanProgressId(?string $cleanProgressId) {
 		$this->cleanProgressId = $cleanProgressId;
 	}
+    /**
+     * @param string|null $cleanProgressId Clean User Data Progress GRN
+     * @return CleanProgress
+     */
 	public function withCleanProgressId(?string $cleanProgressId): CleanProgress {
 		$this->cleanProgressId = $cleanProgressId;
 		return $this;
 	}
+    /** @return string|null Transaction ID */
 	public function getTransactionId(): ?string {
 		return $this->transactionId;
 	}
+    /** @param string|null $transactionId Transaction ID */
 	public function setTransactionId(?string $transactionId) {
 		$this->transactionId = $transactionId;
 	}
+    /**
+     * @param string|null $transactionId Transaction ID
+     * @return CleanProgress
+     */
 	public function withTransactionId(?string $transactionId): CleanProgress {
 		$this->transactionId = $transactionId;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return CleanProgress
+     */
 	public function withUserId(?string $userId): CleanProgress {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return int|null Number of cleaned microservices */
 	public function getCleaned(): ?int {
 		return $this->cleaned;
 	}
+    /** @param int|null $cleaned Number of cleaned microservices */
 	public function setCleaned(?int $cleaned) {
 		$this->cleaned = $cleaned;
 	}
+    /**
+     * @param int|null $cleaned Number of cleaned microservices
+     * @return CleanProgress
+     */
 	public function withCleaned(?int $cleaned): CleanProgress {
 		$this->cleaned = $cleaned;
 		return $this;
 	}
+    /** @return int|null Number of microservices */
 	public function getMicroserviceCount(): ?int {
 		return $this->microserviceCount;
 	}
+    /** @param int|null $microserviceCount Number of microservices */
 	public function setMicroserviceCount(?int $microserviceCount) {
 		$this->microserviceCount = $microserviceCount;
 	}
+    /**
+     * @param int|null $microserviceCount Number of microservices
+     * @return CleanProgress
+     */
 	public function withMicroserviceCount(?int $microserviceCount): CleanProgress {
 		$this->microserviceCount = $microserviceCount;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return CleanProgress
+     */
 	public function withCreatedAt(?int $createdAt): CleanProgress {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return CleanProgress
+     */
 	public function withUpdatedAt(?int $updatedAt): CleanProgress {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return CleanProgress
+     */
 	public function withRevision(?int $revision): CleanProgress {
 		$this->revision = $revision;
 		return $this;

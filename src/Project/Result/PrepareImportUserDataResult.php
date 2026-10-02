@@ -19,33 +19,46 @@ namespace Gs2\Project\Result;
 
 use Gs2\Core\Model\IResult;
 
+/** Result of prepareImportUserData: Prepare to upload user data to import */
 class PrepareImportUserDataResult implements IResult {
-    /** @var string */
+    /** @var string Token used to reflect results after upload */
     private $uploadToken;
-    /** @var string */
+    /** @var string URL used to upload user data */
     private $uploadUrl;
 
+    /** @return string|null Token used to reflect results after upload */
 	public function getUploadToken(): ?string {
 		return $this->uploadToken;
 	}
 
+    /** @param string|null $uploadToken Token used to reflect results after upload */
 	public function setUploadToken(?string $uploadToken) {
 		$this->uploadToken = $uploadToken;
 	}
 
+    /**
+     * @param string|null $uploadToken Token used to reflect results after upload
+     * @return PrepareImportUserDataResult
+     */
 	public function withUploadToken(?string $uploadToken): PrepareImportUserDataResult {
 		$this->uploadToken = $uploadToken;
 		return $this;
 	}
 
+    /** @return string|null URL used to upload user data */
 	public function getUploadUrl(): ?string {
 		return $this->uploadUrl;
 	}
 
+    /** @param string|null $uploadUrl URL used to upload user data */
 	public function setUploadUrl(?string $uploadUrl) {
 		$this->uploadUrl = $uploadUrl;
 	}
 
+    /**
+     * @param string|null $uploadUrl URL used to upload user data
+     * @return PrepareImportUserDataResult
+     */
 	public function withUploadUrl(?string $uploadUrl): PrepareImportUserDataResult {
 		$this->uploadUrl = $uploadUrl;
 		return $this;

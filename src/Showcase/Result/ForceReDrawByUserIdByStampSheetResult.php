@@ -23,18 +23,29 @@ use Gs2\Showcase\Model\ConsumeAction;
 use Gs2\Showcase\Model\AcquireAction;
 use Gs2\Showcase\Model\RandomDisplayItem;
 
+/**
+ * Result of forceReDrawByUserIdByStampSheet: Execute re-drawing of the contents of the Random Showcase as an acquire action
+ *
+ * @see https://docs.gs2.io/api_reference/showcase/stamp_sheet/#gs2showcaseforceredrawbyuserid
+ */
 class ForceReDrawByUserIdByStampSheetResult implements IResult {
-    /** @var array */
+    /** @var array List of Random Displayed Items */
     private $items;
 
+    /** @return array|null List of Random Displayed Items */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Random Displayed Items */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Random Displayed Items
+     * @return ForceReDrawByUserIdByStampSheetResult
+     */
 	public function withItems(?array $items): ForceReDrawByUserIdByStampSheetResult {
 		$this->items = $items;
 		return $this;

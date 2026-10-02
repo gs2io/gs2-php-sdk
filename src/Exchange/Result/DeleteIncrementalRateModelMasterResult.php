@@ -22,18 +22,29 @@ use Gs2\Exchange\Model\ConsumeAction;
 use Gs2\Exchange\Model\AcquireAction;
 use Gs2\Exchange\Model\IncrementalRateModelMaster;
 
+/**
+ * Result of deleteIncrementalRateModelMaster: Delete Incremental Cost Exchange Rate Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/exchange/sdk/#deleteincrementalratemodelmaster
+ */
 class DeleteIncrementalRateModelMasterResult implements IResult {
-    /** @var IncrementalRateModelMaster */
+    /** @var IncrementalRateModelMaster Incremental Cost Exchange Rate Model Master deleted */
     private $item;
 
+    /** @return IncrementalRateModelMaster|null Incremental Cost Exchange Rate Model Master deleted */
 	public function getItem(): ?IncrementalRateModelMaster {
 		return $this->item;
 	}
 
+    /** @param IncrementalRateModelMaster|null $item Incremental Cost Exchange Rate Model Master deleted */
 	public function setItem(?IncrementalRateModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param IncrementalRateModelMaster|null $item Incremental Cost Exchange Rate Model Master deleted
+     * @return DeleteIncrementalRateModelMasterResult
+     */
 	public function withItem(?IncrementalRateModelMaster $item): DeleteIncrementalRateModelMasterResult {
 		$this->item = $item;
 		return $this;

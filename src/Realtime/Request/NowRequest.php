@@ -19,15 +19,26 @@ namespace Gs2\Realtime\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for now: Get current time
+ *
+ * @see https://docs.gs2.io/api_reference/realtime/sdk/#now
+ */
 class NowRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return NowRequest
+     */
 	public function withAccessToken(?string $accessToken): NowRequest {
 		$this->accessToken = $accessToken;
 		return $this;

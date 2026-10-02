@@ -2701,25 +2701,22 @@ class UpdateCurrentCampaignMasterFromGitHubTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 SerialKey API クライアント
+ * GS2-SerialKey API client
  *
- * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/serial_key/sdk/
  */
 class Gs2SerialKeyRestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#describenamespaces
      */
     public function describeNamespacesAsync(
             DescribeNamespacesRequest $request
@@ -2733,8 +2730,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#describenamespaces
      */
     public function describeNamespaces (
             DescribeNamespacesRequest $request
@@ -2745,8 +2745,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#createnamespace
      */
     public function createNamespaceAsync(
             CreateNamespaceRequest $request
@@ -2760,8 +2763,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#createnamespace
      */
     public function createNamespace (
             CreateNamespaceRequest $request
@@ -2772,8 +2778,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#getnamespacestatus
      */
     public function getNamespaceStatusAsync(
             GetNamespaceStatusRequest $request
@@ -2787,8 +2796,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#getnamespacestatus
      */
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
@@ -2799,8 +2811,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#getnamespace
      */
     public function getNamespaceAsync(
             GetNamespaceRequest $request
@@ -2814,8 +2829,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#getnamespace
      */
     public function getNamespace (
             GetNamespaceRequest $request
@@ -2826,8 +2844,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#updatenamespace
      */
     public function updateNamespaceAsync(
             UpdateNamespaceRequest $request
@@ -2841,8 +2862,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#updatenamespace
      */
     public function updateNamespace (
             UpdateNamespaceRequest $request
@@ -2853,8 +2877,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#deletenamespace
      */
     public function deleteNamespaceAsync(
             DeleteNamespaceRequest $request
@@ -2868,8 +2895,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#deletenamespace
      */
     public function deleteNamespace (
             DeleteNamespaceRequest $request
@@ -2880,8 +2910,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#getserviceversion
      */
     public function getServiceVersionAsync(
             GetServiceVersionRequest $request
@@ -2895,8 +2928,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return GetServiceVersionResult
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#getserviceversion
      */
     public function getServiceVersion (
             GetServiceVersionRequest $request
@@ -2907,8 +2943,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserIdAsync(
             DumpUserDataByUserIdRequest $request
@@ -2922,8 +2961,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return DumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserId (
             DumpUserDataByUserIdRequest $request
@@ -2934,8 +2976,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserIdAsync(
             CheckDumpUserDataByUserIdRequest $request
@@ -2949,8 +2994,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return CheckDumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserId (
             CheckDumpUserDataByUserIdRequest $request
@@ -2961,8 +3009,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserIdAsync(
             CleanUserDataByUserIdRequest $request
@@ -2976,8 +3027,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return CleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserId (
             CleanUserDataByUserIdRequest $request
@@ -2988,8 +3042,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the clean of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserIdAsync(
             CheckCleanUserDataByUserIdRequest $request
@@ -3003,8 +3060,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the clean of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return CheckCleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserId (
             CheckCleanUserDataByUserIdRequest $request
@@ -3015,8 +3075,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserIdAsync(
             PrepareImportUserDataByUserIdRequest $request
@@ -3030,8 +3093,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PrepareImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserId (
             PrepareImportUserDataByUserIdRequest $request
@@ -3042,8 +3108,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserIdAsync(
             ImportUserDataByUserIdRequest $request
@@ -3057,8 +3126,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return ImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserId (
             ImportUserDataByUserIdRequest $request
@@ -3069,8 +3141,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserIdAsync(
             CheckImportUserDataByUserIdRequest $request
@@ -3084,8 +3159,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return CheckImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserId (
             CheckImportUserDataByUserIdRequest $request
@@ -3096,8 +3174,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Serial Code Issuance Jobs
+     *
      * @param DescribeIssueJobsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#describeissuejobs
      */
     public function describeIssueJobsAsync(
             DescribeIssueJobsRequest $request
@@ -3111,8 +3192,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Serial Code Issuance Jobs
+     *
      * @param DescribeIssueJobsRequest $request
      * @return DescribeIssueJobsResult
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#describeissuejobs
      */
     public function describeIssueJobs (
             DescribeIssueJobsRequest $request
@@ -3123,8 +3207,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Serial Code Issuance Job
+     *
      * @param GetIssueJobRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#getissuejob
      */
     public function getIssueJobAsync(
             GetIssueJobRequest $request
@@ -3138,8 +3225,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Serial Code Issuance Job
+     *
      * @param GetIssueJobRequest $request
      * @return GetIssueJobResult
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#getissuejob
      */
     public function getIssueJob (
             GetIssueJobRequest $request
@@ -3150,8 +3240,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Serial Code Issuance Job
+     *
      * @param IssueRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#issue
      */
     public function issueAsync(
             IssueRequest $request
@@ -3165,8 +3258,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Serial Code Issuance Job
+     *
      * @param IssueRequest $request
      * @return IssueResult
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#issue
      */
     public function issue (
             IssueRequest $request
@@ -3177,8 +3273,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Serial Codes
+     *
      * @param DescribeSerialKeysRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#describeserialkeys
      */
     public function describeSerialKeysAsync(
             DescribeSerialKeysRequest $request
@@ -3192,8 +3291,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Serial Codes
+     *
      * @param DescribeSerialKeysRequest $request
      * @return DescribeSerialKeysResult
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#describeserialkeys
      */
     public function describeSerialKeys (
             DescribeSerialKeysRequest $request
@@ -3204,8 +3306,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Download Serial Codes as a File
+     *
      * @param DownloadSerialCodesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#downloadserialcodes
      */
     public function downloadSerialCodesAsync(
             DownloadSerialCodesRequest $request
@@ -3219,8 +3324,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Download Serial Codes as a File
+     *
      * @param DownloadSerialCodesRequest $request
      * @return DownloadSerialCodesResult
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#downloadserialcodes
      */
     public function downloadSerialCodes (
             DownloadSerialCodesRequest $request
@@ -3231,8 +3339,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Issue a serial code
+     *
      * @param IssueOnceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#issueonce
      */
     public function issueOnceAsync(
             IssueOnceRequest $request
@@ -3246,8 +3357,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Issue a serial code
+     *
      * @param IssueOnceRequest $request
      * @return IssueOnceResult
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#issueonce
      */
     public function issueOnce (
             IssueOnceRequest $request
@@ -3258,8 +3372,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get serial code
+     *
      * @param GetSerialKeyRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#getserialkey
      */
     public function getSerialKeyAsync(
             GetSerialKeyRequest $request
@@ -3273,8 +3390,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get serial code
+     *
      * @param GetSerialKeyRequest $request
      * @return GetSerialKeyResult
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#getserialkey
      */
     public function getSerialKey (
             GetSerialKeyRequest $request
@@ -3285,8 +3405,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the validity of the serial code
+     *
      * @param VerifyCodeRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#verifycode
      */
     public function verifyCodeAsync(
             VerifyCodeRequest $request
@@ -3300,8 +3423,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the validity of the serial code
+     *
      * @param VerifyCodeRequest $request
      * @return VerifyCodeResult
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#verifycode
      */
     public function verifyCode (
             VerifyCodeRequest $request
@@ -3312,8 +3438,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the validity of the Serial Code by User ID
+     *
      * @param VerifyCodeByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#verifycodebyuserid
      */
     public function verifyCodeByUserIdAsync(
             VerifyCodeByUserIdRequest $request
@@ -3327,8 +3456,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the validity of the Serial Code by User ID
+     *
      * @param VerifyCodeByUserIdRequest $request
      * @return VerifyCodeByUserIdResult
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#verifycodebyuserid
      */
     public function verifyCodeByUserId (
             VerifyCodeByUserIdRequest $request
@@ -3339,8 +3471,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Use serial code
+     *
      * @param UseRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#use
      */
     public function useAsync(
             UseRequest $request
@@ -3354,8 +3489,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Use serial code
+     *
      * @param UseRequest $request
      * @return UseResult
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#use
      */
     public function use (
             UseRequest $request
@@ -3366,8 +3504,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Use Serial Code by User ID
+     *
      * @param UseByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#usebyuserid
      */
     public function useByUserIdAsync(
             UseByUserIdRequest $request
@@ -3381,8 +3522,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Use Serial Code by User ID
+     *
      * @param UseByUserIdRequest $request
      * @return UseByUserIdResult
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#usebyuserid
      */
     public function useByUserId (
             UseByUserIdRequest $request
@@ -3393,8 +3537,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Set Serial Code to Unused by User ID
+     *
      * @param RevertUseByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#revertusebyuserid
      */
     public function revertUseByUserIdAsync(
             RevertUseByUserIdRequest $request
@@ -3408,8 +3555,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Set Serial Code to Unused by User ID
+     *
      * @param RevertUseByUserIdRequest $request
      * @return RevertUseByUserIdResult
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#revertusebyuserid
      */
     public function revertUseByUserId (
             RevertUseByUserIdRequest $request
@@ -3420,8 +3570,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute serial code set to used as consume action
+     *
      * @param UseByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/serial_key/stamp_sheet/#gs2serialkeyusebyuserid
      */
     public function useByStampTaskAsync(
             UseByStampTaskRequest $request
@@ -3435,8 +3588,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute serial code set to used as consume action
+     *
      * @param UseByStampTaskRequest $request
      * @return UseByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/serial_key/stamp_sheet/#gs2serialkeyusebyuserid
      */
     public function useByStampTask (
             UseByStampTaskRequest $request
@@ -3447,8 +3603,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute serial code set to unused as acquire action
+     *
      * @param RevertUseByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/serial_key/stamp_sheet/#gs2serialkeyrevertusebyuserid
      */
     public function revertUseByStampSheetAsync(
             RevertUseByStampSheetRequest $request
@@ -3462,8 +3621,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute serial code set to unused as acquire action
+     *
      * @param RevertUseByStampSheetRequest $request
      * @return RevertUseByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/serial_key/stamp_sheet/#gs2serialkeyrevertusebyuserid
      */
     public function revertUseByStampSheet (
             RevertUseByStampSheetRequest $request
@@ -3474,8 +3636,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the validity of the serial code as verify action
+     *
      * @param VerifyByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/serial_key/stamp_sheet/#gs2serialkeyverifycodebyuserid
      */
     public function verifyByStampTaskAsync(
             VerifyByStampTaskRequest $request
@@ -3489,8 +3654,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify the validity of the serial code as verify action
+     *
      * @param VerifyByStampTaskRequest $request
      * @return VerifyByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/serial_key/stamp_sheet/#gs2serialkeyverifycodebyuserid
      */
     public function verifyByStampTask (
             VerifyByStampTaskRequest $request
@@ -3501,8 +3669,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Issue a serial code as acquire action
+     *
      * @param IssueOnceByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/serial_key/stamp_sheet/#gs2serialkeyissueonce
      */
     public function issueOnceByStampSheetAsync(
             IssueOnceByStampSheetRequest $request
@@ -3516,8 +3687,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Issue a serial code as acquire action
+     *
      * @param IssueOnceByStampSheetRequest $request
      * @return IssueOnceByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/serial_key/stamp_sheet/#gs2serialkeyissueonce
      */
     public function issueOnceByStampSheet (
             IssueOnceByStampSheetRequest $request
@@ -3528,8 +3702,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Campaign Models
+     *
      * @param DescribeCampaignModelsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#describecampaignmodels
      */
     public function describeCampaignModelsAsync(
             DescribeCampaignModelsRequest $request
@@ -3543,8 +3720,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Campaign Models
+     *
      * @param DescribeCampaignModelsRequest $request
      * @return DescribeCampaignModelsResult
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#describecampaignmodels
      */
     public function describeCampaignModels (
             DescribeCampaignModelsRequest $request
@@ -3555,8 +3735,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Campaign Model
+     *
      * @param GetCampaignModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#getcampaignmodel
      */
     public function getCampaignModelAsync(
             GetCampaignModelRequest $request
@@ -3570,8 +3753,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Campaign Model
+     *
      * @param GetCampaignModelRequest $request
      * @return GetCampaignModelResult
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#getcampaignmodel
      */
     public function getCampaignModel (
             GetCampaignModelRequest $request
@@ -3582,8 +3768,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Campaign Model Master
+     *
      * @param DescribeCampaignModelMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#describecampaignmodelmasters
      */
     public function describeCampaignModelMastersAsync(
             DescribeCampaignModelMastersRequest $request
@@ -3597,8 +3786,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Campaign Model Master
+     *
      * @param DescribeCampaignModelMastersRequest $request
      * @return DescribeCampaignModelMastersResult
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#describecampaignmodelmasters
      */
     public function describeCampaignModelMasters (
             DescribeCampaignModelMastersRequest $request
@@ -3609,8 +3801,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Campaign Model Master Data
+     *
      * @param CreateCampaignModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#createcampaignmodelmaster
      */
     public function createCampaignModelMasterAsync(
             CreateCampaignModelMasterRequest $request
@@ -3624,8 +3819,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Campaign Model Master Data
+     *
      * @param CreateCampaignModelMasterRequest $request
      * @return CreateCampaignModelMasterResult
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#createcampaignmodelmaster
      */
     public function createCampaignModelMaster (
             CreateCampaignModelMasterRequest $request
@@ -3636,8 +3834,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Campaign Model Master Data
+     *
      * @param GetCampaignModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#getcampaignmodelmaster
      */
     public function getCampaignModelMasterAsync(
             GetCampaignModelMasterRequest $request
@@ -3651,8 +3852,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Campaign Model Master Data
+     *
      * @param GetCampaignModelMasterRequest $request
      * @return GetCampaignModelMasterResult
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#getcampaignmodelmaster
      */
     public function getCampaignModelMaster (
             GetCampaignModelMasterRequest $request
@@ -3663,8 +3867,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Campaign Model Master
+     *
      * @param UpdateCampaignModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#updatecampaignmodelmaster
      */
     public function updateCampaignModelMasterAsync(
             UpdateCampaignModelMasterRequest $request
@@ -3678,8 +3885,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Campaign Model Master
+     *
      * @param UpdateCampaignModelMasterRequest $request
      * @return UpdateCampaignModelMasterResult
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#updatecampaignmodelmaster
      */
     public function updateCampaignModelMaster (
             UpdateCampaignModelMasterRequest $request
@@ -3690,8 +3900,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Campaign Model Master
+     *
      * @param DeleteCampaignModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#deletecampaignmodelmaster
      */
     public function deleteCampaignModelMasterAsync(
             DeleteCampaignModelMasterRequest $request
@@ -3705,8 +3918,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Campaign Model Master
+     *
      * @param DeleteCampaignModelMasterRequest $request
      * @return DeleteCampaignModelMasterResult
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#deletecampaignmodelmaster
      */
     public function deleteCampaignModelMaster (
             DeleteCampaignModelMasterRequest $request
@@ -3717,8 +3933,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Campaign Model Master in a format that permits master data activation
+     *
      * @param ExportMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#exportmaster
      */
     public function exportMasterAsync(
             ExportMasterRequest $request
@@ -3732,8 +3951,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Campaign Model Master in a format that permits master data activation
+     *
      * @param ExportMasterRequest $request
      * @return ExportMasterResult
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#exportmaster
      */
     public function exportMaster (
             ExportMasterRequest $request
@@ -3744,8 +3966,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Campaign Model master data
+     *
      * @param GetCurrentCampaignMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#getcurrentcampaignmaster
      */
     public function getCurrentCampaignMasterAsync(
             GetCurrentCampaignMasterRequest $request
@@ -3759,8 +3984,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Campaign Model master data
+     *
      * @param GetCurrentCampaignMasterRequest $request
      * @return GetCurrentCampaignMasterResult
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#getcurrentcampaignmaster
      */
     public function getCurrentCampaignMaster (
             GetCurrentCampaignMasterRequest $request
@@ -3771,8 +3999,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Campaign Model master data (3-phase version)
+     *
      * @param PreUpdateCurrentCampaignMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#preupdatecurrentcampaignmaster
      */
     public function preUpdateCurrentCampaignMasterAsync(
             PreUpdateCurrentCampaignMasterRequest $request
@@ -3786,8 +4017,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Campaign Model master data (3-phase version)
+     *
      * @param PreUpdateCurrentCampaignMasterRequest $request
      * @return PreUpdateCurrentCampaignMasterResult
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#preupdatecurrentcampaignmaster
      */
     public function preUpdateCurrentCampaignMaster (
             PreUpdateCurrentCampaignMasterRequest $request
@@ -3798,8 +4032,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Campaign Model master data
+     *
      * @param UpdateCurrentCampaignMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#updatecurrentcampaignmaster
      */
     public function updateCurrentCampaignMasterAsync(
             UpdateCurrentCampaignMasterRequest $request
@@ -3813,8 +4050,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Campaign Model master data
+     *
      * @param UpdateCurrentCampaignMasterRequest $request
      * @return UpdateCurrentCampaignMasterResult
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#updatecurrentcampaignmaster
      */
     public function updateCurrentCampaignMaster (
             UpdateCurrentCampaignMasterRequest $request
@@ -3825,8 +4065,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Campaign Model master data from GitHub
+     *
      * @param UpdateCurrentCampaignMasterFromGitHubRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#updatecurrentcampaignmasterfromgithub
      */
     public function updateCurrentCampaignMasterFromGitHubAsync(
             UpdateCurrentCampaignMasterFromGitHubRequest $request
@@ -3840,8 +4083,11 @@ class Gs2SerialKeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Campaign Model master data from GitHub
+     *
      * @param UpdateCurrentCampaignMasterFromGitHubRequest $request
      * @return UpdateCurrentCampaignMasterFromGitHubResult
+     * @see https://docs.gs2.io/api_reference/serial_key/sdk/#updatecurrentcampaignmasterfromgithub
      */
     public function updateCurrentCampaignMasterFromGitHub (
             UpdateCurrentCampaignMasterFromGitHubRequest $request

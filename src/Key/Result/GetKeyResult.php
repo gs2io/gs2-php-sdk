@@ -20,18 +20,29 @@ namespace Gs2\Key\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Key\Model\Key;
 
+/**
+ * Result of getKey: Get Encryption Key
+ *
+ * @see https://docs.gs2.io/api_reference/key/sdk/#getkey
+ */
 class GetKeyResult implements IResult {
-    /** @var Key */
+    /** @var Key Encryption Key */
     private $item;
 
+    /** @return Key|null Encryption Key */
 	public function getItem(): ?Key {
 		return $this->item;
 	}
 
+    /** @param Key|null $item Encryption Key */
 	public function setItem(?Key $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Key|null $item Encryption Key
+     * @return GetKeyResult
+     */
 	public function withItem(?Key $item): GetKeyResult {
 		$this->item = $item;
 		return $this;

@@ -19,18 +19,29 @@ namespace Gs2\Identifier\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of attachGuard: Assign the GS2-Guard Namespace GRN to the credential
+ *
+ * @see https://docs.gs2.io/api_reference/identifier/sdk/#attachguard
+ */
 class AttachGuardResult implements IResult {
-    /** @var array */
+    /** @var array List of GS2-Guard Namespace GRN */
     private $items;
 
+    /** @return array|null List of GS2-Guard Namespace GRN */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of GS2-Guard Namespace GRN */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of GS2-Guard Namespace GRN
+     * @return AttachGuardResult
+     */
 	public function withItems(?array $items): AttachGuardResult {
 		$this->items = $items;
 		return $this;

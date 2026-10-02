@@ -20,18 +20,29 @@ namespace Gs2\MegaField\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\MegaField\Model\CurrentFieldMaster;
 
+/**
+ * Result of getCurrentFieldMaster: Get currently active Field Model master data
+ *
+ * @see https://docs.gs2.io/api_reference/mega_field/sdk/#getcurrentfieldmaster
+ */
 class GetCurrentFieldMasterResult implements IResult {
-    /** @var CurrentFieldMaster */
+    /** @var CurrentFieldMaster Currently active Field Model master data */
     private $item;
 
+    /** @return CurrentFieldMaster|null Currently active Field Model master data */
 	public function getItem(): ?CurrentFieldMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentFieldMaster|null $item Currently active Field Model master data */
 	public function setItem(?CurrentFieldMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentFieldMaster|null $item Currently active Field Model master data
+     * @return GetCurrentFieldMasterResult
+     */
 	public function withItem(?CurrentFieldMaster $item): GetCurrentFieldMasterResult {
 		$this->item = $item;
 		return $this;

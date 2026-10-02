@@ -20,53 +20,82 @@ namespace Gs2\Matchmaking\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Matchmaking\Model\AttributeRange;
 
+/**
+ * Request for updateGathering: Update Gathering
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#updategathering
+ */
 class UpdateGatheringRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Gathering name */
     private $gatheringName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var array */
+    /** @var array Recruitment Requirements */
     private $attributeRanges;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UpdateGatheringRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UpdateGatheringRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Gathering name */
 	public function getGatheringName(): ?string {
 		return $this->gatheringName;
 	}
+    /** @param string|null $gatheringName Gathering name */
 	public function setGatheringName(?string $gatheringName) {
 		$this->gatheringName = $gatheringName;
 	}
+    /**
+     * @param string|null $gatheringName Gathering name
+     * @return UpdateGatheringRequest
+     */
 	public function withGatheringName(?string $gatheringName): UpdateGatheringRequest {
 		$this->gatheringName = $gatheringName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return UpdateGatheringRequest
+     */
 	public function withAccessToken(?string $accessToken): UpdateGatheringRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return array|null Recruitment Requirements */
 	public function getAttributeRanges(): ?array {
 		return $this->attributeRanges;
 	}
+    /** @param array|null $attributeRanges Recruitment Requirements */
 	public function setAttributeRanges(?array $attributeRanges) {
 		$this->attributeRanges = $attributeRanges;
 	}
+    /**
+     * @param array|null $attributeRanges Recruitment Requirements
+     * @return UpdateGatheringRequest
+     */
 	public function withAttributeRanges(?array $attributeRanges): UpdateGatheringRequest {
 		$this->attributeRanges = $attributeRanges;
 		return $this;

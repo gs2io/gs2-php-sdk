@@ -19,65 +19,100 @@ namespace Gs2\Lottery\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for prediction: Get the prediction result of the lottery result
+ *
+ * @see https://docs.gs2.io/api_reference/lottery/sdk/#prediction
+ */
 class PredictionRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Lottery Model name */
     private $lotteryName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var int */
+    /** @var int Random seed */
     private $randomSeed;
-    /** @var int */
+    /** @var int Number of draws */
     private $count;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return PredictionRequest
+     */
 	public function withNamespaceName(?string $namespaceName): PredictionRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Lottery Model name */
 	public function getLotteryName(): ?string {
 		return $this->lotteryName;
 	}
+    /** @param string|null $lotteryName Lottery Model name */
 	public function setLotteryName(?string $lotteryName) {
 		$this->lotteryName = $lotteryName;
 	}
+    /**
+     * @param string|null $lotteryName Lottery Model name
+     * @return PredictionRequest
+     */
 	public function withLotteryName(?string $lotteryName): PredictionRequest {
 		$this->lotteryName = $lotteryName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return PredictionRequest
+     */
 	public function withAccessToken(?string $accessToken): PredictionRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return int|null Random seed */
 	public function getRandomSeed(): ?int {
 		return $this->randomSeed;
 	}
+    /** @param int|null $randomSeed Random seed */
 	public function setRandomSeed(?int $randomSeed) {
 		$this->randomSeed = $randomSeed;
 	}
+    /**
+     * @param int|null $randomSeed Random seed
+     * @return PredictionRequest
+     */
 	public function withRandomSeed(?int $randomSeed): PredictionRequest {
 		$this->randomSeed = $randomSeed;
 		return $this;
 	}
+    /** @return int|null Number of draws */
 	public function getCount(): ?int {
 		return $this->count;
 	}
+    /** @param int|null $count Number of draws */
 	public function setCount(?int $count) {
 		$this->count = $count;
 	}
+    /**
+     * @param int|null $count Number of draws
+     * @return PredictionRequest
+     */
 	public function withCount(?int $count): PredictionRequest {
 		$this->count = $count;
 		return $this;

@@ -24,18 +24,29 @@ use Gs2\Matchmaking\Model\Player;
 use Gs2\Matchmaking\Model\CapacityOfRole;
 use Gs2\Matchmaking\Model\Gathering;
 
+/**
+ * Result of pingByUserId: Notify that you are waiting for matchmaking by specifying user ID
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#pingbyuserid
+ */
 class PingByUserIdResult implements IResult {
-    /** @var Gathering */
+    /** @var Gathering Gathering updated */
     private $item;
 
+    /** @return Gathering|null Gathering updated */
 	public function getItem(): ?Gathering {
 		return $this->item;
 	}
 
+    /** @param Gathering|null $item Gathering updated */
 	public function setItem(?Gathering $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Gathering|null $item Gathering updated
+     * @return PingByUserIdResult
+     */
 	public function withItem(?Gathering $item): PingByUserIdResult {
 		$this->item = $item;
 		return $this;

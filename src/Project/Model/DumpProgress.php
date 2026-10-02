@@ -20,115 +20,164 @@ namespace Gs2\Project\Model;
 use Gs2\Core\Model\IModel;
 
 
+/** Dump User Data Progress */
 class DumpProgress implements IModel {
 	/**
-     * @var string
+     * @var string Dump User Data Progress GRN
 	 */
 	private $dumpProgressId;
 	/**
-     * @var string
+     * @var string Transaction ID
 	 */
 	private $transactionId;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var int
+     * @var int Number of dumped microservices
 	 */
 	private $dumped;
 	/**
-     * @var int
+     * @var int Number of microservices
 	 */
 	private $microserviceCount;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Dump User Data Progress GRN */
 	public function getDumpProgressId(): ?string {
 		return $this->dumpProgressId;
 	}
+    /** @param string|null $dumpProgressId Dump User Data Progress GRN */
 	public function setDumpProgressId(?string $dumpProgressId) {
 		$this->dumpProgressId = $dumpProgressId;
 	}
+    /**
+     * @param string|null $dumpProgressId Dump User Data Progress GRN
+     * @return DumpProgress
+     */
 	public function withDumpProgressId(?string $dumpProgressId): DumpProgress {
 		$this->dumpProgressId = $dumpProgressId;
 		return $this;
 	}
+    /** @return string|null Transaction ID */
 	public function getTransactionId(): ?string {
 		return $this->transactionId;
 	}
+    /** @param string|null $transactionId Transaction ID */
 	public function setTransactionId(?string $transactionId) {
 		$this->transactionId = $transactionId;
 	}
+    /**
+     * @param string|null $transactionId Transaction ID
+     * @return DumpProgress
+     */
 	public function withTransactionId(?string $transactionId): DumpProgress {
 		$this->transactionId = $transactionId;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return DumpProgress
+     */
 	public function withUserId(?string $userId): DumpProgress {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return int|null Number of dumped microservices */
 	public function getDumped(): ?int {
 		return $this->dumped;
 	}
+    /** @param int|null $dumped Number of dumped microservices */
 	public function setDumped(?int $dumped) {
 		$this->dumped = $dumped;
 	}
+    /**
+     * @param int|null $dumped Number of dumped microservices
+     * @return DumpProgress
+     */
 	public function withDumped(?int $dumped): DumpProgress {
 		$this->dumped = $dumped;
 		return $this;
 	}
+    /** @return int|null Number of microservices */
 	public function getMicroserviceCount(): ?int {
 		return $this->microserviceCount;
 	}
+    /** @param int|null $microserviceCount Number of microservices */
 	public function setMicroserviceCount(?int $microserviceCount) {
 		$this->microserviceCount = $microserviceCount;
 	}
+    /**
+     * @param int|null $microserviceCount Number of microservices
+     * @return DumpProgress
+     */
 	public function withMicroserviceCount(?int $microserviceCount): DumpProgress {
 		$this->microserviceCount = $microserviceCount;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return DumpProgress
+     */
 	public function withCreatedAt(?int $createdAt): DumpProgress {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return DumpProgress
+     */
 	public function withUpdatedAt(?int $updatedAt): DumpProgress {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return DumpProgress
+     */
 	public function withRevision(?int $revision): DumpProgress {
 		$this->revision = $revision;
 		return $this;

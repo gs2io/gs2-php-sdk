@@ -22,18 +22,29 @@ use Gs2\Ranking2\Model\AcquireAction;
 use Gs2\Ranking2\Model\RankingReward;
 use Gs2\Ranking2\Model\GlobalRankingModel;
 
+/**
+ * Result of getGlobalRankingModel: Get Global Ranking Model
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/sdk/#getglobalrankingmodel
+ */
 class GetGlobalRankingModelResult implements IResult {
-    /** @var GlobalRankingModel */
+    /** @var GlobalRankingModel Global Ranking Model */
     private $item;
 
+    /** @return GlobalRankingModel|null Global Ranking Model */
 	public function getItem(): ?GlobalRankingModel {
 		return $this->item;
 	}
 
+    /** @param GlobalRankingModel|null $item Global Ranking Model */
 	public function setItem(?GlobalRankingModel $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param GlobalRankingModel|null $item Global Ranking Model
+     * @return GetGlobalRankingModelResult
+     */
 	public function withItem(?GlobalRankingModel $item): GetGlobalRankingModelResult {
 		$this->item = $item;
 		return $this;

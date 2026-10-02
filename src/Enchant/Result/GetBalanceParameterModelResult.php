@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Enchant\Model\BalanceParameterValueModel;
 use Gs2\Enchant\Model\BalanceParameterModel;
 
+/**
+ * Result of getBalanceParameterModel: Get Balance Parameter Model
+ *
+ * @see https://docs.gs2.io/api_reference/enchant/sdk/#getbalanceparametermodel
+ */
 class GetBalanceParameterModelResult implements IResult {
-    /** @var BalanceParameterModel */
+    /** @var BalanceParameterModel Balance Parameter Model */
     private $item;
 
+    /** @return BalanceParameterModel|null Balance Parameter Model */
 	public function getItem(): ?BalanceParameterModel {
 		return $this->item;
 	}
 
+    /** @param BalanceParameterModel|null $item Balance Parameter Model */
 	public function setItem(?BalanceParameterModel $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param BalanceParameterModel|null $item Balance Parameter Model
+     * @return GetBalanceParameterModelResult
+     */
 	public function withItem(?BalanceParameterModel $item): GetBalanceParameterModelResult {
 		$this->item = $item;
 		return $this;

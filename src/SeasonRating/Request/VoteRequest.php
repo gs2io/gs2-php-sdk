@@ -20,63 +20,98 @@ namespace Gs2\SeasonRating\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\SeasonRating\Model\GameResult;
 
+/**
+ * Request for vote: Vote on match results
+ *
+ * @see https://docs.gs2.io/api_reference/season_rating/sdk/#vote-1
+ */
 class VoteRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Data for ballot signature targets */
     private $ballotBody;
-    /** @var string */
+    /** @var string Signature */
     private $ballotSignature;
-    /** @var array */
+    /** @var array Match Results */
     private $gameResults;
-    /** @var string */
+    /** @var string Encryption Key GRN */
     private $keyId;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return VoteRequest
+     */
 	public function withNamespaceName(?string $namespaceName): VoteRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Data for ballot signature targets */
 	public function getBallotBody(): ?string {
 		return $this->ballotBody;
 	}
+    /** @param string|null $ballotBody Data for ballot signature targets */
 	public function setBallotBody(?string $ballotBody) {
 		$this->ballotBody = $ballotBody;
 	}
+    /**
+     * @param string|null $ballotBody Data for ballot signature targets
+     * @return VoteRequest
+     */
 	public function withBallotBody(?string $ballotBody): VoteRequest {
 		$this->ballotBody = $ballotBody;
 		return $this;
 	}
+    /** @return string|null Signature */
 	public function getBallotSignature(): ?string {
 		return $this->ballotSignature;
 	}
+    /** @param string|null $ballotSignature Signature */
 	public function setBallotSignature(?string $ballotSignature) {
 		$this->ballotSignature = $ballotSignature;
 	}
+    /**
+     * @param string|null $ballotSignature Signature
+     * @return VoteRequest
+     */
 	public function withBallotSignature(?string $ballotSignature): VoteRequest {
 		$this->ballotSignature = $ballotSignature;
 		return $this;
 	}
+    /** @return array|null Match Results */
 	public function getGameResults(): ?array {
 		return $this->gameResults;
 	}
+    /** @param array|null $gameResults Match Results */
 	public function setGameResults(?array $gameResults) {
 		$this->gameResults = $gameResults;
 	}
+    /**
+     * @param array|null $gameResults Match Results
+     * @return VoteRequest
+     */
 	public function withGameResults(?array $gameResults): VoteRequest {
 		$this->gameResults = $gameResults;
 		return $this;
 	}
+    /** @return string|null Encryption Key GRN */
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
+    /** @param string|null $keyId Encryption Key GRN */
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
+    /**
+     * @param string|null $keyId Encryption Key GRN
+     * @return VoteRequest
+     */
 	public function withKeyId(?string $keyId): VoteRequest {
 		$this->keyId = $keyId;
 		return $this;

@@ -22,18 +22,29 @@ use Gs2\Mission\Model\VerifyAction;
 use Gs2\Mission\Model\CounterScopeModel;
 use Gs2\Mission\Model\CounterModel;
 
+/**
+ * Result of describeCounterModels: List Counter Models
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#describecountermodels
+ */
 class DescribeCounterModelsResult implements IResult {
-    /** @var array */
+    /** @var array List of Counter Model */
     private $items;
 
+    /** @return array|null List of Counter Model */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Counter Model */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Counter Model
+     * @return DescribeCounterModelsResult
+     */
 	public function withItems(?array $items): DescribeCounterModelsResult {
 		$this->items = $items;
 		return $this;

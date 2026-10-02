@@ -19,6 +19,11 @@ namespace Gs2\Dictionary\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of verifyEntryByUserId: Verify Entry by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/dictionary/sdk/#verifyentrybyuserid
+ */
 class VerifyEntryByUserIdResult implements IResult {
 
     public static function fromJson(?array $data): ?VerifyEntryByUserIdResult {

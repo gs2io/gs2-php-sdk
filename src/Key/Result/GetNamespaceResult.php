@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Key\Model\LogSetting;
 use Gs2\Key\Model\Namespace_;
 
+/**
+ * Result of getNamespace: Get Namespace
+ *
+ * @see https://docs.gs2.io/api_reference/key/sdk/#getnamespace
+ */
 class GetNamespaceResult implements IResult {
-    /** @var Namespace_ */
+    /** @var Namespace_ Namespace */
     private $item;
 
+    /** @return Namespace_|null Namespace */
 	public function getItem(): ?Namespace_ {
 		return $this->item;
 	}
 
+    /** @param Namespace_|null $item Namespace */
 	public function setItem(?Namespace_ $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Namespace_|null $item Namespace
+     * @return GetNamespaceResult
+     */
 	public function withItem(?Namespace_ $item): GetNamespaceResult {
 		$this->item = $item;
 		return $this;

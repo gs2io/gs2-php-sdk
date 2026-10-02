@@ -20,18 +20,29 @@ namespace Gs2\Experience\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Experience\Model\Status;
 
+/**
+ * Result of addExperienceByUserId: Add experience by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/experience/sdk/#addexperiencebyuserid
+ */
 class AddExperienceByUserIdResult implements IResult {
-    /** @var Status */
+    /** @var Status Status after addition */
     private $item;
 
+    /** @return Status|null Status after addition */
 	public function getItem(): ?Status {
 		return $this->item;
 	}
 
+    /** @param Status|null $item Status after addition */
 	public function setItem(?Status $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Status|null $item Status after addition
+     * @return AddExperienceByUserIdResult
+     */
 	public function withItem(?Status $item): AddExperienceByUserIdResult {
 		$this->item = $item;
 		return $this;

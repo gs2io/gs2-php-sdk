@@ -19,51 +19,80 @@ namespace Gs2\Account\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getAccount: Get Game Player Account
+ *
+ * @see https://docs.gs2.io/api_reference/account/sdk/#getaccount
+ */
 class GetAccountRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var bool */
+    /** @var bool Include last authenticated at */
     private $includeLastAuthenticatedAt;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetAccountRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetAccountRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return GetAccountRequest
+     */
 	public function withUserId(?string $userId): GetAccountRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return bool|null Include last authenticated at */
 	public function getIncludeLastAuthenticatedAt(): ?bool {
 		return $this->includeLastAuthenticatedAt;
 	}
+    /** @param bool|null $includeLastAuthenticatedAt Include last authenticated at */
 	public function setIncludeLastAuthenticatedAt(?bool $includeLastAuthenticatedAt) {
 		$this->includeLastAuthenticatedAt = $includeLastAuthenticatedAt;
 	}
+    /**
+     * @param bool|null $includeLastAuthenticatedAt Include last authenticated at
+     * @return GetAccountRequest
+     */
 	public function withIncludeLastAuthenticatedAt(?bool $includeLastAuthenticatedAt): GetAccountRequest {
 		$this->includeLastAuthenticatedAt = $includeLastAuthenticatedAt;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return GetAccountRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): GetAccountRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

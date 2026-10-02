@@ -19,77 +19,118 @@ namespace Gs2\Stamina\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for setMaxValueByStatus: Update maximum stamina using GS2-Experience status
+ *
+ * @see https://docs.gs2.io/api_reference/stamina/sdk/#setmaxvaluebystatus
+ */
 class SetMaxValueByStatusRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Stamina Model Name */
     private $staminaName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Encryption Key GRN */
     private $keyId;
-    /** @var string */
+    /** @var string GS2-Experience status body to be signed */
     private $signedStatusBody;
-    /** @var string */
+    /** @var string GS2-Experience Status Signature */
     private $signedStatusSignature;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return SetMaxValueByStatusRequest
+     */
 	public function withNamespaceName(?string $namespaceName): SetMaxValueByStatusRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Stamina Model Name */
 	public function getStaminaName(): ?string {
 		return $this->staminaName;
 	}
+    /** @param string|null $staminaName Stamina Model Name */
 	public function setStaminaName(?string $staminaName) {
 		$this->staminaName = $staminaName;
 	}
+    /**
+     * @param string|null $staminaName Stamina Model Name
+     * @return SetMaxValueByStatusRequest
+     */
 	public function withStaminaName(?string $staminaName): SetMaxValueByStatusRequest {
 		$this->staminaName = $staminaName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return SetMaxValueByStatusRequest
+     */
 	public function withAccessToken(?string $accessToken): SetMaxValueByStatusRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Encryption Key GRN */
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
+    /** @param string|null $keyId Encryption Key GRN */
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
+    /**
+     * @param string|null $keyId Encryption Key GRN
+     * @return SetMaxValueByStatusRequest
+     */
 	public function withKeyId(?string $keyId): SetMaxValueByStatusRequest {
 		$this->keyId = $keyId;
 		return $this;
 	}
+    /** @return string|null GS2-Experience status body to be signed */
 	public function getSignedStatusBody(): ?string {
 		return $this->signedStatusBody;
 	}
+    /** @param string|null $signedStatusBody GS2-Experience status body to be signed */
 	public function setSignedStatusBody(?string $signedStatusBody) {
 		$this->signedStatusBody = $signedStatusBody;
 	}
+    /**
+     * @param string|null $signedStatusBody GS2-Experience status body to be signed
+     * @return SetMaxValueByStatusRequest
+     */
 	public function withSignedStatusBody(?string $signedStatusBody): SetMaxValueByStatusRequest {
 		$this->signedStatusBody = $signedStatusBody;
 		return $this;
 	}
+    /** @return string|null GS2-Experience Status Signature */
 	public function getSignedStatusSignature(): ?string {
 		return $this->signedStatusSignature;
 	}
+    /** @param string|null $signedStatusSignature GS2-Experience Status Signature */
 	public function setSignedStatusSignature(?string $signedStatusSignature) {
 		$this->signedStatusSignature = $signedStatusSignature;
 	}
+    /**
+     * @param string|null $signedStatusSignature GS2-Experience Status Signature
+     * @return SetMaxValueByStatusRequest
+     */
 	public function withSignedStatusSignature(?string $signedStatusSignature): SetMaxValueByStatusRequest {
 		$this->signedStatusSignature = $signedStatusSignature;
 		return $this;

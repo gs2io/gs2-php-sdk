@@ -20,101 +20,148 @@ namespace Gs2\Inventory\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Big Inventory Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#biginventorymodelmaster
+ */
 class BigInventoryModelMaster implements IModel {
 	/**
-     * @var string
+     * @var string Big Inventory Model Master GRN
 	 */
 	private $inventoryModelId;
 	/**
-     * @var string
+     * @var string Big Inventory Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var string
+     * @var string Description
 	 */
 	private $description;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Big Inventory Model Master GRN */
 	public function getInventoryModelId(): ?string {
 		return $this->inventoryModelId;
 	}
+    /** @param string|null $inventoryModelId Big Inventory Model Master GRN */
 	public function setInventoryModelId(?string $inventoryModelId) {
 		$this->inventoryModelId = $inventoryModelId;
 	}
+    /**
+     * @param string|null $inventoryModelId Big Inventory Model Master GRN
+     * @return BigInventoryModelMaster
+     */
 	public function withInventoryModelId(?string $inventoryModelId): BigInventoryModelMaster {
 		$this->inventoryModelId = $inventoryModelId;
 		return $this;
 	}
+    /** @return string|null Big Inventory Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Big Inventory Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Big Inventory Model name
+     * @return BigInventoryModelMaster
+     */
 	public function withName(?string $name): BigInventoryModelMaster {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return BigInventoryModelMaster
+     */
 	public function withMetadata(?string $metadata): BigInventoryModelMaster {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return BigInventoryModelMaster
+     */
 	public function withDescription(?string $description): BigInventoryModelMaster {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return BigInventoryModelMaster
+     */
 	public function withCreatedAt(?int $createdAt): BigInventoryModelMaster {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return BigInventoryModelMaster
+     */
 	public function withUpdatedAt(?int $updatedAt): BigInventoryModelMaster {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return BigInventoryModelMaster
+     */
 	public function withRevision(?int $revision): BigInventoryModelMaster {
 		$this->revision = $revision;
 		return $this;

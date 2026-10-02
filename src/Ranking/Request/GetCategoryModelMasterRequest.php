@@ -19,27 +19,44 @@ namespace Gs2\Ranking\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getCategoryModelMaster: Get Category Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/ranking/sdk/#getcategorymodelmaster
+ */
 class GetCategoryModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Category Model name */
     private $categoryName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetCategoryModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetCategoryModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Category Model name */
 	public function getCategoryName(): ?string {
 		return $this->categoryName;
 	}
+    /** @param string|null $categoryName Category Model name */
 	public function setCategoryName(?string $categoryName) {
 		$this->categoryName = $categoryName;
 	}
+    /**
+     * @param string|null $categoryName Category Model name
+     * @return GetCategoryModelMasterRequest
+     */
 	public function withCategoryName(?string $categoryName): GetCategoryModelMasterRequest {
 		$this->categoryName = $categoryName;
 		return $this;

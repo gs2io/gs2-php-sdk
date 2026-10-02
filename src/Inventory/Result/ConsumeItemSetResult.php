@@ -22,48 +22,71 @@ use Gs2\Inventory\Model\ItemSet;
 use Gs2\Inventory\Model\ItemModel;
 use Gs2\Inventory\Model\Inventory;
 
+/**
+ * Result of consumeItemSet: Consume Item Sets
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#consumeitemset
+ */
 class ConsumeItemSetResult implements IResult {
-    /** @var array */
+    /** @var array List of Item Sets per post-consumption */
     private $items;
-    /** @var ItemModel */
+    /** @var ItemModel Item Model */
     private $itemModel;
-    /** @var Inventory */
+    /** @var Inventory Inventory */
     private $inventory;
 
+    /** @return array|null List of Item Sets per post-consumption */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Item Sets per post-consumption */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Item Sets per post-consumption
+     * @return ConsumeItemSetResult
+     */
 	public function withItems(?array $items): ConsumeItemSetResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return ItemModel|null Item Model */
 	public function getItemModel(): ?ItemModel {
 		return $this->itemModel;
 	}
 
+    /** @param ItemModel|null $itemModel Item Model */
 	public function setItemModel(?ItemModel $itemModel) {
 		$this->itemModel = $itemModel;
 	}
 
+    /**
+     * @param ItemModel|null $itemModel Item Model
+     * @return ConsumeItemSetResult
+     */
 	public function withItemModel(?ItemModel $itemModel): ConsumeItemSetResult {
 		$this->itemModel = $itemModel;
 		return $this;
 	}
 
+    /** @return Inventory|null Inventory */
 	public function getInventory(): ?Inventory {
 		return $this->inventory;
 	}
 
+    /** @param Inventory|null $inventory Inventory */
 	public function setInventory(?Inventory $inventory) {
 		$this->inventory = $inventory;
 	}
 
+    /**
+     * @param Inventory|null $inventory Inventory
+     * @return ConsumeItemSetResult
+     */
 	public function withInventory(?Inventory $inventory): ConsumeItemSetResult {
 		$this->inventory = $inventory;
 		return $this;

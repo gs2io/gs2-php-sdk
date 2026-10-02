@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Formation\Model\SlotModel;
 use Gs2\Formation\Model\FormModel;
 
+/**
+ * Result of getFormModel: Get Form Model
+ *
+ * @see https://docs.gs2.io/api_reference/formation/sdk/#getformmodel
+ */
 class GetFormModelResult implements IResult {
-    /** @var FormModel */
+    /** @var FormModel Form */
     private $item;
 
+    /** @return FormModel|null Form */
 	public function getItem(): ?FormModel {
 		return $this->item;
 	}
 
+    /** @param FormModel|null $item Form */
 	public function setItem(?FormModel $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param FormModel|null $item Form
+     * @return GetFormModelResult
+     */
 	public function withItem(?FormModel $item): GetFormModelResult {
 		$this->item = $item;
 		return $this;

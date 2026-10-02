@@ -19,65 +19,100 @@ namespace Gs2\StateMachine\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for emit: Send an event to the state machine
+ *
+ * @see https://docs.gs2.io/api_reference/state_machine/sdk/#emit
+ */
 class EmitRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Status name */
     private $statusName;
-    /** @var string */
+    /** @var string Event name */
     private $eventName;
-    /** @var string */
+    /** @var string Arguments to be passed to the state machine */
     private $args;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return EmitRequest
+     */
 	public function withNamespaceName(?string $namespaceName): EmitRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return EmitRequest
+     */
 	public function withAccessToken(?string $accessToken): EmitRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Status name */
 	public function getStatusName(): ?string {
 		return $this->statusName;
 	}
+    /** @param string|null $statusName Status name */
 	public function setStatusName(?string $statusName) {
 		$this->statusName = $statusName;
 	}
+    /**
+     * @param string|null $statusName Status name
+     * @return EmitRequest
+     */
 	public function withStatusName(?string $statusName): EmitRequest {
 		$this->statusName = $statusName;
 		return $this;
 	}
+    /** @return string|null Event name */
 	public function getEventName(): ?string {
 		return $this->eventName;
 	}
+    /** @param string|null $eventName Event name */
 	public function setEventName(?string $eventName) {
 		$this->eventName = $eventName;
 	}
+    /**
+     * @param string|null $eventName Event name
+     * @return EmitRequest
+     */
 	public function withEventName(?string $eventName): EmitRequest {
 		$this->eventName = $eventName;
 		return $this;
 	}
+    /** @return string|null Arguments to be passed to the state machine */
 	public function getArgs(): ?string {
 		return $this->args;
 	}
+    /** @param string|null $args Arguments to be passed to the state machine */
 	public function setArgs(?string $args) {
 		$this->args = $args;
 	}
+    /**
+     * @param string|null $args Arguments to be passed to the state machine
+     * @return EmitRequest
+     */
 	public function withArgs(?string $args): EmitRequest {
 		$this->args = $args;
 		return $this;

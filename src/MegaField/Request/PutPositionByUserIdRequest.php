@@ -21,101 +21,154 @@ use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\MegaField\Model\Position;
 use Gs2\MegaField\Model\Vector;
 
+/**
+ * Request for putPositionByUserId: Put position by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/mega_field/sdk/#putpositionbyuserid
+ */
 class PutPositionByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Area name */
     private $areaModelName;
-    /** @var string */
+    /** @var string Layer name */
     private $layerModelName;
-    /** @var Position */
+    /** @var Position Position */
     private $position;
-    /** @var Vector */
+    /** @var Vector Vector */
     private $vector;
-    /** @var float */
+    /** @var float Radius */
     private $r;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return PutPositionByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): PutPositionByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return PutPositionByUserIdRequest
+     */
 	public function withUserId(?string $userId): PutPositionByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Area name */
 	public function getAreaModelName(): ?string {
 		return $this->areaModelName;
 	}
+    /** @param string|null $areaModelName Area name */
 	public function setAreaModelName(?string $areaModelName) {
 		$this->areaModelName = $areaModelName;
 	}
+    /**
+     * @param string|null $areaModelName Area name
+     * @return PutPositionByUserIdRequest
+     */
 	public function withAreaModelName(?string $areaModelName): PutPositionByUserIdRequest {
 		$this->areaModelName = $areaModelName;
 		return $this;
 	}
+    /** @return string|null Layer name */
 	public function getLayerModelName(): ?string {
 		return $this->layerModelName;
 	}
+    /** @param string|null $layerModelName Layer name */
 	public function setLayerModelName(?string $layerModelName) {
 		$this->layerModelName = $layerModelName;
 	}
+    /**
+     * @param string|null $layerModelName Layer name
+     * @return PutPositionByUserIdRequest
+     */
 	public function withLayerModelName(?string $layerModelName): PutPositionByUserIdRequest {
 		$this->layerModelName = $layerModelName;
 		return $this;
 	}
+    /** @return Position|null Position */
 	public function getPosition(): ?Position {
 		return $this->position;
 	}
+    /** @param Position|null $position Position */
 	public function setPosition(?Position $position) {
 		$this->position = $position;
 	}
+    /**
+     * @param Position|null $position Position
+     * @return PutPositionByUserIdRequest
+     */
 	public function withPosition(?Position $position): PutPositionByUserIdRequest {
 		$this->position = $position;
 		return $this;
 	}
+    /** @return Vector|null Vector */
 	public function getVector(): ?Vector {
 		return $this->vector;
 	}
+    /** @param Vector|null $vector Vector */
 	public function setVector(?Vector $vector) {
 		$this->vector = $vector;
 	}
+    /**
+     * @param Vector|null $vector Vector
+     * @return PutPositionByUserIdRequest
+     */
 	public function withVector(?Vector $vector): PutPositionByUserIdRequest {
 		$this->vector = $vector;
 		return $this;
 	}
+    /** @return float|null Radius */
 	public function getR(): ?float {
 		return $this->r;
 	}
+    /** @param float|null $r Radius */
 	public function setR(?float $r) {
 		$this->r = $r;
 	}
+    /**
+     * @param float|null $r Radius
+     * @return PutPositionByUserIdRequest
+     */
 	public function withR(?float $r): PutPositionByUserIdRequest {
 		$this->r = $r;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return PutPositionByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): PutPositionByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

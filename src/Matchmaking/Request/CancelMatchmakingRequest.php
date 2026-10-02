@@ -19,41 +19,64 @@ namespace Gs2\Matchmaking\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for cancelMatchmaking: Cancel Matchmaking
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#cancelmatchmaking
+ */
 class CancelMatchmakingRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Gathering name */
     private $gatheringName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return CancelMatchmakingRequest
+     */
 	public function withNamespaceName(?string $namespaceName): CancelMatchmakingRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Gathering name */
 	public function getGatheringName(): ?string {
 		return $this->gatheringName;
 	}
+    /** @param string|null $gatheringName Gathering name */
 	public function setGatheringName(?string $gatheringName) {
 		$this->gatheringName = $gatheringName;
 	}
+    /**
+     * @param string|null $gatheringName Gathering name
+     * @return CancelMatchmakingRequest
+     */
 	public function withGatheringName(?string $gatheringName): CancelMatchmakingRequest {
 		$this->gatheringName = $gatheringName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return CancelMatchmakingRequest
+     */
 	public function withAccessToken(?string $accessToken): CancelMatchmakingRequest {
 		$this->accessToken = $accessToken;
 		return $this;

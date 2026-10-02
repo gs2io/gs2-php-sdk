@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Guild\Model\RoleModel;
 use Gs2\Guild\Model\GuildModelMaster;
 
+/**
+ * Result of updateGuildModelMaster: Update Guild Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/guild/sdk/#updateguildmodelmaster
+ */
 class UpdateGuildModelMasterResult implements IResult {
-    /** @var GuildModelMaster */
+    /** @var GuildModelMaster Guild Model Master updated */
     private $item;
 
+    /** @return GuildModelMaster|null Guild Model Master updated */
 	public function getItem(): ?GuildModelMaster {
 		return $this->item;
 	}
 
+    /** @param GuildModelMaster|null $item Guild Model Master updated */
 	public function setItem(?GuildModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param GuildModelMaster|null $item Guild Model Master updated
+     * @return UpdateGuildModelMasterResult
+     */
 	public function withItem(?GuildModelMaster $item): UpdateGuildModelMasterResult {
 		$this->item = $item;
 		return $this;

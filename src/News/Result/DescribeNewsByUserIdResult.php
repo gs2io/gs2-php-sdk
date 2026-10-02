@@ -20,48 +20,71 @@ namespace Gs2\News\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\News\Model\News;
 
+/**
+ * Result of describeNewsByUserId: List News Articles by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/news/sdk/#describenewsbyuserid
+ */
 class DescribeNewsByUserIdResult implements IResult {
-    /** @var array */
+    /** @var array List of News Articles */
     private $items;
-    /** @var string */
+    /** @var string Hash value of News Article data */
     private $contentHash;
-    /** @var string */
+    /** @var string Hash value of template data */
     private $templateHash;
 
+    /** @return array|null List of News Articles */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of News Articles */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of News Articles
+     * @return DescribeNewsByUserIdResult
+     */
 	public function withItems(?array $items): DescribeNewsByUserIdResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Hash value of News Article data */
 	public function getContentHash(): ?string {
 		return $this->contentHash;
 	}
 
+    /** @param string|null $contentHash Hash value of News Article data */
 	public function setContentHash(?string $contentHash) {
 		$this->contentHash = $contentHash;
 	}
 
+    /**
+     * @param string|null $contentHash Hash value of News Article data
+     * @return DescribeNewsByUserIdResult
+     */
 	public function withContentHash(?string $contentHash): DescribeNewsByUserIdResult {
 		$this->contentHash = $contentHash;
 		return $this;
 	}
 
+    /** @return string|null Hash value of template data */
 	public function getTemplateHash(): ?string {
 		return $this->templateHash;
 	}
 
+    /** @param string|null $templateHash Hash value of template data */
 	public function setTemplateHash(?string $templateHash) {
 		$this->templateHash = $templateHash;
 	}
 
+    /**
+     * @param string|null $templateHash Hash value of template data
+     * @return DescribeNewsByUserIdResult
+     */
 	public function withTemplateHash(?string $templateHash): DescribeNewsByUserIdResult {
 		$this->templateHash = $templateHash;
 		return $this;

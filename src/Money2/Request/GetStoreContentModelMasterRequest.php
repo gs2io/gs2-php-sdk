@@ -19,27 +19,44 @@ namespace Gs2\Money2\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getStoreContentModelMaster: Get Store Content Master
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#getstorecontentmodelmaster
+ */
 class GetStoreContentModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Store Content Model name */
     private $contentName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetStoreContentModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetStoreContentModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Store Content Model name */
 	public function getContentName(): ?string {
 		return $this->contentName;
 	}
+    /** @param string|null $contentName Store Content Model name */
 	public function setContentName(?string $contentName) {
 		$this->contentName = $contentName;
 	}
+    /**
+     * @param string|null $contentName Store Content Model name
+     * @return GetStoreContentModelMasterRequest
+     */
 	public function withContentName(?string $contentName): GetStoreContentModelMasterRequest {
 		$this->contentName = $contentName;
 		return $this;

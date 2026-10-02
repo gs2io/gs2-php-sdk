@@ -20,18 +20,29 @@ namespace Gs2\Datastore\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Datastore\Model\DataObject;
 
+/**
+ * Result of doneUploadByUserId: Report completion of data object upload by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/datastore/sdk/#doneuploadbyuserid
+ */
 class DoneUploadByUserIdResult implements IResult {
-    /** @var DataObject */
+    /** @var DataObject Data object */
     private $item;
 
+    /** @return DataObject|null Data object */
 	public function getItem(): ?DataObject {
 		return $this->item;
 	}
 
+    /** @param DataObject|null $item Data object */
 	public function setItem(?DataObject $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param DataObject|null $item Data object
+     * @return DoneUploadByUserIdResult
+     */
 	public function withItem(?DataObject $item): DoneUploadByUserIdResult {
 		$this->item = $item;
 		return $this;

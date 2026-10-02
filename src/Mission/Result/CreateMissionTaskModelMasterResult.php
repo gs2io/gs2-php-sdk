@@ -23,18 +23,29 @@ use Gs2\Mission\Model\VerifyAction;
 use Gs2\Mission\Model\AcquireAction;
 use Gs2\Mission\Model\MissionTaskModelMaster;
 
+/**
+ * Result of createMissionTaskModelMaster: Create Mission Task Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#createmissiontaskmodelmaster
+ */
 class CreateMissionTaskModelMasterResult implements IResult {
-    /** @var MissionTaskModelMaster */
+    /** @var MissionTaskModelMaster Mission Task Model Master created */
     private $item;
 
+    /** @return MissionTaskModelMaster|null Mission Task Model Master created */
 	public function getItem(): ?MissionTaskModelMaster {
 		return $this->item;
 	}
 
+    /** @param MissionTaskModelMaster|null $item Mission Task Model Master created */
 	public function setItem(?MissionTaskModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param MissionTaskModelMaster|null $item Mission Task Model Master created
+     * @return CreateMissionTaskModelMasterResult
+     */
 	public function withItem(?MissionTaskModelMaster $item): CreateMissionTaskModelMasterResult {
 		$this->item = $item;
 		return $this;

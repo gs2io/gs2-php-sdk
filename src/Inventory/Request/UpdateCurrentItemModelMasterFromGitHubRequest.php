@@ -20,27 +20,44 @@ namespace Gs2\Inventory\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Inventory\Model\GitHubCheckoutSetting;
 
+/**
+ * Request for updateCurrentItemModelMasterFromGitHub: Update currently active Item Model master data from GitHub
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#updatecurrentitemmodelmasterfromgithub
+ */
 class UpdateCurrentItemModelMasterFromGitHubRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var GitHubCheckoutSetting */
+    /** @var GitHubCheckoutSetting Setting for checking out master data from GitHub */
     private $checkoutSetting;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UpdateCurrentItemModelMasterFromGitHubRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UpdateCurrentItemModelMasterFromGitHubRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return GitHubCheckoutSetting|null Setting for checking out master data from GitHub */
 	public function getCheckoutSetting(): ?GitHubCheckoutSetting {
 		return $this->checkoutSetting;
 	}
+    /** @param GitHubCheckoutSetting|null $checkoutSetting Setting for checking out master data from GitHub */
 	public function setCheckoutSetting(?GitHubCheckoutSetting $checkoutSetting) {
 		$this->checkoutSetting = $checkoutSetting;
 	}
+    /**
+     * @param GitHubCheckoutSetting|null $checkoutSetting Setting for checking out master data from GitHub
+     * @return UpdateCurrentItemModelMasterFromGitHubRequest
+     */
 	public function withCheckoutSetting(?GitHubCheckoutSetting $checkoutSetting): UpdateCurrentItemModelMasterFromGitHubRequest {
 		$this->checkoutSetting = $checkoutSetting;
 		return $this;

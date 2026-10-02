@@ -20,129 +20,188 @@ namespace Gs2\Showcase\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Showcase Master
+ *
+ * @see https://docs.gs2.io/api_reference/showcase/sdk/#showcasemaster
+ */
 class ShowcaseMaster implements IModel {
 	/**
-     * @var string
+     * @var string Showcase Master GRN
 	 */
 	private $showcaseId;
 	/**
-     * @var string
+     * @var string Showcase name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Description
 	 */
 	private $description;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var string
+     * @var string GRN of the GS2-Schedule event that defines the sales period for the Showcase
 	 */
 	private $salesPeriodEventId;
 	/**
-     * @var array
+     * @var array List of Display Items
 	 */
 	private $displayItems;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Showcase Master GRN */
 	public function getShowcaseId(): ?string {
 		return $this->showcaseId;
 	}
+    /** @param string|null $showcaseId Showcase Master GRN */
 	public function setShowcaseId(?string $showcaseId) {
 		$this->showcaseId = $showcaseId;
 	}
+    /**
+     * @param string|null $showcaseId Showcase Master GRN
+     * @return ShowcaseMaster
+     */
 	public function withShowcaseId(?string $showcaseId): ShowcaseMaster {
 		$this->showcaseId = $showcaseId;
 		return $this;
 	}
+    /** @return string|null Showcase name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Showcase name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Showcase name
+     * @return ShowcaseMaster
+     */
 	public function withName(?string $name): ShowcaseMaster {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return ShowcaseMaster
+     */
 	public function withDescription(?string $description): ShowcaseMaster {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return ShowcaseMaster
+     */
 	public function withMetadata(?string $metadata): ShowcaseMaster {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return string|null GRN of the GS2-Schedule event that defines the sales period for the Showcase */
 	public function getSalesPeriodEventId(): ?string {
 		return $this->salesPeriodEventId;
 	}
+    /** @param string|null $salesPeriodEventId GRN of the GS2-Schedule event that defines the sales period for the Showcase */
 	public function setSalesPeriodEventId(?string $salesPeriodEventId) {
 		$this->salesPeriodEventId = $salesPeriodEventId;
 	}
+    /**
+     * @param string|null $salesPeriodEventId GRN of the GS2-Schedule event that defines the sales period for the Showcase
+     * @return ShowcaseMaster
+     */
 	public function withSalesPeriodEventId(?string $salesPeriodEventId): ShowcaseMaster {
 		$this->salesPeriodEventId = $salesPeriodEventId;
 		return $this;
 	}
+    /** @return array|null List of Display Items */
 	public function getDisplayItems(): ?array {
 		return $this->displayItems;
 	}
+    /** @param array|null $displayItems List of Display Items */
 	public function setDisplayItems(?array $displayItems) {
 		$this->displayItems = $displayItems;
 	}
+    /**
+     * @param array|null $displayItems List of Display Items
+     * @return ShowcaseMaster
+     */
 	public function withDisplayItems(?array $displayItems): ShowcaseMaster {
 		$this->displayItems = $displayItems;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return ShowcaseMaster
+     */
 	public function withCreatedAt(?int $createdAt): ShowcaseMaster {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return ShowcaseMaster
+     */
 	public function withUpdatedAt(?int $updatedAt): ShowcaseMaster {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return ShowcaseMaster
+     */
 	public function withRevision(?int $revision): ShowcaseMaster {
 		$this->revision = $revision;
 		return $this;

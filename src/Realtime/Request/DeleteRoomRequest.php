@@ -19,27 +19,44 @@ namespace Gs2\Realtime\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for deleteRoom: Delete Room
+ *
+ * @see https://docs.gs2.io/api_reference/realtime/sdk/#deleteroom
+ */
 class DeleteRoomRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Room name */
     private $roomName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DeleteRoomRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DeleteRoomRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Room name */
 	public function getRoomName(): ?string {
 		return $this->roomName;
 	}
+    /** @param string|null $roomName Room name */
 	public function setRoomName(?string $roomName) {
 		$this->roomName = $roomName;
 	}
+    /**
+     * @param string|null $roomName Room name
+     * @return DeleteRoomRequest
+     */
 	public function withRoomName(?string $roomName): DeleteRoomRequest {
 		$this->roomName = $roomName;
 		return $this;

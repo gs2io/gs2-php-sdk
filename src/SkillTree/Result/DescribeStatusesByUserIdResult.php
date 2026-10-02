@@ -20,33 +20,50 @@ namespace Gs2\SkillTree\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\SkillTree\Model\Status;
 
+/**
+ * Result of describeStatusesByUserId: List Statuses by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#describestatusesbyuserid
+ */
 class DescribeStatusesByUserIdResult implements IResult {
-    /** @var array */
+    /** @var array List of status */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of status */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of status */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of status
+     * @return DescribeStatusesByUserIdResult
+     */
 	public function withItems(?array $items): DescribeStatusesByUserIdResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeStatusesByUserIdResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeStatusesByUserIdResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

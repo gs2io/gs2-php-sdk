@@ -20,18 +20,29 @@ namespace Gs2\Mission\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Mission\Model\Complete;
 
+/**
+ * Result of getCompleteByUserId: Get Completion Status by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#getcompletebyuserid
+ */
 class GetCompleteByUserIdResult implements IResult {
-    /** @var Complete */
+    /** @var Complete Completion Statuses */
     private $item;
 
+    /** @return Complete|null Completion Statuses */
 	public function getItem(): ?Complete {
 		return $this->item;
 	}
 
+    /** @param Complete|null $item Completion Statuses */
 	public function setItem(?Complete $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Complete|null $item Completion Statuses
+     * @return GetCompleteByUserIdResult
+     */
 	public function withItem(?Complete $item): GetCompleteByUserIdResult {
 		$this->item = $item;
 		return $this;

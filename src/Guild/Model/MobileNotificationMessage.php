@@ -20,45 +20,68 @@ namespace Gs2\Guild\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Localized message for mobile push notification
+ *
+ * @see https://docs.gs2.io/api_reference/guild/sdk/#mobilenotificationmessage
+ */
 class MobileNotificationMessage implements IModel {
 	/**
-     * @var string
+     * @var string Language of the message
 	 */
 	private $locale;
 	/**
-     * @var string
+     * @var string Title of the push notification
 	 */
 	private $title;
 	/**
-     * @var string
+     * @var string Body text of the push notification
 	 */
 	private $message;
+    /** @return string|null Language of the message */
 	public function getLocale(): ?string {
 		return $this->locale;
 	}
+    /** @param string|null $locale Language of the message */
 	public function setLocale(?string $locale) {
 		$this->locale = $locale;
 	}
+    /**
+     * @param string|null $locale Language of the message
+     * @return MobileNotificationMessage
+     */
 	public function withLocale(?string $locale): MobileNotificationMessage {
 		$this->locale = $locale;
 		return $this;
 	}
+    /** @return string|null Title of the push notification */
 	public function getTitle(): ?string {
 		return $this->title;
 	}
+    /** @param string|null $title Title of the push notification */
 	public function setTitle(?string $title) {
 		$this->title = $title;
 	}
+    /**
+     * @param string|null $title Title of the push notification
+     * @return MobileNotificationMessage
+     */
 	public function withTitle(?string $title): MobileNotificationMessage {
 		$this->title = $title;
 		return $this;
 	}
+    /** @return string|null Body text of the push notification */
 	public function getMessage(): ?string {
 		return $this->message;
 	}
+    /** @param string|null $message Body text of the push notification */
 	public function setMessage(?string $message) {
 		$this->message = $message;
 	}
+    /**
+     * @param string|null $message Body text of the push notification
+     * @return MobileNotificationMessage
+     */
 	public function withMessage(?string $message): MobileNotificationMessage {
 		$this->message = $message;
 		return $this;

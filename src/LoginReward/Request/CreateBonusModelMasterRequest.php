@@ -23,147 +23,224 @@ use Gs2\LoginReward\Model\Reward;
 use Gs2\LoginReward\Model\VerifyAction;
 use Gs2\LoginReward\Model\ConsumeAction;
 
+/**
+ * Request for createBonusModelMaster: Create Login Bonus Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/login_reward/sdk/#createbonusmodelmaster
+ */
 class CreateBonusModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Login Bonus Model name */
     private $name;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var string */
+    /** @var string Metadata */
     private $metadata;
-    /** @var string */
+    /** @var string Mode */
     private $mode;
-    /** @var string */
+    /** @var string Period Event GRN */
     private $periodEventId;
-    /** @var int */
+    /** @var int Reset Hour (0-23, UTC) */
     private $resetHour;
-    /** @var string */
+    /** @var string Repeat */
     private $repeat;
-    /** @var array */
+    /** @var array Rewards */
     private $rewards;
-    /** @var string */
+    /** @var string Missed Receive Relief */
     private $missedReceiveRelief;
-    /** @var array */
+    /** @var array Missed Receive Relief Verify Actions */
     private $missedReceiveReliefVerifyActions;
-    /** @var array */
+    /** @var array Missed Receive Relief Consume Actions */
     private $missedReceiveReliefConsumeActions;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return CreateBonusModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): CreateBonusModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Login Bonus Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Login Bonus Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Login Bonus Model name
+     * @return CreateBonusModelMasterRequest
+     */
 	public function withName(?string $name): CreateBonusModelMasterRequest {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return CreateBonusModelMasterRequest
+     */
 	public function withDescription(?string $description): CreateBonusModelMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return CreateBonusModelMasterRequest
+     */
 	public function withMetadata(?string $metadata): CreateBonusModelMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return string|null Mode */
 	public function getMode(): ?string {
 		return $this->mode;
 	}
+    /** @param string|null $mode Mode */
 	public function setMode(?string $mode) {
 		$this->mode = $mode;
 	}
+    /**
+     * @param string|null $mode Mode
+     * @return CreateBonusModelMasterRequest
+     */
 	public function withMode(?string $mode): CreateBonusModelMasterRequest {
 		$this->mode = $mode;
 		return $this;
 	}
+    /** @return string|null Period Event GRN */
 	public function getPeriodEventId(): ?string {
 		return $this->periodEventId;
 	}
+    /** @param string|null $periodEventId Period Event GRN */
 	public function setPeriodEventId(?string $periodEventId) {
 		$this->periodEventId = $periodEventId;
 	}
+    /**
+     * @param string|null $periodEventId Period Event GRN
+     * @return CreateBonusModelMasterRequest
+     */
 	public function withPeriodEventId(?string $periodEventId): CreateBonusModelMasterRequest {
 		$this->periodEventId = $periodEventId;
 		return $this;
 	}
+    /** @return int|null Reset Hour (0-23, UTC) */
 	public function getResetHour(): ?int {
 		return $this->resetHour;
 	}
+    /** @param int|null $resetHour Reset Hour (0-23, UTC) */
 	public function setResetHour(?int $resetHour) {
 		$this->resetHour = $resetHour;
 	}
+    /**
+     * @param int|null $resetHour Reset Hour (0-23, UTC)
+     * @return CreateBonusModelMasterRequest
+     */
 	public function withResetHour(?int $resetHour): CreateBonusModelMasterRequest {
 		$this->resetHour = $resetHour;
 		return $this;
 	}
+    /** @return string|null Repeat */
 	public function getRepeat(): ?string {
 		return $this->repeat;
 	}
+    /** @param string|null $repeat Repeat */
 	public function setRepeat(?string $repeat) {
 		$this->repeat = $repeat;
 	}
+    /**
+     * @param string|null $repeat Repeat
+     * @return CreateBonusModelMasterRequest
+     */
 	public function withRepeat(?string $repeat): CreateBonusModelMasterRequest {
 		$this->repeat = $repeat;
 		return $this;
 	}
+    /** @return array|null Rewards */
 	public function getRewards(): ?array {
 		return $this->rewards;
 	}
+    /** @param array|null $rewards Rewards */
 	public function setRewards(?array $rewards) {
 		$this->rewards = $rewards;
 	}
+    /**
+     * @param array|null $rewards Rewards
+     * @return CreateBonusModelMasterRequest
+     */
 	public function withRewards(?array $rewards): CreateBonusModelMasterRequest {
 		$this->rewards = $rewards;
 		return $this;
 	}
+    /** @return string|null Missed Receive Relief */
 	public function getMissedReceiveRelief(): ?string {
 		return $this->missedReceiveRelief;
 	}
+    /** @param string|null $missedReceiveRelief Missed Receive Relief */
 	public function setMissedReceiveRelief(?string $missedReceiveRelief) {
 		$this->missedReceiveRelief = $missedReceiveRelief;
 	}
+    /**
+     * @param string|null $missedReceiveRelief Missed Receive Relief
+     * @return CreateBonusModelMasterRequest
+     */
 	public function withMissedReceiveRelief(?string $missedReceiveRelief): CreateBonusModelMasterRequest {
 		$this->missedReceiveRelief = $missedReceiveRelief;
 		return $this;
 	}
+    /** @return array|null Missed Receive Relief Verify Actions */
 	public function getMissedReceiveReliefVerifyActions(): ?array {
 		return $this->missedReceiveReliefVerifyActions;
 	}
+    /** @param array|null $missedReceiveReliefVerifyActions Missed Receive Relief Verify Actions */
 	public function setMissedReceiveReliefVerifyActions(?array $missedReceiveReliefVerifyActions) {
 		$this->missedReceiveReliefVerifyActions = $missedReceiveReliefVerifyActions;
 	}
+    /**
+     * @param array|null $missedReceiveReliefVerifyActions Missed Receive Relief Verify Actions
+     * @return CreateBonusModelMasterRequest
+     */
 	public function withMissedReceiveReliefVerifyActions(?array $missedReceiveReliefVerifyActions): CreateBonusModelMasterRequest {
 		$this->missedReceiveReliefVerifyActions = $missedReceiveReliefVerifyActions;
 		return $this;
 	}
+    /** @return array|null Missed Receive Relief Consume Actions */
 	public function getMissedReceiveReliefConsumeActions(): ?array {
 		return $this->missedReceiveReliefConsumeActions;
 	}
+    /** @param array|null $missedReceiveReliefConsumeActions Missed Receive Relief Consume Actions */
 	public function setMissedReceiveReliefConsumeActions(?array $missedReceiveReliefConsumeActions) {
 		$this->missedReceiveReliefConsumeActions = $missedReceiveReliefConsumeActions;
 	}
+    /**
+     * @param array|null $missedReceiveReliefConsumeActions Missed Receive Relief Consume Actions
+     * @return CreateBonusModelMasterRequest
+     */
 	public function withMissedReceiveReliefConsumeActions(?array $missedReceiveReliefConsumeActions): CreateBonusModelMasterRequest {
 		$this->missedReceiveReliefConsumeActions = $missedReceiveReliefConsumeActions;
 		return $this;

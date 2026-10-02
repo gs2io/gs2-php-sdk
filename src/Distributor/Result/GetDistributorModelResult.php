@@ -20,18 +20,29 @@ namespace Gs2\Distributor\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Distributor\Model\DistributorModel;
 
+/**
+ * Result of getDistributorModel: Get Distributor Model
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#getdistributormodel
+ */
 class GetDistributorModelResult implements IResult {
-    /** @var DistributorModel */
+    /** @var DistributorModel Distributor Model */
     private $item;
 
+    /** @return DistributorModel|null Distributor Model */
 	public function getItem(): ?DistributorModel {
 		return $this->item;
 	}
 
+    /** @param DistributorModel|null $item Distributor Model */
 	public function setItem(?DistributorModel $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param DistributorModel|null $item Distributor Model
+     * @return GetDistributorModelResult
+     */
 	public function withItem(?DistributorModel $item): GetDistributorModelResult {
 		$this->item = $item;
 		return $this;

@@ -19,65 +19,100 @@ namespace Gs2\MegaField\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for fetchPosition: Fetch position
+ *
+ * @see https://docs.gs2.io/api_reference/mega_field/sdk/#fetchposition
+ */
 class FetchPositionRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Area name */
     private $areaModelName;
-    /** @var string */
+    /** @var string Layer name */
     private $layerModelName;
-    /** @var array */
+    /** @var array List of User IDs */
     private $userIds;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return FetchPositionRequest
+     */
 	public function withNamespaceName(?string $namespaceName): FetchPositionRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return FetchPositionRequest
+     */
 	public function withAccessToken(?string $accessToken): FetchPositionRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Area name */
 	public function getAreaModelName(): ?string {
 		return $this->areaModelName;
 	}
+    /** @param string|null $areaModelName Area name */
 	public function setAreaModelName(?string $areaModelName) {
 		$this->areaModelName = $areaModelName;
 	}
+    /**
+     * @param string|null $areaModelName Area name
+     * @return FetchPositionRequest
+     */
 	public function withAreaModelName(?string $areaModelName): FetchPositionRequest {
 		$this->areaModelName = $areaModelName;
 		return $this;
 	}
+    /** @return string|null Layer name */
 	public function getLayerModelName(): ?string {
 		return $this->layerModelName;
 	}
+    /** @param string|null $layerModelName Layer name */
 	public function setLayerModelName(?string $layerModelName) {
 		$this->layerModelName = $layerModelName;
 	}
+    /**
+     * @param string|null $layerModelName Layer name
+     * @return FetchPositionRequest
+     */
 	public function withLayerModelName(?string $layerModelName): FetchPositionRequest {
 		$this->layerModelName = $layerModelName;
 		return $this;
 	}
+    /** @return array|null List of User IDs */
 	public function getUserIds(): ?array {
 		return $this->userIds;
 	}
+    /** @param array|null $userIds List of User IDs */
 	public function setUserIds(?array $userIds) {
 		$this->userIds = $userIds;
 	}
+    /**
+     * @param array|null $userIds List of User IDs
+     * @return FetchPositionRequest
+     */
 	public function withUserIds(?array $userIds): FetchPositionRequest {
 		$this->userIds = $userIds;
 		return $this;

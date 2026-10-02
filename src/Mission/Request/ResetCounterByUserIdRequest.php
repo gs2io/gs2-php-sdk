@@ -20,65 +20,100 @@ namespace Gs2\Mission\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Mission\Model\ScopedValue;
 
+/**
+ * Request for resetCounterByUserId: Reset counter by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#resetcounterbyuserid
+ */
 class ResetCounterByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Counter Model name */
     private $counterName;
-    /** @var array */
+    /** @var array List of scopes */
     private $scopes;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return ResetCounterByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): ResetCounterByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return ResetCounterByUserIdRequest
+     */
 	public function withUserId(?string $userId): ResetCounterByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Counter Model name */
 	public function getCounterName(): ?string {
 		return $this->counterName;
 	}
+    /** @param string|null $counterName Counter Model name */
 	public function setCounterName(?string $counterName) {
 		$this->counterName = $counterName;
 	}
+    /**
+     * @param string|null $counterName Counter Model name
+     * @return ResetCounterByUserIdRequest
+     */
 	public function withCounterName(?string $counterName): ResetCounterByUserIdRequest {
 		$this->counterName = $counterName;
 		return $this;
 	}
+    /** @return array|null List of scopes */
 	public function getScopes(): ?array {
 		return $this->scopes;
 	}
+    /** @param array|null $scopes List of scopes */
 	public function setScopes(?array $scopes) {
 		$this->scopes = $scopes;
 	}
+    /**
+     * @param array|null $scopes List of scopes
+     * @return ResetCounterByUserIdRequest
+     */
 	public function withScopes(?array $scopes): ResetCounterByUserIdRequest {
 		$this->scopes = $scopes;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return ResetCounterByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): ResetCounterByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

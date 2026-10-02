@@ -20,18 +20,29 @@ namespace Gs2\Exchange\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Exchange\Model\CurrentRateMaster;
 
+/**
+ * Result of exportMaster: Export Rate Model Master in a master data format that can be activated
+ *
+ * @see https://docs.gs2.io/api_reference/exchange/sdk/#exportmaster
+ */
 class ExportMasterResult implements IResult {
-    /** @var CurrentRateMaster */
+    /** @var CurrentRateMaster Rate Model master data that can be activated */
     private $item;
 
+    /** @return CurrentRateMaster|null Rate Model master data that can be activated */
 	public function getItem(): ?CurrentRateMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentRateMaster|null $item Rate Model master data that can be activated */
 	public function setItem(?CurrentRateMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentRateMaster|null $item Rate Model master data that can be activated
+     * @return ExportMasterResult
+     */
 	public function withItem(?CurrentRateMaster $item): ExportMasterResult {
 		$this->item = $item;
 		return $this;

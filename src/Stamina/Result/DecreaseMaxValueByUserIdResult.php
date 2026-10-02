@@ -24,33 +24,50 @@ use Gs2\Stamina\Model\RecoverIntervalTable;
 use Gs2\Stamina\Model\RecoverValueTable;
 use Gs2\Stamina\Model\StaminaModel;
 
+/**
+ * Result of decreaseMaxValueByUserId: Subtract the maximum value of stamina by specifying the user ID
+ *
+ * @see https://docs.gs2.io/api_reference/stamina/sdk/#decreasemaxvaluebyuserid
+ */
 class DecreaseMaxValueByUserIdResult implements IResult {
-    /** @var Stamina */
+    /** @var Stamina Stamina */
     private $item;
-    /** @var StaminaModel */
+    /** @var StaminaModel Stamina Model */
     private $staminaModel;
 
+    /** @return Stamina|null Stamina */
 	public function getItem(): ?Stamina {
 		return $this->item;
 	}
 
+    /** @param Stamina|null $item Stamina */
 	public function setItem(?Stamina $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Stamina|null $item Stamina
+     * @return DecreaseMaxValueByUserIdResult
+     */
 	public function withItem(?Stamina $item): DecreaseMaxValueByUserIdResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return StaminaModel|null Stamina Model */
 	public function getStaminaModel(): ?StaminaModel {
 		return $this->staminaModel;
 	}
 
+    /** @param StaminaModel|null $staminaModel Stamina Model */
 	public function setStaminaModel(?StaminaModel $staminaModel) {
 		$this->staminaModel = $staminaModel;
 	}
 
+    /**
+     * @param StaminaModel|null $staminaModel Stamina Model
+     * @return DecreaseMaxValueByUserIdResult
+     */
 	public function withStaminaModel(?StaminaModel $staminaModel): DecreaseMaxValueByUserIdResult {
 		$this->staminaModel = $staminaModel;
 		return $this;

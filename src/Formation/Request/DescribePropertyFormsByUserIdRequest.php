@@ -19,75 +19,116 @@ namespace Gs2\Formation\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for describePropertyFormsByUserId: List Property Forms by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/formation/sdk/#describepropertyformsbyuserid
+ */
 class DescribePropertyFormsByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Property Form Model name */
     private $propertyFormModelName;
-    /** @var string */
+    /** @var string Token specifying the position from which to start acquiring data */
     private $pageToken;
-    /** @var int */
+    /** @var int Number of data items to retrieve */
     private $limit;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DescribePropertyFormsByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DescribePropertyFormsByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return DescribePropertyFormsByUserIdRequest
+     */
 	public function withUserId(?string $userId): DescribePropertyFormsByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Property Form Model name */
 	public function getPropertyFormModelName(): ?string {
 		return $this->propertyFormModelName;
 	}
+    /** @param string|null $propertyFormModelName Property Form Model name */
 	public function setPropertyFormModelName(?string $propertyFormModelName) {
 		$this->propertyFormModelName = $propertyFormModelName;
 	}
+    /**
+     * @param string|null $propertyFormModelName Property Form Model name
+     * @return DescribePropertyFormsByUserIdRequest
+     */
 	public function withPropertyFormModelName(?string $propertyFormModelName): DescribePropertyFormsByUserIdRequest {
 		$this->propertyFormModelName = $propertyFormModelName;
 		return $this;
 	}
+    /** @return string|null Token specifying the position from which to start acquiring data */
 	public function getPageToken(): ?string {
 		return $this->pageToken;
 	}
+    /** @param string|null $pageToken Token specifying the position from which to start acquiring data */
 	public function setPageToken(?string $pageToken) {
 		$this->pageToken = $pageToken;
 	}
+    /**
+     * @param string|null $pageToken Token specifying the position from which to start acquiring data
+     * @return DescribePropertyFormsByUserIdRequest
+     */
 	public function withPageToken(?string $pageToken): DescribePropertyFormsByUserIdRequest {
 		$this->pageToken = $pageToken;
 		return $this;
 	}
+    /** @return int|null Number of data items to retrieve */
 	public function getLimit(): ?int {
 		return $this->limit;
 	}
+    /** @param int|null $limit Number of data items to retrieve */
 	public function setLimit(?int $limit) {
 		$this->limit = $limit;
 	}
+    /**
+     * @param int|null $limit Number of data items to retrieve
+     * @return DescribePropertyFormsByUserIdRequest
+     */
 	public function withLimit(?int $limit): DescribePropertyFormsByUserIdRequest {
 		$this->limit = $limit;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return DescribePropertyFormsByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): DescribePropertyFormsByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

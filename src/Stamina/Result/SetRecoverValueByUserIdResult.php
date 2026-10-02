@@ -24,48 +24,71 @@ use Gs2\Stamina\Model\RecoverIntervalTable;
 use Gs2\Stamina\Model\RecoverValueTable;
 use Gs2\Stamina\Model\StaminaModel;
 
+/**
+ * Result of setRecoverValueByUserId: Set the amount of stamina recovery by specifying the user ID
+ *
+ * @see https://docs.gs2.io/api_reference/stamina/sdk/#setrecovervaluebyuserid
+ */
 class SetRecoverValueByUserIdResult implements IResult {
-    /** @var Stamina */
+    /** @var Stamina Stamina */
     private $item;
-    /** @var Stamina */
+    /** @var Stamina Stamina */
     private $old;
-    /** @var StaminaModel */
+    /** @var StaminaModel Stamina Model */
     private $staminaModel;
 
+    /** @return Stamina|null Stamina */
 	public function getItem(): ?Stamina {
 		return $this->item;
 	}
 
+    /** @param Stamina|null $item Stamina */
 	public function setItem(?Stamina $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Stamina|null $item Stamina
+     * @return SetRecoverValueByUserIdResult
+     */
 	public function withItem(?Stamina $item): SetRecoverValueByUserIdResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return Stamina|null Stamina */
 	public function getOld(): ?Stamina {
 		return $this->old;
 	}
 
+    /** @param Stamina|null $old Stamina */
 	public function setOld(?Stamina $old) {
 		$this->old = $old;
 	}
 
+    /**
+     * @param Stamina|null $old Stamina
+     * @return SetRecoverValueByUserIdResult
+     */
 	public function withOld(?Stamina $old): SetRecoverValueByUserIdResult {
 		$this->old = $old;
 		return $this;
 	}
 
+    /** @return StaminaModel|null Stamina Model */
 	public function getStaminaModel(): ?StaminaModel {
 		return $this->staminaModel;
 	}
 
+    /** @param StaminaModel|null $staminaModel Stamina Model */
 	public function setStaminaModel(?StaminaModel $staminaModel) {
 		$this->staminaModel = $staminaModel;
 	}
 
+    /**
+     * @param StaminaModel|null $staminaModel Stamina Model
+     * @return SetRecoverValueByUserIdResult
+     */
 	public function withStaminaModel(?StaminaModel $staminaModel): SetRecoverValueByUserIdResult {
 		$this->staminaModel = $staminaModel;
 		return $this;

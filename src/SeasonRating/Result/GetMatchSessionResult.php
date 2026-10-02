@@ -20,18 +20,29 @@ namespace Gs2\SeasonRating\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\SeasonRating\Model\MatchSession;
 
+/**
+ * Result of getMatchSession: Get MatchSession
+ *
+ * @see https://docs.gs2.io/api_reference/season_rating/sdk/#getmatchsession
+ */
 class GetMatchSessionResult implements IResult {
-    /** @var MatchSession */
+    /** @var MatchSession MatchSession */
     private $item;
 
+    /** @return MatchSession|null MatchSession */
 	public function getItem(): ?MatchSession {
 		return $this->item;
 	}
 
+    /** @param MatchSession|null $item MatchSession */
 	public function setItem(?MatchSession $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param MatchSession|null $item MatchSession
+     * @return GetMatchSessionResult
+     */
 	public function withItem(?MatchSession $item): GetMatchSessionResult {
 		$this->item = $item;
 		return $this;

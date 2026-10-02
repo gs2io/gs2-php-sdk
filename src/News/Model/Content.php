@@ -20,45 +20,68 @@ namespace Gs2\News\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Content
+ *
+ * @see https://docs.gs2.io/api_reference/news/sdk/#content
+ */
 class Content implements IModel {
 	/**
-     * @var string
+     * @var string Section
 	 */
 	private $section;
 	/**
-     * @var string
+     * @var string Content Path
 	 */
 	private $content;
 	/**
-     * @var string
+     * @var string Front Matter
 	 */
 	private $frontMatter;
+    /** @return string|null Section */
 	public function getSection(): ?string {
 		return $this->section;
 	}
+    /** @param string|null $section Section */
 	public function setSection(?string $section) {
 		$this->section = $section;
 	}
+    /**
+     * @param string|null $section Section
+     * @return Content
+     */
 	public function withSection(?string $section): Content {
 		$this->section = $section;
 		return $this;
 	}
+    /** @return string|null Content Path */
 	public function getContent(): ?string {
 		return $this->content;
 	}
+    /** @param string|null $content Content Path */
 	public function setContent(?string $content) {
 		$this->content = $content;
 	}
+    /**
+     * @param string|null $content Content Path
+     * @return Content
+     */
 	public function withContent(?string $content): Content {
 		$this->content = $content;
 		return $this;
 	}
+    /** @return string|null Front Matter */
 	public function getFrontMatter(): ?string {
 		return $this->frontMatter;
 	}
+    /** @param string|null $frontMatter Front Matter */
 	public function setFrontMatter(?string $frontMatter) {
 		$this->frontMatter = $frontMatter;
 	}
+    /**
+     * @param string|null $frontMatter Front Matter
+     * @return Content
+     */
 	public function withFrontMatter(?string $frontMatter): Content {
 		$this->frontMatter = $frontMatter;
 		return $this;

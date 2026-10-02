@@ -20,33 +20,50 @@ namespace Gs2\Matchmaking\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Matchmaking\Model\SeasonModelMaster;
 
+/**
+ * Result of describeSeasonModelMasters: List Season Model Masters
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#describeseasonmodelmasters
+ */
 class DescribeSeasonModelMastersResult implements IResult {
-    /** @var array */
+    /** @var array List of Season Model Master */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Season Model Master */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Season Model Master */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Season Model Master
+     * @return DescribeSeasonModelMastersResult
+     */
 	public function withItems(?array $items): DescribeSeasonModelMastersResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeSeasonModelMastersResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeSeasonModelMastersResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

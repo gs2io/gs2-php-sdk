@@ -19,18 +19,29 @@ namespace Gs2\Ranking\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of calcRanking: Forced execution of the ranking calculation process
+ *
+ * @see https://docs.gs2.io/api_reference/ranking/sdk/#calcranking
+ */
 class CalcRankingResult implements IResult {
-    /** @var bool */
+    /** @var bool the aggregation process ongoing with asynchronous processing */
     private $processing;
 
+    /** @return bool|null the aggregation process ongoing with asynchronous processing */
 	public function getProcessing(): ?bool {
 		return $this->processing;
 	}
 
+    /** @param bool|null $processing the aggregation process ongoing with asynchronous processing */
 	public function setProcessing(?bool $processing) {
 		$this->processing = $processing;
 	}
 
+    /**
+     * @param bool|null $processing the aggregation process ongoing with asynchronous processing
+     * @return CalcRankingResult
+     */
 	public function withProcessing(?bool $processing): CalcRankingResult {
 		$this->processing = $processing;
 		return $this;

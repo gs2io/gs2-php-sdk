@@ -20,45 +20,68 @@ namespace Gs2\Friend\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Received Friend Request
+ *
+ * @see https://docs.gs2.io/api_reference/friend/sdk/#receivefriendrequest
+ */
 class ReceiveFriendRequest implements IModel {
 	/**
-     * @var string
+     * @var string User ID of the sender of the friend request
 	 */
 	private $userId;
 	/**
-     * @var string
+     * @var string User ID to whom a friend request was sent
 	 */
 	private $targetUserId;
 	/**
-     * @var string
+     * @var string Public profile
 	 */
 	private $publicProfile;
+    /** @return string|null User ID of the sender of the friend request */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID of the sender of the friend request */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID of the sender of the friend request
+     * @return ReceiveFriendRequest
+     */
 	public function withUserId(?string $userId): ReceiveFriendRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null User ID to whom a friend request was sent */
 	public function getTargetUserId(): ?string {
 		return $this->targetUserId;
 	}
+    /** @param string|null $targetUserId User ID to whom a friend request was sent */
 	public function setTargetUserId(?string $targetUserId) {
 		$this->targetUserId = $targetUserId;
 	}
+    /**
+     * @param string|null $targetUserId User ID to whom a friend request was sent
+     * @return ReceiveFriendRequest
+     */
 	public function withTargetUserId(?string $targetUserId): ReceiveFriendRequest {
 		$this->targetUserId = $targetUserId;
 		return $this;
 	}
+    /** @return string|null Public profile */
 	public function getPublicProfile(): ?string {
 		return $this->publicProfile;
 	}
+    /** @param string|null $publicProfile Public profile */
 	public function setPublicProfile(?string $publicProfile) {
 		$this->publicProfile = $publicProfile;
 	}
+    /**
+     * @param string|null $publicProfile Public profile
+     * @return ReceiveFriendRequest
+     */
 	public function withPublicProfile(?string $publicProfile): ReceiveFriendRequest {
 		$this->publicProfile = $publicProfile;
 		return $this;

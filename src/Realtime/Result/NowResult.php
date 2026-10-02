@@ -19,18 +19,29 @@ namespace Gs2\Realtime\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of now: Get current time
+ *
+ * @see https://docs.gs2.io/api_reference/realtime/sdk/#now
+ */
 class NowResult implements IResult {
-    /** @var int */
+    /** @var int Current time */
     private $timestamp;
 
+    /** @return int|null Current time */
 	public function getTimestamp(): ?int {
 		return $this->timestamp;
 	}
 
+    /** @param int|null $timestamp Current time */
 	public function setTimestamp(?int $timestamp) {
 		$this->timestamp = $timestamp;
 	}
 
+    /**
+     * @param int|null $timestamp Current time
+     * @return NowResult
+     */
 	public function withTimestamp(?int $timestamp): NowResult {
 		$this->timestamp = $timestamp;
 		return $this;

@@ -20,18 +20,29 @@ namespace Gs2\Stamina\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Stamina\Model\RecoverIntervalTableMaster;
 
+/**
+ * Result of createRecoverIntervalTableMaster: Create Recovery Interval Table Master
+ *
+ * @see https://docs.gs2.io/api_reference/stamina/sdk/#createrecoverintervaltablemaster
+ */
 class CreateRecoverIntervalTableMasterResult implements IResult {
-    /** @var RecoverIntervalTableMaster */
+    /** @var RecoverIntervalTableMaster Recovery Interval Table Master created */
     private $item;
 
+    /** @return RecoverIntervalTableMaster|null Recovery Interval Table Master created */
 	public function getItem(): ?RecoverIntervalTableMaster {
 		return $this->item;
 	}
 
+    /** @param RecoverIntervalTableMaster|null $item Recovery Interval Table Master created */
 	public function setItem(?RecoverIntervalTableMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param RecoverIntervalTableMaster|null $item Recovery Interval Table Master created
+     * @return CreateRecoverIntervalTableMasterResult
+     */
 	public function withItem(?RecoverIntervalTableMaster $item): CreateRecoverIntervalTableMasterResult {
 		$this->item = $item;
 		return $this;

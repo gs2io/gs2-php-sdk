@@ -20,18 +20,29 @@ namespace Gs2\Mission\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Mission\Model\Complete;
 
+/**
+ * Result of evaluateCompleteByUserId: Re-evaluate Completion Status by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#evaluatecompletebyuserid
+ */
 class EvaluateCompleteByUserIdResult implements IResult {
-    /** @var Complete */
+    /** @var Complete Completion Status updated */
     private $item;
 
+    /** @return Complete|null Completion Status updated */
 	public function getItem(): ?Complete {
 		return $this->item;
 	}
 
+    /** @param Complete|null $item Completion Status updated */
 	public function setItem(?Complete $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Complete|null $item Completion Status updated
+     * @return EvaluateCompleteByUserIdResult
+     */
 	public function withItem(?Complete $item): EvaluateCompleteByUserIdResult {
 		$this->item = $item;
 		return $this;

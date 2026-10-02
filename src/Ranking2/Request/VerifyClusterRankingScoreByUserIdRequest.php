@@ -19,113 +19,172 @@ namespace Gs2\Ranking2\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for verifyClusterRankingScoreByUserId: Verify the score of the cluster ranking specifying User ID
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/sdk/#verifyclusterrankingscorebyuserid
+ */
 class VerifyClusterRankingScoreByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Cluster Ranking Model name */
     private $rankingName;
-    /** @var string */
+    /** @var string Cluster Name */
     private $clusterName;
-    /** @var string */
+    /** @var string Type of verification */
     private $verifyType;
-    /** @var int */
+    /** @var int Season */
     private $season;
-    /** @var int */
+    /** @var int Score */
     private $score;
-    /** @var bool */
+    /** @var bool Whether to multiply the value used for verification when specifying the quantity */
     private $multiplyValueSpecifyingQuantity;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return VerifyClusterRankingScoreByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): VerifyClusterRankingScoreByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return VerifyClusterRankingScoreByUserIdRequest
+     */
 	public function withUserId(?string $userId): VerifyClusterRankingScoreByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Cluster Ranking Model name */
 	public function getRankingName(): ?string {
 		return $this->rankingName;
 	}
+    /** @param string|null $rankingName Cluster Ranking Model name */
 	public function setRankingName(?string $rankingName) {
 		$this->rankingName = $rankingName;
 	}
+    /**
+     * @param string|null $rankingName Cluster Ranking Model name
+     * @return VerifyClusterRankingScoreByUserIdRequest
+     */
 	public function withRankingName(?string $rankingName): VerifyClusterRankingScoreByUserIdRequest {
 		$this->rankingName = $rankingName;
 		return $this;
 	}
+    /** @return string|null Cluster Name */
 	public function getClusterName(): ?string {
 		return $this->clusterName;
 	}
+    /** @param string|null $clusterName Cluster Name */
 	public function setClusterName(?string $clusterName) {
 		$this->clusterName = $clusterName;
 	}
+    /**
+     * @param string|null $clusterName Cluster Name
+     * @return VerifyClusterRankingScoreByUserIdRequest
+     */
 	public function withClusterName(?string $clusterName): VerifyClusterRankingScoreByUserIdRequest {
 		$this->clusterName = $clusterName;
 		return $this;
 	}
+    /** @return string|null Type of verification */
 	public function getVerifyType(): ?string {
 		return $this->verifyType;
 	}
+    /** @param string|null $verifyType Type of verification */
 	public function setVerifyType(?string $verifyType) {
 		$this->verifyType = $verifyType;
 	}
+    /**
+     * @param string|null $verifyType Type of verification
+     * @return VerifyClusterRankingScoreByUserIdRequest
+     */
 	public function withVerifyType(?string $verifyType): VerifyClusterRankingScoreByUserIdRequest {
 		$this->verifyType = $verifyType;
 		return $this;
 	}
+    /** @return int|null Season */
 	public function getSeason(): ?int {
 		return $this->season;
 	}
+    /** @param int|null $season Season */
 	public function setSeason(?int $season) {
 		$this->season = $season;
 	}
+    /**
+     * @param int|null $season Season
+     * @return VerifyClusterRankingScoreByUserIdRequest
+     */
 	public function withSeason(?int $season): VerifyClusterRankingScoreByUserIdRequest {
 		$this->season = $season;
 		return $this;
 	}
+    /** @return int|null Score */
 	public function getScore(): ?int {
 		return $this->score;
 	}
+    /** @param int|null $score Score */
 	public function setScore(?int $score) {
 		$this->score = $score;
 	}
+    /**
+     * @param int|null $score Score
+     * @return VerifyClusterRankingScoreByUserIdRequest
+     */
 	public function withScore(?int $score): VerifyClusterRankingScoreByUserIdRequest {
 		$this->score = $score;
 		return $this;
 	}
+    /** @return bool|null Whether to multiply the value used for verification when specifying the quantity */
 	public function getMultiplyValueSpecifyingQuantity(): ?bool {
 		return $this->multiplyValueSpecifyingQuantity;
 	}
+    /** @param bool|null $multiplyValueSpecifyingQuantity Whether to multiply the value used for verification when specifying the quantity */
 	public function setMultiplyValueSpecifyingQuantity(?bool $multiplyValueSpecifyingQuantity) {
 		$this->multiplyValueSpecifyingQuantity = $multiplyValueSpecifyingQuantity;
 	}
+    /**
+     * @param bool|null $multiplyValueSpecifyingQuantity Whether to multiply the value used for verification when specifying the quantity
+     * @return VerifyClusterRankingScoreByUserIdRequest
+     */
 	public function withMultiplyValueSpecifyingQuantity(?bool $multiplyValueSpecifyingQuantity): VerifyClusterRankingScoreByUserIdRequest {
 		$this->multiplyValueSpecifyingQuantity = $multiplyValueSpecifyingQuantity;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return VerifyClusterRankingScoreByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): VerifyClusterRankingScoreByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

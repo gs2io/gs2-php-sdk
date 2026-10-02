@@ -20,115 +20,168 @@ namespace Gs2\Formation\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Property Form
+ *
+ * @see https://docs.gs2.io/api_reference/formation/sdk/#propertyform
+ */
 class PropertyForm implements IModel {
 	/**
-     * @var string
+     * @var string Property Form GRN
 	 */
 	private $formId;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var string
+     * @var string Property Form name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Property ID
 	 */
 	private $propertyId;
 	/**
-     * @var array
+     * @var array List of Slots
 	 */
 	private $slots;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Property Form GRN */
 	public function getFormId(): ?string {
 		return $this->formId;
 	}
+    /** @param string|null $formId Property Form GRN */
 	public function setFormId(?string $formId) {
 		$this->formId = $formId;
 	}
+    /**
+     * @param string|null $formId Property Form GRN
+     * @return PropertyForm
+     */
 	public function withFormId(?string $formId): PropertyForm {
 		$this->formId = $formId;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return PropertyForm
+     */
 	public function withUserId(?string $userId): PropertyForm {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Property Form name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Property Form name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Property Form name
+     * @return PropertyForm
+     */
 	public function withName(?string $name): PropertyForm {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Property ID */
 	public function getPropertyId(): ?string {
 		return $this->propertyId;
 	}
+    /** @param string|null $propertyId Property ID */
 	public function setPropertyId(?string $propertyId) {
 		$this->propertyId = $propertyId;
 	}
+    /**
+     * @param string|null $propertyId Property ID
+     * @return PropertyForm
+     */
 	public function withPropertyId(?string $propertyId): PropertyForm {
 		$this->propertyId = $propertyId;
 		return $this;
 	}
+    /** @return array|null List of Slots */
 	public function getSlots(): ?array {
 		return $this->slots;
 	}
+    /** @param array|null $slots List of Slots */
 	public function setSlots(?array $slots) {
 		$this->slots = $slots;
 	}
+    /**
+     * @param array|null $slots List of Slots
+     * @return PropertyForm
+     */
 	public function withSlots(?array $slots): PropertyForm {
 		$this->slots = $slots;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return PropertyForm
+     */
 	public function withCreatedAt(?int $createdAt): PropertyForm {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return PropertyForm
+     */
 	public function withUpdatedAt(?int $updatedAt): PropertyForm {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return PropertyForm
+     */
 	public function withRevision(?int $revision): PropertyForm {
 		$this->revision = $revision;
 		return $this;

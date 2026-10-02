@@ -19,18 +19,29 @@ namespace Gs2\Account\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of getAuthorizationUrl: Get authorization URL
+ *
+ * @see https://docs.gs2.io/api_reference/account/sdk/#getauthorizationurl
+ */
 class GetAuthorizationUrlResult implements IResult {
-    /** @var string */
+    /** @var string Authorization URL */
     private $authorizationUrl;
 
+    /** @return string|null Authorization URL */
 	public function getAuthorizationUrl(): ?string {
 		return $this->authorizationUrl;
 	}
 
+    /** @param string|null $authorizationUrl Authorization URL */
 	public function setAuthorizationUrl(?string $authorizationUrl) {
 		$this->authorizationUrl = $authorizationUrl;
 	}
 
+    /**
+     * @param string|null $authorizationUrl Authorization URL
+     * @return GetAuthorizationUrlResult
+     */
 	public function withAuthorizationUrl(?string $authorizationUrl): GetAuthorizationUrlResult {
 		$this->authorizationUrl = $authorizationUrl;
 		return $this;

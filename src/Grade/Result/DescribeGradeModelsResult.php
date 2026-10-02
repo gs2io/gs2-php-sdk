@@ -23,18 +23,29 @@ use Gs2\Grade\Model\GradeEntryModel;
 use Gs2\Grade\Model\AcquireActionRate;
 use Gs2\Grade\Model\GradeModel;
 
+/**
+ * Result of describeGradeModels: List Grade Models
+ *
+ * @see https://docs.gs2.io/api_reference/grade/sdk/#describegrademodels
+ */
 class DescribeGradeModelsResult implements IResult {
-    /** @var array */
+    /** @var array List of Grade Models */
     private $items;
 
+    /** @return array|null List of Grade Models */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Grade Models */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Grade Models
+     * @return DescribeGradeModelsResult
+     */
 	public function withItems(?array $items): DescribeGradeModelsResult {
 		$this->items = $items;
 		return $this;

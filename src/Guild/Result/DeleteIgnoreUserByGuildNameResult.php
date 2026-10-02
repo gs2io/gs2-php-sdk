@@ -20,18 +20,29 @@ namespace Gs2\Guild\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Guild\Model\IgnoreUser;
 
+/**
+ * Result of deleteIgnoreUserByGuildName: Delete User ID that refuse to participate by specifying a Guild name
+ *
+ * @see https://docs.gs2.io/api_reference/guild/sdk/#deleteignoreuserbyguildname
+ */
 class DeleteIgnoreUserByGuildNameResult implements IResult {
-    /** @var IgnoreUser */
+    /** @var IgnoreUser User ID that refuse to participate */
     private $item;
 
+    /** @return IgnoreUser|null User ID that refuse to participate */
 	public function getItem(): ?IgnoreUser {
 		return $this->item;
 	}
 
+    /** @param IgnoreUser|null $item User ID that refuse to participate */
 	public function setItem(?IgnoreUser $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param IgnoreUser|null $item User ID that refuse to participate
+     * @return DeleteIgnoreUserByGuildNameResult
+     */
 	public function withItem(?IgnoreUser $item): DeleteIgnoreUserByGuildNameResult {
 		$this->item = $item;
 		return $this;

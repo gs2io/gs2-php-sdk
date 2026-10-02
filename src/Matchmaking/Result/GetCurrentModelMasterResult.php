@@ -20,18 +20,29 @@ namespace Gs2\Matchmaking\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Matchmaking\Model\CurrentModelMaster;
 
+/**
+ * Result of getCurrentModelMaster: Get currently active model master data
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#getcurrentmodelmaster
+ */
 class GetCurrentModelMasterResult implements IResult {
-    /** @var CurrentModelMaster */
+    /** @var CurrentModelMaster Currently active Models master data */
     private $item;
 
+    /** @return CurrentModelMaster|null Currently active Models master data */
 	public function getItem(): ?CurrentModelMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentModelMaster|null $item Currently active Models master data */
 	public function setItem(?CurrentModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentModelMaster|null $item Currently active Models master data
+     * @return GetCurrentModelMasterResult
+     */
 	public function withItem(?CurrentModelMaster $item): GetCurrentModelMasterResult {
 		$this->item = $item;
 		return $this;

@@ -20,33 +20,50 @@ namespace Gs2\Mission\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Mission\Model\Complete;
 
+/**
+ * Result of describeCompletes: List Completion Statuses
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#describecompletes
+ */
 class DescribeCompletesResult implements IResult {
-    /** @var array */
+    /** @var array List of Completion Statuses */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Completion Statuses */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Completion Statuses */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Completion Statuses
+     * @return DescribeCompletesResult
+     */
 	public function withItems(?array $items): DescribeCompletesResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeCompletesResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeCompletesResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

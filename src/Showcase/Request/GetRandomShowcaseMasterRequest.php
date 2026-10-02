@@ -19,27 +19,44 @@ namespace Gs2\Showcase\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getRandomShowcaseMaster: Get Random Showcase Master
+ *
+ * @see https://docs.gs2.io/api_reference/showcase/sdk/#getrandomshowcasemaster
+ */
 class GetRandomShowcaseMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Random Showcase name */
     private $showcaseName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetRandomShowcaseMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetRandomShowcaseMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Random Showcase name */
 	public function getShowcaseName(): ?string {
 		return $this->showcaseName;
 	}
+    /** @param string|null $showcaseName Random Showcase name */
 	public function setShowcaseName(?string $showcaseName) {
 		$this->showcaseName = $showcaseName;
 	}
+    /**
+     * @param string|null $showcaseName Random Showcase name
+     * @return GetRandomShowcaseMasterRequest
+     */
 	public function withShowcaseName(?string $showcaseName): GetRandomShowcaseMasterRequest {
 		$this->showcaseName = $showcaseName;
 		return $this;

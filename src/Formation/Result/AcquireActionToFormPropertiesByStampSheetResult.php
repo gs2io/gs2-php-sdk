@@ -26,138 +26,197 @@ use Gs2\Core\Model\ConsumeActionResult as CoreConsumeActionResult;
 use Gs2\Core\Model\AcquireActionResult as CoreAcquireActionResult;
 use Gs2\Core\Model\TransactionResult as CoreTransactionResult;
 
+/**
+ * Result of acquireActionToFormPropertiesByStampSheet: Execute the acquire action application to form properties as an acquire action
+ *
+ * @see https://docs.gs2.io/api_reference/formation/stamp_sheet/#gs2formationacquireactionstoformproperties
+ */
 class AcquireActionToFormPropertiesByStampSheetResult implements IResult {
-    /** @var Form */
+    /** @var Form Form */
     private $item;
-    /** @var Mold */
+    /** @var Mold Form Storage Area */
     private $mold;
-    /** @var string */
+    /** @var string Issued transaction ID */
     private $transactionId;
-    /** @var string */
+    /** @var string Stamp sheet */
     private $stampSheet;
-    /** @var string */
+    /** @var string Cryptographic key GRN used for stamp sheet signature calculations */
     private $stampSheetEncryptionKeyId;
-    /** @var bool */
+    /** @var bool Whether automatic transaction execution is enabled */
     private $autoRunStampSheet;
-    /** @var bool */
+    /** @var bool Whether to commit the transaction atomically */
     private $atomicCommit;
-    /** @var string */
+    /** @var string Issued transaction */
     private $transaction;
-    /** @var CoreTransactionResult */
+    /** @var CoreTransactionResult Transaction Execution Result */
     private $transactionResult;
 
+    /** @return Form|null Form */
 	public function getItem(): ?Form {
 		return $this->item;
 	}
 
+    /** @param Form|null $item Form */
 	public function setItem(?Form $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Form|null $item Form
+     * @return AcquireActionToFormPropertiesByStampSheetResult
+     */
 	public function withItem(?Form $item): AcquireActionToFormPropertiesByStampSheetResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return Mold|null Form Storage Area */
 	public function getMold(): ?Mold {
 		return $this->mold;
 	}
 
+    /** @param Mold|null $mold Form Storage Area */
 	public function setMold(?Mold $mold) {
 		$this->mold = $mold;
 	}
 
+    /**
+     * @param Mold|null $mold Form Storage Area
+     * @return AcquireActionToFormPropertiesByStampSheetResult
+     */
 	public function withMold(?Mold $mold): AcquireActionToFormPropertiesByStampSheetResult {
 		$this->mold = $mold;
 		return $this;
 	}
 
+    /** @return string|null Issued transaction ID */
 	public function getTransactionId(): ?string {
 		return $this->transactionId;
 	}
 
+    /** @param string|null $transactionId Issued transaction ID */
 	public function setTransactionId(?string $transactionId) {
 		$this->transactionId = $transactionId;
 	}
 
+    /**
+     * @param string|null $transactionId Issued transaction ID
+     * @return AcquireActionToFormPropertiesByStampSheetResult
+     */
 	public function withTransactionId(?string $transactionId): AcquireActionToFormPropertiesByStampSheetResult {
 		$this->transactionId = $transactionId;
 		return $this;
 	}
 
+    /** @return string|null Stamp sheet */
 	public function getStampSheet(): ?string {
 		return $this->stampSheet;
 	}
 
+    /** @param string|null $stampSheet Stamp sheet */
 	public function setStampSheet(?string $stampSheet) {
 		$this->stampSheet = $stampSheet;
 	}
 
+    /**
+     * @param string|null $stampSheet Stamp sheet
+     * @return AcquireActionToFormPropertiesByStampSheetResult
+     */
 	public function withStampSheet(?string $stampSheet): AcquireActionToFormPropertiesByStampSheetResult {
 		$this->stampSheet = $stampSheet;
 		return $this;
 	}
 
+    /** @return string|null Cryptographic key GRN used for stamp sheet signature calculations */
 	public function getStampSheetEncryptionKeyId(): ?string {
 		return $this->stampSheetEncryptionKeyId;
 	}
 
+    /** @param string|null $stampSheetEncryptionKeyId Cryptographic key GRN used for stamp sheet signature calculations */
 	public function setStampSheetEncryptionKeyId(?string $stampSheetEncryptionKeyId) {
 		$this->stampSheetEncryptionKeyId = $stampSheetEncryptionKeyId;
 	}
 
+    /**
+     * @param string|null $stampSheetEncryptionKeyId Cryptographic key GRN used for stamp sheet signature calculations
+     * @return AcquireActionToFormPropertiesByStampSheetResult
+     */
 	public function withStampSheetEncryptionKeyId(?string $stampSheetEncryptionKeyId): AcquireActionToFormPropertiesByStampSheetResult {
 		$this->stampSheetEncryptionKeyId = $stampSheetEncryptionKeyId;
 		return $this;
 	}
 
+    /** @return bool|null Whether automatic transaction execution is enabled */
 	public function getAutoRunStampSheet(): ?bool {
 		return $this->autoRunStampSheet;
 	}
 
+    /** @param bool|null $autoRunStampSheet Whether automatic transaction execution is enabled */
 	public function setAutoRunStampSheet(?bool $autoRunStampSheet) {
 		$this->autoRunStampSheet = $autoRunStampSheet;
 	}
 
+    /**
+     * @param bool|null $autoRunStampSheet Whether automatic transaction execution is enabled
+     * @return AcquireActionToFormPropertiesByStampSheetResult
+     */
 	public function withAutoRunStampSheet(?bool $autoRunStampSheet): AcquireActionToFormPropertiesByStampSheetResult {
 		$this->autoRunStampSheet = $autoRunStampSheet;
 		return $this;
 	}
 
+    /** @return bool|null Whether to commit the transaction atomically */
 	public function getAtomicCommit(): ?bool {
 		return $this->atomicCommit;
 	}
 
+    /** @param bool|null $atomicCommit Whether to commit the transaction atomically */
 	public function setAtomicCommit(?bool $atomicCommit) {
 		$this->atomicCommit = $atomicCommit;
 	}
 
+    /**
+     * @param bool|null $atomicCommit Whether to commit the transaction atomically
+     * @return AcquireActionToFormPropertiesByStampSheetResult
+     */
 	public function withAtomicCommit(?bool $atomicCommit): AcquireActionToFormPropertiesByStampSheetResult {
 		$this->atomicCommit = $atomicCommit;
 		return $this;
 	}
 
+    /** @return string|null Issued transaction */
 	public function getTransaction(): ?string {
 		return $this->transaction;
 	}
 
+    /** @param string|null $transaction Issued transaction */
 	public function setTransaction(?string $transaction) {
 		$this->transaction = $transaction;
 	}
 
+    /**
+     * @param string|null $transaction Issued transaction
+     * @return AcquireActionToFormPropertiesByStampSheetResult
+     */
 	public function withTransaction(?string $transaction): AcquireActionToFormPropertiesByStampSheetResult {
 		$this->transaction = $transaction;
 		return $this;
 	}
 
+    /** @return CoreTransactionResult|null Transaction Execution Result */
 	public function getTransactionResult(): ?CoreTransactionResult {
 		return $this->transactionResult;
 	}
 
+    /** @param CoreTransactionResult|null $transactionResult Transaction Execution Result */
 	public function setTransactionResult(?CoreTransactionResult $transactionResult) {
 		$this->transactionResult = $transactionResult;
 	}
 
+    /**
+     * @param CoreTransactionResult|null $transactionResult Transaction Execution Result
+     * @return AcquireActionToFormPropertiesByStampSheetResult
+     */
 	public function withTransactionResult(?CoreTransactionResult $transactionResult): AcquireActionToFormPropertiesByStampSheetResult {
 		$this->transactionResult = $transactionResult;
 		return $this;

@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Chat\Model\NotificationType;
 use Gs2\Chat\Model\Subscribe;
 
+/**
+ * Result of subscribe: Subscribe to a room
+ *
+ * @see https://docs.gs2.io/api_reference/chat/sdk/#subscribe-1
+ */
 class SubscribeResult implements IResult {
-    /** @var Subscribe */
+    /** @var Subscribe Room Subscription */
     private $item;
 
+    /** @return Subscribe|null Room Subscription */
 	public function getItem(): ?Subscribe {
 		return $this->item;
 	}
 
+    /** @param Subscribe|null $item Room Subscription */
 	public function setItem(?Subscribe $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Subscribe|null $item Room Subscription
+     * @return SubscribeResult
+     */
 	public function withItem(?Subscribe $item): SubscribeResult {
 		$this->item = $item;
 		return $this;

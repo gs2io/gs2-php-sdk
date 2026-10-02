@@ -20,18 +20,29 @@ namespace Gs2\Inventory\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Inventory\Model\ItemModel;
 
+/**
+ * Result of describeItemModels: List Item Models
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#describeitemmodels
+ */
 class DescribeItemModelsResult implements IResult {
-    /** @var array */
+    /** @var array List of Item Model */
     private $items;
 
+    /** @return array|null List of Item Model */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Item Model */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Item Model
+     * @return DescribeItemModelsResult
+     */
 	public function withItems(?array $items): DescribeItemModelsResult {
 		$this->items = $items;
 		return $this;

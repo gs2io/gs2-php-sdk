@@ -20,45 +20,68 @@ namespace Gs2\JobQueue\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Register Job
+ *
+ * @see https://docs.gs2.io/api_reference/job_queue/sdk/#jobentry
+ */
 class JobEntry implements IModel {
 	/**
-     * @var string
+     * @var string Script GRN
 	 */
 	private $scriptId;
 	/**
-     * @var string
+     * @var string Argument
 	 */
 	private $args;
 	/**
-     * @var int
+     * @var int Maximum Number of Attempts
 	 */
 	private $maxTryCount;
+    /** @return string|null Script GRN */
 	public function getScriptId(): ?string {
 		return $this->scriptId;
 	}
+    /** @param string|null $scriptId Script GRN */
 	public function setScriptId(?string $scriptId) {
 		$this->scriptId = $scriptId;
 	}
+    /**
+     * @param string|null $scriptId Script GRN
+     * @return JobEntry
+     */
 	public function withScriptId(?string $scriptId): JobEntry {
 		$this->scriptId = $scriptId;
 		return $this;
 	}
+    /** @return string|null Argument */
 	public function getArgs(): ?string {
 		return $this->args;
 	}
+    /** @param string|null $args Argument */
 	public function setArgs(?string $args) {
 		$this->args = $args;
 	}
+    /**
+     * @param string|null $args Argument
+     * @return JobEntry
+     */
 	public function withArgs(?string $args): JobEntry {
 		$this->args = $args;
 		return $this;
 	}
+    /** @return int|null Maximum Number of Attempts */
 	public function getMaxTryCount(): ?int {
 		return $this->maxTryCount;
 	}
+    /** @param int|null $maxTryCount Maximum Number of Attempts */
 	public function setMaxTryCount(?int $maxTryCount) {
 		$this->maxTryCount = $maxTryCount;
 	}
+    /**
+     * @param int|null $maxTryCount Maximum Number of Attempts
+     * @return JobEntry
+     */
 	public function withMaxTryCount(?int $maxTryCount): JobEntry {
 		$this->maxTryCount = $maxTryCount;
 		return $this;

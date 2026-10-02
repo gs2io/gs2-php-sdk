@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Schedule\Model\RepeatSetting;
 use Gs2\Schedule\Model\EventMaster;
 
+/**
+ * Result of deleteEventMaster: Delete Event Master
+ *
+ * @see https://docs.gs2.io/api_reference/schedule/sdk/#deleteeventmaster
+ */
 class DeleteEventMasterResult implements IResult {
-    /** @var EventMaster */
+    /** @var EventMaster Event Master deleted */
     private $item;
 
+    /** @return EventMaster|null Event Master deleted */
 	public function getItem(): ?EventMaster {
 		return $this->item;
 	}
 
+    /** @param EventMaster|null $item Event Master deleted */
 	public function setItem(?EventMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param EventMaster|null $item Event Master deleted
+     * @return DeleteEventMasterResult
+     */
 	public function withItem(?EventMaster $item): DeleteEventMasterResult {
 		$this->item = $item;
 		return $this;

@@ -20,33 +20,50 @@ namespace Gs2\Enhance\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Enhance\Model\Progress;
 
+/**
+ * Result of deleteProgressByStampTask: Delete running enhancement as a consume action
+ *
+ * @see https://docs.gs2.io/api_reference/enhance/stamp_sheet/#gs2enhancedeleteprogressbyuserid
+ */
 class DeleteProgressByStampTaskResult implements IResult {
-    /** @var Progress */
+    /** @var Progress Running enhancement */
     private $item;
-    /** @var string */
+    /** @var string Context recording the execution results of the Consume Action */
     private $newContextStack;
 
+    /** @return Progress|null Running enhancement */
 	public function getItem(): ?Progress {
 		return $this->item;
 	}
 
+    /** @param Progress|null $item Running enhancement */
 	public function setItem(?Progress $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Progress|null $item Running enhancement
+     * @return DeleteProgressByStampTaskResult
+     */
 	public function withItem(?Progress $item): DeleteProgressByStampTaskResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null Context recording the execution results of the Consume Action */
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
+    /** @param string|null $newContextStack Context recording the execution results of the Consume Action */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
+    /**
+     * @param string|null $newContextStack Context recording the execution results of the Consume Action
+     * @return DeleteProgressByStampTaskResult
+     */
 	public function withNewContextStack(?string $newContextStack): DeleteProgressByStampTaskResult {
 		$this->newContextStack = $newContextStack;
 		return $this;

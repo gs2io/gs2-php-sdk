@@ -21,147 +21,224 @@ use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Exchange\Model\ConsumeAction;
 use Gs2\Exchange\Model\AcquireAction;
 
+/**
+ * Request for createIncrementalRateModelMaster: Create Incremental Cost Exchange Rate Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/exchange/sdk/#createincrementalratemodelmaster
+ */
 class CreateIncrementalRateModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Incremental Cost Exchange Rate Model name */
     private $name;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var string */
+    /** @var string Metadata */
     private $metadata;
-    /** @var ConsumeAction */
+    /** @var ConsumeAction Consume Action (Quantity and Value are overwritten automatically) */
     private $consumeAction;
-    /** @var string */
+    /** @var string Calculation method for cost increase amount */
     private $calculateType;
-    /** @var int */
+    /** @var int Base Value */
     private $baseValue;
-    /** @var int */
+    /** @var int Coefficient Value */
     private $coefficientValue;
-    /** @var string */
+    /** @var string GRN of cost calculation script */
     private $calculateScriptId;
-    /** @var string */
+    /** @var string GS2-Limit Usage Limit Model GRN for managing exchange execution counts */
     private $exchangeCountId;
-    /** @var int */
+    /** @var int Maximum number of exchanges */
     private $maximumExchangeCount;
-    /** @var array */
+    /** @var array List of Acquire Actions */
     private $acquireActions;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return CreateIncrementalRateModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): CreateIncrementalRateModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Incremental Cost Exchange Rate Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Incremental Cost Exchange Rate Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Incremental Cost Exchange Rate Model name
+     * @return CreateIncrementalRateModelMasterRequest
+     */
 	public function withName(?string $name): CreateIncrementalRateModelMasterRequest {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return CreateIncrementalRateModelMasterRequest
+     */
 	public function withDescription(?string $description): CreateIncrementalRateModelMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return CreateIncrementalRateModelMasterRequest
+     */
 	public function withMetadata(?string $metadata): CreateIncrementalRateModelMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return ConsumeAction|null Consume Action (Quantity and Value are overwritten automatically) */
 	public function getConsumeAction(): ?ConsumeAction {
 		return $this->consumeAction;
 	}
+    /** @param ConsumeAction|null $consumeAction Consume Action (Quantity and Value are overwritten automatically) */
 	public function setConsumeAction(?ConsumeAction $consumeAction) {
 		$this->consumeAction = $consumeAction;
 	}
+    /**
+     * @param ConsumeAction|null $consumeAction Consume Action (Quantity and Value are overwritten automatically)
+     * @return CreateIncrementalRateModelMasterRequest
+     */
 	public function withConsumeAction(?ConsumeAction $consumeAction): CreateIncrementalRateModelMasterRequest {
 		$this->consumeAction = $consumeAction;
 		return $this;
 	}
+    /** @return string|null Calculation method for cost increase amount */
 	public function getCalculateType(): ?string {
 		return $this->calculateType;
 	}
+    /** @param string|null $calculateType Calculation method for cost increase amount */
 	public function setCalculateType(?string $calculateType) {
 		$this->calculateType = $calculateType;
 	}
+    /**
+     * @param string|null $calculateType Calculation method for cost increase amount
+     * @return CreateIncrementalRateModelMasterRequest
+     */
 	public function withCalculateType(?string $calculateType): CreateIncrementalRateModelMasterRequest {
 		$this->calculateType = $calculateType;
 		return $this;
 	}
+    /** @return int|null Base Value */
 	public function getBaseValue(): ?int {
 		return $this->baseValue;
 	}
+    /** @param int|null $baseValue Base Value */
 	public function setBaseValue(?int $baseValue) {
 		$this->baseValue = $baseValue;
 	}
+    /**
+     * @param int|null $baseValue Base Value
+     * @return CreateIncrementalRateModelMasterRequest
+     */
 	public function withBaseValue(?int $baseValue): CreateIncrementalRateModelMasterRequest {
 		$this->baseValue = $baseValue;
 		return $this;
 	}
+    /** @return int|null Coefficient Value */
 	public function getCoefficientValue(): ?int {
 		return $this->coefficientValue;
 	}
+    /** @param int|null $coefficientValue Coefficient Value */
 	public function setCoefficientValue(?int $coefficientValue) {
 		$this->coefficientValue = $coefficientValue;
 	}
+    /**
+     * @param int|null $coefficientValue Coefficient Value
+     * @return CreateIncrementalRateModelMasterRequest
+     */
 	public function withCoefficientValue(?int $coefficientValue): CreateIncrementalRateModelMasterRequest {
 		$this->coefficientValue = $coefficientValue;
 		return $this;
 	}
+    /** @return string|null GRN of cost calculation script */
 	public function getCalculateScriptId(): ?string {
 		return $this->calculateScriptId;
 	}
+    /** @param string|null $calculateScriptId GRN of cost calculation script */
 	public function setCalculateScriptId(?string $calculateScriptId) {
 		$this->calculateScriptId = $calculateScriptId;
 	}
+    /**
+     * @param string|null $calculateScriptId GRN of cost calculation script
+     * @return CreateIncrementalRateModelMasterRequest
+     */
 	public function withCalculateScriptId(?string $calculateScriptId): CreateIncrementalRateModelMasterRequest {
 		$this->calculateScriptId = $calculateScriptId;
 		return $this;
 	}
+    /** @return string|null GS2-Limit Usage Limit Model GRN for managing exchange execution counts */
 	public function getExchangeCountId(): ?string {
 		return $this->exchangeCountId;
 	}
+    /** @param string|null $exchangeCountId GS2-Limit Usage Limit Model GRN for managing exchange execution counts */
 	public function setExchangeCountId(?string $exchangeCountId) {
 		$this->exchangeCountId = $exchangeCountId;
 	}
+    /**
+     * @param string|null $exchangeCountId GS2-Limit Usage Limit Model GRN for managing exchange execution counts
+     * @return CreateIncrementalRateModelMasterRequest
+     */
 	public function withExchangeCountId(?string $exchangeCountId): CreateIncrementalRateModelMasterRequest {
 		$this->exchangeCountId = $exchangeCountId;
 		return $this;
 	}
+    /** @return int|null Maximum number of exchanges */
 	public function getMaximumExchangeCount(): ?int {
 		return $this->maximumExchangeCount;
 	}
+    /** @param int|null $maximumExchangeCount Maximum number of exchanges */
 	public function setMaximumExchangeCount(?int $maximumExchangeCount) {
 		$this->maximumExchangeCount = $maximumExchangeCount;
 	}
+    /**
+     * @param int|null $maximumExchangeCount Maximum number of exchanges
+     * @return CreateIncrementalRateModelMasterRequest
+     */
 	public function withMaximumExchangeCount(?int $maximumExchangeCount): CreateIncrementalRateModelMasterRequest {
 		$this->maximumExchangeCount = $maximumExchangeCount;
 		return $this;
 	}
+    /** @return array|null List of Acquire Actions */
 	public function getAcquireActions(): ?array {
 		return $this->acquireActions;
 	}
+    /** @param array|null $acquireActions List of Acquire Actions */
 	public function setAcquireActions(?array $acquireActions) {
 		$this->acquireActions = $acquireActions;
 	}
+    /**
+     * @param array|null $acquireActions List of Acquire Actions
+     * @return CreateIncrementalRateModelMasterRequest
+     */
 	public function withAcquireActions(?array $acquireActions): CreateIncrementalRateModelMasterRequest {
 		$this->acquireActions = $acquireActions;
 		return $this;

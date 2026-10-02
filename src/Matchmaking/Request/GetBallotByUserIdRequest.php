@@ -19,87 +19,134 @@ namespace Gs2\Matchmaking\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getBallotByUserId: Create ballot with signatures, specifying user ID
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#getballotbyuserid
+ */
 class GetBallotByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Rating Model name */
     private $ratingName;
-    /** @var string */
+    /** @var string Gathering name */
     private $gatheringName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var int */
+    /** @var int Number of participants */
     private $numberOfPlayer;
-    /** @var string */
+    /** @var string Encryption Key GRN */
     private $keyId;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetBallotByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetBallotByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Rating Model name */
 	public function getRatingName(): ?string {
 		return $this->ratingName;
 	}
+    /** @param string|null $ratingName Rating Model name */
 	public function setRatingName(?string $ratingName) {
 		$this->ratingName = $ratingName;
 	}
+    /**
+     * @param string|null $ratingName Rating Model name
+     * @return GetBallotByUserIdRequest
+     */
 	public function withRatingName(?string $ratingName): GetBallotByUserIdRequest {
 		$this->ratingName = $ratingName;
 		return $this;
 	}
+    /** @return string|null Gathering name */
 	public function getGatheringName(): ?string {
 		return $this->gatheringName;
 	}
+    /** @param string|null $gatheringName Gathering name */
 	public function setGatheringName(?string $gatheringName) {
 		$this->gatheringName = $gatheringName;
 	}
+    /**
+     * @param string|null $gatheringName Gathering name
+     * @return GetBallotByUserIdRequest
+     */
 	public function withGatheringName(?string $gatheringName): GetBallotByUserIdRequest {
 		$this->gatheringName = $gatheringName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return GetBallotByUserIdRequest
+     */
 	public function withUserId(?string $userId): GetBallotByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return int|null Number of participants */
 	public function getNumberOfPlayer(): ?int {
 		return $this->numberOfPlayer;
 	}
+    /** @param int|null $numberOfPlayer Number of participants */
 	public function setNumberOfPlayer(?int $numberOfPlayer) {
 		$this->numberOfPlayer = $numberOfPlayer;
 	}
+    /**
+     * @param int|null $numberOfPlayer Number of participants
+     * @return GetBallotByUserIdRequest
+     */
 	public function withNumberOfPlayer(?int $numberOfPlayer): GetBallotByUserIdRequest {
 		$this->numberOfPlayer = $numberOfPlayer;
 		return $this;
 	}
+    /** @return string|null Encryption Key GRN */
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
+    /** @param string|null $keyId Encryption Key GRN */
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
+    /**
+     * @param string|null $keyId Encryption Key GRN
+     * @return GetBallotByUserIdRequest
+     */
 	public function withKeyId(?string $keyId): GetBallotByUserIdRequest {
 		$this->keyId = $keyId;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return GetBallotByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): GetBallotByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

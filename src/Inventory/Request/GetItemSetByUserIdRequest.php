@@ -19,75 +19,116 @@ namespace Gs2\Inventory\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getItemSetByUserId: Get Item Set by specifying the user ID
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#getitemsetbyuserid
+ */
 class GetItemSetByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Inventory Model Name */
     private $inventoryName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Item Model Name */
     private $itemName;
-    /** @var string */
+    /** @var string Name identifying the item set */
     private $itemSetName;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetItemSetByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetItemSetByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Inventory Model Name */
 	public function getInventoryName(): ?string {
 		return $this->inventoryName;
 	}
+    /** @param string|null $inventoryName Inventory Model Name */
 	public function setInventoryName(?string $inventoryName) {
 		$this->inventoryName = $inventoryName;
 	}
+    /**
+     * @param string|null $inventoryName Inventory Model Name
+     * @return GetItemSetByUserIdRequest
+     */
 	public function withInventoryName(?string $inventoryName): GetItemSetByUserIdRequest {
 		$this->inventoryName = $inventoryName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return GetItemSetByUserIdRequest
+     */
 	public function withUserId(?string $userId): GetItemSetByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Item Model Name */
 	public function getItemName(): ?string {
 		return $this->itemName;
 	}
+    /** @param string|null $itemName Item Model Name */
 	public function setItemName(?string $itemName) {
 		$this->itemName = $itemName;
 	}
+    /**
+     * @param string|null $itemName Item Model Name
+     * @return GetItemSetByUserIdRequest
+     */
 	public function withItemName(?string $itemName): GetItemSetByUserIdRequest {
 		$this->itemName = $itemName;
 		return $this;
 	}
+    /** @return string|null Name identifying the item set */
 	public function getItemSetName(): ?string {
 		return $this->itemSetName;
 	}
+    /** @param string|null $itemSetName Name identifying the item set */
 	public function setItemSetName(?string $itemSetName) {
 		$this->itemSetName = $itemSetName;
 	}
+    /**
+     * @param string|null $itemSetName Name identifying the item set
+     * @return GetItemSetByUserIdRequest
+     */
 	public function withItemSetName(?string $itemSetName): GetItemSetByUserIdRequest {
 		$this->itemSetName = $itemSetName;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return GetItemSetByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): GetItemSetByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

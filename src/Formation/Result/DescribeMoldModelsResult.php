@@ -22,18 +22,29 @@ use Gs2\Formation\Model\SlotModel;
 use Gs2\Formation\Model\FormModel;
 use Gs2\Formation\Model\MoldModel;
 
+/**
+ * Result of describeMoldModels: List Form Storage Area Models
+ *
+ * @see https://docs.gs2.io/api_reference/formation/sdk/#describemoldmodels
+ */
 class DescribeMoldModelsResult implements IResult {
-    /** @var array */
+    /** @var array List of Form Storage Areas */
     private $items;
 
+    /** @return array|null List of Form Storage Areas */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Form Storage Areas */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Form Storage Areas
+     * @return DescribeMoldModelsResult
+     */
 	public function withItems(?array $items): DescribeMoldModelsResult {
 		$this->items = $items;
 		return $this;

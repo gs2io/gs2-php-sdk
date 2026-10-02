@@ -20,18 +20,29 @@ namespace Gs2\Stamina\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Stamina\Model\RecoverValueTableMaster;
 
+/**
+ * Result of deleteRecoverValueTableMaster: Delete Stamina Recovery Amount Table Master
+ *
+ * @see https://docs.gs2.io/api_reference/stamina/sdk/#deleterecovervaluetablemaster
+ */
 class DeleteRecoverValueTableMasterResult implements IResult {
-    /** @var RecoverValueTableMaster */
+    /** @var RecoverValueTableMaster Stamina Recovery Amount Table Master deleted */
     private $item;
 
+    /** @return RecoverValueTableMaster|null Stamina Recovery Amount Table Master deleted */
 	public function getItem(): ?RecoverValueTableMaster {
 		return $this->item;
 	}
 
+    /** @param RecoverValueTableMaster|null $item Stamina Recovery Amount Table Master deleted */
 	public function setItem(?RecoverValueTableMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param RecoverValueTableMaster|null $item Stamina Recovery Amount Table Master deleted
+     * @return DeleteRecoverValueTableMasterResult
+     */
 	public function withItem(?RecoverValueTableMaster $item): DeleteRecoverValueTableMasterResult {
 		$this->item = $item;
 		return $this;

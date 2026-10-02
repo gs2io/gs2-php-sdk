@@ -20,18 +20,29 @@ namespace Gs2\Dictionary\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Dictionary\Model\EntryModelMaster;
 
+/**
+ * Result of updateEntryModelMaster: Update Entry Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/dictionary/sdk/#updateentrymodelmaster
+ */
 class UpdateEntryModelMasterResult implements IResult {
-    /** @var EntryModelMaster */
+    /** @var EntryModelMaster Entry Model Master updated */
     private $item;
 
+    /** @return EntryModelMaster|null Entry Model Master updated */
 	public function getItem(): ?EntryModelMaster {
 		return $this->item;
 	}
 
+    /** @param EntryModelMaster|null $item Entry Model Master updated */
 	public function setItem(?EntryModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param EntryModelMaster|null $item Entry Model Master updated
+     * @return UpdateEntryModelMasterResult
+     */
 	public function withItem(?EntryModelMaster $item): UpdateEntryModelMasterResult {
 		$this->item = $item;
 		return $this;

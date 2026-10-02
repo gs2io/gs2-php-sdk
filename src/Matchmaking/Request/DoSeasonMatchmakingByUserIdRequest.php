@@ -19,65 +19,100 @@ namespace Gs2\Matchmaking\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for doSeasonMatchmakingByUserId: Find a Season Gathering you can join and participate.
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#doseasonmatchmakingbyuserid
+ */
 class DoSeasonMatchmakingByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Season Model name */
     private $seasonName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Used to resume search Token that holds matchmaking state */
     private $matchmakingContextToken;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DoSeasonMatchmakingByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DoSeasonMatchmakingByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Season Model name */
 	public function getSeasonName(): ?string {
 		return $this->seasonName;
 	}
+    /** @param string|null $seasonName Season Model name */
 	public function setSeasonName(?string $seasonName) {
 		$this->seasonName = $seasonName;
 	}
+    /**
+     * @param string|null $seasonName Season Model name
+     * @return DoSeasonMatchmakingByUserIdRequest
+     */
 	public function withSeasonName(?string $seasonName): DoSeasonMatchmakingByUserIdRequest {
 		$this->seasonName = $seasonName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return DoSeasonMatchmakingByUserIdRequest
+     */
 	public function withUserId(?string $userId): DoSeasonMatchmakingByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Used to resume search Token that holds matchmaking state */
 	public function getMatchmakingContextToken(): ?string {
 		return $this->matchmakingContextToken;
 	}
+    /** @param string|null $matchmakingContextToken Used to resume search Token that holds matchmaking state */
 	public function setMatchmakingContextToken(?string $matchmakingContextToken) {
 		$this->matchmakingContextToken = $matchmakingContextToken;
 	}
+    /**
+     * @param string|null $matchmakingContextToken Used to resume search Token that holds matchmaking state
+     * @return DoSeasonMatchmakingByUserIdRequest
+     */
 	public function withMatchmakingContextToken(?string $matchmakingContextToken): DoSeasonMatchmakingByUserIdRequest {
 		$this->matchmakingContextToken = $matchmakingContextToken;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return DoSeasonMatchmakingByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): DoSeasonMatchmakingByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

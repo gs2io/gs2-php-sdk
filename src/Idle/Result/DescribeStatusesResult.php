@@ -20,33 +20,50 @@ namespace Gs2\Idle\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Idle\Model\Status;
 
+/**
+ * Result of describeStatuses: List statuses
+ *
+ * @see https://docs.gs2.io/api_reference/idle/sdk/#describestatuses
+ */
 class DescribeStatusesResult implements IResult {
-    /** @var array */
+    /** @var array List of Status */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Status */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Status */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Status
+     * @return DescribeStatusesResult
+     */
 	public function withItems(?array $items): DescribeStatusesResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeStatusesResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeStatusesResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

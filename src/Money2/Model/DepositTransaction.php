@@ -20,59 +20,88 @@ namespace Gs2\Money2\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Deposit Transaction
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#deposittransaction
+ */
 class DepositTransaction implements IModel {
 	/**
-     * @var float
+     * @var float Purchase Price
 	 */
 	private $price;
 	/**
-     * @var string
+     * @var string Currency Code
 	 */
 	private $currency;
 	/**
-     * @var int
+     * @var int Quantity of premium currency
 	 */
 	private $count;
 	/**
-     * @var int
+     * @var int Deposit Date
 	 */
 	private $depositedAt;
+    /** @return float|null Purchase Price */
 	public function getPrice(): ?float {
 		return $this->price;
 	}
+    /** @param float|null $price Purchase Price */
 	public function setPrice(?float $price) {
 		$this->price = $price;
 	}
+    /**
+     * @param float|null $price Purchase Price
+     * @return DepositTransaction
+     */
 	public function withPrice(?float $price): DepositTransaction {
 		$this->price = $price;
 		return $this;
 	}
+    /** @return string|null Currency Code */
 	public function getCurrency(): ?string {
 		return $this->currency;
 	}
+    /** @param string|null $currency Currency Code */
 	public function setCurrency(?string $currency) {
 		$this->currency = $currency;
 	}
+    /**
+     * @param string|null $currency Currency Code
+     * @return DepositTransaction
+     */
 	public function withCurrency(?string $currency): DepositTransaction {
 		$this->currency = $currency;
 		return $this;
 	}
+    /** @return int|null Quantity of premium currency */
 	public function getCount(): ?int {
 		return $this->count;
 	}
+    /** @param int|null $count Quantity of premium currency */
 	public function setCount(?int $count) {
 		$this->count = $count;
 	}
+    /**
+     * @param int|null $count Quantity of premium currency
+     * @return DepositTransaction
+     */
 	public function withCount(?int $count): DepositTransaction {
 		$this->count = $count;
 		return $this;
 	}
+    /** @return int|null Deposit Date */
 	public function getDepositedAt(): ?int {
 		return $this->depositedAt;
 	}
+    /** @param int|null $depositedAt Deposit Date */
 	public function setDepositedAt(?int $depositedAt) {
 		$this->depositedAt = $depositedAt;
 	}
+    /**
+     * @param int|null $depositedAt Deposit Date
+     * @return DepositTransaction
+     */
 	public function withDepositedAt(?int $depositedAt): DepositTransaction {
 		$this->depositedAt = $depositedAt;
 		return $this;

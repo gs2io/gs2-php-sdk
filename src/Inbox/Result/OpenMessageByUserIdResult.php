@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Inbox\Model\AcquireAction;
 use Gs2\Inbox\Model\Message;
 
+/**
+ * Result of openMessageByUserId: Mark Message as Opened by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/inbox/sdk/#openmessagebyuserid
+ */
 class OpenMessageByUserIdResult implements IResult {
-    /** @var Message */
+    /** @var Message Message */
     private $item;
 
+    /** @return Message|null Message */
 	public function getItem(): ?Message {
 		return $this->item;
 	}
 
+    /** @param Message|null $item Message */
 	public function setItem(?Message $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Message|null $item Message
+     * @return OpenMessageByUserIdResult
+     */
 	public function withItem(?Message $item): OpenMessageByUserIdResult {
 		$this->item = $item;
 		return $this;

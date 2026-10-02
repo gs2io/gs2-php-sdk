@@ -20,27 +20,44 @@ namespace Gs2\SeasonRating\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\SeasonRating\Model\GitHubCheckoutSetting;
 
+/**
+ * Request for updateCurrentSeasonModelMasterFromGitHub: Update currently active Season Model master data from GitHub
+ *
+ * @see https://docs.gs2.io/api_reference/season_rating/sdk/#updatecurrentseasonmodelmasterfromgithub
+ */
 class UpdateCurrentSeasonModelMasterFromGitHubRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var GitHubCheckoutSetting */
+    /** @var GitHubCheckoutSetting Setting for checking out master data from GitHub */
     private $checkoutSetting;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UpdateCurrentSeasonModelMasterFromGitHubRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UpdateCurrentSeasonModelMasterFromGitHubRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return GitHubCheckoutSetting|null Setting for checking out master data from GitHub */
 	public function getCheckoutSetting(): ?GitHubCheckoutSetting {
 		return $this->checkoutSetting;
 	}
+    /** @param GitHubCheckoutSetting|null $checkoutSetting Setting for checking out master data from GitHub */
 	public function setCheckoutSetting(?GitHubCheckoutSetting $checkoutSetting) {
 		$this->checkoutSetting = $checkoutSetting;
 	}
+    /**
+     * @param GitHubCheckoutSetting|null $checkoutSetting Setting for checking out master data from GitHub
+     * @return UpdateCurrentSeasonModelMasterFromGitHubRequest
+     */
 	public function withCheckoutSetting(?GitHubCheckoutSetting $checkoutSetting): UpdateCurrentSeasonModelMasterFromGitHubRequest {
 		$this->checkoutSetting = $checkoutSetting;
 		return $this;

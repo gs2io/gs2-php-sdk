@@ -20,18 +20,25 @@ namespace Gs2\Project\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Project\Model\DumpProgress;
 
+/** Result of waitDumpUserData: Wait for the completion of user data dump */
 class WaitDumpUserDataResult implements IResult {
-    /** @var DumpProgress */
+    /** @var DumpProgress DumpProgress */
     private $item;
 
+    /** @return DumpProgress|null DumpProgress */
 	public function getItem(): ?DumpProgress {
 		return $this->item;
 	}
 
+    /** @param DumpProgress|null $item DumpProgress */
 	public function setItem(?DumpProgress $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param DumpProgress|null $item DumpProgress
+     * @return WaitDumpUserDataResult
+     */
 	public function withItem(?DumpProgress $item): WaitDumpUserDataResult {
 		$this->item = $item;
 		return $this;

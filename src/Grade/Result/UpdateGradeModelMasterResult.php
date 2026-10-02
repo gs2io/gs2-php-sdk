@@ -23,18 +23,29 @@ use Gs2\Grade\Model\GradeEntryModel;
 use Gs2\Grade\Model\AcquireActionRate;
 use Gs2\Grade\Model\GradeModelMaster;
 
+/**
+ * Result of updateGradeModelMaster: Update Grade Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/grade/sdk/#updategrademodelmaster
+ */
 class UpdateGradeModelMasterResult implements IResult {
-    /** @var GradeModelMaster */
+    /** @var GradeModelMaster Grade Model Master updated */
     private $item;
 
+    /** @return GradeModelMaster|null Grade Model Master updated */
 	public function getItem(): ?GradeModelMaster {
 		return $this->item;
 	}
 
+    /** @param GradeModelMaster|null $item Grade Model Master updated */
 	public function setItem(?GradeModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param GradeModelMaster|null $item Grade Model Master updated
+     * @return UpdateGradeModelMasterResult
+     */
 	public function withItem(?GradeModelMaster $item): UpdateGradeModelMasterResult {
 		$this->item = $item;
 		return $this;

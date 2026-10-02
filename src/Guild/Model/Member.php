@@ -20,59 +20,88 @@ namespace Gs2\Guild\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Member
+ *
+ * @see https://docs.gs2.io/api_reference/guild/sdk/#member
+ */
 class Member implements IModel {
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var string
+     * @var string Role Model name
 	 */
 	private $roleName;
 	/**
-     * @var string
+     * @var string Guild Member Metadata
 	 */
 	private $metadata;
 	/**
-     * @var int
+     * @var int Date and time of joining the guild
 	 */
 	private $joinedAt;
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return Member
+     */
 	public function withUserId(?string $userId): Member {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Role Model name */
 	public function getRoleName(): ?string {
 		return $this->roleName;
 	}
+    /** @param string|null $roleName Role Model name */
 	public function setRoleName(?string $roleName) {
 		$this->roleName = $roleName;
 	}
+    /**
+     * @param string|null $roleName Role Model name
+     * @return Member
+     */
 	public function withRoleName(?string $roleName): Member {
 		$this->roleName = $roleName;
 		return $this;
 	}
+    /** @return string|null Guild Member Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Guild Member Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Guild Member Metadata
+     * @return Member
+     */
 	public function withMetadata(?string $metadata): Member {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return int|null Date and time of joining the guild */
 	public function getJoinedAt(): ?int {
 		return $this->joinedAt;
 	}
+    /** @param int|null $joinedAt Date and time of joining the guild */
 	public function setJoinedAt(?int $joinedAt) {
 		$this->joinedAt = $joinedAt;
 	}
+    /**
+     * @param int|null $joinedAt Date and time of joining the guild
+     * @return Member
+     */
 	public function withJoinedAt(?int $joinedAt): Member {
 		$this->joinedAt = $joinedAt;
 		return $this;

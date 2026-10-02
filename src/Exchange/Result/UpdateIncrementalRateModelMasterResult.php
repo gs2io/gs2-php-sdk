@@ -22,18 +22,29 @@ use Gs2\Exchange\Model\ConsumeAction;
 use Gs2\Exchange\Model\AcquireAction;
 use Gs2\Exchange\Model\IncrementalRateModelMaster;
 
+/**
+ * Result of updateIncrementalRateModelMaster: Update Incremental Cost Exchange Rate Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/exchange/sdk/#updateincrementalratemodelmaster
+ */
 class UpdateIncrementalRateModelMasterResult implements IResult {
-    /** @var IncrementalRateModelMaster */
+    /** @var IncrementalRateModelMaster Incremental Cost Exchange Rate Model Master updated */
     private $item;
 
+    /** @return IncrementalRateModelMaster|null Incremental Cost Exchange Rate Model Master updated */
 	public function getItem(): ?IncrementalRateModelMaster {
 		return $this->item;
 	}
 
+    /** @param IncrementalRateModelMaster|null $item Incremental Cost Exchange Rate Model Master updated */
 	public function setItem(?IncrementalRateModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param IncrementalRateModelMaster|null $item Incremental Cost Exchange Rate Model Master updated
+     * @return UpdateIncrementalRateModelMasterResult
+     */
 	public function withItem(?IncrementalRateModelMaster $item): UpdateIncrementalRateModelMasterResult {
 		$this->item = $item;
 		return $this;

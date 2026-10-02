@@ -23,33 +23,50 @@ use Gs2\Showcase\Model\ConsumeAction;
 use Gs2\Showcase\Model\AcquireAction;
 use Gs2\Showcase\Model\SalesItemMaster;
 
+/**
+ * Result of describeSalesItemMasters: List Sales Item Masters
+ *
+ * @see https://docs.gs2.io/api_reference/showcase/sdk/#describesalesitemmasters
+ */
 class DescribeSalesItemMastersResult implements IResult {
-    /** @var array */
+    /** @var array List of Sales Item Masters */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Sales Item Masters */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Sales Item Masters */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Sales Item Masters
+     * @return DescribeSalesItemMastersResult
+     */
 	public function withItems(?array $items): DescribeSalesItemMastersResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeSalesItemMastersResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeSalesItemMastersResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

@@ -20,18 +20,29 @@ namespace Gs2\Inventory\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Inventory\Model\CurrentItemModelMaster;
 
+/**
+ * Result of getCurrentItemModelMaster: Get currently active Item Model master data
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#getcurrentitemmodelmaster
+ */
 class GetCurrentItemModelMasterResult implements IResult {
-    /** @var CurrentItemModelMaster */
+    /** @var CurrentItemModelMaster Currently active Item Model master data */
     private $item;
 
+    /** @return CurrentItemModelMaster|null Currently active Item Model master data */
 	public function getItem(): ?CurrentItemModelMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentItemModelMaster|null $item Currently active Item Model master data */
 	public function setItem(?CurrentItemModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentItemModelMaster|null $item Currently active Item Model master data
+     * @return GetCurrentItemModelMasterResult
+     */
 	public function withItem(?CurrentItemModelMaster $item): GetCurrentItemModelMasterResult {
 		$this->item = $item;
 		return $this;

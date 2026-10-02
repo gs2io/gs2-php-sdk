@@ -19,63 +19,98 @@ namespace Gs2\Inventory\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getSimpleItemByUserId: Get a Simple Item by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#getsimpleitembyuserid
+ */
 class GetSimpleItemByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Simple Inventory Model name */
     private $inventoryName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Simple Item Model Name */
     private $itemName;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetSimpleItemByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetSimpleItemByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Simple Inventory Model name */
 	public function getInventoryName(): ?string {
 		return $this->inventoryName;
 	}
+    /** @param string|null $inventoryName Simple Inventory Model name */
 	public function setInventoryName(?string $inventoryName) {
 		$this->inventoryName = $inventoryName;
 	}
+    /**
+     * @param string|null $inventoryName Simple Inventory Model name
+     * @return GetSimpleItemByUserIdRequest
+     */
 	public function withInventoryName(?string $inventoryName): GetSimpleItemByUserIdRequest {
 		$this->inventoryName = $inventoryName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return GetSimpleItemByUserIdRequest
+     */
 	public function withUserId(?string $userId): GetSimpleItemByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Simple Item Model Name */
 	public function getItemName(): ?string {
 		return $this->itemName;
 	}
+    /** @param string|null $itemName Simple Item Model Name */
 	public function setItemName(?string $itemName) {
 		$this->itemName = $itemName;
 	}
+    /**
+     * @param string|null $itemName Simple Item Model Name
+     * @return GetSimpleItemByUserIdRequest
+     */
 	public function withItemName(?string $itemName): GetSimpleItemByUserIdRequest {
 		$this->itemName = $itemName;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return GetSimpleItemByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): GetSimpleItemByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

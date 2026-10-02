@@ -19,27 +19,44 @@ namespace Gs2\Showcase\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for deleteRandomShowcaseMaster: Delete Random Showcase Master
+ *
+ * @see https://docs.gs2.io/api_reference/showcase/sdk/#deleterandomshowcasemaster
+ */
 class DeleteRandomShowcaseMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Random Showcase name */
     private $showcaseName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DeleteRandomShowcaseMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DeleteRandomShowcaseMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Random Showcase name */
 	public function getShowcaseName(): ?string {
 		return $this->showcaseName;
 	}
+    /** @param string|null $showcaseName Random Showcase name */
 	public function setShowcaseName(?string $showcaseName) {
 		$this->showcaseName = $showcaseName;
 	}
+    /**
+     * @param string|null $showcaseName Random Showcase name
+     * @return DeleteRandomShowcaseMasterRequest
+     */
 	public function withShowcaseName(?string $showcaseName): DeleteRandomShowcaseMasterRequest {
 		$this->showcaseName = $showcaseName;
 		return $this;

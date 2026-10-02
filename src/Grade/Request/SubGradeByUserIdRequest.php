@@ -19,77 +19,118 @@ namespace Gs2\Grade\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for subGradeByUserId: Subtract grade by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/grade/sdk/#subgradebyuserid
+ */
 class SubGradeByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Grade Model Name */
     private $gradeName;
-    /** @var string */
+    /** @var string Property ID */
     private $propertyId;
-    /** @var int */
+    /** @var int Lost Grade */
     private $gradeValue;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return SubGradeByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): SubGradeByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return SubGradeByUserIdRequest
+     */
 	public function withUserId(?string $userId): SubGradeByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Grade Model Name */
 	public function getGradeName(): ?string {
 		return $this->gradeName;
 	}
+    /** @param string|null $gradeName Grade Model Name */
 	public function setGradeName(?string $gradeName) {
 		$this->gradeName = $gradeName;
 	}
+    /**
+     * @param string|null $gradeName Grade Model Name
+     * @return SubGradeByUserIdRequest
+     */
 	public function withGradeName(?string $gradeName): SubGradeByUserIdRequest {
 		$this->gradeName = $gradeName;
 		return $this;
 	}
+    /** @return string|null Property ID */
 	public function getPropertyId(): ?string {
 		return $this->propertyId;
 	}
+    /** @param string|null $propertyId Property ID */
 	public function setPropertyId(?string $propertyId) {
 		$this->propertyId = $propertyId;
 	}
+    /**
+     * @param string|null $propertyId Property ID
+     * @return SubGradeByUserIdRequest
+     */
 	public function withPropertyId(?string $propertyId): SubGradeByUserIdRequest {
 		$this->propertyId = $propertyId;
 		return $this;
 	}
+    /** @return int|null Lost Grade */
 	public function getGradeValue(): ?int {
 		return $this->gradeValue;
 	}
+    /** @param int|null $gradeValue Lost Grade */
 	public function setGradeValue(?int $gradeValue) {
 		$this->gradeValue = $gradeValue;
 	}
+    /**
+     * @param int|null $gradeValue Lost Grade
+     * @return SubGradeByUserIdRequest
+     */
 	public function withGradeValue(?int $gradeValue): SubGradeByUserIdRequest {
 		$this->gradeValue = $gradeValue;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return SubGradeByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): SubGradeByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

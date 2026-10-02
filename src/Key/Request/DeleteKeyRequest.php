@@ -19,27 +19,44 @@ namespace Gs2\Key\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for deleteKey: Delete Encryption Key
+ *
+ * @see https://docs.gs2.io/api_reference/key/sdk/#deletekey
+ */
 class DeleteKeyRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Encryption Key name */
     private $keyName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DeleteKeyRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DeleteKeyRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Encryption Key name */
 	public function getKeyName(): ?string {
 		return $this->keyName;
 	}
+    /** @param string|null $keyName Encryption Key name */
 	public function setKeyName(?string $keyName) {
 		$this->keyName = $keyName;
 	}
+    /**
+     * @param string|null $keyName Encryption Key name
+     * @return DeleteKeyRequest
+     */
 	public function withKeyName(?string $keyName): DeleteKeyRequest {
 		$this->keyName = $keyName;
 		return $this;

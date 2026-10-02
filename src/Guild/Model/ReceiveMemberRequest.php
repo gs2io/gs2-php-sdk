@@ -20,59 +20,88 @@ namespace Gs2\Guild\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Received Join Request
+ *
+ * @see https://docs.gs2.io/api_reference/guild/sdk/#receivememberrequest
+ */
 class ReceiveMemberRequest implements IModel {
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var string
+     * @var string Target Guild Name
 	 */
 	private $targetGuildName;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return ReceiveMemberRequest
+     */
 	public function withUserId(?string $userId): ReceiveMemberRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Target Guild Name */
 	public function getTargetGuildName(): ?string {
 		return $this->targetGuildName;
 	}
+    /** @param string|null $targetGuildName Target Guild Name */
 	public function setTargetGuildName(?string $targetGuildName) {
 		$this->targetGuildName = $targetGuildName;
 	}
+    /**
+     * @param string|null $targetGuildName Target Guild Name
+     * @return ReceiveMemberRequest
+     */
 	public function withTargetGuildName(?string $targetGuildName): ReceiveMemberRequest {
 		$this->targetGuildName = $targetGuildName;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return ReceiveMemberRequest
+     */
 	public function withMetadata(?string $metadata): ReceiveMemberRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return ReceiveMemberRequest
+     */
 	public function withCreatedAt(?int $createdAt): ReceiveMemberRequest {
 		$this->createdAt = $createdAt;
 		return $this;

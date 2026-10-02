@@ -20,59 +20,88 @@ namespace Gs2\Quest\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Reward
+ *
+ * @see https://docs.gs2.io/api_reference/quest/sdk/#reward
+ */
 class Reward implements IModel {
 	/**
-     * @var string
+     * @var string Type of Acquire Action
 	 */
 	private $action;
 	/**
-     * @var string
+     * @var string Request
 	 */
 	private $request;
 	/**
-     * @var string
+     * @var string Item ID
 	 */
 	private $itemId;
 	/**
-     * @var int
+     * @var int Value
 	 */
 	private $value;
+    /** @return string|null Type of Acquire Action */
 	public function getAction(): ?string {
 		return $this->action;
 	}
+    /** @param string|null $action Type of Acquire Action */
 	public function setAction(?string $action) {
 		$this->action = $action;
 	}
+    /**
+     * @param string|null $action Type of Acquire Action
+     * @return Reward
+     */
 	public function withAction(?string $action): Reward {
 		$this->action = $action;
 		return $this;
 	}
+    /** @return string|null Request */
 	public function getRequest(): ?string {
 		return $this->request;
 	}
+    /** @param string|null $request Request */
 	public function setRequest(?string $request) {
 		$this->request = $request;
 	}
+    /**
+     * @param string|null $request Request
+     * @return Reward
+     */
 	public function withRequest(?string $request): Reward {
 		$this->request = $request;
 		return $this;
 	}
+    /** @return string|null Item ID */
 	public function getItemId(): ?string {
 		return $this->itemId;
 	}
+    /** @param string|null $itemId Item ID */
 	public function setItemId(?string $itemId) {
 		$this->itemId = $itemId;
 	}
+    /**
+     * @param string|null $itemId Item ID
+     * @return Reward
+     */
 	public function withItemId(?string $itemId): Reward {
 		$this->itemId = $itemId;
 		return $this;
 	}
+    /** @return int|null Value */
 	public function getValue(): ?int {
 		return $this->value;
 	}
+    /** @param int|null $value Value */
 	public function setValue(?int $value) {
 		$this->value = $value;
 	}
+    /**
+     * @param int|null $value Value
+     * @return Reward
+     */
 	public function withValue(?int $value): Reward {
 		$this->value = $value;
 		return $this;

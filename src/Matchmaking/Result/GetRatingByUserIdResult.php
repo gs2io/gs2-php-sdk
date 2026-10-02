@@ -20,18 +20,29 @@ namespace Gs2\Matchmaking\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Matchmaking\Model\Rating;
 
+/**
+ * Result of getRatingByUserId: Get Rating by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#getratingbyuserid
+ */
 class GetRatingByUserIdResult implements IResult {
-    /** @var Rating */
+    /** @var Rating Rating */
     private $item;
 
+    /** @return Rating|null Rating */
 	public function getItem(): ?Rating {
 		return $this->item;
 	}
 
+    /** @param Rating|null $item Rating */
 	public function setItem(?Rating $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Rating|null $item Rating
+     * @return GetRatingByUserIdResult
+     */
 	public function withItem(?Rating $item): GetRatingByUserIdResult {
 		$this->item = $item;
 		return $this;

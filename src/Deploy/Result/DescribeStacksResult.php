@@ -20,33 +20,50 @@ namespace Gs2\Deploy\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Deploy\Model\Stack;
 
+/**
+ * Result of describeStacks: List Stacks
+ *
+ * @see https://docs.gs2.io/api_reference/deploy/sdk/#describestacks
+ */
 class DescribeStacksResult implements IResult {
-    /** @var array */
+    /** @var array List of Stack */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Stack */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Stack */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Stack
+     * @return DescribeStacksResult
+     */
 	public function withItems(?array $items): DescribeStacksResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeStacksResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeStacksResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

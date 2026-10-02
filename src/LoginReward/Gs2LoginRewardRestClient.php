@@ -2761,25 +2761,22 @@ class UnmarkReceivedByStampSheetTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 LoginReward API クライアント
+ * GS2-LoginReward API client
  *
- * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/login_reward/sdk/
  */
 class Gs2LoginRewardRestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#describenamespaces
      */
     public function describeNamespacesAsync(
             DescribeNamespacesRequest $request
@@ -2793,8 +2790,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#describenamespaces
      */
     public function describeNamespaces (
             DescribeNamespacesRequest $request
@@ -2805,8 +2805,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#createnamespace
      */
     public function createNamespaceAsync(
             CreateNamespaceRequest $request
@@ -2820,8 +2823,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#createnamespace
      */
     public function createNamespace (
             CreateNamespaceRequest $request
@@ -2832,8 +2838,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#getnamespacestatus
      */
     public function getNamespaceStatusAsync(
             GetNamespaceStatusRequest $request
@@ -2847,8 +2856,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#getnamespacestatus
      */
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
@@ -2859,8 +2871,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#getnamespace
      */
     public function getNamespaceAsync(
             GetNamespaceRequest $request
@@ -2874,8 +2889,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#getnamespace
      */
     public function getNamespace (
             GetNamespaceRequest $request
@@ -2886,8 +2904,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#updatenamespace
      */
     public function updateNamespaceAsync(
             UpdateNamespaceRequest $request
@@ -2901,8 +2922,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#updatenamespace
      */
     public function updateNamespace (
             UpdateNamespaceRequest $request
@@ -2913,8 +2937,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#deletenamespace
      */
     public function deleteNamespaceAsync(
             DeleteNamespaceRequest $request
@@ -2928,8 +2955,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#deletenamespace
      */
     public function deleteNamespace (
             DeleteNamespaceRequest $request
@@ -2940,8 +2970,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#getserviceversion
      */
     public function getServiceVersionAsync(
             GetServiceVersionRequest $request
@@ -2955,8 +2988,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return GetServiceVersionResult
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#getserviceversion
      */
     public function getServiceVersion (
             GetServiceVersionRequest $request
@@ -2967,8 +3003,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserIdAsync(
             DumpUserDataByUserIdRequest $request
@@ -2982,8 +3021,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return DumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserId (
             DumpUserDataByUserIdRequest $request
@@ -2994,8 +3036,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserIdAsync(
             CheckDumpUserDataByUserIdRequest $request
@@ -3009,8 +3054,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return CheckDumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserId (
             CheckDumpUserDataByUserIdRequest $request
@@ -3021,8 +3069,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserIdAsync(
             CleanUserDataByUserIdRequest $request
@@ -3036,8 +3087,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return CleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserId (
             CleanUserDataByUserIdRequest $request
@@ -3048,8 +3102,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserIdAsync(
             CheckCleanUserDataByUserIdRequest $request
@@ -3063,8 +3120,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return CheckCleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserId (
             CheckCleanUserDataByUserIdRequest $request
@@ -3075,8 +3135,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserIdAsync(
             PrepareImportUserDataByUserIdRequest $request
@@ -3090,8 +3153,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PrepareImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserId (
             PrepareImportUserDataByUserIdRequest $request
@@ -3102,8 +3168,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserIdAsync(
             ImportUserDataByUserIdRequest $request
@@ -3117,8 +3186,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return ImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserId (
             ImportUserDataByUserIdRequest $request
@@ -3129,8 +3201,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserIdAsync(
             CheckImportUserDataByUserIdRequest $request
@@ -3144,8 +3219,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return CheckImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserId (
             CheckImportUserDataByUserIdRequest $request
@@ -3156,8 +3234,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Login Bonus Model Masters
+     *
      * @param DescribeBonusModelMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#describebonusmodelmasters
      */
     public function describeBonusModelMastersAsync(
             DescribeBonusModelMastersRequest $request
@@ -3171,8 +3252,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Login Bonus Model Masters
+     *
      * @param DescribeBonusModelMastersRequest $request
      * @return DescribeBonusModelMastersResult
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#describebonusmodelmasters
      */
     public function describeBonusModelMasters (
             DescribeBonusModelMastersRequest $request
@@ -3183,8 +3267,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Login Bonus Model Master
+     *
      * @param CreateBonusModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#createbonusmodelmaster
      */
     public function createBonusModelMasterAsync(
             CreateBonusModelMasterRequest $request
@@ -3198,8 +3285,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Login Bonus Model Master
+     *
      * @param CreateBonusModelMasterRequest $request
      * @return CreateBonusModelMasterResult
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#createbonusmodelmaster
      */
     public function createBonusModelMaster (
             CreateBonusModelMasterRequest $request
@@ -3210,8 +3300,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Login Bonus Model Master
+     *
      * @param GetBonusModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#getbonusmodelmaster
      */
     public function getBonusModelMasterAsync(
             GetBonusModelMasterRequest $request
@@ -3225,8 +3318,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Login Bonus Model Master
+     *
      * @param GetBonusModelMasterRequest $request
      * @return GetBonusModelMasterResult
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#getbonusmodelmaster
      */
     public function getBonusModelMaster (
             GetBonusModelMasterRequest $request
@@ -3237,8 +3333,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Login Bonus Model Master
+     *
      * @param UpdateBonusModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#updatebonusmodelmaster
      */
     public function updateBonusModelMasterAsync(
             UpdateBonusModelMasterRequest $request
@@ -3252,8 +3351,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Login Bonus Model Master
+     *
      * @param UpdateBonusModelMasterRequest $request
      * @return UpdateBonusModelMasterResult
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#updatebonusmodelmaster
      */
     public function updateBonusModelMaster (
             UpdateBonusModelMasterRequest $request
@@ -3264,8 +3366,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Login Bonus Model Master
+     *
      * @param DeleteBonusModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#deletebonusmodelmaster
      */
     public function deleteBonusModelMasterAsync(
             DeleteBonusModelMasterRequest $request
@@ -3279,8 +3384,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Login Bonus Model Master
+     *
      * @param DeleteBonusModelMasterRequest $request
      * @return DeleteBonusModelMasterResult
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#deletebonusmodelmaster
      */
     public function deleteBonusModelMaster (
             DeleteBonusModelMasterRequest $request
@@ -3291,8 +3399,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Login Bonus Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#exportmaster
      */
     public function exportMasterAsync(
             ExportMasterRequest $request
@@ -3306,8 +3417,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Login Bonus Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return ExportMasterResult
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#exportmaster
      */
     public function exportMaster (
             ExportMasterRequest $request
@@ -3318,8 +3432,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Login Bonus Model master data
+     *
      * @param GetCurrentBonusMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#getcurrentbonusmaster
      */
     public function getCurrentBonusMasterAsync(
             GetCurrentBonusMasterRequest $request
@@ -3333,8 +3450,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Login Bonus Model master data
+     *
      * @param GetCurrentBonusMasterRequest $request
      * @return GetCurrentBonusMasterResult
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#getcurrentbonusmaster
      */
     public function getCurrentBonusMaster (
             GetCurrentBonusMasterRequest $request
@@ -3345,8 +3465,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Login Bonus Model master data (3-phase version)
+     *
      * @param PreUpdateCurrentBonusMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#preupdatecurrentbonusmaster
      */
     public function preUpdateCurrentBonusMasterAsync(
             PreUpdateCurrentBonusMasterRequest $request
@@ -3360,8 +3483,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Login Bonus Model master data (3-phase version)
+     *
      * @param PreUpdateCurrentBonusMasterRequest $request
      * @return PreUpdateCurrentBonusMasterResult
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#preupdatecurrentbonusmaster
      */
     public function preUpdateCurrentBonusMaster (
             PreUpdateCurrentBonusMasterRequest $request
@@ -3372,8 +3498,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Login Bonus Model master data
+     *
      * @param UpdateCurrentBonusMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#updatecurrentbonusmaster
      */
     public function updateCurrentBonusMasterAsync(
             UpdateCurrentBonusMasterRequest $request
@@ -3387,8 +3516,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Login Bonus Model master data
+     *
      * @param UpdateCurrentBonusMasterRequest $request
      * @return UpdateCurrentBonusMasterResult
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#updatecurrentbonusmaster
      */
     public function updateCurrentBonusMaster (
             UpdateCurrentBonusMasterRequest $request
@@ -3399,8 +3531,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Login Bonus Model master data from GitHub
+     *
      * @param UpdateCurrentBonusMasterFromGitHubRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#updatecurrentbonusmasterfromgithub
      */
     public function updateCurrentBonusMasterFromGitHubAsync(
             UpdateCurrentBonusMasterFromGitHubRequest $request
@@ -3414,8 +3549,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Login Bonus Model master data from GitHub
+     *
      * @param UpdateCurrentBonusMasterFromGitHubRequest $request
      * @return UpdateCurrentBonusMasterFromGitHubResult
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#updatecurrentbonusmasterfromgithub
      */
     public function updateCurrentBonusMasterFromGitHub (
             UpdateCurrentBonusMasterFromGitHubRequest $request
@@ -3426,8 +3564,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Login Bonus Models
+     *
      * @param DescribeBonusModelsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#describebonusmodels
      */
     public function describeBonusModelsAsync(
             DescribeBonusModelsRequest $request
@@ -3441,8 +3582,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Login Bonus Models
+     *
      * @param DescribeBonusModelsRequest $request
      * @return DescribeBonusModelsResult
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#describebonusmodels
      */
     public function describeBonusModels (
             DescribeBonusModelsRequest $request
@@ -3453,8 +3597,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Login Bonus Model
+     *
      * @param GetBonusModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#getbonusmodel
      */
     public function getBonusModelAsync(
             GetBonusModelRequest $request
@@ -3468,8 +3615,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Login Bonus Model
+     *
      * @param GetBonusModelRequest $request
      * @return GetBonusModelResult
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#getbonusmodel
      */
     public function getBonusModel (
             GetBonusModelRequest $request
@@ -3480,8 +3630,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Receive Login Bonus
+     *
      * @param ReceiveRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#receive
      */
     public function receiveAsync(
             ReceiveRequest $request
@@ -3495,8 +3648,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Receive Login Bonus
+     *
      * @param ReceiveRequest $request
      * @return ReceiveResult
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#receive
      */
     public function receive (
             ReceiveRequest $request
@@ -3507,8 +3663,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get login rewards by userId
+     *
      * @param ReceiveByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#receivebyuserid
      */
     public function receiveByUserIdAsync(
             ReceiveByUserIdRequest $request
@@ -3522,8 +3681,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get login rewards by userId
+     *
      * @param ReceiveByUserIdRequest $request
      * @return ReceiveByUserIdResult
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#receivebyuserid
      */
     public function receiveByUserId (
             ReceiveByUserIdRequest $request
@@ -3534,8 +3696,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Receive missed login rewards
+     *
      * @param MissedReceiveRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#missedreceive
      */
     public function missedReceiveAsync(
             MissedReceiveRequest $request
@@ -3549,8 +3714,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Receive missed login rewards
+     *
      * @param MissedReceiveRequest $request
      * @return MissedReceiveResult
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#missedreceive
      */
     public function missedReceive (
             MissedReceiveRequest $request
@@ -3561,8 +3729,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Receive missed login rewards by userId
+     *
      * @param MissedReceiveByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#missedreceivebyuserid
      */
     public function missedReceiveByUserIdAsync(
             MissedReceiveByUserIdRequest $request
@@ -3576,8 +3747,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Receive missed login rewards by userId
+     *
      * @param MissedReceiveByUserIdRequest $request
      * @return MissedReceiveByUserIdResult
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#missedreceivebyuserid
      */
     public function missedReceiveByUserId (
             MissedReceiveByUserIdRequest $request
@@ -3588,8 +3762,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Receive Statuses
+     *
      * @param DescribeReceiveStatusesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#describereceivestatuses
      */
     public function describeReceiveStatusesAsync(
             DescribeReceiveStatusesRequest $request
@@ -3603,8 +3780,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Receive Statuses
+     *
      * @param DescribeReceiveStatusesRequest $request
      * @return DescribeReceiveStatusesResult
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#describereceivestatuses
      */
     public function describeReceiveStatuses (
             DescribeReceiveStatusesRequest $request
@@ -3615,8 +3795,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Receive Statuses by User ID
+     *
      * @param DescribeReceiveStatusesByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#describereceivestatusesbyuserid
      */
     public function describeReceiveStatusesByUserIdAsync(
             DescribeReceiveStatusesByUserIdRequest $request
@@ -3630,8 +3813,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Receive Statuses by User ID
+     *
      * @param DescribeReceiveStatusesByUserIdRequest $request
      * @return DescribeReceiveStatusesByUserIdResult
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#describereceivestatusesbyuserid
      */
     public function describeReceiveStatusesByUserId (
             DescribeReceiveStatusesByUserIdRequest $request
@@ -3642,8 +3828,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Receive Status
+     *
      * @param GetReceiveStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#getreceivestatus
      */
     public function getReceiveStatusAsync(
             GetReceiveStatusRequest $request
@@ -3657,8 +3846,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Receive Status
+     *
      * @param GetReceiveStatusRequest $request
      * @return GetReceiveStatusResult
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#getreceivestatus
      */
     public function getReceiveStatus (
             GetReceiveStatusRequest $request
@@ -3669,8 +3861,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Receive Status by User ID
+     *
      * @param GetReceiveStatusByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#getreceivestatusbyuserid
      */
     public function getReceiveStatusByUserIdAsync(
             GetReceiveStatusByUserIdRequest $request
@@ -3684,8 +3879,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Receive Status by User ID
+     *
      * @param GetReceiveStatusByUserIdRequest $request
      * @return GetReceiveStatusByUserIdResult
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#getreceivestatusbyuserid
      */
     public function getReceiveStatusByUserId (
             GetReceiveStatusByUserIdRequest $request
@@ -3696,8 +3894,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Receive Status by User ID
+     *
      * @param DeleteReceiveStatusByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#deletereceivestatusbyuserid
      */
     public function deleteReceiveStatusByUserIdAsync(
             DeleteReceiveStatusByUserIdRequest $request
@@ -3711,8 +3912,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Receive Status by User ID
+     *
      * @param DeleteReceiveStatusByUserIdRequest $request
      * @return DeleteReceiveStatusByUserIdResult
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#deletereceivestatusbyuserid
      */
     public function deleteReceiveStatusByUserId (
             DeleteReceiveStatusByUserIdRequest $request
@@ -3723,8 +3927,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute reset of receive status as acquire action
+     *
      * @param DeleteReceiveStatusByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/login_reward/stamp_sheet/#gs2loginrewarddeletereceivestatusbyuserid
      */
     public function deleteReceiveStatusByStampSheetAsync(
             DeleteReceiveStatusByStampSheetRequest $request
@@ -3738,8 +3945,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute reset of receive status as acquire action
+     *
      * @param DeleteReceiveStatusByStampSheetRequest $request
      * @return DeleteReceiveStatusByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/login_reward/stamp_sheet/#gs2loginrewarddeletereceivestatusbyuserid
      */
     public function deleteReceiveStatusByStampSheet (
             DeleteReceiveStatusByStampSheetRequest $request
@@ -3750,8 +3960,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Mark as received
+     *
      * @param MarkReceivedRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#markreceived
      */
     public function markReceivedAsync(
             MarkReceivedRequest $request
@@ -3765,8 +3978,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Mark as received
+     *
      * @param MarkReceivedRequest $request
      * @return MarkReceivedResult
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#markreceived
      */
     public function markReceived (
             MarkReceivedRequest $request
@@ -3777,8 +3993,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Mark as received by User ID
+     *
      * @param MarkReceivedByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#markreceivedbyuserid
      */
     public function markReceivedByUserIdAsync(
             MarkReceivedByUserIdRequest $request
@@ -3792,8 +4011,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Mark as received by User ID
+     *
      * @param MarkReceivedByUserIdRequest $request
      * @return MarkReceivedByUserIdResult
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#markreceivedbyuserid
      */
     public function markReceivedByUserId (
             MarkReceivedByUserIdRequest $request
@@ -3804,8 +4026,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Unmark as received by User ID
+     *
      * @param UnmarkReceivedByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#unmarkreceivedbyuserid
      */
     public function unmarkReceivedByUserIdAsync(
             UnmarkReceivedByUserIdRequest $request
@@ -3819,8 +4044,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Unmark as received by User ID
+     *
      * @param UnmarkReceivedByUserIdRequest $request
      * @return UnmarkReceivedByUserIdResult
+     * @see https://docs.gs2.io/api_reference/login_reward/sdk/#unmarkreceivedbyuserid
      */
     public function unmarkReceivedByUserId (
             UnmarkReceivedByUserIdRequest $request
@@ -3831,8 +4059,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute mark as received as consume action
+     *
      * @param MarkReceivedByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/login_reward/stamp_sheet/#gs2loginrewardmarkreceivedbyuserid
      */
     public function markReceivedByStampTaskAsync(
             MarkReceivedByStampTaskRequest $request
@@ -3846,8 +4077,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute mark as received as consume action
+     *
      * @param MarkReceivedByStampTaskRequest $request
      * @return MarkReceivedByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/login_reward/stamp_sheet/#gs2loginrewardmarkreceivedbyuserid
      */
     public function markReceivedByStampTask (
             MarkReceivedByStampTaskRequest $request
@@ -3858,8 +4092,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute unmark as received as acquire action
+     *
      * @param UnmarkReceivedByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/login_reward/stamp_sheet/#gs2loginrewardunmarkreceivedbyuserid
      */
     public function unmarkReceivedByStampSheetAsync(
             UnmarkReceivedByStampSheetRequest $request
@@ -3873,8 +4110,11 @@ class Gs2LoginRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute unmark as received as acquire action
+     *
      * @param UnmarkReceivedByStampSheetRequest $request
      * @return UnmarkReceivedByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/login_reward/stamp_sheet/#gs2loginrewardunmarkreceivedbyuserid
      */
     public function unmarkReceivedByStampSheet (
             UnmarkReceivedByStampSheetRequest $request

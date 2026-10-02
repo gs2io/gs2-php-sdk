@@ -20,18 +20,29 @@ namespace Gs2\Identifier\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Identifier\Model\SecurityPolicy;
 
+/**
+ * Result of createSecurityPolicy: Create Security Policy
+ *
+ * @see https://docs.gs2.io/api_reference/identifier/sdk/#createsecuritypolicy
+ */
 class CreateSecurityPolicyResult implements IResult {
-    /** @var SecurityPolicy */
+    /** @var SecurityPolicy Created security policy */
     private $item;
 
+    /** @return SecurityPolicy|null Created security policy */
 	public function getItem(): ?SecurityPolicy {
 		return $this->item;
 	}
 
+    /** @param SecurityPolicy|null $item Created security policy */
 	public function setItem(?SecurityPolicy $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param SecurityPolicy|null $item Created security policy
+     * @return CreateSecurityPolicyResult
+     */
 	public function withItem(?SecurityPolicy $item): CreateSecurityPolicyResult {
 		$this->item = $item;
 		return $this;

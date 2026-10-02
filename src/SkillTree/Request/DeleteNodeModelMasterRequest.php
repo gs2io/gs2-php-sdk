@@ -19,27 +19,44 @@ namespace Gs2\SkillTree\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for deleteNodeModelMaster: Delete Node Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#deletenodemodelmaster
+ */
 class DeleteNodeModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Node Model name */
     private $nodeModelName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DeleteNodeModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DeleteNodeModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Node Model name */
 	public function getNodeModelName(): ?string {
 		return $this->nodeModelName;
 	}
+    /** @param string|null $nodeModelName Node Model name */
 	public function setNodeModelName(?string $nodeModelName) {
 		$this->nodeModelName = $nodeModelName;
 	}
+    /**
+     * @param string|null $nodeModelName Node Model name
+     * @return DeleteNodeModelMasterRequest
+     */
 	public function withNodeModelName(?string $nodeModelName): DeleteNodeModelMasterRequest {
 		$this->nodeModelName = $nodeModelName;
 		return $this;

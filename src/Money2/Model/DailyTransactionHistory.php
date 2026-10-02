@@ -20,157 +20,228 @@ namespace Gs2\Money2\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Daily Transaction History
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#dailytransactionhistory
+ */
 class DailyTransactionHistory implements IModel {
 	/**
-     * @var string
+     * @var string Transaction History of Daily Transactions GRN
 	 */
 	private $dailyTransactionHistoryId;
 	/**
-     * @var int
+     * @var int Year
 	 */
 	private $year;
 	/**
-     * @var int
+     * @var int Month
 	 */
 	private $month;
 	/**
-     * @var int
+     * @var int Day
 	 */
 	private $day;
 	/**
-     * @var string
+     * @var string Currency Code
 	 */
 	private $currency;
 	/**
-     * @var float
+     * @var float Deposit Amount
 	 */
 	private $depositAmount;
 	/**
-     * @var float
+     * @var float Withdraw Amount
 	 */
 	private $withdrawAmount;
 	/**
-     * @var int
+     * @var int Issue Count
 	 */
 	private $issueCount;
 	/**
-     * @var int
+     * @var int Consume Count
 	 */
 	private $consumeCount;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Transaction History of Daily Transactions GRN */
 	public function getDailyTransactionHistoryId(): ?string {
 		return $this->dailyTransactionHistoryId;
 	}
+    /** @param string|null $dailyTransactionHistoryId Transaction History of Daily Transactions GRN */
 	public function setDailyTransactionHistoryId(?string $dailyTransactionHistoryId) {
 		$this->dailyTransactionHistoryId = $dailyTransactionHistoryId;
 	}
+    /**
+     * @param string|null $dailyTransactionHistoryId Transaction History of Daily Transactions GRN
+     * @return DailyTransactionHistory
+     */
 	public function withDailyTransactionHistoryId(?string $dailyTransactionHistoryId): DailyTransactionHistory {
 		$this->dailyTransactionHistoryId = $dailyTransactionHistoryId;
 		return $this;
 	}
+    /** @return int|null Year */
 	public function getYear(): ?int {
 		return $this->year;
 	}
+    /** @param int|null $year Year */
 	public function setYear(?int $year) {
 		$this->year = $year;
 	}
+    /**
+     * @param int|null $year Year
+     * @return DailyTransactionHistory
+     */
 	public function withYear(?int $year): DailyTransactionHistory {
 		$this->year = $year;
 		return $this;
 	}
+    /** @return int|null Month */
 	public function getMonth(): ?int {
 		return $this->month;
 	}
+    /** @param int|null $month Month */
 	public function setMonth(?int $month) {
 		$this->month = $month;
 	}
+    /**
+     * @param int|null $month Month
+     * @return DailyTransactionHistory
+     */
 	public function withMonth(?int $month): DailyTransactionHistory {
 		$this->month = $month;
 		return $this;
 	}
+    /** @return int|null Day */
 	public function getDay(): ?int {
 		return $this->day;
 	}
+    /** @param int|null $day Day */
 	public function setDay(?int $day) {
 		$this->day = $day;
 	}
+    /**
+     * @param int|null $day Day
+     * @return DailyTransactionHistory
+     */
 	public function withDay(?int $day): DailyTransactionHistory {
 		$this->day = $day;
 		return $this;
 	}
+    /** @return string|null Currency Code */
 	public function getCurrency(): ?string {
 		return $this->currency;
 	}
+    /** @param string|null $currency Currency Code */
 	public function setCurrency(?string $currency) {
 		$this->currency = $currency;
 	}
+    /**
+     * @param string|null $currency Currency Code
+     * @return DailyTransactionHistory
+     */
 	public function withCurrency(?string $currency): DailyTransactionHistory {
 		$this->currency = $currency;
 		return $this;
 	}
+    /** @return float|null Deposit Amount */
 	public function getDepositAmount(): ?float {
 		return $this->depositAmount;
 	}
+    /** @param float|null $depositAmount Deposit Amount */
 	public function setDepositAmount(?float $depositAmount) {
 		$this->depositAmount = $depositAmount;
 	}
+    /**
+     * @param float|null $depositAmount Deposit Amount
+     * @return DailyTransactionHistory
+     */
 	public function withDepositAmount(?float $depositAmount): DailyTransactionHistory {
 		$this->depositAmount = $depositAmount;
 		return $this;
 	}
+    /** @return float|null Withdraw Amount */
 	public function getWithdrawAmount(): ?float {
 		return $this->withdrawAmount;
 	}
+    /** @param float|null $withdrawAmount Withdraw Amount */
 	public function setWithdrawAmount(?float $withdrawAmount) {
 		$this->withdrawAmount = $withdrawAmount;
 	}
+    /**
+     * @param float|null $withdrawAmount Withdraw Amount
+     * @return DailyTransactionHistory
+     */
 	public function withWithdrawAmount(?float $withdrawAmount): DailyTransactionHistory {
 		$this->withdrawAmount = $withdrawAmount;
 		return $this;
 	}
+    /** @return int|null Issue Count */
 	public function getIssueCount(): ?int {
 		return $this->issueCount;
 	}
+    /** @param int|null $issueCount Issue Count */
 	public function setIssueCount(?int $issueCount) {
 		$this->issueCount = $issueCount;
 	}
+    /**
+     * @param int|null $issueCount Issue Count
+     * @return DailyTransactionHistory
+     */
 	public function withIssueCount(?int $issueCount): DailyTransactionHistory {
 		$this->issueCount = $issueCount;
 		return $this;
 	}
+    /** @return int|null Consume Count */
 	public function getConsumeCount(): ?int {
 		return $this->consumeCount;
 	}
+    /** @param int|null $consumeCount Consume Count */
 	public function setConsumeCount(?int $consumeCount) {
 		$this->consumeCount = $consumeCount;
 	}
+    /**
+     * @param int|null $consumeCount Consume Count
+     * @return DailyTransactionHistory
+     */
 	public function withConsumeCount(?int $consumeCount): DailyTransactionHistory {
 		$this->consumeCount = $consumeCount;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return DailyTransactionHistory
+     */
 	public function withUpdatedAt(?int $updatedAt): DailyTransactionHistory {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return DailyTransactionHistory
+     */
 	public function withRevision(?int $revision): DailyTransactionHistory {
 		$this->revision = $revision;
 		return $this;

@@ -19,39 +19,62 @@ namespace Gs2\SerialKey\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for issueOnce: Issue a serial code
+ *
+ * @see https://docs.gs2.io/api_reference/serial_key/sdk/#issueonce
+ */
 class IssueOnceRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Campaign Model name */
     private $campaignModelName;
-    /** @var string */
+    /** @var string Metadata */
     private $metadata;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return IssueOnceRequest
+     */
 	public function withNamespaceName(?string $namespaceName): IssueOnceRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Campaign Model name */
 	public function getCampaignModelName(): ?string {
 		return $this->campaignModelName;
 	}
+    /** @param string|null $campaignModelName Campaign Model name */
 	public function setCampaignModelName(?string $campaignModelName) {
 		$this->campaignModelName = $campaignModelName;
 	}
+    /**
+     * @param string|null $campaignModelName Campaign Model name
+     * @return IssueOnceRequest
+     */
 	public function withCampaignModelName(?string $campaignModelName): IssueOnceRequest {
 		$this->campaignModelName = $campaignModelName;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return IssueOnceRequest
+     */
 	public function withMetadata(?string $metadata): IssueOnceRequest {
 		$this->metadata = $metadata;
 		return $this;

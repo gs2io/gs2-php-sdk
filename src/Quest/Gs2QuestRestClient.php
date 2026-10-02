@@ -3424,25 +3424,22 @@ class GetQuestModelTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 Quest API クライアント
+ * GS2-Quest API client
  *
- * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/quest/sdk/
  */
 class Gs2QuestRestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#describenamespaces
      */
     public function describeNamespacesAsync(
             DescribeNamespacesRequest $request
@@ -3456,8 +3453,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#describenamespaces
      */
     public function describeNamespaces (
             DescribeNamespacesRequest $request
@@ -3468,8 +3468,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#createnamespace
      */
     public function createNamespaceAsync(
             CreateNamespaceRequest $request
@@ -3483,8 +3486,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#createnamespace
      */
     public function createNamespace (
             CreateNamespaceRequest $request
@@ -3495,8 +3501,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#getnamespacestatus
      */
     public function getNamespaceStatusAsync(
             GetNamespaceStatusRequest $request
@@ -3510,8 +3519,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#getnamespacestatus
      */
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
@@ -3522,8 +3534,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#getnamespace
      */
     public function getNamespaceAsync(
             GetNamespaceRequest $request
@@ -3537,8 +3552,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#getnamespace
      */
     public function getNamespace (
             GetNamespaceRequest $request
@@ -3549,8 +3567,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#updatenamespace
      */
     public function updateNamespaceAsync(
             UpdateNamespaceRequest $request
@@ -3564,8 +3585,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#updatenamespace
      */
     public function updateNamespace (
             UpdateNamespaceRequest $request
@@ -3576,8 +3600,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#deletenamespace
      */
     public function deleteNamespaceAsync(
             DeleteNamespaceRequest $request
@@ -3591,8 +3618,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#deletenamespace
      */
     public function deleteNamespace (
             DeleteNamespaceRequest $request
@@ -3603,8 +3633,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#getserviceversion
      */
     public function getServiceVersionAsync(
             GetServiceVersionRequest $request
@@ -3618,8 +3651,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return GetServiceVersionResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#getserviceversion
      */
     public function getServiceVersion (
             GetServiceVersionRequest $request
@@ -3630,8 +3666,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserIdAsync(
             DumpUserDataByUserIdRequest $request
@@ -3645,8 +3684,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return DumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserId (
             DumpUserDataByUserIdRequest $request
@@ -3657,8 +3699,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserIdAsync(
             CheckDumpUserDataByUserIdRequest $request
@@ -3672,8 +3717,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return CheckDumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserId (
             CheckDumpUserDataByUserIdRequest $request
@@ -3684,8 +3732,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserIdAsync(
             CleanUserDataByUserIdRequest $request
@@ -3699,8 +3750,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return CleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserId (
             CleanUserDataByUserIdRequest $request
@@ -3711,8 +3765,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the clean of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserIdAsync(
             CheckCleanUserDataByUserIdRequest $request
@@ -3726,8 +3783,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the clean of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return CheckCleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserId (
             CheckCleanUserDataByUserIdRequest $request
@@ -3738,8 +3798,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserIdAsync(
             PrepareImportUserDataByUserIdRequest $request
@@ -3753,8 +3816,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PrepareImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserId (
             PrepareImportUserDataByUserIdRequest $request
@@ -3765,8 +3831,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserIdAsync(
             ImportUserDataByUserIdRequest $request
@@ -3780,8 +3849,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return ImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserId (
             ImportUserDataByUserIdRequest $request
@@ -3792,8 +3864,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserIdAsync(
             CheckImportUserDataByUserIdRequest $request
@@ -3807,8 +3882,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return CheckImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserId (
             CheckImportUserDataByUserIdRequest $request
@@ -3819,8 +3897,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Quest Group Model Masters
+     *
      * @param DescribeQuestGroupModelMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#describequestgroupmodelmasters
      */
     public function describeQuestGroupModelMastersAsync(
             DescribeQuestGroupModelMastersRequest $request
@@ -3834,8 +3915,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Quest Group Model Masters
+     *
      * @param DescribeQuestGroupModelMastersRequest $request
      * @return DescribeQuestGroupModelMastersResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#describequestgroupmodelmasters
      */
     public function describeQuestGroupModelMasters (
             DescribeQuestGroupModelMastersRequest $request
@@ -3846,8 +3930,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Quest Group Model Master
+     *
      * @param CreateQuestGroupModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#createquestgroupmodelmaster
      */
     public function createQuestGroupModelMasterAsync(
             CreateQuestGroupModelMasterRequest $request
@@ -3861,8 +3948,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Quest Group Model Master
+     *
      * @param CreateQuestGroupModelMasterRequest $request
      * @return CreateQuestGroupModelMasterResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#createquestgroupmodelmaster
      */
     public function createQuestGroupModelMaster (
             CreateQuestGroupModelMasterRequest $request
@@ -3873,8 +3963,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Quest Group Model Master
+     *
      * @param GetQuestGroupModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#getquestgroupmodelmaster
      */
     public function getQuestGroupModelMasterAsync(
             GetQuestGroupModelMasterRequest $request
@@ -3888,8 +3981,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Quest Group Model Master
+     *
      * @param GetQuestGroupModelMasterRequest $request
      * @return GetQuestGroupModelMasterResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#getquestgroupmodelmaster
      */
     public function getQuestGroupModelMaster (
             GetQuestGroupModelMasterRequest $request
@@ -3900,8 +3996,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Quest Group Model Master
+     *
      * @param UpdateQuestGroupModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#updatequestgroupmodelmaster
      */
     public function updateQuestGroupModelMasterAsync(
             UpdateQuestGroupModelMasterRequest $request
@@ -3915,8 +4014,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Quest Group Model Master
+     *
      * @param UpdateQuestGroupModelMasterRequest $request
      * @return UpdateQuestGroupModelMasterResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#updatequestgroupmodelmaster
      */
     public function updateQuestGroupModelMaster (
             UpdateQuestGroupModelMasterRequest $request
@@ -3927,8 +4029,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Quest Group Model Master
+     *
      * @param DeleteQuestGroupModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#deletequestgroupmodelmaster
      */
     public function deleteQuestGroupModelMasterAsync(
             DeleteQuestGroupModelMasterRequest $request
@@ -3942,8 +4047,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Quest Group Model Master
+     *
      * @param DeleteQuestGroupModelMasterRequest $request
      * @return DeleteQuestGroupModelMasterResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#deletequestgroupmodelmaster
      */
     public function deleteQuestGroupModelMaster (
             DeleteQuestGroupModelMasterRequest $request
@@ -3954,8 +4062,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Quest Model Masters
+     *
      * @param DescribeQuestModelMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#describequestmodelmasters
      */
     public function describeQuestModelMastersAsync(
             DescribeQuestModelMastersRequest $request
@@ -3969,8 +4080,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Quest Model Masters
+     *
      * @param DescribeQuestModelMastersRequest $request
      * @return DescribeQuestModelMastersResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#describequestmodelmasters
      */
     public function describeQuestModelMasters (
             DescribeQuestModelMastersRequest $request
@@ -3981,8 +4095,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Quest Model Master
+     *
      * @param CreateQuestModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#createquestmodelmaster
      */
     public function createQuestModelMasterAsync(
             CreateQuestModelMasterRequest $request
@@ -3996,8 +4113,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Quest Model Master
+     *
      * @param CreateQuestModelMasterRequest $request
      * @return CreateQuestModelMasterResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#createquestmodelmaster
      */
     public function createQuestModelMaster (
             CreateQuestModelMasterRequest $request
@@ -4008,8 +4128,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Quest Model Master
+     *
      * @param GetQuestModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#getquestmodelmaster
      */
     public function getQuestModelMasterAsync(
             GetQuestModelMasterRequest $request
@@ -4023,8 +4146,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Quest Model Master
+     *
      * @param GetQuestModelMasterRequest $request
      * @return GetQuestModelMasterResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#getquestmodelmaster
      */
     public function getQuestModelMaster (
             GetQuestModelMasterRequest $request
@@ -4035,8 +4161,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Quest Model Master
+     *
      * @param UpdateQuestModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#updatequestmodelmaster
      */
     public function updateQuestModelMasterAsync(
             UpdateQuestModelMasterRequest $request
@@ -4050,8 +4179,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Quest Model Master
+     *
      * @param UpdateQuestModelMasterRequest $request
      * @return UpdateQuestModelMasterResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#updatequestmodelmaster
      */
     public function updateQuestModelMaster (
             UpdateQuestModelMasterRequest $request
@@ -4062,8 +4194,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Quest Model master
+     *
      * @param DeleteQuestModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#deletequestmodelmaster
      */
     public function deleteQuestModelMasterAsync(
             DeleteQuestModelMasterRequest $request
@@ -4077,8 +4212,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Quest Model master
+     *
      * @param DeleteQuestModelMasterRequest $request
      * @return DeleteQuestModelMasterResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#deletequestmodelmaster
      */
     public function deleteQuestModelMaster (
             DeleteQuestModelMasterRequest $request
@@ -4089,8 +4227,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Quest Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#exportmaster
      */
     public function exportMasterAsync(
             ExportMasterRequest $request
@@ -4104,8 +4245,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Quest Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return ExportMasterResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#exportmaster
      */
     public function exportMaster (
             ExportMasterRequest $request
@@ -4116,8 +4260,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Quest Model master data
+     *
      * @param GetCurrentQuestMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#getcurrentquestmaster
      */
     public function getCurrentQuestMasterAsync(
             GetCurrentQuestMasterRequest $request
@@ -4131,8 +4278,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Quest Model master data
+     *
      * @param GetCurrentQuestMasterRequest $request
      * @return GetCurrentQuestMasterResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#getcurrentquestmaster
      */
     public function getCurrentQuestMaster (
             GetCurrentQuestMasterRequest $request
@@ -4143,8 +4293,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Quest Model master data (3-phase version)
+     *
      * @param PreUpdateCurrentQuestMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#preupdatecurrentquestmaster
      */
     public function preUpdateCurrentQuestMasterAsync(
             PreUpdateCurrentQuestMasterRequest $request
@@ -4158,8 +4311,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Quest Model master data (3-phase version)
+     *
      * @param PreUpdateCurrentQuestMasterRequest $request
      * @return PreUpdateCurrentQuestMasterResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#preupdatecurrentquestmaster
      */
     public function preUpdateCurrentQuestMaster (
             PreUpdateCurrentQuestMasterRequest $request
@@ -4170,8 +4326,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Quest Model master data
+     *
      * @param UpdateCurrentQuestMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#updatecurrentquestmaster
      */
     public function updateCurrentQuestMasterAsync(
             UpdateCurrentQuestMasterRequest $request
@@ -4185,8 +4344,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Quest Model master data
+     *
      * @param UpdateCurrentQuestMasterRequest $request
      * @return UpdateCurrentQuestMasterResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#updatecurrentquestmaster
      */
     public function updateCurrentQuestMaster (
             UpdateCurrentQuestMasterRequest $request
@@ -4197,8 +4359,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Quest Model master data from GitHub
+     *
      * @param UpdateCurrentQuestMasterFromGitHubRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#updatecurrentquestmasterfromgithub
      */
     public function updateCurrentQuestMasterFromGitHubAsync(
             UpdateCurrentQuestMasterFromGitHubRequest $request
@@ -4212,8 +4377,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Quest Model master data from GitHub
+     *
      * @param UpdateCurrentQuestMasterFromGitHubRequest $request
      * @return UpdateCurrentQuestMasterFromGitHubResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#updatecurrentquestmasterfromgithub
      */
     public function updateCurrentQuestMasterFromGitHub (
             UpdateCurrentQuestMasterFromGitHubRequest $request
@@ -4224,8 +4392,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Quest Progress
+     *
      * @param DescribeProgressesByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#describeprogressesbyuserid
      */
     public function describeProgressesByUserIdAsync(
             DescribeProgressesByUserIdRequest $request
@@ -4239,8 +4410,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Quest Progress
+     *
      * @param DescribeProgressesByUserIdRequest $request
      * @return DescribeProgressesByUserIdResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#describeprogressesbyuserid
      */
     public function describeProgressesByUserId (
             DescribeProgressesByUserIdRequest $request
@@ -4251,8 +4425,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Quest Progress by User ID
+     *
      * @param CreateProgressByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#createprogressbyuserid
      */
     public function createProgressByUserIdAsync(
             CreateProgressByUserIdRequest $request
@@ -4266,8 +4443,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Quest Progress by User ID
+     *
      * @param CreateProgressByUserIdRequest $request
      * @return CreateProgressByUserIdResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#createprogressbyuserid
      */
     public function createProgressByUserId (
             CreateProgressByUserIdRequest $request
@@ -4278,8 +4458,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get quest progress
+     *
      * @param GetProgressRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#getprogress
      */
     public function getProgressAsync(
             GetProgressRequest $request
@@ -4293,8 +4476,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get quest progress
+     *
      * @param GetProgressRequest $request
      * @return GetProgressResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#getprogress
      */
     public function getProgress (
             GetProgressRequest $request
@@ -4305,8 +4491,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Quest Progress by User ID
+     *
      * @param GetProgressByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#getprogressbyuserid
      */
     public function getProgressByUserIdAsync(
             GetProgressByUserIdRequest $request
@@ -4320,8 +4509,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Quest Progress by User ID
+     *
      * @param GetProgressByUserIdRequest $request
      * @return GetProgressByUserIdResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#getprogressbyuserid
      */
     public function getProgressByUserId (
             GetProgressByUserIdRequest $request
@@ -4332,8 +4524,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Start Quest
+     *
      * @param StartRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#start
      */
     public function startAsync(
             StartRequest $request
@@ -4347,8 +4542,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Start Quest
+     *
      * @param StartRequest $request
      * @return StartResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#start
      */
     public function start (
             StartRequest $request
@@ -4359,8 +4557,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Start a quest by User ID
+     *
      * @param StartByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#startbyuserid
      */
     public function startByUserIdAsync(
             StartByUserIdRequest $request
@@ -4374,8 +4575,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Start a quest by User ID
+     *
      * @param StartByUserIdRequest $request
      * @return StartByUserIdResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#startbyuserid
      */
     public function startByUserId (
             StartByUserIdRequest $request
@@ -4386,8 +4590,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Completed Quest
+     *
      * @param EndRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#end
      */
     public function endAsync(
             EndRequest $request
@@ -4401,8 +4608,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Completed Quest
+     *
      * @param EndRequest $request
      * @return EndResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#end
      */
     public function end (
             EndRequest $request
@@ -4413,8 +4623,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Complete quest by User ID
+     *
      * @param EndByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#endbyuserid
      */
     public function endByUserIdAsync(
             EndByUserIdRequest $request
@@ -4428,8 +4641,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Complete quest by User ID
+     *
      * @param EndByUserIdRequest $request
      * @return EndByUserIdResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#endbyuserid
      */
     public function endByUserId (
             EndByUserIdRequest $request
@@ -4440,8 +4656,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete quest progress
+     *
      * @param DeleteProgressRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#deleteprogress
      */
     public function deleteProgressAsync(
             DeleteProgressRequest $request
@@ -4455,8 +4674,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete quest progress
+     *
      * @param DeleteProgressRequest $request
      * @return DeleteProgressResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#deleteprogress
      */
     public function deleteProgress (
             DeleteProgressRequest $request
@@ -4467,8 +4689,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Quest Progress by User ID
+     *
      * @param DeleteProgressByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#deleteprogressbyuserid
      */
     public function deleteProgressByUserIdAsync(
             DeleteProgressByUserIdRequest $request
@@ -4482,8 +4707,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Quest Progress by User ID
+     *
      * @param DeleteProgressByUserIdRequest $request
      * @return DeleteProgressByUserIdResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#deleteprogressbyuserid
      */
     public function deleteProgressByUserId (
             DeleteProgressByUserIdRequest $request
@@ -4494,8 +4722,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the creation of quest progress as an acquire action
+     *
      * @param CreateProgressByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/stamp_sheet/#gs2questcreateprogressbyuserid
      */
     public function createProgressByStampSheetAsync(
             CreateProgressByStampSheetRequest $request
@@ -4509,8 +4740,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the creation of quest progress as an acquire action
+     *
      * @param CreateProgressByStampSheetRequest $request
      * @return CreateProgressByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/quest/stamp_sheet/#gs2questcreateprogressbyuserid
      */
     public function createProgressByStampSheet (
             CreateProgressByStampSheetRequest $request
@@ -4521,8 +4755,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Quest Progress in Consume Actions
+     *
      * @param DeleteProgressByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/stamp_sheet/#gs2questdeleteprogressbyuserid
      */
     public function deleteProgressByStampTaskAsync(
             DeleteProgressByStampTaskRequest $request
@@ -4536,8 +4773,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Quest Progress in Consume Actions
+     *
      * @param DeleteProgressByStampTaskRequest $request
      * @return DeleteProgressByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/quest/stamp_sheet/#gs2questdeleteprogressbyuserid
      */
     public function deleteProgressByStampTask (
             DeleteProgressByStampTaskRequest $request
@@ -4548,8 +4788,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Completed Quest lists
+     *
      * @param DescribeCompletedQuestListsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#describecompletedquestlists
      */
     public function describeCompletedQuestListsAsync(
             DescribeCompletedQuestListsRequest $request
@@ -4563,8 +4806,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Completed Quest lists
+     *
      * @param DescribeCompletedQuestListsRequest $request
      * @return DescribeCompletedQuestListsResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#describecompletedquestlists
      */
     public function describeCompletedQuestLists (
             DescribeCompletedQuestListsRequest $request
@@ -4575,8 +4821,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Completed Quest Lists by User ID
+     *
      * @param DescribeCompletedQuestListsByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#describecompletedquestlistsbyuserid
      */
     public function describeCompletedQuestListsByUserIdAsync(
             DescribeCompletedQuestListsByUserIdRequest $request
@@ -4590,8 +4839,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Completed Quest Lists by User ID
+     *
      * @param DescribeCompletedQuestListsByUserIdRequest $request
      * @return DescribeCompletedQuestListsByUserIdResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#describecompletedquestlistsbyuserid
      */
     public function describeCompletedQuestListsByUserId (
             DescribeCompletedQuestListsByUserIdRequest $request
@@ -4602,8 +4854,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Completed Quest List
+     *
      * @param GetCompletedQuestListRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#getcompletedquestlist
      */
     public function getCompletedQuestListAsync(
             GetCompletedQuestListRequest $request
@@ -4617,8 +4872,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Completed Quest List
+     *
      * @param GetCompletedQuestListRequest $request
      * @return GetCompletedQuestListResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#getcompletedquestlist
      */
     public function getCompletedQuestList (
             GetCompletedQuestListRequest $request
@@ -4629,8 +4887,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Completed Quest List by User ID
+     *
      * @param GetCompletedQuestListByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#getcompletedquestlistbyuserid
      */
     public function getCompletedQuestListByUserIdAsync(
             GetCompletedQuestListByUserIdRequest $request
@@ -4644,8 +4905,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Completed Quest List by User ID
+     *
      * @param GetCompletedQuestListByUserIdRequest $request
      * @return GetCompletedQuestListByUserIdResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#getcompletedquestlistbyuserid
      */
     public function getCompletedQuestListByUserId (
             GetCompletedQuestListByUserIdRequest $request
@@ -4656,8 +4920,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Completed Quest List by User ID
+     *
      * @param DeleteCompletedQuestListByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#deletecompletedquestlistbyuserid
      */
     public function deleteCompletedQuestListByUserIdAsync(
             DeleteCompletedQuestListByUserIdRequest $request
@@ -4671,8 +4938,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Completed Quest List by User ID
+     *
      * @param DeleteCompletedQuestListByUserIdRequest $request
      * @return DeleteCompletedQuestListByUserIdResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#deletecompletedquestlistbyuserid
      */
     public function deleteCompletedQuestListByUserId (
             DeleteCompletedQuestListByUserIdRequest $request
@@ -4683,8 +4953,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Quest Groups
+     *
      * @param DescribeQuestGroupModelsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#describequestgroupmodels
      */
     public function describeQuestGroupModelsAsync(
             DescribeQuestGroupModelsRequest $request
@@ -4698,8 +4971,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Quest Groups
+     *
      * @param DescribeQuestGroupModelsRequest $request
      * @return DescribeQuestGroupModelsResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#describequestgroupmodels
      */
     public function describeQuestGroupModels (
             DescribeQuestGroupModelsRequest $request
@@ -4710,8 +4986,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Quest Group Model
+     *
      * @param GetQuestGroupModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#getquestgroupmodel
      */
     public function getQuestGroupModelAsync(
             GetQuestGroupModelRequest $request
@@ -4725,8 +5004,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Quest Group Model
+     *
      * @param GetQuestGroupModelRequest $request
      * @return GetQuestGroupModelResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#getquestgroupmodel
      */
     public function getQuestGroupModel (
             GetQuestGroupModelRequest $request
@@ -4737,8 +5019,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Quest Models
+     *
      * @param DescribeQuestModelsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#describequestmodels
      */
     public function describeQuestModelsAsync(
             DescribeQuestModelsRequest $request
@@ -4752,8 +5037,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Quest Models
+     *
      * @param DescribeQuestModelsRequest $request
      * @return DescribeQuestModelsResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#describequestmodels
      */
     public function describeQuestModels (
             DescribeQuestModelsRequest $request
@@ -4764,8 +5052,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Quest Model
+     *
      * @param GetQuestModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#getquestmodel
      */
     public function getQuestModelAsync(
             GetQuestModelRequest $request
@@ -4779,8 +5070,11 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Quest Model
+     *
      * @param GetQuestModelRequest $request
      * @return GetQuestModelResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#getquestmodel
      */
     public function getQuestModel (
             GetQuestModelRequest $request

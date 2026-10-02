@@ -2771,25 +2771,22 @@ class UpdateCurrentCategoryMasterFromGitHubTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 Idle API クライアント
+ * GS2-Idle API client
  *
- * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/idle/sdk/
  */
 class Gs2IdleRestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#describenamespaces
      */
     public function describeNamespacesAsync(
             DescribeNamespacesRequest $request
@@ -2803,8 +2800,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#describenamespaces
      */
     public function describeNamespaces (
             DescribeNamespacesRequest $request
@@ -2815,8 +2815,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#createnamespace
      */
     public function createNamespaceAsync(
             CreateNamespaceRequest $request
@@ -2830,8 +2833,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#createnamespace
      */
     public function createNamespace (
             CreateNamespaceRequest $request
@@ -2842,8 +2848,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#getnamespacestatus
      */
     public function getNamespaceStatusAsync(
             GetNamespaceStatusRequest $request
@@ -2857,8 +2866,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#getnamespacestatus
      */
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
@@ -2869,8 +2881,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#getnamespace
      */
     public function getNamespaceAsync(
             GetNamespaceRequest $request
@@ -2884,8 +2899,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#getnamespace
      */
     public function getNamespace (
             GetNamespaceRequest $request
@@ -2896,8 +2914,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#updatenamespace
      */
     public function updateNamespaceAsync(
             UpdateNamespaceRequest $request
@@ -2911,8 +2932,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#updatenamespace
      */
     public function updateNamespace (
             UpdateNamespaceRequest $request
@@ -2923,8 +2947,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#deletenamespace
      */
     public function deleteNamespaceAsync(
             DeleteNamespaceRequest $request
@@ -2938,8 +2965,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#deletenamespace
      */
     public function deleteNamespace (
             DeleteNamespaceRequest $request
@@ -2950,8 +2980,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get microservice version
+     *
      * @param GetServiceVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#getserviceversion
      */
     public function getServiceVersionAsync(
             GetServiceVersionRequest $request
@@ -2965,8 +2998,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get microservice version
+     *
      * @param GetServiceVersionRequest $request
      * @return GetServiceVersionResult
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#getserviceversion
      */
     public function getServiceVersion (
             GetServiceVersionRequest $request
@@ -2977,8 +3013,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserIdAsync(
             DumpUserDataByUserIdRequest $request
@@ -2992,8 +3031,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return DumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserId (
             DumpUserDataByUserIdRequest $request
@@ -3004,8 +3046,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserIdAsync(
             CheckDumpUserDataByUserIdRequest $request
@@ -3019,8 +3064,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return CheckDumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserId (
             CheckDumpUserDataByUserIdRequest $request
@@ -3031,8 +3079,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserIdAsync(
             CleanUserDataByUserIdRequest $request
@@ -3046,8 +3097,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return CleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserId (
             CleanUserDataByUserIdRequest $request
@@ -3058,8 +3112,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserIdAsync(
             CheckCleanUserDataByUserIdRequest $request
@@ -3073,8 +3130,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return CheckCleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserId (
             CheckCleanUserDataByUserIdRequest $request
@@ -3085,8 +3145,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserIdAsync(
             PrepareImportUserDataByUserIdRequest $request
@@ -3100,8 +3163,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PrepareImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserId (
             PrepareImportUserDataByUserIdRequest $request
@@ -3112,8 +3178,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserIdAsync(
             ImportUserDataByUserIdRequest $request
@@ -3127,8 +3196,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return ImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserId (
             ImportUserDataByUserIdRequest $request
@@ -3139,8 +3211,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserIdAsync(
             CheckImportUserDataByUserIdRequest $request
@@ -3154,8 +3229,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return CheckImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserId (
             CheckImportUserDataByUserIdRequest $request
@@ -3166,8 +3244,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Category Model Masters
+     *
      * @param DescribeCategoryModelMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#describecategorymodelmasters
      */
     public function describeCategoryModelMastersAsync(
             DescribeCategoryModelMastersRequest $request
@@ -3181,8 +3262,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Category Model Masters
+     *
      * @param DescribeCategoryModelMastersRequest $request
      * @return DescribeCategoryModelMastersResult
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#describecategorymodelmasters
      */
     public function describeCategoryModelMasters (
             DescribeCategoryModelMastersRequest $request
@@ -3193,8 +3277,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Category Model Master
+     *
      * @param CreateCategoryModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#createcategorymodelmaster
      */
     public function createCategoryModelMasterAsync(
             CreateCategoryModelMasterRequest $request
@@ -3208,8 +3295,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Category Model Master
+     *
      * @param CreateCategoryModelMasterRequest $request
      * @return CreateCategoryModelMasterResult
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#createcategorymodelmaster
      */
     public function createCategoryModelMaster (
             CreateCategoryModelMasterRequest $request
@@ -3220,8 +3310,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Category Model Master
+     *
      * @param GetCategoryModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#getcategorymodelmaster
      */
     public function getCategoryModelMasterAsync(
             GetCategoryModelMasterRequest $request
@@ -3235,8 +3328,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Category Model Master
+     *
      * @param GetCategoryModelMasterRequest $request
      * @return GetCategoryModelMasterResult
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#getcategorymodelmaster
      */
     public function getCategoryModelMaster (
             GetCategoryModelMasterRequest $request
@@ -3247,8 +3343,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Category Model Master
+     *
      * @param UpdateCategoryModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#updatecategorymodelmaster
      */
     public function updateCategoryModelMasterAsync(
             UpdateCategoryModelMasterRequest $request
@@ -3262,8 +3361,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Category Model Master
+     *
      * @param UpdateCategoryModelMasterRequest $request
      * @return UpdateCategoryModelMasterResult
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#updatecategorymodelmaster
      */
     public function updateCategoryModelMaster (
             UpdateCategoryModelMasterRequest $request
@@ -3274,8 +3376,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Category Model Master
+     *
      * @param DeleteCategoryModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#deletecategorymodelmaster
      */
     public function deleteCategoryModelMasterAsync(
             DeleteCategoryModelMasterRequest $request
@@ -3289,8 +3394,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Category Model Master
+     *
      * @param DeleteCategoryModelMasterRequest $request
      * @return DeleteCategoryModelMasterResult
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#deletecategorymodelmaster
      */
     public function deleteCategoryModelMaster (
             DeleteCategoryModelMasterRequest $request
@@ -3301,8 +3409,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Category Models
+     *
      * @param DescribeCategoryModelsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#describecategorymodels
      */
     public function describeCategoryModelsAsync(
             DescribeCategoryModelsRequest $request
@@ -3316,8 +3427,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Category Models
+     *
      * @param DescribeCategoryModelsRequest $request
      * @return DescribeCategoryModelsResult
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#describecategorymodels
      */
     public function describeCategoryModels (
             DescribeCategoryModelsRequest $request
@@ -3328,8 +3442,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Category Model
+     *
      * @param GetCategoryModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#getcategorymodel
      */
     public function getCategoryModelAsync(
             GetCategoryModelRequest $request
@@ -3343,8 +3460,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Category Model
+     *
      * @param GetCategoryModelRequest $request
      * @return GetCategoryModelResult
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#getcategorymodel
      */
     public function getCategoryModel (
             GetCategoryModelRequest $request
@@ -3355,8 +3475,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List statuses
+     *
      * @param DescribeStatusesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#describestatuses
      */
     public function describeStatusesAsync(
             DescribeStatusesRequest $request
@@ -3370,8 +3493,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List statuses
+     *
      * @param DescribeStatusesRequest $request
      * @return DescribeStatusesResult
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#describestatuses
      */
     public function describeStatuses (
             DescribeStatusesRequest $request
@@ -3382,8 +3508,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List statuses by User ID
+     *
      * @param DescribeStatusesByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#describestatusesbyuserid
      */
     public function describeStatusesByUserIdAsync(
             DescribeStatusesByUserIdRequest $request
@@ -3397,8 +3526,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List statuses by User ID
+     *
      * @param DescribeStatusesByUserIdRequest $request
      * @return DescribeStatusesByUserIdResult
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#describestatusesbyuserid
      */
     public function describeStatusesByUserId (
             DescribeStatusesByUserIdRequest $request
@@ -3409,8 +3541,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Status
+     *
      * @param GetStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#getstatus
      */
     public function getStatusAsync(
             GetStatusRequest $request
@@ -3424,8 +3559,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Status
+     *
      * @param GetStatusRequest $request
      * @return GetStatusResult
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#getstatus
      */
     public function getStatus (
             GetStatusRequest $request
@@ -3436,8 +3574,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get status by User ID
+     *
      * @param GetStatusByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#getstatusbyuserid
      */
     public function getStatusByUserIdAsync(
             GetStatusByUserIdRequest $request
@@ -3451,8 +3592,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get status by User ID
+     *
      * @param GetStatusByUserIdRequest $request
      * @return GetStatusByUserIdResult
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#getstatusbyuserid
      */
     public function getStatusByUserId (
             GetStatusByUserIdRequest $request
@@ -3463,8 +3607,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get a list of available rewards
+     *
      * @param PredictionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#prediction
      */
     public function predictionAsync(
             PredictionRequest $request
@@ -3478,8 +3625,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get a list of available rewards
+     *
      * @param PredictionRequest $request
      * @return PredictionResult
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#prediction
      */
     public function prediction (
             PredictionRequest $request
@@ -3490,8 +3640,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get a list of available rewards by User ID
+     *
      * @param PredictionByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#predictionbyuserid
      */
     public function predictionByUserIdAsync(
             PredictionByUserIdRequest $request
@@ -3505,8 +3658,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get a list of available rewards by User ID
+     *
      * @param PredictionByUserIdRequest $request
      * @return PredictionByUserIdResult
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#predictionbyuserid
      */
     public function predictionByUserId (
             PredictionByUserIdRequest $request
@@ -3517,8 +3673,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Receive rewards
+     *
      * @param ReceiveRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#receive
      */
     public function receiveAsync(
             ReceiveRequest $request
@@ -3532,8 +3691,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Receive rewards
+     *
      * @param ReceiveRequest $request
      * @return ReceiveResult
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#receive
      */
     public function receive (
             ReceiveRequest $request
@@ -3544,8 +3706,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Receive rewards by User ID
+     *
      * @param ReceiveByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#receivebyuserid
      */
     public function receiveByUserIdAsync(
             ReceiveByUserIdRequest $request
@@ -3559,8 +3724,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Receive rewards by User ID
+     *
      * @param ReceiveByUserIdRequest $request
      * @return ReceiveByUserIdResult
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#receivebyuserid
      */
     public function receiveByUserId (
             ReceiveByUserIdRequest $request
@@ -3571,8 +3739,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Increase the maximum idle time by User ID
+     *
      * @param IncreaseMaximumIdleMinutesByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#increasemaximumidleminutesbyuserid
      */
     public function increaseMaximumIdleMinutesByUserIdAsync(
             IncreaseMaximumIdleMinutesByUserIdRequest $request
@@ -3586,8 +3757,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Increase the maximum idle time by User ID
+     *
      * @param IncreaseMaximumIdleMinutesByUserIdRequest $request
      * @return IncreaseMaximumIdleMinutesByUserIdResult
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#increasemaximumidleminutesbyuserid
      */
     public function increaseMaximumIdleMinutesByUserId (
             IncreaseMaximumIdleMinutesByUserIdRequest $request
@@ -3598,8 +3772,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Decrease the maximum idle time
+     *
      * @param DecreaseMaximumIdleMinutesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#decreasemaximumidleminutes
      */
     public function decreaseMaximumIdleMinutesAsync(
             DecreaseMaximumIdleMinutesRequest $request
@@ -3613,8 +3790,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Decrease the maximum idle time
+     *
      * @param DecreaseMaximumIdleMinutesRequest $request
      * @return DecreaseMaximumIdleMinutesResult
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#decreasemaximumidleminutes
      */
     public function decreaseMaximumIdleMinutes (
             DecreaseMaximumIdleMinutesRequest $request
@@ -3625,8 +3805,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Decrease the maximum idle time by User ID
+     *
      * @param DecreaseMaximumIdleMinutesByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#decreasemaximumidleminutesbyuserid
      */
     public function decreaseMaximumIdleMinutesByUserIdAsync(
             DecreaseMaximumIdleMinutesByUserIdRequest $request
@@ -3640,8 +3823,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Decrease the maximum idle time by User ID
+     *
      * @param DecreaseMaximumIdleMinutesByUserIdRequest $request
      * @return DecreaseMaximumIdleMinutesByUserIdResult
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#decreasemaximumidleminutesbyuserid
      */
     public function decreaseMaximumIdleMinutesByUserId (
             DecreaseMaximumIdleMinutesByUserIdRequest $request
@@ -3652,8 +3838,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Set the maximum idle time by User ID
+     *
      * @param SetMaximumIdleMinutesByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#setmaximumidleminutesbyuserid
      */
     public function setMaximumIdleMinutesByUserIdAsync(
             SetMaximumIdleMinutesByUserIdRequest $request
@@ -3667,8 +3856,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Set the maximum idle time by User ID
+     *
      * @param SetMaximumIdleMinutesByUserIdRequest $request
      * @return SetMaximumIdleMinutesByUserIdResult
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#setmaximumidleminutesbyuserid
      */
     public function setMaximumIdleMinutesByUserId (
             SetMaximumIdleMinutesByUserIdRequest $request
@@ -3679,8 +3871,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the addition of the maximum idle time as an acquire action
+     *
      * @param IncreaseMaximumIdleMinutesByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/idle/stamp_sheet/#gs2idleincreasemaximumidleminutesbyuserid
      */
     public function increaseMaximumIdleMinutesByStampSheetAsync(
             IncreaseMaximumIdleMinutesByStampSheetRequest $request
@@ -3694,8 +3889,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the addition of the maximum idle time as an acquire action
+     *
      * @param IncreaseMaximumIdleMinutesByStampSheetRequest $request
      * @return IncreaseMaximumIdleMinutesByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/idle/stamp_sheet/#gs2idleincreasemaximumidleminutesbyuserid
      */
     public function increaseMaximumIdleMinutesByStampSheet (
             IncreaseMaximumIdleMinutesByStampSheetRequest $request
@@ -3706,8 +3904,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the subtraction of the maximum idle time as a consume action
+     *
      * @param DecreaseMaximumIdleMinutesByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/idle/stamp_sheet/#gs2idledecreasemaximumidleminutesbyuserid
      */
     public function decreaseMaximumIdleMinutesByStampTaskAsync(
             DecreaseMaximumIdleMinutesByStampTaskRequest $request
@@ -3721,8 +3922,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the subtraction of the maximum idle time as a consume action
+     *
      * @param DecreaseMaximumIdleMinutesByStampTaskRequest $request
      * @return DecreaseMaximumIdleMinutesByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/idle/stamp_sheet/#gs2idledecreasemaximumidleminutesbyuserid
      */
     public function decreaseMaximumIdleMinutesByStampTask (
             DecreaseMaximumIdleMinutesByStampTaskRequest $request
@@ -3733,8 +3937,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the setting of the maximum idle time as an acquire action
+     *
      * @param SetMaximumIdleMinutesByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/idle/stamp_sheet/#gs2idlesetmaximumidleminutesbyuserid
      */
     public function setMaximumIdleMinutesByStampSheetAsync(
             SetMaximumIdleMinutesByStampSheetRequest $request
@@ -3748,8 +3955,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the setting of the maximum idle time as an acquire action
+     *
      * @param SetMaximumIdleMinutesByStampSheetRequest $request
      * @return SetMaximumIdleMinutesByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/idle/stamp_sheet/#gs2idlesetmaximumidleminutesbyuserid
      */
     public function setMaximumIdleMinutesByStampSheet (
             SetMaximumIdleMinutesByStampSheetRequest $request
@@ -3760,8 +3970,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the receipt of rewards as an acquire action
+     *
      * @param ReceiveByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/idle/stamp_sheet/#gs2idlereceivebyuserid
      */
     public function receiveByStampSheetAsync(
             ReceiveByStampSheetRequest $request
@@ -3775,8 +3988,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the receipt of rewards as an acquire action
+     *
      * @param ReceiveByStampSheetRequest $request
      * @return ReceiveByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/idle/stamp_sheet/#gs2idlereceivebyuserid
      */
     public function receiveByStampSheet (
             ReceiveByStampSheetRequest $request
@@ -3787,8 +4003,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Category Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#exportmaster
      */
     public function exportMasterAsync(
             ExportMasterRequest $request
@@ -3802,8 +4021,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Category Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return ExportMasterResult
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#exportmaster
      */
     public function exportMaster (
             ExportMasterRequest $request
@@ -3814,8 +4036,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Category Model master data
+     *
      * @param GetCurrentCategoryMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#getcurrentcategorymaster
      */
     public function getCurrentCategoryMasterAsync(
             GetCurrentCategoryMasterRequest $request
@@ -3829,8 +4054,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Category Model master data
+     *
      * @param GetCurrentCategoryMasterRequest $request
      * @return GetCurrentCategoryMasterResult
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#getcurrentcategorymaster
      */
     public function getCurrentCategoryMaster (
             GetCurrentCategoryMasterRequest $request
@@ -3841,8 +4069,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Category Model master data (3-phase version)
+     *
      * @param PreUpdateCurrentCategoryMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#preupdatecurrentcategorymaster
      */
     public function preUpdateCurrentCategoryMasterAsync(
             PreUpdateCurrentCategoryMasterRequest $request
@@ -3856,8 +4087,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Category Model master data (3-phase version)
+     *
      * @param PreUpdateCurrentCategoryMasterRequest $request
      * @return PreUpdateCurrentCategoryMasterResult
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#preupdatecurrentcategorymaster
      */
     public function preUpdateCurrentCategoryMaster (
             PreUpdateCurrentCategoryMasterRequest $request
@@ -3868,8 +4102,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Category Model master data
+     *
      * @param UpdateCurrentCategoryMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#updatecurrentcategorymaster
      */
     public function updateCurrentCategoryMasterAsync(
             UpdateCurrentCategoryMasterRequest $request
@@ -3883,8 +4120,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Category Model master data
+     *
      * @param UpdateCurrentCategoryMasterRequest $request
      * @return UpdateCurrentCategoryMasterResult
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#updatecurrentcategorymaster
      */
     public function updateCurrentCategoryMaster (
             UpdateCurrentCategoryMasterRequest $request
@@ -3895,8 +4135,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Category Model master data from GitHub
+     *
      * @param UpdateCurrentCategoryMasterFromGitHubRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#updatecurrentcategorymasterfromgithub
      */
     public function updateCurrentCategoryMasterFromGitHubAsync(
             UpdateCurrentCategoryMasterFromGitHubRequest $request
@@ -3910,8 +4153,11 @@ class Gs2IdleRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Category Model master data from GitHub
+     *
      * @param UpdateCurrentCategoryMasterFromGitHubRequest $request
      * @return UpdateCurrentCategoryMasterFromGitHubResult
+     * @see https://docs.gs2.io/api_reference/idle/sdk/#updatecurrentcategorymasterfromgithub
      */
     public function updateCurrentCategoryMasterFromGitHub (
             UpdateCurrentCategoryMasterFromGitHubRequest $request

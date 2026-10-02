@@ -20,33 +20,50 @@ namespace Gs2\Ranking2\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Ranking2\Model\GlobalRankingReceivedReward;
 
+/**
+ * Result of describeGlobalRankingReceivedRewardsByUserId: List Global Ranking Rewards Received by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/sdk/#describeglobalrankingreceivedrewardsbyuserid
+ */
 class DescribeGlobalRankingReceivedRewardsByUserIdResult implements IResult {
-    /** @var array */
+    /** @var array List of Global Ranking Rewards Received */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Global Ranking Rewards Received */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Global Ranking Rewards Received */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Global Ranking Rewards Received
+     * @return DescribeGlobalRankingReceivedRewardsByUserIdResult
+     */
 	public function withItems(?array $items): DescribeGlobalRankingReceivedRewardsByUserIdResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeGlobalRankingReceivedRewardsByUserIdResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeGlobalRankingReceivedRewardsByUserIdResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

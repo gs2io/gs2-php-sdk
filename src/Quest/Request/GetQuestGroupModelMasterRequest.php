@@ -19,27 +19,44 @@ namespace Gs2\Quest\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getQuestGroupModelMaster: Get Quest Group Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/quest/sdk/#getquestgroupmodelmaster
+ */
 class GetQuestGroupModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Quest Group Model name */
     private $questGroupName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetQuestGroupModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetQuestGroupModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Quest Group Model name */
 	public function getQuestGroupName(): ?string {
 		return $this->questGroupName;
 	}
+    /** @param string|null $questGroupName Quest Group Model name */
 	public function setQuestGroupName(?string $questGroupName) {
 		$this->questGroupName = $questGroupName;
 	}
+    /**
+     * @param string|null $questGroupName Quest Group Model name
+     * @return GetQuestGroupModelMasterRequest
+     */
 	public function withQuestGroupName(?string $questGroupName): GetQuestGroupModelMasterRequest {
 		$this->questGroupName = $questGroupName;
 		return $this;

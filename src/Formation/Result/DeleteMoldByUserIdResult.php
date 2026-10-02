@@ -20,18 +20,29 @@ namespace Gs2\Formation\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Formation\Model\Mold;
 
+/**
+ * Result of deleteMoldByUserId: Delete Form Storage Area by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/formation/sdk/#deletemoldbyuserid
+ */
 class DeleteMoldByUserIdResult implements IResult {
-    /** @var Mold */
+    /** @var Mold Form Storage Area */
     private $item;
 
+    /** @return Mold|null Form Storage Area */
 	public function getItem(): ?Mold {
 		return $this->item;
 	}
 
+    /** @param Mold|null $item Form Storage Area */
 	public function setItem(?Mold $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Mold|null $item Form Storage Area
+     * @return DeleteMoldByUserIdResult
+     */
 	public function withItem(?Mold $item): DeleteMoldByUserIdResult {
 		$this->item = $item;
 		return $this;

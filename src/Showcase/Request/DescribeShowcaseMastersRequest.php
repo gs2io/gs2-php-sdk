@@ -19,51 +19,80 @@ namespace Gs2\Showcase\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for describeShowcaseMasters: List Showcase Masters
+ *
+ * @see https://docs.gs2.io/api_reference/showcase/sdk/#describeshowcasemasters
+ */
 class DescribeShowcaseMastersRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Filter by showcase name prefix */
     private $namePrefix;
-    /** @var string */
+    /** @var string Token specifying the position from which to start acquiring data */
     private $pageToken;
-    /** @var int */
+    /** @var int Number of data items to retrieve */
     private $limit;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DescribeShowcaseMastersRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DescribeShowcaseMastersRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Filter by showcase name prefix */
 	public function getNamePrefix(): ?string {
 		return $this->namePrefix;
 	}
+    /** @param string|null $namePrefix Filter by showcase name prefix */
 	public function setNamePrefix(?string $namePrefix) {
 		$this->namePrefix = $namePrefix;
 	}
+    /**
+     * @param string|null $namePrefix Filter by showcase name prefix
+     * @return DescribeShowcaseMastersRequest
+     */
 	public function withNamePrefix(?string $namePrefix): DescribeShowcaseMastersRequest {
 		$this->namePrefix = $namePrefix;
 		return $this;
 	}
+    /** @return string|null Token specifying the position from which to start acquiring data */
 	public function getPageToken(): ?string {
 		return $this->pageToken;
 	}
+    /** @param string|null $pageToken Token specifying the position from which to start acquiring data */
 	public function setPageToken(?string $pageToken) {
 		$this->pageToken = $pageToken;
 	}
+    /**
+     * @param string|null $pageToken Token specifying the position from which to start acquiring data
+     * @return DescribeShowcaseMastersRequest
+     */
 	public function withPageToken(?string $pageToken): DescribeShowcaseMastersRequest {
 		$this->pageToken = $pageToken;
 		return $this;
 	}
+    /** @return int|null Number of data items to retrieve */
 	public function getLimit(): ?int {
 		return $this->limit;
 	}
+    /** @param int|null $limit Number of data items to retrieve */
 	public function setLimit(?int $limit) {
 		$this->limit = $limit;
 	}
+    /**
+     * @param int|null $limit Number of data items to retrieve
+     * @return DescribeShowcaseMastersRequest
+     */
 	public function withLimit(?int $limit): DescribeShowcaseMastersRequest {
 		$this->limit = $limit;
 		return $this;

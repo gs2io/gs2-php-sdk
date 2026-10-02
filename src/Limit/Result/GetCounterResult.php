@@ -20,18 +20,29 @@ namespace Gs2\Limit\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Limit\Model\Counter;
 
+/**
+ * Result of getCounter: Get a Counter
+ *
+ * @see https://docs.gs2.io/api_reference/limit/sdk/#getcounter
+ */
 class GetCounterResult implements IResult {
-    /** @var Counter */
+    /** @var Counter Counter */
     private $item;
 
+    /** @return Counter|null Counter */
 	public function getItem(): ?Counter {
 		return $this->item;
 	}
 
+    /** @param Counter|null $item Counter */
 	public function setItem(?Counter $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Counter|null $item Counter
+     * @return GetCounterResult
+     */
 	public function withItem(?Counter $item): GetCounterResult {
 		$this->item = $item;
 		return $this;

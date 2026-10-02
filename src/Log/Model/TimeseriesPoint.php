@@ -20,31 +20,48 @@ namespace Gs2\Log\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Timeseries Point
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#timeseriespoint
+ */
 class TimeseriesPoint implements IModel {
 	/**
-     * @var int
+     * @var int Timestamp
 	 */
 	private $timestamp;
 	/**
-     * @var array
+     * @var array Values for each group at this timestamp
 	 */
 	private $values;
+    /** @return int|null Timestamp */
 	public function getTimestamp(): ?int {
 		return $this->timestamp;
 	}
+    /** @param int|null $timestamp Timestamp */
 	public function setTimestamp(?int $timestamp) {
 		$this->timestamp = $timestamp;
 	}
+    /**
+     * @param int|null $timestamp Timestamp
+     * @return TimeseriesPoint
+     */
 	public function withTimestamp(?int $timestamp): TimeseriesPoint {
 		$this->timestamp = $timestamp;
 		return $this;
 	}
+    /** @return array|null Values for each group at this timestamp */
 	public function getValues(): ?array {
 		return $this->values;
 	}
+    /** @param array|null $values Values for each group at this timestamp */
 	public function setValues(?array $values) {
 		$this->values = $values;
 	}
+    /**
+     * @param array|null $values Values for each group at this timestamp
+     * @return TimeseriesPoint
+     */
 	public function withValues(?array $values): TimeseriesPoint {
 		$this->values = $values;
 		return $this;

@@ -20,31 +20,48 @@ namespace Gs2\Version\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Version Status
+ *
+ * @see https://docs.gs2.io/api_reference/version/sdk/#status
+ */
 class Status implements IModel {
 	/**
-     * @var VersionModel
+     * @var VersionModel Version Model
 	 */
 	private $versionModel;
 	/**
-     * @var Version
+     * @var Version Current Version
 	 */
 	private $currentVersion;
+    /** @return VersionModel|null Version Model */
 	public function getVersionModel(): ?VersionModel {
 		return $this->versionModel;
 	}
+    /** @param VersionModel|null $versionModel Version Model */
 	public function setVersionModel(?VersionModel $versionModel) {
 		$this->versionModel = $versionModel;
 	}
+    /**
+     * @param VersionModel|null $versionModel Version Model
+     * @return Status
+     */
 	public function withVersionModel(?VersionModel $versionModel): Status {
 		$this->versionModel = $versionModel;
 		return $this;
 	}
+    /** @return Version|null Current Version */
 	public function getCurrentVersion(): ?Version {
 		return $this->currentVersion;
 	}
+    /** @param Version|null $currentVersion Current Version */
 	public function setCurrentVersion(?Version $currentVersion) {
 		$this->currentVersion = $currentVersion;
 	}
+    /**
+     * @param Version|null $currentVersion Current Version
+     * @return Status
+     */
 	public function withCurrentVersion(?Version $currentVersion): Status {
 		$this->currentVersion = $currentVersion;
 		return $this;

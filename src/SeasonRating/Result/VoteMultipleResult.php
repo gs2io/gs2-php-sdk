@@ -20,18 +20,29 @@ namespace Gs2\SeasonRating\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\SeasonRating\Model\Ballot;
 
+/**
+ * Result of voteMultiple: Compile match results and vote
+ *
+ * @see https://docs.gs2.io/api_reference/season_rating/sdk/#votemultiple
+ */
 class VoteMultipleResult implements IResult {
-    /** @var Ballot */
+    /** @var Ballot Ballot */
     private $item;
 
+    /** @return Ballot|null Ballot */
 	public function getItem(): ?Ballot {
 		return $this->item;
 	}
 
+    /** @param Ballot|null $item Ballot */
 	public function setItem(?Ballot $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Ballot|null $item Ballot
+     * @return VoteMultipleResult
+     */
 	public function withItem(?Ballot $item): VoteMultipleResult {
 		$this->item = $item;
 		return $this;

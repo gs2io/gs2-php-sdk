@@ -20,33 +20,50 @@ namespace Gs2\Ranking2\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Ranking2\Model\GlobalRankingReceivedReward;
 
+/**
+ * Result of createGlobalRankingReceivedRewardByStampTask: Execute record global ranking reward receipt history as consume action
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/stamp_sheet/#gs2ranking2createglobalrankingreceivedrewardbyuserid
+ */
 class CreateGlobalRankingReceivedRewardByStampTaskResult implements IResult {
-    /** @var GlobalRankingReceivedReward */
+    /** @var GlobalRankingReceivedReward Global Ranking Reward Received History */
     private $item;
-    /** @var string */
+    /** @var string Context recording the execution results of Consume Actions */
     private $newContextStack;
 
+    /** @return GlobalRankingReceivedReward|null Global Ranking Reward Received History */
 	public function getItem(): ?GlobalRankingReceivedReward {
 		return $this->item;
 	}
 
+    /** @param GlobalRankingReceivedReward|null $item Global Ranking Reward Received History */
 	public function setItem(?GlobalRankingReceivedReward $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param GlobalRankingReceivedReward|null $item Global Ranking Reward Received History
+     * @return CreateGlobalRankingReceivedRewardByStampTaskResult
+     */
 	public function withItem(?GlobalRankingReceivedReward $item): CreateGlobalRankingReceivedRewardByStampTaskResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null Context recording the execution results of Consume Actions */
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
+    /** @param string|null $newContextStack Context recording the execution results of Consume Actions */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
+    /**
+     * @param string|null $newContextStack Context recording the execution results of Consume Actions
+     * @return CreateGlobalRankingReceivedRewardByStampTaskResult
+     */
 	public function withNewContextStack(?string $newContextStack): CreateGlobalRankingReceivedRewardByStampTaskResult {
 		$this->newContextStack = $newContextStack;
 		return $this;

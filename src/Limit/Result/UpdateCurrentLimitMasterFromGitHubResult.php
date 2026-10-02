@@ -20,18 +20,29 @@ namespace Gs2\Limit\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Limit\Model\CurrentLimitMaster;
 
+/**
+ * Result of updateCurrentLimitMasterFromGitHub: Update currently active Usage Limit Model master data from GitHub
+ *
+ * @see https://docs.gs2.io/api_reference/limit/sdk/#updatecurrentlimitmasterfromgithub
+ */
 class UpdateCurrentLimitMasterFromGitHubResult implements IResult {
-    /** @var CurrentLimitMaster */
+    /** @var CurrentLimitMaster Updated master data of the currently active Usage Limit Models */
     private $item;
 
+    /** @return CurrentLimitMaster|null Updated master data of the currently active Usage Limit Models */
 	public function getItem(): ?CurrentLimitMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentLimitMaster|null $item Updated master data of the currently active Usage Limit Models */
 	public function setItem(?CurrentLimitMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentLimitMaster|null $item Updated master data of the currently active Usage Limit Models
+     * @return UpdateCurrentLimitMasterFromGitHubResult
+     */
 	public function withItem(?CurrentLimitMaster $item): UpdateCurrentLimitMasterFromGitHubResult {
 		$this->item = $item;
 		return $this;

@@ -19,75 +19,116 @@ namespace Gs2\Inventory\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getItemWithSignature: Get Item Set along with the signature
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#getitemwithsignature
+ */
 class GetItemWithSignatureRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Inventory Model Name */
     private $inventoryName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Item Model Name */
     private $itemName;
-    /** @var string */
+    /** @var string Name identifying the Item Set */
     private $itemSetName;
-    /** @var string */
+    /** @var string Encryption Key GRN */
     private $keyId;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetItemWithSignatureRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetItemWithSignatureRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Inventory Model Name */
 	public function getInventoryName(): ?string {
 		return $this->inventoryName;
 	}
+    /** @param string|null $inventoryName Inventory Model Name */
 	public function setInventoryName(?string $inventoryName) {
 		$this->inventoryName = $inventoryName;
 	}
+    /**
+     * @param string|null $inventoryName Inventory Model Name
+     * @return GetItemWithSignatureRequest
+     */
 	public function withInventoryName(?string $inventoryName): GetItemWithSignatureRequest {
 		$this->inventoryName = $inventoryName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return GetItemWithSignatureRequest
+     */
 	public function withAccessToken(?string $accessToken): GetItemWithSignatureRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Item Model Name */
 	public function getItemName(): ?string {
 		return $this->itemName;
 	}
+    /** @param string|null $itemName Item Model Name */
 	public function setItemName(?string $itemName) {
 		$this->itemName = $itemName;
 	}
+    /**
+     * @param string|null $itemName Item Model Name
+     * @return GetItemWithSignatureRequest
+     */
 	public function withItemName(?string $itemName): GetItemWithSignatureRequest {
 		$this->itemName = $itemName;
 		return $this;
 	}
+    /** @return string|null Name identifying the Item Set */
 	public function getItemSetName(): ?string {
 		return $this->itemSetName;
 	}
+    /** @param string|null $itemSetName Name identifying the Item Set */
 	public function setItemSetName(?string $itemSetName) {
 		$this->itemSetName = $itemSetName;
 	}
+    /**
+     * @param string|null $itemSetName Name identifying the Item Set
+     * @return GetItemWithSignatureRequest
+     */
 	public function withItemSetName(?string $itemSetName): GetItemWithSignatureRequest {
 		$this->itemSetName = $itemSetName;
 		return $this;
 	}
+    /** @return string|null Encryption Key GRN */
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
+    /** @param string|null $keyId Encryption Key GRN */
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
+    /**
+     * @param string|null $keyId Encryption Key GRN
+     * @return GetItemWithSignatureRequest
+     */
 	public function withKeyId(?string $keyId): GetItemWithSignatureRequest {
 		$this->keyId = $keyId;
 		return $this;

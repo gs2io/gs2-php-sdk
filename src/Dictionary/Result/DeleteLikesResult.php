@@ -20,18 +20,29 @@ namespace Gs2\Dictionary\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Dictionary\Model\Like;
 
+/**
+ * Result of deleteLikes: Delete likes
+ *
+ * @see https://docs.gs2.io/api_reference/dictionary/sdk/#deletelikes
+ */
 class DeleteLikesResult implements IResult {
-    /** @var array */
+    /** @var array List of Deleted Likes */
     private $items;
 
+    /** @return array|null List of Deleted Likes */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Deleted Likes */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Deleted Likes
+     * @return DeleteLikesResult
+     */
 	public function withItems(?array $items): DeleteLikesResult {
 		$this->items = $items;
 		return $this;

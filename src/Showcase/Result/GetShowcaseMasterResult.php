@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Showcase\Model\DisplayItemMaster;
 use Gs2\Showcase\Model\ShowcaseMaster;
 
+/**
+ * Result of getShowcaseMaster: Get Showcase Master
+ *
+ * @see https://docs.gs2.io/api_reference/showcase/sdk/#getshowcasemaster
+ */
 class GetShowcaseMasterResult implements IResult {
-    /** @var ShowcaseMaster */
+    /** @var ShowcaseMaster Showcase master */
     private $item;
 
+    /** @return ShowcaseMaster|null Showcase master */
 	public function getItem(): ?ShowcaseMaster {
 		return $this->item;
 	}
 
+    /** @param ShowcaseMaster|null $item Showcase master */
 	public function setItem(?ShowcaseMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param ShowcaseMaster|null $item Showcase master
+     * @return GetShowcaseMasterResult
+     */
 	public function withItem(?ShowcaseMaster $item): GetShowcaseMasterResult {
 		$this->item = $item;
 		return $this;

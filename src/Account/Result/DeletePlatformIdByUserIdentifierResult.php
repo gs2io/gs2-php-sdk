@@ -20,18 +20,29 @@ namespace Gs2\Account\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Account\Model\PlatformId;
 
+/**
+ * Result of deletePlatformIdByUserIdentifier: Delete External Platform Account ID by External Platform User ID
+ *
+ * @see https://docs.gs2.io/api_reference/account/sdk/#deleteplatformidbyuseridentifier
+ */
 class DeletePlatformIdByUserIdentifierResult implements IResult {
-    /** @var PlatformId */
+    /** @var PlatformId External Platform Account ID deleted */
     private $item;
 
+    /** @return PlatformId|null External Platform Account ID deleted */
 	public function getItem(): ?PlatformId {
 		return $this->item;
 	}
 
+    /** @param PlatformId|null $item External Platform Account ID deleted */
 	public function setItem(?PlatformId $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param PlatformId|null $item External Platform Account ID deleted
+     * @return DeletePlatformIdByUserIdentifierResult
+     */
 	public function withItem(?PlatformId $item): DeletePlatformIdByUserIdentifierResult {
 		$this->item = $item;
 		return $this;

@@ -22,33 +22,50 @@ use Gs2\Lottery\Model\AcquireAction;
 use Gs2\Lottery\Model\BoxItem;
 use Gs2\Lottery\Model\BoxItems;
 
+/**
+ * Result of describeBoxesByUserId: List boxes by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/lottery/sdk/#describeboxesbyuserid
+ */
 class DescribeBoxesByUserIdResult implements IResult {
-    /** @var array */
+    /** @var array List of box states */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of box states */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of box states */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of box states
+     * @return DescribeBoxesByUserIdResult
+     */
 	public function withItems(?array $items): DescribeBoxesByUserIdResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeBoxesByUserIdResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeBoxesByUserIdResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

@@ -20,33 +20,50 @@ namespace Gs2\Ranking2\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Ranking2\Model\ClusterRankingScore;
 
+/**
+ * Result of verifyClusterRankingScoreByStampTask: Execute the verification of the cluster ranking score as a verification action
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/stamp_sheet/#gs2ranking2verifyclusterrankingscorebyuserid
+ */
 class VerifyClusterRankingScoreByStampTaskResult implements IResult {
-    /** @var ClusterRankingScore */
+    /** @var ClusterRankingScore Cluster Ranking Score */
     private $item;
-    /** @var string */
+    /** @var string Context recording the execution results of verification actions */
     private $newContextStack;
 
+    /** @return ClusterRankingScore|null Cluster Ranking Score */
 	public function getItem(): ?ClusterRankingScore {
 		return $this->item;
 	}
 
+    /** @param ClusterRankingScore|null $item Cluster Ranking Score */
 	public function setItem(?ClusterRankingScore $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param ClusterRankingScore|null $item Cluster Ranking Score
+     * @return VerifyClusterRankingScoreByStampTaskResult
+     */
 	public function withItem(?ClusterRankingScore $item): VerifyClusterRankingScoreByStampTaskResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null Context recording the execution results of verification actions */
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
+    /** @param string|null $newContextStack Context recording the execution results of verification actions */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
+    /**
+     * @param string|null $newContextStack Context recording the execution results of verification actions
+     * @return VerifyClusterRankingScoreByStampTaskResult
+     */
 	public function withNewContextStack(?string $newContextStack): VerifyClusterRankingScoreByStampTaskResult {
 		$this->newContextStack = $newContextStack;
 		return $this;

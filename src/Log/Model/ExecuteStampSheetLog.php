@@ -20,101 +20,148 @@ namespace Gs2\Log\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Transaction Execution Log
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#executestampsheetlog
+ */
 class ExecuteStampSheetLog implements IModel {
 	/**
-     * @var int
+     * @var int Timestamp
 	 */
 	private $timestamp;
 	/**
-     * @var string
+     * @var string Transaction ID
 	 */
 	private $transactionId;
 	/**
-     * @var string
+     * @var string Microservice Type
 	 */
 	private $service;
 	/**
-     * @var string
+     * @var string Microservice Method
 	 */
 	private $method;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var string
+     * @var string Acquire Action
 	 */
 	private $action;
 	/**
-     * @var string
+     * @var string Arguments
 	 */
 	private $args;
+    /** @return int|null Timestamp */
 	public function getTimestamp(): ?int {
 		return $this->timestamp;
 	}
+    /** @param int|null $timestamp Timestamp */
 	public function setTimestamp(?int $timestamp) {
 		$this->timestamp = $timestamp;
 	}
+    /**
+     * @param int|null $timestamp Timestamp
+     * @return ExecuteStampSheetLog
+     */
 	public function withTimestamp(?int $timestamp): ExecuteStampSheetLog {
 		$this->timestamp = $timestamp;
 		return $this;
 	}
+    /** @return string|null Transaction ID */
 	public function getTransactionId(): ?string {
 		return $this->transactionId;
 	}
+    /** @param string|null $transactionId Transaction ID */
 	public function setTransactionId(?string $transactionId) {
 		$this->transactionId = $transactionId;
 	}
+    /**
+     * @param string|null $transactionId Transaction ID
+     * @return ExecuteStampSheetLog
+     */
 	public function withTransactionId(?string $transactionId): ExecuteStampSheetLog {
 		$this->transactionId = $transactionId;
 		return $this;
 	}
+    /** @return string|null Microservice Type */
 	public function getService(): ?string {
 		return $this->service;
 	}
+    /** @param string|null $service Microservice Type */
 	public function setService(?string $service) {
 		$this->service = $service;
 	}
+    /**
+     * @param string|null $service Microservice Type
+     * @return ExecuteStampSheetLog
+     */
 	public function withService(?string $service): ExecuteStampSheetLog {
 		$this->service = $service;
 		return $this;
 	}
+    /** @return string|null Microservice Method */
 	public function getMethod(): ?string {
 		return $this->method;
 	}
+    /** @param string|null $method Microservice Method */
 	public function setMethod(?string $method) {
 		$this->method = $method;
 	}
+    /**
+     * @param string|null $method Microservice Method
+     * @return ExecuteStampSheetLog
+     */
 	public function withMethod(?string $method): ExecuteStampSheetLog {
 		$this->method = $method;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return ExecuteStampSheetLog
+     */
 	public function withUserId(?string $userId): ExecuteStampSheetLog {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Acquire Action */
 	public function getAction(): ?string {
 		return $this->action;
 	}
+    /** @param string|null $action Acquire Action */
 	public function setAction(?string $action) {
 		$this->action = $action;
 	}
+    /**
+     * @param string|null $action Acquire Action
+     * @return ExecuteStampSheetLog
+     */
 	public function withAction(?string $action): ExecuteStampSheetLog {
 		$this->action = $action;
 		return $this;
 	}
+    /** @return string|null Arguments */
 	public function getArgs(): ?string {
 		return $this->args;
 	}
+    /** @param string|null $args Arguments */
 	public function setArgs(?string $args) {
 		$this->args = $args;
 	}
+    /**
+     * @param string|null $args Arguments
+     * @return ExecuteStampSheetLog
+     */
 	public function withArgs(?string $args): ExecuteStampSheetLog {
 		$this->args = $args;
 		return $this;

@@ -19,51 +19,80 @@ namespace Gs2\Showcase\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for describeRandomDisplayItemsByUserId: List Random Displayed Items on Random Showcase by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/showcase/sdk/#describerandomdisplayitemsbyuserid
+ */
 class DescribeRandomDisplayItemsByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Random Showcase name */
     private $showcaseName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DescribeRandomDisplayItemsByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DescribeRandomDisplayItemsByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Random Showcase name */
 	public function getShowcaseName(): ?string {
 		return $this->showcaseName;
 	}
+    /** @param string|null $showcaseName Random Showcase name */
 	public function setShowcaseName(?string $showcaseName) {
 		$this->showcaseName = $showcaseName;
 	}
+    /**
+     * @param string|null $showcaseName Random Showcase name
+     * @return DescribeRandomDisplayItemsByUserIdRequest
+     */
 	public function withShowcaseName(?string $showcaseName): DescribeRandomDisplayItemsByUserIdRequest {
 		$this->showcaseName = $showcaseName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return DescribeRandomDisplayItemsByUserIdRequest
+     */
 	public function withUserId(?string $userId): DescribeRandomDisplayItemsByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return DescribeRandomDisplayItemsByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): DescribeRandomDisplayItemsByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

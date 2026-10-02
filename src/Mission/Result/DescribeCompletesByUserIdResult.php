@@ -20,33 +20,50 @@ namespace Gs2\Mission\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Mission\Model\Complete;
 
+/**
+ * Result of describeCompletesByUserId: List Completion Statuses by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#describecompletesbyuserid
+ */
 class DescribeCompletesByUserIdResult implements IResult {
-    /** @var array */
+    /** @var array List of Completion Statuses */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Completion Statuses */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Completion Statuses */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Completion Statuses
+     * @return DescribeCompletesByUserIdResult
+     */
 	public function withItems(?array $items): DescribeCompletesByUserIdResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeCompletesByUserIdResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeCompletesByUserIdResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

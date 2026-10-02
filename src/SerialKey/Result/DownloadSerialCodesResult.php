@@ -19,18 +19,29 @@ namespace Gs2\SerialKey\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of downloadSerialCodes: Download Serial Codes as a File
+ *
+ * @see https://docs.gs2.io/api_reference/serial_key/sdk/#downloadserialcodes
+ */
 class DownloadSerialCodesResult implements IResult {
-    /** @var string */
+    /** @var string URL of file */
     private $url;
 
+    /** @return string|null URL of file */
 	public function getUrl(): ?string {
 		return $this->url;
 	}
 
+    /** @param string|null $url URL of file */
 	public function setUrl(?string $url) {
 		$this->url = $url;
 	}
 
+    /**
+     * @param string|null $url URL of file
+     * @return DownloadSerialCodesResult
+     */
 	public function withUrl(?string $url): DownloadSerialCodesResult {
 		$this->url = $url;
 		return $this;

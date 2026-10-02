@@ -20,33 +20,50 @@ namespace Gs2\Experience\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Experience\Model\Status;
 
+/**
+ * Result of setExperienceByUserId: Set experience by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/experience/sdk/#setexperiencebyuserid
+ */
 class SetExperienceByUserIdResult implements IResult {
-    /** @var Status */
+    /** @var Status Status updated */
     private $item;
-    /** @var Status */
+    /** @var Status Status before update */
     private $old;
 
+    /** @return Status|null Status updated */
 	public function getItem(): ?Status {
 		return $this->item;
 	}
 
+    /** @param Status|null $item Status updated */
 	public function setItem(?Status $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Status|null $item Status updated
+     * @return SetExperienceByUserIdResult
+     */
 	public function withItem(?Status $item): SetExperienceByUserIdResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return Status|null Status before update */
 	public function getOld(): ?Status {
 		return $this->old;
 	}
 
+    /** @param Status|null $old Status before update */
 	public function setOld(?Status $old) {
 		$this->old = $old;
 	}
 
+    /**
+     * @param Status|null $old Status before update
+     * @return SetExperienceByUserIdResult
+     */
 	public function withOld(?Status $old): SetExperienceByUserIdResult {
 		$this->old = $old;
 		return $this;

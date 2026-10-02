@@ -20,33 +20,50 @@ namespace Gs2\News\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\News\Model\Output;
 
+/**
+ * Result of describeOutputs: List output of content generation progress
+ *
+ * @see https://docs.gs2.io/api_reference/news/sdk/#describeoutputs
+ */
 class DescribeOutputsResult implements IResult {
-    /** @var array */
+    /** @var array List of Output of content generation progress */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Output of content generation progress */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Output of content generation progress */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Output of content generation progress
+     * @return DescribeOutputsResult
+     */
 	public function withItems(?array $items): DescribeOutputsResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeOutputsResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeOutputsResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

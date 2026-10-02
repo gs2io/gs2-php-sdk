@@ -19,15 +19,22 @@ namespace Gs2\Project\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/** Request for enableMfa: Enable MFA */
 class EnableMfaRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Signed in to the account token. */
     private $accountToken;
+    /** @return string|null Signed in to the account token. */
 	public function getAccountToken(): ?string {
 		return $this->accountToken;
 	}
+    /** @param string|null $accountToken Signed in to the account token. */
 	public function setAccountToken(?string $accountToken) {
 		$this->accountToken = $accountToken;
 	}
+    /**
+     * @param string|null $accountToken Signed in to the account token.
+     * @return EnableMfaRequest
+     */
 	public function withAccountToken(?string $accountToken): EnableMfaRequest {
 		$this->accountToken = $accountToken;
 		return $this;

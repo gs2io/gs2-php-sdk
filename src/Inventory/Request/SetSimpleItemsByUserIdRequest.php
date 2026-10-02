@@ -20,65 +20,100 @@ namespace Gs2\Inventory\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Inventory\Model\HeldCount;
 
+/**
+ * Request for setSimpleItemsByUserId: Set the quantity of simple items by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#setsimpleitemsbyuserid
+ */
 class SetSimpleItemsByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Simple Inventory Model name */
     private $inventoryName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var array */
+    /** @var array List of quantity of Simple Items in possession */
     private $counts;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return SetSimpleItemsByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): SetSimpleItemsByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Simple Inventory Model name */
 	public function getInventoryName(): ?string {
 		return $this->inventoryName;
 	}
+    /** @param string|null $inventoryName Simple Inventory Model name */
 	public function setInventoryName(?string $inventoryName) {
 		$this->inventoryName = $inventoryName;
 	}
+    /**
+     * @param string|null $inventoryName Simple Inventory Model name
+     * @return SetSimpleItemsByUserIdRequest
+     */
 	public function withInventoryName(?string $inventoryName): SetSimpleItemsByUserIdRequest {
 		$this->inventoryName = $inventoryName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return SetSimpleItemsByUserIdRequest
+     */
 	public function withUserId(?string $userId): SetSimpleItemsByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return array|null List of quantity of Simple Items in possession */
 	public function getCounts(): ?array {
 		return $this->counts;
 	}
+    /** @param array|null $counts List of quantity of Simple Items in possession */
 	public function setCounts(?array $counts) {
 		$this->counts = $counts;
 	}
+    /**
+     * @param array|null $counts List of quantity of Simple Items in possession
+     * @return SetSimpleItemsByUserIdRequest
+     */
 	public function withCounts(?array $counts): SetSimpleItemsByUserIdRequest {
 		$this->counts = $counts;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return SetSimpleItemsByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): SetSimpleItemsByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

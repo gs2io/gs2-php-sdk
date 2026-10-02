@@ -20,115 +20,168 @@ namespace Gs2\SkillTree\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Node Model
+ *
+ * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#nodemodel
+ */
 class NodeModel implements IModel {
 	/**
-     * @var string
+     * @var string Node Model GRN
 	 */
 	private $nodeModelId;
 	/**
-     * @var string
+     * @var string Node Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var array
+     * @var array List of Release Verify Actions
 	 */
 	private $releaseVerifyActions;
 	/**
-     * @var array
+     * @var array Release Consume Actions
 	 */
 	private $releaseConsumeActions;
 	/**
-     * @var array
+     * @var array Return Acquire Actions
 	 */
 	private $returnAcquireActions;
 	/**
-     * @var float
+     * @var float Restrain Return Rate
 	 */
 	private $restrainReturnRate;
 	/**
-     * @var array
+     * @var array List of Premise Node Names
 	 */
 	private $premiseNodeNames;
+    /** @return string|null Node Model GRN */
 	public function getNodeModelId(): ?string {
 		return $this->nodeModelId;
 	}
+    /** @param string|null $nodeModelId Node Model GRN */
 	public function setNodeModelId(?string $nodeModelId) {
 		$this->nodeModelId = $nodeModelId;
 	}
+    /**
+     * @param string|null $nodeModelId Node Model GRN
+     * @return NodeModel
+     */
 	public function withNodeModelId(?string $nodeModelId): NodeModel {
 		$this->nodeModelId = $nodeModelId;
 		return $this;
 	}
+    /** @return string|null Node Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Node Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Node Model name
+     * @return NodeModel
+     */
 	public function withName(?string $name): NodeModel {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return NodeModel
+     */
 	public function withMetadata(?string $metadata): NodeModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return array|null List of Release Verify Actions */
 	public function getReleaseVerifyActions(): ?array {
 		return $this->releaseVerifyActions;
 	}
+    /** @param array|null $releaseVerifyActions List of Release Verify Actions */
 	public function setReleaseVerifyActions(?array $releaseVerifyActions) {
 		$this->releaseVerifyActions = $releaseVerifyActions;
 	}
+    /**
+     * @param array|null $releaseVerifyActions List of Release Verify Actions
+     * @return NodeModel
+     */
 	public function withReleaseVerifyActions(?array $releaseVerifyActions): NodeModel {
 		$this->releaseVerifyActions = $releaseVerifyActions;
 		return $this;
 	}
+    /** @return array|null Release Consume Actions */
 	public function getReleaseConsumeActions(): ?array {
 		return $this->releaseConsumeActions;
 	}
+    /** @param array|null $releaseConsumeActions Release Consume Actions */
 	public function setReleaseConsumeActions(?array $releaseConsumeActions) {
 		$this->releaseConsumeActions = $releaseConsumeActions;
 	}
+    /**
+     * @param array|null $releaseConsumeActions Release Consume Actions
+     * @return NodeModel
+     */
 	public function withReleaseConsumeActions(?array $releaseConsumeActions): NodeModel {
 		$this->releaseConsumeActions = $releaseConsumeActions;
 		return $this;
 	}
+    /** @return array|null Return Acquire Actions */
 	public function getReturnAcquireActions(): ?array {
 		return $this->returnAcquireActions;
 	}
+    /** @param array|null $returnAcquireActions Return Acquire Actions */
 	public function setReturnAcquireActions(?array $returnAcquireActions) {
 		$this->returnAcquireActions = $returnAcquireActions;
 	}
+    /**
+     * @param array|null $returnAcquireActions Return Acquire Actions
+     * @return NodeModel
+     */
 	public function withReturnAcquireActions(?array $returnAcquireActions): NodeModel {
 		$this->returnAcquireActions = $returnAcquireActions;
 		return $this;
 	}
+    /** @return float|null Restrain Return Rate */
 	public function getRestrainReturnRate(): ?float {
 		return $this->restrainReturnRate;
 	}
+    /** @param float|null $restrainReturnRate Restrain Return Rate */
 	public function setRestrainReturnRate(?float $restrainReturnRate) {
 		$this->restrainReturnRate = $restrainReturnRate;
 	}
+    /**
+     * @param float|null $restrainReturnRate Restrain Return Rate
+     * @return NodeModel
+     */
 	public function withRestrainReturnRate(?float $restrainReturnRate): NodeModel {
 		$this->restrainReturnRate = $restrainReturnRate;
 		return $this;
 	}
+    /** @return array|null List of Premise Node Names */
 	public function getPremiseNodeNames(): ?array {
 		return $this->premiseNodeNames;
 	}
+    /** @param array|null $premiseNodeNames List of Premise Node Names */
 	public function setPremiseNodeNames(?array $premiseNodeNames) {
 		$this->premiseNodeNames = $premiseNodeNames;
 	}
+    /**
+     * @param array|null $premiseNodeNames List of Premise Node Names
+     * @return NodeModel
+     */
 	public function withPremiseNodeNames(?array $premiseNodeNames): NodeModel {
 		$this->premiseNodeNames = $premiseNodeNames;
 		return $this;

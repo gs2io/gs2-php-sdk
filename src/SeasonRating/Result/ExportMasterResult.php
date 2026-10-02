@@ -20,18 +20,29 @@ namespace Gs2\SeasonRating\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\SeasonRating\Model\CurrentSeasonModelMaster;
 
+/**
+ * Result of exportMaster: Export Model Master in a master data format that can be activated
+ *
+ * @see https://docs.gs2.io/api_reference/season_rating/sdk/#exportmaster
+ */
 class ExportMasterResult implements IResult {
-    /** @var CurrentSeasonModelMaster */
+    /** @var CurrentSeasonModelMaster master data that can be activated */
     private $item;
 
+    /** @return CurrentSeasonModelMaster|null master data that can be activated */
 	public function getItem(): ?CurrentSeasonModelMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentSeasonModelMaster|null $item master data that can be activated */
 	public function setItem(?CurrentSeasonModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentSeasonModelMaster|null $item master data that can be activated
+     * @return ExportMasterResult
+     */
 	public function withItem(?CurrentSeasonModelMaster $item): ExportMasterResult {
 		$this->item = $item;
 		return $this;

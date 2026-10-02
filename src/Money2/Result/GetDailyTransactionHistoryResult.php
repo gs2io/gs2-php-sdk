@@ -20,18 +20,29 @@ namespace Gs2\Money2\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Money2\Model\DailyTransactionHistory;
 
+/**
+ * Result of getDailyTransactionHistory: Get daily transaction history by specifying date and currency
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#getdailytransactionhistory
+ */
 class GetDailyTransactionHistoryResult implements IResult {
-    /** @var DailyTransactionHistory */
+    /** @var DailyTransactionHistory DailyTransactionHistory */
     private $item;
 
+    /** @return DailyTransactionHistory|null DailyTransactionHistory */
 	public function getItem(): ?DailyTransactionHistory {
 		return $this->item;
 	}
 
+    /** @param DailyTransactionHistory|null $item DailyTransactionHistory */
 	public function setItem(?DailyTransactionHistory $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param DailyTransactionHistory|null $item DailyTransactionHistory
+     * @return GetDailyTransactionHistoryResult
+     */
 	public function withItem(?DailyTransactionHistory $item): GetDailyTransactionHistoryResult {
 		$this->item = $item;
 		return $this;

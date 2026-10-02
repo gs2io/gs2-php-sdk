@@ -19,39 +19,62 @@ namespace Gs2\Guild\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getLastGuildMasterActivity: Get last activity date and time of guild master
+ *
+ * @see https://docs.gs2.io/api_reference/guild/sdk/#getlastguildmasteractivity
+ */
 class GetLastGuildMasterActivityRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Guild Model name */
     private $guildModelName;
-    /** @var string */
+    /** @var string Guild name */
     private $accessToken;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetLastGuildMasterActivityRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetLastGuildMasterActivityRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Guild Model name */
 	public function getGuildModelName(): ?string {
 		return $this->guildModelName;
 	}
+    /** @param string|null $guildModelName Guild Model name */
 	public function setGuildModelName(?string $guildModelName) {
 		$this->guildModelName = $guildModelName;
 	}
+    /**
+     * @param string|null $guildModelName Guild Model name
+     * @return GetLastGuildMasterActivityRequest
+     */
 	public function withGuildModelName(?string $guildModelName): GetLastGuildMasterActivityRequest {
 		$this->guildModelName = $guildModelName;
 		return $this;
 	}
+    /** @return string|null Guild name */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken Guild name */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken Guild name
+     * @return GetLastGuildMasterActivityRequest
+     */
 	public function withAccessToken(?string $accessToken): GetLastGuildMasterActivityRequest {
 		$this->accessToken = $accessToken;
 		return $this;

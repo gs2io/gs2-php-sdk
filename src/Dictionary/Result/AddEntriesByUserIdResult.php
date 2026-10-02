@@ -20,18 +20,29 @@ namespace Gs2\Dictionary\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Dictionary\Model\Entry;
 
+/**
+ * Result of addEntriesByUserId: Add entries by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/dictionary/sdk/#addentriesbyuserid
+ */
 class AddEntriesByUserIdResult implements IResult {
-    /** @var array */
+    /** @var array List of Added Entries */
     private $items;
 
+    /** @return array|null List of Added Entries */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Added Entries */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Added Entries
+     * @return AddEntriesByUserIdResult
+     */
 	public function withItems(?array $items): AddEntriesByUserIdResult {
 		$this->items = $items;
 		return $this;

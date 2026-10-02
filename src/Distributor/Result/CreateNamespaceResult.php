@@ -25,18 +25,29 @@ use Gs2\Distributor\Model\NotificationSetting;
 use Gs2\Distributor\Model\LogSetting;
 use Gs2\Distributor\Model\Namespace_;
 
+/**
+ * Result of createNamespace: Create Namespace
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#createnamespace
+ */
 class CreateNamespaceResult implements IResult {
-    /** @var Namespace_ */
+    /** @var Namespace_ Namespace created */
     private $item;
 
+    /** @return Namespace_|null Namespace created */
 	public function getItem(): ?Namespace_ {
 		return $this->item;
 	}
 
+    /** @param Namespace_|null $item Namespace created */
 	public function setItem(?Namespace_ $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Namespace_|null $item Namespace created
+     * @return CreateNamespaceResult
+     */
 	public function withItem(?Namespace_ $item): CreateNamespaceResult {
 		$this->item = $item;
 		return $this;

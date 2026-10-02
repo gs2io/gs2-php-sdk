@@ -19,33 +19,50 @@ namespace Gs2\Ranking\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of preUpdateCurrentRankingMaster: Update currently active Ranking Model master data (3-phase version)
+ *
+ * @see https://docs.gs2.io/api_reference/ranking/sdk/#preupdatecurrentrankingmaster
+ */
 class PreUpdateCurrentRankingMasterResult implements IResult {
-    /** @var string */
+    /** @var string Token used to reflect results after upload */
     private $uploadToken;
-    /** @var string */
+    /** @var string URL used to upload */
     private $uploadUrl;
 
+    /** @return string|null Token used to reflect results after upload */
 	public function getUploadToken(): ?string {
 		return $this->uploadToken;
 	}
 
+    /** @param string|null $uploadToken Token used to reflect results after upload */
 	public function setUploadToken(?string $uploadToken) {
 		$this->uploadToken = $uploadToken;
 	}
 
+    /**
+     * @param string|null $uploadToken Token used to reflect results after upload
+     * @return PreUpdateCurrentRankingMasterResult
+     */
 	public function withUploadToken(?string $uploadToken): PreUpdateCurrentRankingMasterResult {
 		$this->uploadToken = $uploadToken;
 		return $this;
 	}
 
+    /** @return string|null URL used to upload */
 	public function getUploadUrl(): ?string {
 		return $this->uploadUrl;
 	}
 
+    /** @param string|null $uploadUrl URL used to upload */
 	public function setUploadUrl(?string $uploadUrl) {
 		$this->uploadUrl = $uploadUrl;
 	}
 
+    /**
+     * @param string|null $uploadUrl URL used to upload
+     * @return PreUpdateCurrentRankingMasterResult
+     */
 	public function withUploadUrl(?string $uploadUrl): PreUpdateCurrentRankingMasterResult {
 		$this->uploadUrl = $uploadUrl;
 		return $this;

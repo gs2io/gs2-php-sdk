@@ -20,48 +20,71 @@ namespace Gs2\Dictionary\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Dictionary\Model\Entry;
 
+/**
+ * Result of getEntryWithSignature: Get Entry with cryptographic signature
+ *
+ * @see https://docs.gs2.io/api_reference/dictionary/sdk/#getentrywithsignature
+ */
 class GetEntryWithSignatureResult implements IResult {
-    /** @var Entry */
+    /** @var Entry Entry */
     private $item;
-    /** @var string */
+    /** @var string Entry information for signature subject */
     private $body;
-    /** @var string */
+    /** @var string signature */
     private $signature;
 
+    /** @return Entry|null Entry */
 	public function getItem(): ?Entry {
 		return $this->item;
 	}
 
+    /** @param Entry|null $item Entry */
 	public function setItem(?Entry $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Entry|null $item Entry
+     * @return GetEntryWithSignatureResult
+     */
 	public function withItem(?Entry $item): GetEntryWithSignatureResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null Entry information for signature subject */
 	public function getBody(): ?string {
 		return $this->body;
 	}
 
+    /** @param string|null $body Entry information for signature subject */
 	public function setBody(?string $body) {
 		$this->body = $body;
 	}
 
+    /**
+     * @param string|null $body Entry information for signature subject
+     * @return GetEntryWithSignatureResult
+     */
 	public function withBody(?string $body): GetEntryWithSignatureResult {
 		$this->body = $body;
 		return $this;
 	}
 
+    /** @return string|null signature */
 	public function getSignature(): ?string {
 		return $this->signature;
 	}
 
+    /** @param string|null $signature signature */
 	public function setSignature(?string $signature) {
 		$this->signature = $signature;
 	}
 
+    /**
+     * @param string|null $signature signature
+     * @return GetEntryWithSignatureResult
+     */
 	public function withSignature(?string $signature): GetEntryWithSignatureResult {
 		$this->signature = $signature;
 		return $this;

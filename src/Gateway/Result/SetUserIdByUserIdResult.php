@@ -20,18 +20,29 @@ namespace Gs2\Gateway\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Gateway\Model\WebSocketSession;
 
+/**
+ * Result of setUserIdByUserId: Set user ID for WebSocket session by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/gateway/sdk/#setuseridbyuserid
+ */
 class SetUserIdByUserIdResult implements IResult {
-    /** @var WebSocketSession */
+    /** @var WebSocketSession WebSocket session updated */
     private $item;
 
+    /** @return WebSocketSession|null WebSocket session updated */
 	public function getItem(): ?WebSocketSession {
 		return $this->item;
 	}
 
+    /** @param WebSocketSession|null $item WebSocket session updated */
 	public function setItem(?WebSocketSession $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param WebSocketSession|null $item WebSocket session updated
+     * @return SetUserIdByUserIdResult
+     */
 	public function withItem(?WebSocketSession $item): SetUserIdByUserIdResult {
 		$this->item = $item;
 		return $this;

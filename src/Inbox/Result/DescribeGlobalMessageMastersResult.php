@@ -22,33 +22,50 @@ use Gs2\Inbox\Model\AcquireAction;
 use Gs2\Inbox\Model\TimeSpan;
 use Gs2\Inbox\Model\GlobalMessageMaster;
 
+/**
+ * Result of describeGlobalMessageMasters: List messages to all users
+ *
+ * @see https://docs.gs2.io/api_reference/inbox/sdk/#describeglobalmessagemasters
+ */
 class DescribeGlobalMessageMastersResult implements IResult {
-    /** @var array */
+    /** @var array List of messages for all users */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of messages for all users */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of messages for all users */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of messages for all users
+     * @return DescribeGlobalMessageMastersResult
+     */
 	public function withItems(?array $items): DescribeGlobalMessageMastersResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeGlobalMessageMastersResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeGlobalMessageMastersResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

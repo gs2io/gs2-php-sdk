@@ -19,63 +19,94 @@ namespace Gs2\Project\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/** Request for createAccount: Create Account */
 class CreateAccountRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string E-Mail */
     private $email;
-    /** @var string */
+    /** @var string Full Name */
     private $fullName;
-    /** @var string */
+    /** @var string Company Name */
     private $companyName;
-    /** @var string */
+    /** @var string Password */
     private $password;
-    /** @var string */
+    /** @var string Language of the email to be sent */
     private $lang;
+    /** @return string|null E-Mail */
 	public function getEmail(): ?string {
 		return $this->email;
 	}
+    /** @param string|null $email E-Mail */
 	public function setEmail(?string $email) {
 		$this->email = $email;
 	}
+    /**
+     * @param string|null $email E-Mail
+     * @return CreateAccountRequest
+     */
 	public function withEmail(?string $email): CreateAccountRequest {
 		$this->email = $email;
 		return $this;
 	}
+    /** @return string|null Full Name */
 	public function getFullName(): ?string {
 		return $this->fullName;
 	}
+    /** @param string|null $fullName Full Name */
 	public function setFullName(?string $fullName) {
 		$this->fullName = $fullName;
 	}
+    /**
+     * @param string|null $fullName Full Name
+     * @return CreateAccountRequest
+     */
 	public function withFullName(?string $fullName): CreateAccountRequest {
 		$this->fullName = $fullName;
 		return $this;
 	}
+    /** @return string|null Company Name */
 	public function getCompanyName(): ?string {
 		return $this->companyName;
 	}
+    /** @param string|null $companyName Company Name */
 	public function setCompanyName(?string $companyName) {
 		$this->companyName = $companyName;
 	}
+    /**
+     * @param string|null $companyName Company Name
+     * @return CreateAccountRequest
+     */
 	public function withCompanyName(?string $companyName): CreateAccountRequest {
 		$this->companyName = $companyName;
 		return $this;
 	}
+    /** @return string|null Password */
 	public function getPassword(): ?string {
 		return $this->password;
 	}
+    /** @param string|null $password Password */
 	public function setPassword(?string $password) {
 		$this->password = $password;
 	}
+    /**
+     * @param string|null $password Password
+     * @return CreateAccountRequest
+     */
 	public function withPassword(?string $password): CreateAccountRequest {
 		$this->password = $password;
 		return $this;
 	}
+    /** @return string|null Language of the email to be sent */
 	public function getLang(): ?string {
 		return $this->lang;
 	}
+    /** @param string|null $lang Language of the email to be sent */
 	public function setLang(?string $lang) {
 		$this->lang = $lang;
 	}
+    /**
+     * @param string|null $lang Language of the email to be sent
+     * @return CreateAccountRequest
+     */
 	public function withLang(?string $lang): CreateAccountRequest {
 		$this->lang = $lang;
 		return $this;

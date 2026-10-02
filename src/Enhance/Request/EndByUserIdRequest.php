@@ -20,53 +20,82 @@ namespace Gs2\Enhance\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Enhance\Model\Config;
 
+/**
+ * Request for endByUserId: Complete enhancement by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/enhance/sdk/#endbyuserid
+ */
 class EndByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var array */
+    /** @var array Configuration values applied to transaction variables */
     private $config;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return EndByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): EndByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return EndByUserIdRequest
+     */
 	public function withUserId(?string $userId): EndByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return array|null Configuration values applied to transaction variables */
 	public function getConfig(): ?array {
 		return $this->config;
 	}
+    /** @param array|null $config Configuration values applied to transaction variables */
 	public function setConfig(?array $config) {
 		$this->config = $config;
 	}
+    /**
+     * @param array|null $config Configuration values applied to transaction variables
+     * @return EndByUserIdRequest
+     */
 	public function withConfig(?array $config): EndByUserIdRequest {
 		$this->config = $config;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return EndByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): EndByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

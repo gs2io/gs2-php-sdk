@@ -20,18 +20,29 @@ namespace Gs2\Money2\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Money2\Model\UnusedBalance;
 
+/**
+ * Result of getUnusedBalance: Get Unused Balance by specifying a currency
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#getunusedbalance
+ */
 class GetUnusedBalanceResult implements IResult {
-    /** @var UnusedBalance */
+    /** @var UnusedBalance Unused Balance */
     private $item;
 
+    /** @return UnusedBalance|null Unused Balance */
 	public function getItem(): ?UnusedBalance {
 		return $this->item;
 	}
 
+    /** @param UnusedBalance|null $item Unused Balance */
 	public function setItem(?UnusedBalance $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param UnusedBalance|null $item Unused Balance
+     * @return GetUnusedBalanceResult
+     */
 	public function withItem(?UnusedBalance $item): GetUnusedBalanceResult {
 		$this->item = $item;
 		return $this;

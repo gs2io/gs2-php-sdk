@@ -19,33 +19,50 @@ namespace Gs2\Distributor\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of runStampSheetWithoutNamespace: Execute acquire action of transaction without specifying the GS2-Distributor Namespace
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#runstampsheetwithoutnamespace
+ */
 class RunStampSheetWithoutNamespaceResult implements IResult {
-    /** @var int */
+    /** @var int Status code */
     private $statusCode;
-    /** @var string */
+    /** @var string Response content */
     private $result;
 
+    /** @return int|null Status code */
 	public function getStatusCode(): ?int {
 		return $this->statusCode;
 	}
 
+    /** @param int|null $statusCode Status code */
 	public function setStatusCode(?int $statusCode) {
 		$this->statusCode = $statusCode;
 	}
 
+    /**
+     * @param int|null $statusCode Status code
+     * @return RunStampSheetWithoutNamespaceResult
+     */
 	public function withStatusCode(?int $statusCode): RunStampSheetWithoutNamespaceResult {
 		$this->statusCode = $statusCode;
 		return $this;
 	}
 
+    /** @return string|null Response content */
 	public function getResult(): ?string {
 		return $this->result;
 	}
 
+    /** @param string|null $result Response content */
 	public function setResult(?string $result) {
 		$this->result = $result;
 	}
 
+    /**
+     * @param string|null $result Response content
+     * @return RunStampSheetWithoutNamespaceResult
+     */
 	public function withResult(?string $result): RunStampSheetWithoutNamespaceResult {
 		$this->result = $result;
 		return $this;

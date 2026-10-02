@@ -3205,25 +3205,22 @@ class UpdateCurrentGradeMasterFromGitHubTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 Grade API クライアント
+ * GS2-Grade API client
  *
- * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/grade/sdk/
  */
 class Gs2GradeRestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#describenamespaces
      */
     public function describeNamespacesAsync(
             DescribeNamespacesRequest $request
@@ -3237,8 +3234,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#describenamespaces
      */
     public function describeNamespaces (
             DescribeNamespacesRequest $request
@@ -3249,8 +3249,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#createnamespace
      */
     public function createNamespaceAsync(
             CreateNamespaceRequest $request
@@ -3264,8 +3267,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#createnamespace
      */
     public function createNamespace (
             CreateNamespaceRequest $request
@@ -3276,8 +3282,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#getnamespacestatus
      */
     public function getNamespaceStatusAsync(
             GetNamespaceStatusRequest $request
@@ -3291,8 +3300,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#getnamespacestatus
      */
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
@@ -3303,8 +3315,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#getnamespace
      */
     public function getNamespaceAsync(
             GetNamespaceRequest $request
@@ -3318,8 +3333,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#getnamespace
      */
     public function getNamespace (
             GetNamespaceRequest $request
@@ -3330,8 +3348,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#updatenamespace
      */
     public function updateNamespaceAsync(
             UpdateNamespaceRequest $request
@@ -3345,8 +3366,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#updatenamespace
      */
     public function updateNamespace (
             UpdateNamespaceRequest $request
@@ -3357,8 +3381,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#deletenamespace
      */
     public function deleteNamespaceAsync(
             DeleteNamespaceRequest $request
@@ -3372,8 +3399,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#deletenamespace
      */
     public function deleteNamespace (
             DeleteNamespaceRequest $request
@@ -3384,8 +3414,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get microservice version
+     *
      * @param GetServiceVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#getserviceversion
      */
     public function getServiceVersionAsync(
             GetServiceVersionRequest $request
@@ -3399,8 +3432,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get microservice version
+     *
      * @param GetServiceVersionRequest $request
      * @return GetServiceVersionResult
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#getserviceversion
      */
     public function getServiceVersion (
             GetServiceVersionRequest $request
@@ -3411,8 +3447,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserIdAsync(
             DumpUserDataByUserIdRequest $request
@@ -3426,8 +3465,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return DumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserId (
             DumpUserDataByUserIdRequest $request
@@ -3438,8 +3480,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserIdAsync(
             CheckDumpUserDataByUserIdRequest $request
@@ -3453,8 +3498,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return CheckDumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserId (
             CheckDumpUserDataByUserIdRequest $request
@@ -3465,8 +3513,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserIdAsync(
             CleanUserDataByUserIdRequest $request
@@ -3480,8 +3531,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return CleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserId (
             CleanUserDataByUserIdRequest $request
@@ -3492,8 +3546,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserIdAsync(
             CheckCleanUserDataByUserIdRequest $request
@@ -3507,8 +3564,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return CheckCleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserId (
             CheckCleanUserDataByUserIdRequest $request
@@ -3519,8 +3579,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserIdAsync(
             PrepareImportUserDataByUserIdRequest $request
@@ -3534,8 +3597,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PrepareImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserId (
             PrepareImportUserDataByUserIdRequest $request
@@ -3546,8 +3612,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserIdAsync(
             ImportUserDataByUserIdRequest $request
@@ -3561,8 +3630,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return ImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserId (
             ImportUserDataByUserIdRequest $request
@@ -3573,8 +3645,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserIdAsync(
             CheckImportUserDataByUserIdRequest $request
@@ -3588,8 +3663,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return CheckImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserId (
             CheckImportUserDataByUserIdRequest $request
@@ -3600,8 +3678,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Grade Model Masters
+     *
      * @param DescribeGradeModelMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#describegrademodelmasters
      */
     public function describeGradeModelMastersAsync(
             DescribeGradeModelMastersRequest $request
@@ -3615,8 +3696,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Grade Model Masters
+     *
      * @param DescribeGradeModelMastersRequest $request
      * @return DescribeGradeModelMastersResult
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#describegrademodelmasters
      */
     public function describeGradeModelMasters (
             DescribeGradeModelMastersRequest $request
@@ -3627,8 +3711,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Grade Model Master
+     *
      * @param CreateGradeModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#creategrademodelmaster
      */
     public function createGradeModelMasterAsync(
             CreateGradeModelMasterRequest $request
@@ -3642,8 +3729,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Grade Model Master
+     *
      * @param CreateGradeModelMasterRequest $request
      * @return CreateGradeModelMasterResult
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#creategrademodelmaster
      */
     public function createGradeModelMaster (
             CreateGradeModelMasterRequest $request
@@ -3654,8 +3744,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Grade Model Master
+     *
      * @param GetGradeModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#getgrademodelmaster
      */
     public function getGradeModelMasterAsync(
             GetGradeModelMasterRequest $request
@@ -3669,8 +3762,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Grade Model Master
+     *
      * @param GetGradeModelMasterRequest $request
      * @return GetGradeModelMasterResult
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#getgrademodelmaster
      */
     public function getGradeModelMaster (
             GetGradeModelMasterRequest $request
@@ -3681,8 +3777,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Grade Model Master
+     *
      * @param UpdateGradeModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#updategrademodelmaster
      */
     public function updateGradeModelMasterAsync(
             UpdateGradeModelMasterRequest $request
@@ -3696,8 +3795,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Grade Model Master
+     *
      * @param UpdateGradeModelMasterRequest $request
      * @return UpdateGradeModelMasterResult
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#updategrademodelmaster
      */
     public function updateGradeModelMaster (
             UpdateGradeModelMasterRequest $request
@@ -3708,8 +3810,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Grade Model Master
+     *
      * @param DeleteGradeModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#deletegrademodelmaster
      */
     public function deleteGradeModelMasterAsync(
             DeleteGradeModelMasterRequest $request
@@ -3723,8 +3828,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Grade Model Master
+     *
      * @param DeleteGradeModelMasterRequest $request
      * @return DeleteGradeModelMasterResult
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#deletegrademodelmaster
      */
     public function deleteGradeModelMaster (
             DeleteGradeModelMasterRequest $request
@@ -3735,8 +3843,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Grade Models
+     *
      * @param DescribeGradeModelsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#describegrademodels
      */
     public function describeGradeModelsAsync(
             DescribeGradeModelsRequest $request
@@ -3750,8 +3861,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Grade Models
+     *
      * @param DescribeGradeModelsRequest $request
      * @return DescribeGradeModelsResult
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#describegrademodels
      */
     public function describeGradeModels (
             DescribeGradeModelsRequest $request
@@ -3762,8 +3876,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Grade Model
+     *
      * @param GetGradeModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#getgrademodel
      */
     public function getGradeModelAsync(
             GetGradeModelRequest $request
@@ -3777,8 +3894,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Grade Model
+     *
      * @param GetGradeModelRequest $request
      * @return GetGradeModelResult
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#getgrademodel
      */
     public function getGradeModel (
             GetGradeModelRequest $request
@@ -3789,8 +3909,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List statuses
+     *
      * @param DescribeStatusesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#describestatuses
      */
     public function describeStatusesAsync(
             DescribeStatusesRequest $request
@@ -3804,8 +3927,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List statuses
+     *
      * @param DescribeStatusesRequest $request
      * @return DescribeStatusesResult
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#describestatuses
      */
     public function describeStatuses (
             DescribeStatusesRequest $request
@@ -3816,8 +3942,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Statuses by User ID
+     *
      * @param DescribeStatusesByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#describestatusesbyuserid
      */
     public function describeStatusesByUserIdAsync(
             DescribeStatusesByUserIdRequest $request
@@ -3831,8 +3960,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Statuses by User ID
+     *
      * @param DescribeStatusesByUserIdRequest $request
      * @return DescribeStatusesByUserIdResult
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#describestatusesbyuserid
      */
     public function describeStatusesByUserId (
             DescribeStatusesByUserIdRequest $request
@@ -3843,8 +3975,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Status
+     *
      * @param GetStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#getstatus
      */
     public function getStatusAsync(
             GetStatusRequest $request
@@ -3858,8 +3993,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Status
+     *
      * @param GetStatusRequest $request
      * @return GetStatusResult
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#getstatus
      */
     public function getStatus (
             GetStatusRequest $request
@@ -3870,8 +4008,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Status by User ID
+     *
      * @param GetStatusByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#getstatusbyuserid
      */
     public function getStatusByUserIdAsync(
             GetStatusByUserIdRequest $request
@@ -3885,8 +4026,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Status by User ID
+     *
      * @param GetStatusByUserIdRequest $request
      * @return GetStatusByUserIdResult
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#getstatusbyuserid
      */
     public function getStatusByUserId (
             GetStatusByUserIdRequest $request
@@ -3897,8 +4041,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Add grade by User ID
+     *
      * @param AddGradeByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#addgradebyuserid
      */
     public function addGradeByUserIdAsync(
             AddGradeByUserIdRequest $request
@@ -3912,8 +4059,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Add grade by User ID
+     *
      * @param AddGradeByUserIdRequest $request
      * @return AddGradeByUserIdResult
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#addgradebyuserid
      */
     public function addGradeByUserId (
             AddGradeByUserIdRequest $request
@@ -3924,8 +4074,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Subtract grade
+     *
      * @param SubGradeRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#subgrade
      */
     public function subGradeAsync(
             SubGradeRequest $request
@@ -3939,8 +4092,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Subtract grade
+     *
      * @param SubGradeRequest $request
      * @return SubGradeResult
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#subgrade
      */
     public function subGrade (
             SubGradeRequest $request
@@ -3951,8 +4107,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Subtract grade by User ID
+     *
      * @param SubGradeByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#subgradebyuserid
      */
     public function subGradeByUserIdAsync(
             SubGradeByUserIdRequest $request
@@ -3966,8 +4125,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Subtract grade by User ID
+     *
      * @param SubGradeByUserIdRequest $request
      * @return SubGradeByUserIdResult
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#subgradebyuserid
      */
     public function subGradeByUserId (
             SubGradeByUserIdRequest $request
@@ -3978,8 +4140,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Set cumulative grade gained
+     *
      * @param SetGradeByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#setgradebyuserid
      */
     public function setGradeByUserIdAsync(
             SetGradeByUserIdRequest $request
@@ -3993,8 +4158,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Set cumulative grade gained
+     *
      * @param SetGradeByUserIdRequest $request
      * @return SetGradeByUserIdResult
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#setgradebyuserid
      */
     public function setGradeByUserId (
             SetGradeByUserIdRequest $request
@@ -4005,8 +4173,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Apply rank cap to GS2-Experience Status
+     *
      * @param ApplyRankCapRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#applyrankcap
      */
     public function applyRankCapAsync(
             ApplyRankCapRequest $request
@@ -4020,8 +4191,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Apply rank cap to GS2-Experience Status
+     *
      * @param ApplyRankCapRequest $request
      * @return ApplyRankCapResult
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#applyrankcap
      */
     public function applyRankCap (
             ApplyRankCapRequest $request
@@ -4032,8 +4206,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Apply rank cap to GS2-Experience Status by User ID
+     *
      * @param ApplyRankCapByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#applyrankcapbyuserid
      */
     public function applyRankCapByUserIdAsync(
             ApplyRankCapByUserIdRequest $request
@@ -4047,8 +4224,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Apply rank cap to GS2-Experience Status by User ID
+     *
      * @param ApplyRankCapByUserIdRequest $request
      * @return ApplyRankCapByUserIdResult
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#applyrankcapbyuserid
      */
     public function applyRankCapByUserId (
             ApplyRankCapByUserIdRequest $request
@@ -4059,8 +4239,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete status by User ID
+     *
      * @param DeleteStatusByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#deletestatusbyuserid
      */
     public function deleteStatusByUserIdAsync(
             DeleteStatusByUserIdRequest $request
@@ -4074,8 +4257,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete status by User ID
+     *
      * @param DeleteStatusByUserIdRequest $request
      * @return DeleteStatusByUserIdResult
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#deletestatusbyuserid
      */
     public function deleteStatusByUserId (
             DeleteStatusByUserIdRequest $request
@@ -4086,8 +4272,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify grade
+     *
      * @param VerifyGradeRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#verifygrade
      */
     public function verifyGradeAsync(
             VerifyGradeRequest $request
@@ -4101,8 +4290,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify grade
+     *
      * @param VerifyGradeRequest $request
      * @return VerifyGradeResult
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#verifygrade
      */
     public function verifyGrade (
             VerifyGradeRequest $request
@@ -4113,8 +4305,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify grade by User ID
+     *
      * @param VerifyGradeByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#verifygradebyuserid
      */
     public function verifyGradeByUserIdAsync(
             VerifyGradeByUserIdRequest $request
@@ -4128,8 +4323,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify grade by User ID
+     *
      * @param VerifyGradeByUserIdRequest $request
      * @return VerifyGradeByUserIdResult
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#verifygradebyuserid
      */
     public function verifyGradeByUserId (
             VerifyGradeByUserIdRequest $request
@@ -4140,8 +4338,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify grade up material
+     *
      * @param VerifyGradeUpMaterialRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#verifygradeupmaterial
      */
     public function verifyGradeUpMaterialAsync(
             VerifyGradeUpMaterialRequest $request
@@ -4155,8 +4356,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify grade up material
+     *
      * @param VerifyGradeUpMaterialRequest $request
      * @return VerifyGradeUpMaterialResult
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#verifygradeupmaterial
      */
     public function verifyGradeUpMaterial (
             VerifyGradeUpMaterialRequest $request
@@ -4167,8 +4371,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify grade up material by User ID
+     *
      * @param VerifyGradeUpMaterialByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#verifygradeupmaterialbyuserid
      */
     public function verifyGradeUpMaterialByUserIdAsync(
             VerifyGradeUpMaterialByUserIdRequest $request
@@ -4182,8 +4389,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify grade up material by User ID
+     *
      * @param VerifyGradeUpMaterialByUserIdRequest $request
      * @return VerifyGradeUpMaterialByUserIdResult
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#verifygradeupmaterialbyuserid
      */
     public function verifyGradeUpMaterialByUserId (
             VerifyGradeUpMaterialByUserIdRequest $request
@@ -4194,8 +4404,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute grade addition as an acquire action
+     *
      * @param AddGradeByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/stamp_sheet/#gs2gradeaddgradebyuserid
      */
     public function addGradeByStampSheetAsync(
             AddGradeByStampSheetRequest $request
@@ -4209,8 +4422,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute grade addition as an acquire action
+     *
      * @param AddGradeByStampSheetRequest $request
      * @return AddGradeByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/grade/stamp_sheet/#gs2gradeaddgradebyuserid
      */
     public function addGradeByStampSheet (
             AddGradeByStampSheetRequest $request
@@ -4221,8 +4437,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute GS2-Experience rank cap application as an acquire action
+     *
      * @param ApplyRankCapByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/stamp_sheet/#gs2gradeapplyrankcapbyuserid
      */
     public function applyRankCapByStampSheetAsync(
             ApplyRankCapByStampSheetRequest $request
@@ -4236,8 +4455,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute GS2-Experience rank cap application as an acquire action
+     *
      * @param ApplyRankCapByStampSheetRequest $request
      * @return ApplyRankCapByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/grade/stamp_sheet/#gs2gradeapplyrankcapbyuserid
      */
     public function applyRankCapByStampSheet (
             ApplyRankCapByStampSheetRequest $request
@@ -4248,8 +4470,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute grade subtraction as a consume action
+     *
      * @param SubGradeByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/stamp_sheet/#gs2gradesubgradebyuserid
      */
     public function subGradeByStampTaskAsync(
             SubGradeByStampTaskRequest $request
@@ -4263,8 +4488,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute grade subtraction as a consume action
+     *
      * @param SubGradeByStampTaskRequest $request
      * @return SubGradeByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/grade/stamp_sheet/#gs2gradesubgradebyuserid
      */
     public function subGradeByStampTask (
             SubGradeByStampTaskRequest $request
@@ -4275,8 +4503,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Multiply acquire actions by grade-based rate
+     *
      * @param MultiplyAcquireActionsByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#multiplyacquireactionsbyuserid
      */
     public function multiplyAcquireActionsByUserIdAsync(
             MultiplyAcquireActionsByUserIdRequest $request
@@ -4290,8 +4521,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Multiply acquire actions by grade-based rate
+     *
      * @param MultiplyAcquireActionsByUserIdRequest $request
      * @return MultiplyAcquireActionsByUserIdResult
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#multiplyacquireactionsbyuserid
      */
     public function multiplyAcquireActionsByUserId (
             MultiplyAcquireActionsByUserIdRequest $request
@@ -4302,8 +4536,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute grade-based acquire action multiplication as an acquire action
+     *
      * @param MultiplyAcquireActionsByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/stamp_sheet/#gs2grademultiplyacquireactionsbyuserid
      */
     public function multiplyAcquireActionsByStampSheetAsync(
             MultiplyAcquireActionsByStampSheetRequest $request
@@ -4317,8 +4554,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute grade-based acquire action multiplication as an acquire action
+     *
      * @param MultiplyAcquireActionsByStampSheetRequest $request
      * @return MultiplyAcquireActionsByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/grade/stamp_sheet/#gs2grademultiplyacquireactionsbyuserid
      */
     public function multiplyAcquireActionsByStampSheet (
             MultiplyAcquireActionsByStampSheetRequest $request
@@ -4329,8 +4569,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute grade verification as a verify action
+     *
      * @param VerifyGradeByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/stamp_sheet/#gs2gradeverifygradebyuserid
      */
     public function verifyGradeByStampTaskAsync(
             VerifyGradeByStampTaskRequest $request
@@ -4344,8 +4587,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute grade verification as a verify action
+     *
      * @param VerifyGradeByStampTaskRequest $request
      * @return VerifyGradeByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/grade/stamp_sheet/#gs2gradeverifygradebyuserid
      */
     public function verifyGradeByStampTask (
             VerifyGradeByStampTaskRequest $request
@@ -4356,8 +4602,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute material verification used for grade up as a verify action
+     *
      * @param VerifyGradeUpMaterialByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/stamp_sheet/#gs2gradeverifygradeupmaterialbyuserid
      */
     public function verifyGradeUpMaterialByStampTaskAsync(
             VerifyGradeUpMaterialByStampTaskRequest $request
@@ -4371,8 +4620,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute material verification used for grade up as a verify action
+     *
      * @param VerifyGradeUpMaterialByStampTaskRequest $request
      * @return VerifyGradeUpMaterialByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/grade/stamp_sheet/#gs2gradeverifygradeupmaterialbyuserid
      */
     public function verifyGradeUpMaterialByStampTask (
             VerifyGradeUpMaterialByStampTaskRequest $request
@@ -4383,8 +4635,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Grade Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#exportmaster
      */
     public function exportMasterAsync(
             ExportMasterRequest $request
@@ -4398,8 +4653,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Grade Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return ExportMasterResult
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#exportmaster
      */
     public function exportMaster (
             ExportMasterRequest $request
@@ -4410,8 +4668,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Grade Model master data
+     *
      * @param GetCurrentGradeMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#getcurrentgrademaster
      */
     public function getCurrentGradeMasterAsync(
             GetCurrentGradeMasterRequest $request
@@ -4425,8 +4686,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Grade Model master data
+     *
      * @param GetCurrentGradeMasterRequest $request
      * @return GetCurrentGradeMasterResult
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#getcurrentgrademaster
      */
     public function getCurrentGradeMaster (
             GetCurrentGradeMasterRequest $request
@@ -4437,8 +4701,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Grade Model master data (3-phase version)
+     *
      * @param PreUpdateCurrentGradeMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#preupdatecurrentgrademaster
      */
     public function preUpdateCurrentGradeMasterAsync(
             PreUpdateCurrentGradeMasterRequest $request
@@ -4452,8 +4719,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Grade Model master data (3-phase version)
+     *
      * @param PreUpdateCurrentGradeMasterRequest $request
      * @return PreUpdateCurrentGradeMasterResult
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#preupdatecurrentgrademaster
      */
     public function preUpdateCurrentGradeMaster (
             PreUpdateCurrentGradeMasterRequest $request
@@ -4464,8 +4734,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Grade Model master data
+     *
      * @param UpdateCurrentGradeMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#updatecurrentgrademaster
      */
     public function updateCurrentGradeMasterAsync(
             UpdateCurrentGradeMasterRequest $request
@@ -4479,8 +4752,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Grade Model master data
+     *
      * @param UpdateCurrentGradeMasterRequest $request
      * @return UpdateCurrentGradeMasterResult
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#updatecurrentgrademaster
      */
     public function updateCurrentGradeMaster (
             UpdateCurrentGradeMasterRequest $request
@@ -4491,8 +4767,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Grade Model master data from GitHub
+     *
      * @param UpdateCurrentGradeMasterFromGitHubRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#updatecurrentgrademasterfromgithub
      */
     public function updateCurrentGradeMasterFromGitHubAsync(
             UpdateCurrentGradeMasterFromGitHubRequest $request
@@ -4506,8 +4785,11 @@ class Gs2GradeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Grade Model master data from GitHub
+     *
      * @param UpdateCurrentGradeMasterFromGitHubRequest $request
      * @return UpdateCurrentGradeMasterFromGitHubResult
+     * @see https://docs.gs2.io/api_reference/grade/sdk/#updatecurrentgrademasterfromgithub
      */
     public function updateCurrentGradeMasterFromGitHub (
             UpdateCurrentGradeMasterFromGitHubRequest $request

@@ -19,39 +19,62 @@ namespace Gs2\Auth\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for loginBySignature: Login with Account Authentication
+ *
+ * @see https://docs.gs2.io/api_reference/auth/sdk/#loginbysignature
+ */
 class LoginBySignatureRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Encryption Key GRN */
     private $keyId;
-    /** @var string */
+    /** @var string Signed authentication payload */
     private $body;
-    /** @var string */
+    /** @var string Signature */
     private $signature;
+    /** @return string|null Encryption Key GRN */
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
+    /** @param string|null $keyId Encryption Key GRN */
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
+    /**
+     * @param string|null $keyId Encryption Key GRN
+     * @return LoginBySignatureRequest
+     */
 	public function withKeyId(?string $keyId): LoginBySignatureRequest {
 		$this->keyId = $keyId;
 		return $this;
 	}
+    /** @return string|null Signed authentication payload */
 	public function getBody(): ?string {
 		return $this->body;
 	}
+    /** @param string|null $body Signed authentication payload */
 	public function setBody(?string $body) {
 		$this->body = $body;
 	}
+    /**
+     * @param string|null $body Signed authentication payload
+     * @return LoginBySignatureRequest
+     */
 	public function withBody(?string $body): LoginBySignatureRequest {
 		$this->body = $body;
 		return $this;
 	}
+    /** @return string|null Signature */
 	public function getSignature(): ?string {
 		return $this->signature;
 	}
+    /** @param string|null $signature Signature */
 	public function setSignature(?string $signature) {
 		$this->signature = $signature;
 	}
+    /**
+     * @param string|null $signature Signature
+     * @return LoginBySignatureRequest
+     */
 	public function withSignature(?string $signature): LoginBySignatureRequest {
 		$this->signature = $signature;
 		return $this;

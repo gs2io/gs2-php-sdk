@@ -19,75 +19,116 @@ namespace Gs2\Stamina\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for createMaxStaminaTableMaster: Create Maximum Stamina Table Master
+ *
+ * @see https://docs.gs2.io/api_reference/stamina/sdk/#createmaxstaminatablemaster
+ */
 class CreateMaxStaminaTableMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Maximum Stamina Value Table Name */
     private $name;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var string */
+    /** @var string Metadata */
     private $metadata;
-    /** @var string */
+    /** @var string Experience Model ID */
     private $experienceModelId;
-    /** @var array */
+    /** @var array Maximum Stamina Values by Rank */
     private $values;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return CreateMaxStaminaTableMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): CreateMaxStaminaTableMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Maximum Stamina Value Table Name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Maximum Stamina Value Table Name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Maximum Stamina Value Table Name
+     * @return CreateMaxStaminaTableMasterRequest
+     */
 	public function withName(?string $name): CreateMaxStaminaTableMasterRequest {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return CreateMaxStaminaTableMasterRequest
+     */
 	public function withDescription(?string $description): CreateMaxStaminaTableMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return CreateMaxStaminaTableMasterRequest
+     */
 	public function withMetadata(?string $metadata): CreateMaxStaminaTableMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return string|null Experience Model ID */
 	public function getExperienceModelId(): ?string {
 		return $this->experienceModelId;
 	}
+    /** @param string|null $experienceModelId Experience Model ID */
 	public function setExperienceModelId(?string $experienceModelId) {
 		$this->experienceModelId = $experienceModelId;
 	}
+    /**
+     * @param string|null $experienceModelId Experience Model ID
+     * @return CreateMaxStaminaTableMasterRequest
+     */
 	public function withExperienceModelId(?string $experienceModelId): CreateMaxStaminaTableMasterRequest {
 		$this->experienceModelId = $experienceModelId;
 		return $this;
 	}
+    /** @return array|null Maximum Stamina Values by Rank */
 	public function getValues(): ?array {
 		return $this->values;
 	}
+    /** @param array|null $values Maximum Stamina Values by Rank */
 	public function setValues(?array $values) {
 		$this->values = $values;
 	}
+    /**
+     * @param array|null $values Maximum Stamina Values by Rank
+     * @return CreateMaxStaminaTableMasterRequest
+     */
 	public function withValues(?array $values): CreateMaxStaminaTableMasterRequest {
 		$this->values = $values;
 		return $this;

@@ -22,18 +22,29 @@ use Gs2\Account\Model\ScopeValue;
 use Gs2\Account\Model\OpenIdConnectSetting;
 use Gs2\Account\Model\TakeOverTypeModelMaster;
 
+/**
+ * Result of deleteTakeOverTypeModelMaster: Delete Takeover Type Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/account/sdk/#deletetakeovertypemodelmaster
+ */
 class DeleteTakeOverTypeModelMasterResult implements IResult {
-    /** @var TakeOverTypeModelMaster */
+    /** @var TakeOverTypeModelMaster Takeover Type Model Master deleted */
     private $item;
 
+    /** @return TakeOverTypeModelMaster|null Takeover Type Model Master deleted */
 	public function getItem(): ?TakeOverTypeModelMaster {
 		return $this->item;
 	}
 
+    /** @param TakeOverTypeModelMaster|null $item Takeover Type Model Master deleted */
 	public function setItem(?TakeOverTypeModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param TakeOverTypeModelMaster|null $item Takeover Type Model Master deleted
+     * @return DeleteTakeOverTypeModelMasterResult
+     */
 	public function withItem(?TakeOverTypeModelMaster $item): DeleteTakeOverTypeModelMasterResult {
 		$this->item = $item;
 		return $this;

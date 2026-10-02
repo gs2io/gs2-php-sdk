@@ -19,89 +19,136 @@ namespace Gs2\Grade\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for verifyGrade: Verify grade
+ *
+ * @see https://docs.gs2.io/api_reference/grade/sdk/#verifygrade
+ */
 class VerifyGradeRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Grade Model Name */
     private $gradeName;
-    /** @var string */
+    /** @var string Type of verification */
     private $verifyType;
-    /** @var string */
+    /** @var string Property ID */
     private $propertyId;
-    /** @var int */
+    /** @var int Current Grade */
     private $gradeValue;
-    /** @var bool */
+    /** @var bool Whether to multiply the value used for verification when specifying the quantity */
     private $multiplyValueSpecifyingQuantity;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return VerifyGradeRequest
+     */
 	public function withNamespaceName(?string $namespaceName): VerifyGradeRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return VerifyGradeRequest
+     */
 	public function withAccessToken(?string $accessToken): VerifyGradeRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Grade Model Name */
 	public function getGradeName(): ?string {
 		return $this->gradeName;
 	}
+    /** @param string|null $gradeName Grade Model Name */
 	public function setGradeName(?string $gradeName) {
 		$this->gradeName = $gradeName;
 	}
+    /**
+     * @param string|null $gradeName Grade Model Name
+     * @return VerifyGradeRequest
+     */
 	public function withGradeName(?string $gradeName): VerifyGradeRequest {
 		$this->gradeName = $gradeName;
 		return $this;
 	}
+    /** @return string|null Type of verification */
 	public function getVerifyType(): ?string {
 		return $this->verifyType;
 	}
+    /** @param string|null $verifyType Type of verification */
 	public function setVerifyType(?string $verifyType) {
 		$this->verifyType = $verifyType;
 	}
+    /**
+     * @param string|null $verifyType Type of verification
+     * @return VerifyGradeRequest
+     */
 	public function withVerifyType(?string $verifyType): VerifyGradeRequest {
 		$this->verifyType = $verifyType;
 		return $this;
 	}
+    /** @return string|null Property ID */
 	public function getPropertyId(): ?string {
 		return $this->propertyId;
 	}
+    /** @param string|null $propertyId Property ID */
 	public function setPropertyId(?string $propertyId) {
 		$this->propertyId = $propertyId;
 	}
+    /**
+     * @param string|null $propertyId Property ID
+     * @return VerifyGradeRequest
+     */
 	public function withPropertyId(?string $propertyId): VerifyGradeRequest {
 		$this->propertyId = $propertyId;
 		return $this;
 	}
+    /** @return int|null Current Grade */
 	public function getGradeValue(): ?int {
 		return $this->gradeValue;
 	}
+    /** @param int|null $gradeValue Current Grade */
 	public function setGradeValue(?int $gradeValue) {
 		$this->gradeValue = $gradeValue;
 	}
+    /**
+     * @param int|null $gradeValue Current Grade
+     * @return VerifyGradeRequest
+     */
 	public function withGradeValue(?int $gradeValue): VerifyGradeRequest {
 		$this->gradeValue = $gradeValue;
 		return $this;
 	}
+    /** @return bool|null Whether to multiply the value used for verification when specifying the quantity */
 	public function getMultiplyValueSpecifyingQuantity(): ?bool {
 		return $this->multiplyValueSpecifyingQuantity;
 	}
+    /** @param bool|null $multiplyValueSpecifyingQuantity Whether to multiply the value used for verification when specifying the quantity */
 	public function setMultiplyValueSpecifyingQuantity(?bool $multiplyValueSpecifyingQuantity) {
 		$this->multiplyValueSpecifyingQuantity = $multiplyValueSpecifyingQuantity;
 	}
+    /**
+     * @param bool|null $multiplyValueSpecifyingQuantity Whether to multiply the value used for verification when specifying the quantity
+     * @return VerifyGradeRequest
+     */
 	public function withMultiplyValueSpecifyingQuantity(?bool $multiplyValueSpecifyingQuantity): VerifyGradeRequest {
 		$this->multiplyValueSpecifyingQuantity = $multiplyValueSpecifyingQuantity;
 		return $this;

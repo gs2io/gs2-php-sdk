@@ -20,33 +20,46 @@ namespace Gs2\Project\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Project\Model\ImportProgress;
 
+/** Result of describeImportProgresses: List Import User Data Progress */
 class DescribeImportProgressesResult implements IResult {
-    /** @var array */
+    /** @var array List of Import User Data Progress */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Import User Data Progress */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Import User Data Progress */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Import User Data Progress
+     * @return DescribeImportProgressesResult
+     */
 	public function withItems(?array $items): DescribeImportProgressesResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeImportProgressesResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeImportProgressesResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Quest\Model\Reward;
 use Gs2\Quest\Model\Progress;
 
+/**
+ * Result of createProgressByStampSheet: Execute the creation of quest progress as an acquire action
+ *
+ * @see https://docs.gs2.io/api_reference/quest/stamp_sheet/#gs2questcreateprogressbyuserid
+ */
 class CreateProgressByStampSheetResult implements IResult {
-    /** @var Progress */
+    /** @var Progress Quest Progress created */
     private $item;
 
+    /** @return Progress|null Quest Progress created */
 	public function getItem(): ?Progress {
 		return $this->item;
 	}
 
+    /** @param Progress|null $item Quest Progress created */
 	public function setItem(?Progress $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Progress|null $item Quest Progress created
+     * @return CreateProgressByStampSheetResult
+     */
 	public function withItem(?Progress $item): CreateProgressByStampSheetResult {
 		$this->item = $item;
 		return $this;

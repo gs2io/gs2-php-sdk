@@ -28,144 +28,213 @@ use Gs2\AdReward\Model\MobileNotificationMessage;
 use Gs2\AdReward\Model\NotificationSetting;
 use Gs2\AdReward\Model\LogSetting;
 
+/**
+ * Request for createNamespace: Create Namespace
+ *
+ * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#createnamespace
+ */
 class CreateNamespaceRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $name;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var TransactionSetting */
+    /** @var TransactionSetting Transaction Setting */
     private $transactionSetting;
-    /** @var TransactionSettingV2 */
+    /** @var TransactionSettingV2 Transaction Setting (V2) */
     private $transactionSettingV2;
-    /** @var AdMob */
+    /** @var AdMob AdMob settings */
     private $admob;
-    /** @var UnityAd */
+    /** @var UnityAd Unity Ads settings */
     private $unityAd;
-    /** @var array */
+    /** @var array AppLovin MAX settings */
     private $appLovinMaxes;
-    /** @var ScriptSetting */
+    /** @var ScriptSetting Script setting to be executed when points are acquired */
     private $acquirePointScript;
-    /** @var ScriptSetting */
+    /** @var ScriptSetting Script setting to be executed when points are consumed */
     private $consumePointScript;
-    /** @var NotificationSetting */
+    /** @var NotificationSetting Push notification when points change */
     private $changePointNotification;
-    /** @var LogSetting */
+    /** @var LogSetting Log Output Setting */
     private $logSetting;
+    /** @return string|null Namespace name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Namespace name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Namespace name
+     * @return CreateNamespaceRequest
+     */
 	public function withName(?string $name): CreateNamespaceRequest {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return CreateNamespaceRequest
+     */
 	public function withDescription(?string $description): CreateNamespaceRequest {
 		$this->description = $description;
 		return $this;
 	}
     /**
+     * @return TransactionSetting|null Transaction Setting
      * @deprecated
      */
 	public function getTransactionSetting(): ?TransactionSetting {
 		return $this->transactionSetting;
 	}
     /**
+     * @param TransactionSetting|null $transactionSetting Transaction Setting
      * @deprecated
      */
 	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
 		$this->transactionSetting = $transactionSetting;
 	}
     /**
+     * @param TransactionSetting|null $transactionSetting Transaction Setting
+     * @return CreateNamespaceRequest
      * @deprecated
      */
 	public function withTransactionSetting(?TransactionSetting $transactionSetting): CreateNamespaceRequest {
 		$this->transactionSetting = $transactionSetting;
 		return $this;
 	}
+    /** @return TransactionSettingV2|null Transaction Setting (V2) */
 	public function getTransactionSettingV2(): ?TransactionSettingV2 {
 		return $this->transactionSettingV2;
 	}
+    /** @param TransactionSettingV2|null $transactionSettingV2 Transaction Setting (V2) */
 	public function setTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2) {
 		$this->transactionSettingV2 = $transactionSettingV2;
 	}
+    /**
+     * @param TransactionSettingV2|null $transactionSettingV2 Transaction Setting (V2)
+     * @return CreateNamespaceRequest
+     */
 	public function withTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2): CreateNamespaceRequest {
 		$this->transactionSettingV2 = $transactionSettingV2;
 		return $this;
 	}
+    /** @return AdMob|null AdMob settings */
 	public function getAdmob(): ?AdMob {
 		return $this->admob;
 	}
+    /** @param AdMob|null $admob AdMob settings */
 	public function setAdmob(?AdMob $admob) {
 		$this->admob = $admob;
 	}
+    /**
+     * @param AdMob|null $admob AdMob settings
+     * @return CreateNamespaceRequest
+     */
 	public function withAdmob(?AdMob $admob): CreateNamespaceRequest {
 		$this->admob = $admob;
 		return $this;
 	}
+    /** @return UnityAd|null Unity Ads settings */
 	public function getUnityAd(): ?UnityAd {
 		return $this->unityAd;
 	}
+    /** @param UnityAd|null $unityAd Unity Ads settings */
 	public function setUnityAd(?UnityAd $unityAd) {
 		$this->unityAd = $unityAd;
 	}
+    /**
+     * @param UnityAd|null $unityAd Unity Ads settings
+     * @return CreateNamespaceRequest
+     */
 	public function withUnityAd(?UnityAd $unityAd): CreateNamespaceRequest {
 		$this->unityAd = $unityAd;
 		return $this;
 	}
+    /** @return array|null AppLovin MAX settings */
 	public function getAppLovinMaxes(): ?array {
 		return $this->appLovinMaxes;
 	}
+    /** @param array|null $appLovinMaxes AppLovin MAX settings */
 	public function setAppLovinMaxes(?array $appLovinMaxes) {
 		$this->appLovinMaxes = $appLovinMaxes;
 	}
+    /**
+     * @param array|null $appLovinMaxes AppLovin MAX settings
+     * @return CreateNamespaceRequest
+     */
 	public function withAppLovinMaxes(?array $appLovinMaxes): CreateNamespaceRequest {
 		$this->appLovinMaxes = $appLovinMaxes;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to be executed when points are acquired */
 	public function getAcquirePointScript(): ?ScriptSetting {
 		return $this->acquirePointScript;
 	}
+    /** @param ScriptSetting|null $acquirePointScript Script setting to be executed when points are acquired */
 	public function setAcquirePointScript(?ScriptSetting $acquirePointScript) {
 		$this->acquirePointScript = $acquirePointScript;
 	}
+    /**
+     * @param ScriptSetting|null $acquirePointScript Script setting to be executed when points are acquired
+     * @return CreateNamespaceRequest
+     */
 	public function withAcquirePointScript(?ScriptSetting $acquirePointScript): CreateNamespaceRequest {
 		$this->acquirePointScript = $acquirePointScript;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to be executed when points are consumed */
 	public function getConsumePointScript(): ?ScriptSetting {
 		return $this->consumePointScript;
 	}
+    /** @param ScriptSetting|null $consumePointScript Script setting to be executed when points are consumed */
 	public function setConsumePointScript(?ScriptSetting $consumePointScript) {
 		$this->consumePointScript = $consumePointScript;
 	}
+    /**
+     * @param ScriptSetting|null $consumePointScript Script setting to be executed when points are consumed
+     * @return CreateNamespaceRequest
+     */
 	public function withConsumePointScript(?ScriptSetting $consumePointScript): CreateNamespaceRequest {
 		$this->consumePointScript = $consumePointScript;
 		return $this;
 	}
+    /** @return NotificationSetting|null Push notification when points change */
 	public function getChangePointNotification(): ?NotificationSetting {
 		return $this->changePointNotification;
 	}
+    /** @param NotificationSetting|null $changePointNotification Push notification when points change */
 	public function setChangePointNotification(?NotificationSetting $changePointNotification) {
 		$this->changePointNotification = $changePointNotification;
 	}
+    /**
+     * @param NotificationSetting|null $changePointNotification Push notification when points change
+     * @return CreateNamespaceRequest
+     */
 	public function withChangePointNotification(?NotificationSetting $changePointNotification): CreateNamespaceRequest {
 		$this->changePointNotification = $changePointNotification;
 		return $this;
 	}
+    /** @return LogSetting|null Log Output Setting */
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
+    /** @param LogSetting|null $logSetting Log Output Setting */
 	public function setLogSetting(?LogSetting $logSetting) {
 		$this->logSetting = $logSetting;
 	}
+    /**
+     * @param LogSetting|null $logSetting Log Output Setting
+     * @return CreateNamespaceRequest
+     */
 	public function withLogSetting(?LogSetting $logSetting): CreateNamespaceRequest {
 		$this->logSetting = $logSetting;
 		return $this;

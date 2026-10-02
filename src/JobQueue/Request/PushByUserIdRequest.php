@@ -20,53 +20,82 @@ namespace Gs2\JobQueue\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\JobQueue\Model\JobEntry;
 
+/**
+ * Request for pushByUserId: Register jobs by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/job_queue/sdk/#pushbyuserid
+ */
 class PushByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var array */
+    /** @var array List of jobs to add */
     private $jobs;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return PushByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): PushByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return PushByUserIdRequest
+     */
 	public function withUserId(?string $userId): PushByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return array|null List of jobs to add */
 	public function getJobs(): ?array {
 		return $this->jobs;
 	}
+    /** @param array|null $jobs List of jobs to add */
 	public function setJobs(?array $jobs) {
 		$this->jobs = $jobs;
 	}
+    /**
+     * @param array|null $jobs List of jobs to add
+     * @return PushByUserIdRequest
+     */
 	public function withJobs(?array $jobs): PushByUserIdRequest {
 		$this->jobs = $jobs;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return PushByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): PushByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

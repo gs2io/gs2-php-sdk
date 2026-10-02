@@ -19,39 +19,62 @@ namespace Gs2\Distributor\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for signFreezeMasterDataTimestamp: Sign a timestamp for freezing master data
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#signfreezemasterdatatimestamp
+ */
 class SignFreezeMasterDataTimestampRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var int */
+    /** @var int Timestamp to freeze master data */
     private $timestamp;
-    /** @var string */
+    /** @var string GS2-Key encryption key GRN used for signature calculation */
     private $keyId;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return SignFreezeMasterDataTimestampRequest
+     */
 	public function withNamespaceName(?string $namespaceName): SignFreezeMasterDataTimestampRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return int|null Timestamp to freeze master data */
 	public function getTimestamp(): ?int {
 		return $this->timestamp;
 	}
+    /** @param int|null $timestamp Timestamp to freeze master data */
 	public function setTimestamp(?int $timestamp) {
 		$this->timestamp = $timestamp;
 	}
+    /**
+     * @param int|null $timestamp Timestamp to freeze master data
+     * @return SignFreezeMasterDataTimestampRequest
+     */
 	public function withTimestamp(?int $timestamp): SignFreezeMasterDataTimestampRequest {
 		$this->timestamp = $timestamp;
 		return $this;
 	}
+    /** @return string|null GS2-Key encryption key GRN used for signature calculation */
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
+    /** @param string|null $keyId GS2-Key encryption key GRN used for signature calculation */
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
+    /**
+     * @param string|null $keyId GS2-Key encryption key GRN used for signature calculation
+     * @return SignFreezeMasterDataTimestampRequest
+     */
 	public function withKeyId(?string $keyId): SignFreezeMasterDataTimestampRequest {
 		$this->keyId = $keyId;
 		return $this;

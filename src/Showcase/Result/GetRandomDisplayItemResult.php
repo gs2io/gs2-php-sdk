@@ -23,18 +23,29 @@ use Gs2\Showcase\Model\ConsumeAction;
 use Gs2\Showcase\Model\AcquireAction;
 use Gs2\Showcase\Model\RandomDisplayItem;
 
+/**
+ * Result of getRandomDisplayItem: Get Random Displayed Item on Random Showcase
+ *
+ * @see https://docs.gs2.io/api_reference/showcase/sdk/#getrandomdisplayitem
+ */
 class GetRandomDisplayItemResult implements IResult {
-    /** @var RandomDisplayItem */
+    /** @var RandomDisplayItem Displayed item */
     private $item;
 
+    /** @return RandomDisplayItem|null Displayed item */
 	public function getItem(): ?RandomDisplayItem {
 		return $this->item;
 	}
 
+    /** @param RandomDisplayItem|null $item Displayed item */
 	public function setItem(?RandomDisplayItem $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param RandomDisplayItem|null $item Displayed item
+     * @return GetRandomDisplayItemResult
+     */
 	public function withItem(?RandomDisplayItem $item): GetRandomDisplayItemResult {
 		$this->item = $item;
 		return $this;

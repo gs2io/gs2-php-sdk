@@ -2649,25 +2649,22 @@ class GetLimitModelTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 Limit API クライアント
+ * GS2-Limit API client
  *
- * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/limit/sdk/
  */
 class Gs2LimitRestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#describenamespaces
      */
     public function describeNamespacesAsync(
             DescribeNamespacesRequest $request
@@ -2681,8 +2678,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#describenamespaces
      */
     public function describeNamespaces (
             DescribeNamespacesRequest $request
@@ -2693,8 +2693,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#createnamespace
      */
     public function createNamespaceAsync(
             CreateNamespaceRequest $request
@@ -2708,8 +2711,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#createnamespace
      */
     public function createNamespace (
             CreateNamespaceRequest $request
@@ -2720,8 +2726,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#getnamespacestatus
      */
     public function getNamespaceStatusAsync(
             GetNamespaceStatusRequest $request
@@ -2735,8 +2744,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#getnamespacestatus
      */
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
@@ -2747,8 +2759,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#getnamespace
      */
     public function getNamespaceAsync(
             GetNamespaceRequest $request
@@ -2762,8 +2777,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#getnamespace
      */
     public function getNamespace (
             GetNamespaceRequest $request
@@ -2774,8 +2792,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#updatenamespace
      */
     public function updateNamespaceAsync(
             UpdateNamespaceRequest $request
@@ -2789,8 +2810,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#updatenamespace
      */
     public function updateNamespace (
             UpdateNamespaceRequest $request
@@ -2801,8 +2825,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#deletenamespace
      */
     public function deleteNamespaceAsync(
             DeleteNamespaceRequest $request
@@ -2816,8 +2843,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#deletenamespace
      */
     public function deleteNamespace (
             DeleteNamespaceRequest $request
@@ -2828,8 +2858,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#getserviceversion
      */
     public function getServiceVersionAsync(
             GetServiceVersionRequest $request
@@ -2843,8 +2876,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return GetServiceVersionResult
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#getserviceversion
      */
     public function getServiceVersion (
             GetServiceVersionRequest $request
@@ -2855,8 +2891,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserIdAsync(
             DumpUserDataByUserIdRequest $request
@@ -2870,8 +2909,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return DumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserId (
             DumpUserDataByUserIdRequest $request
@@ -2882,8 +2924,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserIdAsync(
             CheckDumpUserDataByUserIdRequest $request
@@ -2897,8 +2942,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return CheckDumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserId (
             CheckDumpUserDataByUserIdRequest $request
@@ -2909,8 +2957,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserIdAsync(
             CleanUserDataByUserIdRequest $request
@@ -2924,8 +2975,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return CleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserId (
             CleanUserDataByUserIdRequest $request
@@ -2936,8 +2990,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserIdAsync(
             CheckCleanUserDataByUserIdRequest $request
@@ -2951,8 +3008,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return CheckCleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserId (
             CheckCleanUserDataByUserIdRequest $request
@@ -2963,8 +3023,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserIdAsync(
             PrepareImportUserDataByUserIdRequest $request
@@ -2978,8 +3041,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PrepareImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserId (
             PrepareImportUserDataByUserIdRequest $request
@@ -2990,8 +3056,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserIdAsync(
             ImportUserDataByUserIdRequest $request
@@ -3005,8 +3074,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return ImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserId (
             ImportUserDataByUserIdRequest $request
@@ -3017,8 +3089,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserIdAsync(
             CheckImportUserDataByUserIdRequest $request
@@ -3032,8 +3107,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return CheckImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserId (
             CheckImportUserDataByUserIdRequest $request
@@ -3044,8 +3122,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Counters
+     *
      * @param DescribeCountersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#describecounters
      */
     public function describeCountersAsync(
             DescribeCountersRequest $request
@@ -3059,8 +3140,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Counters
+     *
      * @param DescribeCountersRequest $request
      * @return DescribeCountersResult
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#describecounters
      */
     public function describeCounters (
             DescribeCountersRequest $request
@@ -3071,8 +3155,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Counters by User ID
+     *
      * @param DescribeCountersByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#describecountersbyuserid
      */
     public function describeCountersByUserIdAsync(
             DescribeCountersByUserIdRequest $request
@@ -3086,8 +3173,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Counters by User ID
+     *
      * @param DescribeCountersByUserIdRequest $request
      * @return DescribeCountersByUserIdResult
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#describecountersbyuserid
      */
     public function describeCountersByUserId (
             DescribeCountersByUserIdRequest $request
@@ -3098,8 +3188,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get a Counter
+     *
      * @param GetCounterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#getcounter
      */
     public function getCounterAsync(
             GetCounterRequest $request
@@ -3113,8 +3206,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get a Counter
+     *
      * @param GetCounterRequest $request
      * @return GetCounterResult
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#getcounter
      */
     public function getCounter (
             GetCounterRequest $request
@@ -3125,8 +3221,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get a Counter by User ID
+     *
      * @param GetCounterByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#getcounterbyuserid
      */
     public function getCounterByUserIdAsync(
             GetCounterByUserIdRequest $request
@@ -3140,8 +3239,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get a Counter by User ID
+     *
      * @param GetCounterByUserIdRequest $request
      * @return GetCounterByUserIdResult
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#getcounterbyuserid
      */
     public function getCounterByUserId (
             GetCounterByUserIdRequest $request
@@ -3152,8 +3254,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Count-up
+     *
      * @param CountUpRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#countup
      */
     public function countUpAsync(
             CountUpRequest $request
@@ -3167,8 +3272,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Count-up
+     *
      * @param CountUpRequest $request
      * @return CountUpResult
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#countup
      */
     public function countUp (
             CountUpRequest $request
@@ -3179,8 +3287,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Count-up by User ID
+     *
      * @param CountUpByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#countupbyuserid
      */
     public function countUpByUserIdAsync(
             CountUpByUserIdRequest $request
@@ -3194,8 +3305,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Count-up by User ID
+     *
      * @param CountUpByUserIdRequest $request
      * @return CountUpByUserIdResult
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#countupbyuserid
      */
     public function countUpByUserId (
             CountUpByUserIdRequest $request
@@ -3206,8 +3320,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Count-down by User ID
+     *
      * @param CountDownByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#countdownbyuserid
      */
     public function countDownByUserIdAsync(
             CountDownByUserIdRequest $request
@@ -3221,8 +3338,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Count-down by User ID
+     *
      * @param CountDownByUserIdRequest $request
      * @return CountDownByUserIdResult
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#countdownbyuserid
      */
     public function countDownByUserId (
             CountDownByUserIdRequest $request
@@ -3233,8 +3353,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Counter by User ID
+     *
      * @param DeleteCounterByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#deletecounterbyuserid
      */
     public function deleteCounterByUserIdAsync(
             DeleteCounterByUserIdRequest $request
@@ -3248,8 +3371,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Counter by User ID
+     *
      * @param DeleteCounterByUserIdRequest $request
      * @return DeleteCounterByUserIdResult
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#deletecounterbyuserid
      */
     public function deleteCounterByUserId (
             DeleteCounterByUserIdRequest $request
@@ -3260,8 +3386,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify Counter value
+     *
      * @param VerifyCounterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#verifycounter
      */
     public function verifyCounterAsync(
             VerifyCounterRequest $request
@@ -3275,8 +3404,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify Counter value
+     *
      * @param VerifyCounterRequest $request
      * @return VerifyCounterResult
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#verifycounter
      */
     public function verifyCounter (
             VerifyCounterRequest $request
@@ -3287,8 +3419,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify Counter value by User ID
+     *
      * @param VerifyCounterByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#verifycounterbyuserid
      */
     public function verifyCounterByUserIdAsync(
             VerifyCounterByUserIdRequest $request
@@ -3302,8 +3437,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify Counter value by User ID
+     *
      * @param VerifyCounterByUserIdRequest $request
      * @return VerifyCounterByUserIdResult
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#verifycounterbyuserid
      */
     public function verifyCounterByUserId (
             VerifyCounterByUserIdRequest $request
@@ -3314,8 +3452,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute count-up as consume action
+     *
      * @param CountUpByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/limit/stamp_sheet/#gs2limitcountupbyuserid
      */
     public function countUpByStampTaskAsync(
             CountUpByStampTaskRequest $request
@@ -3329,8 +3470,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute count-up as consume action
+     *
      * @param CountUpByStampTaskRequest $request
      * @return CountUpByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/limit/stamp_sheet/#gs2limitcountupbyuserid
      */
     public function countUpByStampTask (
             CountUpByStampTaskRequest $request
@@ -3341,8 +3485,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute count-down as an acquire action
+     *
      * @param CountDownByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/limit/stamp_sheet/#gs2limitcountdownbyuserid
      */
     public function countDownByStampSheetAsync(
             CountDownByStampSheetRequest $request
@@ -3356,8 +3503,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute count-down as an acquire action
+     *
      * @param CountDownByStampSheetRequest $request
      * @return CountDownByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/limit/stamp_sheet/#gs2limitcountdownbyuserid
      */
     public function countDownByStampSheet (
             CountDownByStampSheetRequest $request
@@ -3368,8 +3518,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute Counter deletion as an acquire action
+     *
      * @param DeleteByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/limit/stamp_sheet/#gs2limitdeletecounterbyuserid
      */
     public function deleteByStampSheetAsync(
             DeleteByStampSheetRequest $request
@@ -3383,8 +3536,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute Counter deletion as an acquire action
+     *
      * @param DeleteByStampSheetRequest $request
      * @return DeleteByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/limit/stamp_sheet/#gs2limitdeletecounterbyuserid
      */
     public function deleteByStampSheet (
             DeleteByStampSheetRequest $request
@@ -3395,8 +3551,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute Counter value verification as a verify action
+     *
      * @param VerifyCounterByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/limit/stamp_sheet/#gs2limitverifycounterbyuserid
      */
     public function verifyCounterByStampTaskAsync(
             VerifyCounterByStampTaskRequest $request
@@ -3410,8 +3569,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute Counter value verification as a verify action
+     *
      * @param VerifyCounterByStampTaskRequest $request
      * @return VerifyCounterByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/limit/stamp_sheet/#gs2limitverifycounterbyuserid
      */
     public function verifyCounterByStampTask (
             VerifyCounterByStampTaskRequest $request
@@ -3422,8 +3584,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Usage Limit Model Masters
+     *
      * @param DescribeLimitModelMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#describelimitmodelmasters
      */
     public function describeLimitModelMastersAsync(
             DescribeLimitModelMastersRequest $request
@@ -3437,8 +3602,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Usage Limit Model Masters
+     *
      * @param DescribeLimitModelMastersRequest $request
      * @return DescribeLimitModelMastersResult
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#describelimitmodelmasters
      */
     public function describeLimitModelMasters (
             DescribeLimitModelMastersRequest $request
@@ -3449,8 +3617,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Usage Limit Model Master
+     *
      * @param CreateLimitModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#createlimitmodelmaster
      */
     public function createLimitModelMasterAsync(
             CreateLimitModelMasterRequest $request
@@ -3464,8 +3635,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Usage Limit Model Master
+     *
      * @param CreateLimitModelMasterRequest $request
      * @return CreateLimitModelMasterResult
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#createlimitmodelmaster
      */
     public function createLimitModelMaster (
             CreateLimitModelMasterRequest $request
@@ -3476,8 +3650,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get a Usage Limit Model Master
+     *
      * @param GetLimitModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#getlimitmodelmaster
      */
     public function getLimitModelMasterAsync(
             GetLimitModelMasterRequest $request
@@ -3491,8 +3668,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get a Usage Limit Model Master
+     *
      * @param GetLimitModelMasterRequest $request
      * @return GetLimitModelMasterResult
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#getlimitmodelmaster
      */
     public function getLimitModelMaster (
             GetLimitModelMasterRequest $request
@@ -3503,8 +3683,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Usage Limit Model Master
+     *
      * @param UpdateLimitModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#updatelimitmodelmaster
      */
     public function updateLimitModelMasterAsync(
             UpdateLimitModelMasterRequest $request
@@ -3518,8 +3701,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Usage Limit Model Master
+     *
      * @param UpdateLimitModelMasterRequest $request
      * @return UpdateLimitModelMasterResult
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#updatelimitmodelmaster
      */
     public function updateLimitModelMaster (
             UpdateLimitModelMasterRequest $request
@@ -3530,8 +3716,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Usage Limit Model Master
+     *
      * @param DeleteLimitModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#deletelimitmodelmaster
      */
     public function deleteLimitModelMasterAsync(
             DeleteLimitModelMasterRequest $request
@@ -3545,8 +3734,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Usage Limit Model Master
+     *
      * @param DeleteLimitModelMasterRequest $request
      * @return DeleteLimitModelMasterResult
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#deletelimitmodelmaster
      */
     public function deleteLimitModelMaster (
             DeleteLimitModelMasterRequest $request
@@ -3557,8 +3749,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Usage Limit Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#exportmaster
      */
     public function exportMasterAsync(
             ExportMasterRequest $request
@@ -3572,8 +3767,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Usage Limit Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return ExportMasterResult
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#exportmaster
      */
     public function exportMaster (
             ExportMasterRequest $request
@@ -3584,8 +3782,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Usage Limit Model master data
+     *
      * @param GetCurrentLimitMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#getcurrentlimitmaster
      */
     public function getCurrentLimitMasterAsync(
             GetCurrentLimitMasterRequest $request
@@ -3599,8 +3800,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Usage Limit Model master data
+     *
      * @param GetCurrentLimitMasterRequest $request
      * @return GetCurrentLimitMasterResult
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#getcurrentlimitmaster
      */
     public function getCurrentLimitMaster (
             GetCurrentLimitMasterRequest $request
@@ -3611,8 +3815,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Usage Limit Model master data (3-phase version)
+     *
      * @param PreUpdateCurrentLimitMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#preupdatecurrentlimitmaster
      */
     public function preUpdateCurrentLimitMasterAsync(
             PreUpdateCurrentLimitMasterRequest $request
@@ -3626,8 +3833,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Usage Limit Model master data (3-phase version)
+     *
      * @param PreUpdateCurrentLimitMasterRequest $request
      * @return PreUpdateCurrentLimitMasterResult
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#preupdatecurrentlimitmaster
      */
     public function preUpdateCurrentLimitMaster (
             PreUpdateCurrentLimitMasterRequest $request
@@ -3638,8 +3848,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Usage Limit Model master data
+     *
      * @param UpdateCurrentLimitMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#updatecurrentlimitmaster
      */
     public function updateCurrentLimitMasterAsync(
             UpdateCurrentLimitMasterRequest $request
@@ -3653,8 +3866,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Usage Limit Model master data
+     *
      * @param UpdateCurrentLimitMasterRequest $request
      * @return UpdateCurrentLimitMasterResult
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#updatecurrentlimitmaster
      */
     public function updateCurrentLimitMaster (
             UpdateCurrentLimitMasterRequest $request
@@ -3665,8 +3881,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Usage Limit Model master data from GitHub
+     *
      * @param UpdateCurrentLimitMasterFromGitHubRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#updatecurrentlimitmasterfromgithub
      */
     public function updateCurrentLimitMasterFromGitHubAsync(
             UpdateCurrentLimitMasterFromGitHubRequest $request
@@ -3680,8 +3899,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Usage Limit Model master data from GitHub
+     *
      * @param UpdateCurrentLimitMasterFromGitHubRequest $request
      * @return UpdateCurrentLimitMasterFromGitHubResult
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#updatecurrentlimitmasterfromgithub
      */
     public function updateCurrentLimitMasterFromGitHub (
             UpdateCurrentLimitMasterFromGitHubRequest $request
@@ -3692,8 +3914,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Usage Limit Models
+     *
      * @param DescribeLimitModelsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#describelimitmodels
      */
     public function describeLimitModelsAsync(
             DescribeLimitModelsRequest $request
@@ -3707,8 +3932,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Usage Limit Models
+     *
      * @param DescribeLimitModelsRequest $request
      * @return DescribeLimitModelsResult
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#describelimitmodels
      */
     public function describeLimitModels (
             DescribeLimitModelsRequest $request
@@ -3719,8 +3947,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Usage Limit Model
+     *
      * @param GetLimitModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#getlimitmodel
      */
     public function getLimitModelAsync(
             GetLimitModelRequest $request
@@ -3734,8 +3965,11 @@ class Gs2LimitRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Usage Limit Model
+     *
      * @param GetLimitModelRequest $request
      * @return GetLimitModelResult
+     * @see https://docs.gs2.io/api_reference/limit/sdk/#getlimitmodel
      */
     public function getLimitModel (
             GetLimitModelRequest $request

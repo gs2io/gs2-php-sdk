@@ -19,6 +19,11 @@ namespace Gs2\Gateway\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of sendMobileNotificationByUserId: Send mobile push notification
+ *
+ * @see https://docs.gs2.io/api_reference/gateway/sdk/#sendmobilenotificationbyuserid
+ */
 class SendMobileNotificationByUserIdResult implements IResult {
 
     public static function fromJson(?array $data): ?SendMobileNotificationByUserIdResult {

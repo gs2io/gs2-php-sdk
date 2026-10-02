@@ -1213,25 +1213,22 @@ class DeleteGitHubApiKeyTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 Key API クライアント
+ * GS2-Key API client
  *
- * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/key/sdk/
  */
 class Gs2KeyRestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/key/sdk/#describenamespaces
      */
     public function describeNamespacesAsync(
             DescribeNamespacesRequest $request
@@ -1245,8 +1242,11 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
+     * @see https://docs.gs2.io/api_reference/key/sdk/#describenamespaces
      */
     public function describeNamespaces (
             DescribeNamespacesRequest $request
@@ -1257,8 +1257,11 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/key/sdk/#createnamespace
      */
     public function createNamespaceAsync(
             CreateNamespaceRequest $request
@@ -1272,8 +1275,11 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/key/sdk/#createnamespace
      */
     public function createNamespace (
             CreateNamespaceRequest $request
@@ -1284,8 +1290,11 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/key/sdk/#getnamespacestatus
      */
     public function getNamespaceStatusAsync(
             GetNamespaceStatusRequest $request
@@ -1299,8 +1308,11 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
+     * @see https://docs.gs2.io/api_reference/key/sdk/#getnamespacestatus
      */
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
@@ -1311,8 +1323,11 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/key/sdk/#getnamespace
      */
     public function getNamespaceAsync(
             GetNamespaceRequest $request
@@ -1326,8 +1341,11 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
+     * @see https://docs.gs2.io/api_reference/key/sdk/#getnamespace
      */
     public function getNamespace (
             GetNamespaceRequest $request
@@ -1338,8 +1356,11 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/key/sdk/#updatenamespace
      */
     public function updateNamespaceAsync(
             UpdateNamespaceRequest $request
@@ -1353,8 +1374,11 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/key/sdk/#updatenamespace
      */
     public function updateNamespace (
             UpdateNamespaceRequest $request
@@ -1365,8 +1389,11 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/key/sdk/#deletenamespace
      */
     public function deleteNamespaceAsync(
             DeleteNamespaceRequest $request
@@ -1380,8 +1407,11 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
+     * @see https://docs.gs2.io/api_reference/key/sdk/#deletenamespace
      */
     public function deleteNamespace (
             DeleteNamespaceRequest $request
@@ -1392,8 +1422,11 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/key/sdk/#getserviceversion
      */
     public function getServiceVersionAsync(
             GetServiceVersionRequest $request
@@ -1407,8 +1440,11 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return GetServiceVersionResult
+     * @see https://docs.gs2.io/api_reference/key/sdk/#getserviceversion
      */
     public function getServiceVersion (
             GetServiceVersionRequest $request
@@ -1419,8 +1455,11 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Encryption Keys
+     *
      * @param DescribeKeysRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/key/sdk/#describekeys
      */
     public function describeKeysAsync(
             DescribeKeysRequest $request
@@ -1434,8 +1473,11 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Encryption Keys
+     *
      * @param DescribeKeysRequest $request
      * @return DescribeKeysResult
+     * @see https://docs.gs2.io/api_reference/key/sdk/#describekeys
      */
     public function describeKeys (
             DescribeKeysRequest $request
@@ -1446,8 +1488,11 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Encryption Key
+     *
      * @param CreateKeyRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/key/sdk/#createkey
      */
     public function createKeyAsync(
             CreateKeyRequest $request
@@ -1461,8 +1506,11 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Encryption Key
+     *
      * @param CreateKeyRequest $request
      * @return CreateKeyResult
+     * @see https://docs.gs2.io/api_reference/key/sdk/#createkey
      */
     public function createKey (
             CreateKeyRequest $request
@@ -1473,8 +1521,11 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Encryption Key
+     *
      * @param UpdateKeyRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/key/sdk/#updatekey
      */
     public function updateKeyAsync(
             UpdateKeyRequest $request
@@ -1488,8 +1539,11 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Encryption Key
+     *
      * @param UpdateKeyRequest $request
      * @return UpdateKeyResult
+     * @see https://docs.gs2.io/api_reference/key/sdk/#updatekey
      */
     public function updateKey (
             UpdateKeyRequest $request
@@ -1500,8 +1554,11 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Encryption Key
+     *
      * @param GetKeyRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/key/sdk/#getkey
      */
     public function getKeyAsync(
             GetKeyRequest $request
@@ -1515,8 +1572,11 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Encryption Key
+     *
      * @param GetKeyRequest $request
      * @return GetKeyResult
+     * @see https://docs.gs2.io/api_reference/key/sdk/#getkey
      */
     public function getKey (
             GetKeyRequest $request
@@ -1527,8 +1587,11 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Encryption Key
+     *
      * @param DeleteKeyRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/key/sdk/#deletekey
      */
     public function deleteKeyAsync(
             DeleteKeyRequest $request
@@ -1542,8 +1605,11 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Encryption Key
+     *
      * @param DeleteKeyRequest $request
      * @return DeleteKeyResult
+     * @see https://docs.gs2.io/api_reference/key/sdk/#deletekey
      */
     public function deleteKey (
             DeleteKeyRequest $request
@@ -1554,8 +1620,11 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Encrypt data
+     *
      * @param EncryptRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/key/sdk/#encrypt
      */
     public function encryptAsync(
             EncryptRequest $request
@@ -1569,8 +1638,11 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Encrypt data
+     *
      * @param EncryptRequest $request
      * @return EncryptResult
+     * @see https://docs.gs2.io/api_reference/key/sdk/#encrypt
      */
     public function encrypt (
             EncryptRequest $request
@@ -1581,8 +1653,11 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Decrypt data
+     *
      * @param DecryptRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/key/sdk/#decrypt
      */
     public function decryptAsync(
             DecryptRequest $request
@@ -1596,8 +1671,11 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Decrypt data
+     *
      * @param DecryptRequest $request
      * @return DecryptResult
+     * @see https://docs.gs2.io/api_reference/key/sdk/#decrypt
      */
     public function decrypt (
             DecryptRequest $request
@@ -1608,8 +1686,11 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List GitHub API Keys
+     *
      * @param DescribeGitHubApiKeysRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/key/sdk/#describegithubapikeys
      */
     public function describeGitHubApiKeysAsync(
             DescribeGitHubApiKeysRequest $request
@@ -1623,8 +1704,11 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List GitHub API Keys
+     *
      * @param DescribeGitHubApiKeysRequest $request
      * @return DescribeGitHubApiKeysResult
+     * @see https://docs.gs2.io/api_reference/key/sdk/#describegithubapikeys
      */
     public function describeGitHubApiKeys (
             DescribeGitHubApiKeysRequest $request
@@ -1635,8 +1719,11 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create GitHub API Key
+     *
      * @param CreateGitHubApiKeyRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/key/sdk/#creategithubapikey
      */
     public function createGitHubApiKeyAsync(
             CreateGitHubApiKeyRequest $request
@@ -1650,8 +1737,11 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create GitHub API Key
+     *
      * @param CreateGitHubApiKeyRequest $request
      * @return CreateGitHubApiKeyResult
+     * @see https://docs.gs2.io/api_reference/key/sdk/#creategithubapikey
      */
     public function createGitHubApiKey (
             CreateGitHubApiKeyRequest $request
@@ -1662,8 +1752,11 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update GitHub API Key
+     *
      * @param UpdateGitHubApiKeyRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/key/sdk/#updategithubapikey
      */
     public function updateGitHubApiKeyAsync(
             UpdateGitHubApiKeyRequest $request
@@ -1677,8 +1770,11 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update GitHub API Key
+     *
      * @param UpdateGitHubApiKeyRequest $request
      * @return UpdateGitHubApiKeyResult
+     * @see https://docs.gs2.io/api_reference/key/sdk/#updategithubapikey
      */
     public function updateGitHubApiKey (
             UpdateGitHubApiKeyRequest $request
@@ -1689,8 +1785,11 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get GitHub API Key
+     *
      * @param GetGitHubApiKeyRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/key/sdk/#getgithubapikey
      */
     public function getGitHubApiKeyAsync(
             GetGitHubApiKeyRequest $request
@@ -1704,8 +1803,11 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get GitHub API Key
+     *
      * @param GetGitHubApiKeyRequest $request
      * @return GetGitHubApiKeyResult
+     * @see https://docs.gs2.io/api_reference/key/sdk/#getgithubapikey
      */
     public function getGitHubApiKey (
             GetGitHubApiKeyRequest $request
@@ -1716,8 +1818,11 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete GitHub API Key
+     *
      * @param DeleteGitHubApiKeyRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/key/sdk/#deletegithubapikey
      */
     public function deleteGitHubApiKeyAsync(
             DeleteGitHubApiKeyRequest $request
@@ -1731,8 +1836,11 @@ class Gs2KeyRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete GitHub API Key
+     *
      * @param DeleteGitHubApiKeyRequest $request
      * @return DeleteGitHubApiKeyResult
+     * @see https://docs.gs2.io/api_reference/key/sdk/#deletegithubapikey
      */
     public function deleteGitHubApiKey (
             DeleteGitHubApiKeyRequest $request

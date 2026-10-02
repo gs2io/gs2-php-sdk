@@ -19,39 +19,62 @@ namespace Gs2\Showcase\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for describeRandomDisplayItems: List Random Displayed Items
+ *
+ * @see https://docs.gs2.io/api_reference/showcase/sdk/#describerandomdisplayitems
+ */
 class DescribeRandomDisplayItemsRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Random Showcase name */
     private $showcaseName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DescribeRandomDisplayItemsRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DescribeRandomDisplayItemsRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Random Showcase name */
 	public function getShowcaseName(): ?string {
 		return $this->showcaseName;
 	}
+    /** @param string|null $showcaseName Random Showcase name */
 	public function setShowcaseName(?string $showcaseName) {
 		$this->showcaseName = $showcaseName;
 	}
+    /**
+     * @param string|null $showcaseName Random Showcase name
+     * @return DescribeRandomDisplayItemsRequest
+     */
 	public function withShowcaseName(?string $showcaseName): DescribeRandomDisplayItemsRequest {
 		$this->showcaseName = $showcaseName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return DescribeRandomDisplayItemsRequest
+     */
 	public function withAccessToken(?string $accessToken): DescribeRandomDisplayItemsRequest {
 		$this->accessToken = $accessToken;
 		return $this;

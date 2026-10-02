@@ -19,15 +19,22 @@ namespace Gs2\Project\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/** Request for disableMfa: Disable MFA */
 class DisableMfaRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Signed in to the account token. */
     private $accountToken;
+    /** @return string|null Signed in to the account token. */
 	public function getAccountToken(): ?string {
 		return $this->accountToken;
 	}
+    /** @param string|null $accountToken Signed in to the account token. */
 	public function setAccountToken(?string $accountToken) {
 		$this->accountToken = $accountToken;
 	}
+    /**
+     * @param string|null $accountToken Signed in to the account token.
+     * @return DisableMfaRequest
+     */
 	public function withAccountToken(?string $accountToken): DisableMfaRequest {
 		$this->accountToken = $accountToken;
 		return $this;

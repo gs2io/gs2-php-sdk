@@ -20,18 +20,29 @@ namespace Gs2\Money2\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Money2\Model\CurrentModelMaster;
 
+/**
+ * Result of updateCurrentModelMaster: Update currently active Models master data
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#updatecurrentmodelmaster
+ */
 class UpdateCurrentModelMasterResult implements IResult {
-    /** @var CurrentModelMaster */
+    /** @var CurrentModelMaster Updated master data of the currently active model */
     private $item;
 
+    /** @return CurrentModelMaster|null Updated master data of the currently active model */
 	public function getItem(): ?CurrentModelMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentModelMaster|null $item Updated master data of the currently active model */
 	public function setItem(?CurrentModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentModelMaster|null $item Updated master data of the currently active model
+     * @return UpdateCurrentModelMasterResult
+     */
 	public function withItem(?CurrentModelMaster $item): UpdateCurrentModelMasterResult {
 		$this->item = $item;
 		return $this;

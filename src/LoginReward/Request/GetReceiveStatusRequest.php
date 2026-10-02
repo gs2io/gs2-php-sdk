@@ -19,39 +19,62 @@ namespace Gs2\LoginReward\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getReceiveStatus: Get Receive Status
+ *
+ * @see https://docs.gs2.io/api_reference/login_reward/sdk/#getreceivestatus
+ */
 class GetReceiveStatusRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Bonus Model Name */
     private $bonusModelName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetReceiveStatusRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetReceiveStatusRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Bonus Model Name */
 	public function getBonusModelName(): ?string {
 		return $this->bonusModelName;
 	}
+    /** @param string|null $bonusModelName Bonus Model Name */
 	public function setBonusModelName(?string $bonusModelName) {
 		$this->bonusModelName = $bonusModelName;
 	}
+    /**
+     * @param string|null $bonusModelName Bonus Model Name
+     * @return GetReceiveStatusRequest
+     */
 	public function withBonusModelName(?string $bonusModelName): GetReceiveStatusRequest {
 		$this->bonusModelName = $bonusModelName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return GetReceiveStatusRequest
+     */
 	public function withAccessToken(?string $accessToken): GetReceiveStatusRequest {
 		$this->accessToken = $accessToken;
 		return $this;

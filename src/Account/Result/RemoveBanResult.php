@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Account\Model\BanStatus;
 use Gs2\Account\Model\Account;
 
+/**
+ * Result of removeBan: Remove the Account Ban Status for a Game Player Account
+ *
+ * @see https://docs.gs2.io/api_reference/account/sdk/#removeban
+ */
 class RemoveBanResult implements IResult {
-    /** @var Account */
+    /** @var Account Game Player Account updated */
     private $item;
 
+    /** @return Account|null Game Player Account updated */
 	public function getItem(): ?Account {
 		return $this->item;
 	}
 
+    /** @param Account|null $item Game Player Account updated */
 	public function setItem(?Account $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Account|null $item Game Player Account updated
+     * @return RemoveBanResult
+     */
 	public function withItem(?Account $item): RemoveBanResult {
 		$this->item = $item;
 		return $this;

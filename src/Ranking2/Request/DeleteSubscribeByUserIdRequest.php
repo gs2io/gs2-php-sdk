@@ -19,65 +19,100 @@ namespace Gs2\Ranking2\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for deleteSubscribeByUserId: Delete Subscribe Target User ID specifying User ID
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/sdk/#deletesubscribebyuserid
+ */
 class DeleteSubscribeByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Subscribe Ranking Model name */
     private $rankingName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Subscribe Target User ID */
     private $targetUserId;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DeleteSubscribeByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DeleteSubscribeByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Subscribe Ranking Model name */
 	public function getRankingName(): ?string {
 		return $this->rankingName;
 	}
+    /** @param string|null $rankingName Subscribe Ranking Model name */
 	public function setRankingName(?string $rankingName) {
 		$this->rankingName = $rankingName;
 	}
+    /**
+     * @param string|null $rankingName Subscribe Ranking Model name
+     * @return DeleteSubscribeByUserIdRequest
+     */
 	public function withRankingName(?string $rankingName): DeleteSubscribeByUserIdRequest {
 		$this->rankingName = $rankingName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return DeleteSubscribeByUserIdRequest
+     */
 	public function withUserId(?string $userId): DeleteSubscribeByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Subscribe Target User ID */
 	public function getTargetUserId(): ?string {
 		return $this->targetUserId;
 	}
+    /** @param string|null $targetUserId Subscribe Target User ID */
 	public function setTargetUserId(?string $targetUserId) {
 		$this->targetUserId = $targetUserId;
 	}
+    /**
+     * @param string|null $targetUserId Subscribe Target User ID
+     * @return DeleteSubscribeByUserIdRequest
+     */
 	public function withTargetUserId(?string $targetUserId): DeleteSubscribeByUserIdRequest {
 		$this->targetUserId = $targetUserId;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return DeleteSubscribeByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): DeleteSubscribeByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

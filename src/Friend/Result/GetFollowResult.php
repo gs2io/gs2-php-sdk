@@ -20,18 +20,29 @@ namespace Gs2\Friend\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Friend\Model\FollowUser;
 
+/**
+ * Result of getFollow: Get a followed user
+ *
+ * @see https://docs.gs2.io/api_reference/friend/sdk/#getfollow
+ */
 class GetFollowResult implements IResult {
-    /** @var FollowUser */
+    /** @var FollowUser Following user */
     private $item;
 
+    /** @return FollowUser|null Following user */
 	public function getItem(): ?FollowUser {
 		return $this->item;
 	}
 
+    /** @param FollowUser|null $item Following user */
 	public function setItem(?FollowUser $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param FollowUser|null $item Following user
+     * @return GetFollowResult
+     */
 	public function withItem(?FollowUser $item): GetFollowResult {
 		$this->item = $item;
 		return $this;

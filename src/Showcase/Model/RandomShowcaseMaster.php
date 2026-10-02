@@ -20,171 +20,248 @@ namespace Gs2\Showcase\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Random Showcase Master
+ *
+ * @see https://docs.gs2.io/api_reference/showcase/sdk/#randomshowcasemaster
+ */
 class RandomShowcaseMaster implements IModel {
 	/**
-     * @var string
+     * @var string Random Showcase Master GRN
 	 */
 	private $showcaseId;
 	/**
-     * @var string
+     * @var string Random Showcase name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Description
 	 */
 	private $description;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var int
+     * @var int Maximum number of display items to be selected
 	 */
 	private $maximumNumberOfChoice;
 	/**
-     * @var array
+     * @var array List of Random Displayed Items subject to selection
 	 */
 	private $displayItems;
 	/**
-     * @var int
+     * @var int Base time for re-drawing the display items on display
 	 */
 	private $baseTimestamp;
 	/**
-     * @var int
+     * @var int Interval (hours) between re-drawing the display items on display
 	 */
 	private $resetIntervalHours;
 	/**
-     * @var string
+     * @var string GRN of the GS2-Schedule event that defines the sales period for the Random Showcase
 	 */
 	private $salesPeriodEventId;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Random Showcase Master GRN */
 	public function getShowcaseId(): ?string {
 		return $this->showcaseId;
 	}
+    /** @param string|null $showcaseId Random Showcase Master GRN */
 	public function setShowcaseId(?string $showcaseId) {
 		$this->showcaseId = $showcaseId;
 	}
+    /**
+     * @param string|null $showcaseId Random Showcase Master GRN
+     * @return RandomShowcaseMaster
+     */
 	public function withShowcaseId(?string $showcaseId): RandomShowcaseMaster {
 		$this->showcaseId = $showcaseId;
 		return $this;
 	}
+    /** @return string|null Random Showcase name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Random Showcase name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Random Showcase name
+     * @return RandomShowcaseMaster
+     */
 	public function withName(?string $name): RandomShowcaseMaster {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return RandomShowcaseMaster
+     */
 	public function withDescription(?string $description): RandomShowcaseMaster {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return RandomShowcaseMaster
+     */
 	public function withMetadata(?string $metadata): RandomShowcaseMaster {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return int|null Maximum number of display items to be selected */
 	public function getMaximumNumberOfChoice(): ?int {
 		return $this->maximumNumberOfChoice;
 	}
+    /** @param int|null $maximumNumberOfChoice Maximum number of display items to be selected */
 	public function setMaximumNumberOfChoice(?int $maximumNumberOfChoice) {
 		$this->maximumNumberOfChoice = $maximumNumberOfChoice;
 	}
+    /**
+     * @param int|null $maximumNumberOfChoice Maximum number of display items to be selected
+     * @return RandomShowcaseMaster
+     */
 	public function withMaximumNumberOfChoice(?int $maximumNumberOfChoice): RandomShowcaseMaster {
 		$this->maximumNumberOfChoice = $maximumNumberOfChoice;
 		return $this;
 	}
+    /** @return array|null List of Random Displayed Items subject to selection */
 	public function getDisplayItems(): ?array {
 		return $this->displayItems;
 	}
+    /** @param array|null $displayItems List of Random Displayed Items subject to selection */
 	public function setDisplayItems(?array $displayItems) {
 		$this->displayItems = $displayItems;
 	}
+    /**
+     * @param array|null $displayItems List of Random Displayed Items subject to selection
+     * @return RandomShowcaseMaster
+     */
 	public function withDisplayItems(?array $displayItems): RandomShowcaseMaster {
 		$this->displayItems = $displayItems;
 		return $this;
 	}
+    /** @return int|null Base time for re-drawing the display items on display */
 	public function getBaseTimestamp(): ?int {
 		return $this->baseTimestamp;
 	}
+    /** @param int|null $baseTimestamp Base time for re-drawing the display items on display */
 	public function setBaseTimestamp(?int $baseTimestamp) {
 		$this->baseTimestamp = $baseTimestamp;
 	}
+    /**
+     * @param int|null $baseTimestamp Base time for re-drawing the display items on display
+     * @return RandomShowcaseMaster
+     */
 	public function withBaseTimestamp(?int $baseTimestamp): RandomShowcaseMaster {
 		$this->baseTimestamp = $baseTimestamp;
 		return $this;
 	}
+    /** @return int|null Interval (hours) between re-drawing the display items on display */
 	public function getResetIntervalHours(): ?int {
 		return $this->resetIntervalHours;
 	}
+    /** @param int|null $resetIntervalHours Interval (hours) between re-drawing the display items on display */
 	public function setResetIntervalHours(?int $resetIntervalHours) {
 		$this->resetIntervalHours = $resetIntervalHours;
 	}
+    /**
+     * @param int|null $resetIntervalHours Interval (hours) between re-drawing the display items on display
+     * @return RandomShowcaseMaster
+     */
 	public function withResetIntervalHours(?int $resetIntervalHours): RandomShowcaseMaster {
 		$this->resetIntervalHours = $resetIntervalHours;
 		return $this;
 	}
+    /** @return string|null GRN of the GS2-Schedule event that defines the sales period for the Random Showcase */
 	public function getSalesPeriodEventId(): ?string {
 		return $this->salesPeriodEventId;
 	}
+    /** @param string|null $salesPeriodEventId GRN of the GS2-Schedule event that defines the sales period for the Random Showcase */
 	public function setSalesPeriodEventId(?string $salesPeriodEventId) {
 		$this->salesPeriodEventId = $salesPeriodEventId;
 	}
+    /**
+     * @param string|null $salesPeriodEventId GRN of the GS2-Schedule event that defines the sales period for the Random Showcase
+     * @return RandomShowcaseMaster
+     */
 	public function withSalesPeriodEventId(?string $salesPeriodEventId): RandomShowcaseMaster {
 		$this->salesPeriodEventId = $salesPeriodEventId;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return RandomShowcaseMaster
+     */
 	public function withCreatedAt(?int $createdAt): RandomShowcaseMaster {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return RandomShowcaseMaster
+     */
 	public function withUpdatedAt(?int $updatedAt): RandomShowcaseMaster {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return RandomShowcaseMaster
+     */
 	public function withRevision(?int $revision): RandomShowcaseMaster {
 		$this->revision = $revision;
 		return $this;

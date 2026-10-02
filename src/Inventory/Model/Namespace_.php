@@ -20,236 +20,335 @@ namespace Gs2\Inventory\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Namespace
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#namespace
+ */
 class Namespace_ implements IModel {
 	/**
-     * @var string
+     * @var string Namespace GRN
 	 */
 	private $namespaceId;
 	/**
-     * @var string
+     * @var string Namespace name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Description
 	 */
 	private $description;
 	/**
-     * @var TransactionSetting
+     * @var TransactionSetting Transaction Setting
 	 */
 	private $transactionSetting;
 	/**
-     * @var TransactionSettingV2
+     * @var TransactionSettingV2 Transaction Setting (V2)
 	 */
 	private $transactionSettingV2;
 	/**
-     * @var ScriptSetting
+     * @var ScriptSetting Script setting to be executed when an Items is acquired
 	 */
 	private $acquireScript;
 	/**
-     * @var ScriptSetting
+     * @var ScriptSetting Script setting to execute when unable to obtain due to reaching the acquisition limit
 	 */
 	private $overflowScript;
 	/**
-     * @var ScriptSetting
+     * @var ScriptSetting Script setting to be executed when consuming Items
 	 */
 	private $consumeScript;
 	/**
-     * @var ScriptSetting
+     * @var ScriptSetting Script setting to be executed when acquiring Simple Items
 	 */
 	private $simpleItemAcquireScript;
 	/**
-     * @var ScriptSetting
+     * @var ScriptSetting Script setting to be executed when consuming Simple Items
 	 */
 	private $simpleItemConsumeScript;
 	/**
-     * @var ScriptSetting
+     * @var ScriptSetting Script setting to be executed when acquiring Big Items
 	 */
 	private $bigItemAcquireScript;
 	/**
-     * @var ScriptSetting
+     * @var ScriptSetting Script setting to be executed when consuming Big Items
 	 */
 	private $bigItemConsumeScript;
 	/**
-     * @var LogSetting
+     * @var LogSetting Log Output Setting
 	 */
 	private $logSetting;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Namespace GRN */
 	public function getNamespaceId(): ?string {
 		return $this->namespaceId;
 	}
+    /** @param string|null $namespaceId Namespace GRN */
 	public function setNamespaceId(?string $namespaceId) {
 		$this->namespaceId = $namespaceId;
 	}
+    /**
+     * @param string|null $namespaceId Namespace GRN
+     * @return Namespace_
+     */
 	public function withNamespaceId(?string $namespaceId): Namespace_ {
 		$this->namespaceId = $namespaceId;
 		return $this;
 	}
+    /** @return string|null Namespace name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Namespace name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Namespace name
+     * @return Namespace_
+     */
 	public function withName(?string $name): Namespace_ {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return Namespace_
+     */
 	public function withDescription(?string $description): Namespace_ {
 		$this->description = $description;
 		return $this;
 	}
     /**
+     * @return TransactionSetting|null Transaction Setting
      * @deprecated
      */
 	public function getTransactionSetting(): ?TransactionSetting {
 		return $this->transactionSetting;
 	}
     /**
+     * @param TransactionSetting|null $transactionSetting Transaction Setting
      * @deprecated
      */
 	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
 		$this->transactionSetting = $transactionSetting;
 	}
     /**
+     * @param TransactionSetting|null $transactionSetting Transaction Setting
+     * @return Namespace_
      * @deprecated
      */
 	public function withTransactionSetting(?TransactionSetting $transactionSetting): Namespace_ {
 		$this->transactionSetting = $transactionSetting;
 		return $this;
 	}
+    /** @return TransactionSettingV2|null Transaction Setting (V2) */
 	public function getTransactionSettingV2(): ?TransactionSettingV2 {
 		return $this->transactionSettingV2;
 	}
+    /** @param TransactionSettingV2|null $transactionSettingV2 Transaction Setting (V2) */
 	public function setTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2) {
 		$this->transactionSettingV2 = $transactionSettingV2;
 	}
+    /**
+     * @param TransactionSettingV2|null $transactionSettingV2 Transaction Setting (V2)
+     * @return Namespace_
+     */
 	public function withTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2): Namespace_ {
 		$this->transactionSettingV2 = $transactionSettingV2;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to be executed when an Items is acquired */
 	public function getAcquireScript(): ?ScriptSetting {
 		return $this->acquireScript;
 	}
+    /** @param ScriptSetting|null $acquireScript Script setting to be executed when an Items is acquired */
 	public function setAcquireScript(?ScriptSetting $acquireScript) {
 		$this->acquireScript = $acquireScript;
 	}
+    /**
+     * @param ScriptSetting|null $acquireScript Script setting to be executed when an Items is acquired
+     * @return Namespace_
+     */
 	public function withAcquireScript(?ScriptSetting $acquireScript): Namespace_ {
 		$this->acquireScript = $acquireScript;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to execute when unable to obtain due to reaching the acquisition limit */
 	public function getOverflowScript(): ?ScriptSetting {
 		return $this->overflowScript;
 	}
+    /** @param ScriptSetting|null $overflowScript Script setting to execute when unable to obtain due to reaching the acquisition limit */
 	public function setOverflowScript(?ScriptSetting $overflowScript) {
 		$this->overflowScript = $overflowScript;
 	}
+    /**
+     * @param ScriptSetting|null $overflowScript Script setting to execute when unable to obtain due to reaching the acquisition limit
+     * @return Namespace_
+     */
 	public function withOverflowScript(?ScriptSetting $overflowScript): Namespace_ {
 		$this->overflowScript = $overflowScript;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to be executed when consuming Items */
 	public function getConsumeScript(): ?ScriptSetting {
 		return $this->consumeScript;
 	}
+    /** @param ScriptSetting|null $consumeScript Script setting to be executed when consuming Items */
 	public function setConsumeScript(?ScriptSetting $consumeScript) {
 		$this->consumeScript = $consumeScript;
 	}
+    /**
+     * @param ScriptSetting|null $consumeScript Script setting to be executed when consuming Items
+     * @return Namespace_
+     */
 	public function withConsumeScript(?ScriptSetting $consumeScript): Namespace_ {
 		$this->consumeScript = $consumeScript;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to be executed when acquiring Simple Items */
 	public function getSimpleItemAcquireScript(): ?ScriptSetting {
 		return $this->simpleItemAcquireScript;
 	}
+    /** @param ScriptSetting|null $simpleItemAcquireScript Script setting to be executed when acquiring Simple Items */
 	public function setSimpleItemAcquireScript(?ScriptSetting $simpleItemAcquireScript) {
 		$this->simpleItemAcquireScript = $simpleItemAcquireScript;
 	}
+    /**
+     * @param ScriptSetting|null $simpleItemAcquireScript Script setting to be executed when acquiring Simple Items
+     * @return Namespace_
+     */
 	public function withSimpleItemAcquireScript(?ScriptSetting $simpleItemAcquireScript): Namespace_ {
 		$this->simpleItemAcquireScript = $simpleItemAcquireScript;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to be executed when consuming Simple Items */
 	public function getSimpleItemConsumeScript(): ?ScriptSetting {
 		return $this->simpleItemConsumeScript;
 	}
+    /** @param ScriptSetting|null $simpleItemConsumeScript Script setting to be executed when consuming Simple Items */
 	public function setSimpleItemConsumeScript(?ScriptSetting $simpleItemConsumeScript) {
 		$this->simpleItemConsumeScript = $simpleItemConsumeScript;
 	}
+    /**
+     * @param ScriptSetting|null $simpleItemConsumeScript Script setting to be executed when consuming Simple Items
+     * @return Namespace_
+     */
 	public function withSimpleItemConsumeScript(?ScriptSetting $simpleItemConsumeScript): Namespace_ {
 		$this->simpleItemConsumeScript = $simpleItemConsumeScript;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to be executed when acquiring Big Items */
 	public function getBigItemAcquireScript(): ?ScriptSetting {
 		return $this->bigItemAcquireScript;
 	}
+    /** @param ScriptSetting|null $bigItemAcquireScript Script setting to be executed when acquiring Big Items */
 	public function setBigItemAcquireScript(?ScriptSetting $bigItemAcquireScript) {
 		$this->bigItemAcquireScript = $bigItemAcquireScript;
 	}
+    /**
+     * @param ScriptSetting|null $bigItemAcquireScript Script setting to be executed when acquiring Big Items
+     * @return Namespace_
+     */
 	public function withBigItemAcquireScript(?ScriptSetting $bigItemAcquireScript): Namespace_ {
 		$this->bigItemAcquireScript = $bigItemAcquireScript;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to be executed when consuming Big Items */
 	public function getBigItemConsumeScript(): ?ScriptSetting {
 		return $this->bigItemConsumeScript;
 	}
+    /** @param ScriptSetting|null $bigItemConsumeScript Script setting to be executed when consuming Big Items */
 	public function setBigItemConsumeScript(?ScriptSetting $bigItemConsumeScript) {
 		$this->bigItemConsumeScript = $bigItemConsumeScript;
 	}
+    /**
+     * @param ScriptSetting|null $bigItemConsumeScript Script setting to be executed when consuming Big Items
+     * @return Namespace_
+     */
 	public function withBigItemConsumeScript(?ScriptSetting $bigItemConsumeScript): Namespace_ {
 		$this->bigItemConsumeScript = $bigItemConsumeScript;
 		return $this;
 	}
+    /** @return LogSetting|null Log Output Setting */
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
+    /** @param LogSetting|null $logSetting Log Output Setting */
 	public function setLogSetting(?LogSetting $logSetting) {
 		$this->logSetting = $logSetting;
 	}
+    /**
+     * @param LogSetting|null $logSetting Log Output Setting
+     * @return Namespace_
+     */
 	public function withLogSetting(?LogSetting $logSetting): Namespace_ {
 		$this->logSetting = $logSetting;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return Namespace_
+     */
 	public function withCreatedAt(?int $createdAt): Namespace_ {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return Namespace_
+     */
 	public function withUpdatedAt(?int $updatedAt): Namespace_ {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return Namespace_
+     */
 	public function withRevision(?int $revision): Namespace_ {
 		$this->revision = $revision;
 		return $this;

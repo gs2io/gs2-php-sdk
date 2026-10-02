@@ -22,33 +22,50 @@ use Gs2\Guild\Model\RoleModel;
 use Gs2\Guild\Model\Member;
 use Gs2\Guild\Model\Guild;
 
+/**
+ * Result of searchGuildsByUserId: Search Guilds by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/guild/sdk/#searchguildsbyuserid
+ */
 class SearchGuildsByUserIdResult implements IResult {
-    /** @var array */
+    /** @var array List of Guild */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Guild */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Guild */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Guild
+     * @return SearchGuildsByUserIdResult
+     */
 	public function withItems(?array $items): SearchGuildsByUserIdResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return SearchGuildsByUserIdResult
+     */
 	public function withNextPageToken(?string $nextPageToken): SearchGuildsByUserIdResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

@@ -22,48 +22,71 @@ use Gs2\Money2\Model\WalletSummary;
 use Gs2\Money2\Model\DepositTransaction;
 use Gs2\Money2\Model\Wallet;
 
+/**
+ * Result of withdrawByStampTask: Execute withdrawal of balance from wallet as a consume action within a distributed transaction
+ *
+ * @see https://docs.gs2.io/api_reference/money2/stamp_sheet/#gs2money2withdrawbyuserid
+ */
 class WithdrawByStampTaskResult implements IResult {
-    /** @var Wallet */
+    /** @var Wallet Post-withdraw Wallet */
     private $item;
-    /** @var array */
+    /** @var array List of consumed deposit transactions */
     private $withdrawTransactions;
-    /** @var string */
+    /** @var string Context recording the execution results of Consume Actions */
     private $newContextStack;
 
+    /** @return Wallet|null Post-withdraw Wallet */
 	public function getItem(): ?Wallet {
 		return $this->item;
 	}
 
+    /** @param Wallet|null $item Post-withdraw Wallet */
 	public function setItem(?Wallet $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Wallet|null $item Post-withdraw Wallet
+     * @return WithdrawByStampTaskResult
+     */
 	public function withItem(?Wallet $item): WithdrawByStampTaskResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return array|null List of consumed deposit transactions */
 	public function getWithdrawTransactions(): ?array {
 		return $this->withdrawTransactions;
 	}
 
+    /** @param array|null $withdrawTransactions List of consumed deposit transactions */
 	public function setWithdrawTransactions(?array $withdrawTransactions) {
 		$this->withdrawTransactions = $withdrawTransactions;
 	}
 
+    /**
+     * @param array|null $withdrawTransactions List of consumed deposit transactions
+     * @return WithdrawByStampTaskResult
+     */
 	public function withWithdrawTransactions(?array $withdrawTransactions): WithdrawByStampTaskResult {
 		$this->withdrawTransactions = $withdrawTransactions;
 		return $this;
 	}
 
+    /** @return string|null Context recording the execution results of Consume Actions */
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
+    /** @param string|null $newContextStack Context recording the execution results of Consume Actions */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
+    /**
+     * @param string|null $newContextStack Context recording the execution results of Consume Actions
+     * @return WithdrawByStampTaskResult
+     */
 	public function withNewContextStack(?string $newContextStack): WithdrawByStampTaskResult {
 		$this->newContextStack = $newContextStack;
 		return $this;

@@ -19,65 +19,100 @@ namespace Gs2\Schedule\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for verifyTrigger: Verify the elapsed time since the trigger was pulled
+ *
+ * @see https://docs.gs2.io/api_reference/schedule/sdk/#verifytrigger
+ */
 class VerifyTriggerRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Trigger name */
     private $triggerName;
-    /** @var string */
+    /** @var string Type of verification */
     private $verifyType;
-    /** @var int */
+    /** @var int Elapsed time (minutes) */
     private $elapsedMinutes;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return VerifyTriggerRequest
+     */
 	public function withNamespaceName(?string $namespaceName): VerifyTriggerRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return VerifyTriggerRequest
+     */
 	public function withAccessToken(?string $accessToken): VerifyTriggerRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Trigger name */
 	public function getTriggerName(): ?string {
 		return $this->triggerName;
 	}
+    /** @param string|null $triggerName Trigger name */
 	public function setTriggerName(?string $triggerName) {
 		$this->triggerName = $triggerName;
 	}
+    /**
+     * @param string|null $triggerName Trigger name
+     * @return VerifyTriggerRequest
+     */
 	public function withTriggerName(?string $triggerName): VerifyTriggerRequest {
 		$this->triggerName = $triggerName;
 		return $this;
 	}
+    /** @return string|null Type of verification */
 	public function getVerifyType(): ?string {
 		return $this->verifyType;
 	}
+    /** @param string|null $verifyType Type of verification */
 	public function setVerifyType(?string $verifyType) {
 		$this->verifyType = $verifyType;
 	}
+    /**
+     * @param string|null $verifyType Type of verification
+     * @return VerifyTriggerRequest
+     */
 	public function withVerifyType(?string $verifyType): VerifyTriggerRequest {
 		$this->verifyType = $verifyType;
 		return $this;
 	}
+    /** @return int|null Elapsed time (minutes) */
 	public function getElapsedMinutes(): ?int {
 		return $this->elapsedMinutes;
 	}
+    /** @param int|null $elapsedMinutes Elapsed time (minutes) */
 	public function setElapsedMinutes(?int $elapsedMinutes) {
 		$this->elapsedMinutes = $elapsedMinutes;
 	}
+    /**
+     * @param int|null $elapsedMinutes Elapsed time (minutes)
+     * @return VerifyTriggerRequest
+     */
 	public function withElapsedMinutes(?int $elapsedMinutes): VerifyTriggerRequest {
 		$this->elapsedMinutes = $elapsedMinutes;
 		return $this;

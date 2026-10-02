@@ -19,27 +19,44 @@ namespace Gs2\Showcase\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for deleteShowcaseMaster: Delete Showcase Master
+ *
+ * @see https://docs.gs2.io/api_reference/showcase/sdk/#deleteshowcasemaster
+ */
 class DeleteShowcaseMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Showcase name */
     private $showcaseName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DeleteShowcaseMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DeleteShowcaseMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Showcase name */
 	public function getShowcaseName(): ?string {
 		return $this->showcaseName;
 	}
+    /** @param string|null $showcaseName Showcase name */
 	public function setShowcaseName(?string $showcaseName) {
 		$this->showcaseName = $showcaseName;
 	}
+    /**
+     * @param string|null $showcaseName Showcase name
+     * @return DeleteShowcaseMasterRequest
+     */
 	public function withShowcaseName(?string $showcaseName): DeleteShowcaseMasterRequest {
 		$this->showcaseName = $showcaseName;
 		return $this;

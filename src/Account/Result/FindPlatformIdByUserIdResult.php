@@ -20,18 +20,29 @@ namespace Gs2\Account\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Account\Model\PlatformUser;
 
+/**
+ * Result of findPlatformIdByUserId: Get External Platform Account ID by specifying GS2-Account user ID
+ *
+ * @see https://docs.gs2.io/api_reference/account/sdk/#findplatformidbyuserid
+ */
 class FindPlatformIdByUserIdResult implements IResult {
-    /** @var PlatformUser */
+    /** @var PlatformUser External Platform User Information */
     private $item;
 
+    /** @return PlatformUser|null External Platform User Information */
 	public function getItem(): ?PlatformUser {
 		return $this->item;
 	}
 
+    /** @param PlatformUser|null $item External Platform User Information */
 	public function setItem(?PlatformUser $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param PlatformUser|null $item External Platform User Information
+     * @return FindPlatformIdByUserIdResult
+     */
 	public function withItem(?PlatformUser $item): FindPlatformIdByUserIdResult {
 		$this->item = $item;
 		return $this;

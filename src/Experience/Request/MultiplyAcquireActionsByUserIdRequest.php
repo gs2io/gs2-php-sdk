@@ -20,101 +20,154 @@ namespace Gs2\Experience\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Experience\Model\AcquireAction;
 
+/**
+ * Request for multiplyAcquireActionsByUserId: Multiply resources according to the rank of the property subject to the experience value by specifying user ID
+ *
+ * @see https://docs.gs2.io/api_reference/experience/sdk/#multiplyacquireactionsbyuserid
+ */
 class MultiplyAcquireActionsByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Experience Model name */
     private $experienceName;
-    /** @var string */
+    /** @var string Property ID */
     private $propertyId;
-    /** @var string */
+    /** @var string Reward addition table name */
     private $rateName;
-    /** @var array */
+    /** @var array List of Acquire Actions */
     private $acquireActions;
-    /** @var float */
+    /** @var float Base rate */
     private $baseRate;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return MultiplyAcquireActionsByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): MultiplyAcquireActionsByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return MultiplyAcquireActionsByUserIdRequest
+     */
 	public function withUserId(?string $userId): MultiplyAcquireActionsByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Experience Model name */
 	public function getExperienceName(): ?string {
 		return $this->experienceName;
 	}
+    /** @param string|null $experienceName Experience Model name */
 	public function setExperienceName(?string $experienceName) {
 		$this->experienceName = $experienceName;
 	}
+    /**
+     * @param string|null $experienceName Experience Model name
+     * @return MultiplyAcquireActionsByUserIdRequest
+     */
 	public function withExperienceName(?string $experienceName): MultiplyAcquireActionsByUserIdRequest {
 		$this->experienceName = $experienceName;
 		return $this;
 	}
+    /** @return string|null Property ID */
 	public function getPropertyId(): ?string {
 		return $this->propertyId;
 	}
+    /** @param string|null $propertyId Property ID */
 	public function setPropertyId(?string $propertyId) {
 		$this->propertyId = $propertyId;
 	}
+    /**
+     * @param string|null $propertyId Property ID
+     * @return MultiplyAcquireActionsByUserIdRequest
+     */
 	public function withPropertyId(?string $propertyId): MultiplyAcquireActionsByUserIdRequest {
 		$this->propertyId = $propertyId;
 		return $this;
 	}
+    /** @return string|null Reward addition table name */
 	public function getRateName(): ?string {
 		return $this->rateName;
 	}
+    /** @param string|null $rateName Reward addition table name */
 	public function setRateName(?string $rateName) {
 		$this->rateName = $rateName;
 	}
+    /**
+     * @param string|null $rateName Reward addition table name
+     * @return MultiplyAcquireActionsByUserIdRequest
+     */
 	public function withRateName(?string $rateName): MultiplyAcquireActionsByUserIdRequest {
 		$this->rateName = $rateName;
 		return $this;
 	}
+    /** @return array|null List of Acquire Actions */
 	public function getAcquireActions(): ?array {
 		return $this->acquireActions;
 	}
+    /** @param array|null $acquireActions List of Acquire Actions */
 	public function setAcquireActions(?array $acquireActions) {
 		$this->acquireActions = $acquireActions;
 	}
+    /**
+     * @param array|null $acquireActions List of Acquire Actions
+     * @return MultiplyAcquireActionsByUserIdRequest
+     */
 	public function withAcquireActions(?array $acquireActions): MultiplyAcquireActionsByUserIdRequest {
 		$this->acquireActions = $acquireActions;
 		return $this;
 	}
+    /** @return float|null Base rate */
 	public function getBaseRate(): ?float {
 		return $this->baseRate;
 	}
+    /** @param float|null $baseRate Base rate */
 	public function setBaseRate(?float $baseRate) {
 		$this->baseRate = $baseRate;
 	}
+    /**
+     * @param float|null $baseRate Base rate
+     * @return MultiplyAcquireActionsByUserIdRequest
+     */
 	public function withBaseRate(?float $baseRate): MultiplyAcquireActionsByUserIdRequest {
 		$this->baseRate = $baseRate;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return MultiplyAcquireActionsByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): MultiplyAcquireActionsByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

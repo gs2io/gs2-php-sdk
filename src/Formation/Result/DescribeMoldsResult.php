@@ -20,33 +20,50 @@ namespace Gs2\Formation\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Formation\Model\Mold;
 
+/**
+ * Result of describeMolds: List Form Storage Areas
+ *
+ * @see https://docs.gs2.io/api_reference/formation/sdk/#describemolds
+ */
 class DescribeMoldsResult implements IResult {
-    /** @var array */
+    /** @var array List of Form Storage Area */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Form Storage Area */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Form Storage Area */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Form Storage Area
+     * @return DescribeMoldsResult
+     */
 	public function withItems(?array $items): DescribeMoldsResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeMoldsResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeMoldsResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

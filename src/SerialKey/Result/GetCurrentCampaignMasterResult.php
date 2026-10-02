@@ -20,18 +20,29 @@ namespace Gs2\SerialKey\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\SerialKey\Model\CurrentCampaignMaster;
 
+/**
+ * Result of getCurrentCampaignMaster: Get currently active Campaign Model master data
+ *
+ * @see https://docs.gs2.io/api_reference/serial_key/sdk/#getcurrentcampaignmaster
+ */
 class GetCurrentCampaignMasterResult implements IResult {
-    /** @var CurrentCampaignMaster */
+    /** @var CurrentCampaignMaster Currently active Campaign Model master data */
     private $item;
 
+    /** @return CurrentCampaignMaster|null Currently active Campaign Model master data */
 	public function getItem(): ?CurrentCampaignMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentCampaignMaster|null $item Currently active Campaign Model master data */
 	public function setItem(?CurrentCampaignMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentCampaignMaster|null $item Currently active Campaign Model master data
+     * @return GetCurrentCampaignMasterResult
+     */
 	public function withItem(?CurrentCampaignMaster $item): GetCurrentCampaignMasterResult {
 		$this->item = $item;
 		return $this;

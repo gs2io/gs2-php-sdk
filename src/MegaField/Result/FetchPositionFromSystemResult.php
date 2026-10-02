@@ -22,18 +22,29 @@ use Gs2\MegaField\Model\Position;
 use Gs2\MegaField\Model\Vector;
 use Gs2\MegaField\Model\Spatial;
 
+/**
+ * Result of fetchPositionFromSystem: Fetch position
+ *
+ * @see https://docs.gs2.io/api_reference/mega_field/sdk/#fetchpositionfromsystem
+ */
 class FetchPositionFromSystemResult implements IResult {
-    /** @var array */
+    /** @var array List of Spatial */
     private $items;
 
+    /** @return array|null List of Spatial */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Spatial */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Spatial
+     * @return FetchPositionFromSystemResult
+     */
 	public function withItems(?array $items): FetchPositionFromSystemResult {
 		$this->items = $items;
 		return $this;

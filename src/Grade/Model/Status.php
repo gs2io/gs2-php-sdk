@@ -20,115 +20,168 @@ namespace Gs2\Grade\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Status
+ *
+ * @see https://docs.gs2.io/api_reference/grade/sdk/#status
+ */
 class Status implements IModel {
 	/**
-     * @var string
+     * @var string Status GRN
 	 */
 	private $statusId;
 	/**
-     * @var string
+     * @var string Grade Model Name
 	 */
 	private $gradeName;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var string
+     * @var string Property ID
 	 */
 	private $propertyId;
 	/**
-     * @var int
+     * @var int Current Grade
 	 */
 	private $gradeValue;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Status GRN */
 	public function getStatusId(): ?string {
 		return $this->statusId;
 	}
+    /** @param string|null $statusId Status GRN */
 	public function setStatusId(?string $statusId) {
 		$this->statusId = $statusId;
 	}
+    /**
+     * @param string|null $statusId Status GRN
+     * @return Status
+     */
 	public function withStatusId(?string $statusId): Status {
 		$this->statusId = $statusId;
 		return $this;
 	}
+    /** @return string|null Grade Model Name */
 	public function getGradeName(): ?string {
 		return $this->gradeName;
 	}
+    /** @param string|null $gradeName Grade Model Name */
 	public function setGradeName(?string $gradeName) {
 		$this->gradeName = $gradeName;
 	}
+    /**
+     * @param string|null $gradeName Grade Model Name
+     * @return Status
+     */
 	public function withGradeName(?string $gradeName): Status {
 		$this->gradeName = $gradeName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return Status
+     */
 	public function withUserId(?string $userId): Status {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Property ID */
 	public function getPropertyId(): ?string {
 		return $this->propertyId;
 	}
+    /** @param string|null $propertyId Property ID */
 	public function setPropertyId(?string $propertyId) {
 		$this->propertyId = $propertyId;
 	}
+    /**
+     * @param string|null $propertyId Property ID
+     * @return Status
+     */
 	public function withPropertyId(?string $propertyId): Status {
 		$this->propertyId = $propertyId;
 		return $this;
 	}
+    /** @return int|null Current Grade */
 	public function getGradeValue(): ?int {
 		return $this->gradeValue;
 	}
+    /** @param int|null $gradeValue Current Grade */
 	public function setGradeValue(?int $gradeValue) {
 		$this->gradeValue = $gradeValue;
 	}
+    /**
+     * @param int|null $gradeValue Current Grade
+     * @return Status
+     */
 	public function withGradeValue(?int $gradeValue): Status {
 		$this->gradeValue = $gradeValue;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return Status
+     */
 	public function withCreatedAt(?int $createdAt): Status {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return Status
+     */
 	public function withUpdatedAt(?int $updatedAt): Status {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return Status
+     */
 	public function withRevision(?int $revision): Status {
 		$this->revision = $revision;
 		return $this;

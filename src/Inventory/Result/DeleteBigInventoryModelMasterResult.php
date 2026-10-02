@@ -20,18 +20,29 @@ namespace Gs2\Inventory\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Inventory\Model\BigInventoryModelMaster;
 
+/**
+ * Result of deleteBigInventoryModelMaster: Delete Big Inventory Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#deletebiginventorymodelmaster
+ */
 class DeleteBigInventoryModelMasterResult implements IResult {
-    /** @var BigInventoryModelMaster */
+    /** @var BigInventoryModelMaster Big Inventory Model Master deleted */
     private $item;
 
+    /** @return BigInventoryModelMaster|null Big Inventory Model Master deleted */
 	public function getItem(): ?BigInventoryModelMaster {
 		return $this->item;
 	}
 
+    /** @param BigInventoryModelMaster|null $item Big Inventory Model Master deleted */
 	public function setItem(?BigInventoryModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param BigInventoryModelMaster|null $item Big Inventory Model Master deleted
+     * @return DeleteBigInventoryModelMasterResult
+     */
 	public function withItem(?BigInventoryModelMaster $item): DeleteBigInventoryModelMasterResult {
 		$this->item = $item;
 		return $this;

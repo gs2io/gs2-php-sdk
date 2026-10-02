@@ -19,15 +19,26 @@ namespace Gs2\MegaField\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for preUpdateCurrentFieldMaster: Update currently active Field Model master data (3-phase version)
+ *
+ * @see https://docs.gs2.io/api_reference/mega_field/sdk/#preupdatecurrentfieldmaster
+ */
 class PreUpdateCurrentFieldMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return PreUpdateCurrentFieldMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): PreUpdateCurrentFieldMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;

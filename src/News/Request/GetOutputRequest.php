@@ -19,39 +19,62 @@ namespace Gs2\News\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getOutput: Get output of content generation progress
+ *
+ * @see https://docs.gs2.io/api_reference/news/sdk/#getoutput
+ */
 class GetOutputRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Upload Token */
     private $uploadToken;
-    /** @var string */
+    /** @var string Output Name */
     private $outputName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetOutputRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetOutputRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Upload Token */
 	public function getUploadToken(): ?string {
 		return $this->uploadToken;
 	}
+    /** @param string|null $uploadToken Upload Token */
 	public function setUploadToken(?string $uploadToken) {
 		$this->uploadToken = $uploadToken;
 	}
+    /**
+     * @param string|null $uploadToken Upload Token
+     * @return GetOutputRequest
+     */
 	public function withUploadToken(?string $uploadToken): GetOutputRequest {
 		$this->uploadToken = $uploadToken;
 		return $this;
 	}
+    /** @return string|null Output Name */
 	public function getOutputName(): ?string {
 		return $this->outputName;
 	}
+    /** @param string|null $outputName Output Name */
 	public function setOutputName(?string $outputName) {
 		$this->outputName = $outputName;
 	}
+    /**
+     * @param string|null $outputName Output Name
+     * @return GetOutputRequest
+     */
 	public function withOutputName(?string $outputName): GetOutputRequest {
 		$this->outputName = $outputName;
 		return $this;

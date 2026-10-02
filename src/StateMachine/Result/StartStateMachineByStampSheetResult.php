@@ -24,18 +24,29 @@ use Gs2\StateMachine\Model\StackEntry;
 use Gs2\StateMachine\Model\Variable;
 use Gs2\StateMachine\Model\Status;
 
+/**
+ * Result of startStateMachineByStampSheet: Execute the start of the state machine as an acquire action
+ *
+ * @see https://docs.gs2.io/api_reference/state_machine/stamp_sheet/#gs2statemachinestartstatemachinebyuserid
+ */
 class StartStateMachineByStampSheetResult implements IResult {
-    /** @var Status */
+    /** @var Status Started state machine */
     private $item;
 
+    /** @return Status|null Started state machine */
 	public function getItem(): ?Status {
 		return $this->item;
 	}
 
+    /** @param Status|null $item Started state machine */
 	public function setItem(?Status $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Status|null $item Started state machine
+     * @return StartStateMachineByStampSheetResult
+     */
 	public function withItem(?Status $item): StartStateMachineByStampSheetResult {
 		$this->item = $item;
 		return $this;

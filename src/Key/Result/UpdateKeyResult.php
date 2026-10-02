@@ -20,18 +20,29 @@ namespace Gs2\Key\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Key\Model\Key;
 
+/**
+ * Result of updateKey: Update Encryption Key
+ *
+ * @see https://docs.gs2.io/api_reference/key/sdk/#updatekey
+ */
 class UpdateKeyResult implements IResult {
-    /** @var Key */
+    /** @var Key Encryption Key updated */
     private $item;
 
+    /** @return Key|null Encryption Key updated */
 	public function getItem(): ?Key {
 		return $this->item;
 	}
 
+    /** @param Key|null $item Encryption Key updated */
 	public function setItem(?Key $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Key|null $item Encryption Key updated
+     * @return UpdateKeyResult
+     */
 	public function withItem(?Key $item): UpdateKeyResult {
 		$this->item = $item;
 		return $this;

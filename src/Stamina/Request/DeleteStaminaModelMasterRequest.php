@@ -19,27 +19,44 @@ namespace Gs2\Stamina\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for deleteStaminaModelMaster: Delete Stamina Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/stamina/sdk/#deletestaminamodelmaster
+ */
 class DeleteStaminaModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Stamina Model name */
     private $staminaName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DeleteStaminaModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DeleteStaminaModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Stamina Model name */
 	public function getStaminaName(): ?string {
 		return $this->staminaName;
 	}
+    /** @param string|null $staminaName Stamina Model name */
 	public function setStaminaName(?string $staminaName) {
 		$this->staminaName = $staminaName;
 	}
+    /**
+     * @param string|null $staminaName Stamina Model name
+     * @return DeleteStaminaModelMasterRequest
+     */
 	public function withStaminaName(?string $staminaName): DeleteStaminaModelMasterRequest {
 		$this->staminaName = $staminaName;
 		return $this;

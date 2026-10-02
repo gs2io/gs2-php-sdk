@@ -20,18 +20,29 @@ namespace Gs2\Ranking2\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Ranking2\Model\CurrentRankingMaster;
 
+/**
+ * Result of getCurrentRankingMaster: Get currently active Ranking Model master data
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/sdk/#getcurrentrankingmaster
+ */
 class GetCurrentRankingMasterResult implements IResult {
-    /** @var CurrentRankingMaster */
+    /** @var CurrentRankingMaster Currently active Ranking Model master data */
     private $item;
 
+    /** @return CurrentRankingMaster|null Currently active Ranking Model master data */
 	public function getItem(): ?CurrentRankingMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentRankingMaster|null $item Currently active Ranking Model master data */
 	public function setItem(?CurrentRankingMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentRankingMaster|null $item Currently active Ranking Model master data
+     * @return GetCurrentRankingMasterResult
+     */
 	public function withItem(?CurrentRankingMaster $item): GetCurrentRankingMasterResult {
 		$this->item = $item;
 		return $this;

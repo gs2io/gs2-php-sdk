@@ -22,18 +22,29 @@ use Gs2\Guild\Model\RoleModel;
 use Gs2\Guild\Model\Member;
 use Gs2\Guild\Model\Guild;
 
+/**
+ * Result of getGuildByUserId: Get Guild by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/guild/sdk/#getguildbyuserid
+ */
 class GetGuildByUserIdResult implements IResult {
-    /** @var Guild */
+    /** @var Guild Guild */
     private $item;
 
+    /** @return Guild|null Guild */
 	public function getItem(): ?Guild {
 		return $this->item;
 	}
 
+    /** @param Guild|null $item Guild */
 	public function setItem(?Guild $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Guild|null $item Guild
+     * @return GetGuildByUserIdResult
+     */
 	public function withItem(?Guild $item): GetGuildByUserIdResult {
 		$this->item = $item;
 		return $this;

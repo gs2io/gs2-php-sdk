@@ -20,33 +20,50 @@ namespace Gs2\Quest\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Quest\Model\QuestGroupModelMaster;
 
+/**
+ * Result of describeQuestGroupModelMasters: List Quest Group Model Masters
+ *
+ * @see https://docs.gs2.io/api_reference/quest/sdk/#describequestgroupmodelmasters
+ */
 class DescribeQuestGroupModelMastersResult implements IResult {
-    /** @var array */
+    /** @var array List of Quest Group Model Masters */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Quest Group Model Masters */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Quest Group Model Masters */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Quest Group Model Masters
+     * @return DescribeQuestGroupModelMastersResult
+     */
 	public function withItems(?array $items): DescribeQuestGroupModelMastersResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeQuestGroupModelMastersResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeQuestGroupModelMastersResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

@@ -20,73 +20,108 @@ namespace Gs2\Schedule\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Repeat Schedule
+ *
+ * @see https://docs.gs2.io/api_reference/schedule/sdk/#repeatschedule
+ */
 class RepeatSchedule implements IModel {
 	/**
-     * @var int
+     * @var int Repeat Count
 	 */
 	private $repeatCount;
 	/**
-     * @var int
+     * @var int Current Repeat Start At
 	 */
 	private $currentRepeatStartAt;
 	/**
-     * @var int
+     * @var int Current Repeat End At
 	 */
 	private $currentRepeatEndAt;
 	/**
-     * @var int
+     * @var int Last Repeat End At
 	 */
 	private $lastRepeatEndAt;
 	/**
-     * @var int
+     * @var int Next Repeat Start At
 	 */
 	private $nextRepeatStartAt;
+    /** @return int|null Repeat Count */
 	public function getRepeatCount(): ?int {
 		return $this->repeatCount;
 	}
+    /** @param int|null $repeatCount Repeat Count */
 	public function setRepeatCount(?int $repeatCount) {
 		$this->repeatCount = $repeatCount;
 	}
+    /**
+     * @param int|null $repeatCount Repeat Count
+     * @return RepeatSchedule
+     */
 	public function withRepeatCount(?int $repeatCount): RepeatSchedule {
 		$this->repeatCount = $repeatCount;
 		return $this;
 	}
+    /** @return int|null Current Repeat Start At */
 	public function getCurrentRepeatStartAt(): ?int {
 		return $this->currentRepeatStartAt;
 	}
+    /** @param int|null $currentRepeatStartAt Current Repeat Start At */
 	public function setCurrentRepeatStartAt(?int $currentRepeatStartAt) {
 		$this->currentRepeatStartAt = $currentRepeatStartAt;
 	}
+    /**
+     * @param int|null $currentRepeatStartAt Current Repeat Start At
+     * @return RepeatSchedule
+     */
 	public function withCurrentRepeatStartAt(?int $currentRepeatStartAt): RepeatSchedule {
 		$this->currentRepeatStartAt = $currentRepeatStartAt;
 		return $this;
 	}
+    /** @return int|null Current Repeat End At */
 	public function getCurrentRepeatEndAt(): ?int {
 		return $this->currentRepeatEndAt;
 	}
+    /** @param int|null $currentRepeatEndAt Current Repeat End At */
 	public function setCurrentRepeatEndAt(?int $currentRepeatEndAt) {
 		$this->currentRepeatEndAt = $currentRepeatEndAt;
 	}
+    /**
+     * @param int|null $currentRepeatEndAt Current Repeat End At
+     * @return RepeatSchedule
+     */
 	public function withCurrentRepeatEndAt(?int $currentRepeatEndAt): RepeatSchedule {
 		$this->currentRepeatEndAt = $currentRepeatEndAt;
 		return $this;
 	}
+    /** @return int|null Last Repeat End At */
 	public function getLastRepeatEndAt(): ?int {
 		return $this->lastRepeatEndAt;
 	}
+    /** @param int|null $lastRepeatEndAt Last Repeat End At */
 	public function setLastRepeatEndAt(?int $lastRepeatEndAt) {
 		$this->lastRepeatEndAt = $lastRepeatEndAt;
 	}
+    /**
+     * @param int|null $lastRepeatEndAt Last Repeat End At
+     * @return RepeatSchedule
+     */
 	public function withLastRepeatEndAt(?int $lastRepeatEndAt): RepeatSchedule {
 		$this->lastRepeatEndAt = $lastRepeatEndAt;
 		return $this;
 	}
+    /** @return int|null Next Repeat Start At */
 	public function getNextRepeatStartAt(): ?int {
 		return $this->nextRepeatStartAt;
 	}
+    /** @param int|null $nextRepeatStartAt Next Repeat Start At */
 	public function setNextRepeatStartAt(?int $nextRepeatStartAt) {
 		$this->nextRepeatStartAt = $nextRepeatStartAt;
 	}
+    /**
+     * @param int|null $nextRepeatStartAt Next Repeat Start At
+     * @return RepeatSchedule
+     */
 	public function withNextRepeatStartAt(?int $nextRepeatStartAt): RepeatSchedule {
 		$this->nextRepeatStartAt = $nextRepeatStartAt;
 		return $this;

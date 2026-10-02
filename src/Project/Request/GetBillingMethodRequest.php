@@ -19,27 +19,40 @@ namespace Gs2\Project\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/** Request for getBillingMethod: Get Payment Method */
 class GetBillingMethodRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Signed in to the account token. */
     private $accountToken;
-    /** @var string */
+    /** @var string Name */
     private $billingMethodName;
+    /** @return string|null Signed in to the account token. */
 	public function getAccountToken(): ?string {
 		return $this->accountToken;
 	}
+    /** @param string|null $accountToken Signed in to the account token. */
 	public function setAccountToken(?string $accountToken) {
 		$this->accountToken = $accountToken;
 	}
+    /**
+     * @param string|null $accountToken Signed in to the account token.
+     * @return GetBillingMethodRequest
+     */
 	public function withAccountToken(?string $accountToken): GetBillingMethodRequest {
 		$this->accountToken = $accountToken;
 		return $this;
 	}
+    /** @return string|null Name */
 	public function getBillingMethodName(): ?string {
 		return $this->billingMethodName;
 	}
+    /** @param string|null $billingMethodName Name */
 	public function setBillingMethodName(?string $billingMethodName) {
 		$this->billingMethodName = $billingMethodName;
 	}
+    /**
+     * @param string|null $billingMethodName Name
+     * @return GetBillingMethodRequest
+     */
 	public function withBillingMethodName(?string $billingMethodName): GetBillingMethodRequest {
 		$this->billingMethodName = $billingMethodName;
 		return $this;

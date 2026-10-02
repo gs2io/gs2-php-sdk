@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Mission\Model\ScopedValue;
 use Gs2\Mission\Model\Counter;
 
+/**
+ * Result of deleteCounter: Delete counters
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#deletecounter
+ */
 class DeleteCounterResult implements IResult {
-    /** @var Counter */
+    /** @var Counter Counter deleted */
     private $item;
 
+    /** @return Counter|null Counter deleted */
 	public function getItem(): ?Counter {
 		return $this->item;
 	}
 
+    /** @param Counter|null $item Counter deleted */
 	public function setItem(?Counter $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Counter|null $item Counter deleted
+     * @return DeleteCounterResult
+     */
 	public function withItem(?Counter $item): DeleteCounterResult {
 		$this->item = $item;
 		return $this;

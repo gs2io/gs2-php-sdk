@@ -20,33 +20,50 @@ namespace Gs2\Log\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Log\Model\FacetModel;
 
+/**
+ * Result of describeFacetModels: Get list of facet models
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#describefacetmodels
+ */
 class DescribeFacetModelsResult implements IResult {
-    /** @var array */
+    /** @var array List of Facet Models */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Facet Models */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Facet Models */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Facet Models
+     * @return DescribeFacetModelsResult
+     */
 	public function withItems(?array $items): DescribeFacetModelsResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeFacetModelsResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeFacetModelsResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

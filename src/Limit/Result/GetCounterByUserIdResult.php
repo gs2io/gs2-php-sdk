@@ -20,18 +20,29 @@ namespace Gs2\Limit\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Limit\Model\Counter;
 
+/**
+ * Result of getCounterByUserId: Get a Counter by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/limit/sdk/#getcounterbyuserid
+ */
 class GetCounterByUserIdResult implements IResult {
-    /** @var Counter */
+    /** @var Counter Counter */
     private $item;
 
+    /** @return Counter|null Counter */
 	public function getItem(): ?Counter {
 		return $this->item;
 	}
 
+    /** @param Counter|null $item Counter */
 	public function setItem(?Counter $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Counter|null $item Counter
+     * @return GetCounterByUserIdResult
+     */
 	public function withItem(?Counter $item): GetCounterByUserIdResult {
 		$this->item = $item;
 		return $this;

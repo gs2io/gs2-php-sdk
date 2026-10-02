@@ -20,33 +20,50 @@ namespace Gs2\Inventory\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Inventory\Model\SimpleItem;
 
+/**
+ * Result of describeSimpleItemsByUserId: List Simple Items by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#describesimpleitemsbyuserid
+ */
 class DescribeSimpleItemsByUserIdResult implements IResult {
-    /** @var array */
+    /** @var array List of Simple Items */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Simple Items */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Simple Items */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Simple Items
+     * @return DescribeSimpleItemsByUserIdResult
+     */
 	public function withItems(?array $items): DescribeSimpleItemsByUserIdResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeSimpleItemsByUserIdResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeSimpleItemsByUserIdResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

@@ -22,18 +22,29 @@ use Gs2\Idle\Model\AcquireAction;
 use Gs2\Idle\Model\AcquireActionList;
 use Gs2\Idle\Model\CategoryModelMaster;
 
+/**
+ * Result of getCategoryModelMaster: Get Category Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/idle/sdk/#getcategorymodelmaster
+ */
 class GetCategoryModelMasterResult implements IResult {
-    /** @var CategoryModelMaster */
+    /** @var CategoryModelMaster Category Model Master */
     private $item;
 
+    /** @return CategoryModelMaster|null Category Model Master */
 	public function getItem(): ?CategoryModelMaster {
 		return $this->item;
 	}
 
+    /** @param CategoryModelMaster|null $item Category Model Master */
 	public function setItem(?CategoryModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CategoryModelMaster|null $item Category Model Master
+     * @return GetCategoryModelMasterResult
+     */
 	public function withItem(?CategoryModelMaster $item): GetCategoryModelMasterResult {
 		$this->item = $item;
 		return $this;

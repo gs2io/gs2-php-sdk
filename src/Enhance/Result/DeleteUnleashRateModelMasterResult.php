@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Enhance\Model\UnleashRateEntryModel;
 use Gs2\Enhance\Model\UnleashRateModelMaster;
 
+/**
+ * Result of deleteUnleashRateModelMaster: Delete Unleash Rate Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/enhance/sdk/#deleteunleashratemodelmaster
+ */
 class DeleteUnleashRateModelMasterResult implements IResult {
-    /** @var UnleashRateModelMaster */
+    /** @var UnleashRateModelMaster Unleash Rate Model Master deleted */
     private $item;
 
+    /** @return UnleashRateModelMaster|null Unleash Rate Model Master deleted */
 	public function getItem(): ?UnleashRateModelMaster {
 		return $this->item;
 	}
 
+    /** @param UnleashRateModelMaster|null $item Unleash Rate Model Master deleted */
 	public function setItem(?UnleashRateModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param UnleashRateModelMaster|null $item Unleash Rate Model Master deleted
+     * @return DeleteUnleashRateModelMasterResult
+     */
 	public function withItem(?UnleashRateModelMaster $item): DeleteUnleashRateModelMasterResult {
 		$this->item = $item;
 		return $this;

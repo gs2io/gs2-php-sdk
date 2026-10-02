@@ -20,18 +20,29 @@ namespace Gs2\Inventory\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Inventory\Model\SimpleItem;
 
+/**
+ * Result of setSimpleItemsByUserId: Set the quantity of simple items by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#setsimpleitemsbyuserid
+ */
 class SetSimpleItemsByUserIdResult implements IResult {
-    /** @var array */
+    /** @var array List of Simple Items after update */
     private $items;
 
+    /** @return array|null List of Simple Items after update */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Simple Items after update */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Simple Items after update
+     * @return SetSimpleItemsByUserIdResult
+     */
 	public function withItems(?array $items): SetSimpleItemsByUserIdResult {
 		$this->items = $items;
 		return $this;

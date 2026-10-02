@@ -20,18 +20,29 @@ namespace Gs2\Experience\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Experience\Model\Status;
 
+/**
+ * Result of addRankCapByStampSheet: Execute the addition of rank cap as an acquire action
+ *
+ * @see https://docs.gs2.io/api_reference/experience/stamp_sheet/#gs2experienceaddrankcapbyuserid
+ */
 class AddRankCapByStampSheetResult implements IResult {
-    /** @var Status */
+    /** @var Status Status after addition */
     private $item;
 
+    /** @return Status|null Status after addition */
 	public function getItem(): ?Status {
 		return $this->item;
 	}
 
+    /** @param Status|null $item Status after addition */
 	public function setItem(?Status $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Status|null $item Status after addition
+     * @return AddRankCapByStampSheetResult
+     */
 	public function withItem(?Status $item): AddRankCapByStampSheetResult {
 		$this->item = $item;
 		return $this;

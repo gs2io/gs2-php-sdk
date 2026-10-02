@@ -20,18 +20,29 @@ namespace Gs2\Chat\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Chat\Model\CategoryModelMaster;
 
+/**
+ * Result of createCategoryModelMaster: Create Message Category Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/chat/sdk/#createcategorymodelmaster
+ */
 class CreateCategoryModelMasterResult implements IResult {
-    /** @var CategoryModelMaster */
+    /** @var CategoryModelMaster Message Category Model Master created */
     private $item;
 
+    /** @return CategoryModelMaster|null Message Category Model Master created */
 	public function getItem(): ?CategoryModelMaster {
 		return $this->item;
 	}
 
+    /** @param CategoryModelMaster|null $item Message Category Model Master created */
 	public function setItem(?CategoryModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CategoryModelMaster|null $item Message Category Model Master created
+     * @return CreateCategoryModelMasterResult
+     */
 	public function withItem(?CategoryModelMaster $item): CreateCategoryModelMasterResult {
 		$this->item = $item;
 		return $this;

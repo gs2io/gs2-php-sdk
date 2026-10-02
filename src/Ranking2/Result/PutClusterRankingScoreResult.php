@@ -20,18 +20,29 @@ namespace Gs2\Ranking2\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Ranking2\Model\ClusterRankingScore;
 
+/**
+ * Result of putClusterRankingScore: Register Cluster Ranking Score
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/sdk/#putclusterrankingscore
+ */
 class PutClusterRankingScoreResult implements IResult {
-    /** @var ClusterRankingScore */
+    /** @var ClusterRankingScore Registered Cluster Ranking Score */
     private $item;
 
+    /** @return ClusterRankingScore|null Registered Cluster Ranking Score */
 	public function getItem(): ?ClusterRankingScore {
 		return $this->item;
 	}
 
+    /** @param ClusterRankingScore|null $item Registered Cluster Ranking Score */
 	public function setItem(?ClusterRankingScore $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param ClusterRankingScore|null $item Registered Cluster Ranking Score
+     * @return PutClusterRankingScoreResult
+     */
 	public function withItem(?ClusterRankingScore $item): PutClusterRankingScoreResult {
 		$this->item = $item;
 		return $this;

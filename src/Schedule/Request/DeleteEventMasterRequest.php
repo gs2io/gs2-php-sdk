@@ -19,27 +19,44 @@ namespace Gs2\Schedule\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for deleteEventMaster: Delete Event Master
+ *
+ * @see https://docs.gs2.io/api_reference/schedule/sdk/#deleteeventmaster
+ */
 class DeleteEventMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Event name */
     private $eventName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DeleteEventMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DeleteEventMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Event name */
 	public function getEventName(): ?string {
 		return $this->eventName;
 	}
+    /** @param string|null $eventName Event name */
 	public function setEventName(?string $eventName) {
 		$this->eventName = $eventName;
 	}
+    /**
+     * @param string|null $eventName Event name
+     * @return DeleteEventMasterRequest
+     */
 	public function withEventName(?string $eventName): DeleteEventMasterRequest {
 		$this->eventName = $eventName;
 		return $this;

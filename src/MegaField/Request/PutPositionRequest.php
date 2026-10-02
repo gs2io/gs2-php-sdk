@@ -21,89 +21,136 @@ use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\MegaField\Model\Position;
 use Gs2\MegaField\Model\Vector;
 
+/**
+ * Request for putPosition: Put position
+ *
+ * @see https://docs.gs2.io/api_reference/mega_field/sdk/#putposition
+ */
 class PutPositionRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Area name */
     private $areaModelName;
-    /** @var string */
+    /** @var string Layer name */
     private $layerModelName;
-    /** @var Position */
+    /** @var Position Position */
     private $position;
-    /** @var Vector */
+    /** @var Vector Vector */
     private $vector;
-    /** @var float */
+    /** @var float Radius */
     private $r;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return PutPositionRequest
+     */
 	public function withNamespaceName(?string $namespaceName): PutPositionRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return PutPositionRequest
+     */
 	public function withAccessToken(?string $accessToken): PutPositionRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Area name */
 	public function getAreaModelName(): ?string {
 		return $this->areaModelName;
 	}
+    /** @param string|null $areaModelName Area name */
 	public function setAreaModelName(?string $areaModelName) {
 		$this->areaModelName = $areaModelName;
 	}
+    /**
+     * @param string|null $areaModelName Area name
+     * @return PutPositionRequest
+     */
 	public function withAreaModelName(?string $areaModelName): PutPositionRequest {
 		$this->areaModelName = $areaModelName;
 		return $this;
 	}
+    /** @return string|null Layer name */
 	public function getLayerModelName(): ?string {
 		return $this->layerModelName;
 	}
+    /** @param string|null $layerModelName Layer name */
 	public function setLayerModelName(?string $layerModelName) {
 		$this->layerModelName = $layerModelName;
 	}
+    /**
+     * @param string|null $layerModelName Layer name
+     * @return PutPositionRequest
+     */
 	public function withLayerModelName(?string $layerModelName): PutPositionRequest {
 		$this->layerModelName = $layerModelName;
 		return $this;
 	}
+    /** @return Position|null Position */
 	public function getPosition(): ?Position {
 		return $this->position;
 	}
+    /** @param Position|null $position Position */
 	public function setPosition(?Position $position) {
 		$this->position = $position;
 	}
+    /**
+     * @param Position|null $position Position
+     * @return PutPositionRequest
+     */
 	public function withPosition(?Position $position): PutPositionRequest {
 		$this->position = $position;
 		return $this;
 	}
+    /** @return Vector|null Vector */
 	public function getVector(): ?Vector {
 		return $this->vector;
 	}
+    /** @param Vector|null $vector Vector */
 	public function setVector(?Vector $vector) {
 		$this->vector = $vector;
 	}
+    /**
+     * @param Vector|null $vector Vector
+     * @return PutPositionRequest
+     */
 	public function withVector(?Vector $vector): PutPositionRequest {
 		$this->vector = $vector;
 		return $this;
 	}
+    /** @return float|null Radius */
 	public function getR(): ?float {
 		return $this->r;
 	}
+    /** @param float|null $r Radius */
 	public function setR(?float $r) {
 		$this->r = $r;
 	}
+    /**
+     * @param float|null $r Radius
+     * @return PutPositionRequest
+     */
 	public function withR(?float $r): PutPositionRequest {
 		$this->r = $r;
 		return $this;

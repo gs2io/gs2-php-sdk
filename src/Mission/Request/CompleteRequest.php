@@ -20,65 +20,100 @@ namespace Gs2\Mission\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Mission\Model\Config;
 
+/**
+ * Request for complete: Issue transactions to receive rewards for mission accomplishment
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#complete-1
+ */
 class CompleteRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Mission Group Name */
     private $missionGroupName;
-    /** @var string */
+    /** @var string Task Name */
     private $missionTaskName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var array */
+    /** @var array Configuration values applied to transaction variables */
     private $config;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return CompleteRequest
+     */
 	public function withNamespaceName(?string $namespaceName): CompleteRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Mission Group Name */
 	public function getMissionGroupName(): ?string {
 		return $this->missionGroupName;
 	}
+    /** @param string|null $missionGroupName Mission Group Name */
 	public function setMissionGroupName(?string $missionGroupName) {
 		$this->missionGroupName = $missionGroupName;
 	}
+    /**
+     * @param string|null $missionGroupName Mission Group Name
+     * @return CompleteRequest
+     */
 	public function withMissionGroupName(?string $missionGroupName): CompleteRequest {
 		$this->missionGroupName = $missionGroupName;
 		return $this;
 	}
+    /** @return string|null Task Name */
 	public function getMissionTaskName(): ?string {
 		return $this->missionTaskName;
 	}
+    /** @param string|null $missionTaskName Task Name */
 	public function setMissionTaskName(?string $missionTaskName) {
 		$this->missionTaskName = $missionTaskName;
 	}
+    /**
+     * @param string|null $missionTaskName Task Name
+     * @return CompleteRequest
+     */
 	public function withMissionTaskName(?string $missionTaskName): CompleteRequest {
 		$this->missionTaskName = $missionTaskName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return CompleteRequest
+     */
 	public function withAccessToken(?string $accessToken): CompleteRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return array|null Configuration values applied to transaction variables */
 	public function getConfig(): ?array {
 		return $this->config;
 	}
+    /** @param array|null $config Configuration values applied to transaction variables */
 	public function setConfig(?array $config) {
 		$this->config = $config;
 	}
+    /**
+     * @param array|null $config Configuration values applied to transaction variables
+     * @return CompleteRequest
+     */
 	public function withConfig(?array $config): CompleteRequest {
 		$this->config = $config;
 		return $this;

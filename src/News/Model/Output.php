@@ -20,73 +20,108 @@ namespace Gs2\News\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Output
+ *
+ * @see https://docs.gs2.io/api_reference/news/sdk/#output
+ */
 class Output implements IModel {
 	/**
-     * @var string
+     * @var string Output of content generation progress GRN
 	 */
 	private $outputId;
 	/**
-     * @var string
+     * @var string Output Name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Text
 	 */
 	private $text;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Output of content generation progress GRN */
 	public function getOutputId(): ?string {
 		return $this->outputId;
 	}
+    /** @param string|null $outputId Output of content generation progress GRN */
 	public function setOutputId(?string $outputId) {
 		$this->outputId = $outputId;
 	}
+    /**
+     * @param string|null $outputId Output of content generation progress GRN
+     * @return Output
+     */
 	public function withOutputId(?string $outputId): Output {
 		$this->outputId = $outputId;
 		return $this;
 	}
+    /** @return string|null Output Name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Output Name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Output Name
+     * @return Output
+     */
 	public function withName(?string $name): Output {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Text */
 	public function getText(): ?string {
 		return $this->text;
 	}
+    /** @param string|null $text Text */
 	public function setText(?string $text) {
 		$this->text = $text;
 	}
+    /**
+     * @param string|null $text Text
+     * @return Output
+     */
 	public function withText(?string $text): Output {
 		$this->text = $text;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return Output
+     */
 	public function withCreatedAt(?int $createdAt): Output {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return Output
+     */
 	public function withRevision(?int $revision): Output {
 		$this->revision = $revision;
 		return $this;

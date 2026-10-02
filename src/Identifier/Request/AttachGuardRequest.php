@@ -19,39 +19,62 @@ namespace Gs2\Identifier\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for attachGuard: Assign the GS2-Guard Namespace GRN to the credential
+ *
+ * @see https://docs.gs2.io/api_reference/identifier/sdk/#attachguard
+ */
 class AttachGuardRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string GS2-Identifier User name */
     private $userName;
-    /** @var string */
+    /** @var string Client ID */
     private $clientId;
-    /** @var string */
+    /** @var string Assign GS2-Guard Namespace GRN */
     private $guardNamespaceId;
+    /** @return string|null GS2-Identifier User name */
 	public function getUserName(): ?string {
 		return $this->userName;
 	}
+    /** @param string|null $userName GS2-Identifier User name */
 	public function setUserName(?string $userName) {
 		$this->userName = $userName;
 	}
+    /**
+     * @param string|null $userName GS2-Identifier User name
+     * @return AttachGuardRequest
+     */
 	public function withUserName(?string $userName): AttachGuardRequest {
 		$this->userName = $userName;
 		return $this;
 	}
+    /** @return string|null Client ID */
 	public function getClientId(): ?string {
 		return $this->clientId;
 	}
+    /** @param string|null $clientId Client ID */
 	public function setClientId(?string $clientId) {
 		$this->clientId = $clientId;
 	}
+    /**
+     * @param string|null $clientId Client ID
+     * @return AttachGuardRequest
+     */
 	public function withClientId(?string $clientId): AttachGuardRequest {
 		$this->clientId = $clientId;
 		return $this;
 	}
+    /** @return string|null Assign GS2-Guard Namespace GRN */
 	public function getGuardNamespaceId(): ?string {
 		return $this->guardNamespaceId;
 	}
+    /** @param string|null $guardNamespaceId Assign GS2-Guard Namespace GRN */
 	public function setGuardNamespaceId(?string $guardNamespaceId) {
 		$this->guardNamespaceId = $guardNamespaceId;
 	}
+    /**
+     * @param string|null $guardNamespaceId Assign GS2-Guard Namespace GRN
+     * @return AttachGuardRequest
+     */
 	public function withGuardNamespaceId(?string $guardNamespaceId): AttachGuardRequest {
 		$this->guardNamespaceId = $guardNamespaceId;
 		return $this;

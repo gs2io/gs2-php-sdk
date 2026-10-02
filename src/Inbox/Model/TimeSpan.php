@@ -20,45 +20,68 @@ namespace Gs2\Inbox\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Time Span
+ *
+ * @see https://docs.gs2.io/api_reference/inbox/sdk/#timespan
+ */
 class TimeSpan implements IModel {
 	/**
-     * @var int
+     * @var int Days
 	 */
 	private $days;
 	/**
-     * @var int
+     * @var int Hours
 	 */
 	private $hours;
 	/**
-     * @var int
+     * @var int Minutes
 	 */
 	private $minutes;
+    /** @return int|null Days */
 	public function getDays(): ?int {
 		return $this->days;
 	}
+    /** @param int|null $days Days */
 	public function setDays(?int $days) {
 		$this->days = $days;
 	}
+    /**
+     * @param int|null $days Days
+     * @return TimeSpan
+     */
 	public function withDays(?int $days): TimeSpan {
 		$this->days = $days;
 		return $this;
 	}
+    /** @return int|null Hours */
 	public function getHours(): ?int {
 		return $this->hours;
 	}
+    /** @param int|null $hours Hours */
 	public function setHours(?int $hours) {
 		$this->hours = $hours;
 	}
+    /**
+     * @param int|null $hours Hours
+     * @return TimeSpan
+     */
 	public function withHours(?int $hours): TimeSpan {
 		$this->hours = $hours;
 		return $this;
 	}
+    /** @return int|null Minutes */
 	public function getMinutes(): ?int {
 		return $this->minutes;
 	}
+    /** @param int|null $minutes Minutes */
 	public function setMinutes(?int $minutes) {
 		$this->minutes = $minutes;
 	}
+    /**
+     * @param int|null $minutes Minutes
+     * @return TimeSpan
+     */
 	public function withMinutes(?int $minutes): TimeSpan {
 		$this->minutes = $minutes;
 		return $this;

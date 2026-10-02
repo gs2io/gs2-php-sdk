@@ -23,18 +23,29 @@ use Gs2\Buff\Model\BuffTargetModel;
 use Gs2\Buff\Model\BuffTargetAction;
 use Gs2\Buff\Model\BuffEntryModel;
 
+/**
+ * Result of describeBuffEntryModels: List Buff Entry Models
+ *
+ * @see https://docs.gs2.io/api_reference/buff/sdk/#describebuffentrymodels
+ */
 class DescribeBuffEntryModelsResult implements IResult {
-    /** @var array */
+    /** @var array List of Buff Entry Models */
     private $items;
 
+    /** @return array|null List of Buff Entry Models */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Buff Entry Models */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Buff Entry Models
+     * @return DescribeBuffEntryModelsResult
+     */
 	public function withItems(?array $items): DescribeBuffEntryModelsResult {
 		$this->items = $items;
 		return $this;

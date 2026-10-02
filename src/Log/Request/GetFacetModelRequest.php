@@ -19,27 +19,44 @@ namespace Gs2\Log\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getFacetModel: Get Facet Model
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#getfacetmodel
+ */
 class GetFacetModelRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Facet Field Name */
     private $field;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetFacetModelRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetFacetModelRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Facet Field Name */
 	public function getField(): ?string {
 		return $this->field;
 	}
+    /** @param string|null $field Facet Field Name */
 	public function setField(?string $field) {
 		$this->field = $field;
 	}
+    /**
+     * @param string|null $field Facet Field Name
+     * @return GetFacetModelRequest
+     */
 	public function withField(?string $field): GetFacetModelRequest {
 		$this->field = $field;
 		return $this;

@@ -19,15 +19,26 @@ namespace Gs2\Inventory\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getCurrentItemModelMaster: Get currently active Item Model master data
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#getcurrentitemmodelmaster
+ */
 class GetCurrentItemModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetCurrentItemModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetCurrentItemModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;

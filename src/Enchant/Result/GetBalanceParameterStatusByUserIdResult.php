@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Enchant\Model\BalanceParameterValue;
 use Gs2\Enchant\Model\BalanceParameterStatus;
 
+/**
+ * Result of getBalanceParameterStatusByUserId: Get Balance Parameter Status by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/enchant/sdk/#getbalanceparameterstatusbyuserid
+ */
 class GetBalanceParameterStatusByUserIdResult implements IResult {
-    /** @var BalanceParameterStatus */
+    /** @var BalanceParameterStatus Balance Parameter Status */
     private $item;
 
+    /** @return BalanceParameterStatus|null Balance Parameter Status */
 	public function getItem(): ?BalanceParameterStatus {
 		return $this->item;
 	}
 
+    /** @param BalanceParameterStatus|null $item Balance Parameter Status */
 	public function setItem(?BalanceParameterStatus $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param BalanceParameterStatus|null $item Balance Parameter Status
+     * @return GetBalanceParameterStatusByUserIdResult
+     */
 	public function withItem(?BalanceParameterStatus $item): GetBalanceParameterStatusByUserIdResult {
 		$this->item = $item;
 		return $this;

@@ -20,18 +20,29 @@ namespace Gs2\Lottery\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Lottery\Model\CurrentLotteryMaster;
 
+/**
+ * Result of updateCurrentLotteryMasterFromGitHub: Update Currently Active Lottery Model Master Data from GitHub
+ *
+ * @see https://docs.gs2.io/api_reference/lottery/sdk/#updatecurrentlotterymasterfromgithub
+ */
 class UpdateCurrentLotteryMasterFromGitHubResult implements IResult {
-    /** @var CurrentLotteryMaster */
+    /** @var CurrentLotteryMaster Updated current active Lottery Model master data */
     private $item;
 
+    /** @return CurrentLotteryMaster|null Updated current active Lottery Model master data */
 	public function getItem(): ?CurrentLotteryMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentLotteryMaster|null $item Updated current active Lottery Model master data */
 	public function setItem(?CurrentLotteryMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentLotteryMaster|null $item Updated current active Lottery Model master data
+     * @return UpdateCurrentLotteryMasterFromGitHubResult
+     */
 	public function withItem(?CurrentLotteryMaster $item): UpdateCurrentLotteryMasterFromGitHubResult {
 		$this->item = $item;
 		return $this;

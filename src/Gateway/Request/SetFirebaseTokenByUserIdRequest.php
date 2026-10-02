@@ -19,65 +19,100 @@ namespace Gs2\Gateway\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for setFirebaseTokenByUserId: Set Firebase device token by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/gateway/sdk/#setfirebasetokenbyuserid
+ */
 class SetFirebaseTokenByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Device Token for Firebase Cloud Messaging */
     private $token;
-    /** @var string */
+    /** @var string Locale of the notification message */
     private $locale;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return SetFirebaseTokenByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): SetFirebaseTokenByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return SetFirebaseTokenByUserIdRequest
+     */
 	public function withUserId(?string $userId): SetFirebaseTokenByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Device Token for Firebase Cloud Messaging */
 	public function getToken(): ?string {
 		return $this->token;
 	}
+    /** @param string|null $token Device Token for Firebase Cloud Messaging */
 	public function setToken(?string $token) {
 		$this->token = $token;
 	}
+    /**
+     * @param string|null $token Device Token for Firebase Cloud Messaging
+     * @return SetFirebaseTokenByUserIdRequest
+     */
 	public function withToken(?string $token): SetFirebaseTokenByUserIdRequest {
 		$this->token = $token;
 		return $this;
 	}
+    /** @return string|null Locale of the notification message */
 	public function getLocale(): ?string {
 		return $this->locale;
 	}
+    /** @param string|null $locale Locale of the notification message */
 	public function setLocale(?string $locale) {
 		$this->locale = $locale;
 	}
+    /**
+     * @param string|null $locale Locale of the notification message
+     * @return SetFirebaseTokenByUserIdRequest
+     */
 	public function withLocale(?string $locale): SetFirebaseTokenByUserIdRequest {
 		$this->locale = $locale;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return SetFirebaseTokenByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): SetFirebaseTokenByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

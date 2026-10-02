@@ -21,18 +21,25 @@ use Gs2\Core\Model\IResult;
 use Gs2\Project\Model\Gs2Region;
 use Gs2\Project\Model\Project;
 
+/** Result of getProject: Get Project */
 class GetProjectResult implements IResult {
-    /** @var Project */
+    /** @var Project Project */
     private $item;
 
+    /** @return Project|null Project */
 	public function getItem(): ?Project {
 		return $this->item;
 	}
 
+    /** @param Project|null $item Project */
 	public function setItem(?Project $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Project|null $item Project
+     * @return GetProjectResult
+     */
 	public function withItem(?Project $item): GetProjectResult {
 		$this->item = $item;
 		return $this;

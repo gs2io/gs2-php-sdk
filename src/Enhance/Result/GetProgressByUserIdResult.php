@@ -20,18 +20,29 @@ namespace Gs2\Enhance\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Enhance\Model\Progress;
 
+/**
+ * Result of getProgressByUserId: Get running enhancements by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/enhance/sdk/#getprogressbyuserid
+ */
 class GetProgressByUserIdResult implements IResult {
-    /** @var Progress */
+    /** @var Progress Progress information for the enhancement currently in the running */
     private $item;
 
+    /** @return Progress|null Progress information for the enhancement currently in the running */
 	public function getItem(): ?Progress {
 		return $this->item;
 	}
 
+    /** @param Progress|null $item Progress information for the enhancement currently in the running */
 	public function setItem(?Progress $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Progress|null $item Progress information for the enhancement currently in the running
+     * @return GetProgressByUserIdResult
+     */
 	public function withItem(?Progress $item): GetProgressByUserIdResult {
 		$this->item = $item;
 		return $this;

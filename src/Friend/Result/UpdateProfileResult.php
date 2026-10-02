@@ -20,18 +20,29 @@ namespace Gs2\Friend\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Friend\Model\Profile;
 
+/**
+ * Result of updateProfile: Update profile
+ *
+ * @see https://docs.gs2.io/api_reference/friend/sdk/#updateprofile
+ */
 class UpdateProfileResult implements IResult {
-    /** @var Profile */
+    /** @var Profile Profile updated */
     private $item;
 
+    /** @return Profile|null Profile updated */
 	public function getItem(): ?Profile {
 		return $this->item;
 	}
 
+    /** @param Profile|null $item Profile updated */
 	public function setItem(?Profile $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Profile|null $item Profile updated
+     * @return UpdateProfileResult
+     */
 	public function withItem(?Profile $item): UpdateProfileResult {
 		$this->item = $item;
 		return $this;

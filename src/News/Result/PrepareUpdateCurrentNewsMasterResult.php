@@ -19,33 +19,50 @@ namespace Gs2\News\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of prepareUpdateCurrentNewsMaster: Prepare updates to Currently Active Notice
+ *
+ * @see https://docs.gs2.io/api_reference/news/sdk/#prepareupdatecurrentnewsmaster
+ */
 class PrepareUpdateCurrentNewsMasterResult implements IResult {
-    /** @var string */
+    /** @var string Token used to reflect results after upload */
     private $uploadToken;
-    /** @var string */
+    /** @var string URL used to execute the template upload process */
     private $templateUploadUrl;
 
+    /** @return string|null Token used to reflect results after upload */
 	public function getUploadToken(): ?string {
 		return $this->uploadToken;
 	}
 
+    /** @param string|null $uploadToken Token used to reflect results after upload */
 	public function setUploadToken(?string $uploadToken) {
 		$this->uploadToken = $uploadToken;
 	}
 
+    /**
+     * @param string|null $uploadToken Token used to reflect results after upload
+     * @return PrepareUpdateCurrentNewsMasterResult
+     */
 	public function withUploadToken(?string $uploadToken): PrepareUpdateCurrentNewsMasterResult {
 		$this->uploadToken = $uploadToken;
 		return $this;
 	}
 
+    /** @return string|null URL used to execute the template upload process */
 	public function getTemplateUploadUrl(): ?string {
 		return $this->templateUploadUrl;
 	}
 
+    /** @param string|null $templateUploadUrl URL used to execute the template upload process */
 	public function setTemplateUploadUrl(?string $templateUploadUrl) {
 		$this->templateUploadUrl = $templateUploadUrl;
 	}
 
+    /**
+     * @param string|null $templateUploadUrl URL used to execute the template upload process
+     * @return PrepareUpdateCurrentNewsMasterResult
+     */
 	public function withTemplateUploadUrl(?string $templateUploadUrl): PrepareUpdateCurrentNewsMasterResult {
 		$this->templateUploadUrl = $templateUploadUrl;
 		return $this;

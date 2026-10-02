@@ -19,63 +19,98 @@ namespace Gs2\Deploy\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for createStack: Create Stack
+ *
+ * @see https://docs.gs2.io/api_reference/deploy/sdk/#createstack
+ */
 class CreateStackRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Stack name */
     private $name;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var string */
+    /** @var string Update mode */
     private $mode;
-    /** @var string */
+    /** @var string Template data */
     private $template;
-    /** @var string */
+    /** @var string Token obtained by pre-upload */
     private $uploadToken;
+    /** @return string|null Stack name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Stack name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Stack name
+     * @return CreateStackRequest
+     */
 	public function withName(?string $name): CreateStackRequest {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return CreateStackRequest
+     */
 	public function withDescription(?string $description): CreateStackRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Update mode */
 	public function getMode(): ?string {
 		return $this->mode;
 	}
+    /** @param string|null $mode Update mode */
 	public function setMode(?string $mode) {
 		$this->mode = $mode;
 	}
+    /**
+     * @param string|null $mode Update mode
+     * @return CreateStackRequest
+     */
 	public function withMode(?string $mode): CreateStackRequest {
 		$this->mode = $mode;
 		return $this;
 	}
+    /** @return string|null Template data */
 	public function getTemplate(): ?string {
 		return $this->template;
 	}
+    /** @param string|null $template Template data */
 	public function setTemplate(?string $template) {
 		$this->template = $template;
 	}
+    /**
+     * @param string|null $template Template data
+     * @return CreateStackRequest
+     */
 	public function withTemplate(?string $template): CreateStackRequest {
 		$this->template = $template;
 		return $this;
 	}
+    /** @return string|null Token obtained by pre-upload */
 	public function getUploadToken(): ?string {
 		return $this->uploadToken;
 	}
+    /** @param string|null $uploadToken Token obtained by pre-upload */
 	public function setUploadToken(?string $uploadToken) {
 		$this->uploadToken = $uploadToken;
 	}
+    /**
+     * @param string|null $uploadToken Token obtained by pre-upload
+     * @return CreateStackRequest
+     */
 	public function withUploadToken(?string $uploadToken): CreateStackRequest {
 		$this->uploadToken = $uploadToken;
 		return $this;

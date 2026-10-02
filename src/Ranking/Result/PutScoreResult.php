@@ -20,18 +20,29 @@ namespace Gs2\Ranking\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Ranking\Model\Score;
 
+/**
+ * Result of putScore: Register score
+ *
+ * @see https://docs.gs2.io/api_reference/ranking/sdk/#putscore
+ */
 class PutScoreResult implements IResult {
-    /** @var Score */
+    /** @var Score Registered Scores */
     private $item;
 
+    /** @return Score|null Registered Scores */
 	public function getItem(): ?Score {
 		return $this->item;
 	}
 
+    /** @param Score|null $item Registered Scores */
 	public function setItem(?Score $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Score|null $item Registered Scores
+     * @return PutScoreResult
+     */
 	public function withItem(?Score $item): PutScoreResult {
 		$this->item = $item;
 		return $this;

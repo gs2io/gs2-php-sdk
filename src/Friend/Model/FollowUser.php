@@ -20,45 +20,68 @@ namespace Gs2\Friend\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Follow User
+ *
+ * @see https://docs.gs2.io/api_reference/friend/sdk/#followuser
+ */
 class FollowUser implements IModel {
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var string
+     * @var string Public profile
 	 */
 	private $publicProfile;
 	/**
-     * @var string
+     * @var string Profile for followers
 	 */
 	private $followerProfile;
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return FollowUser
+     */
 	public function withUserId(?string $userId): FollowUser {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Public profile */
 	public function getPublicProfile(): ?string {
 		return $this->publicProfile;
 	}
+    /** @param string|null $publicProfile Public profile */
 	public function setPublicProfile(?string $publicProfile) {
 		$this->publicProfile = $publicProfile;
 	}
+    /**
+     * @param string|null $publicProfile Public profile
+     * @return FollowUser
+     */
 	public function withPublicProfile(?string $publicProfile): FollowUser {
 		$this->publicProfile = $publicProfile;
 		return $this;
 	}
+    /** @return string|null Profile for followers */
 	public function getFollowerProfile(): ?string {
 		return $this->followerProfile;
 	}
+    /** @param string|null $followerProfile Profile for followers */
 	public function setFollowerProfile(?string $followerProfile) {
 		$this->followerProfile = $followerProfile;
 	}
+    /**
+     * @param string|null $followerProfile Profile for followers
+     * @return FollowUser
+     */
 	public function withFollowerProfile(?string $followerProfile): FollowUser {
 		$this->followerProfile = $followerProfile;
 		return $this;

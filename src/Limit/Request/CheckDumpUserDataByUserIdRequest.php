@@ -19,27 +19,44 @@ namespace Gs2\Limit\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for checkDumpUserDataByUserId: Check if the dump of the data associated with the specified user ID is complete
+ *
+ * @see https://docs.gs2.io/api_reference/limit/sdk/#checkdumpuserdatabyuserid
+ */
 class CheckDumpUserDataByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return CheckDumpUserDataByUserIdRequest
+     */
 	public function withUserId(?string $userId): CheckDumpUserDataByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return CheckDumpUserDataByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): CheckDumpUserDataByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

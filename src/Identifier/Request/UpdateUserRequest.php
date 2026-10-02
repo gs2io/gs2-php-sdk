@@ -19,27 +19,44 @@ namespace Gs2\Identifier\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for updateUser: Update user
+ *
+ * @see https://docs.gs2.io/api_reference/identifier/sdk/#updateuser
+ */
 class UpdateUserRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string GS2-Identifier User name */
     private $userName;
-    /** @var string */
+    /** @var string Description */
     private $description;
+    /** @return string|null GS2-Identifier User name */
 	public function getUserName(): ?string {
 		return $this->userName;
 	}
+    /** @param string|null $userName GS2-Identifier User name */
 	public function setUserName(?string $userName) {
 		$this->userName = $userName;
 	}
+    /**
+     * @param string|null $userName GS2-Identifier User name
+     * @return UpdateUserRequest
+     */
 	public function withUserName(?string $userName): UpdateUserRequest {
 		$this->userName = $userName;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return UpdateUserRequest
+     */
 	public function withDescription(?string $description): UpdateUserRequest {
 		$this->description = $description;
 		return $this;

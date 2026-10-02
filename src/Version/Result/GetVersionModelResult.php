@@ -22,18 +22,29 @@ use Gs2\Version\Model\Version;
 use Gs2\Version\Model\ScheduleVersion;
 use Gs2\Version\Model\VersionModel;
 
+/**
+ * Result of getVersionModel: Get Version Model
+ *
+ * @see https://docs.gs2.io/api_reference/version/sdk/#getversionmodel
+ */
 class GetVersionModelResult implements IResult {
-    /** @var VersionModel */
+    /** @var VersionModel Version Model */
     private $item;
 
+    /** @return VersionModel|null Version Model */
 	public function getItem(): ?VersionModel {
 		return $this->item;
 	}
 
+    /** @param VersionModel|null $item Version Model */
 	public function setItem(?VersionModel $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param VersionModel|null $item Version Model
+     * @return GetVersionModelResult
+     */
 	public function withItem(?VersionModel $item): GetVersionModelResult {
 		$this->item = $item;
 		return $this;

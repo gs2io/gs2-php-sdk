@@ -20,18 +20,29 @@ namespace Gs2\Guild\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Guild\Model\ReceiveMemberRequest;
 
+/**
+ * Result of getReceiveRequest: Get Received Join Request
+ *
+ * @see https://docs.gs2.io/api_reference/guild/sdk/#getreceiverequest
+ */
 class GetReceiveRequestResult implements IResult {
-    /** @var ReceiveMemberRequest */
+    /** @var ReceiveMemberRequest Join request */
     private $item;
 
+    /** @return ReceiveMemberRequest|null Join request */
 	public function getItem(): ?ReceiveMemberRequest {
 		return $this->item;
 	}
 
+    /** @param ReceiveMemberRequest|null $item Join request */
 	public function setItem(?ReceiveMemberRequest $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param ReceiveMemberRequest|null $item Join request
+     * @return GetReceiveRequestResult
+     */
 	public function withItem(?ReceiveMemberRequest $item): GetReceiveRequestResult {
 		$this->item = $item;
 		return $this;

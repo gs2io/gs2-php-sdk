@@ -20,31 +20,48 @@ namespace Gs2\Grade\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Transaction Setting (V2)
+ *
+ * @see https://docs.gs2.io/api_reference/grade/sdk/#transactionsettingv2
+ */
 class TransactionSettingV2 implements IModel {
 	/**
-     * @var string
+     * @var string GS2-Distributor Namespace GRN used to execute transactions
 	 */
 	private $distributorNamespaceId;
 	/**
-     * @var bool
+     * @var bool Whether to execute the actions in parallel instead of sequentially
 	 */
 	private $enableParallelExecution;
+    /** @return string|null GS2-Distributor Namespace GRN used to execute transactions */
 	public function getDistributorNamespaceId(): ?string {
 		return $this->distributorNamespaceId;
 	}
+    /** @param string|null $distributorNamespaceId GS2-Distributor Namespace GRN used to execute transactions */
 	public function setDistributorNamespaceId(?string $distributorNamespaceId) {
 		$this->distributorNamespaceId = $distributorNamespaceId;
 	}
+    /**
+     * @param string|null $distributorNamespaceId GS2-Distributor Namespace GRN used to execute transactions
+     * @return TransactionSettingV2
+     */
 	public function withDistributorNamespaceId(?string $distributorNamespaceId): TransactionSettingV2 {
 		$this->distributorNamespaceId = $distributorNamespaceId;
 		return $this;
 	}
+    /** @return bool|null Whether to execute the actions in parallel instead of sequentially */
 	public function getEnableParallelExecution(): ?bool {
 		return $this->enableParallelExecution;
 	}
+    /** @param bool|null $enableParallelExecution Whether to execute the actions in parallel instead of sequentially */
 	public function setEnableParallelExecution(?bool $enableParallelExecution) {
 		$this->enableParallelExecution = $enableParallelExecution;
 	}
+    /**
+     * @param bool|null $enableParallelExecution Whether to execute the actions in parallel instead of sequentially
+     * @return TransactionSettingV2
+     */
 	public function withEnableParallelExecution(?bool $enableParallelExecution): TransactionSettingV2 {
 		$this->enableParallelExecution = $enableParallelExecution;
 		return $this;

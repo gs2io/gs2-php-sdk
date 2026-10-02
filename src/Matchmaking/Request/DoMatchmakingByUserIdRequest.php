@@ -21,65 +21,100 @@ use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Matchmaking\Model\Attribute;
 use Gs2\Matchmaking\Model\Player;
 
+/**
+ * Request for doMatchmakingByUserId: Find a Gathering you can join and participate.
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#domatchmakingbyuserid
+ */
 class DoMatchmakingByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var Player */
+    /** @var Player Own player information */
     private $player;
-    /** @var string */
+    /** @var string Used to resume search Token that holds matchmaking state */
     private $matchmakingContextToken;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DoMatchmakingByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DoMatchmakingByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return DoMatchmakingByUserIdRequest
+     */
 	public function withUserId(?string $userId): DoMatchmakingByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return Player|null Own player information */
 	public function getPlayer(): ?Player {
 		return $this->player;
 	}
+    /** @param Player|null $player Own player information */
 	public function setPlayer(?Player $player) {
 		$this->player = $player;
 	}
+    /**
+     * @param Player|null $player Own player information
+     * @return DoMatchmakingByUserIdRequest
+     */
 	public function withPlayer(?Player $player): DoMatchmakingByUserIdRequest {
 		$this->player = $player;
 		return $this;
 	}
+    /** @return string|null Used to resume search Token that holds matchmaking state */
 	public function getMatchmakingContextToken(): ?string {
 		return $this->matchmakingContextToken;
 	}
+    /** @param string|null $matchmakingContextToken Used to resume search Token that holds matchmaking state */
 	public function setMatchmakingContextToken(?string $matchmakingContextToken) {
 		$this->matchmakingContextToken = $matchmakingContextToken;
 	}
+    /**
+     * @param string|null $matchmakingContextToken Used to resume search Token that holds matchmaking state
+     * @return DoMatchmakingByUserIdRequest
+     */
 	public function withMatchmakingContextToken(?string $matchmakingContextToken): DoMatchmakingByUserIdRequest {
 		$this->matchmakingContextToken = $matchmakingContextToken;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return DoMatchmakingByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): DoMatchmakingByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

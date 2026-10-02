@@ -19,39 +19,62 @@ namespace Gs2\Identifier\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for detachGuard: Remove GS2-Guard Namespace GRN from the credential
+ *
+ * @see https://docs.gs2.io/api_reference/identifier/sdk/#detachguard
+ */
 class DetachGuardRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string GS2-Identifier User name */
     private $userName;
-    /** @var string */
+    /** @var string Client ID */
     private $clientId;
-    /** @var string */
+    /** @var string GS2-Guard Namespace GRN */
     private $guardNamespaceId;
+    /** @return string|null GS2-Identifier User name */
 	public function getUserName(): ?string {
 		return $this->userName;
 	}
+    /** @param string|null $userName GS2-Identifier User name */
 	public function setUserName(?string $userName) {
 		$this->userName = $userName;
 	}
+    /**
+     * @param string|null $userName GS2-Identifier User name
+     * @return DetachGuardRequest
+     */
 	public function withUserName(?string $userName): DetachGuardRequest {
 		$this->userName = $userName;
 		return $this;
 	}
+    /** @return string|null Client ID */
 	public function getClientId(): ?string {
 		return $this->clientId;
 	}
+    /** @param string|null $clientId Client ID */
 	public function setClientId(?string $clientId) {
 		$this->clientId = $clientId;
 	}
+    /**
+     * @param string|null $clientId Client ID
+     * @return DetachGuardRequest
+     */
 	public function withClientId(?string $clientId): DetachGuardRequest {
 		$this->clientId = $clientId;
 		return $this;
 	}
+    /** @return string|null GS2-Guard Namespace GRN */
 	public function getGuardNamespaceId(): ?string {
 		return $this->guardNamespaceId;
 	}
+    /** @param string|null $guardNamespaceId GS2-Guard Namespace GRN */
 	public function setGuardNamespaceId(?string $guardNamespaceId) {
 		$this->guardNamespaceId = $guardNamespaceId;
 	}
+    /**
+     * @param string|null $guardNamespaceId GS2-Guard Namespace GRN
+     * @return DetachGuardRequest
+     */
 	public function withGuardNamespaceId(?string $guardNamespaceId): DetachGuardRequest {
 		$this->guardNamespaceId = $guardNamespaceId;
 		return $this;

@@ -19,53 +19,82 @@ namespace Gs2\Idle\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for decreaseMaximumIdleMinutes: Decrease the maximum idle time
+ *
+ * @see https://docs.gs2.io/api_reference/idle/sdk/#decreasemaximumidleminutes
+ */
 class DecreaseMaximumIdleMinutesRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Category Model Name */
     private $categoryName;
-    /** @var int */
+    /** @var int Minutes to decrease the maximum idle time */
     private $decreaseMinutes;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DecreaseMaximumIdleMinutesRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DecreaseMaximumIdleMinutesRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return DecreaseMaximumIdleMinutesRequest
+     */
 	public function withAccessToken(?string $accessToken): DecreaseMaximumIdleMinutesRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Category Model Name */
 	public function getCategoryName(): ?string {
 		return $this->categoryName;
 	}
+    /** @param string|null $categoryName Category Model Name */
 	public function setCategoryName(?string $categoryName) {
 		$this->categoryName = $categoryName;
 	}
+    /**
+     * @param string|null $categoryName Category Model Name
+     * @return DecreaseMaximumIdleMinutesRequest
+     */
 	public function withCategoryName(?string $categoryName): DecreaseMaximumIdleMinutesRequest {
 		$this->categoryName = $categoryName;
 		return $this;
 	}
+    /** @return int|null Minutes to decrease the maximum idle time */
 	public function getDecreaseMinutes(): ?int {
 		return $this->decreaseMinutes;
 	}
+    /** @param int|null $decreaseMinutes Minutes to decrease the maximum idle time */
 	public function setDecreaseMinutes(?int $decreaseMinutes) {
 		$this->decreaseMinutes = $decreaseMinutes;
 	}
+    /**
+     * @param int|null $decreaseMinutes Minutes to decrease the maximum idle time
+     * @return DecreaseMaximumIdleMinutesRequest
+     */
 	public function withDecreaseMinutes(?int $decreaseMinutes): DecreaseMaximumIdleMinutesRequest {
 		$this->decreaseMinutes = $decreaseMinutes;
 		return $this;

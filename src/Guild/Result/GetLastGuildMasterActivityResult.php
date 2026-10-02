@@ -23,33 +23,50 @@ use Gs2\Guild\Model\RoleModel;
 use Gs2\Guild\Model\Member;
 use Gs2\Guild\Model\Guild;
 
+/**
+ * Result of getLastGuildMasterActivity: Get last activity date and time of guild master
+ *
+ * @see https://docs.gs2.io/api_reference/guild/sdk/#getlastguildmasteractivity
+ */
 class GetLastGuildMasterActivityResult implements IResult {
-    /** @var LastGuildMasterActivity */
+    /** @var LastGuildMasterActivity Last Guild Master Activity */
     private $item;
-    /** @var Guild */
+    /** @var Guild Guild */
     private $guild;
 
+    /** @return LastGuildMasterActivity|null Last Guild Master Activity */
 	public function getItem(): ?LastGuildMasterActivity {
 		return $this->item;
 	}
 
+    /** @param LastGuildMasterActivity|null $item Last Guild Master Activity */
 	public function setItem(?LastGuildMasterActivity $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param LastGuildMasterActivity|null $item Last Guild Master Activity
+     * @return GetLastGuildMasterActivityResult
+     */
 	public function withItem(?LastGuildMasterActivity $item): GetLastGuildMasterActivityResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return Guild|null Guild */
 	public function getGuild(): ?Guild {
 		return $this->guild;
 	}
 
+    /** @param Guild|null $guild Guild */
 	public function setGuild(?Guild $guild) {
 		$this->guild = $guild;
 	}
 
+    /**
+     * @param Guild|null $guild Guild
+     * @return GetLastGuildMasterActivityResult
+     */
 	public function withGuild(?Guild $guild): GetLastGuildMasterActivityResult {
 		$this->guild = $guild;
 		return $this;

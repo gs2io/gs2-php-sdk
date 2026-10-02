@@ -20,33 +20,50 @@ namespace Gs2\Lottery\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Lottery\Model\LotteryModelMaster;
 
+/**
+ * Result of describeLotteryModelMasters: List Lottery Model Masters
+ *
+ * @see https://docs.gs2.io/api_reference/lottery/sdk/#describelotterymodelmasters
+ */
 class DescribeLotteryModelMastersResult implements IResult {
-    /** @var array */
+    /** @var array List of Lottery Model Master */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Lottery Model Master */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Lottery Model Master */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Lottery Model Master
+     * @return DescribeLotteryModelMastersResult
+     */
 	public function withItems(?array $items): DescribeLotteryModelMastersResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeLotteryModelMastersResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeLotteryModelMastersResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

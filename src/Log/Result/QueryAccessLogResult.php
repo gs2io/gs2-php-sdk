@@ -20,63 +20,92 @@ namespace Gs2\Log\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Log\Model\AccessLog;
 
+/**
+ * Result of queryAccessLog: List access logs
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#queryaccesslog
+ */
 class QueryAccessLogResult implements IResult {
-    /** @var array */
+    /** @var array List of Access Logs */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
-    /** @var int */
+    /** @var int Total number of query results */
     private $totalCount;
-    /** @var int */
+    /** @var int Total bytes scanned during search */
     private $scanSize;
 
+    /** @return array|null List of Access Logs */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Access Logs */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Access Logs
+     * @return QueryAccessLogResult
+     */
 	public function withItems(?array $items): QueryAccessLogResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return QueryAccessLogResult
+     */
 	public function withNextPageToken(?string $nextPageToken): QueryAccessLogResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;
 	}
 
+    /** @return int|null Total number of query results */
 	public function getTotalCount(): ?int {
 		return $this->totalCount;
 	}
 
+    /** @param int|null $totalCount Total number of query results */
 	public function setTotalCount(?int $totalCount) {
 		$this->totalCount = $totalCount;
 	}
 
+    /**
+     * @param int|null $totalCount Total number of query results
+     * @return QueryAccessLogResult
+     */
 	public function withTotalCount(?int $totalCount): QueryAccessLogResult {
 		$this->totalCount = $totalCount;
 		return $this;
 	}
 
+    /** @return int|null Total bytes scanned during search */
 	public function getScanSize(): ?int {
 		return $this->scanSize;
 	}
 
+    /** @param int|null $scanSize Total bytes scanned during search */
 	public function setScanSize(?int $scanSize) {
 		$this->scanSize = $scanSize;
 	}
 
+    /**
+     * @param int|null $scanSize Total bytes scanned during search
+     * @return QueryAccessLogResult
+     */
 	public function withScanSize(?int $scanSize): QueryAccessLogResult {
 		$this->scanSize = $scanSize;
 		return $this;

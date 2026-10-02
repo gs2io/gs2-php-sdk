@@ -20,31 +20,48 @@ namespace Gs2\News\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * View
+ *
+ * @see https://docs.gs2.io/api_reference/news/sdk/#view
+ */
 class View implements IModel {
 	/**
-     * @var array
+     * @var array Contents to Add/Update
 	 */
 	private $contents;
 	/**
-     * @var array
+     * @var array Contents to Remove
 	 */
 	private $removeContents;
+    /** @return array|null Contents to Add/Update */
 	public function getContents(): ?array {
 		return $this->contents;
 	}
+    /** @param array|null $contents Contents to Add/Update */
 	public function setContents(?array $contents) {
 		$this->contents = $contents;
 	}
+    /**
+     * @param array|null $contents Contents to Add/Update
+     * @return View
+     */
 	public function withContents(?array $contents): View {
 		$this->contents = $contents;
 		return $this;
 	}
+    /** @return array|null Contents to Remove */
 	public function getRemoveContents(): ?array {
 		return $this->removeContents;
 	}
+    /** @param array|null $removeContents Contents to Remove */
 	public function setRemoveContents(?array $removeContents) {
 		$this->removeContents = $removeContents;
 	}
+    /**
+     * @param array|null $removeContents Contents to Remove
+     * @return View
+     */
 	public function withRemoveContents(?array $removeContents): View {
 		$this->removeContents = $removeContents;
 		return $this;

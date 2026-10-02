@@ -19,63 +19,98 @@ namespace Gs2\Quest\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for createQuestGroupModelMaster: Create Quest Group Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/quest/sdk/#createquestgroupmodelmaster
+ */
 class CreateQuestGroupModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Quest Group Model name */
     private $name;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var string */
+    /** @var string Metadata */
     private $metadata;
-    /** @var string */
+    /** @var string Challenge Period Event GRN */
     private $challengePeriodEventId;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return CreateQuestGroupModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): CreateQuestGroupModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Quest Group Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Quest Group Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Quest Group Model name
+     * @return CreateQuestGroupModelMasterRequest
+     */
 	public function withName(?string $name): CreateQuestGroupModelMasterRequest {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return CreateQuestGroupModelMasterRequest
+     */
 	public function withDescription(?string $description): CreateQuestGroupModelMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return CreateQuestGroupModelMasterRequest
+     */
 	public function withMetadata(?string $metadata): CreateQuestGroupModelMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return string|null Challenge Period Event GRN */
 	public function getChallengePeriodEventId(): ?string {
 		return $this->challengePeriodEventId;
 	}
+    /** @param string|null $challengePeriodEventId Challenge Period Event GRN */
 	public function setChallengePeriodEventId(?string $challengePeriodEventId) {
 		$this->challengePeriodEventId = $challengePeriodEventId;
 	}
+    /**
+     * @param string|null $challengePeriodEventId Challenge Period Event GRN
+     * @return CreateQuestGroupModelMasterRequest
+     */
 	public function withChallengePeriodEventId(?string $challengePeriodEventId): CreateQuestGroupModelMasterRequest {
 		$this->challengePeriodEventId = $challengePeriodEventId;
 		return $this;

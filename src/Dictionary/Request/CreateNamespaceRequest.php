@@ -23,96 +23,141 @@ use Gs2\Dictionary\Model\TransactionSettingV2;
 use Gs2\Dictionary\Model\ScriptSetting;
 use Gs2\Dictionary\Model\LogSetting;
 
+/**
+ * Request for createNamespace: Create Namespace
+ *
+ * @see https://docs.gs2.io/api_reference/dictionary/sdk/#createnamespace
+ */
 class CreateNamespaceRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $name;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var TransactionSetting */
+    /** @var TransactionSetting Transaction Setting */
     private $transactionSetting;
-    /** @var TransactionSettingV2 */
+    /** @var TransactionSettingV2 Transaction Setting (V2) */
     private $transactionSettingV2;
-    /** @var ScriptSetting */
+    /** @var ScriptSetting Script setting to be executed when registering an entry */
     private $entryScript;
-    /** @var string */
+    /** @var string Script GRN to run when an attempt is made to re-register an entry that has already been registered */
     private $duplicateEntryScript;
-    /** @var LogSetting */
+    /** @var LogSetting Log Output Setting */
     private $logSetting;
+    /** @return string|null Namespace name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Namespace name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Namespace name
+     * @return CreateNamespaceRequest
+     */
 	public function withName(?string $name): CreateNamespaceRequest {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return CreateNamespaceRequest
+     */
 	public function withDescription(?string $description): CreateNamespaceRequest {
 		$this->description = $description;
 		return $this;
 	}
     /**
+     * @return TransactionSetting|null Transaction Setting
      * @deprecated
      */
 	public function getTransactionSetting(): ?TransactionSetting {
 		return $this->transactionSetting;
 	}
     /**
+     * @param TransactionSetting|null $transactionSetting Transaction Setting
      * @deprecated
      */
 	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
 		$this->transactionSetting = $transactionSetting;
 	}
     /**
+     * @param TransactionSetting|null $transactionSetting Transaction Setting
+     * @return CreateNamespaceRequest
      * @deprecated
      */
 	public function withTransactionSetting(?TransactionSetting $transactionSetting): CreateNamespaceRequest {
 		$this->transactionSetting = $transactionSetting;
 		return $this;
 	}
+    /** @return TransactionSettingV2|null Transaction Setting (V2) */
 	public function getTransactionSettingV2(): ?TransactionSettingV2 {
 		return $this->transactionSettingV2;
 	}
+    /** @param TransactionSettingV2|null $transactionSettingV2 Transaction Setting (V2) */
 	public function setTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2) {
 		$this->transactionSettingV2 = $transactionSettingV2;
 	}
+    /**
+     * @param TransactionSettingV2|null $transactionSettingV2 Transaction Setting (V2)
+     * @return CreateNamespaceRequest
+     */
 	public function withTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2): CreateNamespaceRequest {
 		$this->transactionSettingV2 = $transactionSettingV2;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to be executed when registering an entry */
 	public function getEntryScript(): ?ScriptSetting {
 		return $this->entryScript;
 	}
+    /** @param ScriptSetting|null $entryScript Script setting to be executed when registering an entry */
 	public function setEntryScript(?ScriptSetting $entryScript) {
 		$this->entryScript = $entryScript;
 	}
+    /**
+     * @param ScriptSetting|null $entryScript Script setting to be executed when registering an entry
+     * @return CreateNamespaceRequest
+     */
 	public function withEntryScript(?ScriptSetting $entryScript): CreateNamespaceRequest {
 		$this->entryScript = $entryScript;
 		return $this;
 	}
+    /** @return string|null Script GRN to run when an attempt is made to re-register an entry that has already been registered */
 	public function getDuplicateEntryScript(): ?string {
 		return $this->duplicateEntryScript;
 	}
+    /** @param string|null $duplicateEntryScript Script GRN to run when an attempt is made to re-register an entry that has already been registered */
 	public function setDuplicateEntryScript(?string $duplicateEntryScript) {
 		$this->duplicateEntryScript = $duplicateEntryScript;
 	}
+    /**
+     * @param string|null $duplicateEntryScript Script GRN to run when an attempt is made to re-register an entry that has already been registered
+     * @return CreateNamespaceRequest
+     */
 	public function withDuplicateEntryScript(?string $duplicateEntryScript): CreateNamespaceRequest {
 		$this->duplicateEntryScript = $duplicateEntryScript;
 		return $this;
 	}
+    /** @return LogSetting|null Log Output Setting */
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
+    /** @param LogSetting|null $logSetting Log Output Setting */
 	public function setLogSetting(?LogSetting $logSetting) {
 		$this->logSetting = $logSetting;
 	}
+    /**
+     * @param LogSetting|null $logSetting Log Output Setting
+     * @return CreateNamespaceRequest
+     */
 	public function withLogSetting(?LogSetting $logSetting): CreateNamespaceRequest {
 		$this->logSetting = $logSetting;
 		return $this;

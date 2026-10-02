@@ -20,101 +20,148 @@ namespace Gs2\Dictionary\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Entry Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/dictionary/sdk/#entrymodelmaster
+ */
 class EntryModelMaster implements IModel {
 	/**
-     * @var string
+     * @var string Entry Model Master GRN
 	 */
 	private $entryModelId;
 	/**
-     * @var string
+     * @var string Entry Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Description
 	 */
 	private $description;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Entry Model Master GRN */
 	public function getEntryModelId(): ?string {
 		return $this->entryModelId;
 	}
+    /** @param string|null $entryModelId Entry Model Master GRN */
 	public function setEntryModelId(?string $entryModelId) {
 		$this->entryModelId = $entryModelId;
 	}
+    /**
+     * @param string|null $entryModelId Entry Model Master GRN
+     * @return EntryModelMaster
+     */
 	public function withEntryModelId(?string $entryModelId): EntryModelMaster {
 		$this->entryModelId = $entryModelId;
 		return $this;
 	}
+    /** @return string|null Entry Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Entry Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Entry Model name
+     * @return EntryModelMaster
+     */
 	public function withName(?string $name): EntryModelMaster {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return EntryModelMaster
+     */
 	public function withDescription(?string $description): EntryModelMaster {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return EntryModelMaster
+     */
 	public function withMetadata(?string $metadata): EntryModelMaster {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return EntryModelMaster
+     */
 	public function withCreatedAt(?int $createdAt): EntryModelMaster {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return EntryModelMaster
+     */
 	public function withUpdatedAt(?int $updatedAt): EntryModelMaster {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return EntryModelMaster
+     */
 	public function withRevision(?int $revision): EntryModelMaster {
 		$this->revision = $revision;
 		return $this;

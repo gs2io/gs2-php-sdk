@@ -19,27 +19,44 @@ namespace Gs2\Identifier\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for detachSecurityPolicy: Revoke assigned Security Policies from a user
+ *
+ * @see https://docs.gs2.io/api_reference/identifier/sdk/#detachsecuritypolicy
+ */
 class DetachSecurityPolicyRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string GS2-Identifier User name */
     private $userName;
-    /** @var string */
+    /** @var string GRN for the Security Policy to be revoked */
     private $securityPolicyId;
+    /** @return string|null GS2-Identifier User name */
 	public function getUserName(): ?string {
 		return $this->userName;
 	}
+    /** @param string|null $userName GS2-Identifier User name */
 	public function setUserName(?string $userName) {
 		$this->userName = $userName;
 	}
+    /**
+     * @param string|null $userName GS2-Identifier User name
+     * @return DetachSecurityPolicyRequest
+     */
 	public function withUserName(?string $userName): DetachSecurityPolicyRequest {
 		$this->userName = $userName;
 		return $this;
 	}
+    /** @return string|null GRN for the Security Policy to be revoked */
 	public function getSecurityPolicyId(): ?string {
 		return $this->securityPolicyId;
 	}
+    /** @param string|null $securityPolicyId GRN for the Security Policy to be revoked */
 	public function setSecurityPolicyId(?string $securityPolicyId) {
 		$this->securityPolicyId = $securityPolicyId;
 	}
+    /**
+     * @param string|null $securityPolicyId GRN for the Security Policy to be revoked
+     * @return DetachSecurityPolicyRequest
+     */
 	public function withSecurityPolicyId(?string $securityPolicyId): DetachSecurityPolicyRequest {
 		$this->securityPolicyId = $securityPolicyId;
 		return $this;

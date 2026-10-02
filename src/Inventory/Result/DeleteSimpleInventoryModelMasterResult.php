@@ -20,18 +20,29 @@ namespace Gs2\Inventory\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Inventory\Model\SimpleInventoryModelMaster;
 
+/**
+ * Result of deleteSimpleInventoryModelMaster: Delete Simple Inventory Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#deletesimpleinventorymodelmaster
+ */
 class DeleteSimpleInventoryModelMasterResult implements IResult {
-    /** @var SimpleInventoryModelMaster */
+    /** @var SimpleInventoryModelMaster Simple Inventory Model Master deleted */
     private $item;
 
+    /** @return SimpleInventoryModelMaster|null Simple Inventory Model Master deleted */
 	public function getItem(): ?SimpleInventoryModelMaster {
 		return $this->item;
 	}
 
+    /** @param SimpleInventoryModelMaster|null $item Simple Inventory Model Master deleted */
 	public function setItem(?SimpleInventoryModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param SimpleInventoryModelMaster|null $item Simple Inventory Model Master deleted
+     * @return DeleteSimpleInventoryModelMasterResult
+     */
 	public function withItem(?SimpleInventoryModelMaster $item): DeleteSimpleInventoryModelMasterResult {
 		$this->item = $item;
 		return $this;

@@ -21,53 +21,82 @@ use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Matchmaking\Model\Attribute;
 use Gs2\Matchmaking\Model\Player;
 
+/**
+ * Request for doMatchmaking: Find a Gathering you can join and participate.
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#domatchmaking
+ */
 class DoMatchmakingRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var Player */
+    /** @var Player Own player information */
     private $player;
-    /** @var string */
+    /** @var string Used to resume search Token that holds matchmaking state */
     private $matchmakingContextToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DoMatchmakingRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DoMatchmakingRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return DoMatchmakingRequest
+     */
 	public function withAccessToken(?string $accessToken): DoMatchmakingRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return Player|null Own player information */
 	public function getPlayer(): ?Player {
 		return $this->player;
 	}
+    /** @param Player|null $player Own player information */
 	public function setPlayer(?Player $player) {
 		$this->player = $player;
 	}
+    /**
+     * @param Player|null $player Own player information
+     * @return DoMatchmakingRequest
+     */
 	public function withPlayer(?Player $player): DoMatchmakingRequest {
 		$this->player = $player;
 		return $this;
 	}
+    /** @return string|null Used to resume search Token that holds matchmaking state */
 	public function getMatchmakingContextToken(): ?string {
 		return $this->matchmakingContextToken;
 	}
+    /** @param string|null $matchmakingContextToken Used to resume search Token that holds matchmaking state */
 	public function setMatchmakingContextToken(?string $matchmakingContextToken) {
 		$this->matchmakingContextToken = $matchmakingContextToken;
 	}
+    /**
+     * @param string|null $matchmakingContextToken Used to resume search Token that holds matchmaking state
+     * @return DoMatchmakingRequest
+     */
 	public function withMatchmakingContextToken(?string $matchmakingContextToken): DoMatchmakingRequest {
 		$this->matchmakingContextToken = $matchmakingContextToken;
 		return $this;

@@ -20,18 +20,29 @@ namespace Gs2\Ranking2\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Ranking2\Model\GlobalRankingReceivedReward;
 
+/**
+ * Result of createGlobalRankingReceivedReward: Record global ranking reward receipt history
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/sdk/#createglobalrankingreceivedreward
+ */
 class CreateGlobalRankingReceivedRewardResult implements IResult {
-    /** @var GlobalRankingReceivedReward */
+    /** @var GlobalRankingReceivedReward Global Ranking Reward Received History */
     private $item;
 
+    /** @return GlobalRankingReceivedReward|null Global Ranking Reward Received History */
 	public function getItem(): ?GlobalRankingReceivedReward {
 		return $this->item;
 	}
 
+    /** @param GlobalRankingReceivedReward|null $item Global Ranking Reward Received History */
 	public function setItem(?GlobalRankingReceivedReward $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param GlobalRankingReceivedReward|null $item Global Ranking Reward Received History
+     * @return CreateGlobalRankingReceivedRewardResult
+     */
 	public function withItem(?GlobalRankingReceivedReward $item): CreateGlobalRankingReceivedRewardResult {
 		$this->item = $item;
 		return $this;

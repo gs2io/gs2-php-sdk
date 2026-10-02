@@ -21,33 +21,50 @@ use Gs2\Core\Model\IResult;
 use Gs2\Enchant\Model\BalanceParameterValue;
 use Gs2\Enchant\Model\BalanceParameterStatus;
 
+/**
+ * Result of reDrawBalanceParameterStatusByStampSheet: Execute re-draw of Balance Parameter Status as acquire action
+ *
+ * @see https://docs.gs2.io/api_reference/enchant/stamp_sheet/#gs2enchantredrawbalanceparameterstatusbyuserid
+ */
 class ReDrawBalanceParameterStatusByStampSheetResult implements IResult {
-    /** @var BalanceParameterStatus */
+    /** @var BalanceParameterStatus Balance Parameter Status updated */
     private $item;
-    /** @var BalanceParameterStatus */
+    /** @var BalanceParameterStatus Balance Parameter Status before update */
     private $old;
 
+    /** @return BalanceParameterStatus|null Balance Parameter Status updated */
 	public function getItem(): ?BalanceParameterStatus {
 		return $this->item;
 	}
 
+    /** @param BalanceParameterStatus|null $item Balance Parameter Status updated */
 	public function setItem(?BalanceParameterStatus $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param BalanceParameterStatus|null $item Balance Parameter Status updated
+     * @return ReDrawBalanceParameterStatusByStampSheetResult
+     */
 	public function withItem(?BalanceParameterStatus $item): ReDrawBalanceParameterStatusByStampSheetResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return BalanceParameterStatus|null Balance Parameter Status before update */
 	public function getOld(): ?BalanceParameterStatus {
 		return $this->old;
 	}
 
+    /** @param BalanceParameterStatus|null $old Balance Parameter Status before update */
 	public function setOld(?BalanceParameterStatus $old) {
 		$this->old = $old;
 	}
 
+    /**
+     * @param BalanceParameterStatus|null $old Balance Parameter Status before update
+     * @return ReDrawBalanceParameterStatusByStampSheetResult
+     */
 	public function withOld(?BalanceParameterStatus $old): ReDrawBalanceParameterStatusByStampSheetResult {
 		$this->old = $old;
 		return $this;

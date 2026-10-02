@@ -20,33 +20,46 @@ namespace Gs2\Project\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Project\Model\CleanProgress;
 
+/** Result of describeCleanProgresses: List Clean User Data Progress */
 class DescribeCleanProgressesResult implements IResult {
-    /** @var array */
+    /** @var array List of Clean User Data Progress */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Clean User Data Progress */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Clean User Data Progress */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Clean User Data Progress
+     * @return DescribeCleanProgressesResult
+     */
 	public function withItems(?array $items): DescribeCleanProgressesResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeCleanProgressesResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeCleanProgressesResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

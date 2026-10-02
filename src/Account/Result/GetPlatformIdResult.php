@@ -20,18 +20,29 @@ namespace Gs2\Account\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Account\Model\PlatformId;
 
+/**
+ * Result of getPlatformId: Get External Platform Account ID
+ *
+ * @see https://docs.gs2.io/api_reference/account/sdk/#getplatformid
+ */
 class GetPlatformIdResult implements IResult {
-    /** @var PlatformId */
+    /** @var PlatformId External Platform Account ID */
     private $item;
 
+    /** @return PlatformId|null External Platform Account ID */
 	public function getItem(): ?PlatformId {
 		return $this->item;
 	}
 
+    /** @param PlatformId|null $item External Platform Account ID */
 	public function setItem(?PlatformId $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param PlatformId|null $item External Platform Account ID
+     * @return GetPlatformIdResult
+     */
 	public function withItem(?PlatformId $item): GetPlatformIdResult {
 		$this->item = $item;
 		return $this;

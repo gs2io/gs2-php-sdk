@@ -24,18 +24,29 @@ use Gs2\Mission\Model\AcquireAction;
 use Gs2\Mission\Model\MissionTaskModel;
 use Gs2\Mission\Model\MissionGroupModel;
 
+/**
+ * Result of getMissionGroupModel: Get Mission Group Model
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#getmissiongroupmodel
+ */
 class GetMissionGroupModelResult implements IResult {
-    /** @var MissionGroupModel */
+    /** @var MissionGroupModel Mission Group Model */
     private $item;
 
+    /** @return MissionGroupModel|null Mission Group Model */
 	public function getItem(): ?MissionGroupModel {
 		return $this->item;
 	}
 
+    /** @param MissionGroupModel|null $item Mission Group Model */
 	public function setItem(?MissionGroupModel $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param MissionGroupModel|null $item Mission Group Model
+     * @return GetMissionGroupModelResult
+     */
 	public function withItem(?MissionGroupModel $item): GetMissionGroupModelResult {
 		$this->item = $item;
 		return $this;

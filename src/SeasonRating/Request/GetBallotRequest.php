@@ -19,75 +19,116 @@ namespace Gs2\SeasonRating\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getBallot: Prepared ballot along with signatures
+ *
+ * @see https://docs.gs2.io/api_reference/season_rating/sdk/#getballot
+ */
 class GetBallotRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Season Model name */
     private $seasonName;
-    /** @var string */
+    /** @var string Session name */
     private $sessionName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var int */
+    /** @var int Number of participants */
     private $numberOfPlayer;
-    /** @var string */
+    /** @var string Encryption Key GRN */
     private $keyId;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetBallotRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetBallotRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Season Model name */
 	public function getSeasonName(): ?string {
 		return $this->seasonName;
 	}
+    /** @param string|null $seasonName Season Model name */
 	public function setSeasonName(?string $seasonName) {
 		$this->seasonName = $seasonName;
 	}
+    /**
+     * @param string|null $seasonName Season Model name
+     * @return GetBallotRequest
+     */
 	public function withSeasonName(?string $seasonName): GetBallotRequest {
 		$this->seasonName = $seasonName;
 		return $this;
 	}
+    /** @return string|null Session name */
 	public function getSessionName(): ?string {
 		return $this->sessionName;
 	}
+    /** @param string|null $sessionName Session name */
 	public function setSessionName(?string $sessionName) {
 		$this->sessionName = $sessionName;
 	}
+    /**
+     * @param string|null $sessionName Session name
+     * @return GetBallotRequest
+     */
 	public function withSessionName(?string $sessionName): GetBallotRequest {
 		$this->sessionName = $sessionName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return GetBallotRequest
+     */
 	public function withAccessToken(?string $accessToken): GetBallotRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return int|null Number of participants */
 	public function getNumberOfPlayer(): ?int {
 		return $this->numberOfPlayer;
 	}
+    /** @param int|null $numberOfPlayer Number of participants */
 	public function setNumberOfPlayer(?int $numberOfPlayer) {
 		$this->numberOfPlayer = $numberOfPlayer;
 	}
+    /**
+     * @param int|null $numberOfPlayer Number of participants
+     * @return GetBallotRequest
+     */
 	public function withNumberOfPlayer(?int $numberOfPlayer): GetBallotRequest {
 		$this->numberOfPlayer = $numberOfPlayer;
 		return $this;
 	}
+    /** @return string|null Encryption Key GRN */
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
+    /** @param string|null $keyId Encryption Key GRN */
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
+    /**
+     * @param string|null $keyId Encryption Key GRN
+     * @return GetBallotRequest
+     */
 	public function withKeyId(?string $keyId): GetBallotRequest {
 		$this->keyId = $keyId;
 		return $this;

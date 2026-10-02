@@ -19,39 +19,62 @@ namespace Gs2\Quest\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getQuestModelMaster: Get Quest Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/quest/sdk/#getquestmodelmaster
+ */
 class GetQuestModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Quest Group Model name */
     private $questGroupName;
-    /** @var string */
+    /** @var string Quest Model name */
     private $questName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetQuestModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetQuestModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Quest Group Model name */
 	public function getQuestGroupName(): ?string {
 		return $this->questGroupName;
 	}
+    /** @param string|null $questGroupName Quest Group Model name */
 	public function setQuestGroupName(?string $questGroupName) {
 		$this->questGroupName = $questGroupName;
 	}
+    /**
+     * @param string|null $questGroupName Quest Group Model name
+     * @return GetQuestModelMasterRequest
+     */
 	public function withQuestGroupName(?string $questGroupName): GetQuestModelMasterRequest {
 		$this->questGroupName = $questGroupName;
 		return $this;
 	}
+    /** @return string|null Quest Model name */
 	public function getQuestName(): ?string {
 		return $this->questName;
 	}
+    /** @param string|null $questName Quest Model name */
 	public function setQuestName(?string $questName) {
 		$this->questName = $questName;
 	}
+    /**
+     * @param string|null $questName Quest Model name
+     * @return GetQuestModelMasterRequest
+     */
 	public function withQuestName(?string $questName): GetQuestModelMasterRequest {
 		$this->questName = $questName;
 		return $this;

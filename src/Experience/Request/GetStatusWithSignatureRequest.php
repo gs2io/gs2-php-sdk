@@ -19,63 +19,98 @@ namespace Gs2\Experience\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getStatusWithSignature: Get status along with signature
+ *
+ * @see https://docs.gs2.io/api_reference/experience/sdk/#getstatuswithsignature
+ */
 class GetStatusWithSignatureRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Experience Model name */
     private $experienceName;
-    /** @var string */
+    /** @var string Property ID */
     private $propertyId;
-    /** @var string */
+    /** @var string Encryption Key GRN */
     private $keyId;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetStatusWithSignatureRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetStatusWithSignatureRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return GetStatusWithSignatureRequest
+     */
 	public function withAccessToken(?string $accessToken): GetStatusWithSignatureRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Experience Model name */
 	public function getExperienceName(): ?string {
 		return $this->experienceName;
 	}
+    /** @param string|null $experienceName Experience Model name */
 	public function setExperienceName(?string $experienceName) {
 		$this->experienceName = $experienceName;
 	}
+    /**
+     * @param string|null $experienceName Experience Model name
+     * @return GetStatusWithSignatureRequest
+     */
 	public function withExperienceName(?string $experienceName): GetStatusWithSignatureRequest {
 		$this->experienceName = $experienceName;
 		return $this;
 	}
+    /** @return string|null Property ID */
 	public function getPropertyId(): ?string {
 		return $this->propertyId;
 	}
+    /** @param string|null $propertyId Property ID */
 	public function setPropertyId(?string $propertyId) {
 		$this->propertyId = $propertyId;
 	}
+    /**
+     * @param string|null $propertyId Property ID
+     * @return GetStatusWithSignatureRequest
+     */
 	public function withPropertyId(?string $propertyId): GetStatusWithSignatureRequest {
 		$this->propertyId = $propertyId;
 		return $this;
 	}
+    /** @return string|null Encryption Key GRN */
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
+    /** @param string|null $keyId Encryption Key GRN */
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
+    /**
+     * @param string|null $keyId Encryption Key GRN
+     * @return GetStatusWithSignatureRequest
+     */
 	public function withKeyId(?string $keyId): GetStatusWithSignatureRequest {
 		$this->keyId = $keyId;
 		return $this;

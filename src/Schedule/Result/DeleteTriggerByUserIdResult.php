@@ -20,18 +20,29 @@ namespace Gs2\Schedule\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Schedule\Model\Trigger;
 
+/**
+ * Result of deleteTriggerByUserId: Delete Trigger by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/schedule/sdk/#deletetriggerbyuserid
+ */
 class DeleteTriggerByUserIdResult implements IResult {
-    /** @var Trigger */
+    /** @var Trigger Trigger deleted */
     private $item;
 
+    /** @return Trigger|null Trigger deleted */
 	public function getItem(): ?Trigger {
 		return $this->item;
 	}
 
+    /** @param Trigger|null $item Trigger deleted */
 	public function setItem(?Trigger $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Trigger|null $item Trigger deleted
+     * @return DeleteTriggerByUserIdResult
+     */
 	public function withItem(?Trigger $item): DeleteTriggerByUserIdResult {
 		$this->item = $item;
 		return $this;

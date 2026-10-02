@@ -19,63 +19,98 @@ namespace Gs2\Matchmaking\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getJoinedSeasonGatheringByUserId: Get joined Season Gathering by specifying the user ID
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#getjoinedseasongatheringbyuserid
+ */
 class GetJoinedSeasonGatheringByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Season Model name */
     private $seasonName;
-    /** @var int */
+    /** @var int Season */
     private $season;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetJoinedSeasonGatheringByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetJoinedSeasonGatheringByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return GetJoinedSeasonGatheringByUserIdRequest
+     */
 	public function withUserId(?string $userId): GetJoinedSeasonGatheringByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Season Model name */
 	public function getSeasonName(): ?string {
 		return $this->seasonName;
 	}
+    /** @param string|null $seasonName Season Model name */
 	public function setSeasonName(?string $seasonName) {
 		$this->seasonName = $seasonName;
 	}
+    /**
+     * @param string|null $seasonName Season Model name
+     * @return GetJoinedSeasonGatheringByUserIdRequest
+     */
 	public function withSeasonName(?string $seasonName): GetJoinedSeasonGatheringByUserIdRequest {
 		$this->seasonName = $seasonName;
 		return $this;
 	}
+    /** @return int|null Season */
 	public function getSeason(): ?int {
 		return $this->season;
 	}
+    /** @param int|null $season Season */
 	public function setSeason(?int $season) {
 		$this->season = $season;
 	}
+    /**
+     * @param int|null $season Season
+     * @return GetJoinedSeasonGatheringByUserIdRequest
+     */
 	public function withSeason(?int $season): GetJoinedSeasonGatheringByUserIdRequest {
 		$this->season = $season;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return GetJoinedSeasonGatheringByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): GetJoinedSeasonGatheringByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

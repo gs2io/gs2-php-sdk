@@ -20,171 +20,248 @@ namespace Gs2\Version\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Version Model
+ *
+ * @see https://docs.gs2.io/api_reference/version/sdk/#versionmodel
+ */
 class VersionModel implements IModel {
 	/**
-     * @var string
+     * @var string Version Model GRN
 	 */
 	private $versionModelId;
 	/**
-     * @var string
+     * @var string Version Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var string
+     * @var string Type of version value used for judgment
 	 */
 	private $scope;
 	/**
-     * @var string
+     * @var string Version Check Mode
 	 */
 	private $type;
 	/**
-     * @var Version
+     * @var Version Current Version
 	 */
 	private $currentVersion;
 	/**
-     * @var Version
+     * @var Version Version that prompts for version upgrade
 	 */
 	private $warningVersion;
 	/**
-     * @var Version
+     * @var Version Version that is determined to be an error by the version check
 	 */
 	private $errorVersion;
 	/**
-     * @var array
+     * @var array List of Version check content that switches over time series
 	 */
 	private $scheduleVersions;
 	/**
-     * @var bool
+     * @var bool Whether the version value to be determined requires signature verification
 	 */
 	private $needSignature;
 	/**
-     * @var string
+     * @var string Encryption Key GRN
 	 */
 	private $signatureKeyId;
 	/**
-     * @var string
+     * @var string Requirement for approval
 	 */
 	private $approveRequirement;
+    /** @return string|null Version Model GRN */
 	public function getVersionModelId(): ?string {
 		return $this->versionModelId;
 	}
+    /** @param string|null $versionModelId Version Model GRN */
 	public function setVersionModelId(?string $versionModelId) {
 		$this->versionModelId = $versionModelId;
 	}
+    /**
+     * @param string|null $versionModelId Version Model GRN
+     * @return VersionModel
+     */
 	public function withVersionModelId(?string $versionModelId): VersionModel {
 		$this->versionModelId = $versionModelId;
 		return $this;
 	}
+    /** @return string|null Version Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Version Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Version Model name
+     * @return VersionModel
+     */
 	public function withName(?string $name): VersionModel {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return VersionModel
+     */
 	public function withMetadata(?string $metadata): VersionModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return string|null Type of version value used for judgment */
 	public function getScope(): ?string {
 		return $this->scope;
 	}
+    /** @param string|null $scope Type of version value used for judgment */
 	public function setScope(?string $scope) {
 		$this->scope = $scope;
 	}
+    /**
+     * @param string|null $scope Type of version value used for judgment
+     * @return VersionModel
+     */
 	public function withScope(?string $scope): VersionModel {
 		$this->scope = $scope;
 		return $this;
 	}
+    /** @return string|null Version Check Mode */
 	public function getType(): ?string {
 		return $this->type;
 	}
+    /** @param string|null $type Version Check Mode */
 	public function setType(?string $type) {
 		$this->type = $type;
 	}
+    /**
+     * @param string|null $type Version Check Mode
+     * @return VersionModel
+     */
 	public function withType(?string $type): VersionModel {
 		$this->type = $type;
 		return $this;
 	}
+    /** @return Version|null Current Version */
 	public function getCurrentVersion(): ?Version {
 		return $this->currentVersion;
 	}
+    /** @param Version|null $currentVersion Current Version */
 	public function setCurrentVersion(?Version $currentVersion) {
 		$this->currentVersion = $currentVersion;
 	}
+    /**
+     * @param Version|null $currentVersion Current Version
+     * @return VersionModel
+     */
 	public function withCurrentVersion(?Version $currentVersion): VersionModel {
 		$this->currentVersion = $currentVersion;
 		return $this;
 	}
+    /** @return Version|null Version that prompts for version upgrade */
 	public function getWarningVersion(): ?Version {
 		return $this->warningVersion;
 	}
+    /** @param Version|null $warningVersion Version that prompts for version upgrade */
 	public function setWarningVersion(?Version $warningVersion) {
 		$this->warningVersion = $warningVersion;
 	}
+    /**
+     * @param Version|null $warningVersion Version that prompts for version upgrade
+     * @return VersionModel
+     */
 	public function withWarningVersion(?Version $warningVersion): VersionModel {
 		$this->warningVersion = $warningVersion;
 		return $this;
 	}
+    /** @return Version|null Version that is determined to be an error by the version check */
 	public function getErrorVersion(): ?Version {
 		return $this->errorVersion;
 	}
+    /** @param Version|null $errorVersion Version that is determined to be an error by the version check */
 	public function setErrorVersion(?Version $errorVersion) {
 		$this->errorVersion = $errorVersion;
 	}
+    /**
+     * @param Version|null $errorVersion Version that is determined to be an error by the version check
+     * @return VersionModel
+     */
 	public function withErrorVersion(?Version $errorVersion): VersionModel {
 		$this->errorVersion = $errorVersion;
 		return $this;
 	}
+    /** @return array|null List of Version check content that switches over time series */
 	public function getScheduleVersions(): ?array {
 		return $this->scheduleVersions;
 	}
+    /** @param array|null $scheduleVersions List of Version check content that switches over time series */
 	public function setScheduleVersions(?array $scheduleVersions) {
 		$this->scheduleVersions = $scheduleVersions;
 	}
+    /**
+     * @param array|null $scheduleVersions List of Version check content that switches over time series
+     * @return VersionModel
+     */
 	public function withScheduleVersions(?array $scheduleVersions): VersionModel {
 		$this->scheduleVersions = $scheduleVersions;
 		return $this;
 	}
+    /** @return bool|null Whether the version value to be determined requires signature verification */
 	public function getNeedSignature(): ?bool {
 		return $this->needSignature;
 	}
+    /** @param bool|null $needSignature Whether the version value to be determined requires signature verification */
 	public function setNeedSignature(?bool $needSignature) {
 		$this->needSignature = $needSignature;
 	}
+    /**
+     * @param bool|null $needSignature Whether the version value to be determined requires signature verification
+     * @return VersionModel
+     */
 	public function withNeedSignature(?bool $needSignature): VersionModel {
 		$this->needSignature = $needSignature;
 		return $this;
 	}
+    /** @return string|null Encryption Key GRN */
 	public function getSignatureKeyId(): ?string {
 		return $this->signatureKeyId;
 	}
+    /** @param string|null $signatureKeyId Encryption Key GRN */
 	public function setSignatureKeyId(?string $signatureKeyId) {
 		$this->signatureKeyId = $signatureKeyId;
 	}
+    /**
+     * @param string|null $signatureKeyId Encryption Key GRN
+     * @return VersionModel
+     */
 	public function withSignatureKeyId(?string $signatureKeyId): VersionModel {
 		$this->signatureKeyId = $signatureKeyId;
 		return $this;
 	}
+    /** @return string|null Requirement for approval */
 	public function getApproveRequirement(): ?string {
 		return $this->approveRequirement;
 	}
+    /** @param string|null $approveRequirement Requirement for approval */
 	public function setApproveRequirement(?string $approveRequirement) {
 		$this->approveRequirement = $approveRequirement;
 	}
+    /**
+     * @param string|null $approveRequirement Requirement for approval
+     * @return VersionModel
+     */
 	public function withApproveRequirement(?string $approveRequirement): VersionModel {
 		$this->approveRequirement = $approveRequirement;
 		return $this;

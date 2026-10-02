@@ -20,31 +20,48 @@ namespace Gs2\SeasonRating\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Written Ballot
+ *
+ * @see https://docs.gs2.io/api_reference/season_rating/sdk/#writtenballot
+ */
 class WrittenBallot implements IModel {
 	/**
-     * @var Ballot
+     * @var Ballot Ballot
 	 */
 	private $ballot;
 	/**
-     * @var array
+     * @var array List of Match Results
 	 */
 	private $gameResults;
+    /** @return Ballot|null Ballot */
 	public function getBallot(): ?Ballot {
 		return $this->ballot;
 	}
+    /** @param Ballot|null $ballot Ballot */
 	public function setBallot(?Ballot $ballot) {
 		$this->ballot = $ballot;
 	}
+    /**
+     * @param Ballot|null $ballot Ballot
+     * @return WrittenBallot
+     */
 	public function withBallot(?Ballot $ballot): WrittenBallot {
 		$this->ballot = $ballot;
 		return $this;
 	}
+    /** @return array|null List of Match Results */
 	public function getGameResults(): ?array {
 		return $this->gameResults;
 	}
+    /** @param array|null $gameResults List of Match Results */
 	public function setGameResults(?array $gameResults) {
 		$this->gameResults = $gameResults;
 	}
+    /**
+     * @param array|null $gameResults List of Match Results
+     * @return WrittenBallot
+     */
 	public function withGameResults(?array $gameResults): WrittenBallot {
 		$this->gameResults = $gameResults;
 		return $this;

@@ -20,87 +20,128 @@ namespace Gs2\Friend\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Friend
+ *
+ * @see https://docs.gs2.io/api_reference/friend/sdk/#friend
+ */
 class Friend implements IModel {
 	/**
-     * @var string
+     * @var string Friend GRN
 	 */
 	private $friendId;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var array
+     * @var array User ID list of friends
 	 */
 	private $targetUserIds;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Friend GRN */
 	public function getFriendId(): ?string {
 		return $this->friendId;
 	}
+    /** @param string|null $friendId Friend GRN */
 	public function setFriendId(?string $friendId) {
 		$this->friendId = $friendId;
 	}
+    /**
+     * @param string|null $friendId Friend GRN
+     * @return Friend
+     */
 	public function withFriendId(?string $friendId): Friend {
 		$this->friendId = $friendId;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return Friend
+     */
 	public function withUserId(?string $userId): Friend {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return array|null User ID list of friends */
 	public function getTargetUserIds(): ?array {
 		return $this->targetUserIds;
 	}
+    /** @param array|null $targetUserIds User ID list of friends */
 	public function setTargetUserIds(?array $targetUserIds) {
 		$this->targetUserIds = $targetUserIds;
 	}
+    /**
+     * @param array|null $targetUserIds User ID list of friends
+     * @return Friend
+     */
 	public function withTargetUserIds(?array $targetUserIds): Friend {
 		$this->targetUserIds = $targetUserIds;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return Friend
+     */
 	public function withCreatedAt(?int $createdAt): Friend {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return Friend
+     */
 	public function withUpdatedAt(?int $updatedAt): Friend {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return Friend
+     */
 	public function withRevision(?int $revision): Friend {
 		$this->revision = $revision;
 		return $this;

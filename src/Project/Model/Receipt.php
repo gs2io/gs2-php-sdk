@@ -20,115 +20,164 @@ namespace Gs2\Project\Model;
 use Gs2\Core\Model\IModel;
 
 
+/** Receipt */
 class Receipt implements IModel {
 	/**
-     * @var string
+     * @var string Receipt GRN
 	 */
 	private $receiptId;
 	/**
-     * @var string
+     * @var string GS2 Account Name
 	 */
 	private $accountName;
 	/**
-     * @var string
+     * @var string Invoice Name
 	 */
 	private $name;
 	/**
-     * @var int
+     * @var int Billing month
 	 */
 	private $date;
 	/**
-     * @var string
+     * @var string amount billed or claimed
 	 */
 	private $amount;
 	/**
-     * @var string
+     * @var string PDF URL
 	 */
 	private $pdfUrl;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
+    /** @return string|null Receipt GRN */
 	public function getReceiptId(): ?string {
 		return $this->receiptId;
 	}
+    /** @param string|null $receiptId Receipt GRN */
 	public function setReceiptId(?string $receiptId) {
 		$this->receiptId = $receiptId;
 	}
+    /**
+     * @param string|null $receiptId Receipt GRN
+     * @return Receipt
+     */
 	public function withReceiptId(?string $receiptId): Receipt {
 		$this->receiptId = $receiptId;
 		return $this;
 	}
+    /** @return string|null GS2 Account Name */
 	public function getAccountName(): ?string {
 		return $this->accountName;
 	}
+    /** @param string|null $accountName GS2 Account Name */
 	public function setAccountName(?string $accountName) {
 		$this->accountName = $accountName;
 	}
+    /**
+     * @param string|null $accountName GS2 Account Name
+     * @return Receipt
+     */
 	public function withAccountName(?string $accountName): Receipt {
 		$this->accountName = $accountName;
 		return $this;
 	}
+    /** @return string|null Invoice Name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Invoice Name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Invoice Name
+     * @return Receipt
+     */
 	public function withName(?string $name): Receipt {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return int|null Billing month */
 	public function getDate(): ?int {
 		return $this->date;
 	}
+    /** @param int|null $date Billing month */
 	public function setDate(?int $date) {
 		$this->date = $date;
 	}
+    /**
+     * @param int|null $date Billing month
+     * @return Receipt
+     */
 	public function withDate(?int $date): Receipt {
 		$this->date = $date;
 		return $this;
 	}
+    /** @return string|null amount billed or claimed */
 	public function getAmount(): ?string {
 		return $this->amount;
 	}
+    /** @param string|null $amount amount billed or claimed */
 	public function setAmount(?string $amount) {
 		$this->amount = $amount;
 	}
+    /**
+     * @param string|null $amount amount billed or claimed
+     * @return Receipt
+     */
 	public function withAmount(?string $amount): Receipt {
 		$this->amount = $amount;
 		return $this;
 	}
+    /** @return string|null PDF URL */
 	public function getPdfUrl(): ?string {
 		return $this->pdfUrl;
 	}
+    /** @param string|null $pdfUrl PDF URL */
 	public function setPdfUrl(?string $pdfUrl) {
 		$this->pdfUrl = $pdfUrl;
 	}
+    /**
+     * @param string|null $pdfUrl PDF URL
+     * @return Receipt
+     */
 	public function withPdfUrl(?string $pdfUrl): Receipt {
 		$this->pdfUrl = $pdfUrl;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return Receipt
+     */
 	public function withCreatedAt(?int $createdAt): Receipt {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return Receipt
+     */
 	public function withUpdatedAt(?int $updatedAt): Receipt {
 		$this->updatedAt = $updatedAt;
 		return $this;

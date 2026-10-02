@@ -19,18 +19,25 @@ namespace Gs2\Project\Result;
 
 use Gs2\Core\Model\IResult;
 
+/** Result of issuePassword: Reissue Password */
 class IssuePasswordResult implements IResult {
-    /** @var string */
+    /** @var string New Password */
     private $newPassword;
 
+    /** @return string|null New Password */
 	public function getNewPassword(): ?string {
 		return $this->newPassword;
 	}
 
+    /** @param string|null $newPassword New Password */
 	public function setNewPassword(?string $newPassword) {
 		$this->newPassword = $newPassword;
 	}
 
+    /**
+     * @param string|null $newPassword New Password
+     * @return IssuePasswordResult
+     */
 	public function withNewPassword(?string $newPassword): IssuePasswordResult {
 		$this->newPassword = $newPassword;
 		return $this;

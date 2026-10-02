@@ -19,39 +19,62 @@ namespace Gs2\SeasonRating\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for createMatchSession: Create a MatchSession
+ *
+ * @see https://docs.gs2.io/api_reference/season_rating/sdk/#creatematchsession
+ */
 class CreateMatchSessionRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Session name */
     private $sessionName;
-    /** @var int */
+    /** @var int MatchSession expiration time (seconds) */
     private $ttlSeconds;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return CreateMatchSessionRequest
+     */
 	public function withNamespaceName(?string $namespaceName): CreateMatchSessionRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Session name */
 	public function getSessionName(): ?string {
 		return $this->sessionName;
 	}
+    /** @param string|null $sessionName Session name */
 	public function setSessionName(?string $sessionName) {
 		$this->sessionName = $sessionName;
 	}
+    /**
+     * @param string|null $sessionName Session name
+     * @return CreateMatchSessionRequest
+     */
 	public function withSessionName(?string $sessionName): CreateMatchSessionRequest {
 		$this->sessionName = $sessionName;
 		return $this;
 	}
+    /** @return int|null MatchSession expiration time (seconds) */
 	public function getTtlSeconds(): ?int {
 		return $this->ttlSeconds;
 	}
+    /** @param int|null $ttlSeconds MatchSession expiration time (seconds) */
 	public function setTtlSeconds(?int $ttlSeconds) {
 		$this->ttlSeconds = $ttlSeconds;
 	}
+    /**
+     * @param int|null $ttlSeconds MatchSession expiration time (seconds)
+     * @return CreateMatchSessionRequest
+     */
 	public function withTtlSeconds(?int $ttlSeconds): CreateMatchSessionRequest {
 		$this->ttlSeconds = $ttlSeconds;
 		return $this;

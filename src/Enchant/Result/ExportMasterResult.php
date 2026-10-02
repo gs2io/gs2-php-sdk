@@ -20,18 +20,29 @@ namespace Gs2\Enchant\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Enchant\Model\CurrentParameterMaster;
 
+/**
+ * Result of exportMaster: Export Parameter Model Master in a master data format that can be activated
+ *
+ * @see https://docs.gs2.io/api_reference/enchant/sdk/#exportmaster
+ */
 class ExportMasterResult implements IResult {
-    /** @var CurrentParameterMaster */
+    /** @var CurrentParameterMaster Parameter Model master data that can be activated */
     private $item;
 
+    /** @return CurrentParameterMaster|null Parameter Model master data that can be activated */
 	public function getItem(): ?CurrentParameterMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentParameterMaster|null $item Parameter Model master data that can be activated */
 	public function setItem(?CurrentParameterMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentParameterMaster|null $item Parameter Model master data that can be activated
+     * @return ExportMasterResult
+     */
 	public function withItem(?CurrentParameterMaster $item): ExportMasterResult {
 		$this->item = $item;
 		return $this;

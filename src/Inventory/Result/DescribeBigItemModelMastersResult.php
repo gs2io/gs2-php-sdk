@@ -20,33 +20,50 @@ namespace Gs2\Inventory\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Inventory\Model\BigItemModelMaster;
 
+/**
+ * Result of describeBigItemModelMasters: List Big Item Model Masters
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#describebigitemmodelmasters
+ */
 class DescribeBigItemModelMastersResult implements IResult {
-    /** @var array */
+    /** @var array List of Big Item Model Master */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Big Item Model Master */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Big Item Model Master */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Big Item Model Master
+     * @return DescribeBigItemModelMastersResult
+     */
 	public function withItems(?array $items): DescribeBigItemModelMastersResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeBigItemModelMastersResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeBigItemModelMastersResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

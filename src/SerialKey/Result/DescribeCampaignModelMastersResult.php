@@ -20,33 +20,50 @@ namespace Gs2\SerialKey\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\SerialKey\Model\CampaignModelMaster;
 
+/**
+ * Result of describeCampaignModelMasters: List Campaign Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/serial_key/sdk/#describecampaignmodelmasters
+ */
 class DescribeCampaignModelMastersResult implements IResult {
-    /** @var array */
+    /** @var array List of Campaign Model Masters */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Campaign Model Masters */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Campaign Model Masters */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Campaign Model Masters
+     * @return DescribeCampaignModelMastersResult
+     */
 	public function withItems(?array $items): DescribeCampaignModelMastersResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeCampaignModelMastersResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeCampaignModelMastersResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

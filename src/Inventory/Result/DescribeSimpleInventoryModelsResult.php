@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Inventory\Model\SimpleItemModel;
 use Gs2\Inventory\Model\SimpleInventoryModel;
 
+/**
+ * Result of describeSimpleInventoryModels: List Simple Inventory Models
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#describesimpleinventorymodels
+ */
 class DescribeSimpleInventoryModelsResult implements IResult {
-    /** @var array */
+    /** @var array List of Simple Inventory Models */
     private $items;
 
+    /** @return array|null List of Simple Inventory Models */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Simple Inventory Models */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Simple Inventory Models
+     * @return DescribeSimpleInventoryModelsResult
+     */
 	public function withItems(?array $items): DescribeSimpleInventoryModelsResult {
 		$this->items = $items;
 		return $this;

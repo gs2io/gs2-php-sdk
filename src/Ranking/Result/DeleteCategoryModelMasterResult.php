@@ -23,18 +23,29 @@ use Gs2\Ranking\Model\Scope;
 use Gs2\Ranking\Model\GlobalRankingSetting;
 use Gs2\Ranking\Model\CategoryModelMaster;
 
+/**
+ * Result of deleteCategoryModelMaster: Delete Category Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/ranking/sdk/#deletecategorymodelmaster
+ */
 class DeleteCategoryModelMasterResult implements IResult {
-    /** @var CategoryModelMaster */
+    /** @var CategoryModelMaster Category Model Master deleted */
     private $item;
 
+    /** @return CategoryModelMaster|null Category Model Master deleted */
 	public function getItem(): ?CategoryModelMaster {
 		return $this->item;
 	}
 
+    /** @param CategoryModelMaster|null $item Category Model Master deleted */
 	public function setItem(?CategoryModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CategoryModelMaster|null $item Category Model Master deleted
+     * @return DeleteCategoryModelMasterResult
+     */
 	public function withItem(?CategoryModelMaster $item): DeleteCategoryModelMasterResult {
 		$this->item = $item;
 		return $this;

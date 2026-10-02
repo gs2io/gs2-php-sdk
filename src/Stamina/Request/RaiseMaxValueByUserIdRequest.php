@@ -19,65 +19,100 @@ namespace Gs2\Stamina\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for raiseMaxValueByUserId: Add the maximum value of stamina by specifying the user ID
+ *
+ * @see https://docs.gs2.io/api_reference/stamina/sdk/#raisemaxvaluebyuserid
+ */
 class RaiseMaxValueByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Stamina Model Name */
     private $staminaName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var int */
+    /** @var int Maximum amount of stamina to be increased */
     private $raiseValue;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return RaiseMaxValueByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): RaiseMaxValueByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Stamina Model Name */
 	public function getStaminaName(): ?string {
 		return $this->staminaName;
 	}
+    /** @param string|null $staminaName Stamina Model Name */
 	public function setStaminaName(?string $staminaName) {
 		$this->staminaName = $staminaName;
 	}
+    /**
+     * @param string|null $staminaName Stamina Model Name
+     * @return RaiseMaxValueByUserIdRequest
+     */
 	public function withStaminaName(?string $staminaName): RaiseMaxValueByUserIdRequest {
 		$this->staminaName = $staminaName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return RaiseMaxValueByUserIdRequest
+     */
 	public function withUserId(?string $userId): RaiseMaxValueByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return int|null Maximum amount of stamina to be increased */
 	public function getRaiseValue(): ?int {
 		return $this->raiseValue;
 	}
+    /** @param int|null $raiseValue Maximum amount of stamina to be increased */
 	public function setRaiseValue(?int $raiseValue) {
 		$this->raiseValue = $raiseValue;
 	}
+    /**
+     * @param int|null $raiseValue Maximum amount of stamina to be increased
+     * @return RaiseMaxValueByUserIdRequest
+     */
 	public function withRaiseValue(?int $raiseValue): RaiseMaxValueByUserIdRequest {
 		$this->raiseValue = $raiseValue;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return RaiseMaxValueByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): RaiseMaxValueByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

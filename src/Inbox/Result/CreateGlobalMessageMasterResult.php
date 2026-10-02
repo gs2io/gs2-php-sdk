@@ -22,18 +22,29 @@ use Gs2\Inbox\Model\AcquireAction;
 use Gs2\Inbox\Model\TimeSpan;
 use Gs2\Inbox\Model\GlobalMessageMaster;
 
+/**
+ * Result of createGlobalMessageMaster: Create Global Message Master
+ *
+ * @see https://docs.gs2.io/api_reference/inbox/sdk/#createglobalmessagemaster
+ */
 class CreateGlobalMessageMasterResult implements IResult {
-    /** @var GlobalMessageMaster */
+    /** @var GlobalMessageMaster Message to all users created */
     private $item;
 
+    /** @return GlobalMessageMaster|null Message to all users created */
 	public function getItem(): ?GlobalMessageMaster {
 		return $this->item;
 	}
 
+    /** @param GlobalMessageMaster|null $item Message to all users created */
 	public function setItem(?GlobalMessageMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param GlobalMessageMaster|null $item Message to all users created
+     * @return CreateGlobalMessageMasterResult
+     */
 	public function withItem(?GlobalMessageMaster $item): CreateGlobalMessageMasterResult {
 		$this->item = $item;
 		return $this;

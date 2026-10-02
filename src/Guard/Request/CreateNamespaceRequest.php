@@ -20,39 +20,62 @@ namespace Gs2\Guard\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Guard\Model\BlockingPolicyModel;
 
+/**
+ * Request for createNamespace: Create Namespace
+ *
+ * @see https://docs.gs2.io/api_reference/guard/sdk/#createnamespace
+ */
 class CreateNamespaceRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $name;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var BlockingPolicyModel */
+    /** @var BlockingPolicyModel Blocking Policy */
     private $blockingPolicy;
+    /** @return string|null Namespace name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Namespace name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Namespace name
+     * @return CreateNamespaceRequest
+     */
 	public function withName(?string $name): CreateNamespaceRequest {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return CreateNamespaceRequest
+     */
 	public function withDescription(?string $description): CreateNamespaceRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return BlockingPolicyModel|null Blocking Policy */
 	public function getBlockingPolicy(): ?BlockingPolicyModel {
 		return $this->blockingPolicy;
 	}
+    /** @param BlockingPolicyModel|null $blockingPolicy Blocking Policy */
 	public function setBlockingPolicy(?BlockingPolicyModel $blockingPolicy) {
 		$this->blockingPolicy = $blockingPolicy;
 	}
+    /**
+     * @param BlockingPolicyModel|null $blockingPolicy Blocking Policy
+     * @return CreateNamespaceRequest
+     */
 	public function withBlockingPolicy(?BlockingPolicyModel $blockingPolicy): CreateNamespaceRequest {
 		$this->blockingPolicy = $blockingPolicy;
 		return $this;

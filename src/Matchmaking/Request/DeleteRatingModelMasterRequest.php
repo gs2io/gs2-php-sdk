@@ -19,27 +19,44 @@ namespace Gs2\Matchmaking\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for deleteRatingModelMaster: Delete Rating Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#deleteratingmodelmaster
+ */
 class DeleteRatingModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Rating Model name */
     private $ratingName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DeleteRatingModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DeleteRatingModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Rating Model name */
 	public function getRatingName(): ?string {
 		return $this->ratingName;
 	}
+    /** @param string|null $ratingName Rating Model name */
 	public function setRatingName(?string $ratingName) {
 		$this->ratingName = $ratingName;
 	}
+    /**
+     * @param string|null $ratingName Rating Model name
+     * @return DeleteRatingModelMasterRequest
+     */
 	public function withRatingName(?string $ratingName): DeleteRatingModelMasterRequest {
 		$this->ratingName = $ratingName;
 		return $this;

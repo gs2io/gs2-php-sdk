@@ -20,18 +20,29 @@ namespace Gs2\Buff\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Buff\Model\CurrentBuffMaster;
 
+/**
+ * Result of updateCurrentBuffMasterFromGitHub: Update master data of the currently active Buff Entry Models from GitHub
+ *
+ * @see https://docs.gs2.io/api_reference/buff/sdk/#updatecurrentbuffmasterfromgithub
+ */
 class UpdateCurrentBuffMasterFromGitHubResult implements IResult {
-    /** @var CurrentBuffMaster */
+    /** @var CurrentBuffMaster Updated master data of the currently active Buff Entry Models */
     private $item;
 
+    /** @return CurrentBuffMaster|null Updated master data of the currently active Buff Entry Models */
 	public function getItem(): ?CurrentBuffMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentBuffMaster|null $item Updated master data of the currently active Buff Entry Models */
 	public function setItem(?CurrentBuffMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentBuffMaster|null $item Updated master data of the currently active Buff Entry Models
+     * @return UpdateCurrentBuffMasterFromGitHubResult
+     */
 	public function withItem(?CurrentBuffMaster $item): UpdateCurrentBuffMasterFromGitHubResult {
 		$this->item = $item;
 		return $this;

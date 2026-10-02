@@ -20,18 +20,29 @@ namespace Gs2\Deploy\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Deploy\Model\ChangeSet;
 
+/**
+ * Result of changeSet: Get Change Set
+ *
+ * @see https://docs.gs2.io/api_reference/deploy/sdk/#changeset-1
+ */
 class ChangeSetResult implements IResult {
-    /** @var array */
+    /** @var array List of Stack */
     private $items;
 
+    /** @return array|null List of Stack */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Stack */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Stack
+     * @return ChangeSetResult
+     */
 	public function withItems(?array $items): ChangeSetResult {
 		$this->items = $items;
 		return $this;

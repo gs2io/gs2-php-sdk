@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\MegaField\Model\LayerModel;
 use Gs2\MegaField\Model\AreaModel;
 
+/**
+ * Result of getAreaModel: Get Area Model
+ *
+ * @see https://docs.gs2.io/api_reference/mega_field/sdk/#getareamodel
+ */
 class GetAreaModelResult implements IResult {
-    /** @var AreaModel */
+    /** @var AreaModel Area Model */
     private $item;
 
+    /** @return AreaModel|null Area Model */
 	public function getItem(): ?AreaModel {
 		return $this->item;
 	}
 
+    /** @param AreaModel|null $item Area Model */
 	public function setItem(?AreaModel $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param AreaModel|null $item Area Model
+     * @return GetAreaModelResult
+     */
 	public function withItem(?AreaModel $item): GetAreaModelResult {
 		$this->item = $item;
 		return $this;

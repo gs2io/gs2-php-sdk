@@ -20,18 +20,29 @@ namespace Gs2\Stamina\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Stamina\Model\MaxStaminaTableMaster;
 
+/**
+ * Result of deleteMaxStaminaTableMaster: Delete Maximum Stamina Table Master
+ *
+ * @see https://docs.gs2.io/api_reference/stamina/sdk/#deletemaxstaminatablemaster
+ */
 class DeleteMaxStaminaTableMasterResult implements IResult {
-    /** @var MaxStaminaTableMaster */
+    /** @var MaxStaminaTableMaster Maximum Stamina Table Master deleted */
     private $item;
 
+    /** @return MaxStaminaTableMaster|null Maximum Stamina Table Master deleted */
 	public function getItem(): ?MaxStaminaTableMaster {
 		return $this->item;
 	}
 
+    /** @param MaxStaminaTableMaster|null $item Maximum Stamina Table Master deleted */
 	public function setItem(?MaxStaminaTableMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param MaxStaminaTableMaster|null $item Maximum Stamina Table Master deleted
+     * @return DeleteMaxStaminaTableMasterResult
+     */
 	public function withItem(?MaxStaminaTableMaster $item): DeleteMaxStaminaTableMasterResult {
 		$this->item = $item;
 		return $this;

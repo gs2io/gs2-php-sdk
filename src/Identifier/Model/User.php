@@ -20,87 +20,128 @@ namespace Gs2\Identifier\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * GS2-Identifier User
+ *
+ * @see https://docs.gs2.io/api_reference/identifier/sdk/#user
+ */
 class User implements IModel {
 	/**
-     * @var string
+     * @var string GS2-Identifier User GRN
 	 */
 	private $userId;
 	/**
-     * @var string
+     * @var string GS2-Identifier User name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Description
 	 */
 	private $description;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null GS2-Identifier User GRN */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId GS2-Identifier User GRN */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId GS2-Identifier User GRN
+     * @return User
+     */
 	public function withUserId(?string $userId): User {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null GS2-Identifier User name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name GS2-Identifier User name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name GS2-Identifier User name
+     * @return User
+     */
 	public function withName(?string $name): User {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return User
+     */
 	public function withDescription(?string $description): User {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return User
+     */
 	public function withCreatedAt(?int $createdAt): User {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return User
+     */
 	public function withUpdatedAt(?int $updatedAt): User {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return User
+     */
 	public function withRevision(?int $revision): User {
 		$this->revision = $revision;
 		return $this;

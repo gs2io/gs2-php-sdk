@@ -20,73 +20,108 @@ namespace Gs2\Log\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Facet Model
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#facetmodel
+ */
 class FacetModel implements IModel {
 	/**
-     * @var string
+     * @var string Facet Model GRN
 	 */
 	private $facetModelId;
 	/**
-     * @var string
+     * @var string Facet Field Name
 	 */
 	private $field;
 	/**
-     * @var string
+     * @var string Facet Data Type
 	 */
 	private $type;
 	/**
-     * @var string
+     * @var string Display Name
 	 */
 	private $displayName;
 	/**
-     * @var int
+     * @var int Display Order
 	 */
 	private $order;
+    /** @return string|null Facet Model GRN */
 	public function getFacetModelId(): ?string {
 		return $this->facetModelId;
 	}
+    /** @param string|null $facetModelId Facet Model GRN */
 	public function setFacetModelId(?string $facetModelId) {
 		$this->facetModelId = $facetModelId;
 	}
+    /**
+     * @param string|null $facetModelId Facet Model GRN
+     * @return FacetModel
+     */
 	public function withFacetModelId(?string $facetModelId): FacetModel {
 		$this->facetModelId = $facetModelId;
 		return $this;
 	}
+    /** @return string|null Facet Field Name */
 	public function getField(): ?string {
 		return $this->field;
 	}
+    /** @param string|null $field Facet Field Name */
 	public function setField(?string $field) {
 		$this->field = $field;
 	}
+    /**
+     * @param string|null $field Facet Field Name
+     * @return FacetModel
+     */
 	public function withField(?string $field): FacetModel {
 		$this->field = $field;
 		return $this;
 	}
+    /** @return string|null Facet Data Type */
 	public function getType(): ?string {
 		return $this->type;
 	}
+    /** @param string|null $type Facet Data Type */
 	public function setType(?string $type) {
 		$this->type = $type;
 	}
+    /**
+     * @param string|null $type Facet Data Type
+     * @return FacetModel
+     */
 	public function withType(?string $type): FacetModel {
 		$this->type = $type;
 		return $this;
 	}
+    /** @return string|null Display Name */
 	public function getDisplayName(): ?string {
 		return $this->displayName;
 	}
+    /** @param string|null $displayName Display Name */
 	public function setDisplayName(?string $displayName) {
 		$this->displayName = $displayName;
 	}
+    /**
+     * @param string|null $displayName Display Name
+     * @return FacetModel
+     */
 	public function withDisplayName(?string $displayName): FacetModel {
 		$this->displayName = $displayName;
 		return $this;
 	}
+    /** @return int|null Display Order */
 	public function getOrder(): ?int {
 		return $this->order;
 	}
+    /** @param int|null $order Display Order */
 	public function setOrder(?int $order) {
 		$this->order = $order;
 	}
+    /**
+     * @param int|null $order Display Order
+     * @return FacetModel
+     */
 	public function withOrder(?int $order): FacetModel {
 		$this->order = $order;
 		return $this;

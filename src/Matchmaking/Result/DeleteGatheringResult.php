@@ -24,18 +24,29 @@ use Gs2\Matchmaking\Model\Player;
 use Gs2\Matchmaking\Model\CapacityOfRole;
 use Gs2\Matchmaking\Model\Gathering;
 
+/**
+ * Result of deleteGathering: Delete Gathering
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#deletegathering
+ */
 class DeleteGatheringResult implements IResult {
-    /** @var Gathering */
+    /** @var Gathering Gathering deleted */
     private $item;
 
+    /** @return Gathering|null Gathering deleted */
 	public function getItem(): ?Gathering {
 		return $this->item;
 	}
 
+    /** @param Gathering|null $item Gathering deleted */
 	public function setItem(?Gathering $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Gathering|null $item Gathering deleted
+     * @return DeleteGatheringResult
+     */
 	public function withItem(?Gathering $item): DeleteGatheringResult {
 		$this->item = $item;
 		return $this;

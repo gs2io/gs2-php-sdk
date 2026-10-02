@@ -20,65 +20,100 @@ namespace Gs2\Chat\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Chat\Model\NotificationType;
 
+/**
+ * Request for updateNotificationTypeByUserId: Update notification methods by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/chat/sdk/#updatenotificationtypebyuserid
+ */
 class UpdateNotificationTypeByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Subscribed room name */
     private $roomName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var array */
+    /** @var array List of categories to receive notifications of new messages */
     private $notificationTypes;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UpdateNotificationTypeByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UpdateNotificationTypeByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Subscribed room name */
 	public function getRoomName(): ?string {
 		return $this->roomName;
 	}
+    /** @param string|null $roomName Subscribed room name */
 	public function setRoomName(?string $roomName) {
 		$this->roomName = $roomName;
 	}
+    /**
+     * @param string|null $roomName Subscribed room name
+     * @return UpdateNotificationTypeByUserIdRequest
+     */
 	public function withRoomName(?string $roomName): UpdateNotificationTypeByUserIdRequest {
 		$this->roomName = $roomName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return UpdateNotificationTypeByUserIdRequest
+     */
 	public function withUserId(?string $userId): UpdateNotificationTypeByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return array|null List of categories to receive notifications of new messages */
 	public function getNotificationTypes(): ?array {
 		return $this->notificationTypes;
 	}
+    /** @param array|null $notificationTypes List of categories to receive notifications of new messages */
 	public function setNotificationTypes(?array $notificationTypes) {
 		$this->notificationTypes = $notificationTypes;
 	}
+    /**
+     * @param array|null $notificationTypes List of categories to receive notifications of new messages
+     * @return UpdateNotificationTypeByUserIdRequest
+     */
 	public function withNotificationTypes(?array $notificationTypes): UpdateNotificationTypeByUserIdRequest {
 		$this->notificationTypes = $notificationTypes;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return UpdateNotificationTypeByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): UpdateNotificationTypeByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

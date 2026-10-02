@@ -19,63 +19,98 @@ namespace Gs2\Script\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for updateScript: Update Script
+ *
+ * @see https://docs.gs2.io/api_reference/script/sdk/#updatescript
+ */
 class UpdateScriptRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Script name */
     private $scriptName;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var string */
+    /** @var string Lua Script */
     private $script;
-    /** @var bool */
+    /** @var bool Disable String-Number Conversion */
     private $disableStringNumberToNumber;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UpdateScriptRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UpdateScriptRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Script name */
 	public function getScriptName(): ?string {
 		return $this->scriptName;
 	}
+    /** @param string|null $scriptName Script name */
 	public function setScriptName(?string $scriptName) {
 		$this->scriptName = $scriptName;
 	}
+    /**
+     * @param string|null $scriptName Script name
+     * @return UpdateScriptRequest
+     */
 	public function withScriptName(?string $scriptName): UpdateScriptRequest {
 		$this->scriptName = $scriptName;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return UpdateScriptRequest
+     */
 	public function withDescription(?string $description): UpdateScriptRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Lua Script */
 	public function getScript(): ?string {
 		return $this->script;
 	}
+    /** @param string|null $script Lua Script */
 	public function setScript(?string $script) {
 		$this->script = $script;
 	}
+    /**
+     * @param string|null $script Lua Script
+     * @return UpdateScriptRequest
+     */
 	public function withScript(?string $script): UpdateScriptRequest {
 		$this->script = $script;
 		return $this;
 	}
+    /** @return bool|null Disable String-Number Conversion */
 	public function getDisableStringNumberToNumber(): ?bool {
 		return $this->disableStringNumberToNumber;
 	}
+    /** @param bool|null $disableStringNumberToNumber Disable String-Number Conversion */
 	public function setDisableStringNumberToNumber(?bool $disableStringNumberToNumber) {
 		$this->disableStringNumberToNumber = $disableStringNumberToNumber;
 	}
+    /**
+     * @param bool|null $disableStringNumberToNumber Disable String-Number Conversion
+     * @return UpdateScriptRequest
+     */
 	public function withDisableStringNumberToNumber(?bool $disableStringNumberToNumber): UpdateScriptRequest {
 		$this->disableStringNumberToNumber = $disableStringNumberToNumber;
 		return $this;

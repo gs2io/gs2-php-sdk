@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Exchange\Model\Config;
 use Gs2\Exchange\Model\Await;
 
+/**
+ * Result of createAwaitByStampSheet: Execute creation of Exchange Await as an acquire action
+ *
+ * @see https://docs.gs2.io/api_reference/exchange/stamp_sheet/#gs2exchangecreateawaitbyuserid
+ */
 class CreateAwaitByStampSheetResult implements IResult {
-    /** @var Await */
+    /** @var Await Exchange Await */
     private $item;
 
+    /** @return Await|null Exchange Await */
 	public function getItem(): ?Await {
 		return $this->item;
 	}
 
+    /** @param Await|null $item Exchange Await */
 	public function setItem(?Await $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Await|null $item Exchange Await
+     * @return CreateAwaitByStampSheetResult
+     */
 	public function withItem(?Await $item): CreateAwaitByStampSheetResult {
 		$this->item = $item;
 		return $this;

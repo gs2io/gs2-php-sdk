@@ -20,77 +20,118 @@ namespace Gs2\Exchange\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Exchange\Model\Config;
 
+/**
+ * Request for createAwaitByUserId: Create Exchange Await by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/exchange/sdk/#createawaitbyuserid
+ */
 class CreateAwaitByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Exchange Rate Model name */
     private $rateName;
-    /** @var int */
+    /** @var int Number of exchanges */
     private $count;
-    /** @var array */
+    /** @var array Default configuration values applied when obtaining rewards */
     private $config;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return CreateAwaitByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): CreateAwaitByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return CreateAwaitByUserIdRequest
+     */
 	public function withUserId(?string $userId): CreateAwaitByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Exchange Rate Model name */
 	public function getRateName(): ?string {
 		return $this->rateName;
 	}
+    /** @param string|null $rateName Exchange Rate Model name */
 	public function setRateName(?string $rateName) {
 		$this->rateName = $rateName;
 	}
+    /**
+     * @param string|null $rateName Exchange Rate Model name
+     * @return CreateAwaitByUserIdRequest
+     */
 	public function withRateName(?string $rateName): CreateAwaitByUserIdRequest {
 		$this->rateName = $rateName;
 		return $this;
 	}
+    /** @return int|null Number of exchanges */
 	public function getCount(): ?int {
 		return $this->count;
 	}
+    /** @param int|null $count Number of exchanges */
 	public function setCount(?int $count) {
 		$this->count = $count;
 	}
+    /**
+     * @param int|null $count Number of exchanges
+     * @return CreateAwaitByUserIdRequest
+     */
 	public function withCount(?int $count): CreateAwaitByUserIdRequest {
 		$this->count = $count;
 		return $this;
 	}
+    /** @return array|null Default configuration values applied when obtaining rewards */
 	public function getConfig(): ?array {
 		return $this->config;
 	}
+    /** @param array|null $config Default configuration values applied when obtaining rewards */
 	public function setConfig(?array $config) {
 		$this->config = $config;
 	}
+    /**
+     * @param array|null $config Default configuration values applied when obtaining rewards
+     * @return CreateAwaitByUserIdRequest
+     */
 	public function withConfig(?array $config): CreateAwaitByUserIdRequest {
 		$this->config = $config;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return CreateAwaitByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): CreateAwaitByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

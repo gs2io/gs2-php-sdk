@@ -20,18 +20,29 @@ namespace Gs2\Ranking2\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Ranking2\Model\ClusterRankingScore;
 
+/**
+ * Result of deleteClusterRankingScoreByUserId: Delete Cluster Ranking Score specifying User ID
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/sdk/#deleteclusterrankingscorebyuserid
+ */
 class DeleteClusterRankingScoreByUserIdResult implements IResult {
-    /** @var ClusterRankingScore */
+    /** @var ClusterRankingScore Cluster Ranking Score deleted */
     private $item;
 
+    /** @return ClusterRankingScore|null Cluster Ranking Score deleted */
 	public function getItem(): ?ClusterRankingScore {
 		return $this->item;
 	}
 
+    /** @param ClusterRankingScore|null $item Cluster Ranking Score deleted */
 	public function setItem(?ClusterRankingScore $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param ClusterRankingScore|null $item Cluster Ranking Score deleted
+     * @return DeleteClusterRankingScoreByUserIdResult
+     */
 	public function withItem(?ClusterRankingScore $item): DeleteClusterRankingScoreByUserIdResult {
 		$this->item = $item;
 		return $this;

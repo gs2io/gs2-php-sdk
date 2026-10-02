@@ -4023,25 +4023,22 @@ class VerifyRankCapByStampTaskTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 Experience API クライアント
+ * GS2-Experience API client
  *
- * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/experience/sdk/
  */
 class Gs2ExperienceRestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#describenamespaces
      */
     public function describeNamespacesAsync(
             DescribeNamespacesRequest $request
@@ -4055,8 +4052,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#describenamespaces
      */
     public function describeNamespaces (
             DescribeNamespacesRequest $request
@@ -4067,8 +4067,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#createnamespace
      */
     public function createNamespaceAsync(
             CreateNamespaceRequest $request
@@ -4082,8 +4085,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#createnamespace
      */
     public function createNamespace (
             CreateNamespaceRequest $request
@@ -4094,8 +4100,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#getnamespacestatus
      */
     public function getNamespaceStatusAsync(
             GetNamespaceStatusRequest $request
@@ -4109,8 +4118,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#getnamespacestatus
      */
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
@@ -4121,8 +4133,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#getnamespace
      */
     public function getNamespaceAsync(
             GetNamespaceRequest $request
@@ -4136,8 +4151,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#getnamespace
      */
     public function getNamespace (
             GetNamespaceRequest $request
@@ -4148,8 +4166,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#updatenamespace
      */
     public function updateNamespaceAsync(
             UpdateNamespaceRequest $request
@@ -4163,8 +4184,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#updatenamespace
      */
     public function updateNamespace (
             UpdateNamespaceRequest $request
@@ -4175,8 +4199,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#deletenamespace
      */
     public function deleteNamespaceAsync(
             DeleteNamespaceRequest $request
@@ -4190,8 +4217,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#deletenamespace
      */
     public function deleteNamespace (
             DeleteNamespaceRequest $request
@@ -4202,8 +4232,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get microservice version
+     *
      * @param GetServiceVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#getserviceversion
      */
     public function getServiceVersionAsync(
             GetServiceVersionRequest $request
@@ -4217,8 +4250,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get microservice version
+     *
      * @param GetServiceVersionRequest $request
      * @return GetServiceVersionResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#getserviceversion
      */
     public function getServiceVersion (
             GetServiceVersionRequest $request
@@ -4229,8 +4265,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserIdAsync(
             DumpUserDataByUserIdRequest $request
@@ -4244,8 +4283,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return DumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserId (
             DumpUserDataByUserIdRequest $request
@@ -4256,8 +4298,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserIdAsync(
             CheckDumpUserDataByUserIdRequest $request
@@ -4271,8 +4316,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return CheckDumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserId (
             CheckDumpUserDataByUserIdRequest $request
@@ -4283,8 +4331,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserIdAsync(
             CleanUserDataByUserIdRequest $request
@@ -4298,8 +4349,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return CleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserId (
             CleanUserDataByUserIdRequest $request
@@ -4310,8 +4364,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserIdAsync(
             CheckCleanUserDataByUserIdRequest $request
@@ -4325,8 +4382,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return CheckCleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserId (
             CheckCleanUserDataByUserIdRequest $request
@@ -4337,8 +4397,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserIdAsync(
             PrepareImportUserDataByUserIdRequest $request
@@ -4352,8 +4415,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PrepareImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserId (
             PrepareImportUserDataByUserIdRequest $request
@@ -4364,8 +4430,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserIdAsync(
             ImportUserDataByUserIdRequest $request
@@ -4379,8 +4448,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return ImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserId (
             ImportUserDataByUserIdRequest $request
@@ -4391,8 +4463,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserIdAsync(
             CheckImportUserDataByUserIdRequest $request
@@ -4406,8 +4481,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return CheckImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserId (
             CheckImportUserDataByUserIdRequest $request
@@ -4418,8 +4496,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Experience Model Masters
+     *
      * @param DescribeExperienceModelMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#describeexperiencemodelmasters
      */
     public function describeExperienceModelMastersAsync(
             DescribeExperienceModelMastersRequest $request
@@ -4433,8 +4514,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Experience Model Masters
+     *
      * @param DescribeExperienceModelMastersRequest $request
      * @return DescribeExperienceModelMastersResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#describeexperiencemodelmasters
      */
     public function describeExperienceModelMasters (
             DescribeExperienceModelMastersRequest $request
@@ -4445,8 +4529,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Experience Model Master
+     *
      * @param CreateExperienceModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#createexperiencemodelmaster
      */
     public function createExperienceModelMasterAsync(
             CreateExperienceModelMasterRequest $request
@@ -4460,8 +4547,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Experience Model Master
+     *
      * @param CreateExperienceModelMasterRequest $request
      * @return CreateExperienceModelMasterResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#createexperiencemodelmaster
      */
     public function createExperienceModelMaster (
             CreateExperienceModelMasterRequest $request
@@ -4472,8 +4562,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Experience Model Master
+     *
      * @param GetExperienceModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#getexperiencemodelmaster
      */
     public function getExperienceModelMasterAsync(
             GetExperienceModelMasterRequest $request
@@ -4487,8 +4580,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Experience Model Master
+     *
      * @param GetExperienceModelMasterRequest $request
      * @return GetExperienceModelMasterResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#getexperiencemodelmaster
      */
     public function getExperienceModelMaster (
             GetExperienceModelMasterRequest $request
@@ -4499,8 +4595,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Experience Model Master
+     *
      * @param UpdateExperienceModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#updateexperiencemodelmaster
      */
     public function updateExperienceModelMasterAsync(
             UpdateExperienceModelMasterRequest $request
@@ -4514,8 +4613,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Experience Model Master
+     *
      * @param UpdateExperienceModelMasterRequest $request
      * @return UpdateExperienceModelMasterResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#updateexperiencemodelmaster
      */
     public function updateExperienceModelMaster (
             UpdateExperienceModelMasterRequest $request
@@ -4526,8 +4628,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Experience Model Master
+     *
      * @param DeleteExperienceModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#deleteexperiencemodelmaster
      */
     public function deleteExperienceModelMasterAsync(
             DeleteExperienceModelMasterRequest $request
@@ -4541,8 +4646,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Experience Model Master
+     *
      * @param DeleteExperienceModelMasterRequest $request
      * @return DeleteExperienceModelMasterResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#deleteexperiencemodelmaster
      */
     public function deleteExperienceModelMaster (
             DeleteExperienceModelMasterRequest $request
@@ -4553,8 +4661,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Experience Models
+     *
      * @param DescribeExperienceModelsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#describeexperiencemodels
      */
     public function describeExperienceModelsAsync(
             DescribeExperienceModelsRequest $request
@@ -4568,8 +4679,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Experience Models
+     *
      * @param DescribeExperienceModelsRequest $request
      * @return DescribeExperienceModelsResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#describeexperiencemodels
      */
     public function describeExperienceModels (
             DescribeExperienceModelsRequest $request
@@ -4580,8 +4694,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Experience Model
+     *
      * @param GetExperienceModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#getexperiencemodel
      */
     public function getExperienceModelAsync(
             GetExperienceModelRequest $request
@@ -4595,8 +4712,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Experience Model
+     *
      * @param GetExperienceModelRequest $request
      * @return GetExperienceModelResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#getexperiencemodel
      */
     public function getExperienceModel (
             GetExperienceModelRequest $request
@@ -4607,8 +4727,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Rank Up Threshold Masters
+     *
      * @param DescribeThresholdMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#describethresholdmasters
      */
     public function describeThresholdMastersAsync(
             DescribeThresholdMastersRequest $request
@@ -4622,8 +4745,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Rank Up Threshold Masters
+     *
      * @param DescribeThresholdMastersRequest $request
      * @return DescribeThresholdMastersResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#describethresholdmasters
      */
     public function describeThresholdMasters (
             DescribeThresholdMastersRequest $request
@@ -4634,8 +4760,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Rank Up Threshold Master
+     *
      * @param CreateThresholdMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#createthresholdmaster
      */
     public function createThresholdMasterAsync(
             CreateThresholdMasterRequest $request
@@ -4649,8 +4778,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Rank Up Threshold Master
+     *
      * @param CreateThresholdMasterRequest $request
      * @return CreateThresholdMasterResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#createthresholdmaster
      */
     public function createThresholdMaster (
             CreateThresholdMasterRequest $request
@@ -4661,8 +4793,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Rank Up Threshold Master
+     *
      * @param GetThresholdMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#getthresholdmaster
      */
     public function getThresholdMasterAsync(
             GetThresholdMasterRequest $request
@@ -4676,8 +4811,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Rank Up Threshold Master
+     *
      * @param GetThresholdMasterRequest $request
      * @return GetThresholdMasterResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#getthresholdmaster
      */
     public function getThresholdMaster (
             GetThresholdMasterRequest $request
@@ -4688,8 +4826,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Rank Up Threshold Master
+     *
      * @param UpdateThresholdMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#updatethresholdmaster
      */
     public function updateThresholdMasterAsync(
             UpdateThresholdMasterRequest $request
@@ -4703,8 +4844,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Rank Up Threshold Master
+     *
      * @param UpdateThresholdMasterRequest $request
      * @return UpdateThresholdMasterResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#updatethresholdmaster
      */
     public function updateThresholdMaster (
             UpdateThresholdMasterRequest $request
@@ -4715,8 +4859,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Rank Up Threshold Master
+     *
      * @param DeleteThresholdMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#deletethresholdmaster
      */
     public function deleteThresholdMasterAsync(
             DeleteThresholdMasterRequest $request
@@ -4730,8 +4877,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Rank Up Threshold Master
+     *
      * @param DeleteThresholdMasterRequest $request
      * @return DeleteThresholdMasterResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#deletethresholdmaster
      */
     public function deleteThresholdMaster (
             DeleteThresholdMasterRequest $request
@@ -4742,8 +4892,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Experience Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#exportmaster
      */
     public function exportMasterAsync(
             ExportMasterRequest $request
@@ -4757,8 +4910,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Experience Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return ExportMasterResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#exportmaster
      */
     public function exportMaster (
             ExportMasterRequest $request
@@ -4769,8 +4925,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Experience Model master data
+     *
      * @param GetCurrentExperienceMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#getcurrentexperiencemaster
      */
     public function getCurrentExperienceMasterAsync(
             GetCurrentExperienceMasterRequest $request
@@ -4784,8 +4943,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Experience Model master data
+     *
      * @param GetCurrentExperienceMasterRequest $request
      * @return GetCurrentExperienceMasterResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#getcurrentexperiencemaster
      */
     public function getCurrentExperienceMaster (
             GetCurrentExperienceMasterRequest $request
@@ -4796,8 +4958,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Experience Model master data (3-phase version)
+     *
      * @param PreUpdateCurrentExperienceMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#preupdatecurrentexperiencemaster
      */
     public function preUpdateCurrentExperienceMasterAsync(
             PreUpdateCurrentExperienceMasterRequest $request
@@ -4811,8 +4976,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Experience Model master data (3-phase version)
+     *
      * @param PreUpdateCurrentExperienceMasterRequest $request
      * @return PreUpdateCurrentExperienceMasterResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#preupdatecurrentexperiencemaster
      */
     public function preUpdateCurrentExperienceMaster (
             PreUpdateCurrentExperienceMasterRequest $request
@@ -4823,8 +4991,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Experience Model master data
+     *
      * @param UpdateCurrentExperienceMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#updatecurrentexperiencemaster
      */
     public function updateCurrentExperienceMasterAsync(
             UpdateCurrentExperienceMasterRequest $request
@@ -4838,8 +5009,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Experience Model master data
+     *
      * @param UpdateCurrentExperienceMasterRequest $request
      * @return UpdateCurrentExperienceMasterResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#updatecurrentexperiencemaster
      */
     public function updateCurrentExperienceMaster (
             UpdateCurrentExperienceMasterRequest $request
@@ -4850,8 +5024,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Experience Model master data from GitHub
+     *
      * @param UpdateCurrentExperienceMasterFromGitHubRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#updatecurrentexperiencemasterfromgithub
      */
     public function updateCurrentExperienceMasterFromGitHubAsync(
             UpdateCurrentExperienceMasterFromGitHubRequest $request
@@ -4865,8 +5042,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Experience Model master data from GitHub
+     *
      * @param UpdateCurrentExperienceMasterFromGitHubRequest $request
      * @return UpdateCurrentExperienceMasterFromGitHubResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#updatecurrentexperiencemasterfromgithub
      */
     public function updateCurrentExperienceMasterFromGitHub (
             UpdateCurrentExperienceMasterFromGitHubRequest $request
@@ -4877,8 +5057,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Statuses
+     *
      * @param DescribeStatusesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#describestatuses
      */
     public function describeStatusesAsync(
             DescribeStatusesRequest $request
@@ -4892,8 +5075,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Statuses
+     *
      * @param DescribeStatusesRequest $request
      * @return DescribeStatusesResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#describestatuses
      */
     public function describeStatuses (
             DescribeStatusesRequest $request
@@ -4904,8 +5090,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Statuses by User ID
+     *
      * @param DescribeStatusesByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#describestatusesbyuserid
      */
     public function describeStatusesByUserIdAsync(
             DescribeStatusesByUserIdRequest $request
@@ -4919,8 +5108,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Statuses by User ID
+     *
      * @param DescribeStatusesByUserIdRequest $request
      * @return DescribeStatusesByUserIdResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#describestatusesbyuserid
      */
     public function describeStatusesByUserId (
             DescribeStatusesByUserIdRequest $request
@@ -4931,8 +5123,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Status
+     *
      * @param GetStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#getstatus
      */
     public function getStatusAsync(
             GetStatusRequest $request
@@ -4946,8 +5141,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Status
+     *
      * @param GetStatusRequest $request
      * @return GetStatusResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#getstatus
      */
     public function getStatus (
             GetStatusRequest $request
@@ -4958,8 +5156,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Status by User ID
+     *
      * @param GetStatusByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#getstatusbyuserid
      */
     public function getStatusByUserIdAsync(
             GetStatusByUserIdRequest $request
@@ -4973,8 +5174,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Status by User ID
+     *
      * @param GetStatusByUserIdRequest $request
      * @return GetStatusByUserIdResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#getstatusbyuserid
      */
     public function getStatusByUserId (
             GetStatusByUserIdRequest $request
@@ -4985,8 +5189,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get status along with signature
+     *
      * @param GetStatusWithSignatureRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#getstatuswithsignature
      */
     public function getStatusWithSignatureAsync(
             GetStatusWithSignatureRequest $request
@@ -5000,8 +5207,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get status along with signature
+     *
      * @param GetStatusWithSignatureRequest $request
      * @return GetStatusWithSignatureResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#getstatuswithsignature
      */
     public function getStatusWithSignature (
             GetStatusWithSignatureRequest $request
@@ -5012,8 +5222,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Status with signature by User ID
+     *
      * @param GetStatusWithSignatureByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#getstatuswithsignaturebyuserid
      */
     public function getStatusWithSignatureByUserIdAsync(
             GetStatusWithSignatureByUserIdRequest $request
@@ -5027,8 +5240,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Status with signature by User ID
+     *
      * @param GetStatusWithSignatureByUserIdRequest $request
      * @return GetStatusWithSignatureByUserIdResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#getstatuswithsignaturebyuserid
      */
     public function getStatusWithSignatureByUserId (
             GetStatusWithSignatureByUserIdRequest $request
@@ -5039,8 +5255,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Add experience by User ID
+     *
      * @param AddExperienceByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#addexperiencebyuserid
      */
     public function addExperienceByUserIdAsync(
             AddExperienceByUserIdRequest $request
@@ -5054,8 +5273,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Add experience by User ID
+     *
      * @param AddExperienceByUserIdRequest $request
      * @return AddExperienceByUserIdResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#addexperiencebyuserid
      */
     public function addExperienceByUserId (
             AddExperienceByUserIdRequest $request
@@ -5066,8 +5288,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Subtract experience
+     *
      * @param SubExperienceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#subexperience
      */
     public function subExperienceAsync(
             SubExperienceRequest $request
@@ -5081,8 +5306,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Subtract experience
+     *
      * @param SubExperienceRequest $request
      * @return SubExperienceResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#subexperience
      */
     public function subExperience (
             SubExperienceRequest $request
@@ -5093,8 +5321,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Subtract experience by User ID
+     *
      * @param SubExperienceByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#subexperiencebyuserid
      */
     public function subExperienceByUserIdAsync(
             SubExperienceByUserIdRequest $request
@@ -5108,8 +5339,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Subtract experience by User ID
+     *
      * @param SubExperienceByUserIdRequest $request
      * @return SubExperienceByUserIdResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#subexperiencebyuserid
      */
     public function subExperienceByUserId (
             SubExperienceByUserIdRequest $request
@@ -5120,8 +5354,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Set experience by User ID
+     *
      * @param SetExperienceByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#setexperiencebyuserid
      */
     public function setExperienceByUserIdAsync(
             SetExperienceByUserIdRequest $request
@@ -5135,8 +5372,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Set experience by User ID
+     *
      * @param SetExperienceByUserIdRequest $request
      * @return SetExperienceByUserIdResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#setexperiencebyuserid
      */
     public function setExperienceByUserId (
             SetExperienceByUserIdRequest $request
@@ -5147,8 +5387,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Add rank cap by User ID
+     *
      * @param AddRankCapByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#addrankcapbyuserid
      */
     public function addRankCapByUserIdAsync(
             AddRankCapByUserIdRequest $request
@@ -5162,8 +5405,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Add rank cap by User ID
+     *
      * @param AddRankCapByUserIdRequest $request
      * @return AddRankCapByUserIdResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#addrankcapbyuserid
      */
     public function addRankCapByUserId (
             AddRankCapByUserIdRequest $request
@@ -5174,8 +5420,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Subtract rank cap
+     *
      * @param SubRankCapRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#subrankcap
      */
     public function subRankCapAsync(
             SubRankCapRequest $request
@@ -5189,8 +5438,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Subtract rank cap
+     *
      * @param SubRankCapRequest $request
      * @return SubRankCapResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#subrankcap
      */
     public function subRankCap (
             SubRankCapRequest $request
@@ -5201,8 +5453,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Subtract rank cap by User ID
+     *
      * @param SubRankCapByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#subrankcapbyuserid
      */
     public function subRankCapByUserIdAsync(
             SubRankCapByUserIdRequest $request
@@ -5216,8 +5471,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Subtract rank cap by User ID
+     *
      * @param SubRankCapByUserIdRequest $request
      * @return SubRankCapByUserIdResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#subrankcapbyuserid
      */
     public function subRankCapByUserId (
             SubRankCapByUserIdRequest $request
@@ -5228,8 +5486,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Set rank cap by User ID
+     *
      * @param SetRankCapByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#setrankcapbyuserid
      */
     public function setRankCapByUserIdAsync(
             SetRankCapByUserIdRequest $request
@@ -5243,8 +5504,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Set rank cap by User ID
+     *
      * @param SetRankCapByUserIdRequest $request
      * @return SetRankCapByUserIdResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#setrankcapbyuserid
      */
     public function setRankCapByUserId (
             SetRankCapByUserIdRequest $request
@@ -5255,8 +5519,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete status
+     *
      * @param DeleteStatusByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#deletestatusbyuserid
      */
     public function deleteStatusByUserIdAsync(
             DeleteStatusByUserIdRequest $request
@@ -5270,8 +5537,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete status
+     *
      * @param DeleteStatusByUserIdRequest $request
      * @return DeleteStatusByUserIdResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#deletestatusbyuserid
      */
     public function deleteStatusByUserId (
             DeleteStatusByUserIdRequest $request
@@ -5282,8 +5552,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify rank
+     *
      * @param VerifyRankRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#verifyrank
      */
     public function verifyRankAsync(
             VerifyRankRequest $request
@@ -5297,8 +5570,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify rank
+     *
      * @param VerifyRankRequest $request
      * @return VerifyRankResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#verifyrank
      */
     public function verifyRank (
             VerifyRankRequest $request
@@ -5309,8 +5585,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify rank by User ID
+     *
      * @param VerifyRankByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#verifyrankbyuserid
      */
     public function verifyRankByUserIdAsync(
             VerifyRankByUserIdRequest $request
@@ -5324,8 +5603,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify rank by User ID
+     *
      * @param VerifyRankByUserIdRequest $request
      * @return VerifyRankByUserIdResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#verifyrankbyuserid
      */
     public function verifyRankByUserId (
             VerifyRankByUserIdRequest $request
@@ -5336,8 +5618,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify rank cap
+     *
      * @param VerifyRankCapRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#verifyrankcap
      */
     public function verifyRankCapAsync(
             VerifyRankCapRequest $request
@@ -5351,8 +5636,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify rank cap
+     *
      * @param VerifyRankCapRequest $request
      * @return VerifyRankCapResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#verifyrankcap
      */
     public function verifyRankCap (
             VerifyRankCapRequest $request
@@ -5363,8 +5651,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify rank cap by User ID
+     *
      * @param VerifyRankCapByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#verifyrankcapbyuserid
      */
     public function verifyRankCapByUserIdAsync(
             VerifyRankCapByUserIdRequest $request
@@ -5378,8 +5669,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify rank cap by User ID
+     *
      * @param VerifyRankCapByUserIdRequest $request
      * @return VerifyRankCapByUserIdResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#verifyrankcapbyuserid
      */
     public function verifyRankCapByUserId (
             VerifyRankCapByUserIdRequest $request
@@ -5390,8 +5684,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the addition of experience as an acquire action
+     *
      * @param AddExperienceByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/stamp_sheet/#gs2experienceaddexperiencebyuserid
      */
     public function addExperienceByStampSheetAsync(
             AddExperienceByStampSheetRequest $request
@@ -5405,8 +5702,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the addition of experience as an acquire action
+     *
      * @param AddExperienceByStampSheetRequest $request
      * @return AddExperienceByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/experience/stamp_sheet/#gs2experienceaddexperiencebyuserid
      */
     public function addExperienceByStampSheet (
             AddExperienceByStampSheetRequest $request
@@ -5417,8 +5717,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the setting of experience as an acquire action
+     *
      * @param SetExperienceByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/stamp_sheet/#gs2experiencesetexperiencebyuserid
      */
     public function setExperienceByStampSheetAsync(
             SetExperienceByStampSheetRequest $request
@@ -5432,8 +5735,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the setting of experience as an acquire action
+     *
      * @param SetExperienceByStampSheetRequest $request
      * @return SetExperienceByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/experience/stamp_sheet/#gs2experiencesetexperiencebyuserid
      */
     public function setExperienceByStampSheet (
             SetExperienceByStampSheetRequest $request
@@ -5444,8 +5750,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the subtraction of experience as a consume action
+     *
      * @param SubExperienceByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/stamp_sheet/#gs2experiencesubexperiencebyuserid
      */
     public function subExperienceByStampTaskAsync(
             SubExperienceByStampTaskRequest $request
@@ -5459,8 +5768,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the subtraction of experience as a consume action
+     *
      * @param SubExperienceByStampTaskRequest $request
      * @return SubExperienceByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/experience/stamp_sheet/#gs2experiencesubexperiencebyuserid
      */
     public function subExperienceByStampTask (
             SubExperienceByStampTaskRequest $request
@@ -5471,8 +5783,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the addition of rank cap as an acquire action
+     *
      * @param AddRankCapByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/stamp_sheet/#gs2experienceaddrankcapbyuserid
      */
     public function addRankCapByStampSheetAsync(
             AddRankCapByStampSheetRequest $request
@@ -5486,8 +5801,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the addition of rank cap as an acquire action
+     *
      * @param AddRankCapByStampSheetRequest $request
      * @return AddRankCapByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/experience/stamp_sheet/#gs2experienceaddrankcapbyuserid
      */
     public function addRankCapByStampSheet (
             AddRankCapByStampSheetRequest $request
@@ -5498,8 +5816,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the subtraction of rank cap as a consume action
+     *
      * @param SubRankCapByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/stamp_sheet/#gs2experiencesubrankcapbyuserid
      */
     public function subRankCapByStampTaskAsync(
             SubRankCapByStampTaskRequest $request
@@ -5513,8 +5834,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the subtraction of rank cap as a consume action
+     *
      * @param SubRankCapByStampTaskRequest $request
      * @return SubRankCapByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/experience/stamp_sheet/#gs2experiencesubrankcapbyuserid
      */
     public function subRankCapByStampTask (
             SubRankCapByStampTaskRequest $request
@@ -5525,8 +5849,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the setting of rank cap as an acquire action
+     *
      * @param SetRankCapByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/stamp_sheet/#gs2experiencesetrankcapbyuserid
      */
     public function setRankCapByStampSheetAsync(
             SetRankCapByStampSheetRequest $request
@@ -5540,8 +5867,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the setting of rank cap as an acquire action
+     *
      * @param SetRankCapByStampSheetRequest $request
      * @return SetRankCapByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/experience/stamp_sheet/#gs2experiencesetrankcapbyuserid
      */
     public function setRankCapByStampSheet (
             SetRankCapByStampSheetRequest $request
@@ -5552,8 +5882,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Multiply resources according to the rank of the property subject to the experience value by specifying user ID
+     *
      * @param MultiplyAcquireActionsByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#multiplyacquireactionsbyuserid
      */
     public function multiplyAcquireActionsByUserIdAsync(
             MultiplyAcquireActionsByUserIdRequest $request
@@ -5567,8 +5900,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Multiply resources according to the rank of the property subject to the experience value by specifying user ID
+     *
      * @param MultiplyAcquireActionsByUserIdRequest $request
      * @return MultiplyAcquireActionsByUserIdResult
+     * @see https://docs.gs2.io/api_reference/experience/sdk/#multiplyacquireactionsbyuserid
      */
     public function multiplyAcquireActionsByUserId (
             MultiplyAcquireActionsByUserIdRequest $request
@@ -5579,8 +5915,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the addition of resources as an acquire action according to the rank of the property subject to the experience value
+     *
      * @param MultiplyAcquireActionsByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/stamp_sheet/#gs2experiencemultiplyacquireactionsbyuserid
      */
     public function multiplyAcquireActionsByStampSheetAsync(
             MultiplyAcquireActionsByStampSheetRequest $request
@@ -5594,8 +5933,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the addition of resources as an acquire action according to the rank of the property subject to the experience value
+     *
      * @param MultiplyAcquireActionsByStampSheetRequest $request
      * @return MultiplyAcquireActionsByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/experience/stamp_sheet/#gs2experiencemultiplyacquireactionsbyuserid
      */
     public function multiplyAcquireActionsByStampSheet (
             MultiplyAcquireActionsByStampSheetRequest $request
@@ -5606,8 +5948,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute rank verification as a verify action
+     *
      * @param VerifyRankByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/stamp_sheet/#gs2experienceverifyrankbyuserid
      */
     public function verifyRankByStampTaskAsync(
             VerifyRankByStampTaskRequest $request
@@ -5621,8 +5966,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute rank verification as a verify action
+     *
      * @param VerifyRankByStampTaskRequest $request
      * @return VerifyRankByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/experience/stamp_sheet/#gs2experienceverifyrankbyuserid
      */
     public function verifyRankByStampTask (
             VerifyRankByStampTaskRequest $request
@@ -5633,8 +5981,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute rank cap verification as a verify action
+     *
      * @param VerifyRankCapByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/experience/stamp_sheet/#gs2experienceverifyrankcapbyuserid
      */
     public function verifyRankCapByStampTaskAsync(
             VerifyRankCapByStampTaskRequest $request
@@ -5648,8 +5999,11 @@ class Gs2ExperienceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute rank cap verification as a verify action
+     *
      * @param VerifyRankCapByStampTaskRequest $request
      * @return VerifyRankCapByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/experience/stamp_sheet/#gs2experienceverifyrankcapbyuserid
      */
     public function verifyRankCapByStampTask (
             VerifyRankCapByStampTaskRequest $request

@@ -20,18 +20,29 @@ namespace Gs2\MegaField\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\MegaField\Model\CurrentFieldMaster;
 
+/**
+ * Result of exportMaster: Export Model Master in a master data format that can be activated
+ *
+ * @see https://docs.gs2.io/api_reference/mega_field/sdk/#exportmaster
+ */
 class ExportMasterResult implements IResult {
-    /** @var CurrentFieldMaster */
+    /** @var CurrentFieldMaster master data that can be activated */
     private $item;
 
+    /** @return CurrentFieldMaster|null master data that can be activated */
 	public function getItem(): ?CurrentFieldMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentFieldMaster|null $item master data that can be activated */
 	public function setItem(?CurrentFieldMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentFieldMaster|null $item master data that can be activated
+     * @return ExportMasterResult
+     */
 	public function withItem(?CurrentFieldMaster $item): ExportMasterResult {
 		$this->item = $item;
 		return $this;

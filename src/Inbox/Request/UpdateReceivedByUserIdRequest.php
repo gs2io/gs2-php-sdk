@@ -19,53 +19,82 @@ namespace Gs2\Inbox\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for updateReceivedByUserId: Update Received Global Message by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/inbox/sdk/#updatereceivedbyuserid
+ */
 class UpdateReceivedByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var array */
+    /** @var array List of Received Global Message names */
     private $receivedGlobalMessageNames;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UpdateReceivedByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UpdateReceivedByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return UpdateReceivedByUserIdRequest
+     */
 	public function withUserId(?string $userId): UpdateReceivedByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return array|null List of Received Global Message names */
 	public function getReceivedGlobalMessageNames(): ?array {
 		return $this->receivedGlobalMessageNames;
 	}
+    /** @param array|null $receivedGlobalMessageNames List of Received Global Message names */
 	public function setReceivedGlobalMessageNames(?array $receivedGlobalMessageNames) {
 		$this->receivedGlobalMessageNames = $receivedGlobalMessageNames;
 	}
+    /**
+     * @param array|null $receivedGlobalMessageNames List of Received Global Message names
+     * @return UpdateReceivedByUserIdRequest
+     */
 	public function withReceivedGlobalMessageNames(?array $receivedGlobalMessageNames): UpdateReceivedByUserIdRequest {
 		$this->receivedGlobalMessageNames = $receivedGlobalMessageNames;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return UpdateReceivedByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): UpdateReceivedByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

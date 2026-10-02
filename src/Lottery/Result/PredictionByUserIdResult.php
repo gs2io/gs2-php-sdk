@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Lottery\Model\AcquireAction;
 use Gs2\Lottery\Model\DrawnPrize;
 
+/**
+ * Result of predictionByUserId: Get the prediction result of the lottery result by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/lottery/sdk/#predictionbyuserid
+ */
 class PredictionByUserIdResult implements IResult {
-    /** @var array */
+    /** @var array List of Prize emission */
     private $items;
 
+    /** @return array|null List of Prize emission */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Prize emission */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Prize emission
+     * @return PredictionByUserIdResult
+     */
 	public function withItems(?array $items): PredictionByUserIdResult {
 		$this->items = $items;
 		return $this;

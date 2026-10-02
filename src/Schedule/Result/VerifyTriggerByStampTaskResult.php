@@ -20,33 +20,50 @@ namespace Gs2\Schedule\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Schedule\Model\Trigger;
 
+/**
+ * Result of verifyTriggerByStampTask: Execute trigger as verify action to verify the elapsed time since the trigger was pulled
+ *
+ * @see https://docs.gs2.io/api_reference/schedule/stamp_sheet/#gs2scheduleverifytriggerbyuserid
+ */
 class VerifyTriggerByStampTaskResult implements IResult {
-    /** @var Trigger */
+    /** @var Trigger Trigger */
     private $item;
-    /** @var string */
+    /** @var string Context recording the execution results of verification actions */
     private $newContextStack;
 
+    /** @return Trigger|null Trigger */
 	public function getItem(): ?Trigger {
 		return $this->item;
 	}
 
+    /** @param Trigger|null $item Trigger */
 	public function setItem(?Trigger $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Trigger|null $item Trigger
+     * @return VerifyTriggerByStampTaskResult
+     */
 	public function withItem(?Trigger $item): VerifyTriggerByStampTaskResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null Context recording the execution results of verification actions */
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
+    /** @param string|null $newContextStack Context recording the execution results of verification actions */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
+    /**
+     * @param string|null $newContextStack Context recording the execution results of verification actions
+     * @return VerifyTriggerByStampTaskResult
+     */
 	public function withNewContextStack(?string $newContextStack): VerifyTriggerByStampTaskResult {
 		$this->newContextStack = $newContextStack;
 		return $this;

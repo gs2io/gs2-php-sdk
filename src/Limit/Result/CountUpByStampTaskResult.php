@@ -20,33 +20,50 @@ namespace Gs2\Limit\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Limit\Model\Counter;
 
+/**
+ * Result of countUpByStampTask: Execute count-up as consume action
+ *
+ * @see https://docs.gs2.io/api_reference/limit/stamp_sheet/#gs2limitcountupbyuserid
+ */
 class CountUpByStampTaskResult implements IResult {
-    /** @var Counter */
+    /** @var Counter Counter with increased count */
     private $item;
-    /** @var string */
+    /** @var string Context recording the execution results of Consume Actions */
     private $newContextStack;
 
+    /** @return Counter|null Counter with increased count */
 	public function getItem(): ?Counter {
 		return $this->item;
 	}
 
+    /** @param Counter|null $item Counter with increased count */
 	public function setItem(?Counter $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Counter|null $item Counter with increased count
+     * @return CountUpByStampTaskResult
+     */
 	public function withItem(?Counter $item): CountUpByStampTaskResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null Context recording the execution results of Consume Actions */
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
+    /** @param string|null $newContextStack Context recording the execution results of Consume Actions */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
+    /**
+     * @param string|null $newContextStack Context recording the execution results of Consume Actions
+     * @return CountUpByStampTaskResult
+     */
 	public function withNewContextStack(?string $newContextStack): CountUpByStampTaskResult {
 		$this->newContextStack = $newContextStack;
 		return $this;

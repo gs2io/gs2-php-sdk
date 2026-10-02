@@ -24,18 +24,29 @@ use Gs2\LoginReward\Model\VerifyAction;
 use Gs2\LoginReward\Model\ConsumeAction;
 use Gs2\LoginReward\Model\BonusModelMaster;
 
+/**
+ * Result of updateBonusModelMaster: Update Login Bonus Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/login_reward/sdk/#updatebonusmodelmaster
+ */
 class UpdateBonusModelMasterResult implements IResult {
-    /** @var BonusModelMaster */
+    /** @var BonusModelMaster Login Bonus Model Master updated */
     private $item;
 
+    /** @return BonusModelMaster|null Login Bonus Model Master updated */
 	public function getItem(): ?BonusModelMaster {
 		return $this->item;
 	}
 
+    /** @param BonusModelMaster|null $item Login Bonus Model Master updated */
 	public function setItem(?BonusModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param BonusModelMaster|null $item Login Bonus Model Master updated
+     * @return UpdateBonusModelMasterResult
+     */
 	public function withItem(?BonusModelMaster $item): UpdateBonusModelMasterResult {
 		$this->item = $item;
 		return $this;

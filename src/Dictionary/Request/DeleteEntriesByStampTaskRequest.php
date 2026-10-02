@@ -19,27 +19,44 @@ namespace Gs2\Dictionary\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for deleteEntriesByStampTask: Execute the entry deletion as a consume action
+ *
+ * @see https://docs.gs2.io/api_reference/dictionary/stamp_sheet/#gs2dictionarydeleteentriesbyuserid
+ */
 class DeleteEntriesByStampTaskRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Consume Action */
     private $stampTask;
-    /** @var string */
+    /** @var string Encryption Key GRN */
     private $keyId;
+    /** @return string|null Consume Action */
 	public function getStampTask(): ?string {
 		return $this->stampTask;
 	}
+    /** @param string|null $stampTask Consume Action */
 	public function setStampTask(?string $stampTask) {
 		$this->stampTask = $stampTask;
 	}
+    /**
+     * @param string|null $stampTask Consume Action
+     * @return DeleteEntriesByStampTaskRequest
+     */
 	public function withStampTask(?string $stampTask): DeleteEntriesByStampTaskRequest {
 		$this->stampTask = $stampTask;
 		return $this;
 	}
+    /** @return string|null Encryption Key GRN */
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
+    /** @param string|null $keyId Encryption Key GRN */
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
+    /**
+     * @param string|null $keyId Encryption Key GRN
+     * @return DeleteEntriesByStampTaskRequest
+     */
 	public function withKeyId(?string $keyId): DeleteEntriesByStampTaskRequest {
 		$this->keyId = $keyId;
 		return $this;

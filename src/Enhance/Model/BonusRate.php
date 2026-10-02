@@ -20,31 +20,48 @@ namespace Gs2\Enhance\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Experience Gain Bonus
+ *
+ * @see https://docs.gs2.io/api_reference/enhance/sdk/#bonusrate
+ */
 class BonusRate implements IModel {
 	/**
-     * @var float
+     * @var float Experience bonus multiplier (1.0 = no bonus)
 	 */
 	private $rate;
 	/**
-     * @var int
+     * @var int Lottery weight
 	 */
 	private $weight;
+    /** @return float|null Experience bonus multiplier (1.0 = no bonus) */
 	public function getRate(): ?float {
 		return $this->rate;
 	}
+    /** @param float|null $rate Experience bonus multiplier (1.0 = no bonus) */
 	public function setRate(?float $rate) {
 		$this->rate = $rate;
 	}
+    /**
+     * @param float|null $rate Experience bonus multiplier (1.0 = no bonus)
+     * @return BonusRate
+     */
 	public function withRate(?float $rate): BonusRate {
 		$this->rate = $rate;
 		return $this;
 	}
+    /** @return int|null Lottery weight */
 	public function getWeight(): ?int {
 		return $this->weight;
 	}
+    /** @param int|null $weight Lottery weight */
 	public function setWeight(?int $weight) {
 		$this->weight = $weight;
 	}
+    /**
+     * @param int|null $weight Lottery weight
+     * @return BonusRate
+     */
 	public function withWeight(?int $weight): BonusRate {
 		$this->weight = $weight;
 		return $this;

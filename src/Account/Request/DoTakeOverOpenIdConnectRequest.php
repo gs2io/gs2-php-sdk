@@ -19,39 +19,62 @@ namespace Gs2\Account\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for doTakeOverOpenIdConnect: Execute Account Takeover using OpenID Connect
+ *
+ * @see https://docs.gs2.io/api_reference/account/sdk/#dotakeoveropenidconnect
+ */
 class DoTakeOverOpenIdConnectRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var int */
+    /** @var int Slot Number */
     private $type;
-    /** @var string */
+    /** @var string OpenID Connect ID Token */
     private $idToken;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DoTakeOverOpenIdConnectRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DoTakeOverOpenIdConnectRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return int|null Slot Number */
 	public function getType(): ?int {
 		return $this->type;
 	}
+    /** @param int|null $type Slot Number */
 	public function setType(?int $type) {
 		$this->type = $type;
 	}
+    /**
+     * @param int|null $type Slot Number
+     * @return DoTakeOverOpenIdConnectRequest
+     */
 	public function withType(?int $type): DoTakeOverOpenIdConnectRequest {
 		$this->type = $type;
 		return $this;
 	}
+    /** @return string|null OpenID Connect ID Token */
 	public function getIdToken(): ?string {
 		return $this->idToken;
 	}
+    /** @param string|null $idToken OpenID Connect ID Token */
 	public function setIdToken(?string $idToken) {
 		$this->idToken = $idToken;
 	}
+    /**
+     * @param string|null $idToken OpenID Connect ID Token
+     * @return DoTakeOverOpenIdConnectRequest
+     */
 	public function withIdToken(?string $idToken): DoTakeOverOpenIdConnectRequest {
 		$this->idToken = $idToken;
 		return $this;

@@ -22,33 +22,50 @@ use Gs2\Mission\Model\ScopedValue;
 use Gs2\Mission\Model\Counter;
 use Gs2\Mission\Model\Complete;
 
+/**
+ * Result of decreaseCounterByUserId: Decrease counter by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#decreasecounterbyuserid
+ */
 class DecreaseCounterByUserIdResult implements IResult {
-    /** @var Counter */
+    /** @var Counter Counters decreased */
     private $item;
-    /** @var array */
+    /** @var array List of updated Completion Statuses */
     private $changedCompletes;
 
+    /** @return Counter|null Counters decreased */
 	public function getItem(): ?Counter {
 		return $this->item;
 	}
 
+    /** @param Counter|null $item Counters decreased */
 	public function setItem(?Counter $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Counter|null $item Counters decreased
+     * @return DecreaseCounterByUserIdResult
+     */
 	public function withItem(?Counter $item): DecreaseCounterByUserIdResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return array|null List of updated Completion Statuses */
 	public function getChangedCompletes(): ?array {
 		return $this->changedCompletes;
 	}
 
+    /** @param array|null $changedCompletes List of updated Completion Statuses */
 	public function setChangedCompletes(?array $changedCompletes) {
 		$this->changedCompletes = $changedCompletes;
 	}
 
+    /**
+     * @param array|null $changedCompletes List of updated Completion Statuses
+     * @return DecreaseCounterByUserIdResult
+     */
 	public function withChangedCompletes(?array $changedCompletes): DecreaseCounterByUserIdResult {
 		$this->changedCompletes = $changedCompletes;
 		return $this;

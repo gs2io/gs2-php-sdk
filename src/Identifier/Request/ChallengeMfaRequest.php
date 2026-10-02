@@ -19,27 +19,44 @@ namespace Gs2\Identifier\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for challengeMfa: Verify MFA
+ *
+ * @see https://docs.gs2.io/api_reference/identifier/sdk/#challengemfa
+ */
 class ChallengeMfaRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string User Name */
     private $userName;
-    /** @var string */
+    /** @var string One-time password code */
     private $passcode;
+    /** @return string|null User Name */
 	public function getUserName(): ?string {
 		return $this->userName;
 	}
+    /** @param string|null $userName User Name */
 	public function setUserName(?string $userName) {
 		$this->userName = $userName;
 	}
+    /**
+     * @param string|null $userName User Name
+     * @return ChallengeMfaRequest
+     */
 	public function withUserName(?string $userName): ChallengeMfaRequest {
 		$this->userName = $userName;
 		return $this;
 	}
+    /** @return string|null One-time password code */
 	public function getPasscode(): ?string {
 		return $this->passcode;
 	}
+    /** @param string|null $passcode One-time password code */
 	public function setPasscode(?string $passcode) {
 		$this->passcode = $passcode;
 	}
+    /**
+     * @param string|null $passcode One-time password code
+     * @return ChallengeMfaRequest
+     */
 	public function withPasscode(?string $passcode): ChallengeMfaRequest {
 		$this->passcode = $passcode;
 		return $this;

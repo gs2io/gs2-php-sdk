@@ -20,59 +20,88 @@ namespace Gs2\Buff\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Buff Target Model
+ *
+ * @see https://docs.gs2.io/api_reference/buff/sdk/#bufftargetmodel
+ */
 class BuffTargetModel implements IModel {
 	/**
-     * @var string
+     * @var string Model type to apply buffs
 	 */
 	private $targetModelName;
 	/**
-     * @var string
+     * @var string Field name to which the buff is applied
 	 */
 	private $targetFieldName;
 	/**
-     * @var array
+     * @var array List of buff application condition GRNs
 	 */
 	private $conditionGrns;
 	/**
-     * @var float
+     * @var float Adjustment rate
 	 */
 	private $rate;
+    /** @return string|null Model type to apply buffs */
 	public function getTargetModelName(): ?string {
 		return $this->targetModelName;
 	}
+    /** @param string|null $targetModelName Model type to apply buffs */
 	public function setTargetModelName(?string $targetModelName) {
 		$this->targetModelName = $targetModelName;
 	}
+    /**
+     * @param string|null $targetModelName Model type to apply buffs
+     * @return BuffTargetModel
+     */
 	public function withTargetModelName(?string $targetModelName): BuffTargetModel {
 		$this->targetModelName = $targetModelName;
 		return $this;
 	}
+    /** @return string|null Field name to which the buff is applied */
 	public function getTargetFieldName(): ?string {
 		return $this->targetFieldName;
 	}
+    /** @param string|null $targetFieldName Field name to which the buff is applied */
 	public function setTargetFieldName(?string $targetFieldName) {
 		$this->targetFieldName = $targetFieldName;
 	}
+    /**
+     * @param string|null $targetFieldName Field name to which the buff is applied
+     * @return BuffTargetModel
+     */
 	public function withTargetFieldName(?string $targetFieldName): BuffTargetModel {
 		$this->targetFieldName = $targetFieldName;
 		return $this;
 	}
+    /** @return array|null List of buff application condition GRNs */
 	public function getConditionGrns(): ?array {
 		return $this->conditionGrns;
 	}
+    /** @param array|null $conditionGrns List of buff application condition GRNs */
 	public function setConditionGrns(?array $conditionGrns) {
 		$this->conditionGrns = $conditionGrns;
 	}
+    /**
+     * @param array|null $conditionGrns List of buff application condition GRNs
+     * @return BuffTargetModel
+     */
 	public function withConditionGrns(?array $conditionGrns): BuffTargetModel {
 		$this->conditionGrns = $conditionGrns;
 		return $this;
 	}
+    /** @return float|null Adjustment rate */
 	public function getRate(): ?float {
 		return $this->rate;
 	}
+    /** @param float|null $rate Adjustment rate */
 	public function setRate(?float $rate) {
 		$this->rate = $rate;
 	}
+    /**
+     * @param float|null $rate Adjustment rate
+     * @return BuffTargetModel
+     */
 	public function withRate(?float $rate): BuffTargetModel {
 		$this->rate = $rate;
 		return $this;

@@ -19,65 +19,100 @@ namespace Gs2\Friend\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for sendRequestByUserId: Send a friend request by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/friend/sdk/#sendrequestbyuserid
+ */
 class SendRequestByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string User ID of the person want to be friend */
     private $targetUserId;
-    /** @var bool */
+    /** @var bool Whether to include profile information in the result */
     private $withProfile;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return SendRequestByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): SendRequestByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return SendRequestByUserIdRequest
+     */
 	public function withUserId(?string $userId): SendRequestByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null User ID of the person want to be friend */
 	public function getTargetUserId(): ?string {
 		return $this->targetUserId;
 	}
+    /** @param string|null $targetUserId User ID of the person want to be friend */
 	public function setTargetUserId(?string $targetUserId) {
 		$this->targetUserId = $targetUserId;
 	}
+    /**
+     * @param string|null $targetUserId User ID of the person want to be friend
+     * @return SendRequestByUserIdRequest
+     */
 	public function withTargetUserId(?string $targetUserId): SendRequestByUserIdRequest {
 		$this->targetUserId = $targetUserId;
 		return $this;
 	}
+    /** @return bool|null Whether to include profile information in the result */
 	public function getWithProfile(): ?bool {
 		return $this->withProfile;
 	}
+    /** @param bool|null $withProfile Whether to include profile information in the result */
 	public function setWithProfile(?bool $withProfile) {
 		$this->withProfile = $withProfile;
 	}
+    /**
+     * @param bool|null $withProfile Whether to include profile information in the result
+     * @return SendRequestByUserIdRequest
+     */
 	public function withWithProfile(?bool $withProfile): SendRequestByUserIdRequest {
 		$this->withProfile = $withProfile;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return SendRequestByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): SendRequestByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

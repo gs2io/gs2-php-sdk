@@ -20,87 +20,128 @@ namespace Gs2\Friend\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Inbox
+ *
+ * @see https://docs.gs2.io/api_reference/friend/sdk/#inbox
+ */
 class Inbox implements IModel {
 	/**
-     * @var string
+     * @var string Friend Request Inbox GRN
 	 */
 	private $inboxId;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var array
+     * @var array List of user IDs who have sent friend requests
 	 */
 	private $fromUserIds;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Friend Request Inbox GRN */
 	public function getInboxId(): ?string {
 		return $this->inboxId;
 	}
+    /** @param string|null $inboxId Friend Request Inbox GRN */
 	public function setInboxId(?string $inboxId) {
 		$this->inboxId = $inboxId;
 	}
+    /**
+     * @param string|null $inboxId Friend Request Inbox GRN
+     * @return Inbox
+     */
 	public function withInboxId(?string $inboxId): Inbox {
 		$this->inboxId = $inboxId;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return Inbox
+     */
 	public function withUserId(?string $userId): Inbox {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return array|null List of user IDs who have sent friend requests */
 	public function getFromUserIds(): ?array {
 		return $this->fromUserIds;
 	}
+    /** @param array|null $fromUserIds List of user IDs who have sent friend requests */
 	public function setFromUserIds(?array $fromUserIds) {
 		$this->fromUserIds = $fromUserIds;
 	}
+    /**
+     * @param array|null $fromUserIds List of user IDs who have sent friend requests
+     * @return Inbox
+     */
 	public function withFromUserIds(?array $fromUserIds): Inbox {
 		$this->fromUserIds = $fromUserIds;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return Inbox
+     */
 	public function withCreatedAt(?int $createdAt): Inbox {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return Inbox
+     */
 	public function withUpdatedAt(?int $updatedAt): Inbox {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return Inbox
+     */
 	public function withRevision(?int $revision): Inbox {
 		$this->revision = $revision;
 		return $this;

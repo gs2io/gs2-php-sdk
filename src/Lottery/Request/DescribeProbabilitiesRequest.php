@@ -19,39 +19,62 @@ namespace Gs2\Lottery\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for describeProbabilities: List Draw Probabilities
+ *
+ * @see https://docs.gs2.io/api_reference/lottery/sdk/#describeprobabilities
+ */
 class DescribeProbabilitiesRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Lottery Model name */
     private $lotteryName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DescribeProbabilitiesRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DescribeProbabilitiesRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Lottery Model name */
 	public function getLotteryName(): ?string {
 		return $this->lotteryName;
 	}
+    /** @param string|null $lotteryName Lottery Model name */
 	public function setLotteryName(?string $lotteryName) {
 		$this->lotteryName = $lotteryName;
 	}
+    /**
+     * @param string|null $lotteryName Lottery Model name
+     * @return DescribeProbabilitiesRequest
+     */
 	public function withLotteryName(?string $lotteryName): DescribeProbabilitiesRequest {
 		$this->lotteryName = $lotteryName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return DescribeProbabilitiesRequest
+     */
 	public function withAccessToken(?string $accessToken): DescribeProbabilitiesRequest {
 		$this->accessToken = $accessToken;
 		return $this;

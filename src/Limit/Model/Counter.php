@@ -20,129 +20,188 @@ namespace Gs2\Limit\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Current Counter Value
+ *
+ * @see https://docs.gs2.io/api_reference/limit/sdk/#counter
+ */
 class Counter implements IModel {
 	/**
-     * @var string
+     * @var string Counter GRN
 	 */
 	private $counterId;
 	/**
-     * @var string
+     * @var string Usage Limit Model Name
 	 */
 	private $limitName;
 	/**
-     * @var string
+     * @var string Counter Name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var int
+     * @var int Count Value
 	 */
 	private $count;
 	/**
-     * @var int
+     * @var int Next Reset Timing
 	 */
 	private $nextResetAt;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Counter GRN */
 	public function getCounterId(): ?string {
 		return $this->counterId;
 	}
+    /** @param string|null $counterId Counter GRN */
 	public function setCounterId(?string $counterId) {
 		$this->counterId = $counterId;
 	}
+    /**
+     * @param string|null $counterId Counter GRN
+     * @return Counter
+     */
 	public function withCounterId(?string $counterId): Counter {
 		$this->counterId = $counterId;
 		return $this;
 	}
+    /** @return string|null Usage Limit Model Name */
 	public function getLimitName(): ?string {
 		return $this->limitName;
 	}
+    /** @param string|null $limitName Usage Limit Model Name */
 	public function setLimitName(?string $limitName) {
 		$this->limitName = $limitName;
 	}
+    /**
+     * @param string|null $limitName Usage Limit Model Name
+     * @return Counter
+     */
 	public function withLimitName(?string $limitName): Counter {
 		$this->limitName = $limitName;
 		return $this;
 	}
+    /** @return string|null Counter Name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Counter Name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Counter Name
+     * @return Counter
+     */
 	public function withName(?string $name): Counter {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return Counter
+     */
 	public function withUserId(?string $userId): Counter {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return int|null Count Value */
 	public function getCount(): ?int {
 		return $this->count;
 	}
+    /** @param int|null $count Count Value */
 	public function setCount(?int $count) {
 		$this->count = $count;
 	}
+    /**
+     * @param int|null $count Count Value
+     * @return Counter
+     */
 	public function withCount(?int $count): Counter {
 		$this->count = $count;
 		return $this;
 	}
+    /** @return int|null Next Reset Timing */
 	public function getNextResetAt(): ?int {
 		return $this->nextResetAt;
 	}
+    /** @param int|null $nextResetAt Next Reset Timing */
 	public function setNextResetAt(?int $nextResetAt) {
 		$this->nextResetAt = $nextResetAt;
 	}
+    /**
+     * @param int|null $nextResetAt Next Reset Timing
+     * @return Counter
+     */
 	public function withNextResetAt(?int $nextResetAt): Counter {
 		$this->nextResetAt = $nextResetAt;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return Counter
+     */
 	public function withCreatedAt(?int $createdAt): Counter {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return Counter
+     */
 	public function withUpdatedAt(?int $updatedAt): Counter {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return Counter
+     */
 	public function withRevision(?int $revision): Counter {
 		$this->revision = $revision;
 		return $this;

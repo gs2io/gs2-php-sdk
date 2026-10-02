@@ -19,53 +19,82 @@ namespace Gs2\Friend\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for sendRequest: Send a friend request
+ *
+ * @see https://docs.gs2.io/api_reference/friend/sdk/#sendrequest
+ */
 class SendRequestRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string User ID of the person want to be friend */
     private $targetUserId;
-    /** @var bool */
+    /** @var bool Whether to include profile information in the result */
     private $withProfile;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return SendRequestRequest
+     */
 	public function withNamespaceName(?string $namespaceName): SendRequestRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return SendRequestRequest
+     */
 	public function withAccessToken(?string $accessToken): SendRequestRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null User ID of the person want to be friend */
 	public function getTargetUserId(): ?string {
 		return $this->targetUserId;
 	}
+    /** @param string|null $targetUserId User ID of the person want to be friend */
 	public function setTargetUserId(?string $targetUserId) {
 		$this->targetUserId = $targetUserId;
 	}
+    /**
+     * @param string|null $targetUserId User ID of the person want to be friend
+     * @return SendRequestRequest
+     */
 	public function withTargetUserId(?string $targetUserId): SendRequestRequest {
 		$this->targetUserId = $targetUserId;
 		return $this;
 	}
+    /** @return bool|null Whether to include profile information in the result */
 	public function getWithProfile(): ?bool {
 		return $this->withProfile;
 	}
+    /** @param bool|null $withProfile Whether to include profile information in the result */
 	public function setWithProfile(?bool $withProfile) {
 		$this->withProfile = $withProfile;
 	}
+    /**
+     * @param bool|null $withProfile Whether to include profile information in the result
+     * @return SendRequestRequest
+     */
 	public function withWithProfile(?bool $withProfile): SendRequestRequest {
 		$this->withProfile = $withProfile;
 		return $this;

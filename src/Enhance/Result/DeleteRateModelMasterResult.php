@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Enhance\Model\BonusRate;
 use Gs2\Enhance\Model\RateModelMaster;
 
+/**
+ * Result of deleteRateModelMaster: Delete Enhancement Rate Master
+ *
+ * @see https://docs.gs2.io/api_reference/enhance/sdk/#deleteratemodelmaster
+ */
 class DeleteRateModelMasterResult implements IResult {
-    /** @var RateModelMaster */
+    /** @var RateModelMaster Enhancement Rate Model Master deleted */
     private $item;
 
+    /** @return RateModelMaster|null Enhancement Rate Model Master deleted */
 	public function getItem(): ?RateModelMaster {
 		return $this->item;
 	}
 
+    /** @param RateModelMaster|null $item Enhancement Rate Model Master deleted */
 	public function setItem(?RateModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param RateModelMaster|null $item Enhancement Rate Model Master deleted
+     * @return DeleteRateModelMasterResult
+     */
 	public function withItem(?RateModelMaster $item): DeleteRateModelMasterResult {
 		$this->item = $item;
 		return $this;

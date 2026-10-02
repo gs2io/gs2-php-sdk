@@ -20,115 +20,168 @@ namespace Gs2\Script\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Script
+ *
+ * @see https://docs.gs2.io/api_reference/script/sdk/#script
+ */
 class Script implements IModel {
 	/**
-     * @var string
+     * @var string Script GRN
 	 */
 	private $scriptId;
 	/**
-     * @var string
+     * @var string Script name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Description
 	 */
 	private $description;
 	/**
-     * @var string
+     * @var string Lua Script
 	 */
 	private $script;
 	/**
-     * @var bool
+     * @var bool Disable String-Number Conversion
 	 */
 	private $disableStringNumberToNumber;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Script GRN */
 	public function getScriptId(): ?string {
 		return $this->scriptId;
 	}
+    /** @param string|null $scriptId Script GRN */
 	public function setScriptId(?string $scriptId) {
 		$this->scriptId = $scriptId;
 	}
+    /**
+     * @param string|null $scriptId Script GRN
+     * @return Script
+     */
 	public function withScriptId(?string $scriptId): Script {
 		$this->scriptId = $scriptId;
 		return $this;
 	}
+    /** @return string|null Script name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Script name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Script name
+     * @return Script
+     */
 	public function withName(?string $name): Script {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return Script
+     */
 	public function withDescription(?string $description): Script {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Lua Script */
 	public function getScript(): ?string {
 		return $this->script;
 	}
+    /** @param string|null $script Lua Script */
 	public function setScript(?string $script) {
 		$this->script = $script;
 	}
+    /**
+     * @param string|null $script Lua Script
+     * @return Script
+     */
 	public function withScript(?string $script): Script {
 		$this->script = $script;
 		return $this;
 	}
+    /** @return bool|null Disable String-Number Conversion */
 	public function getDisableStringNumberToNumber(): ?bool {
 		return $this->disableStringNumberToNumber;
 	}
+    /** @param bool|null $disableStringNumberToNumber Disable String-Number Conversion */
 	public function setDisableStringNumberToNumber(?bool $disableStringNumberToNumber) {
 		$this->disableStringNumberToNumber = $disableStringNumberToNumber;
 	}
+    /**
+     * @param bool|null $disableStringNumberToNumber Disable String-Number Conversion
+     * @return Script
+     */
 	public function withDisableStringNumberToNumber(?bool $disableStringNumberToNumber): Script {
 		$this->disableStringNumberToNumber = $disableStringNumberToNumber;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return Script
+     */
 	public function withCreatedAt(?int $createdAt): Script {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return Script
+     */
 	public function withUpdatedAt(?int $updatedAt): Script {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return Script
+     */
 	public function withRevision(?int $revision): Script {
 		$this->revision = $revision;
 		return $this;

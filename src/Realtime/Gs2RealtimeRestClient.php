@@ -801,25 +801,22 @@ class DeleteRoomTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 Realtime API クライアント
+ * GS2-Realtime API client
  *
- * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/realtime/sdk/
  */
 class Gs2RealtimeRestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/realtime/sdk/#describenamespaces
      */
     public function describeNamespacesAsync(
             DescribeNamespacesRequest $request
@@ -833,8 +830,11 @@ class Gs2RealtimeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
+     * @see https://docs.gs2.io/api_reference/realtime/sdk/#describenamespaces
      */
     public function describeNamespaces (
             DescribeNamespacesRequest $request
@@ -845,8 +845,11 @@ class Gs2RealtimeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/realtime/sdk/#createnamespace
      */
     public function createNamespaceAsync(
             CreateNamespaceRequest $request
@@ -860,8 +863,11 @@ class Gs2RealtimeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/realtime/sdk/#createnamespace
      */
     public function createNamespace (
             CreateNamespaceRequest $request
@@ -872,8 +878,11 @@ class Gs2RealtimeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/realtime/sdk/#getnamespacestatus
      */
     public function getNamespaceStatusAsync(
             GetNamespaceStatusRequest $request
@@ -887,8 +896,11 @@ class Gs2RealtimeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
+     * @see https://docs.gs2.io/api_reference/realtime/sdk/#getnamespacestatus
      */
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
@@ -899,8 +911,11 @@ class Gs2RealtimeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/realtime/sdk/#getnamespace
      */
     public function getNamespaceAsync(
             GetNamespaceRequest $request
@@ -914,8 +929,11 @@ class Gs2RealtimeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
+     * @see https://docs.gs2.io/api_reference/realtime/sdk/#getnamespace
      */
     public function getNamespace (
             GetNamespaceRequest $request
@@ -926,8 +944,11 @@ class Gs2RealtimeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/realtime/sdk/#updatenamespace
      */
     public function updateNamespaceAsync(
             UpdateNamespaceRequest $request
@@ -941,8 +962,11 @@ class Gs2RealtimeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/realtime/sdk/#updatenamespace
      */
     public function updateNamespace (
             UpdateNamespaceRequest $request
@@ -953,8 +977,11 @@ class Gs2RealtimeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/realtime/sdk/#deletenamespace
      */
     public function deleteNamespaceAsync(
             DeleteNamespaceRequest $request
@@ -968,8 +995,11 @@ class Gs2RealtimeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
+     * @see https://docs.gs2.io/api_reference/realtime/sdk/#deletenamespace
      */
     public function deleteNamespace (
             DeleteNamespaceRequest $request
@@ -980,8 +1010,11 @@ class Gs2RealtimeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get current time
+     *
      * @param NowRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/realtime/sdk/#now
      */
     public function nowAsync(
             NowRequest $request
@@ -995,8 +1028,11 @@ class Gs2RealtimeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get current time
+     *
      * @param NowRequest $request
      * @return NowResult
+     * @see https://docs.gs2.io/api_reference/realtime/sdk/#now
      */
     public function now (
             NowRequest $request
@@ -1007,8 +1043,11 @@ class Gs2RealtimeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/realtime/sdk/#getserviceversion
      */
     public function getServiceVersionAsync(
             GetServiceVersionRequest $request
@@ -1022,8 +1061,11 @@ class Gs2RealtimeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return GetServiceVersionResult
+     * @see https://docs.gs2.io/api_reference/realtime/sdk/#getserviceversion
      */
     public function getServiceVersion (
             GetServiceVersionRequest $request
@@ -1034,8 +1076,11 @@ class Gs2RealtimeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Rooms
+     *
      * @param DescribeRoomsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/realtime/sdk/#describerooms
      */
     public function describeRoomsAsync(
             DescribeRoomsRequest $request
@@ -1049,8 +1094,11 @@ class Gs2RealtimeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Rooms
+     *
      * @param DescribeRoomsRequest $request
      * @return DescribeRoomsResult
+     * @see https://docs.gs2.io/api_reference/realtime/sdk/#describerooms
      */
     public function describeRooms (
             DescribeRoomsRequest $request
@@ -1061,8 +1109,11 @@ class Gs2RealtimeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Request to create a room
+     *
      * @param WantRoomRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/realtime/sdk/#wantroom
      */
     public function wantRoomAsync(
             WantRoomRequest $request
@@ -1076,8 +1127,11 @@ class Gs2RealtimeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Request to create a room
+     *
      * @param WantRoomRequest $request
      * @return WantRoomResult
+     * @see https://docs.gs2.io/api_reference/realtime/sdk/#wantroom
      */
     public function wantRoom (
             WantRoomRequest $request
@@ -1088,8 +1142,11 @@ class Gs2RealtimeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Room Information
+     *
      * @param GetRoomRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/realtime/sdk/#getroom
      */
     public function getRoomAsync(
             GetRoomRequest $request
@@ -1103,8 +1160,11 @@ class Gs2RealtimeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Room Information
+     *
      * @param GetRoomRequest $request
      * @return GetRoomResult
+     * @see https://docs.gs2.io/api_reference/realtime/sdk/#getroom
      */
     public function getRoom (
             GetRoomRequest $request
@@ -1115,8 +1175,11 @@ class Gs2RealtimeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Room
+     *
      * @param DeleteRoomRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/realtime/sdk/#deleteroom
      */
     public function deleteRoomAsync(
             DeleteRoomRequest $request
@@ -1130,8 +1193,11 @@ class Gs2RealtimeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Room
+     *
      * @param DeleteRoomRequest $request
      * @return DeleteRoomResult
+     * @see https://docs.gs2.io/api_reference/realtime/sdk/#deleteroom
      */
     public function deleteRoom (
             DeleteRoomRequest $request

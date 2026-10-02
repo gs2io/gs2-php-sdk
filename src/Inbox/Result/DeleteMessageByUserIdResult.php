@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Inbox\Model\AcquireAction;
 use Gs2\Inbox\Model\Message;
 
+/**
+ * Result of deleteMessageByUserId: Delete message by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/inbox/sdk/#deletemessagebyuserid
+ */
 class DeleteMessageByUserIdResult implements IResult {
-    /** @var Message */
+    /** @var Message Message deleted */
     private $item;
 
+    /** @return Message|null Message deleted */
 	public function getItem(): ?Message {
 		return $this->item;
 	}
 
+    /** @param Message|null $item Message deleted */
 	public function setItem(?Message $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Message|null $item Message deleted
+     * @return DeleteMessageByUserIdResult
+     */
 	public function withItem(?Message $item): DeleteMessageByUserIdResult {
 		$this->item = $item;
 		return $this;

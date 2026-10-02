@@ -20,31 +20,48 @@ namespace Gs2\Lottery\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Drawn Prize
+ *
+ * @see https://docs.gs2.io/api_reference/lottery/sdk/#drawnprize
+ */
 class DrawnPrize implements IModel {
 	/**
-     * @var string
+     * @var string Prize ID
 	 */
 	private $prizeId;
 	/**
-     * @var array
+     * @var array List of Acquire Actions
 	 */
 	private $acquireActions;
+    /** @return string|null Prize ID */
 	public function getPrizeId(): ?string {
 		return $this->prizeId;
 	}
+    /** @param string|null $prizeId Prize ID */
 	public function setPrizeId(?string $prizeId) {
 		$this->prizeId = $prizeId;
 	}
+    /**
+     * @param string|null $prizeId Prize ID
+     * @return DrawnPrize
+     */
 	public function withPrizeId(?string $prizeId): DrawnPrize {
 		$this->prizeId = $prizeId;
 		return $this;
 	}
+    /** @return array|null List of Acquire Actions */
 	public function getAcquireActions(): ?array {
 		return $this->acquireActions;
 	}
+    /** @param array|null $acquireActions List of Acquire Actions */
 	public function setAcquireActions(?array $acquireActions) {
 		$this->acquireActions = $acquireActions;
 	}
+    /**
+     * @param array|null $acquireActions List of Acquire Actions
+     * @return DrawnPrize
+     */
 	public function withAcquireActions(?array $acquireActions): DrawnPrize {
 		$this->acquireActions = $acquireActions;
 		return $this;

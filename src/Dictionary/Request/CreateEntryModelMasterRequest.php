@@ -19,51 +19,80 @@ namespace Gs2\Dictionary\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for createEntryModelMaster: Create Entry Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/dictionary/sdk/#createentrymodelmaster
+ */
 class CreateEntryModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Entry Model name */
     private $name;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var string */
+    /** @var string Metadata */
     private $metadata;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return CreateEntryModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): CreateEntryModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Entry Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Entry Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Entry Model name
+     * @return CreateEntryModelMasterRequest
+     */
 	public function withName(?string $name): CreateEntryModelMasterRequest {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return CreateEntryModelMasterRequest
+     */
 	public function withDescription(?string $description): CreateEntryModelMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return CreateEntryModelMasterRequest
+     */
 	public function withMetadata(?string $metadata): CreateEntryModelMasterRequest {
 		$this->metadata = $metadata;
 		return $this;

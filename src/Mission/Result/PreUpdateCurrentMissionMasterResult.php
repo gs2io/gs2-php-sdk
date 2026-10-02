@@ -19,33 +19,50 @@ namespace Gs2\Mission\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of preUpdateCurrentMissionMaster: Update currently active Mission Model master data (3-phase version)
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#preupdatecurrentmissionmaster
+ */
 class PreUpdateCurrentMissionMasterResult implements IResult {
-    /** @var string */
+    /** @var string Token used to reflect results after upload */
     private $uploadToken;
-    /** @var string */
+    /** @var string URL used to upload */
     private $uploadUrl;
 
+    /** @return string|null Token used to reflect results after upload */
 	public function getUploadToken(): ?string {
 		return $this->uploadToken;
 	}
 
+    /** @param string|null $uploadToken Token used to reflect results after upload */
 	public function setUploadToken(?string $uploadToken) {
 		$this->uploadToken = $uploadToken;
 	}
 
+    /**
+     * @param string|null $uploadToken Token used to reflect results after upload
+     * @return PreUpdateCurrentMissionMasterResult
+     */
 	public function withUploadToken(?string $uploadToken): PreUpdateCurrentMissionMasterResult {
 		$this->uploadToken = $uploadToken;
 		return $this;
 	}
 
+    /** @return string|null URL used to upload */
 	public function getUploadUrl(): ?string {
 		return $this->uploadUrl;
 	}
 
+    /** @param string|null $uploadUrl URL used to upload */
 	public function setUploadUrl(?string $uploadUrl) {
 		$this->uploadUrl = $uploadUrl;
 	}
 
+    /**
+     * @param string|null $uploadUrl URL used to upload
+     * @return PreUpdateCurrentMissionMasterResult
+     */
 	public function withUploadUrl(?string $uploadUrl): PreUpdateCurrentMissionMasterResult {
 		$this->uploadUrl = $uploadUrl;
 		return $this;

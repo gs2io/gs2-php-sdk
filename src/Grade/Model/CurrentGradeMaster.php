@@ -20,31 +20,48 @@ namespace Gs2\Grade\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Currently active Grade Model master data
+ *
+ * @see https://docs.gs2.io/api_reference/grade/sdk/#currentgrademaster
+ */
 class CurrentGradeMaster implements IModel {
 	/**
-     * @var string
+     * @var string Namespace GRN
 	 */
 	private $namespaceId;
 	/**
-     * @var string
+     * @var string Master Data
 	 */
 	private $settings;
+    /** @return string|null Namespace GRN */
 	public function getNamespaceId(): ?string {
 		return $this->namespaceId;
 	}
+    /** @param string|null $namespaceId Namespace GRN */
 	public function setNamespaceId(?string $namespaceId) {
 		$this->namespaceId = $namespaceId;
 	}
+    /**
+     * @param string|null $namespaceId Namespace GRN
+     * @return CurrentGradeMaster
+     */
 	public function withNamespaceId(?string $namespaceId): CurrentGradeMaster {
 		$this->namespaceId = $namespaceId;
 		return $this;
 	}
+    /** @return string|null Master Data */
 	public function getSettings(): ?string {
 		return $this->settings;
 	}
+    /** @param string|null $settings Master Data */
 	public function setSettings(?string $settings) {
 		$this->settings = $settings;
 	}
+    /**
+     * @param string|null $settings Master Data
+     * @return CurrentGradeMaster
+     */
 	public function withSettings(?string $settings): CurrentGradeMaster {
 		$this->settings = $settings;
 		return $this;

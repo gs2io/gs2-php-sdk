@@ -19,41 +19,60 @@ namespace Gs2\Project\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/** Request for importUserData: Start import user data */
 class ImportUserDataRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Token received in preparation for upload */
     private $uploadToken;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return ImportUserDataRequest
+     */
 	public function withUserId(?string $userId): ImportUserDataRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Token received in preparation for upload */
 	public function getUploadToken(): ?string {
 		return $this->uploadToken;
 	}
+    /** @param string|null $uploadToken Token received in preparation for upload */
 	public function setUploadToken(?string $uploadToken) {
 		$this->uploadToken = $uploadToken;
 	}
+    /**
+     * @param string|null $uploadToken Token received in preparation for upload
+     * @return ImportUserDataRequest
+     */
 	public function withUploadToken(?string $uploadToken): ImportUserDataRequest {
 		$this->uploadToken = $uploadToken;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return ImportUserDataRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): ImportUserDataRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

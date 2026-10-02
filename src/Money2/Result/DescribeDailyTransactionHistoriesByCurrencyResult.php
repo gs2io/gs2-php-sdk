@@ -20,33 +20,50 @@ namespace Gs2\Money2\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Money2\Model\DailyTransactionHistory;
 
+/**
+ * Result of describeDailyTransactionHistoriesByCurrency: List daily transaction histories by specifying currency
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#describedailytransactionhistoriesbycurrency
+ */
 class DescribeDailyTransactionHistoriesByCurrencyResult implements IResult {
-    /** @var array */
+    /** @var array List of Daily Transaction Histories */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Daily Transaction Histories */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Daily Transaction Histories */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Daily Transaction Histories
+     * @return DescribeDailyTransactionHistoriesByCurrencyResult
+     */
 	public function withItems(?array $items): DescribeDailyTransactionHistoriesByCurrencyResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeDailyTransactionHistoriesByCurrencyResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeDailyTransactionHistoriesByCurrencyResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

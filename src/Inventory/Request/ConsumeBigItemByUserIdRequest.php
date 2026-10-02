@@ -19,77 +19,118 @@ namespace Gs2\Inventory\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for consumeBigItemByUserId: Consume Big Items by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#consumebigitembyuserid
+ */
 class ConsumeBigItemByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Big Inventory Model name */
     private $inventoryName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Big Item Model name */
     private $itemName;
-    /** @var string */
+    /** @var string Consumption quantity of a Big Item */
     private $consumeCount;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return ConsumeBigItemByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): ConsumeBigItemByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Big Inventory Model name */
 	public function getInventoryName(): ?string {
 		return $this->inventoryName;
 	}
+    /** @param string|null $inventoryName Big Inventory Model name */
 	public function setInventoryName(?string $inventoryName) {
 		$this->inventoryName = $inventoryName;
 	}
+    /**
+     * @param string|null $inventoryName Big Inventory Model name
+     * @return ConsumeBigItemByUserIdRequest
+     */
 	public function withInventoryName(?string $inventoryName): ConsumeBigItemByUserIdRequest {
 		$this->inventoryName = $inventoryName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return ConsumeBigItemByUserIdRequest
+     */
 	public function withUserId(?string $userId): ConsumeBigItemByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Big Item Model name */
 	public function getItemName(): ?string {
 		return $this->itemName;
 	}
+    /** @param string|null $itemName Big Item Model name */
 	public function setItemName(?string $itemName) {
 		$this->itemName = $itemName;
 	}
+    /**
+     * @param string|null $itemName Big Item Model name
+     * @return ConsumeBigItemByUserIdRequest
+     */
 	public function withItemName(?string $itemName): ConsumeBigItemByUserIdRequest {
 		$this->itemName = $itemName;
 		return $this;
 	}
+    /** @return string|null Consumption quantity of a Big Item */
 	public function getConsumeCount(): ?string {
 		return $this->consumeCount;
 	}
+    /** @param string|null $consumeCount Consumption quantity of a Big Item */
 	public function setConsumeCount(?string $consumeCount) {
 		$this->consumeCount = $consumeCount;
 	}
+    /**
+     * @param string|null $consumeCount Consumption quantity of a Big Item
+     * @return ConsumeBigItemByUserIdRequest
+     */
 	public function withConsumeCount(?string $consumeCount): ConsumeBigItemByUserIdRequest {
 		$this->consumeCount = $consumeCount;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return ConsumeBigItemByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): ConsumeBigItemByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

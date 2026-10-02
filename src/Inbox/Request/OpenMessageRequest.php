@@ -19,41 +19,64 @@ namespace Gs2\Inbox\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for openMessage: Mark Message as Opened
+ *
+ * @see https://docs.gs2.io/api_reference/inbox/sdk/#openmessage
+ */
 class OpenMessageRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Message name */
     private $messageName;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return OpenMessageRequest
+     */
 	public function withNamespaceName(?string $namespaceName): OpenMessageRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return OpenMessageRequest
+     */
 	public function withAccessToken(?string $accessToken): OpenMessageRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Message name */
 	public function getMessageName(): ?string {
 		return $this->messageName;
 	}
+    /** @param string|null $messageName Message name */
 	public function setMessageName(?string $messageName) {
 		$this->messageName = $messageName;
 	}
+    /**
+     * @param string|null $messageName Message name
+     * @return OpenMessageRequest
+     */
 	public function withMessageName(?string $messageName): OpenMessageRequest {
 		$this->messageName = $messageName;
 		return $this;

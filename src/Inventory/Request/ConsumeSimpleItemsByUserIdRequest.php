@@ -20,65 +20,100 @@ namespace Gs2\Inventory\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Inventory\Model\ConsumeCount;
 
+/**
+ * Request for consumeSimpleItemsByUserId: Consume Simple Items by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#consumesimpleitemsbyuserid
+ */
 class ConsumeSimpleItemsByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Simple Inventory Model name */
     private $inventoryName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var array */
+    /** @var array List of consumption quantities of Simple Items */
     private $consumeCounts;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return ConsumeSimpleItemsByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): ConsumeSimpleItemsByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Simple Inventory Model name */
 	public function getInventoryName(): ?string {
 		return $this->inventoryName;
 	}
+    /** @param string|null $inventoryName Simple Inventory Model name */
 	public function setInventoryName(?string $inventoryName) {
 		$this->inventoryName = $inventoryName;
 	}
+    /**
+     * @param string|null $inventoryName Simple Inventory Model name
+     * @return ConsumeSimpleItemsByUserIdRequest
+     */
 	public function withInventoryName(?string $inventoryName): ConsumeSimpleItemsByUserIdRequest {
 		$this->inventoryName = $inventoryName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return ConsumeSimpleItemsByUserIdRequest
+     */
 	public function withUserId(?string $userId): ConsumeSimpleItemsByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return array|null List of consumption quantities of Simple Items */
 	public function getConsumeCounts(): ?array {
 		return $this->consumeCounts;
 	}
+    /** @param array|null $consumeCounts List of consumption quantities of Simple Items */
 	public function setConsumeCounts(?array $consumeCounts) {
 		$this->consumeCounts = $consumeCounts;
 	}
+    /**
+     * @param array|null $consumeCounts List of consumption quantities of Simple Items
+     * @return ConsumeSimpleItemsByUserIdRequest
+     */
 	public function withConsumeCounts(?array $consumeCounts): ConsumeSimpleItemsByUserIdRequest {
 		$this->consumeCounts = $consumeCounts;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return ConsumeSimpleItemsByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): ConsumeSimpleItemsByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

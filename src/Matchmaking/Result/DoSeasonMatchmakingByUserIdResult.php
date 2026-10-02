@@ -20,33 +20,50 @@ namespace Gs2\Matchmaking\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Matchmaking\Model\SeasonGathering;
 
+/**
+ * Result of doSeasonMatchmakingByUserId: Find a Season Gathering you can join and participate.
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#doseasonmatchmakingbyuserid
+ */
 class DoSeasonMatchmakingByUserIdResult implements IResult {
-    /** @var SeasonGathering */
+    /** @var SeasonGathering Participated Season Gatherings */
     private $item;
-    /** @var string */
+    /** @var string Token that preserves matchmaking status */
     private $matchmakingContextToken;
 
+    /** @return SeasonGathering|null Participated Season Gatherings */
 	public function getItem(): ?SeasonGathering {
 		return $this->item;
 	}
 
+    /** @param SeasonGathering|null $item Participated Season Gatherings */
 	public function setItem(?SeasonGathering $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param SeasonGathering|null $item Participated Season Gatherings
+     * @return DoSeasonMatchmakingByUserIdResult
+     */
 	public function withItem(?SeasonGathering $item): DoSeasonMatchmakingByUserIdResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null Token that preserves matchmaking status */
 	public function getMatchmakingContextToken(): ?string {
 		return $this->matchmakingContextToken;
 	}
 
+    /** @param string|null $matchmakingContextToken Token that preserves matchmaking status */
 	public function setMatchmakingContextToken(?string $matchmakingContextToken) {
 		$this->matchmakingContextToken = $matchmakingContextToken;
 	}
 
+    /**
+     * @param string|null $matchmakingContextToken Token that preserves matchmaking status
+     * @return DoSeasonMatchmakingByUserIdResult
+     */
 	public function withMatchmakingContextToken(?string $matchmakingContextToken): DoSeasonMatchmakingByUserIdResult {
 		$this->matchmakingContextToken = $matchmakingContextToken;
 		return $this;

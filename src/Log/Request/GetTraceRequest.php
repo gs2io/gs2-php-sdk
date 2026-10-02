@@ -19,51 +19,80 @@ namespace Gs2\Log\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getTrace: Get trace by trace ID
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#gettrace
+ */
 class GetTraceRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Trace ID */
     private $traceId;
-    /** @var int */
+    /** @var int Search range start date and time */
     private $begin;
-    /** @var int */
+    /** @var int Search range end date and time */
     private $end;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetTraceRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetTraceRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Trace ID */
 	public function getTraceId(): ?string {
 		return $this->traceId;
 	}
+    /** @param string|null $traceId Trace ID */
 	public function setTraceId(?string $traceId) {
 		$this->traceId = $traceId;
 	}
+    /**
+     * @param string|null $traceId Trace ID
+     * @return GetTraceRequest
+     */
 	public function withTraceId(?string $traceId): GetTraceRequest {
 		$this->traceId = $traceId;
 		return $this;
 	}
+    /** @return int|null Search range start date and time */
 	public function getBegin(): ?int {
 		return $this->begin;
 	}
+    /** @param int|null $begin Search range start date and time */
 	public function setBegin(?int $begin) {
 		$this->begin = $begin;
 	}
+    /**
+     * @param int|null $begin Search range start date and time
+     * @return GetTraceRequest
+     */
 	public function withBegin(?int $begin): GetTraceRequest {
 		$this->begin = $begin;
 		return $this;
 	}
+    /** @return int|null Search range end date and time */
 	public function getEnd(): ?int {
 		return $this->end;
 	}
+    /** @param int|null $end Search range end date and time */
 	public function setEnd(?int $end) {
 		$this->end = $end;
 	}
+    /**
+     * @param int|null $end Search range end date and time
+     * @return GetTraceRequest
+     */
 	public function withEnd(?int $end): GetTraceRequest {
 		$this->end = $end;
 		return $this;

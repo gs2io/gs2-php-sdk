@@ -20,87 +20,128 @@ namespace Gs2\AdReward\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Points earned from ad viewing
+ *
+ * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#point
+ */
 class Point implements IModel {
 	/**
-     * @var string
+     * @var string Point GRN
 	 */
 	private $pointId;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var int
+     * @var int Current point balance
 	 */
 	private $point;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Point GRN */
 	public function getPointId(): ?string {
 		return $this->pointId;
 	}
+    /** @param string|null $pointId Point GRN */
 	public function setPointId(?string $pointId) {
 		$this->pointId = $pointId;
 	}
+    /**
+     * @param string|null $pointId Point GRN
+     * @return Point
+     */
 	public function withPointId(?string $pointId): Point {
 		$this->pointId = $pointId;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return Point
+     */
 	public function withUserId(?string $userId): Point {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return int|null Current point balance */
 	public function getPoint(): ?int {
 		return $this->point;
 	}
+    /** @param int|null $point Current point balance */
 	public function setPoint(?int $point) {
 		$this->point = $point;
 	}
+    /**
+     * @param int|null $point Current point balance
+     * @return Point
+     */
 	public function withPoint(?int $point): Point {
 		$this->point = $point;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return Point
+     */
 	public function withCreatedAt(?int $createdAt): Point {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return Point
+     */
 	public function withUpdatedAt(?int $updatedAt): Point {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return Point
+     */
 	public function withRevision(?int $revision): Point {
 		$this->revision = $revision;
 		return $this;

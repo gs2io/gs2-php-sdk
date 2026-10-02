@@ -19,27 +19,44 @@ namespace Gs2\Ranking2\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getGlobalRankingModelMaster: Get Global Ranking Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/sdk/#getglobalrankingmodelmaster
+ */
 class GetGlobalRankingModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Global Ranking Model name */
     private $rankingName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetGlobalRankingModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetGlobalRankingModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Global Ranking Model name */
 	public function getRankingName(): ?string {
 		return $this->rankingName;
 	}
+    /** @param string|null $rankingName Global Ranking Model name */
 	public function setRankingName(?string $rankingName) {
 		$this->rankingName = $rankingName;
 	}
+    /**
+     * @param string|null $rankingName Global Ranking Model name
+     * @return GetGlobalRankingModelMasterRequest
+     */
 	public function withRankingName(?string $rankingName): GetGlobalRankingModelMasterRequest {
 		$this->rankingName = $rankingName;
 		return $this;

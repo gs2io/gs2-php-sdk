@@ -20,110 +20,155 @@ namespace Gs2\Inbox\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Global Message
+ *
+ * @see https://docs.gs2.io/api_reference/inbox/sdk/#globalmessage
+ */
 class GlobalMessage implements IModel {
 	/**
-     * @var string
+     * @var string GRN of the Global Message for all users
 	 */
 	private $globalMessageId;
 	/**
-     * @var string
+     * @var string Global Message name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var array
+     * @var array Acquire Actions on Open
 	 */
 	private $readAcquireActions;
 	/**
-     * @var TimeSpan
+     * @var TimeSpan Expiration Time Span
 	 */
 	private $expiresTimeSpan;
 	/**
-     * @var int
+     * @var int Message expiration time for all users
 	 */
 	private $expiresAt;
 	/**
-     * @var string
+     * @var string Message Reception Period Event ID
 	 */
 	private $messageReceptionPeriodEventId;
+    /** @return string|null GRN of the Global Message for all users */
 	public function getGlobalMessageId(): ?string {
 		return $this->globalMessageId;
 	}
+    /** @param string|null $globalMessageId GRN of the Global Message for all users */
 	public function setGlobalMessageId(?string $globalMessageId) {
 		$this->globalMessageId = $globalMessageId;
 	}
+    /**
+     * @param string|null $globalMessageId GRN of the Global Message for all users
+     * @return GlobalMessage
+     */
 	public function withGlobalMessageId(?string $globalMessageId): GlobalMessage {
 		$this->globalMessageId = $globalMessageId;
 		return $this;
 	}
+    /** @return string|null Global Message name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Global Message name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Global Message name
+     * @return GlobalMessage
+     */
 	public function withName(?string $name): GlobalMessage {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return GlobalMessage
+     */
 	public function withMetadata(?string $metadata): GlobalMessage {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return array|null Acquire Actions on Open */
 	public function getReadAcquireActions(): ?array {
 		return $this->readAcquireActions;
 	}
+    /** @param array|null $readAcquireActions Acquire Actions on Open */
 	public function setReadAcquireActions(?array $readAcquireActions) {
 		$this->readAcquireActions = $readAcquireActions;
 	}
+    /**
+     * @param array|null $readAcquireActions Acquire Actions on Open
+     * @return GlobalMessage
+     */
 	public function withReadAcquireActions(?array $readAcquireActions): GlobalMessage {
 		$this->readAcquireActions = $readAcquireActions;
 		return $this;
 	}
+    /** @return TimeSpan|null Expiration Time Span */
 	public function getExpiresTimeSpan(): ?TimeSpan {
 		return $this->expiresTimeSpan;
 	}
+    /** @param TimeSpan|null $expiresTimeSpan Expiration Time Span */
 	public function setExpiresTimeSpan(?TimeSpan $expiresTimeSpan) {
 		$this->expiresTimeSpan = $expiresTimeSpan;
 	}
+    /**
+     * @param TimeSpan|null $expiresTimeSpan Expiration Time Span
+     * @return GlobalMessage
+     */
 	public function withExpiresTimeSpan(?TimeSpan $expiresTimeSpan): GlobalMessage {
 		$this->expiresTimeSpan = $expiresTimeSpan;
 		return $this;
 	}
     /**
+     * @return int|null Message expiration time for all users
      * @deprecated
      */
 	public function getExpiresAt(): ?int {
 		return $this->expiresAt;
 	}
     /**
+     * @param int|null $expiresAt Message expiration time for all users
      * @deprecated
      */
 	public function setExpiresAt(?int $expiresAt) {
 		$this->expiresAt = $expiresAt;
 	}
     /**
+     * @param int|null $expiresAt Message expiration time for all users
+     * @return GlobalMessage
      * @deprecated
      */
 	public function withExpiresAt(?int $expiresAt): GlobalMessage {
 		$this->expiresAt = $expiresAt;
 		return $this;
 	}
+    /** @return string|null Message Reception Period Event ID */
 	public function getMessageReceptionPeriodEventId(): ?string {
 		return $this->messageReceptionPeriodEventId;
 	}
+    /** @param string|null $messageReceptionPeriodEventId Message Reception Period Event ID */
 	public function setMessageReceptionPeriodEventId(?string $messageReceptionPeriodEventId) {
 		$this->messageReceptionPeriodEventId = $messageReceptionPeriodEventId;
 	}
+    /**
+     * @param string|null $messageReceptionPeriodEventId Message Reception Period Event ID
+     * @return GlobalMessage
+     */
 	public function withMessageReceptionPeriodEventId(?string $messageReceptionPeriodEventId): GlobalMessage {
 		$this->messageReceptionPeriodEventId = $messageReceptionPeriodEventId;
 		return $this;

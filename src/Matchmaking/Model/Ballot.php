@@ -20,59 +20,88 @@ namespace Gs2\Matchmaking\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Ballot
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#ballot
+ */
 class Ballot implements IModel {
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var string
+     * @var string Rating Name
 	 */
 	private $ratingName;
 	/**
-     * @var string
+     * @var string Gathering Name
 	 */
 	private $gatheringName;
 	/**
-     * @var int
+     * @var int Number of Players
 	 */
 	private $numberOfPlayer;
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return Ballot
+     */
 	public function withUserId(?string $userId): Ballot {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Rating Name */
 	public function getRatingName(): ?string {
 		return $this->ratingName;
 	}
+    /** @param string|null $ratingName Rating Name */
 	public function setRatingName(?string $ratingName) {
 		$this->ratingName = $ratingName;
 	}
+    /**
+     * @param string|null $ratingName Rating Name
+     * @return Ballot
+     */
 	public function withRatingName(?string $ratingName): Ballot {
 		$this->ratingName = $ratingName;
 		return $this;
 	}
+    /** @return string|null Gathering Name */
 	public function getGatheringName(): ?string {
 		return $this->gatheringName;
 	}
+    /** @param string|null $gatheringName Gathering Name */
 	public function setGatheringName(?string $gatheringName) {
 		$this->gatheringName = $gatheringName;
 	}
+    /**
+     * @param string|null $gatheringName Gathering Name
+     * @return Ballot
+     */
 	public function withGatheringName(?string $gatheringName): Ballot {
 		$this->gatheringName = $gatheringName;
 		return $this;
 	}
+    /** @return int|null Number of Players */
 	public function getNumberOfPlayer(): ?int {
 		return $this->numberOfPlayer;
 	}
+    /** @param int|null $numberOfPlayer Number of Players */
 	public function setNumberOfPlayer(?int $numberOfPlayer) {
 		$this->numberOfPlayer = $numberOfPlayer;
 	}
+    /**
+     * @param int|null $numberOfPlayer Number of Players
+     * @return Ballot
+     */
 	public function withNumberOfPlayer(?int $numberOfPlayer): Ballot {
 		$this->numberOfPlayer = $numberOfPlayer;
 		return $this;

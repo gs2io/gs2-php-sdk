@@ -20,45 +20,68 @@ namespace Gs2\Log\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Trace
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#trace
+ */
 class Trace implements IModel {
 	/**
-     * @var string
+     * @var string Trace ID
 	 */
 	private $traceId;
 	/**
-     * @var array
+     * @var array Spans
 	 */
 	private $spans;
 	/**
-     * @var bool
+     * @var bool Truncated
 	 */
 	private $truncated;
+    /** @return string|null Trace ID */
 	public function getTraceId(): ?string {
 		return $this->traceId;
 	}
+    /** @param string|null $traceId Trace ID */
 	public function setTraceId(?string $traceId) {
 		$this->traceId = $traceId;
 	}
+    /**
+     * @param string|null $traceId Trace ID
+     * @return Trace
+     */
 	public function withTraceId(?string $traceId): Trace {
 		$this->traceId = $traceId;
 		return $this;
 	}
+    /** @return array|null Spans */
 	public function getSpans(): ?array {
 		return $this->spans;
 	}
+    /** @param array|null $spans Spans */
 	public function setSpans(?array $spans) {
 		$this->spans = $spans;
 	}
+    /**
+     * @param array|null $spans Spans
+     * @return Trace
+     */
 	public function withSpans(?array $spans): Trace {
 		$this->spans = $spans;
 		return $this;
 	}
+    /** @return bool|null Truncated */
 	public function getTruncated(): ?bool {
 		return $this->truncated;
 	}
+    /** @param bool|null $truncated Truncated */
 	public function setTruncated(?bool $truncated) {
 		$this->truncated = $truncated;
 	}
+    /**
+     * @param bool|null $truncated Truncated
+     * @return Trace
+     */
 	public function withTruncated(?bool $truncated): Trace {
 		$this->truncated = $truncated;
 		return $this;

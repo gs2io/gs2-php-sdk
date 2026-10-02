@@ -20,129 +20,188 @@ namespace Gs2\Chat\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Room
+ *
+ * @see https://docs.gs2.io/api_reference/chat/sdk/#room
+ */
 class Room implements IModel {
 	/**
-     * @var string
+     * @var string Room GRN
 	 */
 	private $roomId;
 	/**
-     * @var string
+     * @var string Room name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Owner User ID
 	 */
 	private $userId;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var string
+     * @var string Password required to access the room
 	 */
 	private $password;
 	/**
-     * @var array
+     * @var array List of user IDs with access to the room
 	 */
 	private $whiteListUserIds;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Room GRN */
 	public function getRoomId(): ?string {
 		return $this->roomId;
 	}
+    /** @param string|null $roomId Room GRN */
 	public function setRoomId(?string $roomId) {
 		$this->roomId = $roomId;
 	}
+    /**
+     * @param string|null $roomId Room GRN
+     * @return Room
+     */
 	public function withRoomId(?string $roomId): Room {
 		$this->roomId = $roomId;
 		return $this;
 	}
+    /** @return string|null Room name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Room name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Room name
+     * @return Room
+     */
 	public function withName(?string $name): Room {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Owner User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId Owner User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId Owner User ID
+     * @return Room
+     */
 	public function withUserId(?string $userId): Room {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return Room
+     */
 	public function withMetadata(?string $metadata): Room {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return string|null Password required to access the room */
 	public function getPassword(): ?string {
 		return $this->password;
 	}
+    /** @param string|null $password Password required to access the room */
 	public function setPassword(?string $password) {
 		$this->password = $password;
 	}
+    /**
+     * @param string|null $password Password required to access the room
+     * @return Room
+     */
 	public function withPassword(?string $password): Room {
 		$this->password = $password;
 		return $this;
 	}
+    /** @return array|null List of user IDs with access to the room */
 	public function getWhiteListUserIds(): ?array {
 		return $this->whiteListUserIds;
 	}
+    /** @param array|null $whiteListUserIds List of user IDs with access to the room */
 	public function setWhiteListUserIds(?array $whiteListUserIds) {
 		$this->whiteListUserIds = $whiteListUserIds;
 	}
+    /**
+     * @param array|null $whiteListUserIds List of user IDs with access to the room
+     * @return Room
+     */
 	public function withWhiteListUserIds(?array $whiteListUserIds): Room {
 		$this->whiteListUserIds = $whiteListUserIds;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return Room
+     */
 	public function withCreatedAt(?int $createdAt): Room {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return Room
+     */
 	public function withUpdatedAt(?int $updatedAt): Room {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return Room
+     */
 	public function withRevision(?int $revision): Room {
 		$this->revision = $revision;
 		return $this;

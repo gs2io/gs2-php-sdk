@@ -20,33 +20,50 @@ namespace Gs2\MegaField\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\MegaField\Model\LayerModelMaster;
 
+/**
+ * Result of describeLayerModelMasters: List Layer Model Masters
+ *
+ * @see https://docs.gs2.io/api_reference/mega_field/sdk/#describelayermodelmasters
+ */
 class DescribeLayerModelMastersResult implements IResult {
-    /** @var array */
+    /** @var array List of Layer Model Master */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Layer Model Master */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Layer Model Master */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Layer Model Master
+     * @return DescribeLayerModelMastersResult
+     */
 	public function withItems(?array $items): DescribeLayerModelMastersResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeLayerModelMastersResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeLayerModelMastersResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

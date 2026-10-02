@@ -20,45 +20,68 @@ namespace Gs2\Formation\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Slot
+ *
+ * @see https://docs.gs2.io/api_reference/formation/sdk/#slot
+ */
 class Slot implements IModel {
 	/**
-     * @var string
+     * @var string Slot Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Property ID
 	 */
 	private $propertyId;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
+    /** @return string|null Slot Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Slot Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Slot Model name
+     * @return Slot
+     */
 	public function withName(?string $name): Slot {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Property ID */
 	public function getPropertyId(): ?string {
 		return $this->propertyId;
 	}
+    /** @param string|null $propertyId Property ID */
 	public function setPropertyId(?string $propertyId) {
 		$this->propertyId = $propertyId;
 	}
+    /**
+     * @param string|null $propertyId Property ID
+     * @return Slot
+     */
 	public function withPropertyId(?string $propertyId): Slot {
 		$this->propertyId = $propertyId;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return Slot
+     */
 	public function withMetadata(?string $metadata): Slot {
 		$this->metadata = $metadata;
 		return $this;

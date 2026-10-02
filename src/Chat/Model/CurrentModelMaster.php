@@ -20,31 +20,48 @@ namespace Gs2\Chat\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Currently active Message Category Model master data
+ *
+ * @see https://docs.gs2.io/api_reference/chat/sdk/#currentmodelmaster
+ */
 class CurrentModelMaster implements IModel {
 	/**
-     * @var string
+     * @var string Namespace GRN
 	 */
 	private $namespaceId;
 	/**
-     * @var string
+     * @var string Master data
 	 */
 	private $settings;
+    /** @return string|null Namespace GRN */
 	public function getNamespaceId(): ?string {
 		return $this->namespaceId;
 	}
+    /** @param string|null $namespaceId Namespace GRN */
 	public function setNamespaceId(?string $namespaceId) {
 		$this->namespaceId = $namespaceId;
 	}
+    /**
+     * @param string|null $namespaceId Namespace GRN
+     * @return CurrentModelMaster
+     */
 	public function withNamespaceId(?string $namespaceId): CurrentModelMaster {
 		$this->namespaceId = $namespaceId;
 		return $this;
 	}
+    /** @return string|null Master data */
 	public function getSettings(): ?string {
 		return $this->settings;
 	}
+    /** @param string|null $settings Master data */
 	public function setSettings(?string $settings) {
 		$this->settings = $settings;
 	}
+    /**
+     * @param string|null $settings Master data
+     * @return CurrentModelMaster
+     */
 	public function withSettings(?string $settings): CurrentModelMaster {
 		$this->settings = $settings;
 		return $this;

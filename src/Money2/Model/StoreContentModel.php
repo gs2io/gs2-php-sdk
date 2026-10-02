@@ -20,73 +20,108 @@ namespace Gs2\Money2\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Store Content Model
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#storecontentmodel
+ */
 class StoreContentModel implements IModel {
 	/**
-     * @var string
+     * @var string Store Content Model GRN
 	 */
 	private $storeContentModelId;
 	/**
-     * @var string
+     * @var string Store Content Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var AppleAppStoreContent
+     * @var AppleAppStoreContent Apple App Store Content
 	 */
 	private $appleAppStore;
 	/**
-     * @var GooglePlayContent
+     * @var GooglePlayContent Google Play Content
 	 */
 	private $googlePlay;
+    /** @return string|null Store Content Model GRN */
 	public function getStoreContentModelId(): ?string {
 		return $this->storeContentModelId;
 	}
+    /** @param string|null $storeContentModelId Store Content Model GRN */
 	public function setStoreContentModelId(?string $storeContentModelId) {
 		$this->storeContentModelId = $storeContentModelId;
 	}
+    /**
+     * @param string|null $storeContentModelId Store Content Model GRN
+     * @return StoreContentModel
+     */
 	public function withStoreContentModelId(?string $storeContentModelId): StoreContentModel {
 		$this->storeContentModelId = $storeContentModelId;
 		return $this;
 	}
+    /** @return string|null Store Content Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Store Content Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Store Content Model name
+     * @return StoreContentModel
+     */
 	public function withName(?string $name): StoreContentModel {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return StoreContentModel
+     */
 	public function withMetadata(?string $metadata): StoreContentModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return AppleAppStoreContent|null Apple App Store Content */
 	public function getAppleAppStore(): ?AppleAppStoreContent {
 		return $this->appleAppStore;
 	}
+    /** @param AppleAppStoreContent|null $appleAppStore Apple App Store Content */
 	public function setAppleAppStore(?AppleAppStoreContent $appleAppStore) {
 		$this->appleAppStore = $appleAppStore;
 	}
+    /**
+     * @param AppleAppStoreContent|null $appleAppStore Apple App Store Content
+     * @return StoreContentModel
+     */
 	public function withAppleAppStore(?AppleAppStoreContent $appleAppStore): StoreContentModel {
 		$this->appleAppStore = $appleAppStore;
 		return $this;
 	}
+    /** @return GooglePlayContent|null Google Play Content */
 	public function getGooglePlay(): ?GooglePlayContent {
 		return $this->googlePlay;
 	}
+    /** @param GooglePlayContent|null $googlePlay Google Play Content */
 	public function setGooglePlay(?GooglePlayContent $googlePlay) {
 		$this->googlePlay = $googlePlay;
 	}
+    /**
+     * @param GooglePlayContent|null $googlePlay Google Play Content
+     * @return StoreContentModel
+     */
 	public function withGooglePlay(?GooglePlayContent $googlePlay): StoreContentModel {
 		$this->googlePlay = $googlePlay;
 		return $this;

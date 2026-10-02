@@ -21,33 +21,50 @@ use Gs2\Core\Model\IResult;
 use Gs2\SerialKey\Model\SerialKey;
 use Gs2\SerialKey\Model\CampaignModel;
 
+/**
+ * Result of revertUseByUserId: Set Serial Code to Unused by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/serial_key/sdk/#revertusebyuserid
+ */
 class RevertUseByUserIdResult implements IResult {
-    /** @var SerialKey */
+    /** @var SerialKey Serial Code */
     private $item;
-    /** @var CampaignModel */
+    /** @var CampaignModel Campaign Model */
     private $campaignModel;
 
+    /** @return SerialKey|null Serial Code */
 	public function getItem(): ?SerialKey {
 		return $this->item;
 	}
 
+    /** @param SerialKey|null $item Serial Code */
 	public function setItem(?SerialKey $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param SerialKey|null $item Serial Code
+     * @return RevertUseByUserIdResult
+     */
 	public function withItem(?SerialKey $item): RevertUseByUserIdResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return CampaignModel|null Campaign Model */
 	public function getCampaignModel(): ?CampaignModel {
 		return $this->campaignModel;
 	}
 
+    /** @param CampaignModel|null $campaignModel Campaign Model */
 	public function setCampaignModel(?CampaignModel $campaignModel) {
 		$this->campaignModel = $campaignModel;
 	}
 
+    /**
+     * @param CampaignModel|null $campaignModel Campaign Model
+     * @return RevertUseByUserIdResult
+     */
 	public function withCampaignModel(?CampaignModel $campaignModel): RevertUseByUserIdResult {
 		$this->campaignModel = $campaignModel;
 		return $this;

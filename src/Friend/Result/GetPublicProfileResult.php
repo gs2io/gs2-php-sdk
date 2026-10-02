@@ -20,18 +20,29 @@ namespace Gs2\Friend\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Friend\Model\PublicProfile;
 
+/**
+ * Result of getPublicProfile: Get public profile
+ *
+ * @see https://docs.gs2.io/api_reference/friend/sdk/#getpublicprofile
+ */
 class GetPublicProfileResult implements IResult {
-    /** @var PublicProfile */
+    /** @var PublicProfile Public Profile */
     private $item;
 
+    /** @return PublicProfile|null Public Profile */
 	public function getItem(): ?PublicProfile {
 		return $this->item;
 	}
 
+    /** @param PublicProfile|null $item Public Profile */
 	public function setItem(?PublicProfile $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param PublicProfile|null $item Public Profile
+     * @return GetPublicProfileResult
+     */
 	public function withItem(?PublicProfile $item): GetPublicProfileResult {
 		$this->item = $item;
 		return $this;

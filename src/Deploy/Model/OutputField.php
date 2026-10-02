@@ -20,31 +20,48 @@ namespace Gs2\Deploy\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Output field
+ *
+ * @see https://docs.gs2.io/api_reference/deploy/sdk/#outputfield
+ */
 class OutputField implements IModel {
 	/**
-     * @var string
+     * @var string Name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Field name
 	 */
 	private $fieldName;
+    /** @return string|null Name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Name
+     * @return OutputField
+     */
 	public function withName(?string $name): OutputField {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Field name */
 	public function getFieldName(): ?string {
 		return $this->fieldName;
 	}
+    /** @param string|null $fieldName Field name */
 	public function setFieldName(?string $fieldName) {
 		$this->fieldName = $fieldName;
 	}
+    /**
+     * @param string|null $fieldName Field name
+     * @return OutputField
+     */
 	public function withFieldName(?string $fieldName): OutputField {
 		$this->fieldName = $fieldName;
 		return $this;

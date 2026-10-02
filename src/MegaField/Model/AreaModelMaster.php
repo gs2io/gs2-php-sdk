@@ -20,101 +20,148 @@ namespace Gs2\MegaField\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Area divides space, and different areas can be treated as different spaces even if they have the same coordinates.
+ *
+ * @see https://docs.gs2.io/api_reference/mega_field/sdk/#areamodelmaster
+ */
 class AreaModelMaster implements IModel {
 	/**
-     * @var string
+     * @var string Area Model Master GRN
 	 */
 	private $areaModelMasterId;
 	/**
-     * @var string
+     * @var string Area Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Description
 	 */
 	private $description;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Area Model Master GRN */
 	public function getAreaModelMasterId(): ?string {
 		return $this->areaModelMasterId;
 	}
+    /** @param string|null $areaModelMasterId Area Model Master GRN */
 	public function setAreaModelMasterId(?string $areaModelMasterId) {
 		$this->areaModelMasterId = $areaModelMasterId;
 	}
+    /**
+     * @param string|null $areaModelMasterId Area Model Master GRN
+     * @return AreaModelMaster
+     */
 	public function withAreaModelMasterId(?string $areaModelMasterId): AreaModelMaster {
 		$this->areaModelMasterId = $areaModelMasterId;
 		return $this;
 	}
+    /** @return string|null Area Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Area Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Area Model name
+     * @return AreaModelMaster
+     */
 	public function withName(?string $name): AreaModelMaster {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return AreaModelMaster
+     */
 	public function withDescription(?string $description): AreaModelMaster {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return AreaModelMaster
+     */
 	public function withMetadata(?string $metadata): AreaModelMaster {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return AreaModelMaster
+     */
 	public function withCreatedAt(?int $createdAt): AreaModelMaster {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return AreaModelMaster
+     */
 	public function withUpdatedAt(?int $updatedAt): AreaModelMaster {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return AreaModelMaster
+     */
 	public function withRevision(?int $revision): AreaModelMaster {
 		$this->revision = $revision;
 		return $this;

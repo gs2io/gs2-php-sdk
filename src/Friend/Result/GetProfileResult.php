@@ -20,18 +20,29 @@ namespace Gs2\Friend\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Friend\Model\Profile;
 
+/**
+ * Result of getProfile: Get profile
+ *
+ * @see https://docs.gs2.io/api_reference/friend/sdk/#getprofile
+ */
 class GetProfileResult implements IResult {
-    /** @var Profile */
+    /** @var Profile Profile */
     private $item;
 
+    /** @return Profile|null Profile */
 	public function getItem(): ?Profile {
 		return $this->item;
 	}
 
+    /** @param Profile|null $item Profile */
 	public function setItem(?Profile $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Profile|null $item Profile
+     * @return GetProfileResult
+     */
 	public function withItem(?Profile $item): GetProfileResult {
 		$this->item = $item;
 		return $this;

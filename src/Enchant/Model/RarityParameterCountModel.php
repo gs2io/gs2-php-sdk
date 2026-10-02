@@ -20,31 +20,48 @@ namespace Gs2\Enchant\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Rarity Parameter Count Model
+ *
+ * @see https://docs.gs2.io/api_reference/enchant/sdk/#rarityparametercountmodel
+ */
 class RarityParameterCountModel implements IModel {
 	/**
-     * @var int
+     * @var int Count
 	 */
 	private $count;
 	/**
-     * @var int
+     * @var int Draw Weight
 	 */
 	private $weight;
+    /** @return int|null Count */
 	public function getCount(): ?int {
 		return $this->count;
 	}
+    /** @param int|null $count Count */
 	public function setCount(?int $count) {
 		$this->count = $count;
 	}
+    /**
+     * @param int|null $count Count
+     * @return RarityParameterCountModel
+     */
 	public function withCount(?int $count): RarityParameterCountModel {
 		$this->count = $count;
 		return $this;
 	}
+    /** @return int|null Draw Weight */
 	public function getWeight(): ?int {
 		return $this->weight;
 	}
+    /** @param int|null $weight Draw Weight */
 	public function setWeight(?int $weight) {
 		$this->weight = $weight;
 	}
+    /**
+     * @param int|null $weight Draw Weight
+     * @return RarityParameterCountModel
+     */
 	public function withWeight(?int $weight): RarityParameterCountModel {
 		$this->weight = $weight;
 		return $this;

@@ -20,73 +20,108 @@ namespace Gs2\Money2\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Subscription status
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#subscriptionstatus
+ */
 class SubscriptionStatus implements IModel {
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var string
+     * @var string Store Subscription Content Model name
 	 */
 	private $contentName;
 	/**
-     * @var string
+     * @var string Status
 	 */
 	private $status;
 	/**
-     * @var int
+     * @var int Expiration time
 	 */
 	private $expiresAt;
 	/**
-     * @var array
+     * @var array Subscription status details
 	 */
 	private $detail;
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return SubscriptionStatus
+     */
 	public function withUserId(?string $userId): SubscriptionStatus {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Store Subscription Content Model name */
 	public function getContentName(): ?string {
 		return $this->contentName;
 	}
+    /** @param string|null $contentName Store Subscription Content Model name */
 	public function setContentName(?string $contentName) {
 		$this->contentName = $contentName;
 	}
+    /**
+     * @param string|null $contentName Store Subscription Content Model name
+     * @return SubscriptionStatus
+     */
 	public function withContentName(?string $contentName): SubscriptionStatus {
 		$this->contentName = $contentName;
 		return $this;
 	}
+    /** @return string|null Status */
 	public function getStatus(): ?string {
 		return $this->status;
 	}
+    /** @param string|null $status Status */
 	public function setStatus(?string $status) {
 		$this->status = $status;
 	}
+    /**
+     * @param string|null $status Status
+     * @return SubscriptionStatus
+     */
 	public function withStatus(?string $status): SubscriptionStatus {
 		$this->status = $status;
 		return $this;
 	}
+    /** @return int|null Expiration time */
 	public function getExpiresAt(): ?int {
 		return $this->expiresAt;
 	}
+    /** @param int|null $expiresAt Expiration time */
 	public function setExpiresAt(?int $expiresAt) {
 		$this->expiresAt = $expiresAt;
 	}
+    /**
+     * @param int|null $expiresAt Expiration time
+     * @return SubscriptionStatus
+     */
 	public function withExpiresAt(?int $expiresAt): SubscriptionStatus {
 		$this->expiresAt = $expiresAt;
 		return $this;
 	}
+    /** @return array|null Subscription status details */
 	public function getDetail(): ?array {
 		return $this->detail;
 	}
+    /** @param array|null $detail Subscription status details */
 	public function setDetail(?array $detail) {
 		$this->detail = $detail;
 	}
+    /**
+     * @param array|null $detail Subscription status details
+     * @return SubscriptionStatus
+     */
 	public function withDetail(?array $detail): SubscriptionStatus {
 		$this->detail = $detail;
 		return $this;

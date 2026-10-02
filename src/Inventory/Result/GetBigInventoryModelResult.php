@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Inventory\Model\BigItemModel;
 use Gs2\Inventory\Model\BigInventoryModel;
 
+/**
+ * Result of getBigInventoryModel: Get Big Inventory Model
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#getbiginventorymodel
+ */
 class GetBigInventoryModelResult implements IResult {
-    /** @var BigInventoryModel */
+    /** @var BigInventoryModel Big Inventory Model */
     private $item;
 
+    /** @return BigInventoryModel|null Big Inventory Model */
 	public function getItem(): ?BigInventoryModel {
 		return $this->item;
 	}
 
+    /** @param BigInventoryModel|null $item Big Inventory Model */
 	public function setItem(?BigInventoryModel $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param BigInventoryModel|null $item Big Inventory Model
+     * @return GetBigInventoryModelResult
+     */
 	public function withItem(?BigInventoryModel $item): GetBigInventoryModelResult {
 		$this->item = $item;
 		return $this;

@@ -20,73 +20,108 @@ namespace Gs2\Showcase\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Showcase
+ *
+ * @see https://docs.gs2.io/api_reference/showcase/sdk/#showcase
+ */
 class Showcase implements IModel {
 	/**
-     * @var string
+     * @var string Showcase GRN
 	 */
 	private $showcaseId;
 	/**
-     * @var string
+     * @var string Showcase name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var string
+     * @var string GRN of the GS2-Schedule event that defines the sales period for the Showcase
 	 */
 	private $salesPeriodEventId;
 	/**
-     * @var array
+     * @var array List of Display Items
 	 */
 	private $displayItems;
+    /** @return string|null Showcase GRN */
 	public function getShowcaseId(): ?string {
 		return $this->showcaseId;
 	}
+    /** @param string|null $showcaseId Showcase GRN */
 	public function setShowcaseId(?string $showcaseId) {
 		$this->showcaseId = $showcaseId;
 	}
+    /**
+     * @param string|null $showcaseId Showcase GRN
+     * @return Showcase
+     */
 	public function withShowcaseId(?string $showcaseId): Showcase {
 		$this->showcaseId = $showcaseId;
 		return $this;
 	}
+    /** @return string|null Showcase name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Showcase name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Showcase name
+     * @return Showcase
+     */
 	public function withName(?string $name): Showcase {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return Showcase
+     */
 	public function withMetadata(?string $metadata): Showcase {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return string|null GRN of the GS2-Schedule event that defines the sales period for the Showcase */
 	public function getSalesPeriodEventId(): ?string {
 		return $this->salesPeriodEventId;
 	}
+    /** @param string|null $salesPeriodEventId GRN of the GS2-Schedule event that defines the sales period for the Showcase */
 	public function setSalesPeriodEventId(?string $salesPeriodEventId) {
 		$this->salesPeriodEventId = $salesPeriodEventId;
 	}
+    /**
+     * @param string|null $salesPeriodEventId GRN of the GS2-Schedule event that defines the sales period for the Showcase
+     * @return Showcase
+     */
 	public function withSalesPeriodEventId(?string $salesPeriodEventId): Showcase {
 		$this->salesPeriodEventId = $salesPeriodEventId;
 		return $this;
 	}
+    /** @return array|null List of Display Items */
 	public function getDisplayItems(): ?array {
 		return $this->displayItems;
 	}
+    /** @param array|null $displayItems List of Display Items */
 	public function setDisplayItems(?array $displayItems) {
 		$this->displayItems = $displayItems;
 	}
+    /**
+     * @param array|null $displayItems List of Display Items
+     * @return Showcase
+     */
 	public function withDisplayItems(?array $displayItems): Showcase {
 		$this->displayItems = $displayItems;
 		return $this;

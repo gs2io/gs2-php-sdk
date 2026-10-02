@@ -19,75 +19,116 @@ namespace Gs2\Experience\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getStatusWithSignatureByUserId: Get Status with signature by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/experience/sdk/#getstatuswithsignaturebyuserid
+ */
 class GetStatusWithSignatureByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Experience Model name */
     private $experienceName;
-    /** @var string */
+    /** @var string Property ID */
     private $propertyId;
-    /** @var string */
+    /** @var string Encryption Key GRN */
     private $keyId;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetStatusWithSignatureByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetStatusWithSignatureByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return GetStatusWithSignatureByUserIdRequest
+     */
 	public function withUserId(?string $userId): GetStatusWithSignatureByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Experience Model name */
 	public function getExperienceName(): ?string {
 		return $this->experienceName;
 	}
+    /** @param string|null $experienceName Experience Model name */
 	public function setExperienceName(?string $experienceName) {
 		$this->experienceName = $experienceName;
 	}
+    /**
+     * @param string|null $experienceName Experience Model name
+     * @return GetStatusWithSignatureByUserIdRequest
+     */
 	public function withExperienceName(?string $experienceName): GetStatusWithSignatureByUserIdRequest {
 		$this->experienceName = $experienceName;
 		return $this;
 	}
+    /** @return string|null Property ID */
 	public function getPropertyId(): ?string {
 		return $this->propertyId;
 	}
+    /** @param string|null $propertyId Property ID */
 	public function setPropertyId(?string $propertyId) {
 		$this->propertyId = $propertyId;
 	}
+    /**
+     * @param string|null $propertyId Property ID
+     * @return GetStatusWithSignatureByUserIdRequest
+     */
 	public function withPropertyId(?string $propertyId): GetStatusWithSignatureByUserIdRequest {
 		$this->propertyId = $propertyId;
 		return $this;
 	}
+    /** @return string|null Encryption Key GRN */
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
+    /** @param string|null $keyId Encryption Key GRN */
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
+    /**
+     * @param string|null $keyId Encryption Key GRN
+     * @return GetStatusWithSignatureByUserIdRequest
+     */
 	public function withKeyId(?string $keyId): GetStatusWithSignatureByUserIdRequest {
 		$this->keyId = $keyId;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return GetStatusWithSignatureByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): GetStatusWithSignatureByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

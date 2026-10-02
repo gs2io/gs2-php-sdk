@@ -20,115 +20,168 @@ namespace Gs2\Money2\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Refund history information
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#refundhistory
+ */
 class RefundHistory implements IModel {
 	/**
-     * @var string
+     * @var string Refund History GRN
 	 */
 	private $refundHistoryId;
 	/**
-     * @var string
+     * @var string Transaction ID
 	 */
 	private $transactionId;
 	/**
-     * @var int
+     * @var int Year
 	 */
 	private $year;
 	/**
-     * @var int
+     * @var int Month
 	 */
 	private $month;
 	/**
-     * @var int
+     * @var int Day
 	 */
 	private $day;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var RefundEvent
+     * @var RefundEvent Refund event information
 	 */
 	private $detail;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
+    /** @return string|null Refund History GRN */
 	public function getRefundHistoryId(): ?string {
 		return $this->refundHistoryId;
 	}
+    /** @param string|null $refundHistoryId Refund History GRN */
 	public function setRefundHistoryId(?string $refundHistoryId) {
 		$this->refundHistoryId = $refundHistoryId;
 	}
+    /**
+     * @param string|null $refundHistoryId Refund History GRN
+     * @return RefundHistory
+     */
 	public function withRefundHistoryId(?string $refundHistoryId): RefundHistory {
 		$this->refundHistoryId = $refundHistoryId;
 		return $this;
 	}
+    /** @return string|null Transaction ID */
 	public function getTransactionId(): ?string {
 		return $this->transactionId;
 	}
+    /** @param string|null $transactionId Transaction ID */
 	public function setTransactionId(?string $transactionId) {
 		$this->transactionId = $transactionId;
 	}
+    /**
+     * @param string|null $transactionId Transaction ID
+     * @return RefundHistory
+     */
 	public function withTransactionId(?string $transactionId): RefundHistory {
 		$this->transactionId = $transactionId;
 		return $this;
 	}
+    /** @return int|null Year */
 	public function getYear(): ?int {
 		return $this->year;
 	}
+    /** @param int|null $year Year */
 	public function setYear(?int $year) {
 		$this->year = $year;
 	}
+    /**
+     * @param int|null $year Year
+     * @return RefundHistory
+     */
 	public function withYear(?int $year): RefundHistory {
 		$this->year = $year;
 		return $this;
 	}
+    /** @return int|null Month */
 	public function getMonth(): ?int {
 		return $this->month;
 	}
+    /** @param int|null $month Month */
 	public function setMonth(?int $month) {
 		$this->month = $month;
 	}
+    /**
+     * @param int|null $month Month
+     * @return RefundHistory
+     */
 	public function withMonth(?int $month): RefundHistory {
 		$this->month = $month;
 		return $this;
 	}
+    /** @return int|null Day */
 	public function getDay(): ?int {
 		return $this->day;
 	}
+    /** @param int|null $day Day */
 	public function setDay(?int $day) {
 		$this->day = $day;
 	}
+    /**
+     * @param int|null $day Day
+     * @return RefundHistory
+     */
 	public function withDay(?int $day): RefundHistory {
 		$this->day = $day;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return RefundHistory
+     */
 	public function withUserId(?string $userId): RefundHistory {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return RefundEvent|null Refund event information */
 	public function getDetail(): ?RefundEvent {
 		return $this->detail;
 	}
+    /** @param RefundEvent|null $detail Refund event information */
 	public function setDetail(?RefundEvent $detail) {
 		$this->detail = $detail;
 	}
+    /**
+     * @param RefundEvent|null $detail Refund event information
+     * @return RefundHistory
+     */
 	public function withDetail(?RefundEvent $detail): RefundHistory {
 		$this->detail = $detail;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return RefundHistory
+     */
 	public function withCreatedAt(?int $createdAt): RefundHistory {
 		$this->createdAt = $createdAt;
 		return $this;

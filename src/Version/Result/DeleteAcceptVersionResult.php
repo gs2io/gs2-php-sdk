@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Version\Model\Version;
 use Gs2\Version\Model\AcceptVersion;
 
+/**
+ * Result of deleteAcceptVersion: Delete Approved Version
+ *
+ * @see https://docs.gs2.io/api_reference/version/sdk/#deleteacceptversion
+ */
 class DeleteAcceptVersionResult implements IResult {
-    /** @var AcceptVersion */
+    /** @var AcceptVersion Approved Version deleted */
     private $item;
 
+    /** @return AcceptVersion|null Approved Version deleted */
 	public function getItem(): ?AcceptVersion {
 		return $this->item;
 	}
 
+    /** @param AcceptVersion|null $item Approved Version deleted */
 	public function setItem(?AcceptVersion $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param AcceptVersion|null $item Approved Version deleted
+     * @return DeleteAcceptVersionResult
+     */
 	public function withItem(?AcceptVersion $item): DeleteAcceptVersionResult {
 		$this->item = $item;
 		return $this;

@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\SeasonRating\Model\TierModel;
 use Gs2\SeasonRating\Model\SeasonModelMaster;
 
+/**
+ * Result of deleteSeasonModelMaster: Delete Season Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/season_rating/sdk/#deleteseasonmodelmaster
+ */
 class DeleteSeasonModelMasterResult implements IResult {
-    /** @var SeasonModelMaster */
+    /** @var SeasonModelMaster Season Model Master deleted */
     private $item;
 
+    /** @return SeasonModelMaster|null Season Model Master deleted */
 	public function getItem(): ?SeasonModelMaster {
 		return $this->item;
 	}
 
+    /** @param SeasonModelMaster|null $item Season Model Master deleted */
 	public function setItem(?SeasonModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param SeasonModelMaster|null $item Season Model Master deleted
+     * @return DeleteSeasonModelMasterResult
+     */
 	public function withItem(?SeasonModelMaster $item): DeleteSeasonModelMasterResult {
 		$this->item = $item;
 		return $this;

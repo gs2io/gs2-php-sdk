@@ -23,18 +23,29 @@ use Gs2\Grade\Model\GradeEntryModel;
 use Gs2\Grade\Model\AcquireActionRate;
 use Gs2\Grade\Model\GradeModelMaster;
 
+/**
+ * Result of createGradeModelMaster: Create Grade Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/grade/sdk/#creategrademodelmaster
+ */
 class CreateGradeModelMasterResult implements IResult {
-    /** @var GradeModelMaster */
+    /** @var GradeModelMaster Grade Model Master created */
     private $item;
 
+    /** @return GradeModelMaster|null Grade Model Master created */
 	public function getItem(): ?GradeModelMaster {
 		return $this->item;
 	}
 
+    /** @param GradeModelMaster|null $item Grade Model Master created */
 	public function setItem(?GradeModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param GradeModelMaster|null $item Grade Model Master created
+     * @return CreateGradeModelMasterResult
+     */
 	public function withItem(?GradeModelMaster $item): CreateGradeModelMasterResult {
 		$this->item = $item;
 		return $this;

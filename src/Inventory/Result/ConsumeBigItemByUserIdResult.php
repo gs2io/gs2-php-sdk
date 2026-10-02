@@ -20,18 +20,29 @@ namespace Gs2\Inventory\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Inventory\Model\BigItem;
 
+/**
+ * Result of consumeBigItemByUserId: Consume Big Items by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#consumebigitembyuserid
+ */
 class ConsumeBigItemByUserIdResult implements IResult {
-    /** @var BigItem */
+    /** @var BigItem Big Item per post-consumption */
     private $item;
 
+    /** @return BigItem|null Big Item per post-consumption */
 	public function getItem(): ?BigItem {
 		return $this->item;
 	}
 
+    /** @param BigItem|null $item Big Item per post-consumption */
 	public function setItem(?BigItem $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param BigItem|null $item Big Item per post-consumption
+     * @return ConsumeBigItemByUserIdResult
+     */
 	public function withItem(?BigItem $item): ConsumeBigItemByUserIdResult {
 		$this->item = $item;
 		return $this;

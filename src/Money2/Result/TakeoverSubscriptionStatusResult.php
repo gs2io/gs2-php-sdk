@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Money2\Model\SubscribeTransaction;
 use Gs2\Money2\Model\SubscriptionStatus;
 
+/**
+ * Result of takeoverSubscriptionStatus: Takeover the subscription status of a subscription that is already assigned to another user
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#takeoversubscriptionstatus
+ */
 class TakeoverSubscriptionStatusResult implements IResult {
-    /** @var SubscriptionStatus */
+    /** @var SubscriptionStatus Subscription status */
     private $item;
 
+    /** @return SubscriptionStatus|null Subscription status */
 	public function getItem(): ?SubscriptionStatus {
 		return $this->item;
 	}
 
+    /** @param SubscriptionStatus|null $item Subscription status */
 	public function setItem(?SubscriptionStatus $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param SubscriptionStatus|null $item Subscription status
+     * @return TakeoverSubscriptionStatusResult
+     */
 	public function withItem(?SubscriptionStatus $item): TakeoverSubscriptionStatusResult {
 		$this->item = $item;
 		return $this;

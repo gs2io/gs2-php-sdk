@@ -20,18 +20,29 @@ namespace Gs2\SkillTree\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\SkillTree\Model\CurrentTreeMaster;
 
+/**
+ * Result of exportMaster: Export Node Model Master in a master data format that can be activated
+ *
+ * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#exportmaster
+ */
 class ExportMasterResult implements IResult {
-    /** @var CurrentTreeMaster */
+    /** @var CurrentTreeMaster Node Model master data that can be activated */
     private $item;
 
+    /** @return CurrentTreeMaster|null Node Model master data that can be activated */
 	public function getItem(): ?CurrentTreeMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentTreeMaster|null $item Node Model master data that can be activated */
 	public function setItem(?CurrentTreeMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentTreeMaster|null $item Node Model master data that can be activated
+     * @return ExportMasterResult
+     */
 	public function withItem(?CurrentTreeMaster $item): ExportMasterResult {
 		$this->item = $item;
 		return $this;

@@ -19,51 +19,80 @@ namespace Gs2\Mission\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for describeMissionGroupModelMasters: List Mission Group Model Masters
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#describemissiongroupmodelmasters
+ */
 class DescribeMissionGroupModelMastersRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Filter by mission group name prefix */
     private $namePrefix;
-    /** @var string */
+    /** @var string Token specifying the position from which to start acquiring data */
     private $pageToken;
-    /** @var int */
+    /** @var int Number of data items to retrieve */
     private $limit;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DescribeMissionGroupModelMastersRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DescribeMissionGroupModelMastersRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Filter by mission group name prefix */
 	public function getNamePrefix(): ?string {
 		return $this->namePrefix;
 	}
+    /** @param string|null $namePrefix Filter by mission group name prefix */
 	public function setNamePrefix(?string $namePrefix) {
 		$this->namePrefix = $namePrefix;
 	}
+    /**
+     * @param string|null $namePrefix Filter by mission group name prefix
+     * @return DescribeMissionGroupModelMastersRequest
+     */
 	public function withNamePrefix(?string $namePrefix): DescribeMissionGroupModelMastersRequest {
 		$this->namePrefix = $namePrefix;
 		return $this;
 	}
+    /** @return string|null Token specifying the position from which to start acquiring data */
 	public function getPageToken(): ?string {
 		return $this->pageToken;
 	}
+    /** @param string|null $pageToken Token specifying the position from which to start acquiring data */
 	public function setPageToken(?string $pageToken) {
 		$this->pageToken = $pageToken;
 	}
+    /**
+     * @param string|null $pageToken Token specifying the position from which to start acquiring data
+     * @return DescribeMissionGroupModelMastersRequest
+     */
 	public function withPageToken(?string $pageToken): DescribeMissionGroupModelMastersRequest {
 		$this->pageToken = $pageToken;
 		return $this;
 	}
+    /** @return int|null Number of data items to retrieve */
 	public function getLimit(): ?int {
 		return $this->limit;
 	}
+    /** @param int|null $limit Number of data items to retrieve */
 	public function setLimit(?int $limit) {
 		$this->limit = $limit;
 	}
+    /**
+     * @param int|null $limit Number of data items to retrieve
+     * @return DescribeMissionGroupModelMastersRequest
+     */
 	public function withLimit(?int $limit): DescribeMissionGroupModelMastersRequest {
 		$this->limit = $limit;
 		return $this;

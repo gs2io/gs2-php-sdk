@@ -21,18 +21,25 @@ use Gs2\Core\Model\IResult;
 use Gs2\Project\Model\TwoFactorAuthenticationSetting;
 use Gs2\Project\Model\Account;
 
+/** Result of verify: Activate GS2 account */
 class VerifyResult implements IResult {
-    /** @var Account */
+    /** @var Account Activated GS2 account */
     private $item;
 
+    /** @return Account|null Activated GS2 account */
 	public function getItem(): ?Account {
 		return $this->item;
 	}
 
+    /** @param Account|null $item Activated GS2 account */
 	public function setItem(?Account $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Account|null $item Activated GS2 account
+     * @return VerifyResult
+     */
 	public function withItem(?Account $item): VerifyResult {
 		$this->item = $item;
 		return $this;

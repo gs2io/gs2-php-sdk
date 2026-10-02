@@ -20,59 +20,88 @@ namespace Gs2\Distributor\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Consume Action execution result
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#consumeactionresult
+ */
 class ConsumeActionResult implements IModel {
 	/**
-     * @var string
+     * @var string Type of Consume Action
 	 */
 	private $action;
 	/**
-     * @var string
+     * @var string JSON string of the request used when executing the action
 	 */
 	private $consumeRequest;
 	/**
-     * @var int
+     * @var int Status code
 	 */
 	private $statusCode;
 	/**
-     * @var string
+     * @var string Result content
 	 */
 	private $consumeResult;
+    /** @return string|null Type of Consume Action */
 	public function getAction(): ?string {
 		return $this->action;
 	}
+    /** @param string|null $action Type of Consume Action */
 	public function setAction(?string $action) {
 		$this->action = $action;
 	}
+    /**
+     * @param string|null $action Type of Consume Action
+     * @return ConsumeActionResult
+     */
 	public function withAction(?string $action): ConsumeActionResult {
 		$this->action = $action;
 		return $this;
 	}
+    /** @return string|null JSON string of the request used when executing the action */
 	public function getConsumeRequest(): ?string {
 		return $this->consumeRequest;
 	}
+    /** @param string|null $consumeRequest JSON string of the request used when executing the action */
 	public function setConsumeRequest(?string $consumeRequest) {
 		$this->consumeRequest = $consumeRequest;
 	}
+    /**
+     * @param string|null $consumeRequest JSON string of the request used when executing the action
+     * @return ConsumeActionResult
+     */
 	public function withConsumeRequest(?string $consumeRequest): ConsumeActionResult {
 		$this->consumeRequest = $consumeRequest;
 		return $this;
 	}
+    /** @return int|null Status code */
 	public function getStatusCode(): ?int {
 		return $this->statusCode;
 	}
+    /** @param int|null $statusCode Status code */
 	public function setStatusCode(?int $statusCode) {
 		$this->statusCode = $statusCode;
 	}
+    /**
+     * @param int|null $statusCode Status code
+     * @return ConsumeActionResult
+     */
 	public function withStatusCode(?int $statusCode): ConsumeActionResult {
 		$this->statusCode = $statusCode;
 		return $this;
 	}
+    /** @return string|null Result content */
 	public function getConsumeResult(): ?string {
 		return $this->consumeResult;
 	}
+    /** @param string|null $consumeResult Result content */
 	public function setConsumeResult(?string $consumeResult) {
 		$this->consumeResult = $consumeResult;
 	}
+    /**
+     * @param string|null $consumeResult Result content
+     * @return ConsumeActionResult
+     */
 	public function withConsumeResult(?string $consumeResult): ConsumeActionResult {
 		$this->consumeResult = $consumeResult;
 		return $this;

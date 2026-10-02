@@ -20,115 +20,168 @@ namespace Gs2\Log\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * GS2-Insight is a tool for visualizing and analyzing access logs stored in GS2-Log.
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#insight
+ */
 class Insight implements IModel {
 	/**
-     * @var string
+     * @var string GS2-Insight GRN
 	 */
 	private $insightId;
 	/**
-     * @var string
+     * @var string Name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Task ID
 	 */
 	private $taskId;
 	/**
-     * @var string
+     * @var string Host Name
 	 */
 	private $host;
 	/**
-     * @var string
+     * @var string Password
 	 */
 	private $password;
 	/**
-     * @var string
+     * @var string Status
 	 */
 	private $status;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null GS2-Insight GRN */
 	public function getInsightId(): ?string {
 		return $this->insightId;
 	}
+    /** @param string|null $insightId GS2-Insight GRN */
 	public function setInsightId(?string $insightId) {
 		$this->insightId = $insightId;
 	}
+    /**
+     * @param string|null $insightId GS2-Insight GRN
+     * @return Insight
+     */
 	public function withInsightId(?string $insightId): Insight {
 		$this->insightId = $insightId;
 		return $this;
 	}
+    /** @return string|null Name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Name
+     * @return Insight
+     */
 	public function withName(?string $name): Insight {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Task ID */
 	public function getTaskId(): ?string {
 		return $this->taskId;
 	}
+    /** @param string|null $taskId Task ID */
 	public function setTaskId(?string $taskId) {
 		$this->taskId = $taskId;
 	}
+    /**
+     * @param string|null $taskId Task ID
+     * @return Insight
+     */
 	public function withTaskId(?string $taskId): Insight {
 		$this->taskId = $taskId;
 		return $this;
 	}
+    /** @return string|null Host Name */
 	public function getHost(): ?string {
 		return $this->host;
 	}
+    /** @param string|null $host Host Name */
 	public function setHost(?string $host) {
 		$this->host = $host;
 	}
+    /**
+     * @param string|null $host Host Name
+     * @return Insight
+     */
 	public function withHost(?string $host): Insight {
 		$this->host = $host;
 		return $this;
 	}
+    /** @return string|null Password */
 	public function getPassword(): ?string {
 		return $this->password;
 	}
+    /** @param string|null $password Password */
 	public function setPassword(?string $password) {
 		$this->password = $password;
 	}
+    /**
+     * @param string|null $password Password
+     * @return Insight
+     */
 	public function withPassword(?string $password): Insight {
 		$this->password = $password;
 		return $this;
 	}
+    /** @return string|null Status */
 	public function getStatus(): ?string {
 		return $this->status;
 	}
+    /** @param string|null $status Status */
 	public function setStatus(?string $status) {
 		$this->status = $status;
 	}
+    /**
+     * @param string|null $status Status
+     * @return Insight
+     */
 	public function withStatus(?string $status): Insight {
 		$this->status = $status;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return Insight
+     */
 	public function withCreatedAt(?int $createdAt): Insight {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return Insight
+     */
 	public function withRevision(?int $revision): Insight {
 		$this->revision = $revision;
 		return $this;

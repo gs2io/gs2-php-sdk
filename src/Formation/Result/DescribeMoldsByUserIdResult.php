@@ -20,33 +20,50 @@ namespace Gs2\Formation\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Formation\Model\Mold;
 
+/**
+ * Result of describeMoldsByUserId: List Form Storage Areas by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/formation/sdk/#describemoldsbyuserid
+ */
 class DescribeMoldsByUserIdResult implements IResult {
-    /** @var array */
+    /** @var array List of Form Storage Area */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Form Storage Area */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Form Storage Area */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Form Storage Area
+     * @return DescribeMoldsByUserIdResult
+     */
 	public function withItems(?array $items): DescribeMoldsByUserIdResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeMoldsByUserIdResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeMoldsByUserIdResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

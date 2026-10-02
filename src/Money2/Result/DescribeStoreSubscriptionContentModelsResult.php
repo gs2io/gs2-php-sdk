@@ -22,18 +22,29 @@ use Gs2\Money2\Model\AppleAppStoreSubscriptionContent;
 use Gs2\Money2\Model\GooglePlaySubscriptionContent;
 use Gs2\Money2\Model\StoreSubscriptionContentModel;
 
+/**
+ * Result of describeStoreSubscriptionContentModels: List Store Subscription Content Models
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#describestoresubscriptioncontentmodels
+ */
 class DescribeStoreSubscriptionContentModelsResult implements IResult {
-    /** @var array */
+    /** @var array List of Store Subscription Content Models */
     private $items;
 
+    /** @return array|null List of Store Subscription Content Models */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Store Subscription Content Models */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Store Subscription Content Models
+     * @return DescribeStoreSubscriptionContentModelsResult
+     */
 	public function withItems(?array $items): DescribeStoreSubscriptionContentModelsResult {
 		$this->items = $items;
 		return $this;

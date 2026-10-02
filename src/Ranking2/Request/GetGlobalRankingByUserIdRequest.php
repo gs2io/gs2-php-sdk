@@ -19,63 +19,98 @@ namespace Gs2\Ranking2\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getGlobalRankingByUserId: Get Global Ranking by specifying the user ID
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/sdk/#getglobalrankingbyuserid
+ */
 class GetGlobalRankingByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Global Ranking Model name */
     private $rankingName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var int */
+    /** @var int Season */
     private $season;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetGlobalRankingByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetGlobalRankingByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Global Ranking Model name */
 	public function getRankingName(): ?string {
 		return $this->rankingName;
 	}
+    /** @param string|null $rankingName Global Ranking Model name */
 	public function setRankingName(?string $rankingName) {
 		$this->rankingName = $rankingName;
 	}
+    /**
+     * @param string|null $rankingName Global Ranking Model name
+     * @return GetGlobalRankingByUserIdRequest
+     */
 	public function withRankingName(?string $rankingName): GetGlobalRankingByUserIdRequest {
 		$this->rankingName = $rankingName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return GetGlobalRankingByUserIdRequest
+     */
 	public function withUserId(?string $userId): GetGlobalRankingByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return int|null Season */
 	public function getSeason(): ?int {
 		return $this->season;
 	}
+    /** @param int|null $season Season */
 	public function setSeason(?int $season) {
 		$this->season = $season;
 	}
+    /**
+     * @param int|null $season Season
+     * @return GetGlobalRankingByUserIdRequest
+     */
 	public function withSeason(?int $season): GetGlobalRankingByUserIdRequest {
 		$this->season = $season;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return GetGlobalRankingByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): GetGlobalRankingByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

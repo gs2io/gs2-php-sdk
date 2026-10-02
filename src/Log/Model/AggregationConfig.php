@@ -20,31 +20,48 @@ namespace Gs2\Log\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Aggregation Config
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#aggregationconfig
+ */
 class AggregationConfig implements IModel {
 	/**
-     * @var string
+     * @var string Aggregation type:
 	 */
 	private $type;
 	/**
-     * @var string
+     * @var string Target field for aggregation (required except for count)
 	 */
 	private $field;
+    /** @return string|null Aggregation type: */
 	public function getType(): ?string {
 		return $this->type;
 	}
+    /** @param string|null $type Aggregation type: */
 	public function setType(?string $type) {
 		$this->type = $type;
 	}
+    /**
+     * @param string|null $type Aggregation type:
+     * @return AggregationConfig
+     */
 	public function withType(?string $type): AggregationConfig {
 		$this->type = $type;
 		return $this;
 	}
+    /** @return string|null Target field for aggregation (required except for count) */
 	public function getField(): ?string {
 		return $this->field;
 	}
+    /** @param string|null $field Target field for aggregation (required except for count) */
 	public function setField(?string $field) {
 		$this->field = $field;
 	}
+    /**
+     * @param string|null $field Target field for aggregation (required except for count)
+     * @return AggregationConfig
+     */
 	public function withField(?string $field): AggregationConfig {
 		$this->field = $field;
 		return $this;

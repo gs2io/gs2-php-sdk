@@ -23,33 +23,50 @@ use Gs2\Grade\Model\GradeEntryModel;
 use Gs2\Grade\Model\AcquireActionRate;
 use Gs2\Grade\Model\GradeModelMaster;
 
+/**
+ * Result of describeGradeModelMasters: List Grade Model Masters
+ *
+ * @see https://docs.gs2.io/api_reference/grade/sdk/#describegrademodelmasters
+ */
 class DescribeGradeModelMastersResult implements IResult {
-    /** @var array */
+    /** @var array List of Grade Model Masters */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Grade Model Masters */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Grade Model Masters */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Grade Model Masters
+     * @return DescribeGradeModelMastersResult
+     */
 	public function withItems(?array $items): DescribeGradeModelMastersResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeGradeModelMastersResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeGradeModelMastersResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

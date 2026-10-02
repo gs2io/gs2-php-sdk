@@ -20,59 +20,88 @@ namespace Gs2\Distributor\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Acquire Action execution result
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#acquireactionresult
+ */
 class AcquireActionResult implements IModel {
 	/**
-     * @var string
+     * @var string Type of Acquire Action
 	 */
 	private $action;
 	/**
-     * @var string
+     * @var string JSON string of the request used when executing the action
 	 */
 	private $acquireRequest;
 	/**
-     * @var int
+     * @var int Status code
 	 */
 	private $statusCode;
 	/**
-     * @var string
+     * @var string Result content
 	 */
 	private $acquireResult;
+    /** @return string|null Type of Acquire Action */
 	public function getAction(): ?string {
 		return $this->action;
 	}
+    /** @param string|null $action Type of Acquire Action */
 	public function setAction(?string $action) {
 		$this->action = $action;
 	}
+    /**
+     * @param string|null $action Type of Acquire Action
+     * @return AcquireActionResult
+     */
 	public function withAction(?string $action): AcquireActionResult {
 		$this->action = $action;
 		return $this;
 	}
+    /** @return string|null JSON string of the request used when executing the action */
 	public function getAcquireRequest(): ?string {
 		return $this->acquireRequest;
 	}
+    /** @param string|null $acquireRequest JSON string of the request used when executing the action */
 	public function setAcquireRequest(?string $acquireRequest) {
 		$this->acquireRequest = $acquireRequest;
 	}
+    /**
+     * @param string|null $acquireRequest JSON string of the request used when executing the action
+     * @return AcquireActionResult
+     */
 	public function withAcquireRequest(?string $acquireRequest): AcquireActionResult {
 		$this->acquireRequest = $acquireRequest;
 		return $this;
 	}
+    /** @return int|null Status code */
 	public function getStatusCode(): ?int {
 		return $this->statusCode;
 	}
+    /** @param int|null $statusCode Status code */
 	public function setStatusCode(?int $statusCode) {
 		$this->statusCode = $statusCode;
 	}
+    /**
+     * @param int|null $statusCode Status code
+     * @return AcquireActionResult
+     */
 	public function withStatusCode(?int $statusCode): AcquireActionResult {
 		$this->statusCode = $statusCode;
 		return $this;
 	}
+    /** @return string|null Result content */
 	public function getAcquireResult(): ?string {
 		return $this->acquireResult;
 	}
+    /** @param string|null $acquireResult Result content */
 	public function setAcquireResult(?string $acquireResult) {
 		$this->acquireResult = $acquireResult;
 	}
+    /**
+     * @param string|null $acquireResult Result content
+     * @return AcquireActionResult
+     */
 	public function withAcquireResult(?string $acquireResult): AcquireActionResult {
 		$this->acquireResult = $acquireResult;
 		return $this;

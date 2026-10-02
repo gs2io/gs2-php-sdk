@@ -19,77 +19,118 @@ namespace Gs2\Experience\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for subRankCapByUserId: Subtract rank cap by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/experience/sdk/#subrankcapbyuserid
+ */
 class SubRankCapByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Experience Model name */
     private $experienceName;
-    /** @var string */
+    /** @var string Property ID */
     private $propertyId;
-    /** @var int */
+    /** @var int Current Rank Cap */
     private $rankCapValue;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return SubRankCapByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): SubRankCapByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return SubRankCapByUserIdRequest
+     */
 	public function withUserId(?string $userId): SubRankCapByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Experience Model name */
 	public function getExperienceName(): ?string {
 		return $this->experienceName;
 	}
+    /** @param string|null $experienceName Experience Model name */
 	public function setExperienceName(?string $experienceName) {
 		$this->experienceName = $experienceName;
 	}
+    /**
+     * @param string|null $experienceName Experience Model name
+     * @return SubRankCapByUserIdRequest
+     */
 	public function withExperienceName(?string $experienceName): SubRankCapByUserIdRequest {
 		$this->experienceName = $experienceName;
 		return $this;
 	}
+    /** @return string|null Property ID */
 	public function getPropertyId(): ?string {
 		return $this->propertyId;
 	}
+    /** @param string|null $propertyId Property ID */
 	public function setPropertyId(?string $propertyId) {
 		$this->propertyId = $propertyId;
 	}
+    /**
+     * @param string|null $propertyId Property ID
+     * @return SubRankCapByUserIdRequest
+     */
 	public function withPropertyId(?string $propertyId): SubRankCapByUserIdRequest {
 		$this->propertyId = $propertyId;
 		return $this;
 	}
+    /** @return int|null Current Rank Cap */
 	public function getRankCapValue(): ?int {
 		return $this->rankCapValue;
 	}
+    /** @param int|null $rankCapValue Current Rank Cap */
 	public function setRankCapValue(?int $rankCapValue) {
 		$this->rankCapValue = $rankCapValue;
 	}
+    /**
+     * @param int|null $rankCapValue Current Rank Cap
+     * @return SubRankCapByUserIdRequest
+     */
 	public function withRankCapValue(?int $rankCapValue): SubRankCapByUserIdRequest {
 		$this->rankCapValue = $rankCapValue;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return SubRankCapByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): SubRankCapByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

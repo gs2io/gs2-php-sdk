@@ -24,18 +24,29 @@ use Gs2\Matchmaking\Model\Player;
 use Gs2\Matchmaking\Model\CapacityOfRole;
 use Gs2\Matchmaking\Model\Gathering;
 
+/**
+ * Result of earlyCompleteByUserId: Early Complete Matchmaking by specifying user ID
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#earlycompletebyuserid
+ */
 class EarlyCompleteByUserIdResult implements IResult {
-    /** @var Gathering */
+    /** @var Gathering Canceled Gathering */
     private $item;
 
+    /** @return Gathering|null Canceled Gathering */
 	public function getItem(): ?Gathering {
 		return $this->item;
 	}
 
+    /** @param Gathering|null $item Canceled Gathering */
 	public function setItem(?Gathering $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Gathering|null $item Canceled Gathering
+     * @return EarlyCompleteByUserIdResult
+     */
 	public function withItem(?Gathering $item): EarlyCompleteByUserIdResult {
 		$this->item = $item;
 		return $this;

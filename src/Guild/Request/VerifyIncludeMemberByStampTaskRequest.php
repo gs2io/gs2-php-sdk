@@ -19,27 +19,44 @@ namespace Gs2\Guild\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for verifyIncludeMemberByStampTask: Execute verification of whether the guild members include the user ID as a verify action
+ *
+ * @see https://docs.gs2.io/api_reference/guild/stamp_sheet/#gs2guildverifyincludememberbyuserid
+ */
 class VerifyIncludeMemberByStampTaskRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Verify Action */
     private $stampTask;
-    /** @var string */
+    /** @var string Encryption Key GRN */
     private $keyId;
+    /** @return string|null Verify Action */
 	public function getStampTask(): ?string {
 		return $this->stampTask;
 	}
+    /** @param string|null $stampTask Verify Action */
 	public function setStampTask(?string $stampTask) {
 		$this->stampTask = $stampTask;
 	}
+    /**
+     * @param string|null $stampTask Verify Action
+     * @return VerifyIncludeMemberByStampTaskRequest
+     */
 	public function withStampTask(?string $stampTask): VerifyIncludeMemberByStampTaskRequest {
 		$this->stampTask = $stampTask;
 		return $this;
 	}
+    /** @return string|null Encryption Key GRN */
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
+    /** @param string|null $keyId Encryption Key GRN */
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
+    /**
+     * @param string|null $keyId Encryption Key GRN
+     * @return VerifyIncludeMemberByStampTaskRequest
+     */
 	public function withKeyId(?string $keyId): VerifyIncludeMemberByStampTaskRequest {
 		$this->keyId = $keyId;
 		return $this;

@@ -23,156 +23,231 @@ use Gs2\Account\Model\TransactionSettingV2;
 use Gs2\Account\Model\ScriptSetting;
 use Gs2\Account\Model\LogSetting;
 
+/**
+ * Request for updateNamespace: Update Namespace
+ *
+ * @see https://docs.gs2.io/api_reference/account/sdk/#updatenamespace
+ */
 class UpdateNamespaceRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var TransactionSetting */
+    /** @var TransactionSetting Transaction Setting */
     private $transactionSetting;
-    /** @var TransactionSettingV2 */
+    /** @var TransactionSettingV2 Transaction Setting (V2) */
     private $transactionSettingV2;
-    /** @var bool */
+    /** @var bool Whether to change the password when taking over the account */
     private $changePasswordIfTakeOver;
-    /** @var ScriptSetting */
+    /** @var ScriptSetting Script setting to be executed when creating an account */
     private $createAccountScript;
-    /** @var ScriptSetting */
+    /** @var ScriptSetting Script setting to be executed when authenticating */
     private $authenticationScript;
-    /** @var ScriptSetting */
+    /** @var ScriptSetting Script setting to be executed when registering Takeover Information */
     private $createTakeOverScript;
-    /** @var ScriptSetting */
+    /** @var ScriptSetting Script setting to be executed when executing account takeover */
     private $doTakeOverScript;
-    /** @var ScriptSetting */
+    /** @var ScriptSetting Script setting to be executed when adding Account Ban Status */
     private $banScript;
-    /** @var ScriptSetting */
+    /** @var ScriptSetting Script setting to be executed when removing Account Ban Status */
     private $unBanScript;
-    /** @var LogSetting */
+    /** @var LogSetting Log Output Setting */
     private $logSetting;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UpdateNamespaceRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UpdateNamespaceRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return UpdateNamespaceRequest
+     */
 	public function withDescription(?string $description): UpdateNamespaceRequest {
 		$this->description = $description;
 		return $this;
 	}
     /**
+     * @return TransactionSetting|null Transaction Setting
      * @deprecated
      */
 	public function getTransactionSetting(): ?TransactionSetting {
 		return $this->transactionSetting;
 	}
     /**
+     * @param TransactionSetting|null $transactionSetting Transaction Setting
      * @deprecated
      */
 	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
 		$this->transactionSetting = $transactionSetting;
 	}
     /**
+     * @param TransactionSetting|null $transactionSetting Transaction Setting
+     * @return UpdateNamespaceRequest
      * @deprecated
      */
 	public function withTransactionSetting(?TransactionSetting $transactionSetting): UpdateNamespaceRequest {
 		$this->transactionSetting = $transactionSetting;
 		return $this;
 	}
+    /** @return TransactionSettingV2|null Transaction Setting (V2) */
 	public function getTransactionSettingV2(): ?TransactionSettingV2 {
 		return $this->transactionSettingV2;
 	}
+    /** @param TransactionSettingV2|null $transactionSettingV2 Transaction Setting (V2) */
 	public function setTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2) {
 		$this->transactionSettingV2 = $transactionSettingV2;
 	}
+    /**
+     * @param TransactionSettingV2|null $transactionSettingV2 Transaction Setting (V2)
+     * @return UpdateNamespaceRequest
+     */
 	public function withTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2): UpdateNamespaceRequest {
 		$this->transactionSettingV2 = $transactionSettingV2;
 		return $this;
 	}
+    /** @return bool|null Whether to change the password when taking over the account */
 	public function getChangePasswordIfTakeOver(): ?bool {
 		return $this->changePasswordIfTakeOver;
 	}
+    /** @param bool|null $changePasswordIfTakeOver Whether to change the password when taking over the account */
 	public function setChangePasswordIfTakeOver(?bool $changePasswordIfTakeOver) {
 		$this->changePasswordIfTakeOver = $changePasswordIfTakeOver;
 	}
+    /**
+     * @param bool|null $changePasswordIfTakeOver Whether to change the password when taking over the account
+     * @return UpdateNamespaceRequest
+     */
 	public function withChangePasswordIfTakeOver(?bool $changePasswordIfTakeOver): UpdateNamespaceRequest {
 		$this->changePasswordIfTakeOver = $changePasswordIfTakeOver;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to be executed when creating an account */
 	public function getCreateAccountScript(): ?ScriptSetting {
 		return $this->createAccountScript;
 	}
+    /** @param ScriptSetting|null $createAccountScript Script setting to be executed when creating an account */
 	public function setCreateAccountScript(?ScriptSetting $createAccountScript) {
 		$this->createAccountScript = $createAccountScript;
 	}
+    /**
+     * @param ScriptSetting|null $createAccountScript Script setting to be executed when creating an account
+     * @return UpdateNamespaceRequest
+     */
 	public function withCreateAccountScript(?ScriptSetting $createAccountScript): UpdateNamespaceRequest {
 		$this->createAccountScript = $createAccountScript;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to be executed when authenticating */
 	public function getAuthenticationScript(): ?ScriptSetting {
 		return $this->authenticationScript;
 	}
+    /** @param ScriptSetting|null $authenticationScript Script setting to be executed when authenticating */
 	public function setAuthenticationScript(?ScriptSetting $authenticationScript) {
 		$this->authenticationScript = $authenticationScript;
 	}
+    /**
+     * @param ScriptSetting|null $authenticationScript Script setting to be executed when authenticating
+     * @return UpdateNamespaceRequest
+     */
 	public function withAuthenticationScript(?ScriptSetting $authenticationScript): UpdateNamespaceRequest {
 		$this->authenticationScript = $authenticationScript;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to be executed when registering Takeover Information */
 	public function getCreateTakeOverScript(): ?ScriptSetting {
 		return $this->createTakeOverScript;
 	}
+    /** @param ScriptSetting|null $createTakeOverScript Script setting to be executed when registering Takeover Information */
 	public function setCreateTakeOverScript(?ScriptSetting $createTakeOverScript) {
 		$this->createTakeOverScript = $createTakeOverScript;
 	}
+    /**
+     * @param ScriptSetting|null $createTakeOverScript Script setting to be executed when registering Takeover Information
+     * @return UpdateNamespaceRequest
+     */
 	public function withCreateTakeOverScript(?ScriptSetting $createTakeOverScript): UpdateNamespaceRequest {
 		$this->createTakeOverScript = $createTakeOverScript;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to be executed when executing account takeover */
 	public function getDoTakeOverScript(): ?ScriptSetting {
 		return $this->doTakeOverScript;
 	}
+    /** @param ScriptSetting|null $doTakeOverScript Script setting to be executed when executing account takeover */
 	public function setDoTakeOverScript(?ScriptSetting $doTakeOverScript) {
 		$this->doTakeOverScript = $doTakeOverScript;
 	}
+    /**
+     * @param ScriptSetting|null $doTakeOverScript Script setting to be executed when executing account takeover
+     * @return UpdateNamespaceRequest
+     */
 	public function withDoTakeOverScript(?ScriptSetting $doTakeOverScript): UpdateNamespaceRequest {
 		$this->doTakeOverScript = $doTakeOverScript;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to be executed when adding Account Ban Status */
 	public function getBanScript(): ?ScriptSetting {
 		return $this->banScript;
 	}
+    /** @param ScriptSetting|null $banScript Script setting to be executed when adding Account Ban Status */
 	public function setBanScript(?ScriptSetting $banScript) {
 		$this->banScript = $banScript;
 	}
+    /**
+     * @param ScriptSetting|null $banScript Script setting to be executed when adding Account Ban Status
+     * @return UpdateNamespaceRequest
+     */
 	public function withBanScript(?ScriptSetting $banScript): UpdateNamespaceRequest {
 		$this->banScript = $banScript;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to be executed when removing Account Ban Status */
 	public function getUnBanScript(): ?ScriptSetting {
 		return $this->unBanScript;
 	}
+    /** @param ScriptSetting|null $unBanScript Script setting to be executed when removing Account Ban Status */
 	public function setUnBanScript(?ScriptSetting $unBanScript) {
 		$this->unBanScript = $unBanScript;
 	}
+    /**
+     * @param ScriptSetting|null $unBanScript Script setting to be executed when removing Account Ban Status
+     * @return UpdateNamespaceRequest
+     */
 	public function withUnBanScript(?ScriptSetting $unBanScript): UpdateNamespaceRequest {
 		$this->unBanScript = $unBanScript;
 		return $this;
 	}
+    /** @return LogSetting|null Log Output Setting */
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
+    /** @param LogSetting|null $logSetting Log Output Setting */
 	public function setLogSetting(?LogSetting $logSetting) {
 		$this->logSetting = $logSetting;
 	}
+    /**
+     * @param LogSetting|null $logSetting Log Output Setting
+     * @return UpdateNamespaceRequest
+     */
 	public function withLogSetting(?LogSetting $logSetting): UpdateNamespaceRequest {
 		$this->logSetting = $logSetting;
 		return $this;

@@ -28,18 +28,29 @@ use Gs2\Money2\Model\WithdrawEvent;
 use Gs2\Money2\Model\RefundEvent;
 use Gs2\Money2\Model\Event;
 
+/**
+ * Result of verifyReceiptByUserId: Mark a receipt as used by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#verifyreceiptbyuserid
+ */
 class VerifyReceiptByUserIdResult implements IResult {
-    /** @var Event */
+    /** @var Event Event */
     private $item;
 
+    /** @return Event|null Event */
 	public function getItem(): ?Event {
 		return $this->item;
 	}
 
+    /** @param Event|null $item Event */
 	public function setItem(?Event $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Event|null $item Event
+     * @return VerifyReceiptByUserIdResult
+     */
 	public function withItem(?Event $item): VerifyReceiptByUserIdResult {
 		$this->item = $item;
 		return $this;

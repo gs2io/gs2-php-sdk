@@ -19,18 +19,29 @@ namespace Gs2\Distributor\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of freezeMasterDataByTimestamp: Freeze master data at the specified timestamp
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#freezemasterdatabytimestamp
+ */
 class FreezeMasterDataByTimestampResult implements IResult {
-    /** @var string */
+    /** @var string Context recording the time at which master data is fixed */
     private $newContextStack;
 
+    /** @return string|null Context recording the time at which master data is fixed */
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
+    /** @param string|null $newContextStack Context recording the time at which master data is fixed */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
+    /**
+     * @param string|null $newContextStack Context recording the time at which master data is fixed
+     * @return FreezeMasterDataByTimestampResult
+     */
 	public function withNewContextStack(?string $newContextStack): FreezeMasterDataByTimestampResult {
 		$this->newContextStack = $newContextStack;
 		return $this;

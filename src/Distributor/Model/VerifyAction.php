@@ -20,31 +20,48 @@ namespace Gs2\Distributor\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Verify Action
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#verifyaction
+ */
 class VerifyAction implements IModel {
 	/**
-     * @var string
+     * @var string Type of Verify Action
 	 */
 	private $action;
 	/**
-     * @var string
+     * @var string JSON string of the request used when executing the action
 	 */
 	private $request;
+    /** @return string|null Type of Verify Action */
 	public function getAction(): ?string {
 		return $this->action;
 	}
+    /** @param string|null $action Type of Verify Action */
 	public function setAction(?string $action) {
 		$this->action = $action;
 	}
+    /**
+     * @param string|null $action Type of Verify Action
+     * @return VerifyAction
+     */
 	public function withAction(?string $action): VerifyAction {
 		$this->action = $action;
 		return $this;
 	}
+    /** @return string|null JSON string of the request used when executing the action */
 	public function getRequest(): ?string {
 		return $this->request;
 	}
+    /** @param string|null $request JSON string of the request used when executing the action */
 	public function setRequest(?string $request) {
 		$this->request = $request;
 	}
+    /**
+     * @param string|null $request JSON string of the request used when executing the action
+     * @return VerifyAction
+     */
 	public function withRequest(?string $request): VerifyAction {
 		$this->request = $request;
 		return $this;

@@ -20,18 +20,29 @@ namespace Gs2\Guild\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Guild\Model\JoinedGuild;
 
+/**
+ * Result of getJoinedGuildByUserId: Get Joining Guild by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/guild/sdk/#getjoinedguildbyuserid
+ */
 class GetJoinedGuildByUserIdResult implements IResult {
-    /** @var JoinedGuild */
+    /** @var JoinedGuild Joining guild */
     private $item;
 
+    /** @return JoinedGuild|null Joining guild */
 	public function getItem(): ?JoinedGuild {
 		return $this->item;
 	}
 
+    /** @param JoinedGuild|null $item Joining guild */
 	public function setItem(?JoinedGuild $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param JoinedGuild|null $item Joining guild
+     * @return GetJoinedGuildByUserIdResult
+     */
 	public function withItem(?JoinedGuild $item): GetJoinedGuildByUserIdResult {
 		$this->item = $item;
 		return $this;

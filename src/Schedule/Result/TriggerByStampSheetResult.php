@@ -20,18 +20,29 @@ namespace Gs2\Schedule\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Schedule\Model\Trigger;
 
+/**
+ * Result of triggerByStampSheet: Execute trigger as acquire action
+ *
+ * @see https://docs.gs2.io/api_reference/schedule/stamp_sheet/#gs2scheduletriggerbyuserid
+ */
 class TriggerByStampSheetResult implements IResult {
-    /** @var Trigger */
+    /** @var Trigger Pulled Trigger */
     private $item;
 
+    /** @return Trigger|null Pulled Trigger */
 	public function getItem(): ?Trigger {
 		return $this->item;
 	}
 
+    /** @param Trigger|null $item Pulled Trigger */
 	public function setItem(?Trigger $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Trigger|null $item Pulled Trigger
+     * @return TriggerByStampSheetResult
+     */
 	public function withItem(?Trigger $item): TriggerByStampSheetResult {
 		$this->item = $item;
 		return $this;

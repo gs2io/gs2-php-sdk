@@ -20,18 +20,29 @@ namespace Gs2\Datastore\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Datastore\Model\DataObjectHistory;
 
+/**
+ * Result of getDataObjectHistory: Get Data Object History
+ *
+ * @see https://docs.gs2.io/api_reference/datastore/sdk/#getdataobjecthistory
+ */
 class GetDataObjectHistoryResult implements IResult {
-    /** @var DataObjectHistory */
+    /** @var DataObjectHistory Data Object History */
     private $item;
 
+    /** @return DataObjectHistory|null Data Object History */
 	public function getItem(): ?DataObjectHistory {
 		return $this->item;
 	}
 
+    /** @param DataObjectHistory|null $item Data Object History */
 	public function setItem(?DataObjectHistory $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param DataObjectHistory|null $item Data Object History
+     * @return GetDataObjectHistoryResult
+     */
 	public function withItem(?DataObjectHistory $item): GetDataObjectHistoryResult {
 		$this->item = $item;
 		return $this;

@@ -22,18 +22,29 @@ use Gs2\Lottery\Model\AcquireAction;
 use Gs2\Lottery\Model\BoxItem;
 use Gs2\Lottery\Model\BoxItems;
 
+/**
+ * Result of getBoxByUserId: Get Box by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/lottery/sdk/#getboxbyuserid
+ */
 class GetBoxByUserIdResult implements IResult {
-    /** @var BoxItems */
+    /** @var BoxItems Box state including prizes and their remaining quantities */
     private $item;
 
+    /** @return BoxItems|null Box state including prizes and their remaining quantities */
 	public function getItem(): ?BoxItems {
 		return $this->item;
 	}
 
+    /** @param BoxItems|null $item Box state including prizes and their remaining quantities */
 	public function setItem(?BoxItems $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param BoxItems|null $item Box state including prizes and their remaining quantities
+     * @return GetBoxByUserIdResult
+     */
 	public function withItem(?BoxItems $item): GetBoxByUserIdResult {
 		$this->item = $item;
 		return $this;

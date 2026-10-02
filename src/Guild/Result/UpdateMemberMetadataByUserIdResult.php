@@ -22,18 +22,29 @@ use Gs2\Guild\Model\RoleModel;
 use Gs2\Guild\Model\Member;
 use Gs2\Guild\Model\Guild;
 
+/**
+ * Result of updateMemberMetadataByUserId: Update member metadata by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/guild/sdk/#updatemembermetadatabyuserid
+ */
 class UpdateMemberMetadataByUserIdResult implements IResult {
-    /** @var Guild */
+    /** @var Guild Guild updated */
     private $item;
 
+    /** @return Guild|null Guild updated */
 	public function getItem(): ?Guild {
 		return $this->item;
 	}
 
+    /** @param Guild|null $item Guild updated */
 	public function setItem(?Guild $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Guild|null $item Guild updated
+     * @return UpdateMemberMetadataByUserIdResult
+     */
 	public function withItem(?Guild $item): UpdateMemberMetadataByUserIdResult {
 		$this->item = $item;
 		return $this;

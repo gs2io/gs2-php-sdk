@@ -20,129 +20,188 @@ namespace Gs2\Distributor\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Distributor Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#distributormodelmaster
+ */
 class DistributorModelMaster implements IModel {
 	/**
-     * @var string
+     * @var string Distributor Model Master GRN
 	 */
 	private $distributorModelId;
 	/**
-     * @var string
+     * @var string Distributor Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Description
 	 */
 	private $description;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var string
+     * @var string GS2-Inbox Namespace GRN to transfer overflow resources
 	 */
 	private $inboxNamespaceId;
 	/**
-     * @var array
+     * @var array Whitelist of target resource GRN prefixes that can be processed through GS2-Distributor
 	 */
 	private $whiteListTargetIds;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Distributor Model Master GRN */
 	public function getDistributorModelId(): ?string {
 		return $this->distributorModelId;
 	}
+    /** @param string|null $distributorModelId Distributor Model Master GRN */
 	public function setDistributorModelId(?string $distributorModelId) {
 		$this->distributorModelId = $distributorModelId;
 	}
+    /**
+     * @param string|null $distributorModelId Distributor Model Master GRN
+     * @return DistributorModelMaster
+     */
 	public function withDistributorModelId(?string $distributorModelId): DistributorModelMaster {
 		$this->distributorModelId = $distributorModelId;
 		return $this;
 	}
+    /** @return string|null Distributor Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Distributor Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Distributor Model name
+     * @return DistributorModelMaster
+     */
 	public function withName(?string $name): DistributorModelMaster {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return DistributorModelMaster
+     */
 	public function withDescription(?string $description): DistributorModelMaster {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return DistributorModelMaster
+     */
 	public function withMetadata(?string $metadata): DistributorModelMaster {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return string|null GS2-Inbox Namespace GRN to transfer overflow resources */
 	public function getInboxNamespaceId(): ?string {
 		return $this->inboxNamespaceId;
 	}
+    /** @param string|null $inboxNamespaceId GS2-Inbox Namespace GRN to transfer overflow resources */
 	public function setInboxNamespaceId(?string $inboxNamespaceId) {
 		$this->inboxNamespaceId = $inboxNamespaceId;
 	}
+    /**
+     * @param string|null $inboxNamespaceId GS2-Inbox Namespace GRN to transfer overflow resources
+     * @return DistributorModelMaster
+     */
 	public function withInboxNamespaceId(?string $inboxNamespaceId): DistributorModelMaster {
 		$this->inboxNamespaceId = $inboxNamespaceId;
 		return $this;
 	}
+    /** @return array|null Whitelist of target resource GRN prefixes that can be processed through GS2-Distributor */
 	public function getWhiteListTargetIds(): ?array {
 		return $this->whiteListTargetIds;
 	}
+    /** @param array|null $whiteListTargetIds Whitelist of target resource GRN prefixes that can be processed through GS2-Distributor */
 	public function setWhiteListTargetIds(?array $whiteListTargetIds) {
 		$this->whiteListTargetIds = $whiteListTargetIds;
 	}
+    /**
+     * @param array|null $whiteListTargetIds Whitelist of target resource GRN prefixes that can be processed through GS2-Distributor
+     * @return DistributorModelMaster
+     */
 	public function withWhiteListTargetIds(?array $whiteListTargetIds): DistributorModelMaster {
 		$this->whiteListTargetIds = $whiteListTargetIds;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return DistributorModelMaster
+     */
 	public function withCreatedAt(?int $createdAt): DistributorModelMaster {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return DistributorModelMaster
+     */
 	public function withUpdatedAt(?int $updatedAt): DistributorModelMaster {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return DistributorModelMaster
+     */
 	public function withRevision(?int $revision): DistributorModelMaster {
 		$this->revision = $revision;
 		return $this;

@@ -20,18 +20,29 @@ namespace Gs2\Identifier\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Identifier\Model\User;
 
+/**
+ * Result of createUser: Create User
+ *
+ * @see https://docs.gs2.io/api_reference/identifier/sdk/#createuser
+ */
 class CreateUserResult implements IResult {
-    /** @var User */
+    /** @var User Created User */
     private $item;
 
+    /** @return User|null Created User */
 	public function getItem(): ?User {
 		return $this->item;
 	}
 
+    /** @param User|null $item Created User */
 	public function setItem(?User $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param User|null $item Created User
+     * @return CreateUserResult
+     */
 	public function withItem(?User $item): CreateUserResult {
 		$this->item = $item;
 		return $this;

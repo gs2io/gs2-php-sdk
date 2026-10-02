@@ -20,18 +20,29 @@ namespace Gs2\SerialKey\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\SerialKey\Model\CampaignModelMaster;
 
+/**
+ * Result of createCampaignModelMaster: Create Campaign Model Master Data
+ *
+ * @see https://docs.gs2.io/api_reference/serial_key/sdk/#createcampaignmodelmaster
+ */
 class CreateCampaignModelMasterResult implements IResult {
-    /** @var CampaignModelMaster */
+    /** @var CampaignModelMaster Created Campaign Model Master Data */
     private $item;
 
+    /** @return CampaignModelMaster|null Created Campaign Model Master Data */
 	public function getItem(): ?CampaignModelMaster {
 		return $this->item;
 	}
 
+    /** @param CampaignModelMaster|null $item Created Campaign Model Master Data */
 	public function setItem(?CampaignModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CampaignModelMaster|null $item Created Campaign Model Master Data
+     * @return CreateCampaignModelMasterResult
+     */
 	public function withItem(?CampaignModelMaster $item): CreateCampaignModelMasterResult {
 		$this->item = $item;
 		return $this;

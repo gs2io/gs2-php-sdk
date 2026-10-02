@@ -3915,25 +3915,22 @@ class RandomShowcaseBuyByUserIdTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 Showcase API クライアント
+ * GS2-Showcase API client
  *
- * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/showcase/sdk/
  */
 class Gs2ShowcaseRestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#describenamespaces
      */
     public function describeNamespacesAsync(
             DescribeNamespacesRequest $request
@@ -3947,8 +3944,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#describenamespaces
      */
     public function describeNamespaces (
             DescribeNamespacesRequest $request
@@ -3959,8 +3959,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#createnamespace
      */
     public function createNamespaceAsync(
             CreateNamespaceRequest $request
@@ -3974,8 +3977,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#createnamespace
      */
     public function createNamespace (
             CreateNamespaceRequest $request
@@ -3986,8 +3992,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#getnamespacestatus
      */
     public function getNamespaceStatusAsync(
             GetNamespaceStatusRequest $request
@@ -4001,8 +4010,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#getnamespacestatus
      */
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
@@ -4013,8 +4025,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#getnamespace
      */
     public function getNamespaceAsync(
             GetNamespaceRequest $request
@@ -4028,8 +4043,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#getnamespace
      */
     public function getNamespace (
             GetNamespaceRequest $request
@@ -4040,8 +4058,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#updatenamespace
      */
     public function updateNamespaceAsync(
             UpdateNamespaceRequest $request
@@ -4055,8 +4076,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#updatenamespace
      */
     public function updateNamespace (
             UpdateNamespaceRequest $request
@@ -4067,8 +4091,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#deletenamespace
      */
     public function deleteNamespaceAsync(
             DeleteNamespaceRequest $request
@@ -4082,8 +4109,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#deletenamespace
      */
     public function deleteNamespace (
             DeleteNamespaceRequest $request
@@ -4094,8 +4124,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#getserviceversion
      */
     public function getServiceVersionAsync(
             GetServiceVersionRequest $request
@@ -4109,8 +4142,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return GetServiceVersionResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#getserviceversion
      */
     public function getServiceVersion (
             GetServiceVersionRequest $request
@@ -4121,8 +4157,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserIdAsync(
             DumpUserDataByUserIdRequest $request
@@ -4136,8 +4175,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return DumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserId (
             DumpUserDataByUserIdRequest $request
@@ -4148,8 +4190,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserIdAsync(
             CheckDumpUserDataByUserIdRequest $request
@@ -4163,8 +4208,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return CheckDumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserId (
             CheckDumpUserDataByUserIdRequest $request
@@ -4175,8 +4223,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserIdAsync(
             CleanUserDataByUserIdRequest $request
@@ -4190,8 +4241,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return CleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserId (
             CleanUserDataByUserIdRequest $request
@@ -4202,8 +4256,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the clean of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserIdAsync(
             CheckCleanUserDataByUserIdRequest $request
@@ -4217,8 +4274,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the clean of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return CheckCleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserId (
             CheckCleanUserDataByUserIdRequest $request
@@ -4229,8 +4289,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserIdAsync(
             PrepareImportUserDataByUserIdRequest $request
@@ -4244,8 +4307,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PrepareImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserId (
             PrepareImportUserDataByUserIdRequest $request
@@ -4256,8 +4322,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserIdAsync(
             ImportUserDataByUserIdRequest $request
@@ -4271,8 +4340,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return ImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserId (
             ImportUserDataByUserIdRequest $request
@@ -4283,8 +4355,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserIdAsync(
             CheckImportUserDataByUserIdRequest $request
@@ -4298,8 +4373,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return CheckImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserId (
             CheckImportUserDataByUserIdRequest $request
@@ -4310,8 +4388,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Sales Item Masters
+     *
      * @param DescribeSalesItemMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#describesalesitemmasters
      */
     public function describeSalesItemMastersAsync(
             DescribeSalesItemMastersRequest $request
@@ -4325,8 +4406,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Sales Item Masters
+     *
      * @param DescribeSalesItemMastersRequest $request
      * @return DescribeSalesItemMastersResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#describesalesitemmasters
      */
     public function describeSalesItemMasters (
             DescribeSalesItemMastersRequest $request
@@ -4337,8 +4421,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Sales Item Master
+     *
      * @param CreateSalesItemMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#createsalesitemmaster
      */
     public function createSalesItemMasterAsync(
             CreateSalesItemMasterRequest $request
@@ -4352,8 +4439,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Sales Item Master
+     *
      * @param CreateSalesItemMasterRequest $request
      * @return CreateSalesItemMasterResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#createsalesitemmaster
      */
     public function createSalesItemMaster (
             CreateSalesItemMasterRequest $request
@@ -4364,8 +4454,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Sales Item Master
+     *
      * @param GetSalesItemMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#getsalesitemmaster
      */
     public function getSalesItemMasterAsync(
             GetSalesItemMasterRequest $request
@@ -4379,8 +4472,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Sales Item Master
+     *
      * @param GetSalesItemMasterRequest $request
      * @return GetSalesItemMasterResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#getsalesitemmaster
      */
     public function getSalesItemMaster (
             GetSalesItemMasterRequest $request
@@ -4391,8 +4487,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Sales Item Master
+     *
      * @param UpdateSalesItemMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#updatesalesitemmaster
      */
     public function updateSalesItemMasterAsync(
             UpdateSalesItemMasterRequest $request
@@ -4406,8 +4505,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Sales Item Master
+     *
      * @param UpdateSalesItemMasterRequest $request
      * @return UpdateSalesItemMasterResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#updatesalesitemmaster
      */
     public function updateSalesItemMaster (
             UpdateSalesItemMasterRequest $request
@@ -4418,8 +4520,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Sales Item Master
+     *
      * @param DeleteSalesItemMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#deletesalesitemmaster
      */
     public function deleteSalesItemMasterAsync(
             DeleteSalesItemMasterRequest $request
@@ -4433,8 +4538,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Sales Item Master
+     *
      * @param DeleteSalesItemMasterRequest $request
      * @return DeleteSalesItemMasterResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#deletesalesitemmaster
      */
     public function deleteSalesItemMaster (
             DeleteSalesItemMasterRequest $request
@@ -4445,8 +4553,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Sales Item Group Masters
+     *
      * @param DescribeSalesItemGroupMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#describesalesitemgroupmasters
      */
     public function describeSalesItemGroupMastersAsync(
             DescribeSalesItemGroupMastersRequest $request
@@ -4460,8 +4571,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Sales Item Group Masters
+     *
      * @param DescribeSalesItemGroupMastersRequest $request
      * @return DescribeSalesItemGroupMastersResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#describesalesitemgroupmasters
      */
     public function describeSalesItemGroupMasters (
             DescribeSalesItemGroupMastersRequest $request
@@ -4472,8 +4586,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Sales Item Group Master
+     *
      * @param CreateSalesItemGroupMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#createsalesitemgroupmaster
      */
     public function createSalesItemGroupMasterAsync(
             CreateSalesItemGroupMasterRequest $request
@@ -4487,8 +4604,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Sales Item Group Master
+     *
      * @param CreateSalesItemGroupMasterRequest $request
      * @return CreateSalesItemGroupMasterResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#createsalesitemgroupmaster
      */
     public function createSalesItemGroupMaster (
             CreateSalesItemGroupMasterRequest $request
@@ -4499,8 +4619,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Sales Item Group Master
+     *
      * @param GetSalesItemGroupMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#getsalesitemgroupmaster
      */
     public function getSalesItemGroupMasterAsync(
             GetSalesItemGroupMasterRequest $request
@@ -4514,8 +4637,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Sales Item Group Master
+     *
      * @param GetSalesItemGroupMasterRequest $request
      * @return GetSalesItemGroupMasterResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#getsalesitemgroupmaster
      */
     public function getSalesItemGroupMaster (
             GetSalesItemGroupMasterRequest $request
@@ -4526,8 +4652,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Sales Item Group Master
+     *
      * @param UpdateSalesItemGroupMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#updatesalesitemgroupmaster
      */
     public function updateSalesItemGroupMasterAsync(
             UpdateSalesItemGroupMasterRequest $request
@@ -4541,8 +4670,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Sales Item Group Master
+     *
      * @param UpdateSalesItemGroupMasterRequest $request
      * @return UpdateSalesItemGroupMasterResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#updatesalesitemgroupmaster
      */
     public function updateSalesItemGroupMaster (
             UpdateSalesItemGroupMasterRequest $request
@@ -4553,8 +4685,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Sales Item Group Master
+     *
      * @param DeleteSalesItemGroupMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#deletesalesitemgroupmaster
      */
     public function deleteSalesItemGroupMasterAsync(
             DeleteSalesItemGroupMasterRequest $request
@@ -4568,8 +4703,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Sales Item Group Master
+     *
      * @param DeleteSalesItemGroupMasterRequest $request
      * @return DeleteSalesItemGroupMasterResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#deletesalesitemgroupmaster
      */
     public function deleteSalesItemGroupMaster (
             DeleteSalesItemGroupMasterRequest $request
@@ -4580,8 +4718,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Showcase Masters
+     *
      * @param DescribeShowcaseMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#describeshowcasemasters
      */
     public function describeShowcaseMastersAsync(
             DescribeShowcaseMastersRequest $request
@@ -4595,8 +4736,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Showcase Masters
+     *
      * @param DescribeShowcaseMastersRequest $request
      * @return DescribeShowcaseMastersResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#describeshowcasemasters
      */
     public function describeShowcaseMasters (
             DescribeShowcaseMastersRequest $request
@@ -4607,8 +4751,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Showcase Master
+     *
      * @param CreateShowcaseMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#createshowcasemaster
      */
     public function createShowcaseMasterAsync(
             CreateShowcaseMasterRequest $request
@@ -4622,8 +4769,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Showcase Master
+     *
      * @param CreateShowcaseMasterRequest $request
      * @return CreateShowcaseMasterResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#createshowcasemaster
      */
     public function createShowcaseMaster (
             CreateShowcaseMasterRequest $request
@@ -4634,8 +4784,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Showcase Master
+     *
      * @param GetShowcaseMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#getshowcasemaster
      */
     public function getShowcaseMasterAsync(
             GetShowcaseMasterRequest $request
@@ -4649,8 +4802,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Showcase Master
+     *
      * @param GetShowcaseMasterRequest $request
      * @return GetShowcaseMasterResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#getshowcasemaster
      */
     public function getShowcaseMaster (
             GetShowcaseMasterRequest $request
@@ -4661,8 +4817,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Showcase Master
+     *
      * @param UpdateShowcaseMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#updateshowcasemaster
      */
     public function updateShowcaseMasterAsync(
             UpdateShowcaseMasterRequest $request
@@ -4676,8 +4835,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Showcase Master
+     *
      * @param UpdateShowcaseMasterRequest $request
      * @return UpdateShowcaseMasterResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#updateshowcasemaster
      */
     public function updateShowcaseMaster (
             UpdateShowcaseMasterRequest $request
@@ -4688,8 +4850,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Showcase Master
+     *
      * @param DeleteShowcaseMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#deleteshowcasemaster
      */
     public function deleteShowcaseMasterAsync(
             DeleteShowcaseMasterRequest $request
@@ -4703,8 +4868,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Showcase Master
+     *
      * @param DeleteShowcaseMasterRequest $request
      * @return DeleteShowcaseMasterResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#deleteshowcasemaster
      */
     public function deleteShowcaseMaster (
             DeleteShowcaseMasterRequest $request
@@ -4715,8 +4883,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Showcase Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#exportmaster
      */
     public function exportMasterAsync(
             ExportMasterRequest $request
@@ -4730,8 +4901,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Showcase Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return ExportMasterResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#exportmaster
      */
     public function exportMaster (
             ExportMasterRequest $request
@@ -4742,8 +4916,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Showcase master data
+     *
      * @param GetCurrentShowcaseMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#getcurrentshowcasemaster
      */
     public function getCurrentShowcaseMasterAsync(
             GetCurrentShowcaseMasterRequest $request
@@ -4757,8 +4934,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Showcase master data
+     *
      * @param GetCurrentShowcaseMasterRequest $request
      * @return GetCurrentShowcaseMasterResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#getcurrentshowcasemaster
      */
     public function getCurrentShowcaseMaster (
             GetCurrentShowcaseMasterRequest $request
@@ -4769,8 +4949,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Showcase master data (3-phase version)
+     *
      * @param PreUpdateCurrentShowcaseMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#preupdatecurrentshowcasemaster
      */
     public function preUpdateCurrentShowcaseMasterAsync(
             PreUpdateCurrentShowcaseMasterRequest $request
@@ -4784,8 +4967,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Showcase master data (3-phase version)
+     *
      * @param PreUpdateCurrentShowcaseMasterRequest $request
      * @return PreUpdateCurrentShowcaseMasterResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#preupdatecurrentshowcasemaster
      */
     public function preUpdateCurrentShowcaseMaster (
             PreUpdateCurrentShowcaseMasterRequest $request
@@ -4796,8 +4982,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Showcase master data
+     *
      * @param UpdateCurrentShowcaseMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#updatecurrentshowcasemaster
      */
     public function updateCurrentShowcaseMasterAsync(
             UpdateCurrentShowcaseMasterRequest $request
@@ -4811,8 +5000,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Showcase master data
+     *
      * @param UpdateCurrentShowcaseMasterRequest $request
      * @return UpdateCurrentShowcaseMasterResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#updatecurrentshowcasemaster
      */
     public function updateCurrentShowcaseMaster (
             UpdateCurrentShowcaseMasterRequest $request
@@ -4823,8 +5015,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Showcase master data from GitHub
+     *
      * @param UpdateCurrentShowcaseMasterFromGitHubRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#updatecurrentshowcasemasterfromgithub
      */
     public function updateCurrentShowcaseMasterFromGitHubAsync(
             UpdateCurrentShowcaseMasterFromGitHubRequest $request
@@ -4838,8 +5033,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Showcase master data from GitHub
+     *
      * @param UpdateCurrentShowcaseMasterFromGitHubRequest $request
      * @return UpdateCurrentShowcaseMasterFromGitHubResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#updatecurrentshowcasemasterfromgithub
      */
     public function updateCurrentShowcaseMasterFromGitHub (
             UpdateCurrentShowcaseMasterFromGitHubRequest $request
@@ -4850,8 +5048,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Showcases
+     *
      * @param DescribeShowcasesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#describeshowcases
      */
     public function describeShowcasesAsync(
             DescribeShowcasesRequest $request
@@ -4865,8 +5066,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Showcases
+     *
      * @param DescribeShowcasesRequest $request
      * @return DescribeShowcasesResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#describeshowcases
      */
     public function describeShowcases (
             DescribeShowcasesRequest $request
@@ -4877,8 +5081,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Showcases by User ID
+     *
      * @param DescribeShowcasesByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#describeshowcasesbyuserid
      */
     public function describeShowcasesByUserIdAsync(
             DescribeShowcasesByUserIdRequest $request
@@ -4892,8 +5099,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Showcases by User ID
+     *
      * @param DescribeShowcasesByUserIdRequest $request
      * @return DescribeShowcasesByUserIdResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#describeshowcasesbyuserid
      */
     public function describeShowcasesByUserId (
             DescribeShowcasesByUserIdRequest $request
@@ -4904,8 +5114,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Showcase
+     *
      * @param GetShowcaseRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#getshowcase
      */
     public function getShowcaseAsync(
             GetShowcaseRequest $request
@@ -4919,8 +5132,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Showcase
+     *
      * @param GetShowcaseRequest $request
      * @return GetShowcaseResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#getshowcase
      */
     public function getShowcase (
             GetShowcaseRequest $request
@@ -4931,8 +5147,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Showcase by User ID
+     *
      * @param GetShowcaseByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#getshowcasebyuserid
      */
     public function getShowcaseByUserIdAsync(
             GetShowcaseByUserIdRequest $request
@@ -4946,8 +5165,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Showcase by User ID
+     *
      * @param GetShowcaseByUserIdRequest $request
      * @return GetShowcaseByUserIdResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#getshowcasebyuserid
      */
     public function getShowcaseByUserId (
             GetShowcaseByUserIdRequest $request
@@ -4958,8 +5180,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Buy Sales Item
+     *
      * @param BuyRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#buy
      */
     public function buyAsync(
             BuyRequest $request
@@ -4973,8 +5198,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Buy Sales Item
+     *
      * @param BuyRequest $request
      * @return BuyResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#buy
      */
     public function buy (
             BuyRequest $request
@@ -4985,8 +5213,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Buy Sales Item by User ID
+     *
      * @param BuyByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#buybyuserid
      */
     public function buyByUserIdAsync(
             BuyByUserIdRequest $request
@@ -5000,8 +5231,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Buy Sales Item by User ID
+     *
      * @param BuyByUserIdRequest $request
      * @return BuyByUserIdResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#buybyuserid
      */
     public function buyByUserId (
             BuyByUserIdRequest $request
@@ -5012,8 +5246,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Random Showcase Masters
+     *
      * @param DescribeRandomShowcaseMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#describerandomshowcasemasters
      */
     public function describeRandomShowcaseMastersAsync(
             DescribeRandomShowcaseMastersRequest $request
@@ -5027,8 +5264,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Random Showcase Masters
+     *
      * @param DescribeRandomShowcaseMastersRequest $request
      * @return DescribeRandomShowcaseMastersResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#describerandomshowcasemasters
      */
     public function describeRandomShowcaseMasters (
             DescribeRandomShowcaseMastersRequest $request
@@ -5039,8 +5279,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Random Showcase Master
+     *
      * @param CreateRandomShowcaseMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#createrandomshowcasemaster
      */
     public function createRandomShowcaseMasterAsync(
             CreateRandomShowcaseMasterRequest $request
@@ -5054,8 +5297,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Random Showcase Master
+     *
      * @param CreateRandomShowcaseMasterRequest $request
      * @return CreateRandomShowcaseMasterResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#createrandomshowcasemaster
      */
     public function createRandomShowcaseMaster (
             CreateRandomShowcaseMasterRequest $request
@@ -5066,8 +5312,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Random Showcase Master
+     *
      * @param GetRandomShowcaseMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#getrandomshowcasemaster
      */
     public function getRandomShowcaseMasterAsync(
             GetRandomShowcaseMasterRequest $request
@@ -5081,8 +5330,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Random Showcase Master
+     *
      * @param GetRandomShowcaseMasterRequest $request
      * @return GetRandomShowcaseMasterResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#getrandomshowcasemaster
      */
     public function getRandomShowcaseMaster (
             GetRandomShowcaseMasterRequest $request
@@ -5093,8 +5345,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Random Showcase Master
+     *
      * @param UpdateRandomShowcaseMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#updaterandomshowcasemaster
      */
     public function updateRandomShowcaseMasterAsync(
             UpdateRandomShowcaseMasterRequest $request
@@ -5108,8 +5363,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Random Showcase Master
+     *
      * @param UpdateRandomShowcaseMasterRequest $request
      * @return UpdateRandomShowcaseMasterResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#updaterandomshowcasemaster
      */
     public function updateRandomShowcaseMaster (
             UpdateRandomShowcaseMasterRequest $request
@@ -5120,8 +5378,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Random Showcase Master
+     *
      * @param DeleteRandomShowcaseMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#deleterandomshowcasemaster
      */
     public function deleteRandomShowcaseMasterAsync(
             DeleteRandomShowcaseMasterRequest $request
@@ -5135,8 +5396,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Random Showcase Master
+     *
      * @param DeleteRandomShowcaseMasterRequest $request
      * @return DeleteRandomShowcaseMasterResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#deleterandomshowcasemaster
      */
     public function deleteRandomShowcaseMaster (
             DeleteRandomShowcaseMasterRequest $request
@@ -5147,8 +5411,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Increment the number of times a Random Displayed Item has been purchased
+     *
      * @param IncrementPurchaseCountRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#incrementpurchasecount
      */
     public function incrementPurchaseCountAsync(
             IncrementPurchaseCountRequest $request
@@ -5162,8 +5429,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Increment the number of times a Random Displayed Item has been purchased
+     *
      * @param IncrementPurchaseCountRequest $request
      * @return IncrementPurchaseCountResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#incrementpurchasecount
      */
     public function incrementPurchaseCount (
             IncrementPurchaseCountRequest $request
@@ -5174,8 +5444,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Increment the number of times a Random Displayed Item has been purchased by specifying the user ID
+     *
      * @param IncrementPurchaseCountByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#incrementpurchasecountbyuserid
      */
     public function incrementPurchaseCountByUserIdAsync(
             IncrementPurchaseCountByUserIdRequest $request
@@ -5189,8 +5462,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Increment the number of times a Random Displayed Item has been purchased by specifying the user ID
+     *
      * @param IncrementPurchaseCountByUserIdRequest $request
      * @return IncrementPurchaseCountByUserIdResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#incrementpurchasecountbyuserid
      */
     public function incrementPurchaseCountByUserId (
             IncrementPurchaseCountByUserIdRequest $request
@@ -5201,8 +5477,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Decrement the number of times a Random Displayed Item has been purchased by specifying the user ID
+     *
      * @param DecrementPurchaseCountByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#decrementpurchasecountbyuserid
      */
     public function decrementPurchaseCountByUserIdAsync(
             DecrementPurchaseCountByUserIdRequest $request
@@ -5216,8 +5495,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Decrement the number of times a Random Displayed Item has been purchased by specifying the user ID
+     *
      * @param DecrementPurchaseCountByUserIdRequest $request
      * @return DecrementPurchaseCountByUserIdResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#decrementpurchasecountbyuserid
      */
     public function decrementPurchaseCountByUserId (
             DecrementPurchaseCountByUserIdRequest $request
@@ -5228,8 +5510,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the addition of the number of purchases as a consume action
+     *
      * @param IncrementPurchaseCountByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/stamp_sheet/#gs2showcaseincrementpurchasecountbyuserid
      */
     public function incrementPurchaseCountByStampTaskAsync(
             IncrementPurchaseCountByStampTaskRequest $request
@@ -5243,8 +5528,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the addition of the number of purchases as a consume action
+     *
      * @param IncrementPurchaseCountByStampTaskRequest $request
      * @return IncrementPurchaseCountByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/showcase/stamp_sheet/#gs2showcaseincrementpurchasecountbyuserid
      */
     public function incrementPurchaseCountByStampTask (
             IncrementPurchaseCountByStampTaskRequest $request
@@ -5255,8 +5543,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the subtraction of the number of purchases as an acquire action
+     *
      * @param DecrementPurchaseCountByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/stamp_sheet/#gs2showcasedecrementpurchasecountbyuserid
      */
     public function decrementPurchaseCountByStampSheetAsync(
             DecrementPurchaseCountByStampSheetRequest $request
@@ -5270,8 +5561,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the subtraction of the number of purchases as an acquire action
+     *
      * @param DecrementPurchaseCountByStampSheetRequest $request
      * @return DecrementPurchaseCountByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/showcase/stamp_sheet/#gs2showcasedecrementpurchasecountbyuserid
      */
     public function decrementPurchaseCountByStampSheet (
             DecrementPurchaseCountByStampSheetRequest $request
@@ -5282,8 +5576,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Re-draw the contents of the Random Showcase by User ID
+     *
      * @param ForceReDrawByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#forceredrawbyuserid
      */
     public function forceReDrawByUserIdAsync(
             ForceReDrawByUserIdRequest $request
@@ -5297,8 +5594,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Re-draw the contents of the Random Showcase by User ID
+     *
      * @param ForceReDrawByUserIdRequest $request
      * @return ForceReDrawByUserIdResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#forceredrawbyuserid
      */
     public function forceReDrawByUserId (
             ForceReDrawByUserIdRequest $request
@@ -5309,8 +5609,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute re-drawing of the contents of the Random Showcase as an acquire action
+     *
      * @param ForceReDrawByUserIdByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/stamp_sheet/#gs2showcaseforceredrawbyuserid
      */
     public function forceReDrawByUserIdByStampSheetAsync(
             ForceReDrawByUserIdByStampSheetRequest $request
@@ -5324,8 +5627,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute re-drawing of the contents of the Random Showcase as an acquire action
+     *
      * @param ForceReDrawByUserIdByStampSheetRequest $request
      * @return ForceReDrawByUserIdByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/showcase/stamp_sheet/#gs2showcaseforceredrawbyuserid
      */
     public function forceReDrawByUserIdByStampSheet (
             ForceReDrawByUserIdByStampSheetRequest $request
@@ -5336,8 +5642,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Random Displayed Items
+     *
      * @param DescribeRandomDisplayItemsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#describerandomdisplayitems
      */
     public function describeRandomDisplayItemsAsync(
             DescribeRandomDisplayItemsRequest $request
@@ -5351,8 +5660,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Random Displayed Items
+     *
      * @param DescribeRandomDisplayItemsRequest $request
      * @return DescribeRandomDisplayItemsResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#describerandomdisplayitems
      */
     public function describeRandomDisplayItems (
             DescribeRandomDisplayItemsRequest $request
@@ -5363,8 +5675,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Random Displayed Items on Random Showcase by User ID
+     *
      * @param DescribeRandomDisplayItemsByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#describerandomdisplayitemsbyuserid
      */
     public function describeRandomDisplayItemsByUserIdAsync(
             DescribeRandomDisplayItemsByUserIdRequest $request
@@ -5378,8 +5693,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Random Displayed Items on Random Showcase by User ID
+     *
      * @param DescribeRandomDisplayItemsByUserIdRequest $request
      * @return DescribeRandomDisplayItemsByUserIdResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#describerandomdisplayitemsbyuserid
      */
     public function describeRandomDisplayItemsByUserId (
             DescribeRandomDisplayItemsByUserIdRequest $request
@@ -5390,8 +5708,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Random Displayed Item on Random Showcase
+     *
      * @param GetRandomDisplayItemRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#getrandomdisplayitem
      */
     public function getRandomDisplayItemAsync(
             GetRandomDisplayItemRequest $request
@@ -5405,8 +5726,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Random Displayed Item on Random Showcase
+     *
      * @param GetRandomDisplayItemRequest $request
      * @return GetRandomDisplayItemResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#getrandomdisplayitem
      */
     public function getRandomDisplayItem (
             GetRandomDisplayItemRequest $request
@@ -5417,8 +5741,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Random Displayed Item on Random Showcase by User ID
+     *
      * @param GetRandomDisplayItemByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#getrandomdisplayitembyuserid
      */
     public function getRandomDisplayItemByUserIdAsync(
             GetRandomDisplayItemByUserIdRequest $request
@@ -5432,8 +5759,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Random Displayed Item on Random Showcase by User ID
+     *
      * @param GetRandomDisplayItemByUserIdRequest $request
      * @return GetRandomDisplayItemByUserIdResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#getrandomdisplayitembyuserid
      */
     public function getRandomDisplayItemByUserId (
             GetRandomDisplayItemByUserIdRequest $request
@@ -5444,8 +5774,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Purchase Random Displayed Item from Random Showcase
+     *
      * @param RandomShowcaseBuyRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#randomshowcasebuy
      */
     public function randomShowcaseBuyAsync(
             RandomShowcaseBuyRequest $request
@@ -5459,8 +5792,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Purchase Random Displayed Item from Random Showcase
+     *
      * @param RandomShowcaseBuyRequest $request
      * @return RandomShowcaseBuyResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#randomshowcasebuy
      */
     public function randomShowcaseBuy (
             RandomShowcaseBuyRequest $request
@@ -5471,8 +5807,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Purchase Random Displayed Item from Random Showcase by User ID
+     *
      * @param RandomShowcaseBuyByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#randomshowcasebuybyuserid
      */
     public function randomShowcaseBuyByUserIdAsync(
             RandomShowcaseBuyByUserIdRequest $request
@@ -5486,8 +5825,11 @@ class Gs2ShowcaseRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Purchase Random Displayed Item from Random Showcase by User ID
+     *
      * @param RandomShowcaseBuyByUserIdRequest $request
      * @return RandomShowcaseBuyByUserIdResult
+     * @see https://docs.gs2.io/api_reference/showcase/sdk/#randomshowcasebuybyuserid
      */
     public function randomShowcaseBuyByUserId (
             RandomShowcaseBuyByUserIdRequest $request

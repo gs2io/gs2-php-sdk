@@ -20,65 +20,100 @@ namespace Gs2\SkillTree\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\SkillTree\Model\Config;
 
+/**
+ * Request for restrain: Restrain a node
+ *
+ * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#restrain
+ */
 class RestrainRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Property ID */
     private $propertyId;
-    /** @var array */
+    /** @var array List of Node Model names */
     private $nodeModelNames;
-    /** @var array */
+    /** @var array Configuration values applied to transaction variables */
     private $config;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return RestrainRequest
+     */
 	public function withNamespaceName(?string $namespaceName): RestrainRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return RestrainRequest
+     */
 	public function withAccessToken(?string $accessToken): RestrainRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Property ID */
 	public function getPropertyId(): ?string {
 		return $this->propertyId;
 	}
+    /** @param string|null $propertyId Property ID */
 	public function setPropertyId(?string $propertyId) {
 		$this->propertyId = $propertyId;
 	}
+    /**
+     * @param string|null $propertyId Property ID
+     * @return RestrainRequest
+     */
 	public function withPropertyId(?string $propertyId): RestrainRequest {
 		$this->propertyId = $propertyId;
 		return $this;
 	}
+    /** @return array|null List of Node Model names */
 	public function getNodeModelNames(): ?array {
 		return $this->nodeModelNames;
 	}
+    /** @param array|null $nodeModelNames List of Node Model names */
 	public function setNodeModelNames(?array $nodeModelNames) {
 		$this->nodeModelNames = $nodeModelNames;
 	}
+    /**
+     * @param array|null $nodeModelNames List of Node Model names
+     * @return RestrainRequest
+     */
 	public function withNodeModelNames(?array $nodeModelNames): RestrainRequest {
 		$this->nodeModelNames = $nodeModelNames;
 		return $this;
 	}
+    /** @return array|null Configuration values applied to transaction variables */
 	public function getConfig(): ?array {
 		return $this->config;
 	}
+    /** @param array|null $config Configuration values applied to transaction variables */
 	public function setConfig(?array $config) {
 		$this->config = $config;
 	}
+    /**
+     * @param array|null $config Configuration values applied to transaction variables
+     * @return RestrainRequest
+     */
 	public function withConfig(?array $config): RestrainRequest {
 		$this->config = $config;
 		return $this;

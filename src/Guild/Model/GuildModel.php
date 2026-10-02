@@ -20,171 +20,248 @@ namespace Gs2\Guild\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Guild Model
+ *
+ * @see https://docs.gs2.io/api_reference/guild/sdk/#guildmodel
+ */
 class GuildModel implements IModel {
 	/**
-     * @var string
+     * @var string Guild Model GRN
 	 */
 	private $guildModelId;
 	/**
-     * @var string
+     * @var string Guild Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var int
+     * @var int Default Maximum Member Count
 	 */
 	private $defaultMaximumMemberCount;
 	/**
-     * @var int
+     * @var int Maximum Member Count
 	 */
 	private $maximumMemberCount;
 	/**
-     * @var int
+     * @var int Inactivity Period Days
 	 */
 	private $inactivityPeriodDays;
 	/**
-     * @var array
+     * @var array List of Role Models
 	 */
 	private $roles;
 	/**
-     * @var string
+     * @var string Guild Master Role Name
 	 */
 	private $guildMasterRole;
 	/**
-     * @var string
+     * @var string Default Member Role Name
 	 */
 	private $guildMemberDefaultRole;
 	/**
-     * @var int
+     * @var int Rejoin Cool Time (Minutes)
 	 */
 	private $rejoinCoolTimeMinutes;
 	/**
-     * @var int
+     * @var int Maximum Concurrent Guild Memberships
 	 */
 	private $maxConcurrentJoinGuilds;
 	/**
-     * @var int
+     * @var int Maximum Concurrent Guild Master Count
 	 */
 	private $maxConcurrentGuildMasterCount;
+    /** @return string|null Guild Model GRN */
 	public function getGuildModelId(): ?string {
 		return $this->guildModelId;
 	}
+    /** @param string|null $guildModelId Guild Model GRN */
 	public function setGuildModelId(?string $guildModelId) {
 		$this->guildModelId = $guildModelId;
 	}
+    /**
+     * @param string|null $guildModelId Guild Model GRN
+     * @return GuildModel
+     */
 	public function withGuildModelId(?string $guildModelId): GuildModel {
 		$this->guildModelId = $guildModelId;
 		return $this;
 	}
+    /** @return string|null Guild Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Guild Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Guild Model name
+     * @return GuildModel
+     */
 	public function withName(?string $name): GuildModel {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return GuildModel
+     */
 	public function withMetadata(?string $metadata): GuildModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return int|null Default Maximum Member Count */
 	public function getDefaultMaximumMemberCount(): ?int {
 		return $this->defaultMaximumMemberCount;
 	}
+    /** @param int|null $defaultMaximumMemberCount Default Maximum Member Count */
 	public function setDefaultMaximumMemberCount(?int $defaultMaximumMemberCount) {
 		$this->defaultMaximumMemberCount = $defaultMaximumMemberCount;
 	}
+    /**
+     * @param int|null $defaultMaximumMemberCount Default Maximum Member Count
+     * @return GuildModel
+     */
 	public function withDefaultMaximumMemberCount(?int $defaultMaximumMemberCount): GuildModel {
 		$this->defaultMaximumMemberCount = $defaultMaximumMemberCount;
 		return $this;
 	}
+    /** @return int|null Maximum Member Count */
 	public function getMaximumMemberCount(): ?int {
 		return $this->maximumMemberCount;
 	}
+    /** @param int|null $maximumMemberCount Maximum Member Count */
 	public function setMaximumMemberCount(?int $maximumMemberCount) {
 		$this->maximumMemberCount = $maximumMemberCount;
 	}
+    /**
+     * @param int|null $maximumMemberCount Maximum Member Count
+     * @return GuildModel
+     */
 	public function withMaximumMemberCount(?int $maximumMemberCount): GuildModel {
 		$this->maximumMemberCount = $maximumMemberCount;
 		return $this;
 	}
+    /** @return int|null Inactivity Period Days */
 	public function getInactivityPeriodDays(): ?int {
 		return $this->inactivityPeriodDays;
 	}
+    /** @param int|null $inactivityPeriodDays Inactivity Period Days */
 	public function setInactivityPeriodDays(?int $inactivityPeriodDays) {
 		$this->inactivityPeriodDays = $inactivityPeriodDays;
 	}
+    /**
+     * @param int|null $inactivityPeriodDays Inactivity Period Days
+     * @return GuildModel
+     */
 	public function withInactivityPeriodDays(?int $inactivityPeriodDays): GuildModel {
 		$this->inactivityPeriodDays = $inactivityPeriodDays;
 		return $this;
 	}
+    /** @return array|null List of Role Models */
 	public function getRoles(): ?array {
 		return $this->roles;
 	}
+    /** @param array|null $roles List of Role Models */
 	public function setRoles(?array $roles) {
 		$this->roles = $roles;
 	}
+    /**
+     * @param array|null $roles List of Role Models
+     * @return GuildModel
+     */
 	public function withRoles(?array $roles): GuildModel {
 		$this->roles = $roles;
 		return $this;
 	}
+    /** @return string|null Guild Master Role Name */
 	public function getGuildMasterRole(): ?string {
 		return $this->guildMasterRole;
 	}
+    /** @param string|null $guildMasterRole Guild Master Role Name */
 	public function setGuildMasterRole(?string $guildMasterRole) {
 		$this->guildMasterRole = $guildMasterRole;
 	}
+    /**
+     * @param string|null $guildMasterRole Guild Master Role Name
+     * @return GuildModel
+     */
 	public function withGuildMasterRole(?string $guildMasterRole): GuildModel {
 		$this->guildMasterRole = $guildMasterRole;
 		return $this;
 	}
+    /** @return string|null Default Member Role Name */
 	public function getGuildMemberDefaultRole(): ?string {
 		return $this->guildMemberDefaultRole;
 	}
+    /** @param string|null $guildMemberDefaultRole Default Member Role Name */
 	public function setGuildMemberDefaultRole(?string $guildMemberDefaultRole) {
 		$this->guildMemberDefaultRole = $guildMemberDefaultRole;
 	}
+    /**
+     * @param string|null $guildMemberDefaultRole Default Member Role Name
+     * @return GuildModel
+     */
 	public function withGuildMemberDefaultRole(?string $guildMemberDefaultRole): GuildModel {
 		$this->guildMemberDefaultRole = $guildMemberDefaultRole;
 		return $this;
 	}
+    /** @return int|null Rejoin Cool Time (Minutes) */
 	public function getRejoinCoolTimeMinutes(): ?int {
 		return $this->rejoinCoolTimeMinutes;
 	}
+    /** @param int|null $rejoinCoolTimeMinutes Rejoin Cool Time (Minutes) */
 	public function setRejoinCoolTimeMinutes(?int $rejoinCoolTimeMinutes) {
 		$this->rejoinCoolTimeMinutes = $rejoinCoolTimeMinutes;
 	}
+    /**
+     * @param int|null $rejoinCoolTimeMinutes Rejoin Cool Time (Minutes)
+     * @return GuildModel
+     */
 	public function withRejoinCoolTimeMinutes(?int $rejoinCoolTimeMinutes): GuildModel {
 		$this->rejoinCoolTimeMinutes = $rejoinCoolTimeMinutes;
 		return $this;
 	}
+    /** @return int|null Maximum Concurrent Guild Memberships */
 	public function getMaxConcurrentJoinGuilds(): ?int {
 		return $this->maxConcurrentJoinGuilds;
 	}
+    /** @param int|null $maxConcurrentJoinGuilds Maximum Concurrent Guild Memberships */
 	public function setMaxConcurrentJoinGuilds(?int $maxConcurrentJoinGuilds) {
 		$this->maxConcurrentJoinGuilds = $maxConcurrentJoinGuilds;
 	}
+    /**
+     * @param int|null $maxConcurrentJoinGuilds Maximum Concurrent Guild Memberships
+     * @return GuildModel
+     */
 	public function withMaxConcurrentJoinGuilds(?int $maxConcurrentJoinGuilds): GuildModel {
 		$this->maxConcurrentJoinGuilds = $maxConcurrentJoinGuilds;
 		return $this;
 	}
+    /** @return int|null Maximum Concurrent Guild Master Count */
 	public function getMaxConcurrentGuildMasterCount(): ?int {
 		return $this->maxConcurrentGuildMasterCount;
 	}
+    /** @param int|null $maxConcurrentGuildMasterCount Maximum Concurrent Guild Master Count */
 	public function setMaxConcurrentGuildMasterCount(?int $maxConcurrentGuildMasterCount) {
 		$this->maxConcurrentGuildMasterCount = $maxConcurrentGuildMasterCount;
 	}
+    /**
+     * @param int|null $maxConcurrentGuildMasterCount Maximum Concurrent Guild Master Count
+     * @return GuildModel
+     */
 	public function withMaxConcurrentGuildMasterCount(?int $maxConcurrentGuildMasterCount): GuildModel {
 		$this->maxConcurrentGuildMasterCount = $maxConcurrentGuildMasterCount;
 		return $this;

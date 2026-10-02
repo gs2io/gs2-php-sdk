@@ -23,18 +23,29 @@ use Gs2\Grade\Model\GradeEntryModel;
 use Gs2\Grade\Model\AcquireActionRate;
 use Gs2\Grade\Model\GradeModelMaster;
 
+/**
+ * Result of deleteGradeModelMaster: Delete Grade Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/grade/sdk/#deletegrademodelmaster
+ */
 class DeleteGradeModelMasterResult implements IResult {
-    /** @var GradeModelMaster */
+    /** @var GradeModelMaster Grade Model Master deleted */
     private $item;
 
+    /** @return GradeModelMaster|null Grade Model Master deleted */
 	public function getItem(): ?GradeModelMaster {
 		return $this->item;
 	}
 
+    /** @param GradeModelMaster|null $item Grade Model Master deleted */
 	public function setItem(?GradeModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param GradeModelMaster|null $item Grade Model Master deleted
+     * @return DeleteGradeModelMasterResult
+     */
 	public function withItem(?GradeModelMaster $item): DeleteGradeModelMasterResult {
 		$this->item = $item;
 		return $this;

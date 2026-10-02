@@ -20,87 +20,128 @@ namespace Gs2\Datastore\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Data Object History
+ *
+ * @see https://docs.gs2.io/api_reference/datastore/sdk/#dataobjecthistory
+ */
 class DataObjectHistory implements IModel {
 	/**
-     * @var string
+     * @var string Data Object History GRN
 	 */
 	private $dataObjectHistoryId;
 	/**
-     * @var string
+     * @var string Data Object Name
 	 */
 	private $dataObjectName;
 	/**
-     * @var string
+     * @var string Generation ID
 	 */
 	private $generation;
 	/**
-     * @var int
+     * @var int File size
 	 */
 	private $contentLength;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Data Object History GRN */
 	public function getDataObjectHistoryId(): ?string {
 		return $this->dataObjectHistoryId;
 	}
+    /** @param string|null $dataObjectHistoryId Data Object History GRN */
 	public function setDataObjectHistoryId(?string $dataObjectHistoryId) {
 		$this->dataObjectHistoryId = $dataObjectHistoryId;
 	}
+    /**
+     * @param string|null $dataObjectHistoryId Data Object History GRN
+     * @return DataObjectHistory
+     */
 	public function withDataObjectHistoryId(?string $dataObjectHistoryId): DataObjectHistory {
 		$this->dataObjectHistoryId = $dataObjectHistoryId;
 		return $this;
 	}
+    /** @return string|null Data Object Name */
 	public function getDataObjectName(): ?string {
 		return $this->dataObjectName;
 	}
+    /** @param string|null $dataObjectName Data Object Name */
 	public function setDataObjectName(?string $dataObjectName) {
 		$this->dataObjectName = $dataObjectName;
 	}
+    /**
+     * @param string|null $dataObjectName Data Object Name
+     * @return DataObjectHistory
+     */
 	public function withDataObjectName(?string $dataObjectName): DataObjectHistory {
 		$this->dataObjectName = $dataObjectName;
 		return $this;
 	}
+    /** @return string|null Generation ID */
 	public function getGeneration(): ?string {
 		return $this->generation;
 	}
+    /** @param string|null $generation Generation ID */
 	public function setGeneration(?string $generation) {
 		$this->generation = $generation;
 	}
+    /**
+     * @param string|null $generation Generation ID
+     * @return DataObjectHistory
+     */
 	public function withGeneration(?string $generation): DataObjectHistory {
 		$this->generation = $generation;
 		return $this;
 	}
+    /** @return int|null File size */
 	public function getContentLength(): ?int {
 		return $this->contentLength;
 	}
+    /** @param int|null $contentLength File size */
 	public function setContentLength(?int $contentLength) {
 		$this->contentLength = $contentLength;
 	}
+    /**
+     * @param int|null $contentLength File size
+     * @return DataObjectHistory
+     */
 	public function withContentLength(?int $contentLength): DataObjectHistory {
 		$this->contentLength = $contentLength;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return DataObjectHistory
+     */
 	public function withCreatedAt(?int $createdAt): DataObjectHistory {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return DataObjectHistory
+     */
 	public function withRevision(?int $revision): DataObjectHistory {
 		$this->revision = $revision;
 		return $this;

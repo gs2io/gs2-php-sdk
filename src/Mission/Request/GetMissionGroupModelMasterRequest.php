@@ -19,27 +19,44 @@ namespace Gs2\Mission\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getMissionGroupModelMaster: Get Mission Group Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#getmissiongroupmodelmaster
+ */
 class GetMissionGroupModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Mission Group Model name */
     private $missionGroupName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetMissionGroupModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetMissionGroupModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Mission Group Model name */
 	public function getMissionGroupName(): ?string {
 		return $this->missionGroupName;
 	}
+    /** @param string|null $missionGroupName Mission Group Model name */
 	public function setMissionGroupName(?string $missionGroupName) {
 		$this->missionGroupName = $missionGroupName;
 	}
+    /**
+     * @param string|null $missionGroupName Mission Group Model name
+     * @return GetMissionGroupModelMasterRequest
+     */
 	public function withMissionGroupName(?string $missionGroupName): GetMissionGroupModelMasterRequest {
 		$this->missionGroupName = $missionGroupName;
 		return $this;

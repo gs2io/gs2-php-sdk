@@ -19,65 +19,100 @@ namespace Gs2\StateMachine\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for startStateMachineByUserId: Start state machine by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/state_machine/sdk/#startstatemachinebyuserid
+ */
 class StartStateMachineByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Arguments to be passed to the state machine */
     private $args;
-    /** @var int */
+    /** @var int Validity period (minutes) */
     private $ttl;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return StartStateMachineByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): StartStateMachineByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return StartStateMachineByUserIdRequest
+     */
 	public function withUserId(?string $userId): StartStateMachineByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Arguments to be passed to the state machine */
 	public function getArgs(): ?string {
 		return $this->args;
 	}
+    /** @param string|null $args Arguments to be passed to the state machine */
 	public function setArgs(?string $args) {
 		$this->args = $args;
 	}
+    /**
+     * @param string|null $args Arguments to be passed to the state machine
+     * @return StartStateMachineByUserIdRequest
+     */
 	public function withArgs(?string $args): StartStateMachineByUserIdRequest {
 		$this->args = $args;
 		return $this;
 	}
+    /** @return int|null Validity period (minutes) */
 	public function getTtl(): ?int {
 		return $this->ttl;
 	}
+    /** @param int|null $ttl Validity period (minutes) */
 	public function setTtl(?int $ttl) {
 		$this->ttl = $ttl;
 	}
+    /**
+     * @param int|null $ttl Validity period (minutes)
+     * @return StartStateMachineByUserIdRequest
+     */
 	public function withTtl(?int $ttl): StartStateMachineByUserIdRequest {
 		$this->ttl = $ttl;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return StartStateMachineByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): StartStateMachineByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

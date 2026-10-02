@@ -22,18 +22,29 @@ use Gs2\Inbox\Model\AcquireAction;
 use Gs2\Inbox\Model\TimeSpan;
 use Gs2\Inbox\Model\GlobalMessage;
 
+/**
+ * Result of describeGlobalMessages: List messages to all users
+ *
+ * @see https://docs.gs2.io/api_reference/inbox/sdk/#describeglobalmessages
+ */
 class DescribeGlobalMessagesResult implements IResult {
-    /** @var array */
+    /** @var array List of Messages to all users */
     private $items;
 
+    /** @return array|null List of Messages to all users */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Messages to all users */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Messages to all users
+     * @return DescribeGlobalMessagesResult
+     */
 	public function withItems(?array $items): DescribeGlobalMessagesResult {
 		$this->items = $items;
 		return $this;

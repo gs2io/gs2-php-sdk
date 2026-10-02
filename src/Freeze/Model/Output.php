@@ -20,73 +20,108 @@ namespace Gs2\Freeze\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Output of stage update progress
+ *
+ * @see https://docs.gs2.io/api_reference/freeze/sdk/#output
+ */
 class Output implements IModel {
 	/**
-     * @var string
+     * @var string Stage update progress output GRN
 	 */
 	private $outputId;
 	/**
-     * @var string
+     * @var string Output Name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Text
 	 */
 	private $text;
 	/**
-     * @var int
+     * @var int Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Stage update progress output GRN */
 	public function getOutputId(): ?string {
 		return $this->outputId;
 	}
+    /** @param string|null $outputId Stage update progress output GRN */
 	public function setOutputId(?string $outputId) {
 		$this->outputId = $outputId;
 	}
+    /**
+     * @param string|null $outputId Stage update progress output GRN
+     * @return Output
+     */
 	public function withOutputId(?string $outputId): Output {
 		$this->outputId = $outputId;
 		return $this;
 	}
+    /** @return string|null Output Name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Output Name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Output Name
+     * @return Output
+     */
 	public function withName(?string $name): Output {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Text */
 	public function getText(): ?string {
 		return $this->text;
 	}
+    /** @param string|null $text Text */
 	public function setText(?string $text) {
 		$this->text = $text;
 	}
+    /**
+     * @param string|null $text Text
+     * @return Output
+     */
 	public function withText(?string $text): Output {
 		$this->text = $text;
 		return $this;
 	}
+    /** @return int|null Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Timestamp
+     * @return Output
+     */
 	public function withCreatedAt(?int $createdAt): Output {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return Output
+     */
 	public function withRevision(?int $revision): Output {
 		$this->revision = $revision;
 		return $this;

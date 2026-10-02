@@ -23,18 +23,29 @@ use Gs2\Ranking\Model\Scope;
 use Gs2\Ranking\Model\GlobalRankingSetting;
 use Gs2\Ranking\Model\CategoryModel;
 
+/**
+ * Result of getCategoryModel: Get Category Model
+ *
+ * @see https://docs.gs2.io/api_reference/ranking/sdk/#getcategorymodel
+ */
 class GetCategoryModelResult implements IResult {
-    /** @var CategoryModel */
+    /** @var CategoryModel Category Model */
     private $item;
 
+    /** @return CategoryModel|null Category Model */
 	public function getItem(): ?CategoryModel {
 		return $this->item;
 	}
 
+    /** @param CategoryModel|null $item Category Model */
 	public function setItem(?CategoryModel $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CategoryModel|null $item Category Model
+     * @return GetCategoryModelResult
+     */
 	public function withItem(?CategoryModel $item): GetCategoryModelResult {
 		$this->item = $item;
 		return $this;

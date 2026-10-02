@@ -20,73 +20,108 @@ namespace Gs2\Guild\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Sent Join Request
+ *
+ * @see https://docs.gs2.io/api_reference/guild/sdk/#sendmemberrequest
+ */
 class SendMemberRequest implements IModel {
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var string
+     * @var string Guild model name of the target guild
 	 */
 	private $targetGuildModelName;
 	/**
-     * @var string
+     * @var string Target Guild Name
 	 */
 	private $targetGuildName;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return SendMemberRequest
+     */
 	public function withUserId(?string $userId): SendMemberRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Guild model name of the target guild */
 	public function getTargetGuildModelName(): ?string {
 		return $this->targetGuildModelName;
 	}
+    /** @param string|null $targetGuildModelName Guild model name of the target guild */
 	public function setTargetGuildModelName(?string $targetGuildModelName) {
 		$this->targetGuildModelName = $targetGuildModelName;
 	}
+    /**
+     * @param string|null $targetGuildModelName Guild model name of the target guild
+     * @return SendMemberRequest
+     */
 	public function withTargetGuildModelName(?string $targetGuildModelName): SendMemberRequest {
 		$this->targetGuildModelName = $targetGuildModelName;
 		return $this;
 	}
+    /** @return string|null Target Guild Name */
 	public function getTargetGuildName(): ?string {
 		return $this->targetGuildName;
 	}
+    /** @param string|null $targetGuildName Target Guild Name */
 	public function setTargetGuildName(?string $targetGuildName) {
 		$this->targetGuildName = $targetGuildName;
 	}
+    /**
+     * @param string|null $targetGuildName Target Guild Name
+     * @return SendMemberRequest
+     */
 	public function withTargetGuildName(?string $targetGuildName): SendMemberRequest {
 		$this->targetGuildName = $targetGuildName;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return SendMemberRequest
+     */
 	public function withMetadata(?string $metadata): SendMemberRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return SendMemberRequest
+     */
 	public function withCreatedAt(?int $createdAt): SendMemberRequest {
 		$this->createdAt = $createdAt;
 		return $this;

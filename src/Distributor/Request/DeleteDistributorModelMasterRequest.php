@@ -19,27 +19,44 @@ namespace Gs2\Distributor\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for deleteDistributorModelMaster: Delete Distributor Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#deletedistributormodelmaster
+ */
 class DeleteDistributorModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Distributor Model name */
     private $distributorName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DeleteDistributorModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DeleteDistributorModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Distributor Model name */
 	public function getDistributorName(): ?string {
 		return $this->distributorName;
 	}
+    /** @param string|null $distributorName Distributor Model name */
 	public function setDistributorName(?string $distributorName) {
 		$this->distributorName = $distributorName;
 	}
+    /**
+     * @param string|null $distributorName Distributor Model name
+     * @return DeleteDistributorModelMasterRequest
+     */
 	public function withDistributorName(?string $distributorName): DeleteDistributorModelMasterRequest {
 		$this->distributorName = $distributorName;
 		return $this;

@@ -20,33 +20,50 @@ namespace Gs2\Matchmaking\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Matchmaking\Model\SeasonGathering;
 
+/**
+ * Result of verifyIncludeParticipantByStampTask: Execute verification to check if the user ID is included in the persistent gathering as a verify action
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/stamp_sheet/#gs2matchmakingverifyincludeparticipantbyuserid
+ */
 class VerifyIncludeParticipantByStampTaskResult implements IResult {
-    /** @var SeasonGathering */
+    /** @var SeasonGathering SeasonGathering */
     private $item;
-    /** @var string */
+    /** @var string Context recording the execution results of verification actions */
     private $newContextStack;
 
+    /** @return SeasonGathering|null SeasonGathering */
 	public function getItem(): ?SeasonGathering {
 		return $this->item;
 	}
 
+    /** @param SeasonGathering|null $item SeasonGathering */
 	public function setItem(?SeasonGathering $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param SeasonGathering|null $item SeasonGathering
+     * @return VerifyIncludeParticipantByStampTaskResult
+     */
 	public function withItem(?SeasonGathering $item): VerifyIncludeParticipantByStampTaskResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null Context recording the execution results of verification actions */
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
+    /** @param string|null $newContextStack Context recording the execution results of verification actions */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
+    /**
+     * @param string|null $newContextStack Context recording the execution results of verification actions
+     * @return VerifyIncludeParticipantByStampTaskResult
+     */
 	public function withNewContextStack(?string $newContextStack): VerifyIncludeParticipantByStampTaskResult {
 		$this->newContextStack = $newContextStack;
 		return $this;

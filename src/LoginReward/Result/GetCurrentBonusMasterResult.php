@@ -20,18 +20,29 @@ namespace Gs2\LoginReward\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\LoginReward\Model\CurrentBonusMaster;
 
+/**
+ * Result of getCurrentBonusMaster: Get currently active Login Bonus Model master data
+ *
+ * @see https://docs.gs2.io/api_reference/login_reward/sdk/#getcurrentbonusmaster
+ */
 class GetCurrentBonusMasterResult implements IResult {
-    /** @var CurrentBonusMaster */
+    /** @var CurrentBonusMaster Currently active Login Bonus Model master data */
     private $item;
 
+    /** @return CurrentBonusMaster|null Currently active Login Bonus Model master data */
 	public function getItem(): ?CurrentBonusMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentBonusMaster|null $item Currently active Login Bonus Model master data */
 	public function setItem(?CurrentBonusMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentBonusMaster|null $item Currently active Login Bonus Model master data
+     * @return GetCurrentBonusMasterResult
+     */
 	public function withItem(?CurrentBonusMaster $item): GetCurrentBonusMasterResult {
 		$this->item = $item;
 		return $this;

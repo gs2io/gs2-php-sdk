@@ -20,77 +20,118 @@ namespace Gs2\Showcase\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Showcase\Model\Config;
 
+/**
+ * Request for buy: Buy Sales Item
+ *
+ * @see https://docs.gs2.io/api_reference/showcase/sdk/#buy
+ */
 class BuyRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Showcase name */
     private $showcaseName;
-    /** @var string */
+    /** @var string Displayed Item ID */
     private $displayItemId;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var int */
+    /** @var int Purchase quantity */
     private $quantity;
-    /** @var array */
+    /** @var array Configuration values applied to transaction variables */
     private $config;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return BuyRequest
+     */
 	public function withNamespaceName(?string $namespaceName): BuyRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Showcase name */
 	public function getShowcaseName(): ?string {
 		return $this->showcaseName;
 	}
+    /** @param string|null $showcaseName Showcase name */
 	public function setShowcaseName(?string $showcaseName) {
 		$this->showcaseName = $showcaseName;
 	}
+    /**
+     * @param string|null $showcaseName Showcase name
+     * @return BuyRequest
+     */
 	public function withShowcaseName(?string $showcaseName): BuyRequest {
 		$this->showcaseName = $showcaseName;
 		return $this;
 	}
+    /** @return string|null Displayed Item ID */
 	public function getDisplayItemId(): ?string {
 		return $this->displayItemId;
 	}
+    /** @param string|null $displayItemId Displayed Item ID */
 	public function setDisplayItemId(?string $displayItemId) {
 		$this->displayItemId = $displayItemId;
 	}
+    /**
+     * @param string|null $displayItemId Displayed Item ID
+     * @return BuyRequest
+     */
 	public function withDisplayItemId(?string $displayItemId): BuyRequest {
 		$this->displayItemId = $displayItemId;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return BuyRequest
+     */
 	public function withAccessToken(?string $accessToken): BuyRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return int|null Purchase quantity */
 	public function getQuantity(): ?int {
 		return $this->quantity;
 	}
+    /** @param int|null $quantity Purchase quantity */
 	public function setQuantity(?int $quantity) {
 		$this->quantity = $quantity;
 	}
+    /**
+     * @param int|null $quantity Purchase quantity
+     * @return BuyRequest
+     */
 	public function withQuantity(?int $quantity): BuyRequest {
 		$this->quantity = $quantity;
 		return $this;
 	}
+    /** @return array|null Configuration values applied to transaction variables */
 	public function getConfig(): ?array {
 		return $this->config;
 	}
+    /** @param array|null $config Configuration values applied to transaction variables */
 	public function setConfig(?array $config) {
 		$this->config = $config;
 	}
+    /**
+     * @param array|null $config Configuration values applied to transaction variables
+     * @return BuyRequest
+     */
 	public function withConfig(?array $config): BuyRequest {
 		$this->config = $config;
 		return $this;

@@ -20,33 +20,50 @@ namespace Gs2\JobQueue\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\JobQueue\Model\Job;
 
+/**
+ * Result of pushByUserId: Register jobs by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/job_queue/sdk/#pushbyuserid
+ */
 class PushByUserIdResult implements IResult {
-    /** @var array */
+    /** @var array List of Jobs added */
     private $items;
     /** @var bool */
     private $autoRun;
 
+    /** @return array|null List of Jobs added */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Jobs added */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Jobs added
+     * @return PushByUserIdResult
+     */
 	public function withItems(?array $items): PushByUserIdResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return bool|null */
 	public function getAutoRun(): ?bool {
 		return $this->autoRun;
 	}
 
+    /** @param bool|null $autoRun */
 	public function setAutoRun(?bool $autoRun) {
 		$this->autoRun = $autoRun;
 	}
 
+    /**
+     * @param bool|null $autoRun
+     * @return PushByUserIdResult
+     */
 	public function withAutoRun(?bool $autoRun): PushByUserIdResult {
 		$this->autoRun = $autoRun;
 		return $this;

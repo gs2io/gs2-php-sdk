@@ -20,18 +20,29 @@ namespace Gs2\Friend\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Friend\Model\FollowUser;
 
+/**
+ * Result of unfollow: Unfollow a user
+ *
+ * @see https://docs.gs2.io/api_reference/friend/sdk/#unfollow
+ */
 class UnfollowResult implements IResult {
-    /** @var FollowUser */
+    /** @var FollowUser Unfollowed user */
     private $item;
 
+    /** @return FollowUser|null Unfollowed user */
 	public function getItem(): ?FollowUser {
 		return $this->item;
 	}
 
+    /** @param FollowUser|null $item Unfollowed user */
 	public function setItem(?FollowUser $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param FollowUser|null $item Unfollowed user
+     * @return UnfollowResult
+     */
 	public function withItem(?FollowUser $item): UnfollowResult {
 		$this->item = $item;
 		return $this;

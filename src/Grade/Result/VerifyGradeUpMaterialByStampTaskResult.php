@@ -19,18 +19,29 @@ namespace Gs2\Grade\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of verifyGradeUpMaterialByStampTask: Execute material verification used for grade up as a verify action
+ *
+ * @see https://docs.gs2.io/api_reference/grade/stamp_sheet/#gs2gradeverifygradeupmaterialbyuserid
+ */
 class VerifyGradeUpMaterialByStampTaskResult implements IResult {
-    /** @var string */
+    /** @var string Context recording the execution results of verification actions */
     private $newContextStack;
 
+    /** @return string|null Context recording the execution results of verification actions */
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
+    /** @param string|null $newContextStack Context recording the execution results of verification actions */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
+    /**
+     * @param string|null $newContextStack Context recording the execution results of verification actions
+     * @return VerifyGradeUpMaterialByStampTaskResult
+     */
 	public function withNewContextStack(?string $newContextStack): VerifyGradeUpMaterialByStampTaskResult {
 		$this->newContextStack = $newContextStack;
 		return $this;

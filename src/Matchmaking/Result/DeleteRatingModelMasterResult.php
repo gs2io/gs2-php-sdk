@@ -20,18 +20,29 @@ namespace Gs2\Matchmaking\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Matchmaking\Model\RatingModelMaster;
 
+/**
+ * Result of deleteRatingModelMaster: Delete Rating Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#deleteratingmodelmaster
+ */
 class DeleteRatingModelMasterResult implements IResult {
-    /** @var RatingModelMaster */
+    /** @var RatingModelMaster Rating Model Master deleted */
     private $item;
 
+    /** @return RatingModelMaster|null Rating Model Master deleted */
 	public function getItem(): ?RatingModelMaster {
 		return $this->item;
 	}
 
+    /** @param RatingModelMaster|null $item Rating Model Master deleted */
 	public function setItem(?RatingModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param RatingModelMaster|null $item Rating Model Master deleted
+     * @return DeleteRatingModelMasterResult
+     */
 	public function withItem(?RatingModelMaster $item): DeleteRatingModelMasterResult {
 		$this->item = $item;
 		return $this;

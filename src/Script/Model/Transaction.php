@@ -20,59 +20,88 @@ namespace Gs2\Script\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Transaction
+ *
+ * @see https://docs.gs2.io/api_reference/script/sdk/#transaction
+ */
 class Transaction implements IModel {
 	/**
-     * @var string
+     * @var string Transaction ID
 	 */
 	private $transactionId;
 	/**
-     * @var array
+     * @var array List of Verify Actions
 	 */
 	private $verifyActions;
 	/**
-     * @var array
+     * @var array List of Acquire Actions
 	 */
 	private $consumeActions;
 	/**
-     * @var array
+     * @var array List of Acquire Actions
 	 */
 	private $acquireActions;
+    /** @return string|null Transaction ID */
 	public function getTransactionId(): ?string {
 		return $this->transactionId;
 	}
+    /** @param string|null $transactionId Transaction ID */
 	public function setTransactionId(?string $transactionId) {
 		$this->transactionId = $transactionId;
 	}
+    /**
+     * @param string|null $transactionId Transaction ID
+     * @return Transaction
+     */
 	public function withTransactionId(?string $transactionId): Transaction {
 		$this->transactionId = $transactionId;
 		return $this;
 	}
+    /** @return array|null List of Verify Actions */
 	public function getVerifyActions(): ?array {
 		return $this->verifyActions;
 	}
+    /** @param array|null $verifyActions List of Verify Actions */
 	public function setVerifyActions(?array $verifyActions) {
 		$this->verifyActions = $verifyActions;
 	}
+    /**
+     * @param array|null $verifyActions List of Verify Actions
+     * @return Transaction
+     */
 	public function withVerifyActions(?array $verifyActions): Transaction {
 		$this->verifyActions = $verifyActions;
 		return $this;
 	}
+    /** @return array|null List of Acquire Actions */
 	public function getConsumeActions(): ?array {
 		return $this->consumeActions;
 	}
+    /** @param array|null $consumeActions List of Acquire Actions */
 	public function setConsumeActions(?array $consumeActions) {
 		$this->consumeActions = $consumeActions;
 	}
+    /**
+     * @param array|null $consumeActions List of Acquire Actions
+     * @return Transaction
+     */
 	public function withConsumeActions(?array $consumeActions): Transaction {
 		$this->consumeActions = $consumeActions;
 		return $this;
 	}
+    /** @return array|null List of Acquire Actions */
 	public function getAcquireActions(): ?array {
 		return $this->acquireActions;
 	}
+    /** @param array|null $acquireActions List of Acquire Actions */
 	public function setAcquireActions(?array $acquireActions) {
 		$this->acquireActions = $acquireActions;
 	}
+    /**
+     * @param array|null $acquireActions List of Acquire Actions
+     * @return Transaction
+     */
 	public function withAcquireActions(?array $acquireActions): Transaction {
 		$this->acquireActions = $acquireActions;
 		return $this;

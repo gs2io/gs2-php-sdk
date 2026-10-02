@@ -20,18 +20,29 @@ namespace Gs2\Limit\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Limit\Model\LimitModelMaster;
 
+/**
+ * Result of updateLimitModelMaster: Update Usage Limit Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/limit/sdk/#updatelimitmodelmaster
+ */
 class UpdateLimitModelMasterResult implements IResult {
-    /** @var LimitModelMaster */
+    /** @var LimitModelMaster Usage Limit Model Master updated */
     private $item;
 
+    /** @return LimitModelMaster|null Usage Limit Model Master updated */
 	public function getItem(): ?LimitModelMaster {
 		return $this->item;
 	}
 
+    /** @param LimitModelMaster|null $item Usage Limit Model Master updated */
 	public function setItem(?LimitModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param LimitModelMaster|null $item Usage Limit Model Master updated
+     * @return UpdateLimitModelMasterResult
+     */
 	public function withItem(?LimitModelMaster $item): UpdateLimitModelMasterResult {
 		$this->item = $item;
 		return $this;

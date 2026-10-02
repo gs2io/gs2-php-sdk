@@ -20,59 +20,88 @@ namespace Gs2\Lottery\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Box Item
+ *
+ * @see https://docs.gs2.io/api_reference/lottery/sdk/#boxitem
+ */
 class BoxItem implements IModel {
 	/**
-     * @var string
+     * @var string Prize ID
 	 */
 	private $prizeId;
 	/**
-     * @var array
+     * @var array List of Acquire Actions
 	 */
 	private $acquireActions;
 	/**
-     * @var int
+     * @var int Remaining Quantity
 	 */
 	private $remaining;
 	/**
-     * @var int
+     * @var int Initial Quantity
 	 */
 	private $initial;
+    /** @return string|null Prize ID */
 	public function getPrizeId(): ?string {
 		return $this->prizeId;
 	}
+    /** @param string|null $prizeId Prize ID */
 	public function setPrizeId(?string $prizeId) {
 		$this->prizeId = $prizeId;
 	}
+    /**
+     * @param string|null $prizeId Prize ID
+     * @return BoxItem
+     */
 	public function withPrizeId(?string $prizeId): BoxItem {
 		$this->prizeId = $prizeId;
 		return $this;
 	}
+    /** @return array|null List of Acquire Actions */
 	public function getAcquireActions(): ?array {
 		return $this->acquireActions;
 	}
+    /** @param array|null $acquireActions List of Acquire Actions */
 	public function setAcquireActions(?array $acquireActions) {
 		$this->acquireActions = $acquireActions;
 	}
+    /**
+     * @param array|null $acquireActions List of Acquire Actions
+     * @return BoxItem
+     */
 	public function withAcquireActions(?array $acquireActions): BoxItem {
 		$this->acquireActions = $acquireActions;
 		return $this;
 	}
+    /** @return int|null Remaining Quantity */
 	public function getRemaining(): ?int {
 		return $this->remaining;
 	}
+    /** @param int|null $remaining Remaining Quantity */
 	public function setRemaining(?int $remaining) {
 		$this->remaining = $remaining;
 	}
+    /**
+     * @param int|null $remaining Remaining Quantity
+     * @return BoxItem
+     */
 	public function withRemaining(?int $remaining): BoxItem {
 		$this->remaining = $remaining;
 		return $this;
 	}
+    /** @return int|null Initial Quantity */
 	public function getInitial(): ?int {
 		return $this->initial;
 	}
+    /** @param int|null $initial Initial Quantity */
 	public function setInitial(?int $initial) {
 		$this->initial = $initial;
 	}
+    /**
+     * @param int|null $initial Initial Quantity
+     * @return BoxItem
+     */
 	public function withInitial(?int $initial): BoxItem {
 		$this->initial = $initial;
 		return $this;

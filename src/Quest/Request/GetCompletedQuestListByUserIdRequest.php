@@ -19,51 +19,80 @@ namespace Gs2\Quest\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getCompletedQuestListByUserId: Get Completed Quest List by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/quest/sdk/#getcompletedquestlistbyuserid
+ */
 class GetCompletedQuestListByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Quest Group Model Name */
     private $questGroupName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetCompletedQuestListByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetCompletedQuestListByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Quest Group Model Name */
 	public function getQuestGroupName(): ?string {
 		return $this->questGroupName;
 	}
+    /** @param string|null $questGroupName Quest Group Model Name */
 	public function setQuestGroupName(?string $questGroupName) {
 		$this->questGroupName = $questGroupName;
 	}
+    /**
+     * @param string|null $questGroupName Quest Group Model Name
+     * @return GetCompletedQuestListByUserIdRequest
+     */
 	public function withQuestGroupName(?string $questGroupName): GetCompletedQuestListByUserIdRequest {
 		$this->questGroupName = $questGroupName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return GetCompletedQuestListByUserIdRequest
+     */
 	public function withUserId(?string $userId): GetCompletedQuestListByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return GetCompletedQuestListByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): GetCompletedQuestListByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

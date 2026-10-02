@@ -19,27 +19,44 @@ namespace Gs2\StateMachine\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getStateMachineMaster: Get State Machine Master
+ *
+ * @see https://docs.gs2.io/api_reference/state_machine/sdk/#getstatemachinemaster
+ */
 class GetStateMachineMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var int */
+    /** @var int Version */
     private $version;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetStateMachineMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetStateMachineMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return int|null Version */
 	public function getVersion(): ?int {
 		return $this->version;
 	}
+    /** @param int|null $version Version */
 	public function setVersion(?int $version) {
 		$this->version = $version;
 	}
+    /**
+     * @param int|null $version Version
+     * @return GetStateMachineMasterRequest
+     */
 	public function withVersion(?int $version): GetStateMachineMasterRequest {
 		$this->version = $version;
 		return $this;

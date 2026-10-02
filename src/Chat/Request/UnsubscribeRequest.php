@@ -19,41 +19,64 @@ namespace Gs2\Chat\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for unsubscribe: Unsubscribe from a room
+ *
+ * @see https://docs.gs2.io/api_reference/chat/sdk/#unsubscribe
+ */
 class UnsubscribeRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Room name to unsubscribe from */
     private $roomName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UnsubscribeRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UnsubscribeRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Room name to unsubscribe from */
 	public function getRoomName(): ?string {
 		return $this->roomName;
 	}
+    /** @param string|null $roomName Room name to unsubscribe from */
 	public function setRoomName(?string $roomName) {
 		$this->roomName = $roomName;
 	}
+    /**
+     * @param string|null $roomName Room name to unsubscribe from
+     * @return UnsubscribeRequest
+     */
 	public function withRoomName(?string $roomName): UnsubscribeRequest {
 		$this->roomName = $roomName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return UnsubscribeRequest
+     */
 	public function withAccessToken(?string $accessToken): UnsubscribeRequest {
 		$this->accessToken = $accessToken;
 		return $this;

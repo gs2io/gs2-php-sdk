@@ -20,101 +20,148 @@ namespace Gs2\Matchmaking\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Joined Season Gathering
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#joinedseasongathering
+ */
 class JoinedSeasonGathering implements IModel {
 	/**
-     * @var string
+     * @var string Joined Season Gathering GRN
 	 */
 	private $joinedSeasonGatheringId;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var string
+     * @var string Season Model name
 	 */
 	private $seasonName;
 	/**
-     * @var int
+     * @var int Season
 	 */
 	private $season;
 	/**
-     * @var int
+     * @var int Tier
 	 */
 	private $tier;
 	/**
-     * @var string
+     * @var string Season Gathering Name
 	 */
 	private $seasonGatheringName;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
+    /** @return string|null Joined Season Gathering GRN */
 	public function getJoinedSeasonGatheringId(): ?string {
 		return $this->joinedSeasonGatheringId;
 	}
+    /** @param string|null $joinedSeasonGatheringId Joined Season Gathering GRN */
 	public function setJoinedSeasonGatheringId(?string $joinedSeasonGatheringId) {
 		$this->joinedSeasonGatheringId = $joinedSeasonGatheringId;
 	}
+    /**
+     * @param string|null $joinedSeasonGatheringId Joined Season Gathering GRN
+     * @return JoinedSeasonGathering
+     */
 	public function withJoinedSeasonGatheringId(?string $joinedSeasonGatheringId): JoinedSeasonGathering {
 		$this->joinedSeasonGatheringId = $joinedSeasonGatheringId;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return JoinedSeasonGathering
+     */
 	public function withUserId(?string $userId): JoinedSeasonGathering {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Season Model name */
 	public function getSeasonName(): ?string {
 		return $this->seasonName;
 	}
+    /** @param string|null $seasonName Season Model name */
 	public function setSeasonName(?string $seasonName) {
 		$this->seasonName = $seasonName;
 	}
+    /**
+     * @param string|null $seasonName Season Model name
+     * @return JoinedSeasonGathering
+     */
 	public function withSeasonName(?string $seasonName): JoinedSeasonGathering {
 		$this->seasonName = $seasonName;
 		return $this;
 	}
+    /** @return int|null Season */
 	public function getSeason(): ?int {
 		return $this->season;
 	}
+    /** @param int|null $season Season */
 	public function setSeason(?int $season) {
 		$this->season = $season;
 	}
+    /**
+     * @param int|null $season Season
+     * @return JoinedSeasonGathering
+     */
 	public function withSeason(?int $season): JoinedSeasonGathering {
 		$this->season = $season;
 		return $this;
 	}
+    /** @return int|null Tier */
 	public function getTier(): ?int {
 		return $this->tier;
 	}
+    /** @param int|null $tier Tier */
 	public function setTier(?int $tier) {
 		$this->tier = $tier;
 	}
+    /**
+     * @param int|null $tier Tier
+     * @return JoinedSeasonGathering
+     */
 	public function withTier(?int $tier): JoinedSeasonGathering {
 		$this->tier = $tier;
 		return $this;
 	}
+    /** @return string|null Season Gathering Name */
 	public function getSeasonGatheringName(): ?string {
 		return $this->seasonGatheringName;
 	}
+    /** @param string|null $seasonGatheringName Season Gathering Name */
 	public function setSeasonGatheringName(?string $seasonGatheringName) {
 		$this->seasonGatheringName = $seasonGatheringName;
 	}
+    /**
+     * @param string|null $seasonGatheringName Season Gathering Name
+     * @return JoinedSeasonGathering
+     */
 	public function withSeasonGatheringName(?string $seasonGatheringName): JoinedSeasonGathering {
 		$this->seasonGatheringName = $seasonGatheringName;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return JoinedSeasonGathering
+     */
 	public function withCreatedAt(?int $createdAt): JoinedSeasonGathering {
 		$this->createdAt = $createdAt;
 		return $this;

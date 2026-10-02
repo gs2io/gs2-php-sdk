@@ -20,115 +20,168 @@ namespace Gs2\Showcase\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Sales Item Group Master
+ *
+ * @see https://docs.gs2.io/api_reference/showcase/sdk/#salesitemgroupmaster
+ */
 class SalesItemGroupMaster implements IModel {
 	/**
-     * @var string
+     * @var string Sales Item Group Master GRN
 	 */
 	private $salesItemGroupId;
 	/**
-     * @var string
+     * @var string Sales Item Group name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Description
 	 */
 	private $description;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var array
+     * @var array List of Sales Items included in the Sales Item Group
 	 */
 	private $salesItemNames;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Sales Item Group Master GRN */
 	public function getSalesItemGroupId(): ?string {
 		return $this->salesItemGroupId;
 	}
+    /** @param string|null $salesItemGroupId Sales Item Group Master GRN */
 	public function setSalesItemGroupId(?string $salesItemGroupId) {
 		$this->salesItemGroupId = $salesItemGroupId;
 	}
+    /**
+     * @param string|null $salesItemGroupId Sales Item Group Master GRN
+     * @return SalesItemGroupMaster
+     */
 	public function withSalesItemGroupId(?string $salesItemGroupId): SalesItemGroupMaster {
 		$this->salesItemGroupId = $salesItemGroupId;
 		return $this;
 	}
+    /** @return string|null Sales Item Group name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Sales Item Group name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Sales Item Group name
+     * @return SalesItemGroupMaster
+     */
 	public function withName(?string $name): SalesItemGroupMaster {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return SalesItemGroupMaster
+     */
 	public function withDescription(?string $description): SalesItemGroupMaster {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return SalesItemGroupMaster
+     */
 	public function withMetadata(?string $metadata): SalesItemGroupMaster {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return array|null List of Sales Items included in the Sales Item Group */
 	public function getSalesItemNames(): ?array {
 		return $this->salesItemNames;
 	}
+    /** @param array|null $salesItemNames List of Sales Items included in the Sales Item Group */
 	public function setSalesItemNames(?array $salesItemNames) {
 		$this->salesItemNames = $salesItemNames;
 	}
+    /**
+     * @param array|null $salesItemNames List of Sales Items included in the Sales Item Group
+     * @return SalesItemGroupMaster
+     */
 	public function withSalesItemNames(?array $salesItemNames): SalesItemGroupMaster {
 		$this->salesItemNames = $salesItemNames;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return SalesItemGroupMaster
+     */
 	public function withCreatedAt(?int $createdAt): SalesItemGroupMaster {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return SalesItemGroupMaster
+     */
 	public function withUpdatedAt(?int $updatedAt): SalesItemGroupMaster {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return SalesItemGroupMaster
+     */
 	public function withRevision(?int $revision): SalesItemGroupMaster {
 		$this->revision = $revision;
 		return $this;

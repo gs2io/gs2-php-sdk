@@ -19,48 +19,71 @@ namespace Gs2\Distributor\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of runVerifyTask: Execute verify action of transaction
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#runverifytask
+ */
 class RunVerifyTaskResult implements IResult {
-    /** @var string */
+    /** @var string Context stack reflecting the task execution result */
     private $contextStack;
-    /** @var int */
+    /** @var int Status code */
     private $statusCode;
-    /** @var string */
+    /** @var string Response content */
     private $result;
 
+    /** @return string|null Context stack reflecting the task execution result */
 	public function getContextStack(): ?string {
 		return $this->contextStack;
 	}
 
+    /** @param string|null $contextStack Context stack reflecting the task execution result */
 	public function setContextStack(?string $contextStack) {
 		$this->contextStack = $contextStack;
 	}
 
+    /**
+     * @param string|null $contextStack Context stack reflecting the task execution result
+     * @return RunVerifyTaskResult
+     */
 	public function withContextStack(?string $contextStack): RunVerifyTaskResult {
 		$this->contextStack = $contextStack;
 		return $this;
 	}
 
+    /** @return int|null Status code */
 	public function getStatusCode(): ?int {
 		return $this->statusCode;
 	}
 
+    /** @param int|null $statusCode Status code */
 	public function setStatusCode(?int $statusCode) {
 		$this->statusCode = $statusCode;
 	}
 
+    /**
+     * @param int|null $statusCode Status code
+     * @return RunVerifyTaskResult
+     */
 	public function withStatusCode(?int $statusCode): RunVerifyTaskResult {
 		$this->statusCode = $statusCode;
 		return $this;
 	}
 
+    /** @return string|null Response content */
 	public function getResult(): ?string {
 		return $this->result;
 	}
 
+    /** @param string|null $result Response content */
 	public function setResult(?string $result) {
 		$this->result = $result;
 	}
 
+    /**
+     * @param string|null $result Response content
+     * @return RunVerifyTaskResult
+     */
 	public function withResult(?string $result): RunVerifyTaskResult {
 		$this->result = $result;
 		return $this;

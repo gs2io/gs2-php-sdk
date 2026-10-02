@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\SeasonRating\Model\TierModel;
 use Gs2\SeasonRating\Model\SeasonModelMaster;
 
+/**
+ * Result of updateSeasonModelMaster: Update Season Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/season_rating/sdk/#updateseasonmodelmaster
+ */
 class UpdateSeasonModelMasterResult implements IResult {
-    /** @var SeasonModelMaster */
+    /** @var SeasonModelMaster Season Model Master updated */
     private $item;
 
+    /** @return SeasonModelMaster|null Season Model Master updated */
 	public function getItem(): ?SeasonModelMaster {
 		return $this->item;
 	}
 
+    /** @param SeasonModelMaster|null $item Season Model Master updated */
 	public function setItem(?SeasonModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param SeasonModelMaster|null $item Season Model Master updated
+     * @return UpdateSeasonModelMasterResult
+     */
 	public function withItem(?SeasonModelMaster $item): UpdateSeasonModelMasterResult {
 		$this->item = $item;
 		return $this;

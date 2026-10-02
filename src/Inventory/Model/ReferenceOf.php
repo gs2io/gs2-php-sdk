@@ -20,31 +20,48 @@ namespace Gs2\Inventory\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Reference of Possessions
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#referenceof
+ */
 class ReferenceOf implements IModel {
 	/**
-     * @var string
+     * @var string Reference GRN
 	 */
 	private $referenceOfId;
 	/**
-     * @var string
+     * @var string Name Identifying the Item Set
 	 */
 	private $name;
+    /** @return string|null Reference GRN */
 	public function getReferenceOfId(): ?string {
 		return $this->referenceOfId;
 	}
+    /** @param string|null $referenceOfId Reference GRN */
 	public function setReferenceOfId(?string $referenceOfId) {
 		$this->referenceOfId = $referenceOfId;
 	}
+    /**
+     * @param string|null $referenceOfId Reference GRN
+     * @return ReferenceOf
+     */
 	public function withReferenceOfId(?string $referenceOfId): ReferenceOf {
 		$this->referenceOfId = $referenceOfId;
 		return $this;
 	}
+    /** @return string|null Name Identifying the Item Set */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Name Identifying the Item Set */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Name Identifying the Item Set
+     * @return ReferenceOf
+     */
 	public function withName(?string $name): ReferenceOf {
 		$this->name = $name;
 		return $this;

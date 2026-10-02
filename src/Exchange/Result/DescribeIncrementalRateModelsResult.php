@@ -22,18 +22,29 @@ use Gs2\Exchange\Model\ConsumeAction;
 use Gs2\Exchange\Model\AcquireAction;
 use Gs2\Exchange\Model\IncrementalRateModel;
 
+/**
+ * Result of describeIncrementalRateModels: List Incremental Cost Exchange Rate Models
+ *
+ * @see https://docs.gs2.io/api_reference/exchange/sdk/#describeincrementalratemodels
+ */
 class DescribeIncrementalRateModelsResult implements IResult {
-    /** @var array */
+    /** @var array List of Incremental Cost Exchange Rate Models */
     private $items;
 
+    /** @return array|null List of Incremental Cost Exchange Rate Models */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Incremental Cost Exchange Rate Models */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Incremental Cost Exchange Rate Models
+     * @return DescribeIncrementalRateModelsResult
+     */
 	public function withItems(?array $items): DescribeIncrementalRateModelsResult {
 		$this->items = $items;
 		return $this;

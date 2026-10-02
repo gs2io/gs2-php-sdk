@@ -22,18 +22,29 @@ use Gs2\Ranking2\Model\AcquireAction;
 use Gs2\Ranking2\Model\RankingReward;
 use Gs2\Ranking2\Model\ClusterRankingModel;
 
+/**
+ * Result of describeClusterRankingModels: List Cluster Ranking Models
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/sdk/#describeclusterrankingmodels
+ */
 class DescribeClusterRankingModelsResult implements IResult {
-    /** @var array */
+    /** @var array List of Cluster Ranking Models */
     private $items;
 
+    /** @return array|null List of Cluster Ranking Models */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Cluster Ranking Models */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Cluster Ranking Models
+     * @return DescribeClusterRankingModelsResult
+     */
 	public function withItems(?array $items): DescribeClusterRankingModelsResult {
 		$this->items = $items;
 		return $this;

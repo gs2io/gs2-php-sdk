@@ -19,135 +19,206 @@ namespace Gs2\Log\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for updateNamespace: Update Namespace
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#updatenamespace
+ */
 class UpdateNamespaceRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var string */
+    /** @var string Log Export Method */
     private $type;
-    /** @var string */
+    /** @var string GCP Credentials */
     private $gcpCredentialJson;
-    /** @var string */
+    /** @var string BigQuery Dataset Name */
     private $bigQueryDatasetName;
-    /** @var int */
+    /** @var int Log Retention Period (days) */
     private $logExpireDays;
-    /** @var string */
+    /** @var string AWS Region */
     private $awsRegion;
-    /** @var string */
+    /** @var string AWS Access Key ID */
     private $awsAccessKeyId;
-    /** @var string */
+    /** @var string AWS Secret Access Key */
     private $awsSecretAccessKey;
-    /** @var string */
+    /** @var string Kinesis Firehose Stream Name */
     private $firehoseStreamName;
-    /** @var string */
+    /** @var string Compress Data for Kinesis Firehose */
     private $firehoseCompressData;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UpdateNamespaceRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UpdateNamespaceRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return UpdateNamespaceRequest
+     */
 	public function withDescription(?string $description): UpdateNamespaceRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Log Export Method */
 	public function getType(): ?string {
 		return $this->type;
 	}
+    /** @param string|null $type Log Export Method */
 	public function setType(?string $type) {
 		$this->type = $type;
 	}
+    /**
+     * @param string|null $type Log Export Method
+     * @return UpdateNamespaceRequest
+     */
 	public function withType(?string $type): UpdateNamespaceRequest {
 		$this->type = $type;
 		return $this;
 	}
+    /** @return string|null GCP Credentials */
 	public function getGcpCredentialJson(): ?string {
 		return $this->gcpCredentialJson;
 	}
+    /** @param string|null $gcpCredentialJson GCP Credentials */
 	public function setGcpCredentialJson(?string $gcpCredentialJson) {
 		$this->gcpCredentialJson = $gcpCredentialJson;
 	}
+    /**
+     * @param string|null $gcpCredentialJson GCP Credentials
+     * @return UpdateNamespaceRequest
+     */
 	public function withGcpCredentialJson(?string $gcpCredentialJson): UpdateNamespaceRequest {
 		$this->gcpCredentialJson = $gcpCredentialJson;
 		return $this;
 	}
+    /** @return string|null BigQuery Dataset Name */
 	public function getBigQueryDatasetName(): ?string {
 		return $this->bigQueryDatasetName;
 	}
+    /** @param string|null $bigQueryDatasetName BigQuery Dataset Name */
 	public function setBigQueryDatasetName(?string $bigQueryDatasetName) {
 		$this->bigQueryDatasetName = $bigQueryDatasetName;
 	}
+    /**
+     * @param string|null $bigQueryDatasetName BigQuery Dataset Name
+     * @return UpdateNamespaceRequest
+     */
 	public function withBigQueryDatasetName(?string $bigQueryDatasetName): UpdateNamespaceRequest {
 		$this->bigQueryDatasetName = $bigQueryDatasetName;
 		return $this;
 	}
+    /** @return int|null Log Retention Period (days) */
 	public function getLogExpireDays(): ?int {
 		return $this->logExpireDays;
 	}
+    /** @param int|null $logExpireDays Log Retention Period (days) */
 	public function setLogExpireDays(?int $logExpireDays) {
 		$this->logExpireDays = $logExpireDays;
 	}
+    /**
+     * @param int|null $logExpireDays Log Retention Period (days)
+     * @return UpdateNamespaceRequest
+     */
 	public function withLogExpireDays(?int $logExpireDays): UpdateNamespaceRequest {
 		$this->logExpireDays = $logExpireDays;
 		return $this;
 	}
+    /** @return string|null AWS Region */
 	public function getAwsRegion(): ?string {
 		return $this->awsRegion;
 	}
+    /** @param string|null $awsRegion AWS Region */
 	public function setAwsRegion(?string $awsRegion) {
 		$this->awsRegion = $awsRegion;
 	}
+    /**
+     * @param string|null $awsRegion AWS Region
+     * @return UpdateNamespaceRequest
+     */
 	public function withAwsRegion(?string $awsRegion): UpdateNamespaceRequest {
 		$this->awsRegion = $awsRegion;
 		return $this;
 	}
+    /** @return string|null AWS Access Key ID */
 	public function getAwsAccessKeyId(): ?string {
 		return $this->awsAccessKeyId;
 	}
+    /** @param string|null $awsAccessKeyId AWS Access Key ID */
 	public function setAwsAccessKeyId(?string $awsAccessKeyId) {
 		$this->awsAccessKeyId = $awsAccessKeyId;
 	}
+    /**
+     * @param string|null $awsAccessKeyId AWS Access Key ID
+     * @return UpdateNamespaceRequest
+     */
 	public function withAwsAccessKeyId(?string $awsAccessKeyId): UpdateNamespaceRequest {
 		$this->awsAccessKeyId = $awsAccessKeyId;
 		return $this;
 	}
+    /** @return string|null AWS Secret Access Key */
 	public function getAwsSecretAccessKey(): ?string {
 		return $this->awsSecretAccessKey;
 	}
+    /** @param string|null $awsSecretAccessKey AWS Secret Access Key */
 	public function setAwsSecretAccessKey(?string $awsSecretAccessKey) {
 		$this->awsSecretAccessKey = $awsSecretAccessKey;
 	}
+    /**
+     * @param string|null $awsSecretAccessKey AWS Secret Access Key
+     * @return UpdateNamespaceRequest
+     */
 	public function withAwsSecretAccessKey(?string $awsSecretAccessKey): UpdateNamespaceRequest {
 		$this->awsSecretAccessKey = $awsSecretAccessKey;
 		return $this;
 	}
+    /** @return string|null Kinesis Firehose Stream Name */
 	public function getFirehoseStreamName(): ?string {
 		return $this->firehoseStreamName;
 	}
+    /** @param string|null $firehoseStreamName Kinesis Firehose Stream Name */
 	public function setFirehoseStreamName(?string $firehoseStreamName) {
 		$this->firehoseStreamName = $firehoseStreamName;
 	}
+    /**
+     * @param string|null $firehoseStreamName Kinesis Firehose Stream Name
+     * @return UpdateNamespaceRequest
+     */
 	public function withFirehoseStreamName(?string $firehoseStreamName): UpdateNamespaceRequest {
 		$this->firehoseStreamName = $firehoseStreamName;
 		return $this;
 	}
+    /** @return string|null Compress Data for Kinesis Firehose */
 	public function getFirehoseCompressData(): ?string {
 		return $this->firehoseCompressData;
 	}
+    /** @param string|null $firehoseCompressData Compress Data for Kinesis Firehose */
 	public function setFirehoseCompressData(?string $firehoseCompressData) {
 		$this->firehoseCompressData = $firehoseCompressData;
 	}
+    /**
+     * @param string|null $firehoseCompressData Compress Data for Kinesis Firehose
+     * @return UpdateNamespaceRequest
+     */
 	public function withFirehoseCompressData(?string $firehoseCompressData): UpdateNamespaceRequest {
 		$this->firehoseCompressData = $firehoseCompressData;
 		return $this;

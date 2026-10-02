@@ -20,45 +20,68 @@ namespace Gs2\Money2\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Receipt of store platform
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#receipt
+ */
 class Receipt implements IModel {
 	/**
-     * @var string
+     * @var string Store
 	 */
 	private $store;
 	/**
-     * @var string
+     * @var string Transaction ID
 	 */
 	private $transactionID;
 	/**
-     * @var string
+     * @var string Payload
 	 */
 	private $payload;
+    /** @return string|null Store */
 	public function getStore(): ?string {
 		return $this->store;
 	}
+    /** @param string|null $store Store */
 	public function setStore(?string $store) {
 		$this->store = $store;
 	}
+    /**
+     * @param string|null $store Store
+     * @return Receipt
+     */
 	public function withStore(?string $store): Receipt {
 		$this->store = $store;
 		return $this;
 	}
+    /** @return string|null Transaction ID */
 	public function getTransactionID(): ?string {
 		return $this->transactionID;
 	}
+    /** @param string|null $transactionID Transaction ID */
 	public function setTransactionID(?string $transactionID) {
 		$this->transactionID = $transactionID;
 	}
+    /**
+     * @param string|null $transactionID Transaction ID
+     * @return Receipt
+     */
 	public function withTransactionID(?string $transactionID): Receipt {
 		$this->transactionID = $transactionID;
 		return $this;
 	}
+    /** @return string|null Payload */
 	public function getPayload(): ?string {
 		return $this->payload;
 	}
+    /** @param string|null $payload Payload */
 	public function setPayload(?string $payload) {
 		$this->payload = $payload;
 	}
+    /**
+     * @param string|null $payload Payload
+     * @return Receipt
+     */
 	public function withPayload(?string $payload): Receipt {
 		$this->payload = $payload;
 		return $this;

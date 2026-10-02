@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Version\Model\Version;
 use Gs2\Version\Model\AcceptVersion;
 
+/**
+ * Result of accept: Approve current version
+ *
+ * @see https://docs.gs2.io/api_reference/version/sdk/#accept
+ */
 class AcceptResult implements IResult {
-    /** @var AcceptVersion */
+    /** @var AcceptVersion Approved Version */
     private $item;
 
+    /** @return AcceptVersion|null Approved Version */
 	public function getItem(): ?AcceptVersion {
 		return $this->item;
 	}
 
+    /** @param AcceptVersion|null $item Approved Version */
 	public function setItem(?AcceptVersion $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param AcceptVersion|null $item Approved Version
+     * @return AcceptResult
+     */
 	public function withItem(?AcceptVersion $item): AcceptResult {
 		$this->item = $item;
 		return $this;

@@ -20,73 +20,108 @@ namespace Gs2\Formation\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Signature Slot
+ *
+ * @see https://docs.gs2.io/api_reference/formation/sdk/#slotwithsignature
+ */
 class SlotWithSignature implements IModel {
 	/**
-     * @var string
+     * @var string Slot Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Property Type
 	 */
 	private $propertyType;
 	/**
-     * @var string
+     * @var string Payload
 	 */
 	private $body;
 	/**
-     * @var string
+     * @var string Signature that proves ownership of the resource referenced by the property ID
 	 */
 	private $signature;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
+    /** @return string|null Slot Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Slot Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Slot Model name
+     * @return SlotWithSignature
+     */
 	public function withName(?string $name): SlotWithSignature {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Property Type */
 	public function getPropertyType(): ?string {
 		return $this->propertyType;
 	}
+    /** @param string|null $propertyType Property Type */
 	public function setPropertyType(?string $propertyType) {
 		$this->propertyType = $propertyType;
 	}
+    /**
+     * @param string|null $propertyType Property Type
+     * @return SlotWithSignature
+     */
 	public function withPropertyType(?string $propertyType): SlotWithSignature {
 		$this->propertyType = $propertyType;
 		return $this;
 	}
+    /** @return string|null Payload */
 	public function getBody(): ?string {
 		return $this->body;
 	}
+    /** @param string|null $body Payload */
 	public function setBody(?string $body) {
 		$this->body = $body;
 	}
+    /**
+     * @param string|null $body Payload
+     * @return SlotWithSignature
+     */
 	public function withBody(?string $body): SlotWithSignature {
 		$this->body = $body;
 		return $this;
 	}
+    /** @return string|null Signature that proves ownership of the resource referenced by the property ID */
 	public function getSignature(): ?string {
 		return $this->signature;
 	}
+    /** @param string|null $signature Signature that proves ownership of the resource referenced by the property ID */
 	public function setSignature(?string $signature) {
 		$this->signature = $signature;
 	}
+    /**
+     * @param string|null $signature Signature that proves ownership of the resource referenced by the property ID
+     * @return SlotWithSignature
+     */
 	public function withSignature(?string $signature): SlotWithSignature {
 		$this->signature = $signature;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return SlotWithSignature
+     */
 	public function withMetadata(?string $metadata): SlotWithSignature {
 		$this->metadata = $metadata;
 		return $this;

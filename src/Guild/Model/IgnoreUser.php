@@ -20,31 +20,48 @@ namespace Gs2\Guild\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Ignore User
+ *
+ * @see https://docs.gs2.io/api_reference/guild/sdk/#ignoreuser
+ */
 class IgnoreUser implements IModel {
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return IgnoreUser
+     */
 	public function withUserId(?string $userId): IgnoreUser {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return IgnoreUser
+     */
 	public function withCreatedAt(?int $createdAt): IgnoreUser {
 		$this->createdAt = $createdAt;
 		return $this;

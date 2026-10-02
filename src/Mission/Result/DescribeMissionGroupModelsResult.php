@@ -24,18 +24,29 @@ use Gs2\Mission\Model\AcquireAction;
 use Gs2\Mission\Model\MissionTaskModel;
 use Gs2\Mission\Model\MissionGroupModel;
 
+/**
+ * Result of describeMissionGroupModels: List Mission Group Models
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#describemissiongroupmodels
+ */
 class DescribeMissionGroupModelsResult implements IResult {
-    /** @var array */
+    /** @var array List of Mission Group Model */
     private $items;
 
+    /** @return array|null List of Mission Group Model */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Mission Group Model */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Mission Group Model
+     * @return DescribeMissionGroupModelsResult
+     */
 	public function withItems(?array $items): DescribeMissionGroupModelsResult {
 		$this->items = $items;
 		return $this;

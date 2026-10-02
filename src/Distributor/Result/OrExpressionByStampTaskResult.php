@@ -19,18 +19,29 @@ namespace Gs2\Distributor\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of orExpressionByStampTask: Execute OR expression as a transaction
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/stamp_sheet/#gs2distributororexpressionbyuserid
+ */
 class OrExpressionByStampTaskResult implements IResult {
-    /** @var string */
+    /** @var string Context recording the execution results of verification actions */
     private $newContextStack;
 
+    /** @return string|null Context recording the execution results of verification actions */
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
+    /** @param string|null $newContextStack Context recording the execution results of verification actions */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
+    /**
+     * @param string|null $newContextStack Context recording the execution results of verification actions
+     * @return OrExpressionByStampTaskResult
+     */
 	public function withNewContextStack(?string $newContextStack): OrExpressionByStampTaskResult {
 		$this->newContextStack = $newContextStack;
 		return $this;

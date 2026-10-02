@@ -20,18 +20,29 @@ namespace Gs2\Chat\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Chat\Model\CurrentModelMaster;
 
+/**
+ * Result of exportMaster: Export Message Category Model Master in a master data format that can be activated
+ *
+ * @see https://docs.gs2.io/api_reference/chat/sdk/#exportmaster
+ */
 class ExportMasterResult implements IResult {
-    /** @var CurrentModelMaster */
+    /** @var CurrentModelMaster Message Category Model master data that can be activated */
     private $item;
 
+    /** @return CurrentModelMaster|null Message Category Model master data that can be activated */
 	public function getItem(): ?CurrentModelMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentModelMaster|null $item Message Category Model master data that can be activated */
 	public function setItem(?CurrentModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentModelMaster|null $item Message Category Model master data that can be activated
+     * @return ExportMasterResult
+     */
 	public function withItem(?CurrentModelMaster $item): ExportMasterResult {
 		$this->item = $item;
 		return $this;

@@ -23,18 +23,29 @@ use Gs2\Distributor\Model\ConsumeAction;
 use Gs2\Distributor\Model\AcquireAction;
 use Gs2\Distributor\Model\StampSheetResult;
 
+/**
+ * Result of getStampSheetResult: Get Transaction Result
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#getstampsheetresult
+ */
 class GetStampSheetResultResult implements IResult {
-    /** @var StampSheetResult */
+    /** @var StampSheetResult Transaction Execution Result */
     private $item;
 
+    /** @return StampSheetResult|null Transaction Execution Result */
 	public function getItem(): ?StampSheetResult {
 		return $this->item;
 	}
 
+    /** @param StampSheetResult|null $item Transaction Execution Result */
 	public function setItem(?StampSheetResult $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param StampSheetResult|null $item Transaction Execution Result
+     * @return GetStampSheetResultResult
+     */
 	public function withItem(?StampSheetResult $item): GetStampSheetResultResult {
 		$this->item = $item;
 		return $this;

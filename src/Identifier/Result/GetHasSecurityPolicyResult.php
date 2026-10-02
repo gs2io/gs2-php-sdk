@@ -20,18 +20,29 @@ namespace Gs2\Identifier\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Identifier\Model\SecurityPolicy;
 
+/**
+ * Result of getHasSecurityPolicy: List assigned Security Policies
+ *
+ * @see https://docs.gs2.io/api_reference/identifier/sdk/#gethassecuritypolicy
+ */
 class GetHasSecurityPolicyResult implements IResult {
-    /** @var array */
+    /** @var array List of Security Policies */
     private $items;
 
+    /** @return array|null List of Security Policies */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Security Policies */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Security Policies
+     * @return GetHasSecurityPolicyResult
+     */
 	public function withItems(?array $items): GetHasSecurityPolicyResult {
 		$this->items = $items;
 		return $this;

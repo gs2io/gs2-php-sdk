@@ -19,18 +19,29 @@ namespace Gs2\Dictionary\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of verifyEntryByStampTask: Execute the entry verification as a verify action
+ *
+ * @see https://docs.gs2.io/api_reference/dictionary/stamp_sheet/#gs2dictionaryverifyentrybyuserid
+ */
 class VerifyEntryByStampTaskResult implements IResult {
-    /** @var string */
+    /** @var string Context recording the execution results of verification actions */
     private $newContextStack;
 
+    /** @return string|null Context recording the execution results of verification actions */
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
+    /** @param string|null $newContextStack Context recording the execution results of verification actions */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
+    /**
+     * @param string|null $newContextStack Context recording the execution results of verification actions
+     * @return VerifyEntryByStampTaskResult
+     */
 	public function withNewContextStack(?string $newContextStack): VerifyEntryByStampTaskResult {
 		$this->newContextStack = $newContextStack;
 		return $this;

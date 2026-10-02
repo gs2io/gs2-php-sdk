@@ -24,18 +24,29 @@ use Gs2\StateMachine\Model\StackEntry;
 use Gs2\StateMachine\Model\Variable;
 use Gs2\StateMachine\Model\Status;
 
+/**
+ * Result of getStatus: Get State Machine Status
+ *
+ * @see https://docs.gs2.io/api_reference/state_machine/sdk/#getstatus
+ */
 class GetStatusResult implements IResult {
-    /** @var Status */
+    /** @var Status State Machine Status */
     private $item;
 
+    /** @return Status|null State Machine Status */
 	public function getItem(): ?Status {
 		return $this->item;
 	}
 
+    /** @param Status|null $item State Machine Status */
 	public function setItem(?Status $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Status|null $item State Machine Status
+     * @return GetStatusResult
+     */
 	public function withItem(?Status $item): GetStatusResult {
 		$this->item = $item;
 		return $this;

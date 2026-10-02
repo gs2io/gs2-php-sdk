@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Chat\Model\NotificationType;
 use Gs2\Chat\Model\Subscribe;
 
+/**
+ * Result of unsubscribe: Unsubscribe from a room
+ *
+ * @see https://docs.gs2.io/api_reference/chat/sdk/#unsubscribe
+ */
 class UnsubscribeResult implements IResult {
-    /** @var Subscribe */
+    /** @var Subscribe Unsubscribed room */
     private $item;
 
+    /** @return Subscribe|null Unsubscribed room */
 	public function getItem(): ?Subscribe {
 		return $this->item;
 	}
 
+    /** @param Subscribe|null $item Unsubscribed room */
 	public function setItem(?Subscribe $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Subscribe|null $item Unsubscribed room
+     * @return UnsubscribeResult
+     */
 	public function withItem(?Subscribe $item): UnsubscribeResult {
 		$this->item = $item;
 		return $this;

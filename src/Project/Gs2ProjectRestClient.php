@@ -2894,24 +2894,16 @@ class GetImportErrorLogTask extends Gs2RestSessionTask {
     }
 }
 
-/**
- * GS2 Project API クライアント
- *
- * @author Game Server Services, Inc.
- *
- */
+/** GS2-Project API client */
 class Gs2ProjectRestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * Create Account
+     *
      * @param CreateAccountRequest $request
      * @return PromiseInterface
      */
@@ -2927,6 +2919,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Account
+     *
      * @param CreateAccountRequest $request
      * @return CreateAccountResult
      */
@@ -2939,6 +2933,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Activate GS2 account
+     *
      * @param VerifyRequest $request
      * @return PromiseInterface
      */
@@ -2954,6 +2950,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Activate GS2 account
+     *
      * @param VerifyRequest $request
      * @return VerifyResult
      */
@@ -2966,6 +2964,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Sign-in
+     *
      * @param SignInRequest $request
      * @return PromiseInterface
      */
@@ -2981,6 +2981,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Sign-in
+     *
      * @param SignInRequest $request
      * @return SignInResult
      */
@@ -2993,6 +2995,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get password reissue token
+     *
      * @param ForgetRequest $request
      * @return PromiseInterface
      */
@@ -3008,6 +3012,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get password reissue token
+     *
      * @param ForgetRequest $request
      * @return ForgetResult
      */
@@ -3020,6 +3026,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Reissue Password
+     *
      * @param IssuePasswordRequest $request
      * @return PromiseInterface
      */
@@ -3035,6 +3043,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Reissue Password
+     *
      * @param IssuePasswordRequest $request
      * @return IssuePasswordResult
      */
@@ -3047,6 +3057,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update GS2 account
+     *
      * @param UpdateAccountRequest $request
      * @return PromiseInterface
      */
@@ -3062,6 +3074,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update GS2 account
+     *
      * @param UpdateAccountRequest $request
      * @return UpdateAccountResult
      */
@@ -3074,6 +3088,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Enable MFA
+     *
      * @param EnableMfaRequest $request
      * @return PromiseInterface
      */
@@ -3089,6 +3105,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Enable MFA
+     *
      * @param EnableMfaRequest $request
      * @return EnableMfaResult
      */
@@ -3101,6 +3119,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify MFA
+     *
      * @param ChallengeMfaRequest $request
      * @return PromiseInterface
      */
@@ -3116,6 +3136,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify MFA
+     *
      * @param ChallengeMfaRequest $request
      * @return ChallengeMfaResult
      */
@@ -3128,6 +3150,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Disable MFA
+     *
      * @param DisableMfaRequest $request
      * @return PromiseInterface
      */
@@ -3143,6 +3167,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Disable MFA
+     *
      * @param DisableMfaRequest $request
      * @return DisableMfaResult
      */
@@ -3155,6 +3181,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete GS2 account
+     *
      * @param DeleteAccountRequest $request
      * @return PromiseInterface
      */
@@ -3170,6 +3198,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete GS2 account
+     *
      * @param DeleteAccountRequest $request
      * @return DeleteAccountResult
      */
@@ -3182,6 +3212,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return PromiseInterface
      */
@@ -3197,6 +3229,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return GetServiceVersionResult
      */
@@ -3209,6 +3243,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get list of projects
+     *
      * @param DescribeProjectsRequest $request
      * @return PromiseInterface
      */
@@ -3224,6 +3260,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get list of projects
+     *
      * @param DescribeProjectsRequest $request
      * @return DescribeProjectsResult
      */
@@ -3236,6 +3274,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Project
+     *
      * @param CreateProjectRequest $request
      * @return PromiseInterface
      */
@@ -3251,6 +3291,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Project
+     *
      * @param CreateProjectRequest $request
      * @return CreateProjectResult
      */
@@ -3263,6 +3305,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Project
+     *
      * @param GetProjectRequest $request
      * @return PromiseInterface
      */
@@ -3278,6 +3322,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Project
+     *
      * @param GetProjectRequest $request
      * @return GetProjectResult
      */
@@ -3290,6 +3336,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Issue project tokens
+     *
      * @param GetProjectTokenRequest $request
      * @return PromiseInterface
      */
@@ -3305,6 +3353,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Issue project tokens
+     *
      * @param GetProjectTokenRequest $request
      * @return GetProjectTokenResult
      */
@@ -3317,6 +3367,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Issue project tokens
+     *
      * @param GetProjectTokenByIdentifierRequest $request
      * @return PromiseInterface
      */
@@ -3332,6 +3384,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Issue project tokens
+     *
      * @param GetProjectTokenByIdentifierRequest $request
      * @return GetProjectTokenByIdentifierResult
      */
@@ -3344,6 +3398,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Project
+     *
      * @param UpdateProjectRequest $request
      * @return PromiseInterface
      */
@@ -3359,6 +3415,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Project
+     *
      * @param UpdateProjectRequest $request
      * @return UpdateProjectResult
      */
@@ -3371,6 +3429,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Activate region
+     *
      * @param ActivateRegionRequest $request
      * @return PromiseInterface
      */
@@ -3386,6 +3446,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Activate region
+     *
      * @param ActivateRegionRequest $request
      * @return ActivateRegionResult
      */
@@ -3398,6 +3460,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Activate region
+     *
      * @param WaitActivateRegionRequest $request
      * @return PromiseInterface
      */
@@ -3413,6 +3477,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Activate region
+     *
      * @param WaitActivateRegionRequest $request
      * @return WaitActivateRegionResult
      */
@@ -3425,6 +3491,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Project
+     *
      * @param DeleteProjectRequest $request
      * @return PromiseInterface
      */
@@ -3440,6 +3508,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Project
+     *
      * @param DeleteProjectRequest $request
      * @return DeleteProjectResult
      */
@@ -3452,6 +3522,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get list of payment methods
+     *
      * @param DescribeBillingMethodsRequest $request
      * @return PromiseInterface
      */
@@ -3467,6 +3539,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get list of payment methods
+     *
      * @param DescribeBillingMethodsRequest $request
      * @return DescribeBillingMethodsResult
      */
@@ -3479,6 +3553,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create payment method
+     *
      * @param CreateBillingMethodRequest $request
      * @return PromiseInterface
      */
@@ -3494,6 +3570,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create payment method
+     *
      * @param CreateBillingMethodRequest $request
      * @return CreateBillingMethodResult
      */
@@ -3506,6 +3584,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Payment Method
+     *
      * @param GetBillingMethodRequest $request
      * @return PromiseInterface
      */
@@ -3521,6 +3601,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Payment Method
+     *
      * @param GetBillingMethodRequest $request
      * @return GetBillingMethodResult
      */
@@ -3533,6 +3615,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update payment method
+     *
      * @param UpdateBillingMethodRequest $request
      * @return PromiseInterface
      */
@@ -3548,6 +3632,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update payment method
+     *
      * @param UpdateBillingMethodRequest $request
      * @return UpdateBillingMethodResult
      */
@@ -3560,6 +3646,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete payment method
+     *
      * @param DeleteBillingMethodRequest $request
      * @return PromiseInterface
      */
@@ -3575,6 +3663,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete payment method
+     *
      * @param DeleteBillingMethodRequest $request
      * @return DeleteBillingMethodResult
      */
@@ -3587,6 +3677,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get list of receipts
+     *
      * @param DescribeReceiptsRequest $request
      * @return PromiseInterface
      */
@@ -3602,6 +3694,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get list of receipts
+     *
      * @param DescribeReceiptsRequest $request
      * @return DescribeReceiptsResult
      */
@@ -3614,6 +3708,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get list of usage status
+     *
      * @param DescribeBillingsRequest $request
      * @return PromiseInterface
      */
@@ -3629,6 +3725,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get list of usage status
+     *
      * @param DescribeBillingsRequest $request
      * @return DescribeBillingsResult
      */
@@ -3641,6 +3739,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get list of usage status of the project
+     *
      * @param GetBillingsRequest $request
      * @return PromiseInterface
      */
@@ -3656,6 +3756,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get list of usage status of the project
+     *
      * @param GetBillingsRequest $request
      * @return GetBillingsResult
      */
@@ -3668,6 +3770,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Dump User Data Progress
+     *
      * @param DescribeDumpProgressesRequest $request
      * @return PromiseInterface
      */
@@ -3683,6 +3787,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Dump User Data Progress
+     *
      * @param DescribeDumpProgressesRequest $request
      * @return DescribeDumpProgressesResult
      */
@@ -3695,6 +3801,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get dump user data progress
+     *
      * @param GetDumpProgressRequest $request
      * @return PromiseInterface
      */
@@ -3710,6 +3818,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get dump user data progress
+     *
      * @param GetDumpProgressRequest $request
      * @return GetDumpProgressResult
      */
@@ -3722,6 +3832,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Wait for the completion of user data dump
+     *
      * @param WaitDumpUserDataRequest $request
      * @return PromiseInterface
      */
@@ -3737,6 +3849,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Wait for the completion of user data dump
+     *
      * @param WaitDumpUserDataRequest $request
      * @return WaitDumpUserDataResult
      */
@@ -3749,6 +3863,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Archive for the completion of user data dump
+     *
      * @param ArchiveDumpUserDataRequest $request
      * @return PromiseInterface
      */
@@ -3764,6 +3880,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Archive for the completion of user data dump
+     *
      * @param ArchiveDumpUserDataRequest $request
      * @return ArchiveDumpUserDataResult
      */
@@ -3776,6 +3894,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Start dump user data
+     *
      * @param DumpUserDataRequest $request
      * @return PromiseInterface
      */
@@ -3791,6 +3911,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Start dump user data
+     *
      * @param DumpUserDataRequest $request
      * @return DumpUserDataResult
      */
@@ -3803,6 +3925,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Start dump user data
+     *
      * @param GetDumpUserDataRequest $request
      * @return PromiseInterface
      */
@@ -3818,6 +3942,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Start dump user data
+     *
      * @param GetDumpUserDataRequest $request
      * @return GetDumpUserDataResult
      */
@@ -3830,6 +3956,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Clean User Data Progress
+     *
      * @param DescribeCleanProgressesRequest $request
      * @return PromiseInterface
      */
@@ -3845,6 +3973,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Clean User Data Progress
+     *
      * @param DescribeCleanProgressesRequest $request
      * @return DescribeCleanProgressesResult
      */
@@ -3857,6 +3987,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get clean user data progress
+     *
      * @param GetCleanProgressRequest $request
      * @return PromiseInterface
      */
@@ -3872,6 +4004,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get clean user data progress
+     *
      * @param GetCleanProgressRequest $request
      * @return GetCleanProgressResult
      */
@@ -3884,6 +4018,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Wait for the completion of user data clean
+     *
      * @param WaitCleanUserDataRequest $request
      * @return PromiseInterface
      */
@@ -3899,6 +4035,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Wait for the completion of user data clean
+     *
      * @param WaitCleanUserDataRequest $request
      * @return WaitCleanUserDataResult
      */
@@ -3911,6 +4049,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Start clean user data
+     *
      * @param CleanUserDataRequest $request
      * @return PromiseInterface
      */
@@ -3926,6 +4066,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Start clean user data
+     *
      * @param CleanUserDataRequest $request
      * @return CleanUserDataResult
      */
@@ -3938,6 +4080,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Import User Data Progress
+     *
      * @param DescribeImportProgressesRequest $request
      * @return PromiseInterface
      */
@@ -3953,6 +4097,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Import User Data Progress
+     *
      * @param DescribeImportProgressesRequest $request
      * @return DescribeImportProgressesResult
      */
@@ -3965,6 +4111,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get import user data progress
+     *
      * @param GetImportProgressRequest $request
      * @return PromiseInterface
      */
@@ -3980,6 +4128,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get import user data progress
+     *
      * @param GetImportProgressRequest $request
      * @return GetImportProgressResult
      */
@@ -3992,6 +4142,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Wait for the completion of user data import
+     *
      * @param WaitImportUserDataRequest $request
      * @return PromiseInterface
      */
@@ -4007,6 +4159,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Wait for the completion of user data import
+     *
      * @param WaitImportUserDataRequest $request
      * @return WaitImportUserDataResult
      */
@@ -4019,6 +4173,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare to upload user data to import
+     *
      * @param PrepareImportUserDataRequest $request
      * @return PromiseInterface
      */
@@ -4034,6 +4190,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare to upload user data to import
+     *
      * @param PrepareImportUserDataRequest $request
      * @return PrepareImportUserDataResult
      */
@@ -4046,6 +4204,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Start import user data
+     *
      * @param ImportUserDataRequest $request
      * @return PromiseInterface
      */
@@ -4061,6 +4221,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Start import user data
+     *
      * @param ImportUserDataRequest $request
      * @return ImportUserDataResult
      */
@@ -4073,6 +4235,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Import User Data Progress
+     *
      * @param DescribeImportErrorLogsRequest $request
      * @return PromiseInterface
      */
@@ -4088,6 +4252,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Import User Data Progress
+     *
      * @param DescribeImportErrorLogsRequest $request
      * @return DescribeImportErrorLogsResult
      */
@@ -4100,6 +4266,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get import user data progress
+     *
      * @param GetImportErrorLogRequest $request
      * @return PromiseInterface
      */
@@ -4115,6 +4283,8 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get import user data progress
+     *
      * @param GetImportErrorLogRequest $request
      * @return GetImportErrorLogResult
      */

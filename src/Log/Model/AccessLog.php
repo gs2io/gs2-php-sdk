@@ -20,101 +20,148 @@ namespace Gs2\Log\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Access log
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#accesslog
+ */
 class AccessLog implements IModel {
 	/**
-     * @var int
+     * @var int Timestamp
 	 */
 	private $timestamp;
 	/**
-     * @var string
+     * @var string Request ID
 	 */
 	private $requestId;
 	/**
-     * @var string
+     * @var string Microservice Type
 	 */
 	private $service;
 	/**
-     * @var string
+     * @var string Microservice Method
 	 */
 	private $method;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var string
+     * @var string Request Content
 	 */
 	private $request;
 	/**
-     * @var string
+     * @var string Response Content
 	 */
 	private $result;
+    /** @return int|null Timestamp */
 	public function getTimestamp(): ?int {
 		return $this->timestamp;
 	}
+    /** @param int|null $timestamp Timestamp */
 	public function setTimestamp(?int $timestamp) {
 		$this->timestamp = $timestamp;
 	}
+    /**
+     * @param int|null $timestamp Timestamp
+     * @return AccessLog
+     */
 	public function withTimestamp(?int $timestamp): AccessLog {
 		$this->timestamp = $timestamp;
 		return $this;
 	}
+    /** @return string|null Request ID */
 	public function getRequestId(): ?string {
 		return $this->requestId;
 	}
+    /** @param string|null $requestId Request ID */
 	public function setRequestId(?string $requestId) {
 		$this->requestId = $requestId;
 	}
+    /**
+     * @param string|null $requestId Request ID
+     * @return AccessLog
+     */
 	public function withRequestId(?string $requestId): AccessLog {
 		$this->requestId = $requestId;
 		return $this;
 	}
+    /** @return string|null Microservice Type */
 	public function getService(): ?string {
 		return $this->service;
 	}
+    /** @param string|null $service Microservice Type */
 	public function setService(?string $service) {
 		$this->service = $service;
 	}
+    /**
+     * @param string|null $service Microservice Type
+     * @return AccessLog
+     */
 	public function withService(?string $service): AccessLog {
 		$this->service = $service;
 		return $this;
 	}
+    /** @return string|null Microservice Method */
 	public function getMethod(): ?string {
 		return $this->method;
 	}
+    /** @param string|null $method Microservice Method */
 	public function setMethod(?string $method) {
 		$this->method = $method;
 	}
+    /**
+     * @param string|null $method Microservice Method
+     * @return AccessLog
+     */
 	public function withMethod(?string $method): AccessLog {
 		$this->method = $method;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return AccessLog
+     */
 	public function withUserId(?string $userId): AccessLog {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Request Content */
 	public function getRequest(): ?string {
 		return $this->request;
 	}
+    /** @param string|null $request Request Content */
 	public function setRequest(?string $request) {
 		$this->request = $request;
 	}
+    /**
+     * @param string|null $request Request Content
+     * @return AccessLog
+     */
 	public function withRequest(?string $request): AccessLog {
 		$this->request = $request;
 		return $this;
 	}
+    /** @return string|null Response Content */
 	public function getResult(): ?string {
 		return $this->result;
 	}
+    /** @param string|null $result Response Content */
 	public function setResult(?string $result) {
 		$this->result = $result;
 	}
+    /**
+     * @param string|null $result Response Content
+     * @return AccessLog
+     */
 	public function withResult(?string $result): AccessLog {
 		$this->result = $result;
 		return $this;

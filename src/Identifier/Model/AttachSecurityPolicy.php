@@ -20,59 +20,88 @@ namespace Gs2\Identifier\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Attached Security Policy
+ *
+ * @see https://docs.gs2.io/api_reference/identifier/sdk/#attachsecuritypolicy
+ */
 class AttachSecurityPolicy implements IModel {
 	/**
-     * @var string
+     * @var string GS2-Identifier User GRN
 	 */
 	private $userId;
 	/**
-     * @var array
+     * @var array List of Security Policy GRNs
 	 */
 	private $securityPolicyIds;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $attachedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null GS2-Identifier User GRN */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId GS2-Identifier User GRN */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId GS2-Identifier User GRN
+     * @return AttachSecurityPolicy
+     */
 	public function withUserId(?string $userId): AttachSecurityPolicy {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return array|null List of Security Policy GRNs */
 	public function getSecurityPolicyIds(): ?array {
 		return $this->securityPolicyIds;
 	}
+    /** @param array|null $securityPolicyIds List of Security Policy GRNs */
 	public function setSecurityPolicyIds(?array $securityPolicyIds) {
 		$this->securityPolicyIds = $securityPolicyIds;
 	}
+    /**
+     * @param array|null $securityPolicyIds List of Security Policy GRNs
+     * @return AttachSecurityPolicy
+     */
 	public function withSecurityPolicyIds(?array $securityPolicyIds): AttachSecurityPolicy {
 		$this->securityPolicyIds = $securityPolicyIds;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getAttachedAt(): ?int {
 		return $this->attachedAt;
 	}
+    /** @param int|null $attachedAt Creation Timestamp */
 	public function setAttachedAt(?int $attachedAt) {
 		$this->attachedAt = $attachedAt;
 	}
+    /**
+     * @param int|null $attachedAt Creation Timestamp
+     * @return AttachSecurityPolicy
+     */
 	public function withAttachedAt(?int $attachedAt): AttachSecurityPolicy {
 		$this->attachedAt = $attachedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return AttachSecurityPolicy
+     */
 	public function withRevision(?int $revision): AttachSecurityPolicy {
 		$this->revision = $revision;
 		return $this;

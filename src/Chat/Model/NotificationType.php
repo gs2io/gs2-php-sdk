@@ -20,31 +20,48 @@ namespace Gs2\Chat\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Notification Type
+ *
+ * @see https://docs.gs2.io/api_reference/chat/sdk/#notificationtype
+ */
 class NotificationType implements IModel {
 	/**
-     * @var int
+     * @var int Categories for which you receive new message notifications
 	 */
 	private $category;
 	/**
-     * @var bool
+     * @var bool Whether to forward to mobile push notifications when offline
 	 */
 	private $enableTransferMobilePushNotification;
+    /** @return int|null Categories for which you receive new message notifications */
 	public function getCategory(): ?int {
 		return $this->category;
 	}
+    /** @param int|null $category Categories for which you receive new message notifications */
 	public function setCategory(?int $category) {
 		$this->category = $category;
 	}
+    /**
+     * @param int|null $category Categories for which you receive new message notifications
+     * @return NotificationType
+     */
 	public function withCategory(?int $category): NotificationType {
 		$this->category = $category;
 		return $this;
 	}
+    /** @return bool|null Whether to forward to mobile push notifications when offline */
 	public function getEnableTransferMobilePushNotification(): ?bool {
 		return $this->enableTransferMobilePushNotification;
 	}
+    /** @param bool|null $enableTransferMobilePushNotification Whether to forward to mobile push notifications when offline */
 	public function setEnableTransferMobilePushNotification(?bool $enableTransferMobilePushNotification) {
 		$this->enableTransferMobilePushNotification = $enableTransferMobilePushNotification;
 	}
+    /**
+     * @param bool|null $enableTransferMobilePushNotification Whether to forward to mobile push notifications when offline
+     * @return NotificationType
+     */
 	public function withEnableTransferMobilePushNotification(?bool $enableTransferMobilePushNotification): NotificationType {
 		$this->enableTransferMobilePushNotification = $enableTransferMobilePushNotification;
 		return $this;

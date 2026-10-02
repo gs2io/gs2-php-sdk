@@ -20,115 +20,168 @@ namespace Gs2\Showcase\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Random Displayed Item on the Random Showcase
+ *
+ * @see https://docs.gs2.io/api_reference/showcase/sdk/#randomdisplayitem
+ */
 class RandomDisplayItem implements IModel {
 	/**
-     * @var string
+     * @var string Random Showcase name
 	 */
 	private $showcaseName;
 	/**
-     * @var string
+     * @var string Random Displayed Item name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var array
+     * @var array List of Verify Actions
 	 */
 	private $verifyActions;
 	/**
-     * @var array
+     * @var array List of Consume Actions
 	 */
 	private $consumeActions;
 	/**
-     * @var array
+     * @var array List of Acquire Actions
 	 */
 	private $acquireActions;
 	/**
-     * @var int
+     * @var int Current purchase count
 	 */
 	private $currentPurchaseCount;
 	/**
-     * @var int
+     * @var int Maximum purchase count
 	 */
 	private $maximumPurchaseCount;
+    /** @return string|null Random Showcase name */
 	public function getShowcaseName(): ?string {
 		return $this->showcaseName;
 	}
+    /** @param string|null $showcaseName Random Showcase name */
 	public function setShowcaseName(?string $showcaseName) {
 		$this->showcaseName = $showcaseName;
 	}
+    /**
+     * @param string|null $showcaseName Random Showcase name
+     * @return RandomDisplayItem
+     */
 	public function withShowcaseName(?string $showcaseName): RandomDisplayItem {
 		$this->showcaseName = $showcaseName;
 		return $this;
 	}
+    /** @return string|null Random Displayed Item name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Random Displayed Item name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Random Displayed Item name
+     * @return RandomDisplayItem
+     */
 	public function withName(?string $name): RandomDisplayItem {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return RandomDisplayItem
+     */
 	public function withMetadata(?string $metadata): RandomDisplayItem {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return array|null List of Verify Actions */
 	public function getVerifyActions(): ?array {
 		return $this->verifyActions;
 	}
+    /** @param array|null $verifyActions List of Verify Actions */
 	public function setVerifyActions(?array $verifyActions) {
 		$this->verifyActions = $verifyActions;
 	}
+    /**
+     * @param array|null $verifyActions List of Verify Actions
+     * @return RandomDisplayItem
+     */
 	public function withVerifyActions(?array $verifyActions): RandomDisplayItem {
 		$this->verifyActions = $verifyActions;
 		return $this;
 	}
+    /** @return array|null List of Consume Actions */
 	public function getConsumeActions(): ?array {
 		return $this->consumeActions;
 	}
+    /** @param array|null $consumeActions List of Consume Actions */
 	public function setConsumeActions(?array $consumeActions) {
 		$this->consumeActions = $consumeActions;
 	}
+    /**
+     * @param array|null $consumeActions List of Consume Actions
+     * @return RandomDisplayItem
+     */
 	public function withConsumeActions(?array $consumeActions): RandomDisplayItem {
 		$this->consumeActions = $consumeActions;
 		return $this;
 	}
+    /** @return array|null List of Acquire Actions */
 	public function getAcquireActions(): ?array {
 		return $this->acquireActions;
 	}
+    /** @param array|null $acquireActions List of Acquire Actions */
 	public function setAcquireActions(?array $acquireActions) {
 		$this->acquireActions = $acquireActions;
 	}
+    /**
+     * @param array|null $acquireActions List of Acquire Actions
+     * @return RandomDisplayItem
+     */
 	public function withAcquireActions(?array $acquireActions): RandomDisplayItem {
 		$this->acquireActions = $acquireActions;
 		return $this;
 	}
+    /** @return int|null Current purchase count */
 	public function getCurrentPurchaseCount(): ?int {
 		return $this->currentPurchaseCount;
 	}
+    /** @param int|null $currentPurchaseCount Current purchase count */
 	public function setCurrentPurchaseCount(?int $currentPurchaseCount) {
 		$this->currentPurchaseCount = $currentPurchaseCount;
 	}
+    /**
+     * @param int|null $currentPurchaseCount Current purchase count
+     * @return RandomDisplayItem
+     */
 	public function withCurrentPurchaseCount(?int $currentPurchaseCount): RandomDisplayItem {
 		$this->currentPurchaseCount = $currentPurchaseCount;
 		return $this;
 	}
+    /** @return int|null Maximum purchase count */
 	public function getMaximumPurchaseCount(): ?int {
 		return $this->maximumPurchaseCount;
 	}
+    /** @param int|null $maximumPurchaseCount Maximum purchase count */
 	public function setMaximumPurchaseCount(?int $maximumPurchaseCount) {
 		$this->maximumPurchaseCount = $maximumPurchaseCount;
 	}
+    /**
+     * @param int|null $maximumPurchaseCount Maximum purchase count
+     * @return RandomDisplayItem
+     */
 	public function withMaximumPurchaseCount(?int $maximumPurchaseCount): RandomDisplayItem {
 		$this->maximumPurchaseCount = $maximumPurchaseCount;
 		return $this;

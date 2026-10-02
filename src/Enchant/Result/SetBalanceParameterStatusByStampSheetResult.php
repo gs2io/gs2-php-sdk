@@ -21,33 +21,50 @@ use Gs2\Core\Model\IResult;
 use Gs2\Enchant\Model\BalanceParameterValue;
 use Gs2\Enchant\Model\BalanceParameterStatus;
 
+/**
+ * Result of setBalanceParameterStatusByStampSheet: Execute setting any value to Balance Parameter Status as acquire action
+ *
+ * @see https://docs.gs2.io/api_reference/enchant/stamp_sheet/#gs2enchantsetbalanceparameterstatusbyuserid
+ */
 class SetBalanceParameterStatusByStampSheetResult implements IResult {
-    /** @var BalanceParameterStatus */
+    /** @var BalanceParameterStatus Balance Parameter Status updated */
     private $item;
-    /** @var BalanceParameterStatus */
+    /** @var BalanceParameterStatus Balance Parameter Status before update */
     private $old;
 
+    /** @return BalanceParameterStatus|null Balance Parameter Status updated */
 	public function getItem(): ?BalanceParameterStatus {
 		return $this->item;
 	}
 
+    /** @param BalanceParameterStatus|null $item Balance Parameter Status updated */
 	public function setItem(?BalanceParameterStatus $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param BalanceParameterStatus|null $item Balance Parameter Status updated
+     * @return SetBalanceParameterStatusByStampSheetResult
+     */
 	public function withItem(?BalanceParameterStatus $item): SetBalanceParameterStatusByStampSheetResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return BalanceParameterStatus|null Balance Parameter Status before update */
 	public function getOld(): ?BalanceParameterStatus {
 		return $this->old;
 	}
 
+    /** @param BalanceParameterStatus|null $old Balance Parameter Status before update */
 	public function setOld(?BalanceParameterStatus $old) {
 		$this->old = $old;
 	}
 
+    /**
+     * @param BalanceParameterStatus|null $old Balance Parameter Status before update
+     * @return SetBalanceParameterStatusByStampSheetResult
+     */
 	public function withOld(?BalanceParameterStatus $old): SetBalanceParameterStatusByStampSheetResult {
 		$this->old = $old;
 		return $this;

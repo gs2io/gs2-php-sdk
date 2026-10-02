@@ -19,65 +19,100 @@ namespace Gs2\Guild\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for updateMemberRoleByGuildName: Update member role by specifying a Guild name
+ *
+ * @see https://docs.gs2.io/api_reference/guild/sdk/#updatememberrolebyguildname
+ */
 class UpdateMemberRoleByGuildNameRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Guild Model name */
     private $guildModelName;
-    /** @var string */
+    /** @var string Guild name */
     private $guildName;
-    /** @var string */
+    /** @var string User ID to be updated */
     private $targetUserId;
-    /** @var string */
+    /** @var string Role Model name */
     private $roleName;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UpdateMemberRoleByGuildNameRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UpdateMemberRoleByGuildNameRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Guild Model name */
 	public function getGuildModelName(): ?string {
 		return $this->guildModelName;
 	}
+    /** @param string|null $guildModelName Guild Model name */
 	public function setGuildModelName(?string $guildModelName) {
 		$this->guildModelName = $guildModelName;
 	}
+    /**
+     * @param string|null $guildModelName Guild Model name
+     * @return UpdateMemberRoleByGuildNameRequest
+     */
 	public function withGuildModelName(?string $guildModelName): UpdateMemberRoleByGuildNameRequest {
 		$this->guildModelName = $guildModelName;
 		return $this;
 	}
+    /** @return string|null Guild name */
 	public function getGuildName(): ?string {
 		return $this->guildName;
 	}
+    /** @param string|null $guildName Guild name */
 	public function setGuildName(?string $guildName) {
 		$this->guildName = $guildName;
 	}
+    /**
+     * @param string|null $guildName Guild name
+     * @return UpdateMemberRoleByGuildNameRequest
+     */
 	public function withGuildName(?string $guildName): UpdateMemberRoleByGuildNameRequest {
 		$this->guildName = $guildName;
 		return $this;
 	}
+    /** @return string|null User ID to be updated */
 	public function getTargetUserId(): ?string {
 		return $this->targetUserId;
 	}
+    /** @param string|null $targetUserId User ID to be updated */
 	public function setTargetUserId(?string $targetUserId) {
 		$this->targetUserId = $targetUserId;
 	}
+    /**
+     * @param string|null $targetUserId User ID to be updated
+     * @return UpdateMemberRoleByGuildNameRequest
+     */
 	public function withTargetUserId(?string $targetUserId): UpdateMemberRoleByGuildNameRequest {
 		$this->targetUserId = $targetUserId;
 		return $this;
 	}
+    /** @return string|null Role Model name */
 	public function getRoleName(): ?string {
 		return $this->roleName;
 	}
+    /** @param string|null $roleName Role Model name */
 	public function setRoleName(?string $roleName) {
 		$this->roleName = $roleName;
 	}
+    /**
+     * @param string|null $roleName Role Model name
+     * @return UpdateMemberRoleByGuildNameRequest
+     */
 	public function withRoleName(?string $roleName): UpdateMemberRoleByGuildNameRequest {
 		$this->roleName = $roleName;
 		return $this;

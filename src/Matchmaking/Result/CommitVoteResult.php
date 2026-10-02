@@ -19,6 +19,11 @@ namespace Gs2\Matchmaking\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of commitVote: Forced determination of voting status
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#commitvote
+ */
 class CommitVoteResult implements IResult {
 
     public static function fromJson(?array $data): ?CommitVoteResult {

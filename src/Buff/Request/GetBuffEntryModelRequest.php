@@ -19,27 +19,44 @@ namespace Gs2\Buff\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getBuffEntryModel: Get Buff Entry Model
+ *
+ * @see https://docs.gs2.io/api_reference/buff/sdk/#getbuffentrymodel
+ */
 class GetBuffEntryModelRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Buff Entry Model name */
     private $buffEntryName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetBuffEntryModelRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetBuffEntryModelRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Buff Entry Model name */
 	public function getBuffEntryName(): ?string {
 		return $this->buffEntryName;
 	}
+    /** @param string|null $buffEntryName Buff Entry Model name */
 	public function setBuffEntryName(?string $buffEntryName) {
 		$this->buffEntryName = $buffEntryName;
 	}
+    /**
+     * @param string|null $buffEntryName Buff Entry Model name
+     * @return GetBuffEntryModelRequest
+     */
 	public function withBuffEntryName(?string $buffEntryName): GetBuffEntryModelRequest {
 		$this->buffEntryName = $buffEntryName;
 		return $this;

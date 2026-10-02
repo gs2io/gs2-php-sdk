@@ -20,111 +20,170 @@ namespace Gs2\Experience\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Experience\Model\AcquireActionRate;
 
+/**
+ * Request for updateExperienceModelMaster: Update Experience Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/experience/sdk/#updateexperiencemodelmaster
+ */
 class UpdateExperienceModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Experience Model name */
     private $experienceName;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var string */
+    /** @var string Metadata */
     private $metadata;
-    /** @var int */
+    /** @var int Initial Experience Value */
     private $defaultExperience;
-    /** @var int */
+    /** @var int Initial value of rank cap */
     private $defaultRankCap;
-    /** @var int */
+    /** @var int Maximum rank cap */
     private $maxRankCap;
-    /** @var string */
+    /** @var string Rank Up Threshold name */
     private $rankThresholdName;
-    /** @var array */
+    /** @var array List of Reward addition tables */
     private $acquireActionRates;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UpdateExperienceModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UpdateExperienceModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Experience Model name */
 	public function getExperienceName(): ?string {
 		return $this->experienceName;
 	}
+    /** @param string|null $experienceName Experience Model name */
 	public function setExperienceName(?string $experienceName) {
 		$this->experienceName = $experienceName;
 	}
+    /**
+     * @param string|null $experienceName Experience Model name
+     * @return UpdateExperienceModelMasterRequest
+     */
 	public function withExperienceName(?string $experienceName): UpdateExperienceModelMasterRequest {
 		$this->experienceName = $experienceName;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return UpdateExperienceModelMasterRequest
+     */
 	public function withDescription(?string $description): UpdateExperienceModelMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return UpdateExperienceModelMasterRequest
+     */
 	public function withMetadata(?string $metadata): UpdateExperienceModelMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return int|null Initial Experience Value */
 	public function getDefaultExperience(): ?int {
 		return $this->defaultExperience;
 	}
+    /** @param int|null $defaultExperience Initial Experience Value */
 	public function setDefaultExperience(?int $defaultExperience) {
 		$this->defaultExperience = $defaultExperience;
 	}
+    /**
+     * @param int|null $defaultExperience Initial Experience Value
+     * @return UpdateExperienceModelMasterRequest
+     */
 	public function withDefaultExperience(?int $defaultExperience): UpdateExperienceModelMasterRequest {
 		$this->defaultExperience = $defaultExperience;
 		return $this;
 	}
+    /** @return int|null Initial value of rank cap */
 	public function getDefaultRankCap(): ?int {
 		return $this->defaultRankCap;
 	}
+    /** @param int|null $defaultRankCap Initial value of rank cap */
 	public function setDefaultRankCap(?int $defaultRankCap) {
 		$this->defaultRankCap = $defaultRankCap;
 	}
+    /**
+     * @param int|null $defaultRankCap Initial value of rank cap
+     * @return UpdateExperienceModelMasterRequest
+     */
 	public function withDefaultRankCap(?int $defaultRankCap): UpdateExperienceModelMasterRequest {
 		$this->defaultRankCap = $defaultRankCap;
 		return $this;
 	}
+    /** @return int|null Maximum rank cap */
 	public function getMaxRankCap(): ?int {
 		return $this->maxRankCap;
 	}
+    /** @param int|null $maxRankCap Maximum rank cap */
 	public function setMaxRankCap(?int $maxRankCap) {
 		$this->maxRankCap = $maxRankCap;
 	}
+    /**
+     * @param int|null $maxRankCap Maximum rank cap
+     * @return UpdateExperienceModelMasterRequest
+     */
 	public function withMaxRankCap(?int $maxRankCap): UpdateExperienceModelMasterRequest {
 		$this->maxRankCap = $maxRankCap;
 		return $this;
 	}
+    /** @return string|null Rank Up Threshold name */
 	public function getRankThresholdName(): ?string {
 		return $this->rankThresholdName;
 	}
+    /** @param string|null $rankThresholdName Rank Up Threshold name */
 	public function setRankThresholdName(?string $rankThresholdName) {
 		$this->rankThresholdName = $rankThresholdName;
 	}
+    /**
+     * @param string|null $rankThresholdName Rank Up Threshold name
+     * @return UpdateExperienceModelMasterRequest
+     */
 	public function withRankThresholdName(?string $rankThresholdName): UpdateExperienceModelMasterRequest {
 		$this->rankThresholdName = $rankThresholdName;
 		return $this;
 	}
+    /** @return array|null List of Reward addition tables */
 	public function getAcquireActionRates(): ?array {
 		return $this->acquireActionRates;
 	}
+    /** @param array|null $acquireActionRates List of Reward addition tables */
 	public function setAcquireActionRates(?array $acquireActionRates) {
 		$this->acquireActionRates = $acquireActionRates;
 	}
+    /**
+     * @param array|null $acquireActionRates List of Reward addition tables
+     * @return UpdateExperienceModelMasterRequest
+     */
 	public function withAcquireActionRates(?array $acquireActionRates): UpdateExperienceModelMasterRequest {
 		$this->acquireActionRates = $acquireActionRates;
 		return $this;

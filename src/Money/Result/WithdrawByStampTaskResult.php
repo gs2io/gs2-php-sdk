@@ -21,48 +21,71 @@ use Gs2\Core\Model\IResult;
 use Gs2\Money\Model\WalletDetail;
 use Gs2\Money\Model\Wallet;
 
+/**
+ * Result of withdrawByStampTask: Execute balance consumption from wallet as a consume action
+ *
+ * @see https://docs.gs2.io/api_reference/money/stamp_sheet/#gs2moneywithdrawbyuserid
+ */
 class WithdrawByStampTaskResult implements IResult {
-    /** @var Wallet */
+    /** @var Wallet Post-withdraw Wallet */
     private $item;
-    /** @var float */
+    /** @var float Price of currency consumed */
     private $price;
-    /** @var string */
+    /** @var string Context recording the execution results of Consume Actions */
     private $newContextStack;
 
+    /** @return Wallet|null Post-withdraw Wallet */
 	public function getItem(): ?Wallet {
 		return $this->item;
 	}
 
+    /** @param Wallet|null $item Post-withdraw Wallet */
 	public function setItem(?Wallet $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Wallet|null $item Post-withdraw Wallet
+     * @return WithdrawByStampTaskResult
+     */
 	public function withItem(?Wallet $item): WithdrawByStampTaskResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return float|null Price of currency consumed */
 	public function getPrice(): ?float {
 		return $this->price;
 	}
 
+    /** @param float|null $price Price of currency consumed */
 	public function setPrice(?float $price) {
 		$this->price = $price;
 	}
 
+    /**
+     * @param float|null $price Price of currency consumed
+     * @return WithdrawByStampTaskResult
+     */
 	public function withPrice(?float $price): WithdrawByStampTaskResult {
 		$this->price = $price;
 		return $this;
 	}
 
+    /** @return string|null Context recording the execution results of Consume Actions */
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
+    /** @param string|null $newContextStack Context recording the execution results of Consume Actions */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
+    /**
+     * @param string|null $newContextStack Context recording the execution results of Consume Actions
+     * @return WithdrawByStampTaskResult
+     */
 	public function withNewContextStack(?string $newContextStack): WithdrawByStampTaskResult {
 		$this->newContextStack = $newContextStack;
 		return $this;

@@ -22,33 +22,50 @@ use Gs2\Version\Model\Version;
 use Gs2\Version\Model\ScheduleVersion;
 use Gs2\Version\Model\VersionModelMaster;
 
+/**
+ * Result of describeVersionModelMasters: List Version Model Masters
+ *
+ * @see https://docs.gs2.io/api_reference/version/sdk/#describeversionmodelmasters
+ */
 class DescribeVersionModelMastersResult implements IResult {
-    /** @var array */
+    /** @var array List of Version Model Masters */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Version Model Masters */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Version Model Masters */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Version Model Masters
+     * @return DescribeVersionModelMastersResult
+     */
 	public function withItems(?array $items): DescribeVersionModelMastersResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeVersionModelMastersResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeVersionModelMastersResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

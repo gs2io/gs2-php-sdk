@@ -22,18 +22,29 @@ use Gs2\Formation\Model\SlotModel;
 use Gs2\Formation\Model\FormModel;
 use Gs2\Formation\Model\MoldModel;
 
+/**
+ * Result of getMoldModel: Get Form Storage Area Model
+ *
+ * @see https://docs.gs2.io/api_reference/formation/sdk/#getmoldmodel
+ */
 class GetMoldModelResult implements IResult {
-    /** @var MoldModel */
+    /** @var MoldModel Form Storage Area */
     private $item;
 
+    /** @return MoldModel|null Form Storage Area */
 	public function getItem(): ?MoldModel {
 		return $this->item;
 	}
 
+    /** @param MoldModel|null $item Form Storage Area */
 	public function setItem(?MoldModel $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param MoldModel|null $item Form Storage Area
+     * @return GetMoldModelResult
+     */
 	public function withItem(?MoldModel $item): GetMoldModelResult {
 		$this->item = $item;
 		return $this;

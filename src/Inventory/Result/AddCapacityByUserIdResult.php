@@ -20,18 +20,29 @@ namespace Gs2\Inventory\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Inventory\Model\Inventory;
 
+/**
+ * Result of addCapacityByUserId: Add inventory capacity size by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#addcapacitybyuserid
+ */
 class AddCapacityByUserIdResult implements IResult {
-    /** @var Inventory */
+    /** @var Inventory Inventory after capacity addition */
     private $item;
 
+    /** @return Inventory|null Inventory after capacity addition */
 	public function getItem(): ?Inventory {
 		return $this->item;
 	}
 
+    /** @param Inventory|null $item Inventory after capacity addition */
 	public function setItem(?Inventory $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Inventory|null $item Inventory after capacity addition
+     * @return AddCapacityByUserIdResult
+     */
 	public function withItem(?Inventory $item): AddCapacityByUserIdResult {
 		$this->item = $item;
 		return $this;

@@ -19,27 +19,44 @@ namespace Gs2\Identifier\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getIdentifier: Get Credentials
+ *
+ * @see https://docs.gs2.io/api_reference/identifier/sdk/#getidentifier
+ */
 class GetIdentifierRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string User Name */
     private $userName;
-    /** @var string */
+    /** @var string Client ID */
     private $clientId;
+    /** @return string|null User Name */
 	public function getUserName(): ?string {
 		return $this->userName;
 	}
+    /** @param string|null $userName User Name */
 	public function setUserName(?string $userName) {
 		$this->userName = $userName;
 	}
+    /**
+     * @param string|null $userName User Name
+     * @return GetIdentifierRequest
+     */
 	public function withUserName(?string $userName): GetIdentifierRequest {
 		$this->userName = $userName;
 		return $this;
 	}
+    /** @return string|null Client ID */
 	public function getClientId(): ?string {
 		return $this->clientId;
 	}
+    /** @param string|null $clientId Client ID */
 	public function setClientId(?string $clientId) {
 		$this->clientId = $clientId;
 	}
+    /**
+     * @param string|null $clientId Client ID
+     * @return GetIdentifierRequest
+     */
 	public function withClientId(?string $clientId): GetIdentifierRequest {
 		$this->clientId = $clientId;
 		return $this;

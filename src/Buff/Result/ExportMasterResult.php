@@ -20,18 +20,29 @@ namespace Gs2\Buff\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Buff\Model\CurrentBuffMaster;
 
+/**
+ * Result of exportMaster: Export Buff Entry Model Master in a master data format that can be activated
+ *
+ * @see https://docs.gs2.io/api_reference/buff/sdk/#exportmaster
+ */
 class ExportMasterResult implements IResult {
-    /** @var CurrentBuffMaster */
+    /** @var CurrentBuffMaster Buff Entry Model master data that can be activated */
     private $item;
 
+    /** @return CurrentBuffMaster|null Buff Entry Model master data that can be activated */
 	public function getItem(): ?CurrentBuffMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentBuffMaster|null $item Buff Entry Model master data that can be activated */
 	public function setItem(?CurrentBuffMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentBuffMaster|null $item Buff Entry Model master data that can be activated
+     * @return ExportMasterResult
+     */
 	public function withItem(?CurrentBuffMaster $item): ExportMasterResult {
 		$this->item = $item;
 		return $this;

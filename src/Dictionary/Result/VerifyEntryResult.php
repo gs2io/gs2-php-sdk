@@ -19,6 +19,11 @@ namespace Gs2\Dictionary\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of verifyEntry: Verify Entry
+ *
+ * @see https://docs.gs2.io/api_reference/dictionary/sdk/#verifyentry
+ */
 class VerifyEntryResult implements IResult {
 
     public static function fromJson(?array $data): ?VerifyEntryResult {

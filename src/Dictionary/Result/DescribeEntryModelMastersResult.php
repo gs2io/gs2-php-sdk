@@ -20,33 +20,50 @@ namespace Gs2\Dictionary\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Dictionary\Model\EntryModelMaster;
 
+/**
+ * Result of describeEntryModelMasters: List Entry Model Masters
+ *
+ * @see https://docs.gs2.io/api_reference/dictionary/sdk/#describeentrymodelmasters
+ */
 class DescribeEntryModelMastersResult implements IResult {
-    /** @var array */
+    /** @var array List of Entry Model Masters */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Entry Model Masters */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Entry Model Masters */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Entry Model Masters
+     * @return DescribeEntryModelMastersResult
+     */
 	public function withItems(?array $items): DescribeEntryModelMastersResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeEntryModelMastersResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeEntryModelMastersResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

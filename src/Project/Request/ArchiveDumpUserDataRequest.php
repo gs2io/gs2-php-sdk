@@ -19,27 +19,40 @@ namespace Gs2\Project\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/** Request for archiveDumpUserData: Archive for the completion of user data dump */
 class ArchiveDumpUserDataRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Owner ID */
     private $ownerId;
-    /** @var string */
+    /** @var string Transaction ID */
     private $transactionId;
+    /** @return string|null Owner ID */
 	public function getOwnerId(): ?string {
 		return $this->ownerId;
 	}
+    /** @param string|null $ownerId Owner ID */
 	public function setOwnerId(?string $ownerId) {
 		$this->ownerId = $ownerId;
 	}
+    /**
+     * @param string|null $ownerId Owner ID
+     * @return ArchiveDumpUserDataRequest
+     */
 	public function withOwnerId(?string $ownerId): ArchiveDumpUserDataRequest {
 		$this->ownerId = $ownerId;
 		return $this;
 	}
+    /** @return string|null Transaction ID */
 	public function getTransactionId(): ?string {
 		return $this->transactionId;
 	}
+    /** @param string|null $transactionId Transaction ID */
 	public function setTransactionId(?string $transactionId) {
 		$this->transactionId = $transactionId;
 	}
+    /**
+     * @param string|null $transactionId Transaction ID
+     * @return ArchiveDumpUserDataRequest
+     */
 	public function withTransactionId(?string $transactionId): ArchiveDumpUserDataRequest {
 		$this->transactionId = $transactionId;
 		return $this;

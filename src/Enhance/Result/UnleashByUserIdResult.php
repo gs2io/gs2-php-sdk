@@ -25,123 +25,176 @@ use Gs2\Core\Model\ConsumeActionResult as CoreConsumeActionResult;
 use Gs2\Core\Model\AcquireActionResult as CoreAcquireActionResult;
 use Gs2\Core\Model\TransactionResult as CoreTransactionResult;
 
+/**
+ * Result of unleashByUserId: Perform unleash by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/enhance/sdk/#unleashbyuserid
+ */
 class UnleashByUserIdResult implements IResult {
-    /** @var UnleashRateModel */
+    /** @var UnleashRateModel Unleash Rate Model */
     private $item;
-    /** @var string */
+    /** @var string Issued transaction ID */
     private $transactionId;
-    /** @var string */
+    /** @var string Stamp sheet used to perform the enhancement process */
     private $stampSheet;
-    /** @var string */
+    /** @var string Cryptographic key GRN used for stamp sheet signature calculations */
     private $stampSheetEncryptionKeyId;
-    /** @var bool */
+    /** @var bool Whether automatic transaction execution is enabled */
     private $autoRunStampSheet;
-    /** @var bool */
+    /** @var bool Whether to commit the transaction atomically */
     private $atomicCommit;
-    /** @var string */
+    /** @var string Issued transaction */
     private $transaction;
-    /** @var CoreTransactionResult */
+    /** @var CoreTransactionResult Transaction Execution Result */
     private $transactionResult;
 
+    /** @return UnleashRateModel|null Unleash Rate Model */
 	public function getItem(): ?UnleashRateModel {
 		return $this->item;
 	}
 
+    /** @param UnleashRateModel|null $item Unleash Rate Model */
 	public function setItem(?UnleashRateModel $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param UnleashRateModel|null $item Unleash Rate Model
+     * @return UnleashByUserIdResult
+     */
 	public function withItem(?UnleashRateModel $item): UnleashByUserIdResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null Issued transaction ID */
 	public function getTransactionId(): ?string {
 		return $this->transactionId;
 	}
 
+    /** @param string|null $transactionId Issued transaction ID */
 	public function setTransactionId(?string $transactionId) {
 		$this->transactionId = $transactionId;
 	}
 
+    /**
+     * @param string|null $transactionId Issued transaction ID
+     * @return UnleashByUserIdResult
+     */
 	public function withTransactionId(?string $transactionId): UnleashByUserIdResult {
 		$this->transactionId = $transactionId;
 		return $this;
 	}
 
+    /** @return string|null Stamp sheet used to perform the enhancement process */
 	public function getStampSheet(): ?string {
 		return $this->stampSheet;
 	}
 
+    /** @param string|null $stampSheet Stamp sheet used to perform the enhancement process */
 	public function setStampSheet(?string $stampSheet) {
 		$this->stampSheet = $stampSheet;
 	}
 
+    /**
+     * @param string|null $stampSheet Stamp sheet used to perform the enhancement process
+     * @return UnleashByUserIdResult
+     */
 	public function withStampSheet(?string $stampSheet): UnleashByUserIdResult {
 		$this->stampSheet = $stampSheet;
 		return $this;
 	}
 
+    /** @return string|null Cryptographic key GRN used for stamp sheet signature calculations */
 	public function getStampSheetEncryptionKeyId(): ?string {
 		return $this->stampSheetEncryptionKeyId;
 	}
 
+    /** @param string|null $stampSheetEncryptionKeyId Cryptographic key GRN used for stamp sheet signature calculations */
 	public function setStampSheetEncryptionKeyId(?string $stampSheetEncryptionKeyId) {
 		$this->stampSheetEncryptionKeyId = $stampSheetEncryptionKeyId;
 	}
 
+    /**
+     * @param string|null $stampSheetEncryptionKeyId Cryptographic key GRN used for stamp sheet signature calculations
+     * @return UnleashByUserIdResult
+     */
 	public function withStampSheetEncryptionKeyId(?string $stampSheetEncryptionKeyId): UnleashByUserIdResult {
 		$this->stampSheetEncryptionKeyId = $stampSheetEncryptionKeyId;
 		return $this;
 	}
 
+    /** @return bool|null Whether automatic transaction execution is enabled */
 	public function getAutoRunStampSheet(): ?bool {
 		return $this->autoRunStampSheet;
 	}
 
+    /** @param bool|null $autoRunStampSheet Whether automatic transaction execution is enabled */
 	public function setAutoRunStampSheet(?bool $autoRunStampSheet) {
 		$this->autoRunStampSheet = $autoRunStampSheet;
 	}
 
+    /**
+     * @param bool|null $autoRunStampSheet Whether automatic transaction execution is enabled
+     * @return UnleashByUserIdResult
+     */
 	public function withAutoRunStampSheet(?bool $autoRunStampSheet): UnleashByUserIdResult {
 		$this->autoRunStampSheet = $autoRunStampSheet;
 		return $this;
 	}
 
+    /** @return bool|null Whether to commit the transaction atomically */
 	public function getAtomicCommit(): ?bool {
 		return $this->atomicCommit;
 	}
 
+    /** @param bool|null $atomicCommit Whether to commit the transaction atomically */
 	public function setAtomicCommit(?bool $atomicCommit) {
 		$this->atomicCommit = $atomicCommit;
 	}
 
+    /**
+     * @param bool|null $atomicCommit Whether to commit the transaction atomically
+     * @return UnleashByUserIdResult
+     */
 	public function withAtomicCommit(?bool $atomicCommit): UnleashByUserIdResult {
 		$this->atomicCommit = $atomicCommit;
 		return $this;
 	}
 
+    /** @return string|null Issued transaction */
 	public function getTransaction(): ?string {
 		return $this->transaction;
 	}
 
+    /** @param string|null $transaction Issued transaction */
 	public function setTransaction(?string $transaction) {
 		$this->transaction = $transaction;
 	}
 
+    /**
+     * @param string|null $transaction Issued transaction
+     * @return UnleashByUserIdResult
+     */
 	public function withTransaction(?string $transaction): UnleashByUserIdResult {
 		$this->transaction = $transaction;
 		return $this;
 	}
 
+    /** @return CoreTransactionResult|null Transaction Execution Result */
 	public function getTransactionResult(): ?CoreTransactionResult {
 		return $this->transactionResult;
 	}
 
+    /** @param CoreTransactionResult|null $transactionResult Transaction Execution Result */
 	public function setTransactionResult(?CoreTransactionResult $transactionResult) {
 		$this->transactionResult = $transactionResult;
 	}
 
+    /**
+     * @param CoreTransactionResult|null $transactionResult Transaction Execution Result
+     * @return UnleashByUserIdResult
+     */
 	public function withTransactionResult(?CoreTransactionResult $transactionResult): UnleashByUserIdResult {
 		$this->transactionResult = $transactionResult;
 		return $this;

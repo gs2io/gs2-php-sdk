@@ -2797,25 +2797,22 @@ class UpdateCurrentTreeMasterFromGitHubTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 SkillTree API クライアント
+ * GS2-SkillTree API client
  *
- * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/skill_tree/sdk/
  */
 class Gs2SkillTreeRestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#describenamespaces
      */
     public function describeNamespacesAsync(
             DescribeNamespacesRequest $request
@@ -2829,8 +2826,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#describenamespaces
      */
     public function describeNamespaces (
             DescribeNamespacesRequest $request
@@ -2841,8 +2841,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#createnamespace
      */
     public function createNamespaceAsync(
             CreateNamespaceRequest $request
@@ -2856,8 +2859,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#createnamespace
      */
     public function createNamespace (
             CreateNamespaceRequest $request
@@ -2868,8 +2874,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#getnamespacestatus
      */
     public function getNamespaceStatusAsync(
             GetNamespaceStatusRequest $request
@@ -2883,8 +2892,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#getnamespacestatus
      */
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
@@ -2895,8 +2907,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#getnamespace
      */
     public function getNamespaceAsync(
             GetNamespaceRequest $request
@@ -2910,8 +2925,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#getnamespace
      */
     public function getNamespace (
             GetNamespaceRequest $request
@@ -2922,8 +2940,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#updatenamespace
      */
     public function updateNamespaceAsync(
             UpdateNamespaceRequest $request
@@ -2937,8 +2958,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#updatenamespace
      */
     public function updateNamespace (
             UpdateNamespaceRequest $request
@@ -2949,8 +2973,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#deletenamespace
      */
     public function deleteNamespaceAsync(
             DeleteNamespaceRequest $request
@@ -2964,8 +2991,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#deletenamespace
      */
     public function deleteNamespace (
             DeleteNamespaceRequest $request
@@ -2976,8 +3006,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#getserviceversion
      */
     public function getServiceVersionAsync(
             GetServiceVersionRequest $request
@@ -2991,8 +3024,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return GetServiceVersionResult
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#getserviceversion
      */
     public function getServiceVersion (
             GetServiceVersionRequest $request
@@ -3003,8 +3039,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserIdAsync(
             DumpUserDataByUserIdRequest $request
@@ -3018,8 +3057,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return DumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserId (
             DumpUserDataByUserIdRequest $request
@@ -3030,8 +3072,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserIdAsync(
             CheckDumpUserDataByUserIdRequest $request
@@ -3045,8 +3090,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return CheckDumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserId (
             CheckDumpUserDataByUserIdRequest $request
@@ -3057,8 +3105,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserIdAsync(
             CleanUserDataByUserIdRequest $request
@@ -3072,8 +3123,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return CleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserId (
             CleanUserDataByUserIdRequest $request
@@ -3084,8 +3138,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the clean of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserIdAsync(
             CheckCleanUserDataByUserIdRequest $request
@@ -3099,8 +3156,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the clean of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return CheckCleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserId (
             CheckCleanUserDataByUserIdRequest $request
@@ -3111,8 +3171,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserIdAsync(
             PrepareImportUserDataByUserIdRequest $request
@@ -3126,8 +3189,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PrepareImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserId (
             PrepareImportUserDataByUserIdRequest $request
@@ -3138,8 +3204,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserIdAsync(
             ImportUserDataByUserIdRequest $request
@@ -3153,8 +3222,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return ImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserId (
             ImportUserDataByUserIdRequest $request
@@ -3165,8 +3237,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserIdAsync(
             CheckImportUserDataByUserIdRequest $request
@@ -3180,8 +3255,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return CheckImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserId (
             CheckImportUserDataByUserIdRequest $request
@@ -3192,8 +3270,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Node Models
+     *
      * @param DescribeNodeModelsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#describenodemodels
      */
     public function describeNodeModelsAsync(
             DescribeNodeModelsRequest $request
@@ -3207,8 +3288,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Node Models
+     *
      * @param DescribeNodeModelsRequest $request
      * @return DescribeNodeModelsResult
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#describenodemodels
      */
     public function describeNodeModels (
             DescribeNodeModelsRequest $request
@@ -3219,8 +3303,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Node Model
+     *
      * @param GetNodeModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#getnodemodel
      */
     public function getNodeModelAsync(
             GetNodeModelRequest $request
@@ -3234,8 +3321,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Node Model
+     *
      * @param GetNodeModelRequest $request
      * @return GetNodeModelResult
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#getnodemodel
      */
     public function getNodeModel (
             GetNodeModelRequest $request
@@ -3246,8 +3336,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Node Model Masters
+     *
      * @param DescribeNodeModelMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#describenodemodelmasters
      */
     public function describeNodeModelMastersAsync(
             DescribeNodeModelMastersRequest $request
@@ -3261,8 +3354,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Node Model Masters
+     *
      * @param DescribeNodeModelMastersRequest $request
      * @return DescribeNodeModelMastersResult
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#describenodemodelmasters
      */
     public function describeNodeModelMasters (
             DescribeNodeModelMastersRequest $request
@@ -3273,8 +3369,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Node Model Master
+     *
      * @param CreateNodeModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#createnodemodelmaster
      */
     public function createNodeModelMasterAsync(
             CreateNodeModelMasterRequest $request
@@ -3288,8 +3387,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Node Model Master
+     *
      * @param CreateNodeModelMasterRequest $request
      * @return CreateNodeModelMasterResult
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#createnodemodelmaster
      */
     public function createNodeModelMaster (
             CreateNodeModelMasterRequest $request
@@ -3300,8 +3402,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Node Model Master
+     *
      * @param GetNodeModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#getnodemodelmaster
      */
     public function getNodeModelMasterAsync(
             GetNodeModelMasterRequest $request
@@ -3315,8 +3420,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Node Model Master
+     *
      * @param GetNodeModelMasterRequest $request
      * @return GetNodeModelMasterResult
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#getnodemodelmaster
      */
     public function getNodeModelMaster (
             GetNodeModelMasterRequest $request
@@ -3327,8 +3435,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Node Model Master
+     *
      * @param UpdateNodeModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#updatenodemodelmaster
      */
     public function updateNodeModelMasterAsync(
             UpdateNodeModelMasterRequest $request
@@ -3342,8 +3453,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Node Model Master
+     *
      * @param UpdateNodeModelMasterRequest $request
      * @return UpdateNodeModelMasterResult
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#updatenodemodelmaster
      */
     public function updateNodeModelMaster (
             UpdateNodeModelMasterRequest $request
@@ -3354,8 +3468,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Node Model Master
+     *
      * @param DeleteNodeModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#deletenodemodelmaster
      */
     public function deleteNodeModelMasterAsync(
             DeleteNodeModelMasterRequest $request
@@ -3369,8 +3486,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Node Model Master
+     *
      * @param DeleteNodeModelMasterRequest $request
      * @return DeleteNodeModelMasterResult
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#deletenodemodelmaster
      */
     public function deleteNodeModelMaster (
             DeleteNodeModelMasterRequest $request
@@ -3381,8 +3501,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Mark a node as released by User ID
+     *
      * @param MarkReleaseByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#markreleasebyuserid
      */
     public function markReleaseByUserIdAsync(
             MarkReleaseByUserIdRequest $request
@@ -3396,8 +3519,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Mark a node as released by User ID
+     *
      * @param MarkReleaseByUserIdRequest $request
      * @return MarkReleaseByUserIdResult
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#markreleasebyuserid
      */
     public function markReleaseByUserId (
             MarkReleaseByUserIdRequest $request
@@ -3408,8 +3534,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Release a node
+     *
      * @param ReleaseRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#release
      */
     public function releaseAsync(
             ReleaseRequest $request
@@ -3423,8 +3552,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Release a node
+     *
      * @param ReleaseRequest $request
      * @return ReleaseResult
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#release
      */
     public function release (
             ReleaseRequest $request
@@ -3435,8 +3567,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Release a node by User ID
+     *
      * @param ReleaseByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#releasebyuserid
      */
     public function releaseByUserIdAsync(
             ReleaseByUserIdRequest $request
@@ -3450,8 +3585,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Release a node by User ID
+     *
      * @param ReleaseByUserIdRequest $request
      * @return ReleaseByUserIdResult
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#releasebyuserid
      */
     public function releaseByUserId (
             ReleaseByUserIdRequest $request
@@ -3462,8 +3600,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Revert a node to unreleased state
+     *
      * @param MarkRestrainRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#markrestrain
      */
     public function markRestrainAsync(
             MarkRestrainRequest $request
@@ -3477,8 +3618,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Revert a node to unreleased state
+     *
      * @param MarkRestrainRequest $request
      * @return MarkRestrainResult
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#markrestrain
      */
     public function markRestrain (
             MarkRestrainRequest $request
@@ -3489,8 +3633,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Revert a node to unreleased state by User ID
+     *
      * @param MarkRestrainByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#markrestrainbyuserid
      */
     public function markRestrainByUserIdAsync(
             MarkRestrainByUserIdRequest $request
@@ -3504,8 +3651,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Revert a node to unreleased state by User ID
+     *
      * @param MarkRestrainByUserIdRequest $request
      * @return MarkRestrainByUserIdResult
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#markrestrainbyuserid
      */
     public function markRestrainByUserId (
             MarkRestrainByUserIdRequest $request
@@ -3516,8 +3666,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Restrain a node
+     *
      * @param RestrainRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#restrain
      */
     public function restrainAsync(
             RestrainRequest $request
@@ -3531,8 +3684,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Restrain a node
+     *
      * @param RestrainRequest $request
      * @return RestrainResult
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#restrain
      */
     public function restrain (
             RestrainRequest $request
@@ -3543,8 +3699,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Restrain a node by User ID
+     *
      * @param RestrainByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#restrainbyuserid
      */
     public function restrainByUserIdAsync(
             RestrainByUserIdRequest $request
@@ -3558,8 +3717,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Restrain a node by User ID
+     *
      * @param RestrainByUserIdRequest $request
      * @return RestrainByUserIdResult
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#restrainbyuserid
      */
     public function restrainByUserId (
             RestrainByUserIdRequest $request
@@ -3570,8 +3732,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List statuses
+     *
      * @param DescribeStatusesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#describestatuses
      */
     public function describeStatusesAsync(
             DescribeStatusesRequest $request
@@ -3585,8 +3750,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List statuses
+     *
      * @param DescribeStatusesRequest $request
      * @return DescribeStatusesResult
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#describestatuses
      */
     public function describeStatuses (
             DescribeStatusesRequest $request
@@ -3597,8 +3765,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Statuses by User ID
+     *
      * @param DescribeStatusesByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#describestatusesbyuserid
      */
     public function describeStatusesByUserIdAsync(
             DescribeStatusesByUserIdRequest $request
@@ -3612,8 +3783,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Statuses by User ID
+     *
      * @param DescribeStatusesByUserIdRequest $request
      * @return DescribeStatusesByUserIdResult
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#describestatusesbyuserid
      */
     public function describeStatusesByUserId (
             DescribeStatusesByUserIdRequest $request
@@ -3624,8 +3798,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get a status
+     *
      * @param GetStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#getstatus
      */
     public function getStatusAsync(
             GetStatusRequest $request
@@ -3639,8 +3816,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get a status
+     *
      * @param GetStatusRequest $request
      * @return GetStatusResult
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#getstatus
      */
     public function getStatus (
             GetStatusRequest $request
@@ -3651,8 +3831,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Status by User ID
+     *
      * @param GetStatusByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#getstatusbyuserid
      */
     public function getStatusByUserIdAsync(
             GetStatusByUserIdRequest $request
@@ -3666,8 +3849,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Status by User ID
+     *
      * @param GetStatusByUserIdRequest $request
      * @return GetStatusByUserIdResult
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#getstatusbyuserid
      */
     public function getStatusByUserId (
             GetStatusByUserIdRequest $request
@@ -3678,8 +3864,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Reset status
+     *
      * @param ResetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#reset
      */
     public function resetAsync(
             ResetRequest $request
@@ -3693,8 +3882,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Reset status
+     *
      * @param ResetRequest $request
      * @return ResetResult
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#reset
      */
     public function reset (
             ResetRequest $request
@@ -3705,8 +3897,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Reset status by User ID
+     *
      * @param ResetByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#resetbyuserid
      */
     public function resetByUserIdAsync(
             ResetByUserIdRequest $request
@@ -3720,8 +3915,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Reset status by User ID
+     *
      * @param ResetByUserIdRequest $request
      * @return ResetByUserIdResult
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#resetbyuserid
      */
     public function resetByUserId (
             ResetByUserIdRequest $request
@@ -3732,8 +3930,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the record of the released node as an acquire action
+     *
      * @param MarkReleaseByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/skill_tree/stamp_sheet/#gs2skilltreemarkreleasebyuserid
      */
     public function markReleaseByStampSheetAsync(
             MarkReleaseByStampSheetRequest $request
@@ -3747,8 +3948,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the record of the released node as an acquire action
+     *
      * @param MarkReleaseByStampSheetRequest $request
      * @return MarkReleaseByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/skill_tree/stamp_sheet/#gs2skilltreemarkreleasebyuserid
      */
     public function markReleaseByStampSheet (
             MarkReleaseByStampSheetRequest $request
@@ -3759,8 +3963,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute reverting a node to unreleased state as a consume action
+     *
      * @param MarkRestrainByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/skill_tree/stamp_sheet/#gs2skilltreemarkrestrainbyuserid
      */
     public function markRestrainByStampTaskAsync(
             MarkRestrainByStampTaskRequest $request
@@ -3774,8 +3981,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute reverting a node to unreleased state as a consume action
+     *
      * @param MarkRestrainByStampTaskRequest $request
      * @return MarkRestrainByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/skill_tree/stamp_sheet/#gs2skilltreemarkrestrainbyuserid
      */
     public function markRestrainByStampTask (
             MarkRestrainByStampTaskRequest $request
@@ -3786,8 +3996,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Node Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#exportmaster
      */
     public function exportMasterAsync(
             ExportMasterRequest $request
@@ -3801,8 +4014,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Node Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return ExportMasterResult
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#exportmaster
      */
     public function exportMaster (
             ExportMasterRequest $request
@@ -3813,8 +4029,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Node Model master data
+     *
      * @param GetCurrentTreeMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#getcurrenttreemaster
      */
     public function getCurrentTreeMasterAsync(
             GetCurrentTreeMasterRequest $request
@@ -3828,8 +4047,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Node Model master data
+     *
      * @param GetCurrentTreeMasterRequest $request
      * @return GetCurrentTreeMasterResult
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#getcurrenttreemaster
      */
     public function getCurrentTreeMaster (
             GetCurrentTreeMasterRequest $request
@@ -3840,8 +4062,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Currently Active Master Data (3-phase version)
+     *
      * @param PreUpdateCurrentTreeMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#preupdatecurrenttreemaster
      */
     public function preUpdateCurrentTreeMasterAsync(
             PreUpdateCurrentTreeMasterRequest $request
@@ -3855,8 +4080,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Currently Active Master Data (3-phase version)
+     *
      * @param PreUpdateCurrentTreeMasterRequest $request
      * @return PreUpdateCurrentTreeMasterResult
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#preupdatecurrenttreemaster
      */
     public function preUpdateCurrentTreeMaster (
             PreUpdateCurrentTreeMasterRequest $request
@@ -3867,8 +4095,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Node Model master data
+     *
      * @param UpdateCurrentTreeMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#updatecurrenttreemaster
      */
     public function updateCurrentTreeMasterAsync(
             UpdateCurrentTreeMasterRequest $request
@@ -3882,8 +4113,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Node Model master data
+     *
      * @param UpdateCurrentTreeMasterRequest $request
      * @return UpdateCurrentTreeMasterResult
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#updatecurrenttreemaster
      */
     public function updateCurrentTreeMaster (
             UpdateCurrentTreeMasterRequest $request
@@ -3894,8 +4128,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Node Model master data from GitHub
+     *
      * @param UpdateCurrentTreeMasterFromGitHubRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#updatecurrenttreemasterfromgithub
      */
     public function updateCurrentTreeMasterFromGitHubAsync(
             UpdateCurrentTreeMasterFromGitHubRequest $request
@@ -3909,8 +4146,11 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Node Model master data from GitHub
+     *
      * @param UpdateCurrentTreeMasterFromGitHubRequest $request
      * @return UpdateCurrentTreeMasterFromGitHubResult
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#updatecurrenttreemasterfromgithub
      */
     public function updateCurrentTreeMasterFromGitHub (
             UpdateCurrentTreeMasterFromGitHubRequest $request

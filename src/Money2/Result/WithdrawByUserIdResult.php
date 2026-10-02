@@ -22,33 +22,50 @@ use Gs2\Money2\Model\WalletSummary;
 use Gs2\Money2\Model\DepositTransaction;
 use Gs2\Money2\Model\Wallet;
 
+/**
+ * Result of withdrawByUserId: Withdraw balance from Wallet by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#withdrawbyuserid
+ */
 class WithdrawByUserIdResult implements IResult {
-    /** @var Wallet */
+    /** @var Wallet Post-withdraw Wallet */
     private $item;
-    /** @var array */
+    /** @var array List of consumed deposit transactions */
     private $withdrawTransactions;
 
+    /** @return Wallet|null Post-withdraw Wallet */
 	public function getItem(): ?Wallet {
 		return $this->item;
 	}
 
+    /** @param Wallet|null $item Post-withdraw Wallet */
 	public function setItem(?Wallet $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Wallet|null $item Post-withdraw Wallet
+     * @return WithdrawByUserIdResult
+     */
 	public function withItem(?Wallet $item): WithdrawByUserIdResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return array|null List of consumed deposit transactions */
 	public function getWithdrawTransactions(): ?array {
 		return $this->withdrawTransactions;
 	}
 
+    /** @param array|null $withdrawTransactions List of consumed deposit transactions */
 	public function setWithdrawTransactions(?array $withdrawTransactions) {
 		$this->withdrawTransactions = $withdrawTransactions;
 	}
 
+    /**
+     * @param array|null $withdrawTransactions List of consumed deposit transactions
+     * @return WithdrawByUserIdResult
+     */
 	public function withWithdrawTransactions(?array $withdrawTransactions): WithdrawByUserIdResult {
 		$this->withdrawTransactions = $withdrawTransactions;
 		return $this;

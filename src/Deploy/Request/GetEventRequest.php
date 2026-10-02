@@ -19,27 +19,44 @@ namespace Gs2\Deploy\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getEvent: Get Event
+ *
+ * @see https://docs.gs2.io/api_reference/deploy/sdk/#getevent
+ */
 class GetEventRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Stack name */
     private $stackName;
-    /** @var string */
+    /** @var string Event name */
     private $eventName;
+    /** @return string|null Stack name */
 	public function getStackName(): ?string {
 		return $this->stackName;
 	}
+    /** @param string|null $stackName Stack name */
 	public function setStackName(?string $stackName) {
 		$this->stackName = $stackName;
 	}
+    /**
+     * @param string|null $stackName Stack name
+     * @return GetEventRequest
+     */
 	public function withStackName(?string $stackName): GetEventRequest {
 		$this->stackName = $stackName;
 		return $this;
 	}
+    /** @return string|null Event name */
 	public function getEventName(): ?string {
 		return $this->eventName;
 	}
+    /** @param string|null $eventName Event name */
 	public function setEventName(?string $eventName) {
 		$this->eventName = $eventName;
 	}
+    /**
+     * @param string|null $eventName Event name
+     * @return GetEventRequest
+     */
 	public function withEventName(?string $eventName): GetEventRequest {
 		$this->eventName = $eventName;
 		return $this;

@@ -20,63 +20,92 @@ namespace Gs2\Log\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Log\Model\IssueStampSheetLogCount;
 
+/**
+ * Result of countIssueStampSheetLog: Get aggregate results of transaction issue logs
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#countissuestampsheetlog
+ */
 class CountIssueStampSheetLogResult implements IResult {
-    /** @var array */
+    /** @var array List of Aggregated transaction issuance log */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
-    /** @var int */
+    /** @var int Total number of query results */
     private $totalCount;
-    /** @var int */
+    /** @var int Total bytes scanned during search */
     private $scanSize;
 
+    /** @return array|null List of Aggregated transaction issuance log */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Aggregated transaction issuance log */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Aggregated transaction issuance log
+     * @return CountIssueStampSheetLogResult
+     */
 	public function withItems(?array $items): CountIssueStampSheetLogResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return CountIssueStampSheetLogResult
+     */
 	public function withNextPageToken(?string $nextPageToken): CountIssueStampSheetLogResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;
 	}
 
+    /** @return int|null Total number of query results */
 	public function getTotalCount(): ?int {
 		return $this->totalCount;
 	}
 
+    /** @param int|null $totalCount Total number of query results */
 	public function setTotalCount(?int $totalCount) {
 		$this->totalCount = $totalCount;
 	}
 
+    /**
+     * @param int|null $totalCount Total number of query results
+     * @return CountIssueStampSheetLogResult
+     */
 	public function withTotalCount(?int $totalCount): CountIssueStampSheetLogResult {
 		$this->totalCount = $totalCount;
 		return $this;
 	}
 
+    /** @return int|null Total bytes scanned during search */
 	public function getScanSize(): ?int {
 		return $this->scanSize;
 	}
 
+    /** @param int|null $scanSize Total bytes scanned during search */
 	public function setScanSize(?int $scanSize) {
 		$this->scanSize = $scanSize;
 	}
 
+    /**
+     * @param int|null $scanSize Total bytes scanned during search
+     * @return CountIssueStampSheetLogResult
+     */
 	public function withScanSize(?int $scanSize): CountIssueStampSheetLogResult {
 		$this->scanSize = $scanSize;
 		return $this;

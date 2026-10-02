@@ -22,33 +22,50 @@ use Gs2\Idle\Model\AcquireAction;
 use Gs2\Idle\Model\AcquireActionList;
 use Gs2\Idle\Model\CategoryModelMaster;
 
+/**
+ * Result of describeCategoryModelMasters: List Category Model Masters
+ *
+ * @see https://docs.gs2.io/api_reference/idle/sdk/#describecategorymodelmasters
+ */
 class DescribeCategoryModelMastersResult implements IResult {
-    /** @var array */
+    /** @var array List of Category Model Masters */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Category Model Masters */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Category Model Masters */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Category Model Masters
+     * @return DescribeCategoryModelMastersResult
+     */
 	public function withItems(?array $items): DescribeCategoryModelMastersResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeCategoryModelMastersResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeCategoryModelMastersResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

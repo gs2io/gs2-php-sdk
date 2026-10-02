@@ -20,18 +20,29 @@ namespace Gs2\Grade\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Grade\Model\CurrentGradeMaster;
 
+/**
+ * Result of getCurrentGradeMaster: Get currently active Grade Model master data
+ *
+ * @see https://docs.gs2.io/api_reference/grade/sdk/#getcurrentgrademaster
+ */
 class GetCurrentGradeMasterResult implements IResult {
-    /** @var CurrentGradeMaster */
+    /** @var CurrentGradeMaster Currently active Grade Model master data */
     private $item;
 
+    /** @return CurrentGradeMaster|null Currently active Grade Model master data */
 	public function getItem(): ?CurrentGradeMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentGradeMaster|null $item Currently active Grade Model master data */
 	public function setItem(?CurrentGradeMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentGradeMaster|null $item Currently active Grade Model master data
+     * @return GetCurrentGradeMasterResult
+     */
 	public function withItem(?CurrentGradeMaster $item): GetCurrentGradeMasterResult {
 		$this->item = $item;
 		return $this;

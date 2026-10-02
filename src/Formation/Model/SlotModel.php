@@ -20,45 +20,68 @@ namespace Gs2\Formation\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Slot Model
+ *
+ * @see https://docs.gs2.io/api_reference/formation/sdk/#slotmodel
+ */
 class SlotModel implements IModel {
 	/**
-     * @var string
+     * @var string Slot Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Regular expressions for values that can be set as properties
 	 */
 	private $propertyRegex;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
+    /** @return string|null Slot Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Slot Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Slot Model name
+     * @return SlotModel
+     */
 	public function withName(?string $name): SlotModel {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Regular expressions for values that can be set as properties */
 	public function getPropertyRegex(): ?string {
 		return $this->propertyRegex;
 	}
+    /** @param string|null $propertyRegex Regular expressions for values that can be set as properties */
 	public function setPropertyRegex(?string $propertyRegex) {
 		$this->propertyRegex = $propertyRegex;
 	}
+    /**
+     * @param string|null $propertyRegex Regular expressions for values that can be set as properties
+     * @return SlotModel
+     */
 	public function withPropertyRegex(?string $propertyRegex): SlotModel {
 		$this->propertyRegex = $propertyRegex;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return SlotModel
+     */
 	public function withMetadata(?string $metadata): SlotModel {
 		$this->metadata = $metadata;
 		return $this;

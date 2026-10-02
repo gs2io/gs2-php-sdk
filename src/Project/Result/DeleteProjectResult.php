@@ -21,18 +21,25 @@ use Gs2\Core\Model\IResult;
 use Gs2\Project\Model\Gs2Region;
 use Gs2\Project\Model\Project;
 
+/** Result of deleteProject: Delete Project */
 class DeleteProjectResult implements IResult {
-    /** @var Project */
+    /** @var Project Project deleted */
     private $item;
 
+    /** @return Project|null Project deleted */
 	public function getItem(): ?Project {
 		return $this->item;
 	}
 
+    /** @param Project|null $item Project deleted */
 	public function setItem(?Project $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Project|null $item Project deleted
+     * @return DeleteProjectResult
+     */
 	public function withItem(?Project $item): DeleteProjectResult {
 		$this->item = $item;
 		return $this;

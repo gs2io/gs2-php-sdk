@@ -20,73 +20,108 @@ namespace Gs2\Identifier\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Credential
+ *
+ * @see https://docs.gs2.io/api_reference/identifier/sdk/#identifier
+ */
 class Identifier implements IModel {
 	/**
-     * @var string
+     * @var string Client ID
 	 */
 	private $clientId;
 	/**
-     * @var string
+     * @var string User Name
 	 */
 	private $userName;
 	/**
-     * @var string
+     * @var string Client Secret
 	 */
 	private $clientSecret;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Client ID */
 	public function getClientId(): ?string {
 		return $this->clientId;
 	}
+    /** @param string|null $clientId Client ID */
 	public function setClientId(?string $clientId) {
 		$this->clientId = $clientId;
 	}
+    /**
+     * @param string|null $clientId Client ID
+     * @return Identifier
+     */
 	public function withClientId(?string $clientId): Identifier {
 		$this->clientId = $clientId;
 		return $this;
 	}
+    /** @return string|null User Name */
 	public function getUserName(): ?string {
 		return $this->userName;
 	}
+    /** @param string|null $userName User Name */
 	public function setUserName(?string $userName) {
 		$this->userName = $userName;
 	}
+    /**
+     * @param string|null $userName User Name
+     * @return Identifier
+     */
 	public function withUserName(?string $userName): Identifier {
 		$this->userName = $userName;
 		return $this;
 	}
+    /** @return string|null Client Secret */
 	public function getClientSecret(): ?string {
 		return $this->clientSecret;
 	}
+    /** @param string|null $clientSecret Client Secret */
 	public function setClientSecret(?string $clientSecret) {
 		$this->clientSecret = $clientSecret;
 	}
+    /**
+     * @param string|null $clientSecret Client Secret
+     * @return Identifier
+     */
 	public function withClientSecret(?string $clientSecret): Identifier {
 		$this->clientSecret = $clientSecret;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return Identifier
+     */
 	public function withCreatedAt(?int $createdAt): Identifier {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return Identifier
+     */
 	public function withRevision(?int $revision): Identifier {
 		$this->revision = $revision;
 		return $this;

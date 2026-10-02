@@ -20,18 +20,29 @@ namespace Gs2\Experience\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Experience\Model\CurrentExperienceMaster;
 
+/**
+ * Result of exportMaster: Export Experience Model Master in a master data format that can be activated
+ *
+ * @see https://docs.gs2.io/api_reference/experience/sdk/#exportmaster
+ */
 class ExportMasterResult implements IResult {
-    /** @var CurrentExperienceMaster */
+    /** @var CurrentExperienceMaster Experience Model master data that can be activated */
     private $item;
 
+    /** @return CurrentExperienceMaster|null Experience Model master data that can be activated */
 	public function getItem(): ?CurrentExperienceMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentExperienceMaster|null $item Experience Model master data that can be activated */
 	public function setItem(?CurrentExperienceMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentExperienceMaster|null $item Experience Model master data that can be activated
+     * @return ExportMasterResult
+     */
 	public function withItem(?CurrentExperienceMaster $item): ExportMasterResult {
 		$this->item = $item;
 		return $this;

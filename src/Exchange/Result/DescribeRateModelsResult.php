@@ -23,18 +23,29 @@ use Gs2\Exchange\Model\ConsumeAction;
 use Gs2\Exchange\Model\AcquireAction;
 use Gs2\Exchange\Model\RateModel;
 
+/**
+ * Result of describeRateModels: List Exchange Rate Models
+ *
+ * @see https://docs.gs2.io/api_reference/exchange/sdk/#describeratemodels
+ */
 class DescribeRateModelsResult implements IResult {
-    /** @var array */
+    /** @var array List of Exchange Rate Models */
     private $items;
 
+    /** @return array|null List of Exchange Rate Models */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Exchange Rate Models */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Exchange Rate Models
+     * @return DescribeRateModelsResult
+     */
 	public function withItems(?array $items): DescribeRateModelsResult {
 		$this->items = $items;
 		return $this;

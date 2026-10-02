@@ -20,213 +20,308 @@ namespace Gs2\Distributor\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Transaction Execution Result (Legacy)
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#stampsheetresult
+ */
 class StampSheetResult implements IModel {
 	/**
-     * @var string
+     * @var string Transaction Result GRN
 	 */
 	private $stampSheetResultId;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var string
+     * @var string Transaction ID
 	 */
 	private $transactionId;
 	/**
-     * @var array
+     * @var array List of verify action request payload
 	 */
 	private $verifyTaskRequests;
 	/**
-     * @var array
+     * @var array List of Consume Action request payload
 	 */
 	private $taskRequests;
 	/**
-     * @var AcquireAction
+     * @var AcquireAction Acquire Action request payload
 	 */
 	private $sheetRequest;
 	/**
-     * @var array
+     * @var array Verify Action execution status code
 	 */
 	private $verifyTaskResultCodes;
 	/**
-     * @var array
+     * @var array Verify Action execution results
 	 */
 	private $verifyTaskResults;
 	/**
-     * @var array
+     * @var array Consume Action execution status code
 	 */
 	private $taskResultCodes;
 	/**
-     * @var array
+     * @var array Consume Action execution results
 	 */
 	private $taskResults;
 	/**
-     * @var int
+     * @var int Acquire Action execution status code
 	 */
 	private $sheetResultCode;
 	/**
-     * @var string
+     * @var string Acquire Action execution results
 	 */
 	private $sheetResult;
 	/**
-     * @var string
+     * @var string Transaction ID of the newly issued transaction by executing the transaction
 	 */
 	private $nextTransactionId;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Transaction Result GRN */
 	public function getStampSheetResultId(): ?string {
 		return $this->stampSheetResultId;
 	}
+    /** @param string|null $stampSheetResultId Transaction Result GRN */
 	public function setStampSheetResultId(?string $stampSheetResultId) {
 		$this->stampSheetResultId = $stampSheetResultId;
 	}
+    /**
+     * @param string|null $stampSheetResultId Transaction Result GRN
+     * @return StampSheetResult
+     */
 	public function withStampSheetResultId(?string $stampSheetResultId): StampSheetResult {
 		$this->stampSheetResultId = $stampSheetResultId;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return StampSheetResult
+     */
 	public function withUserId(?string $userId): StampSheetResult {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Transaction ID */
 	public function getTransactionId(): ?string {
 		return $this->transactionId;
 	}
+    /** @param string|null $transactionId Transaction ID */
 	public function setTransactionId(?string $transactionId) {
 		$this->transactionId = $transactionId;
 	}
+    /**
+     * @param string|null $transactionId Transaction ID
+     * @return StampSheetResult
+     */
 	public function withTransactionId(?string $transactionId): StampSheetResult {
 		$this->transactionId = $transactionId;
 		return $this;
 	}
+    /** @return array|null List of verify action request payload */
 	public function getVerifyTaskRequests(): ?array {
 		return $this->verifyTaskRequests;
 	}
+    /** @param array|null $verifyTaskRequests List of verify action request payload */
 	public function setVerifyTaskRequests(?array $verifyTaskRequests) {
 		$this->verifyTaskRequests = $verifyTaskRequests;
 	}
+    /**
+     * @param array|null $verifyTaskRequests List of verify action request payload
+     * @return StampSheetResult
+     */
 	public function withVerifyTaskRequests(?array $verifyTaskRequests): StampSheetResult {
 		$this->verifyTaskRequests = $verifyTaskRequests;
 		return $this;
 	}
+    /** @return array|null List of Consume Action request payload */
 	public function getTaskRequests(): ?array {
 		return $this->taskRequests;
 	}
+    /** @param array|null $taskRequests List of Consume Action request payload */
 	public function setTaskRequests(?array $taskRequests) {
 		$this->taskRequests = $taskRequests;
 	}
+    /**
+     * @param array|null $taskRequests List of Consume Action request payload
+     * @return StampSheetResult
+     */
 	public function withTaskRequests(?array $taskRequests): StampSheetResult {
 		$this->taskRequests = $taskRequests;
 		return $this;
 	}
+    /** @return AcquireAction|null Acquire Action request payload */
 	public function getSheetRequest(): ?AcquireAction {
 		return $this->sheetRequest;
 	}
+    /** @param AcquireAction|null $sheetRequest Acquire Action request payload */
 	public function setSheetRequest(?AcquireAction $sheetRequest) {
 		$this->sheetRequest = $sheetRequest;
 	}
+    /**
+     * @param AcquireAction|null $sheetRequest Acquire Action request payload
+     * @return StampSheetResult
+     */
 	public function withSheetRequest(?AcquireAction $sheetRequest): StampSheetResult {
 		$this->sheetRequest = $sheetRequest;
 		return $this;
 	}
+    /** @return array|null Verify Action execution status code */
 	public function getVerifyTaskResultCodes(): ?array {
 		return $this->verifyTaskResultCodes;
 	}
+    /** @param array|null $verifyTaskResultCodes Verify Action execution status code */
 	public function setVerifyTaskResultCodes(?array $verifyTaskResultCodes) {
 		$this->verifyTaskResultCodes = $verifyTaskResultCodes;
 	}
+    /**
+     * @param array|null $verifyTaskResultCodes Verify Action execution status code
+     * @return StampSheetResult
+     */
 	public function withVerifyTaskResultCodes(?array $verifyTaskResultCodes): StampSheetResult {
 		$this->verifyTaskResultCodes = $verifyTaskResultCodes;
 		return $this;
 	}
+    /** @return array|null Verify Action execution results */
 	public function getVerifyTaskResults(): ?array {
 		return $this->verifyTaskResults;
 	}
+    /** @param array|null $verifyTaskResults Verify Action execution results */
 	public function setVerifyTaskResults(?array $verifyTaskResults) {
 		$this->verifyTaskResults = $verifyTaskResults;
 	}
+    /**
+     * @param array|null $verifyTaskResults Verify Action execution results
+     * @return StampSheetResult
+     */
 	public function withVerifyTaskResults(?array $verifyTaskResults): StampSheetResult {
 		$this->verifyTaskResults = $verifyTaskResults;
 		return $this;
 	}
+    /** @return array|null Consume Action execution status code */
 	public function getTaskResultCodes(): ?array {
 		return $this->taskResultCodes;
 	}
+    /** @param array|null $taskResultCodes Consume Action execution status code */
 	public function setTaskResultCodes(?array $taskResultCodes) {
 		$this->taskResultCodes = $taskResultCodes;
 	}
+    /**
+     * @param array|null $taskResultCodes Consume Action execution status code
+     * @return StampSheetResult
+     */
 	public function withTaskResultCodes(?array $taskResultCodes): StampSheetResult {
 		$this->taskResultCodes = $taskResultCodes;
 		return $this;
 	}
+    /** @return array|null Consume Action execution results */
 	public function getTaskResults(): ?array {
 		return $this->taskResults;
 	}
+    /** @param array|null $taskResults Consume Action execution results */
 	public function setTaskResults(?array $taskResults) {
 		$this->taskResults = $taskResults;
 	}
+    /**
+     * @param array|null $taskResults Consume Action execution results
+     * @return StampSheetResult
+     */
 	public function withTaskResults(?array $taskResults): StampSheetResult {
 		$this->taskResults = $taskResults;
 		return $this;
 	}
+    /** @return int|null Acquire Action execution status code */
 	public function getSheetResultCode(): ?int {
 		return $this->sheetResultCode;
 	}
+    /** @param int|null $sheetResultCode Acquire Action execution status code */
 	public function setSheetResultCode(?int $sheetResultCode) {
 		$this->sheetResultCode = $sheetResultCode;
 	}
+    /**
+     * @param int|null $sheetResultCode Acquire Action execution status code
+     * @return StampSheetResult
+     */
 	public function withSheetResultCode(?int $sheetResultCode): StampSheetResult {
 		$this->sheetResultCode = $sheetResultCode;
 		return $this;
 	}
+    /** @return string|null Acquire Action execution results */
 	public function getSheetResult(): ?string {
 		return $this->sheetResult;
 	}
+    /** @param string|null $sheetResult Acquire Action execution results */
 	public function setSheetResult(?string $sheetResult) {
 		$this->sheetResult = $sheetResult;
 	}
+    /**
+     * @param string|null $sheetResult Acquire Action execution results
+     * @return StampSheetResult
+     */
 	public function withSheetResult(?string $sheetResult): StampSheetResult {
 		$this->sheetResult = $sheetResult;
 		return $this;
 	}
+    /** @return string|null Transaction ID of the newly issued transaction by executing the transaction */
 	public function getNextTransactionId(): ?string {
 		return $this->nextTransactionId;
 	}
+    /** @param string|null $nextTransactionId Transaction ID of the newly issued transaction by executing the transaction */
 	public function setNextTransactionId(?string $nextTransactionId) {
 		$this->nextTransactionId = $nextTransactionId;
 	}
+    /**
+     * @param string|null $nextTransactionId Transaction ID of the newly issued transaction by executing the transaction
+     * @return StampSheetResult
+     */
 	public function withNextTransactionId(?string $nextTransactionId): StampSheetResult {
 		$this->nextTransactionId = $nextTransactionId;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return StampSheetResult
+     */
 	public function withCreatedAt(?int $createdAt): StampSheetResult {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return StampSheetResult
+     */
 	public function withRevision(?int $revision): StampSheetResult {
 		$this->revision = $revision;
 		return $this;

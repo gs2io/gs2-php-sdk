@@ -19,39 +19,62 @@ namespace Gs2\Schedule\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getTrigger: Get trigger
+ *
+ * @see https://docs.gs2.io/api_reference/schedule/sdk/#gettrigger
+ */
 class GetTriggerRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Trigger name */
     private $triggerName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetTriggerRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetTriggerRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return GetTriggerRequest
+     */
 	public function withAccessToken(?string $accessToken): GetTriggerRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Trigger name */
 	public function getTriggerName(): ?string {
 		return $this->triggerName;
 	}
+    /** @param string|null $triggerName Trigger name */
 	public function setTriggerName(?string $triggerName) {
 		$this->triggerName = $triggerName;
 	}
+    /**
+     * @param string|null $triggerName Trigger name
+     * @return GetTriggerRequest
+     */
 	public function withTriggerName(?string $triggerName): GetTriggerRequest {
 		$this->triggerName = $triggerName;
 		return $this;

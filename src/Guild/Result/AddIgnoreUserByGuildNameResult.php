@@ -23,33 +23,50 @@ use Gs2\Guild\Model\RoleModel;
 use Gs2\Guild\Model\Member;
 use Gs2\Guild\Model\Guild;
 
+/**
+ * Result of addIgnoreUserByGuildName: Add User ID that refuse to participate by specifying a Guild name
+ *
+ * @see https://docs.gs2.io/api_reference/guild/sdk/#addignoreuserbyguildname
+ */
 class AddIgnoreUserByGuildNameResult implements IResult {
-    /** @var IgnoreUser */
+    /** @var IgnoreUser User ID that refuse to participate */
     private $item;
-    /** @var Guild */
+    /** @var Guild Guild */
     private $guild;
 
+    /** @return IgnoreUser|null User ID that refuse to participate */
 	public function getItem(): ?IgnoreUser {
 		return $this->item;
 	}
 
+    /** @param IgnoreUser|null $item User ID that refuse to participate */
 	public function setItem(?IgnoreUser $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param IgnoreUser|null $item User ID that refuse to participate
+     * @return AddIgnoreUserByGuildNameResult
+     */
 	public function withItem(?IgnoreUser $item): AddIgnoreUserByGuildNameResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return Guild|null Guild */
 	public function getGuild(): ?Guild {
 		return $this->guild;
 	}
 
+    /** @param Guild|null $guild Guild */
 	public function setGuild(?Guild $guild) {
 		$this->guild = $guild;
 	}
 
+    /**
+     * @param Guild|null $guild Guild
+     * @return AddIgnoreUserByGuildNameResult
+     */
 	public function withGuild(?Guild $guild): AddIgnoreUserByGuildNameResult {
 		$this->guild = $guild;
 		return $this;

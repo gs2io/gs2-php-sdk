@@ -19,53 +19,82 @@ namespace Gs2\Matchmaking\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for doSeasonMatchmaking: Find a Season Gathering you can join and participate.
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#doseasonmatchmaking
+ */
 class DoSeasonMatchmakingRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Season Model name */
     private $seasonName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Used to resume search Token that holds matchmaking state */
     private $matchmakingContextToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DoSeasonMatchmakingRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DoSeasonMatchmakingRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Season Model name */
 	public function getSeasonName(): ?string {
 		return $this->seasonName;
 	}
+    /** @param string|null $seasonName Season Model name */
 	public function setSeasonName(?string $seasonName) {
 		$this->seasonName = $seasonName;
 	}
+    /**
+     * @param string|null $seasonName Season Model name
+     * @return DoSeasonMatchmakingRequest
+     */
 	public function withSeasonName(?string $seasonName): DoSeasonMatchmakingRequest {
 		$this->seasonName = $seasonName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return DoSeasonMatchmakingRequest
+     */
 	public function withAccessToken(?string $accessToken): DoSeasonMatchmakingRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Used to resume search Token that holds matchmaking state */
 	public function getMatchmakingContextToken(): ?string {
 		return $this->matchmakingContextToken;
 	}
+    /** @param string|null $matchmakingContextToken Used to resume search Token that holds matchmaking state */
 	public function setMatchmakingContextToken(?string $matchmakingContextToken) {
 		$this->matchmakingContextToken = $matchmakingContextToken;
 	}
+    /**
+     * @param string|null $matchmakingContextToken Used to resume search Token that holds matchmaking state
+     * @return DoSeasonMatchmakingRequest
+     */
 	public function withMatchmakingContextToken(?string $matchmakingContextToken): DoSeasonMatchmakingRequest {
 		$this->matchmakingContextToken = $matchmakingContextToken;
 		return $this;

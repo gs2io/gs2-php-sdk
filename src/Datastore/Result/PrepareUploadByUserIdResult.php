@@ -20,33 +20,50 @@ namespace Gs2\Datastore\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Datastore\Model\DataObject;
 
+/**
+ * Result of prepareUploadByUserId: Prepare to upload Data Object by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/datastore/sdk/#prepareuploadbyuserid
+ */
 class PrepareUploadByUserIdResult implements IResult {
-    /** @var DataObject */
+    /** @var DataObject Data Object */
     private $item;
-    /** @var string */
+    /** @var string URL used to execute the upload process */
     private $uploadUrl;
 
+    /** @return DataObject|null Data Object */
 	public function getItem(): ?DataObject {
 		return $this->item;
 	}
 
+    /** @param DataObject|null $item Data Object */
 	public function setItem(?DataObject $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param DataObject|null $item Data Object
+     * @return PrepareUploadByUserIdResult
+     */
 	public function withItem(?DataObject $item): PrepareUploadByUserIdResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null URL used to execute the upload process */
 	public function getUploadUrl(): ?string {
 		return $this->uploadUrl;
 	}
 
+    /** @param string|null $uploadUrl URL used to execute the upload process */
 	public function setUploadUrl(?string $uploadUrl) {
 		$this->uploadUrl = $uploadUrl;
 	}
 
+    /**
+     * @param string|null $uploadUrl URL used to execute the upload process
+     * @return PrepareUploadByUserIdResult
+     */
 	public function withUploadUrl(?string $uploadUrl): PrepareUploadByUserIdResult {
 		$this->uploadUrl = $uploadUrl;
 		return $this;

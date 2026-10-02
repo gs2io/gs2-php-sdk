@@ -19,27 +19,44 @@ namespace Gs2\Distributor\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for runVerifyTaskWithoutNamespace: Execute verify action of transaction without specifying the GS2-Distributor Namespace
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#runverifytaskwithoutnamespace
+ */
 class RunVerifyTaskWithoutNamespaceRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Verify Action */
     private $verifyTask;
-    /** @var string */
+    /** @var string Encryption Key GRN */
     private $keyId;
+    /** @return string|null Verify Action */
 	public function getVerifyTask(): ?string {
 		return $this->verifyTask;
 	}
+    /** @param string|null $verifyTask Verify Action */
 	public function setVerifyTask(?string $verifyTask) {
 		$this->verifyTask = $verifyTask;
 	}
+    /**
+     * @param string|null $verifyTask Verify Action
+     * @return RunVerifyTaskWithoutNamespaceRequest
+     */
 	public function withVerifyTask(?string $verifyTask): RunVerifyTaskWithoutNamespaceRequest {
 		$this->verifyTask = $verifyTask;
 		return $this;
 	}
+    /** @return string|null Encryption Key GRN */
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
+    /** @param string|null $keyId Encryption Key GRN */
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
+    /**
+     * @param string|null $keyId Encryption Key GRN
+     * @return RunVerifyTaskWithoutNamespaceRequest
+     */
 	public function withKeyId(?string $keyId): RunVerifyTaskWithoutNamespaceRequest {
 		$this->keyId = $keyId;
 		return $this;

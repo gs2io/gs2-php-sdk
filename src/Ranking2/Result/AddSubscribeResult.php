@@ -20,18 +20,29 @@ namespace Gs2\Ranking2\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Ranking2\Model\SubscribeUser;
 
+/**
+ * Result of addSubscribe: Register Subscribe Target User ID
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/sdk/#addsubscribe
+ */
 class AddSubscribeResult implements IResult {
-    /** @var SubscribeUser */
+    /** @var SubscribeUser Registered Subscribe Target User ID */
     private $item;
 
+    /** @return SubscribeUser|null Registered Subscribe Target User ID */
 	public function getItem(): ?SubscribeUser {
 		return $this->item;
 	}
 
+    /** @param SubscribeUser|null $item Registered Subscribe Target User ID */
 	public function setItem(?SubscribeUser $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param SubscribeUser|null $item Registered Subscribe Target User ID
+     * @return AddSubscribeResult
+     */
 	public function withItem(?SubscribeUser $item): AddSubscribeResult {
 		$this->item = $item;
 		return $this;

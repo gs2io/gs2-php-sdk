@@ -21,33 +21,50 @@ use Gs2\Core\Model\IResult;
 use Gs2\Chat\Model\NotificationType;
 use Gs2\Chat\Model\Subscribe;
 
+/**
+ * Result of describeSubscribesByUserId: List Room Subscriptions by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/chat/sdk/#describesubscribesbyuserid
+ */
 class DescribeSubscribesByUserIdResult implements IResult {
-    /** @var array */
+    /** @var array List of Room Subscriptions */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Room Subscriptions */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Room Subscriptions */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Room Subscriptions
+     * @return DescribeSubscribesByUserIdResult
+     */
 	public function withItems(?array $items): DescribeSubscribesByUserIdResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeSubscribesByUserIdResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeSubscribesByUserIdResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

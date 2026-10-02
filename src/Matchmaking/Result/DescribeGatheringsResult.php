@@ -24,33 +24,50 @@ use Gs2\Matchmaking\Model\Player;
 use Gs2\Matchmaking\Model\CapacityOfRole;
 use Gs2\Matchmaking\Model\Gathering;
 
+/**
+ * Result of describeGatherings: List Gatherings
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#describegatherings
+ */
 class DescribeGatheringsResult implements IResult {
-    /** @var array */
+    /** @var array List of Gathering */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Gathering */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Gathering */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Gathering
+     * @return DescribeGatheringsResult
+     */
 	public function withItems(?array $items): DescribeGatheringsResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeGatheringsResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeGatheringsResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

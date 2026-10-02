@@ -20,18 +20,29 @@ namespace Gs2\Gateway\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Gateway\Model\FirebaseToken;
 
+/**
+ * Result of deleteFirebaseToken: Delete Firebase device token
+ *
+ * @see https://docs.gs2.io/api_reference/gateway/sdk/#deletefirebasetoken
+ */
 class DeleteFirebaseTokenResult implements IResult {
-    /** @var FirebaseToken */
+    /** @var FirebaseToken Firebase Device Token deleted */
     private $item;
 
+    /** @return FirebaseToken|null Firebase Device Token deleted */
 	public function getItem(): ?FirebaseToken {
 		return $this->item;
 	}
 
+    /** @param FirebaseToken|null $item Firebase Device Token deleted */
 	public function setItem(?FirebaseToken $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param FirebaseToken|null $item Firebase Device Token deleted
+     * @return DeleteFirebaseTokenResult
+     */
 	public function withItem(?FirebaseToken $item): DeleteFirebaseTokenResult {
 		$this->item = $item;
 		return $this;

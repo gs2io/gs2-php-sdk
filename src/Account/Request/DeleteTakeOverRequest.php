@@ -19,41 +19,64 @@ namespace Gs2\Account\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for deleteTakeOver: Delete Takeover Information
+ *
+ * @see https://docs.gs2.io/api_reference/account/sdk/#deletetakeover
+ */
 class DeleteTakeOverRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var int */
+    /** @var int Slot Number */
     private $type;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DeleteTakeOverRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DeleteTakeOverRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return DeleteTakeOverRequest
+     */
 	public function withAccessToken(?string $accessToken): DeleteTakeOverRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return int|null Slot Number */
 	public function getType(): ?int {
 		return $this->type;
 	}
+    /** @param int|null $type Slot Number */
 	public function setType(?int $type) {
 		$this->type = $type;
 	}
+    /**
+     * @param int|null $type Slot Number
+     * @return DeleteTakeOverRequest
+     */
 	public function withType(?int $type): DeleteTakeOverRequest {
 		$this->type = $type;
 		return $this;

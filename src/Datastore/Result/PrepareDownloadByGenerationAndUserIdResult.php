@@ -20,48 +20,71 @@ namespace Gs2\Datastore\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Datastore\Model\DataObject;
 
+/**
+ * Result of prepareDownloadByGenerationAndUserId: Prepare data object for download by specifying user ID and generation
+ *
+ * @see https://docs.gs2.io/api_reference/datastore/sdk/#preparedownloadbygenerationanduserid
+ */
 class PrepareDownloadByGenerationAndUserIdResult implements IResult {
-    /** @var DataObject */
+    /** @var DataObject Data object */
     private $item;
-    /** @var string */
+    /** @var string URL to download the file */
     private $fileUrl;
-    /** @var int */
+    /** @var int File size */
     private $contentLength;
 
+    /** @return DataObject|null Data object */
 	public function getItem(): ?DataObject {
 		return $this->item;
 	}
 
+    /** @param DataObject|null $item Data object */
 	public function setItem(?DataObject $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param DataObject|null $item Data object
+     * @return PrepareDownloadByGenerationAndUserIdResult
+     */
 	public function withItem(?DataObject $item): PrepareDownloadByGenerationAndUserIdResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null URL to download the file */
 	public function getFileUrl(): ?string {
 		return $this->fileUrl;
 	}
 
+    /** @param string|null $fileUrl URL to download the file */
 	public function setFileUrl(?string $fileUrl) {
 		$this->fileUrl = $fileUrl;
 	}
 
+    /**
+     * @param string|null $fileUrl URL to download the file
+     * @return PrepareDownloadByGenerationAndUserIdResult
+     */
 	public function withFileUrl(?string $fileUrl): PrepareDownloadByGenerationAndUserIdResult {
 		$this->fileUrl = $fileUrl;
 		return $this;
 	}
 
+    /** @return int|null File size */
 	public function getContentLength(): ?int {
 		return $this->contentLength;
 	}
 
+    /** @param int|null $contentLength File size */
 	public function setContentLength(?int $contentLength) {
 		$this->contentLength = $contentLength;
 	}
 
+    /**
+     * @param int|null $contentLength File size
+     * @return PrepareDownloadByGenerationAndUserIdResult
+     */
 	public function withContentLength(?int $contentLength): PrepareDownloadByGenerationAndUserIdResult {
 		$this->contentLength = $contentLength;
 		return $this;

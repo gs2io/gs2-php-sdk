@@ -20,33 +20,50 @@ namespace Gs2\Friend\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Friend\Model\FriendRequest;
 
+/**
+ * Result of describeReceiveRequests: List received friend requests
+ *
+ * @see https://docs.gs2.io/api_reference/friend/sdk/#describereceiverequests
+ */
 class DescribeReceiveRequestsResult implements IResult {
-    /** @var array */
+    /** @var array List of Friend request */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Friend request */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Friend request */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Friend request
+     * @return DescribeReceiveRequestsResult
+     */
 	public function withItems(?array $items): DescribeReceiveRequestsResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeReceiveRequestsResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeReceiveRequestsResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

@@ -19,27 +19,44 @@ namespace Gs2\Log\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for deleteFacetModel: Delete Facet Model
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#deletefacetmodel
+ */
 class DeleteFacetModelRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Facet Field Name */
     private $field;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DeleteFacetModelRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DeleteFacetModelRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Facet Field Name */
 	public function getField(): ?string {
 		return $this->field;
 	}
+    /** @param string|null $field Facet Field Name */
 	public function setField(?string $field) {
 		$this->field = $field;
 	}
+    /**
+     * @param string|null $field Facet Field Name
+     * @return DeleteFacetModelRequest
+     */
 	public function withField(?string $field): DeleteFacetModelRequest {
 		$this->field = $field;
 		return $this;

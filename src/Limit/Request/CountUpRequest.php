@@ -19,77 +19,118 @@ namespace Gs2\Limit\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for countUp: Count-up
+ *
+ * @see https://docs.gs2.io/api_reference/limit/sdk/#countup
+ */
 class CountUpRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Usage Limit Model Name */
     private $limitName;
-    /** @var string */
+    /** @var string Counter Name */
     private $counterName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var int */
+    /** @var int Amount to count up */
     private $countUpValue;
-    /** @var int */
+    /** @var int Maximum value allowed to count up */
     private $maxValue;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return CountUpRequest
+     */
 	public function withNamespaceName(?string $namespaceName): CountUpRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Usage Limit Model Name */
 	public function getLimitName(): ?string {
 		return $this->limitName;
 	}
+    /** @param string|null $limitName Usage Limit Model Name */
 	public function setLimitName(?string $limitName) {
 		$this->limitName = $limitName;
 	}
+    /**
+     * @param string|null $limitName Usage Limit Model Name
+     * @return CountUpRequest
+     */
 	public function withLimitName(?string $limitName): CountUpRequest {
 		$this->limitName = $limitName;
 		return $this;
 	}
+    /** @return string|null Counter Name */
 	public function getCounterName(): ?string {
 		return $this->counterName;
 	}
+    /** @param string|null $counterName Counter Name */
 	public function setCounterName(?string $counterName) {
 		$this->counterName = $counterName;
 	}
+    /**
+     * @param string|null $counterName Counter Name
+     * @return CountUpRequest
+     */
 	public function withCounterName(?string $counterName): CountUpRequest {
 		$this->counterName = $counterName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return CountUpRequest
+     */
 	public function withAccessToken(?string $accessToken): CountUpRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return int|null Amount to count up */
 	public function getCountUpValue(): ?int {
 		return $this->countUpValue;
 	}
+    /** @param int|null $countUpValue Amount to count up */
 	public function setCountUpValue(?int $countUpValue) {
 		$this->countUpValue = $countUpValue;
 	}
+    /**
+     * @param int|null $countUpValue Amount to count up
+     * @return CountUpRequest
+     */
 	public function withCountUpValue(?int $countUpValue): CountUpRequest {
 		$this->countUpValue = $countUpValue;
 		return $this;
 	}
+    /** @return int|null Maximum value allowed to count up */
 	public function getMaxValue(): ?int {
 		return $this->maxValue;
 	}
+    /** @param int|null $maxValue Maximum value allowed to count up */
 	public function setMaxValue(?int $maxValue) {
 		$this->maxValue = $maxValue;
 	}
+    /**
+     * @param int|null $maxValue Maximum value allowed to count up
+     * @return CountUpRequest
+     */
 	public function withMaxValue(?int $maxValue): CountUpRequest {
 		$this->maxValue = $maxValue;
 		return $this;

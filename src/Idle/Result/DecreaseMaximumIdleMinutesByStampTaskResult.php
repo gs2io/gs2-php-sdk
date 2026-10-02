@@ -20,33 +20,50 @@ namespace Gs2\Idle\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Idle\Model\Status;
 
+/**
+ * Result of decreaseMaximumIdleMinutesByStampTask: Execute the subtraction of the maximum idle time as a consume action
+ *
+ * @see https://docs.gs2.io/api_reference/idle/stamp_sheet/#gs2idledecreasemaximumidleminutesbyuserid
+ */
 class DecreaseMaximumIdleMinutesByStampTaskResult implements IResult {
-    /** @var Status */
+    /** @var Status Status updated */
     private $item;
-    /** @var string */
+    /** @var string Context recording the execution results of Consume Actions */
     private $newContextStack;
 
+    /** @return Status|null Status updated */
 	public function getItem(): ?Status {
 		return $this->item;
 	}
 
+    /** @param Status|null $item Status updated */
 	public function setItem(?Status $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Status|null $item Status updated
+     * @return DecreaseMaximumIdleMinutesByStampTaskResult
+     */
 	public function withItem(?Status $item): DecreaseMaximumIdleMinutesByStampTaskResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null Context recording the execution results of Consume Actions */
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
+    /** @param string|null $newContextStack Context recording the execution results of Consume Actions */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
+    /**
+     * @param string|null $newContextStack Context recording the execution results of Consume Actions
+     * @return DecreaseMaximumIdleMinutesByStampTaskResult
+     */
 	public function withNewContextStack(?string $newContextStack): DecreaseMaximumIdleMinutesByStampTaskResult {
 		$this->newContextStack = $newContextStack;
 		return $this;

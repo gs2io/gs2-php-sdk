@@ -20,15 +20,26 @@ namespace Gs2\Distributor\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Distributor\Model\BatchRequestPayload;
 
+/**
+ * Request for batchExecuteApi: Execute multiple APIs in bulk
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#batchexecuteapi
+ */
 class BatchExecuteApiRequest extends Gs2BasicRequest {
-    /** @var array */
+    /** @var array Batch request */
     private $requestPayloads;
+    /** @return array|null Batch request */
 	public function getRequestPayloads(): ?array {
 		return $this->requestPayloads;
 	}
+    /** @param array|null $requestPayloads Batch request */
 	public function setRequestPayloads(?array $requestPayloads) {
 		$this->requestPayloads = $requestPayloads;
 	}
+    /**
+     * @param array|null $requestPayloads Batch request
+     * @return BatchExecuteApiRequest
+     */
 	public function withRequestPayloads(?array $requestPayloads): BatchExecuteApiRequest {
 		$this->requestPayloads = $requestPayloads;
 		return $this;

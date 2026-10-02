@@ -20,73 +20,108 @@ namespace Gs2\Mission\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Target Counter
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#targetcountermodel
+ */
 class TargetCounterModel implements IModel {
 	/**
-     * @var string
+     * @var string Counter Model name
 	 */
 	private $counterName;
 	/**
-     * @var string
+     * @var string Scope type
 	 */
 	private $scopeType;
 	/**
-     * @var string
+     * @var string Target Reset timing
 	 */
 	private $resetType;
 	/**
-     * @var string
+     * @var string Condition Name
 	 */
 	private $conditionName;
 	/**
-     * @var int
+     * @var int Target value
 	 */
 	private $value;
+    /** @return string|null Counter Model name */
 	public function getCounterName(): ?string {
 		return $this->counterName;
 	}
+    /** @param string|null $counterName Counter Model name */
 	public function setCounterName(?string $counterName) {
 		$this->counterName = $counterName;
 	}
+    /**
+     * @param string|null $counterName Counter Model name
+     * @return TargetCounterModel
+     */
 	public function withCounterName(?string $counterName): TargetCounterModel {
 		$this->counterName = $counterName;
 		return $this;
 	}
+    /** @return string|null Scope type */
 	public function getScopeType(): ?string {
 		return $this->scopeType;
 	}
+    /** @param string|null $scopeType Scope type */
 	public function setScopeType(?string $scopeType) {
 		$this->scopeType = $scopeType;
 	}
+    /**
+     * @param string|null $scopeType Scope type
+     * @return TargetCounterModel
+     */
 	public function withScopeType(?string $scopeType): TargetCounterModel {
 		$this->scopeType = $scopeType;
 		return $this;
 	}
+    /** @return string|null Target Reset timing */
 	public function getResetType(): ?string {
 		return $this->resetType;
 	}
+    /** @param string|null $resetType Target Reset timing */
 	public function setResetType(?string $resetType) {
 		$this->resetType = $resetType;
 	}
+    /**
+     * @param string|null $resetType Target Reset timing
+     * @return TargetCounterModel
+     */
 	public function withResetType(?string $resetType): TargetCounterModel {
 		$this->resetType = $resetType;
 		return $this;
 	}
+    /** @return string|null Condition Name */
 	public function getConditionName(): ?string {
 		return $this->conditionName;
 	}
+    /** @param string|null $conditionName Condition Name */
 	public function setConditionName(?string $conditionName) {
 		$this->conditionName = $conditionName;
 	}
+    /**
+     * @param string|null $conditionName Condition Name
+     * @return TargetCounterModel
+     */
 	public function withConditionName(?string $conditionName): TargetCounterModel {
 		$this->conditionName = $conditionName;
 		return $this;
 	}
+    /** @return int|null Target value */
 	public function getValue(): ?int {
 		return $this->value;
 	}
+    /** @param int|null $value Target value */
 	public function setValue(?int $value) {
 		$this->value = $value;
 	}
+    /**
+     * @param int|null $value Target value
+     * @return TargetCounterModel
+     */
 	public function withValue(?int $value): TargetCounterModel {
 		$this->value = $value;
 		return $this;

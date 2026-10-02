@@ -19,27 +19,44 @@ namespace Gs2\Ranking2\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for createGlobalRankingReceivedRewardByStampTask: Execute record global ranking reward receipt history as consume action
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/stamp_sheet/#gs2ranking2createglobalrankingreceivedrewardbyuserid
+ */
 class CreateGlobalRankingReceivedRewardByStampTaskRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Consume Action */
     private $stampTask;
-    /** @var string */
+    /** @var string Encryption Key GRN */
     private $keyId;
+    /** @return string|null Consume Action */
 	public function getStampTask(): ?string {
 		return $this->stampTask;
 	}
+    /** @param string|null $stampTask Consume Action */
 	public function setStampTask(?string $stampTask) {
 		$this->stampTask = $stampTask;
 	}
+    /**
+     * @param string|null $stampTask Consume Action
+     * @return CreateGlobalRankingReceivedRewardByStampTaskRequest
+     */
 	public function withStampTask(?string $stampTask): CreateGlobalRankingReceivedRewardByStampTaskRequest {
 		$this->stampTask = $stampTask;
 		return $this;
 	}
+    /** @return string|null Encryption Key GRN */
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
+    /** @param string|null $keyId Encryption Key GRN */
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
+    /**
+     * @param string|null $keyId Encryption Key GRN
+     * @return CreateGlobalRankingReceivedRewardByStampTaskRequest
+     */
 	public function withKeyId(?string $keyId): CreateGlobalRankingReceivedRewardByStampTaskRequest {
 		$this->keyId = $keyId;
 		return $this;

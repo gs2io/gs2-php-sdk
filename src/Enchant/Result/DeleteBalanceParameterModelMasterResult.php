@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Enchant\Model\BalanceParameterValueModel;
 use Gs2\Enchant\Model\BalanceParameterModelMaster;
 
+/**
+ * Result of deleteBalanceParameterModelMaster: Delete Balance Parameter Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/enchant/sdk/#deletebalanceparametermodelmaster
+ */
 class DeleteBalanceParameterModelMasterResult implements IResult {
-    /** @var BalanceParameterModelMaster */
+    /** @var BalanceParameterModelMaster Balance Parameter Model Master deleted */
     private $item;
 
+    /** @return BalanceParameterModelMaster|null Balance Parameter Model Master deleted */
 	public function getItem(): ?BalanceParameterModelMaster {
 		return $this->item;
 	}
 
+    /** @param BalanceParameterModelMaster|null $item Balance Parameter Model Master deleted */
 	public function setItem(?BalanceParameterModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param BalanceParameterModelMaster|null $item Balance Parameter Model Master deleted
+     * @return DeleteBalanceParameterModelMasterResult
+     */
 	public function withItem(?BalanceParameterModelMaster $item): DeleteBalanceParameterModelMasterResult {
 		$this->item = $item;
 		return $this;

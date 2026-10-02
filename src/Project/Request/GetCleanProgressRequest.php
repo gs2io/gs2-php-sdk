@@ -19,15 +19,22 @@ namespace Gs2\Project\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/** Request for getCleanProgress: Get clean user data progress */
 class GetCleanProgressRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Transaction ID */
     private $transactionId;
+    /** @return string|null Transaction ID */
 	public function getTransactionId(): ?string {
 		return $this->transactionId;
 	}
+    /** @param string|null $transactionId Transaction ID */
 	public function setTransactionId(?string $transactionId) {
 		$this->transactionId = $transactionId;
 	}
+    /**
+     * @param string|null $transactionId Transaction ID
+     * @return GetCleanProgressRequest
+     */
 	public function withTransactionId(?string $transactionId): GetCleanProgressRequest {
 		$this->transactionId = $transactionId;
 		return $this;

@@ -21,33 +21,50 @@ use Gs2\Core\Model\IResult;
 use Gs2\Account\Model\BanStatus;
 use Gs2\Account\Model\Account;
 
+/**
+ * Result of describeAccounts: List Game Player Accounts
+ *
+ * @see https://docs.gs2.io/api_reference/account/sdk/#describeaccounts
+ */
 class DescribeAccountsResult implements IResult {
-    /** @var array */
+    /** @var array List of Game Player Accounts */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Game Player Accounts */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Game Player Accounts */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Game Player Accounts
+     * @return DescribeAccountsResult
+     */
 	public function withItems(?array $items): DescribeAccountsResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeAccountsResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeAccountsResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

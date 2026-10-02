@@ -19,77 +19,118 @@ namespace Gs2\Money\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for depositByUserId: Deposit balance to Wallet by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/money/sdk/#depositbyuserid
+ */
 class DepositByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var int */
+    /** @var int Slot Number */
     private $slot;
-    /** @var float */
+    /** @var float Purchase Price */
     private $price;
-    /** @var int */
+    /** @var int Quantity of premium currency to be granted */
     private $count;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DepositByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DepositByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return DepositByUserIdRequest
+     */
 	public function withUserId(?string $userId): DepositByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return int|null Slot Number */
 	public function getSlot(): ?int {
 		return $this->slot;
 	}
+    /** @param int|null $slot Slot Number */
 	public function setSlot(?int $slot) {
 		$this->slot = $slot;
 	}
+    /**
+     * @param int|null $slot Slot Number
+     * @return DepositByUserIdRequest
+     */
 	public function withSlot(?int $slot): DepositByUserIdRequest {
 		$this->slot = $slot;
 		return $this;
 	}
+    /** @return float|null Purchase Price */
 	public function getPrice(): ?float {
 		return $this->price;
 	}
+    /** @param float|null $price Purchase Price */
 	public function setPrice(?float $price) {
 		$this->price = $price;
 	}
+    /**
+     * @param float|null $price Purchase Price
+     * @return DepositByUserIdRequest
+     */
 	public function withPrice(?float $price): DepositByUserIdRequest {
 		$this->price = $price;
 		return $this;
 	}
+    /** @return int|null Quantity of premium currency to be granted */
 	public function getCount(): ?int {
 		return $this->count;
 	}
+    /** @param int|null $count Quantity of premium currency to be granted */
 	public function setCount(?int $count) {
 		$this->count = $count;
 	}
+    /**
+     * @param int|null $count Quantity of premium currency to be granted
+     * @return DepositByUserIdRequest
+     */
 	public function withCount(?int $count): DepositByUserIdRequest {
 		$this->count = $count;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return DepositByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): DepositByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

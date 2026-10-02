@@ -20,18 +20,29 @@ namespace Gs2\Dictionary\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Dictionary\Model\EntryModelMaster;
 
+/**
+ * Result of createEntryModelMaster: Create Entry Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/dictionary/sdk/#createentrymodelmaster
+ */
 class CreateEntryModelMasterResult implements IResult {
-    /** @var EntryModelMaster */
+    /** @var EntryModelMaster Created Entry Model Master */
     private $item;
 
+    /** @return EntryModelMaster|null Created Entry Model Master */
 	public function getItem(): ?EntryModelMaster {
 		return $this->item;
 	}
 
+    /** @param EntryModelMaster|null $item Created Entry Model Master */
 	public function setItem(?EntryModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param EntryModelMaster|null $item Created Entry Model Master
+     * @return CreateEntryModelMasterResult
+     */
 	public function withItem(?EntryModelMaster $item): CreateEntryModelMasterResult {
 		$this->item = $item;
 		return $this;

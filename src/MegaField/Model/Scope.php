@@ -20,45 +20,68 @@ namespace Gs2\MegaField\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Surroundings to be acquired
+ *
+ * @see https://docs.gs2.io/api_reference/mega_field/sdk/#scope
+ */
 class Scope implements IModel {
 	/**
-     * @var string
+     * @var string Layer Model name
 	 */
 	private $layerName;
 	/**
-     * @var float
+     * @var float Radius
 	 */
 	private $r;
 	/**
-     * @var int
+     * @var int Maximum number of result
 	 */
 	private $limit;
+    /** @return string|null Layer Model name */
 	public function getLayerName(): ?string {
 		return $this->layerName;
 	}
+    /** @param string|null $layerName Layer Model name */
 	public function setLayerName(?string $layerName) {
 		$this->layerName = $layerName;
 	}
+    /**
+     * @param string|null $layerName Layer Model name
+     * @return Scope
+     */
 	public function withLayerName(?string $layerName): Scope {
 		$this->layerName = $layerName;
 		return $this;
 	}
+    /** @return float|null Radius */
 	public function getR(): ?float {
 		return $this->r;
 	}
+    /** @param float|null $r Radius */
 	public function setR(?float $r) {
 		$this->r = $r;
 	}
+    /**
+     * @param float|null $r Radius
+     * @return Scope
+     */
 	public function withR(?float $r): Scope {
 		$this->r = $r;
 		return $this;
 	}
+    /** @return int|null Maximum number of result */
 	public function getLimit(): ?int {
 		return $this->limit;
 	}
+    /** @param int|null $limit Maximum number of result */
 	public function setLimit(?int $limit) {
 		$this->limit = $limit;
 	}
+    /**
+     * @param int|null $limit Maximum number of result
+     * @return Scope
+     */
 	public function withLimit(?int $limit): Scope {
 		$this->limit = $limit;
 		return $this;

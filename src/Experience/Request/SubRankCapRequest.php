@@ -19,65 +19,100 @@ namespace Gs2\Experience\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for subRankCap: Subtract rank cap
+ *
+ * @see https://docs.gs2.io/api_reference/experience/sdk/#subrankcap
+ */
 class SubRankCapRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Experience Model name */
     private $experienceName;
-    /** @var string */
+    /** @var string Property ID */
     private $propertyId;
-    /** @var int */
+    /** @var int Current Rank Cap */
     private $rankCapValue;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return SubRankCapRequest
+     */
 	public function withNamespaceName(?string $namespaceName): SubRankCapRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return SubRankCapRequest
+     */
 	public function withAccessToken(?string $accessToken): SubRankCapRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Experience Model name */
 	public function getExperienceName(): ?string {
 		return $this->experienceName;
 	}
+    /** @param string|null $experienceName Experience Model name */
 	public function setExperienceName(?string $experienceName) {
 		$this->experienceName = $experienceName;
 	}
+    /**
+     * @param string|null $experienceName Experience Model name
+     * @return SubRankCapRequest
+     */
 	public function withExperienceName(?string $experienceName): SubRankCapRequest {
 		$this->experienceName = $experienceName;
 		return $this;
 	}
+    /** @return string|null Property ID */
 	public function getPropertyId(): ?string {
 		return $this->propertyId;
 	}
+    /** @param string|null $propertyId Property ID */
 	public function setPropertyId(?string $propertyId) {
 		$this->propertyId = $propertyId;
 	}
+    /**
+     * @param string|null $propertyId Property ID
+     * @return SubRankCapRequest
+     */
 	public function withPropertyId(?string $propertyId): SubRankCapRequest {
 		$this->propertyId = $propertyId;
 		return $this;
 	}
+    /** @return int|null Current Rank Cap */
 	public function getRankCapValue(): ?int {
 		return $this->rankCapValue;
 	}
+    /** @param int|null $rankCapValue Current Rank Cap */
 	public function setRankCapValue(?int $rankCapValue) {
 		$this->rankCapValue = $rankCapValue;
 	}
+    /**
+     * @param int|null $rankCapValue Current Rank Cap
+     * @return SubRankCapRequest
+     */
 	public function withRankCapValue(?int $rankCapValue): SubRankCapRequest {
 		$this->rankCapValue = $rankCapValue;
 		return $this;

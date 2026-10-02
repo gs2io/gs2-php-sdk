@@ -19,6 +19,11 @@ namespace Gs2\Dictionary\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of resetByUserId: Reset entries
+ *
+ * @see https://docs.gs2.io/api_reference/dictionary/sdk/#resetbyuserid
+ */
 class ResetByUserIdResult implements IResult {
 
     public static function fromJson(?array $data): ?ResetByUserIdResult {

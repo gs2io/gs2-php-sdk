@@ -19,27 +19,44 @@ namespace Gs2\Experience\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for deleteThresholdMaster: Delete Rank Up Threshold Master
+ *
+ * @see https://docs.gs2.io/api_reference/experience/sdk/#deletethresholdmaster
+ */
 class DeleteThresholdMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Rank Up Threshold name */
     private $thresholdName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DeleteThresholdMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DeleteThresholdMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Rank Up Threshold name */
 	public function getThresholdName(): ?string {
 		return $this->thresholdName;
 	}
+    /** @param string|null $thresholdName Rank Up Threshold name */
 	public function setThresholdName(?string $thresholdName) {
 		$this->thresholdName = $thresholdName;
 	}
+    /**
+     * @param string|null $thresholdName Rank Up Threshold name
+     * @return DeleteThresholdMasterRequest
+     */
 	public function withThresholdName(?string $thresholdName): DeleteThresholdMasterRequest {
 		$this->thresholdName = $thresholdName;
 		return $this;

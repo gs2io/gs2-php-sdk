@@ -19,41 +19,64 @@ namespace Gs2\Datastore\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for doneUpload: Report completion of data object upload
+ *
+ * @see https://docs.gs2.io/api_reference/datastore/sdk/#doneupload
+ */
 class DoneUploadRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Data Object Name */
     private $dataObjectName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DoneUploadRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DoneUploadRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Data Object Name */
 	public function getDataObjectName(): ?string {
 		return $this->dataObjectName;
 	}
+    /** @param string|null $dataObjectName Data Object Name */
 	public function setDataObjectName(?string $dataObjectName) {
 		$this->dataObjectName = $dataObjectName;
 	}
+    /**
+     * @param string|null $dataObjectName Data Object Name
+     * @return DoneUploadRequest
+     */
 	public function withDataObjectName(?string $dataObjectName): DoneUploadRequest {
 		$this->dataObjectName = $dataObjectName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return DoneUploadRequest
+     */
 	public function withAccessToken(?string $accessToken): DoneUploadRequest {
 		$this->accessToken = $accessToken;
 		return $this;

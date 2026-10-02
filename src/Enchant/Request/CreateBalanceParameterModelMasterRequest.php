@@ -20,87 +20,134 @@ namespace Gs2\Enchant\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Enchant\Model\BalanceParameterValueModel;
 
+/**
+ * Request for createBalanceParameterModelMaster: Create Balance Parameter Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/enchant/sdk/#createbalanceparametermodelmaster
+ */
 class CreateBalanceParameterModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Balance Parameter Model name */
     private $name;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var string */
+    /** @var string Metadata */
     private $metadata;
-    /** @var int */
+    /** @var int Total value */
     private $totalValue;
-    /** @var string */
+    /** @var string Initial value setting policy */
     private $initialValueStrategy;
-    /** @var array */
+    /** @var array Balance parameter value model list */
     private $parameters;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return CreateBalanceParameterModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): CreateBalanceParameterModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Balance Parameter Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Balance Parameter Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Balance Parameter Model name
+     * @return CreateBalanceParameterModelMasterRequest
+     */
 	public function withName(?string $name): CreateBalanceParameterModelMasterRequest {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return CreateBalanceParameterModelMasterRequest
+     */
 	public function withDescription(?string $description): CreateBalanceParameterModelMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return CreateBalanceParameterModelMasterRequest
+     */
 	public function withMetadata(?string $metadata): CreateBalanceParameterModelMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return int|null Total value */
 	public function getTotalValue(): ?int {
 		return $this->totalValue;
 	}
+    /** @param int|null $totalValue Total value */
 	public function setTotalValue(?int $totalValue) {
 		$this->totalValue = $totalValue;
 	}
+    /**
+     * @param int|null $totalValue Total value
+     * @return CreateBalanceParameterModelMasterRequest
+     */
 	public function withTotalValue(?int $totalValue): CreateBalanceParameterModelMasterRequest {
 		$this->totalValue = $totalValue;
 		return $this;
 	}
+    /** @return string|null Initial value setting policy */
 	public function getInitialValueStrategy(): ?string {
 		return $this->initialValueStrategy;
 	}
+    /** @param string|null $initialValueStrategy Initial value setting policy */
 	public function setInitialValueStrategy(?string $initialValueStrategy) {
 		$this->initialValueStrategy = $initialValueStrategy;
 	}
+    /**
+     * @param string|null $initialValueStrategy Initial value setting policy
+     * @return CreateBalanceParameterModelMasterRequest
+     */
 	public function withInitialValueStrategy(?string $initialValueStrategy): CreateBalanceParameterModelMasterRequest {
 		$this->initialValueStrategy = $initialValueStrategy;
 		return $this;
 	}
+    /** @return array|null Balance parameter value model list */
 	public function getParameters(): ?array {
 		return $this->parameters;
 	}
+    /** @param array|null $parameters Balance parameter value model list */
 	public function setParameters(?array $parameters) {
 		$this->parameters = $parameters;
 	}
+    /**
+     * @param array|null $parameters Balance parameter value model list
+     * @return CreateBalanceParameterModelMasterRequest
+     */
 	public function withParameters(?array $parameters): CreateBalanceParameterModelMasterRequest {
 		$this->parameters = $parameters;
 		return $this;

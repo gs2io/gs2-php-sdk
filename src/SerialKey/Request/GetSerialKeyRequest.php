@@ -19,27 +19,44 @@ namespace Gs2\SerialKey\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getSerialKey: Get serial code
+ *
+ * @see https://docs.gs2.io/api_reference/serial_key/sdk/#getserialkey
+ */
 class GetSerialKeyRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Serial Code */
     private $code;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetSerialKeyRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetSerialKeyRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Serial Code */
 	public function getCode(): ?string {
 		return $this->code;
 	}
+    /** @param string|null $code Serial Code */
 	public function setCode(?string $code) {
 		$this->code = $code;
 	}
+    /**
+     * @param string|null $code Serial Code
+     * @return GetSerialKeyRequest
+     */
 	public function withCode(?string $code): GetSerialKeyRequest {
 		$this->code = $code;
 		return $this;

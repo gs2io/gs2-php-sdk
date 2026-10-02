@@ -20,18 +20,29 @@ namespace Gs2\Limit\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Limit\Model\Counter;
 
+/**
+ * Result of countUp: Count-up
+ *
+ * @see https://docs.gs2.io/api_reference/limit/sdk/#countup
+ */
 class CountUpResult implements IResult {
-    /** @var Counter */
+    /** @var Counter Counter with increased count */
     private $item;
 
+    /** @return Counter|null Counter with increased count */
 	public function getItem(): ?Counter {
 		return $this->item;
 	}
 
+    /** @param Counter|null $item Counter with increased count */
 	public function setItem(?Counter $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Counter|null $item Counter with increased count
+     * @return CountUpResult
+     */
 	public function withItem(?Counter $item): CountUpResult {
 		$this->item = $item;
 		return $this;

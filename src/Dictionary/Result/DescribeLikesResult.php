@@ -20,33 +20,50 @@ namespace Gs2\Dictionary\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Dictionary\Model\Like;
 
+/**
+ * Result of describeLikes: List Likes
+ *
+ * @see https://docs.gs2.io/api_reference/dictionary/sdk/#describelikes
+ */
 class DescribeLikesResult implements IResult {
-    /** @var array */
+    /** @var array List of Likes */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Likes */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Likes */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Likes
+     * @return DescribeLikesResult
+     */
 	public function withItems(?array $items): DescribeLikesResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeLikesResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeLikesResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

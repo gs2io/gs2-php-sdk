@@ -19,27 +19,44 @@ namespace Gs2\Stamina\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getRecoverIntervalTableMaster: Get Recovery Interval Table Master
+ *
+ * @see https://docs.gs2.io/api_reference/stamina/sdk/#getrecoverintervaltablemaster
+ */
 class GetRecoverIntervalTableMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Recovery Interval Table name */
     private $recoverIntervalTableName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetRecoverIntervalTableMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetRecoverIntervalTableMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Recovery Interval Table name */
 	public function getRecoverIntervalTableName(): ?string {
 		return $this->recoverIntervalTableName;
 	}
+    /** @param string|null $recoverIntervalTableName Recovery Interval Table name */
 	public function setRecoverIntervalTableName(?string $recoverIntervalTableName) {
 		$this->recoverIntervalTableName = $recoverIntervalTableName;
 	}
+    /**
+     * @param string|null $recoverIntervalTableName Recovery Interval Table name
+     * @return GetRecoverIntervalTableMasterRequest
+     */
 	public function withRecoverIntervalTableName(?string $recoverIntervalTableName): GetRecoverIntervalTableMasterRequest {
 		$this->recoverIntervalTableName = $recoverIntervalTableName;
 		return $this;

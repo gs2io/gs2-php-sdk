@@ -20,29 +20,46 @@ namespace Gs2\Distributor\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Distributor\Model\Config;
 
+/**
+ * Request for setTransactionDefaultConfig: Set the default value of Config to be specified for the Transaction Issuance API
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#settransactiondefaultconfig
+ */
 class SetTransactionDefaultConfigRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var array */
+    /** @var array Configuration values applied to transaction placeholders */
     private $config;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return SetTransactionDefaultConfigRequest
+     */
 	public function withAccessToken(?string $accessToken): SetTransactionDefaultConfigRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return array|null Configuration values applied to transaction placeholders */
 	public function getConfig(): ?array {
 		return $this->config;
 	}
+    /** @param array|null $config Configuration values applied to transaction placeholders */
 	public function setConfig(?array $config) {
 		$this->config = $config;
 	}
+    /**
+     * @param array|null $config Configuration values applied to transaction placeholders
+     * @return SetTransactionDefaultConfigRequest
+     */
 	public function withConfig(?array $config): SetTransactionDefaultConfigRequest {
 		$this->config = $config;
 		return $this;

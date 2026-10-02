@@ -19,27 +19,44 @@ namespace Gs2\Enchant\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for verifyRarityParameterStatusByStampTask: Execute verification of rarity parameter as a verify action
+ *
+ * @see https://docs.gs2.io/api_reference/enchant/stamp_sheet/#gs2enchantverifyrarityparameterstatusbyuserid
+ */
 class VerifyRarityParameterStatusByStampTaskRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Verify Action */
     private $stampTask;
-    /** @var string */
+    /** @var string Encryption Key GRN */
     private $keyId;
+    /** @return string|null Verify Action */
 	public function getStampTask(): ?string {
 		return $this->stampTask;
 	}
+    /** @param string|null $stampTask Verify Action */
 	public function setStampTask(?string $stampTask) {
 		$this->stampTask = $stampTask;
 	}
+    /**
+     * @param string|null $stampTask Verify Action
+     * @return VerifyRarityParameterStatusByStampTaskRequest
+     */
 	public function withStampTask(?string $stampTask): VerifyRarityParameterStatusByStampTaskRequest {
 		$this->stampTask = $stampTask;
 		return $this;
 	}
+    /** @return string|null Encryption Key GRN */
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
+    /** @param string|null $keyId Encryption Key GRN */
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
+    /**
+     * @param string|null $keyId Encryption Key GRN
+     * @return VerifyRarityParameterStatusByStampTaskRequest
+     */
 	public function withKeyId(?string $keyId): VerifyRarityParameterStatusByStampTaskRequest {
 		$this->keyId = $keyId;
 		return $this;

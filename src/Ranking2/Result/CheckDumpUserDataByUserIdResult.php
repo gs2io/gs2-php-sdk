@@ -19,18 +19,29 @@ namespace Gs2\Ranking2\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of checkDumpUserDataByUserId: Check if the dump of the data associated with the specified user ID is complete
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/sdk/#checkdumpuserdatabyuserid
+ */
 class CheckDumpUserDataByUserIdResult implements IResult {
-    /** @var string */
+    /** @var string URL of output data */
     private $url;
 
+    /** @return string|null URL of output data */
 	public function getUrl(): ?string {
 		return $this->url;
 	}
 
+    /** @param string|null $url URL of output data */
 	public function setUrl(?string $url) {
 		$this->url = $url;
 	}
 
+    /**
+     * @param string|null $url URL of output data
+     * @return CheckDumpUserDataByUserIdResult
+     */
 	public function withUrl(?string $url): CheckDumpUserDataByUserIdResult {
 		$this->url = $url;
 		return $this;

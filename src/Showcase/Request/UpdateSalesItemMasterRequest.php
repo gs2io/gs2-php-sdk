@@ -22,87 +22,134 @@ use Gs2\Showcase\Model\VerifyAction;
 use Gs2\Showcase\Model\ConsumeAction;
 use Gs2\Showcase\Model\AcquireAction;
 
+/**
+ * Request for updateSalesItemMaster: Update Sales Item Master
+ *
+ * @see https://docs.gs2.io/api_reference/showcase/sdk/#updatesalesitemmaster
+ */
 class UpdateSalesItemMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Sales Item name */
     private $salesItemName;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var string */
+    /** @var string Metadata */
     private $metadata;
-    /** @var array */
+    /** @var array List of Verify Actions */
     private $verifyActions;
-    /** @var array */
+    /** @var array List of Consume Actions */
     private $consumeActions;
-    /** @var array */
+    /** @var array List of Acquire Actions */
     private $acquireActions;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UpdateSalesItemMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UpdateSalesItemMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Sales Item name */
 	public function getSalesItemName(): ?string {
 		return $this->salesItemName;
 	}
+    /** @param string|null $salesItemName Sales Item name */
 	public function setSalesItemName(?string $salesItemName) {
 		$this->salesItemName = $salesItemName;
 	}
+    /**
+     * @param string|null $salesItemName Sales Item name
+     * @return UpdateSalesItemMasterRequest
+     */
 	public function withSalesItemName(?string $salesItemName): UpdateSalesItemMasterRequest {
 		$this->salesItemName = $salesItemName;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return UpdateSalesItemMasterRequest
+     */
 	public function withDescription(?string $description): UpdateSalesItemMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return UpdateSalesItemMasterRequest
+     */
 	public function withMetadata(?string $metadata): UpdateSalesItemMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return array|null List of Verify Actions */
 	public function getVerifyActions(): ?array {
 		return $this->verifyActions;
 	}
+    /** @param array|null $verifyActions List of Verify Actions */
 	public function setVerifyActions(?array $verifyActions) {
 		$this->verifyActions = $verifyActions;
 	}
+    /**
+     * @param array|null $verifyActions List of Verify Actions
+     * @return UpdateSalesItemMasterRequest
+     */
 	public function withVerifyActions(?array $verifyActions): UpdateSalesItemMasterRequest {
 		$this->verifyActions = $verifyActions;
 		return $this;
 	}
+    /** @return array|null List of Consume Actions */
 	public function getConsumeActions(): ?array {
 		return $this->consumeActions;
 	}
+    /** @param array|null $consumeActions List of Consume Actions */
 	public function setConsumeActions(?array $consumeActions) {
 		$this->consumeActions = $consumeActions;
 	}
+    /**
+     * @param array|null $consumeActions List of Consume Actions
+     * @return UpdateSalesItemMasterRequest
+     */
 	public function withConsumeActions(?array $consumeActions): UpdateSalesItemMasterRequest {
 		$this->consumeActions = $consumeActions;
 		return $this;
 	}
+    /** @return array|null List of Acquire Actions */
 	public function getAcquireActions(): ?array {
 		return $this->acquireActions;
 	}
+    /** @param array|null $acquireActions List of Acquire Actions */
 	public function setAcquireActions(?array $acquireActions) {
 		$this->acquireActions = $acquireActions;
 	}
+    /**
+     * @param array|null $acquireActions List of Acquire Actions
+     * @return UpdateSalesItemMasterRequest
+     */
 	public function withAcquireActions(?array $acquireActions): UpdateSalesItemMasterRequest {
 		$this->acquireActions = $acquireActions;
 		return $this;

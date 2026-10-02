@@ -20,18 +20,29 @@ namespace Gs2\MegaField\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\MegaField\Model\LayerModelMaster;
 
+/**
+ * Result of createLayerModelMaster: Create Layer Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/mega_field/sdk/#createlayermodelmaster
+ */
 class CreateLayerModelMasterResult implements IResult {
-    /** @var LayerModelMaster */
+    /** @var LayerModelMaster Item Model Master created */
     private $item;
 
+    /** @return LayerModelMaster|null Item Model Master created */
 	public function getItem(): ?LayerModelMaster {
 		return $this->item;
 	}
 
+    /** @param LayerModelMaster|null $item Item Model Master created */
 	public function setItem(?LayerModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param LayerModelMaster|null $item Item Model Master created
+     * @return CreateLayerModelMasterResult
+     */
 	public function withItem(?LayerModelMaster $item): CreateLayerModelMasterResult {
 		$this->item = $item;
 		return $this;

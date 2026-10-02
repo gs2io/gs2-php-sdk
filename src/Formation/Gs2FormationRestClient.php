@@ -5259,25 +5259,22 @@ class AcquireActionToPropertyFormPropertiesByStampSheetTask extends Gs2RestSessi
 }
 
 /**
- * GS2 Formation API クライアント
+ * GS2-Formation API client
  *
- * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/formation/sdk/
  */
 class Gs2FormationRestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#describenamespaces
      */
     public function describeNamespacesAsync(
             DescribeNamespacesRequest $request
@@ -5291,8 +5288,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#describenamespaces
      */
     public function describeNamespaces (
             DescribeNamespacesRequest $request
@@ -5303,8 +5303,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#createnamespace
      */
     public function createNamespaceAsync(
             CreateNamespaceRequest $request
@@ -5318,8 +5321,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#createnamespace
      */
     public function createNamespace (
             CreateNamespaceRequest $request
@@ -5330,8 +5336,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#getnamespacestatus
      */
     public function getNamespaceStatusAsync(
             GetNamespaceStatusRequest $request
@@ -5345,8 +5354,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#getnamespacestatus
      */
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
@@ -5357,8 +5369,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#getnamespace
      */
     public function getNamespaceAsync(
             GetNamespaceRequest $request
@@ -5372,8 +5387,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#getnamespace
      */
     public function getNamespace (
             GetNamespaceRequest $request
@@ -5384,8 +5402,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#updatenamespace
      */
     public function updateNamespaceAsync(
             UpdateNamespaceRequest $request
@@ -5399,8 +5420,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#updatenamespace
      */
     public function updateNamespace (
             UpdateNamespaceRequest $request
@@ -5411,8 +5435,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#deletenamespace
      */
     public function deleteNamespaceAsync(
             DeleteNamespaceRequest $request
@@ -5426,8 +5453,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#deletenamespace
      */
     public function deleteNamespace (
             DeleteNamespaceRequest $request
@@ -5438,8 +5468,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get microservice version
+     *
      * @param GetServiceVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#getserviceversion
      */
     public function getServiceVersionAsync(
             GetServiceVersionRequest $request
@@ -5453,8 +5486,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get microservice version
+     *
      * @param GetServiceVersionRequest $request
      * @return GetServiceVersionResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#getserviceversion
      */
     public function getServiceVersion (
             GetServiceVersionRequest $request
@@ -5465,8 +5501,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserIdAsync(
             DumpUserDataByUserIdRequest $request
@@ -5480,8 +5519,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return DumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserId (
             DumpUserDataByUserIdRequest $request
@@ -5492,8 +5534,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserIdAsync(
             CheckDumpUserDataByUserIdRequest $request
@@ -5507,8 +5552,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return CheckDumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserId (
             CheckDumpUserDataByUserIdRequest $request
@@ -5519,8 +5567,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserIdAsync(
             CleanUserDataByUserIdRequest $request
@@ -5534,8 +5585,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return CleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserId (
             CleanUserDataByUserIdRequest $request
@@ -5546,8 +5600,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserIdAsync(
             CheckCleanUserDataByUserIdRequest $request
@@ -5561,8 +5618,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return CheckCleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserId (
             CheckCleanUserDataByUserIdRequest $request
@@ -5573,8 +5633,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserIdAsync(
             PrepareImportUserDataByUserIdRequest $request
@@ -5588,8 +5651,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PrepareImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserId (
             PrepareImportUserDataByUserIdRequest $request
@@ -5600,8 +5666,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserIdAsync(
             ImportUserDataByUserIdRequest $request
@@ -5615,8 +5684,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return ImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserId (
             ImportUserDataByUserIdRequest $request
@@ -5627,8 +5699,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserIdAsync(
             CheckImportUserDataByUserIdRequest $request
@@ -5642,8 +5717,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return CheckImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserId (
             CheckImportUserDataByUserIdRequest $request
@@ -5654,8 +5732,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Form Model
+     *
      * @param GetFormModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#getformmodel
      */
     public function getFormModelAsync(
             GetFormModelRequest $request
@@ -5669,8 +5750,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Form Model
+     *
      * @param GetFormModelRequest $request
      * @return GetFormModelResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#getformmodel
      */
     public function getFormModel (
             GetFormModelRequest $request
@@ -5681,8 +5765,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Form Model Masters
+     *
      * @param DescribeFormModelMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#describeformmodelmasters
      */
     public function describeFormModelMastersAsync(
             DescribeFormModelMastersRequest $request
@@ -5696,8 +5783,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Form Model Masters
+     *
      * @param DescribeFormModelMastersRequest $request
      * @return DescribeFormModelMastersResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#describeformmodelmasters
      */
     public function describeFormModelMasters (
             DescribeFormModelMastersRequest $request
@@ -5708,8 +5798,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Form Model Master
+     *
      * @param CreateFormModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#createformmodelmaster
      */
     public function createFormModelMasterAsync(
             CreateFormModelMasterRequest $request
@@ -5723,8 +5816,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Form Model Master
+     *
      * @param CreateFormModelMasterRequest $request
      * @return CreateFormModelMasterResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#createformmodelmaster
      */
     public function createFormModelMaster (
             CreateFormModelMasterRequest $request
@@ -5735,8 +5831,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Form Model Master
+     *
      * @param GetFormModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#getformmodelmaster
      */
     public function getFormModelMasterAsync(
             GetFormModelMasterRequest $request
@@ -5750,8 +5849,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Form Model Master
+     *
      * @param GetFormModelMasterRequest $request
      * @return GetFormModelMasterResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#getformmodelmaster
      */
     public function getFormModelMaster (
             GetFormModelMasterRequest $request
@@ -5762,8 +5864,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Form Model Master
+     *
      * @param UpdateFormModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#updateformmodelmaster
      */
     public function updateFormModelMasterAsync(
             UpdateFormModelMasterRequest $request
@@ -5777,8 +5882,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Form Model Master
+     *
      * @param UpdateFormModelMasterRequest $request
      * @return UpdateFormModelMasterResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#updateformmodelmaster
      */
     public function updateFormModelMaster (
             UpdateFormModelMasterRequest $request
@@ -5789,8 +5897,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Form Model Master
+     *
      * @param DeleteFormModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#deleteformmodelmaster
      */
     public function deleteFormModelMasterAsync(
             DeleteFormModelMasterRequest $request
@@ -5804,8 +5915,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Form Model Master
+     *
      * @param DeleteFormModelMasterRequest $request
      * @return DeleteFormModelMasterResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#deleteformmodelmaster
      */
     public function deleteFormModelMaster (
             DeleteFormModelMasterRequest $request
@@ -5816,8 +5930,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Form Storage Area Models
+     *
      * @param DescribeMoldModelsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#describemoldmodels
      */
     public function describeMoldModelsAsync(
             DescribeMoldModelsRequest $request
@@ -5831,8 +5948,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Form Storage Area Models
+     *
      * @param DescribeMoldModelsRequest $request
      * @return DescribeMoldModelsResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#describemoldmodels
      */
     public function describeMoldModels (
             DescribeMoldModelsRequest $request
@@ -5843,8 +5963,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Form Storage Area Model
+     *
      * @param GetMoldModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#getmoldmodel
      */
     public function getMoldModelAsync(
             GetMoldModelRequest $request
@@ -5858,8 +5981,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Form Storage Area Model
+     *
      * @param GetMoldModelRequest $request
      * @return GetMoldModelResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#getmoldmodel
      */
     public function getMoldModel (
             GetMoldModelRequest $request
@@ -5870,8 +5996,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Form Storage Area Masters
+     *
      * @param DescribeMoldModelMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#describemoldmodelmasters
      */
     public function describeMoldModelMastersAsync(
             DescribeMoldModelMastersRequest $request
@@ -5885,8 +6014,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Form Storage Area Masters
+     *
      * @param DescribeMoldModelMastersRequest $request
      * @return DescribeMoldModelMastersResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#describemoldmodelmasters
      */
     public function describeMoldModelMasters (
             DescribeMoldModelMastersRequest $request
@@ -5897,8 +6029,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Form Storage Area Master
+     *
      * @param CreateMoldModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#createmoldmodelmaster
      */
     public function createMoldModelMasterAsync(
             CreateMoldModelMasterRequest $request
@@ -5912,8 +6047,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Form Storage Area Master
+     *
      * @param CreateMoldModelMasterRequest $request
      * @return CreateMoldModelMasterResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#createmoldmodelmaster
      */
     public function createMoldModelMaster (
             CreateMoldModelMasterRequest $request
@@ -5924,8 +6062,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Form Storage Area Master
+     *
      * @param GetMoldModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#getmoldmodelmaster
      */
     public function getMoldModelMasterAsync(
             GetMoldModelMasterRequest $request
@@ -5939,8 +6080,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Form Storage Area Master
+     *
      * @param GetMoldModelMasterRequest $request
      * @return GetMoldModelMasterResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#getmoldmodelmaster
      */
     public function getMoldModelMaster (
             GetMoldModelMasterRequest $request
@@ -5951,8 +6095,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Form Storage Area Master
+     *
      * @param UpdateMoldModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#updatemoldmodelmaster
      */
     public function updateMoldModelMasterAsync(
             UpdateMoldModelMasterRequest $request
@@ -5966,8 +6113,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Form Storage Area Master
+     *
      * @param UpdateMoldModelMasterRequest $request
      * @return UpdateMoldModelMasterResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#updatemoldmodelmaster
      */
     public function updateMoldModelMaster (
             UpdateMoldModelMasterRequest $request
@@ -5978,8 +6128,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Form Storage Area Master
+     *
      * @param DeleteMoldModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#deletemoldmodelmaster
      */
     public function deleteMoldModelMasterAsync(
             DeleteMoldModelMasterRequest $request
@@ -5993,8 +6146,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Form Storage Area Master
+     *
      * @param DeleteMoldModelMasterRequest $request
      * @return DeleteMoldModelMasterResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#deletemoldmodelmaster
      */
     public function deleteMoldModelMaster (
             DeleteMoldModelMasterRequest $request
@@ -6005,8 +6161,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Property Form Models
+     *
      * @param DescribePropertyFormModelsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#describepropertyformmodels
      */
     public function describePropertyFormModelsAsync(
             DescribePropertyFormModelsRequest $request
@@ -6020,8 +6179,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Property Form Models
+     *
      * @param DescribePropertyFormModelsRequest $request
      * @return DescribePropertyFormModelsResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#describepropertyformmodels
      */
     public function describePropertyFormModels (
             DescribePropertyFormModelsRequest $request
@@ -6032,8 +6194,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Property Form Model
+     *
      * @param GetPropertyFormModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#getpropertyformmodel
      */
     public function getPropertyFormModelAsync(
             GetPropertyFormModelRequest $request
@@ -6047,8 +6212,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Property Form Model
+     *
      * @param GetPropertyFormModelRequest $request
      * @return GetPropertyFormModelResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#getpropertyformmodel
      */
     public function getPropertyFormModel (
             GetPropertyFormModelRequest $request
@@ -6059,8 +6227,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Property Form Model Masters
+     *
      * @param DescribePropertyFormModelMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#describepropertyformmodelmasters
      */
     public function describePropertyFormModelMastersAsync(
             DescribePropertyFormModelMastersRequest $request
@@ -6074,8 +6245,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Property Form Model Masters
+     *
      * @param DescribePropertyFormModelMastersRequest $request
      * @return DescribePropertyFormModelMastersResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#describepropertyformmodelmasters
      */
     public function describePropertyFormModelMasters (
             DescribePropertyFormModelMastersRequest $request
@@ -6086,8 +6260,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Property Form Model Master
+     *
      * @param CreatePropertyFormModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#createpropertyformmodelmaster
      */
     public function createPropertyFormModelMasterAsync(
             CreatePropertyFormModelMasterRequest $request
@@ -6101,8 +6278,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Property Form Model Master
+     *
      * @param CreatePropertyFormModelMasterRequest $request
      * @return CreatePropertyFormModelMasterResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#createpropertyformmodelmaster
      */
     public function createPropertyFormModelMaster (
             CreatePropertyFormModelMasterRequest $request
@@ -6113,8 +6293,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Property Form Model Master
+     *
      * @param GetPropertyFormModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#getpropertyformmodelmaster
      */
     public function getPropertyFormModelMasterAsync(
             GetPropertyFormModelMasterRequest $request
@@ -6128,8 +6311,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Property Form Model Master
+     *
      * @param GetPropertyFormModelMasterRequest $request
      * @return GetPropertyFormModelMasterResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#getpropertyformmodelmaster
      */
     public function getPropertyFormModelMaster (
             GetPropertyFormModelMasterRequest $request
@@ -6140,8 +6326,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Property Form Model Master
+     *
      * @param UpdatePropertyFormModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#updatepropertyformmodelmaster
      */
     public function updatePropertyFormModelMasterAsync(
             UpdatePropertyFormModelMasterRequest $request
@@ -6155,8 +6344,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Property Form Model Master
+     *
      * @param UpdatePropertyFormModelMasterRequest $request
      * @return UpdatePropertyFormModelMasterResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#updatepropertyformmodelmaster
      */
     public function updatePropertyFormModelMaster (
             UpdatePropertyFormModelMasterRequest $request
@@ -6167,8 +6359,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Property Form Model Master
+     *
      * @param DeletePropertyFormModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#deletepropertyformmodelmaster
      */
     public function deletePropertyFormModelMasterAsync(
             DeletePropertyFormModelMasterRequest $request
@@ -6182,8 +6377,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Property Form Model Master
+     *
      * @param DeletePropertyFormModelMasterRequest $request
      * @return DeletePropertyFormModelMasterResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#deletepropertyformmodelmaster
      */
     public function deletePropertyFormModelMaster (
             DeletePropertyFormModelMasterRequest $request
@@ -6194,8 +6392,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Form Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#exportmaster
      */
     public function exportMasterAsync(
             ExportMasterRequest $request
@@ -6209,8 +6410,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Form Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return ExportMasterResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#exportmaster
      */
     public function exportMaster (
             ExportMasterRequest $request
@@ -6221,8 +6425,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Form Model master data
+     *
      * @param GetCurrentFormMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#getcurrentformmaster
      */
     public function getCurrentFormMasterAsync(
             GetCurrentFormMasterRequest $request
@@ -6236,8 +6443,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Form Model master data
+     *
      * @param GetCurrentFormMasterRequest $request
      * @return GetCurrentFormMasterResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#getcurrentformmaster
      */
     public function getCurrentFormMaster (
             GetCurrentFormMasterRequest $request
@@ -6248,8 +6458,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Currently active Form Model master data (3-phase version)
+     *
      * @param PreUpdateCurrentFormMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#preupdatecurrentformmaster
      */
     public function preUpdateCurrentFormMasterAsync(
             PreUpdateCurrentFormMasterRequest $request
@@ -6263,8 +6476,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Currently active Form Model master data (3-phase version)
+     *
      * @param PreUpdateCurrentFormMasterRequest $request
      * @return PreUpdateCurrentFormMasterResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#preupdatecurrentformmaster
      */
     public function preUpdateCurrentFormMaster (
             PreUpdateCurrentFormMasterRequest $request
@@ -6275,8 +6491,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Form Model master data
+     *
      * @param UpdateCurrentFormMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#updatecurrentformmaster
      */
     public function updateCurrentFormMasterAsync(
             UpdateCurrentFormMasterRequest $request
@@ -6290,8 +6509,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Form Model master data
+     *
      * @param UpdateCurrentFormMasterRequest $request
      * @return UpdateCurrentFormMasterResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#updatecurrentformmaster
      */
     public function updateCurrentFormMaster (
             UpdateCurrentFormMasterRequest $request
@@ -6302,8 +6524,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Form Model master data from GitHub
+     *
      * @param UpdateCurrentFormMasterFromGitHubRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#updatecurrentformmasterfromgithub
      */
     public function updateCurrentFormMasterFromGitHubAsync(
             UpdateCurrentFormMasterFromGitHubRequest $request
@@ -6317,8 +6542,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Form Model master data from GitHub
+     *
      * @param UpdateCurrentFormMasterFromGitHubRequest $request
      * @return UpdateCurrentFormMasterFromGitHubResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#updatecurrentformmasterfromgithub
      */
     public function updateCurrentFormMasterFromGitHub (
             UpdateCurrentFormMasterFromGitHubRequest $request
@@ -6329,8 +6557,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Form Storage Areas
+     *
      * @param DescribeMoldsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#describemolds
      */
     public function describeMoldsAsync(
             DescribeMoldsRequest $request
@@ -6344,8 +6575,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Form Storage Areas
+     *
      * @param DescribeMoldsRequest $request
      * @return DescribeMoldsResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#describemolds
      */
     public function describeMolds (
             DescribeMoldsRequest $request
@@ -6356,8 +6590,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Form Storage Areas by User ID
+     *
      * @param DescribeMoldsByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#describemoldsbyuserid
      */
     public function describeMoldsByUserIdAsync(
             DescribeMoldsByUserIdRequest $request
@@ -6371,8 +6608,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Form Storage Areas by User ID
+     *
      * @param DescribeMoldsByUserIdRequest $request
      * @return DescribeMoldsByUserIdResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#describemoldsbyuserid
      */
     public function describeMoldsByUserId (
             DescribeMoldsByUserIdRequest $request
@@ -6383,8 +6623,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Form Storage Area
+     *
      * @param GetMoldRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#getmold
      */
     public function getMoldAsync(
             GetMoldRequest $request
@@ -6398,8 +6641,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Form Storage Area
+     *
      * @param GetMoldRequest $request
      * @return GetMoldResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#getmold
      */
     public function getMold (
             GetMoldRequest $request
@@ -6410,8 +6656,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Form Storage Area by User ID
+     *
      * @param GetMoldByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#getmoldbyuserid
      */
     public function getMoldByUserIdAsync(
             GetMoldByUserIdRequest $request
@@ -6425,8 +6674,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Form Storage Area by User ID
+     *
      * @param GetMoldByUserIdRequest $request
      * @return GetMoldByUserIdResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#getmoldbyuserid
      */
     public function getMoldByUserId (
             GetMoldByUserIdRequest $request
@@ -6437,8 +6689,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Set capacity size with specified user ID
+     *
      * @param SetMoldCapacityByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#setmoldcapacitybyuserid
      */
     public function setMoldCapacityByUserIdAsync(
             SetMoldCapacityByUserIdRequest $request
@@ -6452,8 +6707,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Set capacity size with specified user ID
+     *
      * @param SetMoldCapacityByUserIdRequest $request
      * @return SetMoldCapacityByUserIdResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#setmoldcapacitybyuserid
      */
     public function setMoldCapacityByUserId (
             SetMoldCapacityByUserIdRequest $request
@@ -6464,8 +6722,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Add capacity size by User ID
+     *
      * @param AddMoldCapacityByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#addmoldcapacitybyuserid
      */
     public function addMoldCapacityByUserIdAsync(
             AddMoldCapacityByUserIdRequest $request
@@ -6479,8 +6740,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Add capacity size by User ID
+     *
      * @param AddMoldCapacityByUserIdRequest $request
      * @return AddMoldCapacityByUserIdResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#addmoldcapacitybyuserid
      */
     public function addMoldCapacityByUserId (
             AddMoldCapacityByUserIdRequest $request
@@ -6491,8 +6755,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Subtract capacity size
+     *
      * @param SubMoldCapacityRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#submoldcapacity
      */
     public function subMoldCapacityAsync(
             SubMoldCapacityRequest $request
@@ -6506,8 +6773,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Subtract capacity size
+     *
      * @param SubMoldCapacityRequest $request
      * @return SubMoldCapacityResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#submoldcapacity
      */
     public function subMoldCapacity (
             SubMoldCapacityRequest $request
@@ -6518,8 +6788,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Subtract capacity size by User ID
+     *
      * @param SubMoldCapacityByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#submoldcapacitybyuserid
      */
     public function subMoldCapacityByUserIdAsync(
             SubMoldCapacityByUserIdRequest $request
@@ -6533,8 +6806,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Subtract capacity size by User ID
+     *
      * @param SubMoldCapacityByUserIdRequest $request
      * @return SubMoldCapacityByUserIdResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#submoldcapacitybyuserid
      */
     public function subMoldCapacityByUserId (
             SubMoldCapacityByUserIdRequest $request
@@ -6545,8 +6821,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Form Storage Area
+     *
      * @param DeleteMoldRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#deletemold
      */
     public function deleteMoldAsync(
             DeleteMoldRequest $request
@@ -6560,8 +6839,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Form Storage Area
+     *
      * @param DeleteMoldRequest $request
      * @return DeleteMoldResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#deletemold
      */
     public function deleteMold (
             DeleteMoldRequest $request
@@ -6572,8 +6854,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Form Storage Area by User ID
+     *
      * @param DeleteMoldByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#deletemoldbyuserid
      */
     public function deleteMoldByUserIdAsync(
             DeleteMoldByUserIdRequest $request
@@ -6587,8 +6872,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Form Storage Area by User ID
+     *
      * @param DeleteMoldByUserIdRequest $request
      * @return DeleteMoldByUserIdResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#deletemoldbyuserid
      */
     public function deleteMoldByUserId (
             DeleteMoldByUserIdRequest $request
@@ -6599,8 +6887,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute capacity size addition as acquire action
+     *
      * @param AddCapacityByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/stamp_sheet/#gs2formationaddmoldcapacitybyuserid
      */
     public function addCapacityByStampSheetAsync(
             AddCapacityByStampSheetRequest $request
@@ -6614,8 +6905,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute capacity size addition as acquire action
+     *
      * @param AddCapacityByStampSheetRequest $request
      * @return AddCapacityByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/formation/stamp_sheet/#gs2formationaddmoldcapacitybyuserid
      */
     public function addCapacityByStampSheet (
             AddCapacityByStampSheetRequest $request
@@ -6626,8 +6920,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute capacity size subtraction as consume action
+     *
      * @param SubCapacityByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/stamp_sheet/#gs2formationsubmoldcapacitybyuserid
      */
     public function subCapacityByStampTaskAsync(
             SubCapacityByStampTaskRequest $request
@@ -6641,8 +6938,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute capacity size subtraction as consume action
+     *
      * @param SubCapacityByStampTaskRequest $request
      * @return SubCapacityByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/formation/stamp_sheet/#gs2formationsubmoldcapacitybyuserid
      */
     public function subCapacityByStampTask (
             SubCapacityByStampTaskRequest $request
@@ -6653,8 +6953,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute capacity size setting as acquire action
+     *
      * @param SetCapacityByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/stamp_sheet/#gs2formationsetmoldcapacitybyuserid
      */
     public function setCapacityByStampSheetAsync(
             SetCapacityByStampSheetRequest $request
@@ -6668,8 +6971,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute capacity size setting as acquire action
+     *
      * @param SetCapacityByStampSheetRequest $request
      * @return SetCapacityByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/formation/stamp_sheet/#gs2formationsetmoldcapacitybyuserid
      */
     public function setCapacityByStampSheet (
             SetCapacityByStampSheetRequest $request
@@ -6680,8 +6986,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Forms
+     *
      * @param DescribeFormsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#describeforms
      */
     public function describeFormsAsync(
             DescribeFormsRequest $request
@@ -6695,8 +7004,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Forms
+     *
      * @param DescribeFormsRequest $request
      * @return DescribeFormsResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#describeforms
      */
     public function describeForms (
             DescribeFormsRequest $request
@@ -6707,8 +7019,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Forms by User ID
+     *
      * @param DescribeFormsByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#describeformsbyuserid
      */
     public function describeFormsByUserIdAsync(
             DescribeFormsByUserIdRequest $request
@@ -6722,8 +7037,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Forms by User ID
+     *
      * @param DescribeFormsByUserIdRequest $request
      * @return DescribeFormsByUserIdResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#describeformsbyuserid
      */
     public function describeFormsByUserId (
             DescribeFormsByUserIdRequest $request
@@ -6734,8 +7052,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Form
+     *
      * @param GetFormRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#getform
      */
     public function getFormAsync(
             GetFormRequest $request
@@ -6749,8 +7070,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Form
+     *
      * @param GetFormRequest $request
      * @return GetFormResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#getform
      */
     public function getForm (
             GetFormRequest $request
@@ -6761,8 +7085,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Form by User ID
+     *
      * @param GetFormByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#getformbyuserid
      */
     public function getFormByUserIdAsync(
             GetFormByUserIdRequest $request
@@ -6776,8 +7103,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Form by User ID
+     *
      * @param GetFormByUserIdRequest $request
      * @return GetFormByUserIdResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#getformbyuserid
      */
     public function getFormByUserId (
             GetFormByUserIdRequest $request
@@ -6788,8 +7118,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Retrieve signed forms
+     *
      * @param GetFormWithSignatureRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#getformwithsignature
      */
     public function getFormWithSignatureAsync(
             GetFormWithSignatureRequest $request
@@ -6803,8 +7136,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Retrieve signed forms
+     *
      * @param GetFormWithSignatureRequest $request
      * @return GetFormWithSignatureResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#getformwithsignature
      */
     public function getFormWithSignature (
             GetFormWithSignatureRequest $request
@@ -6815,8 +7151,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get signed Form by User ID
+     *
      * @param GetFormWithSignatureByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#getformwithsignaturebyuserid
      */
     public function getFormWithSignatureByUserIdAsync(
             GetFormWithSignatureByUserIdRequest $request
@@ -6830,8 +7169,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get signed Form by User ID
+     *
      * @param GetFormWithSignatureByUserIdRequest $request
      * @return GetFormWithSignatureByUserIdResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#getformwithsignaturebyuserid
      */
     public function getFormWithSignatureByUserId (
             GetFormWithSignatureByUserIdRequest $request
@@ -6842,8 +7184,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Set form
+     *
      * @param SetFormRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#setform
      */
     public function setFormAsync(
             SetFormRequest $request
@@ -6857,8 +7202,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Set form
+     *
      * @param SetFormRequest $request
      * @return SetFormResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#setform
      */
     public function setForm (
             SetFormRequest $request
@@ -6869,8 +7217,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Set form by User ID
+     *
      * @param SetFormByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#setformbyuserid
      */
     public function setFormByUserIdAsync(
             SetFormByUserIdRequest $request
@@ -6884,8 +7235,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Set form by User ID
+     *
      * @param SetFormByUserIdRequest $request
      * @return SetFormByUserIdResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#setformbyuserid
      */
     public function setFormByUserId (
             SetFormByUserIdRequest $request
@@ -6896,8 +7250,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update forms with signed slots
+     *
      * @param SetFormWithSignatureRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#setformwithsignature
      */
     public function setFormWithSignatureAsync(
             SetFormWithSignatureRequest $request
@@ -6911,8 +7268,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update forms with signed slots
+     *
      * @param SetFormWithSignatureRequest $request
      * @return SetFormWithSignatureResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#setformwithsignature
      */
     public function setFormWithSignature (
             SetFormWithSignatureRequest $request
@@ -6923,8 +7283,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Apply acquire action to Form Properties by User ID
+     *
      * @param AcquireActionsToFormPropertiesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#acquireactionstoformproperties
      */
     public function acquireActionsToFormPropertiesAsync(
             AcquireActionsToFormPropertiesRequest $request
@@ -6938,8 +7301,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Apply acquire action to Form Properties by User ID
+     *
      * @param AcquireActionsToFormPropertiesRequest $request
      * @return AcquireActionsToFormPropertiesResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#acquireactionstoformproperties
      */
     public function acquireActionsToFormProperties (
             AcquireActionsToFormPropertiesRequest $request
@@ -6950,8 +7316,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete form
+     *
      * @param DeleteFormRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#deleteform
      */
     public function deleteFormAsync(
             DeleteFormRequest $request
@@ -6965,8 +7334,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete form
+     *
      * @param DeleteFormRequest $request
      * @return DeleteFormResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#deleteform
      */
     public function deleteForm (
             DeleteFormRequest $request
@@ -6977,8 +7349,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Form by User ID
+     *
      * @param DeleteFormByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#deleteformbyuserid
      */
     public function deleteFormByUserIdAsync(
             DeleteFormByUserIdRequest $request
@@ -6992,8 +7367,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Form by User ID
+     *
      * @param DeleteFormByUserIdRequest $request
      * @return DeleteFormByUserIdResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#deleteformbyuserid
      */
     public function deleteFormByUserId (
             DeleteFormByUserIdRequest $request
@@ -7004,8 +7382,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the acquire action application to form properties as an acquire action
+     *
      * @param AcquireActionToFormPropertiesByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/stamp_sheet/#gs2formationacquireactionstoformproperties
      */
     public function acquireActionToFormPropertiesByStampSheetAsync(
             AcquireActionToFormPropertiesByStampSheetRequest $request
@@ -7019,8 +7400,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the acquire action application to form properties as an acquire action
+     *
      * @param AcquireActionToFormPropertiesByStampSheetRequest $request
      * @return AcquireActionToFormPropertiesByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/formation/stamp_sheet/#gs2formationacquireactionstoformproperties
      */
     public function acquireActionToFormPropertiesByStampSheet (
             AcquireActionToFormPropertiesByStampSheetRequest $request
@@ -7031,8 +7415,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the form setting as an acquire action
+     *
      * @param SetFormByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/stamp_sheet/#gs2formationsetformbyuserid
      */
     public function setFormByStampSheetAsync(
             SetFormByStampSheetRequest $request
@@ -7046,8 +7433,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the form setting as an acquire action
+     *
      * @param SetFormByStampSheetRequest $request
      * @return SetFormByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/formation/stamp_sheet/#gs2formationsetformbyuserid
      */
     public function setFormByStampSheet (
             SetFormByStampSheetRequest $request
@@ -7058,8 +7448,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Property Forms
+     *
      * @param DescribePropertyFormsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#describepropertyforms
      */
     public function describePropertyFormsAsync(
             DescribePropertyFormsRequest $request
@@ -7073,8 +7466,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Property Forms
+     *
      * @param DescribePropertyFormsRequest $request
      * @return DescribePropertyFormsResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#describepropertyforms
      */
     public function describePropertyForms (
             DescribePropertyFormsRequest $request
@@ -7085,8 +7481,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Property Forms by User ID
+     *
      * @param DescribePropertyFormsByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#describepropertyformsbyuserid
      */
     public function describePropertyFormsByUserIdAsync(
             DescribePropertyFormsByUserIdRequest $request
@@ -7100,8 +7499,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Property Forms by User ID
+     *
      * @param DescribePropertyFormsByUserIdRequest $request
      * @return DescribePropertyFormsByUserIdResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#describepropertyformsbyuserid
      */
     public function describePropertyFormsByUserId (
             DescribePropertyFormsByUserIdRequest $request
@@ -7112,8 +7514,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Property Form
+     *
      * @param GetPropertyFormRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#getpropertyform
      */
     public function getPropertyFormAsync(
             GetPropertyFormRequest $request
@@ -7127,8 +7532,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Property Form
+     *
      * @param GetPropertyFormRequest $request
      * @return GetPropertyFormResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#getpropertyform
      */
     public function getPropertyForm (
             GetPropertyFormRequest $request
@@ -7139,8 +7547,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Property Form by User ID
+     *
      * @param GetPropertyFormByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#getpropertyformbyuserid
      */
     public function getPropertyFormByUserIdAsync(
             GetPropertyFormByUserIdRequest $request
@@ -7154,8 +7565,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Property Form by User ID
+     *
      * @param GetPropertyFormByUserIdRequest $request
      * @return GetPropertyFormByUserIdResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#getpropertyformbyuserid
      */
     public function getPropertyFormByUserId (
             GetPropertyFormByUserIdRequest $request
@@ -7166,8 +7580,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Retrieve signed Property Forms
+     *
      * @param GetPropertyFormWithSignatureRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#getpropertyformwithsignature
      */
     public function getPropertyFormWithSignatureAsync(
             GetPropertyFormWithSignatureRequest $request
@@ -7181,8 +7598,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Retrieve signed Property Forms
+     *
      * @param GetPropertyFormWithSignatureRequest $request
      * @return GetPropertyFormWithSignatureResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#getpropertyformwithsignature
      */
     public function getPropertyFormWithSignature (
             GetPropertyFormWithSignatureRequest $request
@@ -7193,8 +7613,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get signed property form by User ID
+     *
      * @param GetPropertyFormWithSignatureByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#getpropertyformwithsignaturebyuserid
      */
     public function getPropertyFormWithSignatureByUserIdAsync(
             GetPropertyFormWithSignatureByUserIdRequest $request
@@ -7208,8 +7631,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get signed property form by User ID
+     *
      * @param GetPropertyFormWithSignatureByUserIdRequest $request
      * @return GetPropertyFormWithSignatureByUserIdResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#getpropertyformwithsignaturebyuserid
      */
     public function getPropertyFormWithSignatureByUserId (
             GetPropertyFormWithSignatureByUserIdRequest $request
@@ -7220,8 +7646,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Property Form
+     *
      * @param SetPropertyFormRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#setpropertyform
      */
     public function setPropertyFormAsync(
             SetPropertyFormRequest $request
@@ -7235,8 +7664,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Property Form
+     *
      * @param SetPropertyFormRequest $request
      * @return SetPropertyFormResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#setpropertyform
      */
     public function setPropertyForm (
             SetPropertyFormRequest $request
@@ -7247,8 +7679,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Property Form by User ID
+     *
      * @param SetPropertyFormByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#setpropertyformbyuserid
      */
     public function setPropertyFormByUserIdAsync(
             SetPropertyFormByUserIdRequest $request
@@ -7262,8 +7697,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Property Form by User ID
+     *
      * @param SetPropertyFormByUserIdRequest $request
      * @return SetPropertyFormByUserIdResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#setpropertyformbyuserid
      */
     public function setPropertyFormByUserId (
             SetPropertyFormByUserIdRequest $request
@@ -7274,8 +7712,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Property Form with signed slots
+     *
      * @param SetPropertyFormWithSignatureRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#setpropertyformwithsignature
      */
     public function setPropertyFormWithSignatureAsync(
             SetPropertyFormWithSignatureRequest $request
@@ -7289,8 +7730,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Property Form with signed slots
+     *
      * @param SetPropertyFormWithSignatureRequest $request
      * @return SetPropertyFormWithSignatureResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#setpropertyformwithsignature
      */
     public function setPropertyFormWithSignature (
             SetPropertyFormWithSignatureRequest $request
@@ -7301,8 +7745,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Apply acquire action to property form properties
+     *
      * @param AcquireActionsToPropertyFormPropertiesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#acquireactionstopropertyformproperties
      */
     public function acquireActionsToPropertyFormPropertiesAsync(
             AcquireActionsToPropertyFormPropertiesRequest $request
@@ -7316,8 +7763,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Apply acquire action to property form properties
+     *
      * @param AcquireActionsToPropertyFormPropertiesRequest $request
      * @return AcquireActionsToPropertyFormPropertiesResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#acquireactionstopropertyformproperties
      */
     public function acquireActionsToPropertyFormProperties (
             AcquireActionsToPropertyFormPropertiesRequest $request
@@ -7328,8 +7778,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Property Form
+     *
      * @param DeletePropertyFormRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#deletepropertyform
      */
     public function deletePropertyFormAsync(
             DeletePropertyFormRequest $request
@@ -7343,8 +7796,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Property Form
+     *
      * @param DeletePropertyFormRequest $request
      * @return DeletePropertyFormResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#deletepropertyform
      */
     public function deletePropertyForm (
             DeletePropertyFormRequest $request
@@ -7355,8 +7811,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Property Form by User ID
+     *
      * @param DeletePropertyFormByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#deletepropertyformbyuserid
      */
     public function deletePropertyFormByUserIdAsync(
             DeletePropertyFormByUserIdRequest $request
@@ -7370,8 +7829,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Property Form by User ID
+     *
      * @param DeletePropertyFormByUserIdRequest $request
      * @return DeletePropertyFormByUserIdResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#deletepropertyformbyuserid
      */
     public function deletePropertyFormByUserId (
             DeletePropertyFormByUserIdRequest $request
@@ -7382,8 +7844,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Apply acquire action to property form properties via transaction
+     *
      * @param AcquireActionToPropertyFormPropertiesByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/stamp_sheet/#gs2formationacquireactionstopropertyformproperties
      */
     public function acquireActionToPropertyFormPropertiesByStampSheetAsync(
             AcquireActionToPropertyFormPropertiesByStampSheetRequest $request
@@ -7397,8 +7862,11 @@ class Gs2FormationRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Apply acquire action to property form properties via transaction
+     *
      * @param AcquireActionToPropertyFormPropertiesByStampSheetRequest $request
      * @return AcquireActionToPropertyFormPropertiesByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/formation/stamp_sheet/#gs2formationacquireactionstopropertyformproperties
      */
     public function acquireActionToPropertyFormPropertiesByStampSheet (
             AcquireActionToPropertyFormPropertiesByStampSheetRequest $request

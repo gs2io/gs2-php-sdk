@@ -19,89 +19,136 @@ namespace Gs2\Experience\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for addExperienceByUserId: Add experience by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/experience/sdk/#addexperiencebyuserid
+ */
 class AddExperienceByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Experience Model name */
     private $experienceName;
-    /** @var string */
+    /** @var string Property ID */
     private $propertyId;
-    /** @var int */
+    /** @var int Gained Experience */
     private $experienceValue;
-    /** @var bool */
+    /** @var bool Whether to truncate the remaining experience when ranking up */
     private $truncateExperienceWhenRankUp;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return AddExperienceByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): AddExperienceByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return AddExperienceByUserIdRequest
+     */
 	public function withUserId(?string $userId): AddExperienceByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Experience Model name */
 	public function getExperienceName(): ?string {
 		return $this->experienceName;
 	}
+    /** @param string|null $experienceName Experience Model name */
 	public function setExperienceName(?string $experienceName) {
 		$this->experienceName = $experienceName;
 	}
+    /**
+     * @param string|null $experienceName Experience Model name
+     * @return AddExperienceByUserIdRequest
+     */
 	public function withExperienceName(?string $experienceName): AddExperienceByUserIdRequest {
 		$this->experienceName = $experienceName;
 		return $this;
 	}
+    /** @return string|null Property ID */
 	public function getPropertyId(): ?string {
 		return $this->propertyId;
 	}
+    /** @param string|null $propertyId Property ID */
 	public function setPropertyId(?string $propertyId) {
 		$this->propertyId = $propertyId;
 	}
+    /**
+     * @param string|null $propertyId Property ID
+     * @return AddExperienceByUserIdRequest
+     */
 	public function withPropertyId(?string $propertyId): AddExperienceByUserIdRequest {
 		$this->propertyId = $propertyId;
 		return $this;
 	}
+    /** @return int|null Gained Experience */
 	public function getExperienceValue(): ?int {
 		return $this->experienceValue;
 	}
+    /** @param int|null $experienceValue Gained Experience */
 	public function setExperienceValue(?int $experienceValue) {
 		$this->experienceValue = $experienceValue;
 	}
+    /**
+     * @param int|null $experienceValue Gained Experience
+     * @return AddExperienceByUserIdRequest
+     */
 	public function withExperienceValue(?int $experienceValue): AddExperienceByUserIdRequest {
 		$this->experienceValue = $experienceValue;
 		return $this;
 	}
+    /** @return bool|null Whether to truncate the remaining experience when ranking up */
 	public function getTruncateExperienceWhenRankUp(): ?bool {
 		return $this->truncateExperienceWhenRankUp;
 	}
+    /** @param bool|null $truncateExperienceWhenRankUp Whether to truncate the remaining experience when ranking up */
 	public function setTruncateExperienceWhenRankUp(?bool $truncateExperienceWhenRankUp) {
 		$this->truncateExperienceWhenRankUp = $truncateExperienceWhenRankUp;
 	}
+    /**
+     * @param bool|null $truncateExperienceWhenRankUp Whether to truncate the remaining experience when ranking up
+     * @return AddExperienceByUserIdRequest
+     */
 	public function withTruncateExperienceWhenRankUp(?bool $truncateExperienceWhenRankUp): AddExperienceByUserIdRequest {
 		$this->truncateExperienceWhenRankUp = $truncateExperienceWhenRankUp;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return AddExperienceByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): AddExperienceByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

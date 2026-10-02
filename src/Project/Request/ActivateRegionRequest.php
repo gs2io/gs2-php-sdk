@@ -19,39 +19,58 @@ namespace Gs2\Project\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/** Request for activateRegion: Activate region */
 class ActivateRegionRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Signed in to the account token. */
     private $accountToken;
-    /** @var string */
+    /** @var string Project Name */
     private $projectName;
-    /** @var string */
+    /** @var string Region Name */
     private $regionName;
+    /** @return string|null Signed in to the account token. */
 	public function getAccountToken(): ?string {
 		return $this->accountToken;
 	}
+    /** @param string|null $accountToken Signed in to the account token. */
 	public function setAccountToken(?string $accountToken) {
 		$this->accountToken = $accountToken;
 	}
+    /**
+     * @param string|null $accountToken Signed in to the account token.
+     * @return ActivateRegionRequest
+     */
 	public function withAccountToken(?string $accountToken): ActivateRegionRequest {
 		$this->accountToken = $accountToken;
 		return $this;
 	}
+    /** @return string|null Project Name */
 	public function getProjectName(): ?string {
 		return $this->projectName;
 	}
+    /** @param string|null $projectName Project Name */
 	public function setProjectName(?string $projectName) {
 		$this->projectName = $projectName;
 	}
+    /**
+     * @param string|null $projectName Project Name
+     * @return ActivateRegionRequest
+     */
 	public function withProjectName(?string $projectName): ActivateRegionRequest {
 		$this->projectName = $projectName;
 		return $this;
 	}
+    /** @return string|null Region Name */
 	public function getRegionName(): ?string {
 		return $this->regionName;
 	}
+    /** @param string|null $regionName Region Name */
 	public function setRegionName(?string $regionName) {
 		$this->regionName = $regionName;
 	}
+    /**
+     * @param string|null $regionName Region Name
+     * @return ActivateRegionRequest
+     */
 	public function withRegionName(?string $regionName): ActivateRegionRequest {
 		$this->regionName = $regionName;
 		return $this;

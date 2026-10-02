@@ -20,123 +20,188 @@ namespace Gs2\Log\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Log\Model\AggregationConfig;
 
+/**
+ * Request for queryTimeseries: Time Series Query (Log)
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#querytimeseries
+ */
 class QueryTimeseriesRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var int */
+    /** @var int Search range start date and time */
     private $begin;
-    /** @var int */
+    /** @var int Search range end date and time */
     private $end;
-    /** @var string */
+    /** @var string Search query string */
     private $query;
-    /** @var array */
+    /** @var array Fields to group by */
     private $groupBy;
-    /** @var AggregationConfig */
+    /** @var AggregationConfig Aggregation configuration */
     private $aggregation;
-    /** @var int */
+    /** @var int Aggregation interval in milliseconds */
     private $interval;
-    /** @var int */
+    /** @var int Number of series to retrieve */
     private $seriesLimit;
-    /** @var string */
+    /** @var string Token specifying the position from which to start acquiring data */
     private $pageToken;
-    /** @var int */
+    /** @var int Number of data items to retrieve */
     private $limit;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return QueryTimeseriesRequest
+     */
 	public function withNamespaceName(?string $namespaceName): QueryTimeseriesRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return int|null Search range start date and time */
 	public function getBegin(): ?int {
 		return $this->begin;
 	}
+    /** @param int|null $begin Search range start date and time */
 	public function setBegin(?int $begin) {
 		$this->begin = $begin;
 	}
+    /**
+     * @param int|null $begin Search range start date and time
+     * @return QueryTimeseriesRequest
+     */
 	public function withBegin(?int $begin): QueryTimeseriesRequest {
 		$this->begin = $begin;
 		return $this;
 	}
+    /** @return int|null Search range end date and time */
 	public function getEnd(): ?int {
 		return $this->end;
 	}
+    /** @param int|null $end Search range end date and time */
 	public function setEnd(?int $end) {
 		$this->end = $end;
 	}
+    /**
+     * @param int|null $end Search range end date and time
+     * @return QueryTimeseriesRequest
+     */
 	public function withEnd(?int $end): QueryTimeseriesRequest {
 		$this->end = $end;
 		return $this;
 	}
+    /** @return string|null Search query string */
 	public function getQuery(): ?string {
 		return $this->query;
 	}
+    /** @param string|null $query Search query string */
 	public function setQuery(?string $query) {
 		$this->query = $query;
 	}
+    /**
+     * @param string|null $query Search query string
+     * @return QueryTimeseriesRequest
+     */
 	public function withQuery(?string $query): QueryTimeseriesRequest {
 		$this->query = $query;
 		return $this;
 	}
+    /** @return array|null Fields to group by */
 	public function getGroupBy(): ?array {
 		return $this->groupBy;
 	}
+    /** @param array|null $groupBy Fields to group by */
 	public function setGroupBy(?array $groupBy) {
 		$this->groupBy = $groupBy;
 	}
+    /**
+     * @param array|null $groupBy Fields to group by
+     * @return QueryTimeseriesRequest
+     */
 	public function withGroupBy(?array $groupBy): QueryTimeseriesRequest {
 		$this->groupBy = $groupBy;
 		return $this;
 	}
+    /** @return AggregationConfig|null Aggregation configuration */
 	public function getAggregation(): ?AggregationConfig {
 		return $this->aggregation;
 	}
+    /** @param AggregationConfig|null $aggregation Aggregation configuration */
 	public function setAggregation(?AggregationConfig $aggregation) {
 		$this->aggregation = $aggregation;
 	}
+    /**
+     * @param AggregationConfig|null $aggregation Aggregation configuration
+     * @return QueryTimeseriesRequest
+     */
 	public function withAggregation(?AggregationConfig $aggregation): QueryTimeseriesRequest {
 		$this->aggregation = $aggregation;
 		return $this;
 	}
+    /** @return int|null Aggregation interval in milliseconds */
 	public function getInterval(): ?int {
 		return $this->interval;
 	}
+    /** @param int|null $interval Aggregation interval in milliseconds */
 	public function setInterval(?int $interval) {
 		$this->interval = $interval;
 	}
+    /**
+     * @param int|null $interval Aggregation interval in milliseconds
+     * @return QueryTimeseriesRequest
+     */
 	public function withInterval(?int $interval): QueryTimeseriesRequest {
 		$this->interval = $interval;
 		return $this;
 	}
+    /** @return int|null Number of series to retrieve */
 	public function getSeriesLimit(): ?int {
 		return $this->seriesLimit;
 	}
+    /** @param int|null $seriesLimit Number of series to retrieve */
 	public function setSeriesLimit(?int $seriesLimit) {
 		$this->seriesLimit = $seriesLimit;
 	}
+    /**
+     * @param int|null $seriesLimit Number of series to retrieve
+     * @return QueryTimeseriesRequest
+     */
 	public function withSeriesLimit(?int $seriesLimit): QueryTimeseriesRequest {
 		$this->seriesLimit = $seriesLimit;
 		return $this;
 	}
+    /** @return string|null Token specifying the position from which to start acquiring data */
 	public function getPageToken(): ?string {
 		return $this->pageToken;
 	}
+    /** @param string|null $pageToken Token specifying the position from which to start acquiring data */
 	public function setPageToken(?string $pageToken) {
 		$this->pageToken = $pageToken;
 	}
+    /**
+     * @param string|null $pageToken Token specifying the position from which to start acquiring data
+     * @return QueryTimeseriesRequest
+     */
 	public function withPageToken(?string $pageToken): QueryTimeseriesRequest {
 		$this->pageToken = $pageToken;
 		return $this;
 	}
+    /** @return int|null Number of data items to retrieve */
 	public function getLimit(): ?int {
 		return $this->limit;
 	}
+    /** @param int|null $limit Number of data items to retrieve */
 	public function setLimit(?int $limit) {
 		$this->limit = $limit;
 	}
+    /**
+     * @param int|null $limit Number of data items to retrieve
+     * @return QueryTimeseriesRequest
+     */
 	public function withLimit(?int $limit): QueryTimeseriesRequest {
 		$this->limit = $limit;
 		return $this;

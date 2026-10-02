@@ -20,18 +20,29 @@ namespace Gs2\Chat\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Chat\Model\CategoryModel;
 
+/**
+ * Result of getCategoryModel: Get Message Category Model
+ *
+ * @see https://docs.gs2.io/api_reference/chat/sdk/#getcategorymodel
+ */
 class GetCategoryModelResult implements IResult {
-    /** @var CategoryModel */
+    /** @var CategoryModel Message Category Model */
     private $item;
 
+    /** @return CategoryModel|null Message Category Model */
 	public function getItem(): ?CategoryModel {
 		return $this->item;
 	}
 
+    /** @param CategoryModel|null $item Message Category Model */
 	public function setItem(?CategoryModel $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CategoryModel|null $item Message Category Model
+     * @return GetCategoryModelResult
+     */
 	public function withItem(?CategoryModel $item): GetCategoryModelResult {
 		$this->item = $item;
 		return $this;

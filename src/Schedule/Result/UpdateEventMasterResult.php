@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Schedule\Model\RepeatSetting;
 use Gs2\Schedule\Model\EventMaster;
 
+/**
+ * Result of updateEventMaster: Update Event Master
+ *
+ * @see https://docs.gs2.io/api_reference/schedule/sdk/#updateeventmaster
+ */
 class UpdateEventMasterResult implements IResult {
-    /** @var EventMaster */
+    /** @var EventMaster Event Master updated */
     private $item;
 
+    /** @return EventMaster|null Event Master updated */
 	public function getItem(): ?EventMaster {
 		return $this->item;
 	}
 
+    /** @param EventMaster|null $item Event Master updated */
 	public function setItem(?EventMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param EventMaster|null $item Event Master updated
+     * @return UpdateEventMasterResult
+     */
 	public function withItem(?EventMaster $item): UpdateEventMasterResult {
 		$this->item = $item;
 		return $this;

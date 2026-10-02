@@ -20,18 +20,29 @@ namespace Gs2\Limit\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Limit\Model\Counter;
 
+/**
+ * Result of deleteCounterByUserId: Delete Counter by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/limit/sdk/#deletecounterbyuserid
+ */
 class DeleteCounterByUserIdResult implements IResult {
-    /** @var Counter */
+    /** @var Counter Counter deleted */
     private $item;
 
+    /** @return Counter|null Counter deleted */
 	public function getItem(): ?Counter {
 		return $this->item;
 	}
 
+    /** @param Counter|null $item Counter deleted */
 	public function setItem(?Counter $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Counter|null $item Counter deleted
+     * @return DeleteCounterByUserIdResult
+     */
 	public function withItem(?Counter $item): DeleteCounterByUserIdResult {
 		$this->item = $item;
 		return $this;

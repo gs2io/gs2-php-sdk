@@ -20,31 +20,48 @@ namespace Gs2\Ranking\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Fixed Timing
+ *
+ * @see https://docs.gs2.io/api_reference/ranking/sdk/#fixedtiming
+ */
 class FixedTiming implements IModel {
 	/**
-     * @var int
+     * @var int Hour
 	 */
 	private $hour;
 	/**
-     * @var int
+     * @var int Minute
 	 */
 	private $minute;
+    /** @return int|null Hour */
 	public function getHour(): ?int {
 		return $this->hour;
 	}
+    /** @param int|null $hour Hour */
 	public function setHour(?int $hour) {
 		$this->hour = $hour;
 	}
+    /**
+     * @param int|null $hour Hour
+     * @return FixedTiming
+     */
 	public function withHour(?int $hour): FixedTiming {
 		$this->hour = $hour;
 		return $this;
 	}
+    /** @return int|null Minute */
 	public function getMinute(): ?int {
 		return $this->minute;
 	}
+    /** @param int|null $minute Minute */
 	public function setMinute(?int $minute) {
 		$this->minute = $minute;
 	}
+    /**
+     * @param int|null $minute Minute
+     * @return FixedTiming
+     */
 	public function withMinute(?int $minute): FixedTiming {
 		$this->minute = $minute;
 		return $this;

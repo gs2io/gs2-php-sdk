@@ -19,39 +19,62 @@ namespace Gs2\Deploy\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for validate: Validate Template
+ *
+ * @see https://docs.gs2.io/api_reference/deploy/sdk/#validate
+ */
 class ValidateRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Update mode */
     private $mode;
-    /** @var string */
+    /** @var string Template data */
     private $template;
-    /** @var string */
+    /** @var string Token obtained by pre-upload */
     private $uploadToken;
+    /** @return string|null Update mode */
 	public function getMode(): ?string {
 		return $this->mode;
 	}
+    /** @param string|null $mode Update mode */
 	public function setMode(?string $mode) {
 		$this->mode = $mode;
 	}
+    /**
+     * @param string|null $mode Update mode
+     * @return ValidateRequest
+     */
 	public function withMode(?string $mode): ValidateRequest {
 		$this->mode = $mode;
 		return $this;
 	}
+    /** @return string|null Template data */
 	public function getTemplate(): ?string {
 		return $this->template;
 	}
+    /** @param string|null $template Template data */
 	public function setTemplate(?string $template) {
 		$this->template = $template;
 	}
+    /**
+     * @param string|null $template Template data
+     * @return ValidateRequest
+     */
 	public function withTemplate(?string $template): ValidateRequest {
 		$this->template = $template;
 		return $this;
 	}
+    /** @return string|null Token obtained by pre-upload */
 	public function getUploadToken(): ?string {
 		return $this->uploadToken;
 	}
+    /** @param string|null $uploadToken Token obtained by pre-upload */
 	public function setUploadToken(?string $uploadToken) {
 		$this->uploadToken = $uploadToken;
 	}
+    /**
+     * @param string|null $uploadToken Token obtained by pre-upload
+     * @return ValidateRequest
+     */
 	public function withUploadToken(?string $uploadToken): ValidateRequest {
 		$this->uploadToken = $uploadToken;
 		return $this;

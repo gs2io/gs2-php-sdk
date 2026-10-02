@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Formation\Model\SlotModel;
 use Gs2\Formation\Model\PropertyFormModelMaster;
 
+/**
+ * Result of getPropertyFormModelMaster: Get Property Form Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/formation/sdk/#getpropertyformmodelmaster
+ */
 class GetPropertyFormModelMasterResult implements IResult {
-    /** @var PropertyFormModelMaster */
+    /** @var PropertyFormModelMaster Form Model Master */
     private $item;
 
+    /** @return PropertyFormModelMaster|null Form Model Master */
 	public function getItem(): ?PropertyFormModelMaster {
 		return $this->item;
 	}
 
+    /** @param PropertyFormModelMaster|null $item Form Model Master */
 	public function setItem(?PropertyFormModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param PropertyFormModelMaster|null $item Form Model Master
+     * @return GetPropertyFormModelMasterResult
+     */
 	public function withItem(?PropertyFormModelMaster $item): GetPropertyFormModelMasterResult {
 		$this->item = $item;
 		return $this;

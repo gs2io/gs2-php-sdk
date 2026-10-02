@@ -19,33 +19,50 @@ namespace Gs2\Gateway\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of sendNotification: Send notification
+ *
+ * @see https://docs.gs2.io/api_reference/gateway/sdk/#sendnotification
+ */
 class SendNotificationResult implements IResult {
-    /** @var string */
+    /** @var string Protocol used for notification */
     private $protocol;
-    /** @var array */
+    /** @var array List of connection IDs sent */
     private $sendConnectionIds;
 
+    /** @return string|null Protocol used for notification */
 	public function getProtocol(): ?string {
 		return $this->protocol;
 	}
 
+    /** @param string|null $protocol Protocol used for notification */
 	public function setProtocol(?string $protocol) {
 		$this->protocol = $protocol;
 	}
 
+    /**
+     * @param string|null $protocol Protocol used for notification
+     * @return SendNotificationResult
+     */
 	public function withProtocol(?string $protocol): SendNotificationResult {
 		$this->protocol = $protocol;
 		return $this;
 	}
 
+    /** @return array|null List of connection IDs sent */
 	public function getSendConnectionIds(): ?array {
 		return $this->sendConnectionIds;
 	}
 
+    /** @param array|null $sendConnectionIds List of connection IDs sent */
 	public function setSendConnectionIds(?array $sendConnectionIds) {
 		$this->sendConnectionIds = $sendConnectionIds;
 	}
 
+    /**
+     * @param array|null $sendConnectionIds List of connection IDs sent
+     * @return SendNotificationResult
+     */
 	public function withSendConnectionIds(?array $sendConnectionIds): SendNotificationResult {
 		$this->sendConnectionIds = $sendConnectionIds;
 		return $this;

@@ -19,63 +19,98 @@ namespace Gs2\Showcase\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for createSalesItemGroupMaster: Create Sales Item Group Master
+ *
+ * @see https://docs.gs2.io/api_reference/showcase/sdk/#createsalesitemgroupmaster
+ */
 class CreateSalesItemGroupMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Sales Item Group name */
     private $name;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var string */
+    /** @var string Metadata */
     private $metadata;
-    /** @var array */
+    /** @var array List of Sales Items included in the Sales Item Group */
     private $salesItemNames;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return CreateSalesItemGroupMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): CreateSalesItemGroupMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Sales Item Group name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Sales Item Group name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Sales Item Group name
+     * @return CreateSalesItemGroupMasterRequest
+     */
 	public function withName(?string $name): CreateSalesItemGroupMasterRequest {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return CreateSalesItemGroupMasterRequest
+     */
 	public function withDescription(?string $description): CreateSalesItemGroupMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return CreateSalesItemGroupMasterRequest
+     */
 	public function withMetadata(?string $metadata): CreateSalesItemGroupMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return array|null List of Sales Items included in the Sales Item Group */
 	public function getSalesItemNames(): ?array {
 		return $this->salesItemNames;
 	}
+    /** @param array|null $salesItemNames List of Sales Items included in the Sales Item Group */
 	public function setSalesItemNames(?array $salesItemNames) {
 		$this->salesItemNames = $salesItemNames;
 	}
+    /**
+     * @param array|null $salesItemNames List of Sales Items included in the Sales Item Group
+     * @return CreateSalesItemGroupMasterRequest
+     */
 	public function withSalesItemNames(?array $salesItemNames): CreateSalesItemGroupMasterRequest {
 		$this->salesItemNames = $salesItemNames;
 		return $this;

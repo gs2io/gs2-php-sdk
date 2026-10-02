@@ -19,27 +19,44 @@ namespace Gs2\Gateway\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getFirebaseToken: Get Firebase device token
+ *
+ * @see https://docs.gs2.io/api_reference/gateway/sdk/#getfirebasetoken
+ */
 class GetFirebaseTokenRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetFirebaseTokenRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetFirebaseTokenRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return GetFirebaseTokenRequest
+     */
 	public function withAccessToken(?string $accessToken): GetFirebaseTokenRequest {
 		$this->accessToken = $accessToken;
 		return $this;

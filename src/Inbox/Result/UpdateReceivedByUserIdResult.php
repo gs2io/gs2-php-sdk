@@ -20,18 +20,29 @@ namespace Gs2\Inbox\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Inbox\Model\Received;
 
+/**
+ * Result of updateReceivedByUserId: Update Received Global Message by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/inbox/sdk/#updatereceivedbyuserid
+ */
 class UpdateReceivedByUserIdResult implements IResult {
-    /** @var Received */
+    /** @var Received Received Global Message updated */
     private $item;
 
+    /** @return Received|null Received Global Message updated */
 	public function getItem(): ?Received {
 		return $this->item;
 	}
 
+    /** @param Received|null $item Received Global Message updated */
 	public function setItem(?Received $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Received|null $item Received Global Message updated
+     * @return UpdateReceivedByUserIdResult
+     */
 	public function withItem(?Received $item): UpdateReceivedByUserIdResult {
 		$this->item = $item;
 		return $this;

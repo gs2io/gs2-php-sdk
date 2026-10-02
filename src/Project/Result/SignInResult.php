@@ -21,33 +21,46 @@ use Gs2\Core\Model\IResult;
 use Gs2\Project\Model\TwoFactorAuthenticationSetting;
 use Gs2\Project\Model\Account;
 
+/** Result of signIn: Sign-in */
 class SignInResult implements IResult {
-    /** @var Account */
+    /** @var Account Signed-in GS2 account */
     private $item;
-    /** @var string */
+    /** @var string Signed in to the account token. */
     private $accountToken;
 
+    /** @return Account|null Signed-in GS2 account */
 	public function getItem(): ?Account {
 		return $this->item;
 	}
 
+    /** @param Account|null $item Signed-in GS2 account */
 	public function setItem(?Account $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Account|null $item Signed-in GS2 account
+     * @return SignInResult
+     */
 	public function withItem(?Account $item): SignInResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null Signed in to the account token. */
 	public function getAccountToken(): ?string {
 		return $this->accountToken;
 	}
 
+    /** @param string|null $accountToken Signed in to the account token. */
 	public function setAccountToken(?string $accountToken) {
 		$this->accountToken = $accountToken;
 	}
 
+    /**
+     * @param string|null $accountToken Signed in to the account token.
+     * @return SignInResult
+     */
 	public function withAccountToken(?string $accountToken): SignInResult {
 		$this->accountToken = $accountToken;
 		return $this;

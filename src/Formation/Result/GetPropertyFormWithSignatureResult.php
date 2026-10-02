@@ -23,63 +23,92 @@ use Gs2\Formation\Model\PropertyForm;
 use Gs2\Formation\Model\SlotModel;
 use Gs2\Formation\Model\PropertyFormModel;
 
+/**
+ * Result of getPropertyFormWithSignature: Retrieve signed Property Forms
+ *
+ * @see https://docs.gs2.io/api_reference/formation/sdk/#getpropertyformwithsignature
+ */
 class GetPropertyFormWithSignatureResult implements IResult {
-    /** @var PropertyForm */
+    /** @var PropertyForm Property Form */
     private $item;
-    /** @var string */
+    /** @var string Value to be signed */
     private $body;
-    /** @var string */
+    /** @var string Signature */
     private $signature;
-    /** @var PropertyFormModel */
+    /** @var PropertyFormModel Property Form Model */
     private $propertyFormModel;
 
+    /** @return PropertyForm|null Property Form */
 	public function getItem(): ?PropertyForm {
 		return $this->item;
 	}
 
+    /** @param PropertyForm|null $item Property Form */
 	public function setItem(?PropertyForm $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param PropertyForm|null $item Property Form
+     * @return GetPropertyFormWithSignatureResult
+     */
 	public function withItem(?PropertyForm $item): GetPropertyFormWithSignatureResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null Value to be signed */
 	public function getBody(): ?string {
 		return $this->body;
 	}
 
+    /** @param string|null $body Value to be signed */
 	public function setBody(?string $body) {
 		$this->body = $body;
 	}
 
+    /**
+     * @param string|null $body Value to be signed
+     * @return GetPropertyFormWithSignatureResult
+     */
 	public function withBody(?string $body): GetPropertyFormWithSignatureResult {
 		$this->body = $body;
 		return $this;
 	}
 
+    /** @return string|null Signature */
 	public function getSignature(): ?string {
 		return $this->signature;
 	}
 
+    /** @param string|null $signature Signature */
 	public function setSignature(?string $signature) {
 		$this->signature = $signature;
 	}
 
+    /**
+     * @param string|null $signature Signature
+     * @return GetPropertyFormWithSignatureResult
+     */
 	public function withSignature(?string $signature): GetPropertyFormWithSignatureResult {
 		$this->signature = $signature;
 		return $this;
 	}
 
+    /** @return PropertyFormModel|null Property Form Model */
 	public function getPropertyFormModel(): ?PropertyFormModel {
 		return $this->propertyFormModel;
 	}
 
+    /** @param PropertyFormModel|null $propertyFormModel Property Form Model */
 	public function setPropertyFormModel(?PropertyFormModel $propertyFormModel) {
 		$this->propertyFormModel = $propertyFormModel;
 	}
 
+    /**
+     * @param PropertyFormModel|null $propertyFormModel Property Form Model
+     * @return GetPropertyFormWithSignatureResult
+     */
 	public function withPropertyFormModel(?PropertyFormModel $propertyFormModel): GetPropertyFormWithSignatureResult {
 		$this->propertyFormModel = $propertyFormModel;
 		return $this;

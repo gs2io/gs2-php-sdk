@@ -20,18 +20,29 @@ namespace Gs2\Distributor\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Distributor\Model\CurrentDistributorMaster;
 
+/**
+ * Result of getCurrentDistributorMaster: Get currently active Distributor Model master data
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#getcurrentdistributormaster
+ */
 class GetCurrentDistributorMasterResult implements IResult {
-    /** @var CurrentDistributorMaster */
+    /** @var CurrentDistributorMaster Currently active Distributor Model master data */
     private $item;
 
+    /** @return CurrentDistributorMaster|null Currently active Distributor Model master data */
 	public function getItem(): ?CurrentDistributorMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentDistributorMaster|null $item Currently active Distributor Model master data */
 	public function setItem(?CurrentDistributorMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentDistributorMaster|null $item Currently active Distributor Model master data
+     * @return GetCurrentDistributorMasterResult
+     */
 	public function withItem(?CurrentDistributorMaster $item): GetCurrentDistributorMasterResult {
 		$this->item = $item;
 		return $this;

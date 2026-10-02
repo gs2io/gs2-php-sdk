@@ -20,18 +20,29 @@ namespace Gs2\Ranking2\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Ranking2\Model\CurrentRankingMaster;
 
+/**
+ * Result of exportMaster: Export Model Master in a master data format that can be activated
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/sdk/#exportmaster
+ */
 class ExportMasterResult implements IResult {
-    /** @var CurrentRankingMaster */
+    /** @var CurrentRankingMaster Export Model Master in a master data format that can be activated */
     private $item;
 
+    /** @return CurrentRankingMaster|null Export Model Master in a master data format that can be activated */
 	public function getItem(): ?CurrentRankingMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentRankingMaster|null $item Export Model Master in a master data format that can be activated */
 	public function setItem(?CurrentRankingMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentRankingMaster|null $item Export Model Master in a master data format that can be activated
+     * @return ExportMasterResult
+     */
 	public function withItem(?CurrentRankingMaster $item): ExportMasterResult {
 		$this->item = $item;
 		return $this;

@@ -20,18 +20,29 @@ namespace Gs2\Mission\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Mission\Model\Complete;
 
+/**
+ * Result of receiveByUserId: Receive rewards for mission accomplishment
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#receivebyuserid
+ */
 class ReceiveByUserIdResult implements IResult {
-    /** @var Complete */
+    /** @var Complete Received Completion Status */
     private $item;
 
+    /** @return Complete|null Received Completion Status */
 	public function getItem(): ?Complete {
 		return $this->item;
 	}
 
+    /** @param Complete|null $item Received Completion Status */
 	public function setItem(?Complete $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Complete|null $item Received Completion Status
+     * @return ReceiveByUserIdResult
+     */
 	public function withItem(?Complete $item): ReceiveByUserIdResult {
 		$this->item = $item;
 		return $this;

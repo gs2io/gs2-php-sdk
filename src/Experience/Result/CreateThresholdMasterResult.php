@@ -20,18 +20,29 @@ namespace Gs2\Experience\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Experience\Model\ThresholdMaster;
 
+/**
+ * Result of createThresholdMaster: Create Rank Up Threshold Master
+ *
+ * @see https://docs.gs2.io/api_reference/experience/sdk/#createthresholdmaster
+ */
 class CreateThresholdMasterResult implements IResult {
-    /** @var ThresholdMaster */
+    /** @var ThresholdMaster Created Rank Up Threshold Master */
     private $item;
 
+    /** @return ThresholdMaster|null Created Rank Up Threshold Master */
 	public function getItem(): ?ThresholdMaster {
 		return $this->item;
 	}
 
+    /** @param ThresholdMaster|null $item Created Rank Up Threshold Master */
 	public function setItem(?ThresholdMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param ThresholdMaster|null $item Created Rank Up Threshold Master
+     * @return CreateThresholdMasterResult
+     */
 	public function withItem(?ThresholdMaster $item): CreateThresholdMasterResult {
 		$this->item = $item;
 		return $this;

@@ -20,33 +20,50 @@ namespace Gs2\Guild\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Guild\Model\IgnoreUser;
 
+/**
+ * Result of describeIgnoreUsersByGuildName: List User IDs that refuse to participate by specifying a Guild name
+ *
+ * @see https://docs.gs2.io/api_reference/guild/sdk/#describeignoreusersbyguildname
+ */
 class DescribeIgnoreUsersByGuildNameResult implements IResult {
-    /** @var array */
+    /** @var array List of User IDs that refuse to participate */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of User IDs that refuse to participate */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of User IDs that refuse to participate */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of User IDs that refuse to participate
+     * @return DescribeIgnoreUsersByGuildNameResult
+     */
 	public function withItems(?array $items): DescribeIgnoreUsersByGuildNameResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeIgnoreUsersByGuildNameResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeIgnoreUsersByGuildNameResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

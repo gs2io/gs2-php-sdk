@@ -20,18 +20,29 @@ namespace Gs2\Dictionary\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Dictionary\Model\Entry;
 
+/**
+ * Result of addEntriesByStampSheet: Execute the entry addition as an acquire action
+ *
+ * @see https://docs.gs2.io/api_reference/dictionary/stamp_sheet/#gs2dictionaryaddentriesbyuserid
+ */
 class AddEntriesByStampSheetResult implements IResult {
-    /** @var array */
+    /** @var array List of Added Entries */
     private $items;
 
+    /** @return array|null List of Added Entries */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Added Entries */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Added Entries
+     * @return AddEntriesByStampSheetResult
+     */
 	public function withItems(?array $items): AddEntriesByStampSheetResult {
 		$this->items = $items;
 		return $this;

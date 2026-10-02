@@ -23,18 +23,29 @@ use Gs2\Money2\Model\GooglePlayVerifyReceiptEvent;
 use Gs2\Money2\Model\RefundEvent;
 use Gs2\Money2\Model\RefundHistory;
 
+/**
+ * Result of getRefundHistory: Get refund history by specifying a transaction ID
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#getrefundhistory
+ */
 class GetRefundHistoryResult implements IResult {
-    /** @var RefundHistory */
+    /** @var RefundHistory Subscription status */
     private $item;
 
+    /** @return RefundHistory|null Subscription status */
 	public function getItem(): ?RefundHistory {
 		return $this->item;
 	}
 
+    /** @param RefundHistory|null $item Subscription status */
 	public function setItem(?RefundHistory $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param RefundHistory|null $item Subscription status
+     * @return GetRefundHistoryResult
+     */
 	public function withItem(?RefundHistory $item): GetRefundHistoryResult {
 		$this->item = $item;
 		return $this;

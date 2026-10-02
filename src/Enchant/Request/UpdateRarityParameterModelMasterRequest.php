@@ -21,87 +21,134 @@ use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Enchant\Model\RarityParameterCountModel;
 use Gs2\Enchant\Model\RarityParameterValueModel;
 
+/**
+ * Request for updateRarityParameterModelMaster: Update Rarity Parameter Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/enchant/sdk/#updaterarityparametermodelmaster
+ */
 class UpdateRarityParameterModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Rarity Parameter Model name */
     private $parameterName;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var string */
+    /** @var string Metadata */
     private $metadata;
-    /** @var int */
+    /** @var int Maximum number of parameters to be given */
     private $maximumParameterCount;
-    /** @var array */
+    /** @var array Rarity parameter count model list */
     private $parameterCounts;
-    /** @var array */
+    /** @var array Rarity parameter value model list */
     private $parameters;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UpdateRarityParameterModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UpdateRarityParameterModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Rarity Parameter Model name */
 	public function getParameterName(): ?string {
 		return $this->parameterName;
 	}
+    /** @param string|null $parameterName Rarity Parameter Model name */
 	public function setParameterName(?string $parameterName) {
 		$this->parameterName = $parameterName;
 	}
+    /**
+     * @param string|null $parameterName Rarity Parameter Model name
+     * @return UpdateRarityParameterModelMasterRequest
+     */
 	public function withParameterName(?string $parameterName): UpdateRarityParameterModelMasterRequest {
 		$this->parameterName = $parameterName;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return UpdateRarityParameterModelMasterRequest
+     */
 	public function withDescription(?string $description): UpdateRarityParameterModelMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return UpdateRarityParameterModelMasterRequest
+     */
 	public function withMetadata(?string $metadata): UpdateRarityParameterModelMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return int|null Maximum number of parameters to be given */
 	public function getMaximumParameterCount(): ?int {
 		return $this->maximumParameterCount;
 	}
+    /** @param int|null $maximumParameterCount Maximum number of parameters to be given */
 	public function setMaximumParameterCount(?int $maximumParameterCount) {
 		$this->maximumParameterCount = $maximumParameterCount;
 	}
+    /**
+     * @param int|null $maximumParameterCount Maximum number of parameters to be given
+     * @return UpdateRarityParameterModelMasterRequest
+     */
 	public function withMaximumParameterCount(?int $maximumParameterCount): UpdateRarityParameterModelMasterRequest {
 		$this->maximumParameterCount = $maximumParameterCount;
 		return $this;
 	}
+    /** @return array|null Rarity parameter count model list */
 	public function getParameterCounts(): ?array {
 		return $this->parameterCounts;
 	}
+    /** @param array|null $parameterCounts Rarity parameter count model list */
 	public function setParameterCounts(?array $parameterCounts) {
 		$this->parameterCounts = $parameterCounts;
 	}
+    /**
+     * @param array|null $parameterCounts Rarity parameter count model list
+     * @return UpdateRarityParameterModelMasterRequest
+     */
 	public function withParameterCounts(?array $parameterCounts): UpdateRarityParameterModelMasterRequest {
 		$this->parameterCounts = $parameterCounts;
 		return $this;
 	}
+    /** @return array|null Rarity parameter value model list */
 	public function getParameters(): ?array {
 		return $this->parameters;
 	}
+    /** @param array|null $parameters Rarity parameter value model list */
 	public function setParameters(?array $parameters) {
 		$this->parameters = $parameters;
 	}
+    /**
+     * @param array|null $parameters Rarity parameter value model list
+     * @return UpdateRarityParameterModelMasterRequest
+     */
 	public function withParameters(?array $parameters): UpdateRarityParameterModelMasterRequest {
 		$this->parameters = $parameters;
 		return $this;

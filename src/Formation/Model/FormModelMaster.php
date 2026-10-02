@@ -20,115 +20,168 @@ namespace Gs2\Formation\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Form Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/formation/sdk/#formmodelmaster
+ */
 class FormModelMaster implements IModel {
 	/**
-     * @var string
+     * @var string Form Model Master GRN
 	 */
 	private $formModelId;
 	/**
-     * @var string
+     * @var string Form Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Description
 	 */
 	private $description;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var array
+     * @var array List of Slot Model
 	 */
 	private $slots;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Form Model Master GRN */
 	public function getFormModelId(): ?string {
 		return $this->formModelId;
 	}
+    /** @param string|null $formModelId Form Model Master GRN */
 	public function setFormModelId(?string $formModelId) {
 		$this->formModelId = $formModelId;
 	}
+    /**
+     * @param string|null $formModelId Form Model Master GRN
+     * @return FormModelMaster
+     */
 	public function withFormModelId(?string $formModelId): FormModelMaster {
 		$this->formModelId = $formModelId;
 		return $this;
 	}
+    /** @return string|null Form Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Form Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Form Model name
+     * @return FormModelMaster
+     */
 	public function withName(?string $name): FormModelMaster {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return FormModelMaster
+     */
 	public function withDescription(?string $description): FormModelMaster {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return FormModelMaster
+     */
 	public function withMetadata(?string $metadata): FormModelMaster {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return array|null List of Slot Model */
 	public function getSlots(): ?array {
 		return $this->slots;
 	}
+    /** @param array|null $slots List of Slot Model */
 	public function setSlots(?array $slots) {
 		$this->slots = $slots;
 	}
+    /**
+     * @param array|null $slots List of Slot Model
+     * @return FormModelMaster
+     */
 	public function withSlots(?array $slots): FormModelMaster {
 		$this->slots = $slots;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return FormModelMaster
+     */
 	public function withCreatedAt(?int $createdAt): FormModelMaster {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return FormModelMaster
+     */
 	public function withUpdatedAt(?int $updatedAt): FormModelMaster {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return FormModelMaster
+     */
 	public function withRevision(?int $revision): FormModelMaster {
 		$this->revision = $revision;
 		return $this;

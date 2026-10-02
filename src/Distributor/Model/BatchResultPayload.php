@@ -20,45 +20,68 @@ namespace Gs2\Distributor\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * API Batch Result
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#batchresultpayload
+ */
 class BatchResultPayload implements IModel {
 	/**
-     * @var string
+     * @var string Request ID
 	 */
 	private $requestId;
 	/**
-     * @var int
+     * @var int Status Code
 	 */
 	private $statusCode;
 	/**
-     * @var string
+     * @var string Response
 	 */
 	private $resultPayload;
+    /** @return string|null Request ID */
 	public function getRequestId(): ?string {
 		return $this->requestId;
 	}
+    /** @param string|null $requestId Request ID */
 	public function setRequestId(?string $requestId) {
 		$this->requestId = $requestId;
 	}
+    /**
+     * @param string|null $requestId Request ID
+     * @return BatchResultPayload
+     */
 	public function withRequestId(?string $requestId): BatchResultPayload {
 		$this->requestId = $requestId;
 		return $this;
 	}
+    /** @return int|null Status Code */
 	public function getStatusCode(): ?int {
 		return $this->statusCode;
 	}
+    /** @param int|null $statusCode Status Code */
 	public function setStatusCode(?int $statusCode) {
 		$this->statusCode = $statusCode;
 	}
+    /**
+     * @param int|null $statusCode Status Code
+     * @return BatchResultPayload
+     */
 	public function withStatusCode(?int $statusCode): BatchResultPayload {
 		$this->statusCode = $statusCode;
 		return $this;
 	}
+    /** @return string|null Response */
 	public function getResultPayload(): ?string {
 		return $this->resultPayload;
 	}
+    /** @param string|null $resultPayload Response */
 	public function setResultPayload(?string $resultPayload) {
 		$this->resultPayload = $resultPayload;
 	}
+    /**
+     * @param string|null $resultPayload Response
+     * @return BatchResultPayload
+     */
 	public function withResultPayload(?string $resultPayload): BatchResultPayload {
 		$this->resultPayload = $resultPayload;
 		return $this;

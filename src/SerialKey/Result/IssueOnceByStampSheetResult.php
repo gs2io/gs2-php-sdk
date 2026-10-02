@@ -20,18 +20,29 @@ namespace Gs2\SerialKey\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\SerialKey\Model\SerialKey;
 
+/**
+ * Result of issueOnceByStampSheet: Issue a serial code as acquire action
+ *
+ * @see https://docs.gs2.io/api_reference/serial_key/stamp_sheet/#gs2serialkeyissueonce
+ */
 class IssueOnceByStampSheetResult implements IResult {
-    /** @var SerialKey */
+    /** @var SerialKey SerialKey */
     private $item;
 
+    /** @return SerialKey|null SerialKey */
 	public function getItem(): ?SerialKey {
 		return $this->item;
 	}
 
+    /** @param SerialKey|null $item SerialKey */
 	public function setItem(?SerialKey $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param SerialKey|null $item SerialKey
+     * @return IssueOnceByStampSheetResult
+     */
 	public function withItem(?SerialKey $item): IssueOnceByStampSheetResult {
 		$this->item = $item;
 		return $this;

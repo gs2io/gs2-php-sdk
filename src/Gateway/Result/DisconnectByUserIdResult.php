@@ -20,18 +20,29 @@ namespace Gs2\Gateway\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Gateway\Model\WebSocketSession;
 
+/**
+ * Result of disconnectByUserId: Disconnect WebSocket sessions by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/gateway/sdk/#disconnectbyuserid
+ */
 class DisconnectByUserIdResult implements IResult {
-    /** @var array */
+    /** @var array List of Disconnected WebSocket session */
     private $items;
 
+    /** @return array|null List of Disconnected WebSocket session */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Disconnected WebSocket session */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Disconnected WebSocket session
+     * @return DisconnectByUserIdResult
+     */
 	public function withItems(?array $items): DisconnectByUserIdResult {
 		$this->items = $items;
 		return $this;

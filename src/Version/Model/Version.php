@@ -20,45 +20,68 @@ namespace Gs2\Version\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Version
+ *
+ * @see https://docs.gs2.io/api_reference/version/sdk/#version
+ */
 class Version implements IModel {
 	/**
-     * @var int
+     * @var int Major version
 	 */
 	private $major;
 	/**
-     * @var int
+     * @var int Minor version
 	 */
 	private $minor;
 	/**
-     * @var int
+     * @var int Micro version
 	 */
 	private $micro;
+    /** @return int|null Major version */
 	public function getMajor(): ?int {
 		return $this->major;
 	}
+    /** @param int|null $major Major version */
 	public function setMajor(?int $major) {
 		$this->major = $major;
 	}
+    /**
+     * @param int|null $major Major version
+     * @return Version
+     */
 	public function withMajor(?int $major): Version {
 		$this->major = $major;
 		return $this;
 	}
+    /** @return int|null Minor version */
 	public function getMinor(): ?int {
 		return $this->minor;
 	}
+    /** @param int|null $minor Minor version */
 	public function setMinor(?int $minor) {
 		$this->minor = $minor;
 	}
+    /**
+     * @param int|null $minor Minor version
+     * @return Version
+     */
 	public function withMinor(?int $minor): Version {
 		$this->minor = $minor;
 		return $this;
 	}
+    /** @return int|null Micro version */
 	public function getMicro(): ?int {
 		return $this->micro;
 	}
+    /** @param int|null $micro Micro version */
 	public function setMicro(?int $micro) {
 		$this->micro = $micro;
 	}
+    /**
+     * @param int|null $micro Micro version
+     * @return Version
+     */
 	public function withMicro(?int $micro): Version {
 		$this->micro = $micro;
 		return $this;

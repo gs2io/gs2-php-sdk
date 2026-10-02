@@ -20,18 +20,29 @@ namespace Gs2\Ranking\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Ranking\Model\Score;
 
+/**
+ * Result of getScoreByUserId: Get score by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/ranking/sdk/#getscorebyuserid
+ */
 class GetScoreByUserIdResult implements IResult {
-    /** @var Score */
+    /** @var Score Score */
     private $item;
 
+    /** @return Score|null Score */
 	public function getItem(): ?Score {
 		return $this->item;
 	}
 
+    /** @param Score|null $item Score */
 	public function setItem(?Score $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Score|null $item Score
+     * @return GetScoreByUserIdResult
+     */
 	public function withItem(?Score $item): GetScoreByUserIdResult {
 		$this->item = $item;
 		return $this;

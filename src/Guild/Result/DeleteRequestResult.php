@@ -20,18 +20,29 @@ namespace Gs2\Guild\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Guild\Model\SendMemberRequest;
 
+/**
+ * Result of deleteRequest: Cancel a sent join request
+ *
+ * @see https://docs.gs2.io/api_reference/guild/sdk/#deleterequest
+ */
 class DeleteRequestResult implements IResult {
-    /** @var SendMemberRequest */
+    /** @var SendMemberRequest Join request deleted */
     private $item;
 
+    /** @return SendMemberRequest|null Join request deleted */
 	public function getItem(): ?SendMemberRequest {
 		return $this->item;
 	}
 
+    /** @param SendMemberRequest|null $item Join request deleted */
 	public function setItem(?SendMemberRequest $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param SendMemberRequest|null $item Join request deleted
+     * @return DeleteRequestResult
+     */
 	public function withItem(?SendMemberRequest $item): DeleteRequestResult {
 		$this->item = $item;
 		return $this;

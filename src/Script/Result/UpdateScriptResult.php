@@ -20,18 +20,29 @@ namespace Gs2\Script\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Script\Model\Script;
 
+/**
+ * Result of updateScript: Update Script
+ *
+ * @see https://docs.gs2.io/api_reference/script/sdk/#updatescript
+ */
 class UpdateScriptResult implements IResult {
-    /** @var Script */
+    /** @var Script Script updated */
     private $item;
 
+    /** @return Script|null Script updated */
 	public function getItem(): ?Script {
 		return $this->item;
 	}
 
+    /** @param Script|null $item Script updated */
 	public function setItem(?Script $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Script|null $item Script updated
+     * @return UpdateScriptResult
+     */
 	public function withItem(?Script $item): UpdateScriptResult {
 		$this->item = $item;
 		return $this;

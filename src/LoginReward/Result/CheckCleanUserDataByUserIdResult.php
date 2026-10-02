@@ -19,6 +19,11 @@ namespace Gs2\LoginReward\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of checkCleanUserDataByUserId: Check if the cleaning of the data associated with the specified user ID is complete
+ *
+ * @see https://docs.gs2.io/api_reference/login_reward/sdk/#checkcleanuserdatabyuserid
+ */
 class CheckCleanUserDataByUserIdResult implements IResult {
 
     public static function fromJson(?array $data): ?CheckCleanUserDataByUserIdResult {

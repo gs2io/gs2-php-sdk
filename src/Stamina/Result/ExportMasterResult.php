@@ -20,18 +20,29 @@ namespace Gs2\Stamina\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Stamina\Model\CurrentStaminaMaster;
 
+/**
+ * Result of exportMaster: Export Stamina Model Master in a master data format that can be activated
+ *
+ * @see https://docs.gs2.io/api_reference/stamina/sdk/#exportmaster
+ */
 class ExportMasterResult implements IResult {
-    /** @var CurrentStaminaMaster */
+    /** @var CurrentStaminaMaster Stamina Model master data that can be activated */
     private $item;
 
+    /** @return CurrentStaminaMaster|null Stamina Model master data that can be activated */
 	public function getItem(): ?CurrentStaminaMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentStaminaMaster|null $item Stamina Model master data that can be activated */
 	public function setItem(?CurrentStaminaMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentStaminaMaster|null $item Stamina Model master data that can be activated
+     * @return ExportMasterResult
+     */
 	public function withItem(?CurrentStaminaMaster $item): ExportMasterResult {
 		$this->item = $item;
 		return $this;

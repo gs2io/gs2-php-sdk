@@ -19,15 +19,22 @@ namespace Gs2\Project\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/** Request for getImportProgress: Get import user data progress */
 class GetImportProgressRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Transaction ID */
     private $transactionId;
+    /** @return string|null Transaction ID */
 	public function getTransactionId(): ?string {
 		return $this->transactionId;
 	}
+    /** @param string|null $transactionId Transaction ID */
 	public function setTransactionId(?string $transactionId) {
 		$this->transactionId = $transactionId;
 	}
+    /**
+     * @param string|null $transactionId Transaction ID
+     * @return GetImportProgressRequest
+     */
 	public function withTransactionId(?string $transactionId): GetImportProgressRequest {
 		$this->transactionId = $transactionId;
 		return $this;

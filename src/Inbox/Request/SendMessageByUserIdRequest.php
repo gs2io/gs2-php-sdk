@@ -21,89 +21,136 @@ use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Inbox\Model\AcquireAction;
 use Gs2\Inbox\Model\TimeSpan;
 
+/**
+ * Request for sendMessageByUserId: Send a message by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/inbox/sdk/#sendmessagebyuserid
+ */
 class SendMessageByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Metadata */
     private $metadata;
-    /** @var array */
+    /** @var array Acquire Actions on Open */
     private $readAcquireActions;
-    /** @var int */
+    /** @var int Expiration datetime */
     private $expiresAt;
-    /** @var TimeSpan */
+    /** @var TimeSpan The period from the time a message was received (reference time) until it was deleted */
     private $expiresTimeSpan;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return SendMessageByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): SendMessageByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return SendMessageByUserIdRequest
+     */
 	public function withUserId(?string $userId): SendMessageByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return SendMessageByUserIdRequest
+     */
 	public function withMetadata(?string $metadata): SendMessageByUserIdRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return array|null Acquire Actions on Open */
 	public function getReadAcquireActions(): ?array {
 		return $this->readAcquireActions;
 	}
+    /** @param array|null $readAcquireActions Acquire Actions on Open */
 	public function setReadAcquireActions(?array $readAcquireActions) {
 		$this->readAcquireActions = $readAcquireActions;
 	}
+    /**
+     * @param array|null $readAcquireActions Acquire Actions on Open
+     * @return SendMessageByUserIdRequest
+     */
 	public function withReadAcquireActions(?array $readAcquireActions): SendMessageByUserIdRequest {
 		$this->readAcquireActions = $readAcquireActions;
 		return $this;
 	}
+    /** @return int|null Expiration datetime */
 	public function getExpiresAt(): ?int {
 		return $this->expiresAt;
 	}
+    /** @param int|null $expiresAt Expiration datetime */
 	public function setExpiresAt(?int $expiresAt) {
 		$this->expiresAt = $expiresAt;
 	}
+    /**
+     * @param int|null $expiresAt Expiration datetime
+     * @return SendMessageByUserIdRequest
+     */
 	public function withExpiresAt(?int $expiresAt): SendMessageByUserIdRequest {
 		$this->expiresAt = $expiresAt;
 		return $this;
 	}
+    /** @return TimeSpan|null The period from the time a message was received (reference time) until it was deleted */
 	public function getExpiresTimeSpan(): ?TimeSpan {
 		return $this->expiresTimeSpan;
 	}
+    /** @param TimeSpan|null $expiresTimeSpan The period from the time a message was received (reference time) until it was deleted */
 	public function setExpiresTimeSpan(?TimeSpan $expiresTimeSpan) {
 		$this->expiresTimeSpan = $expiresTimeSpan;
 	}
+    /**
+     * @param TimeSpan|null $expiresTimeSpan The period from the time a message was received (reference time) until it was deleted
+     * @return SendMessageByUserIdRequest
+     */
 	public function withExpiresTimeSpan(?TimeSpan $expiresTimeSpan): SendMessageByUserIdRequest {
 		$this->expiresTimeSpan = $expiresTimeSpan;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return SendMessageByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): SendMessageByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

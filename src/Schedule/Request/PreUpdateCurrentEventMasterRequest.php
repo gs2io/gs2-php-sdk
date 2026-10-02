@@ -19,15 +19,26 @@ namespace Gs2\Schedule\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for preUpdateCurrentEventMaster: Update currently active Event master data (3-phase version)
+ *
+ * @see https://docs.gs2.io/api_reference/schedule/sdk/#preupdatecurrenteventmaster
+ */
 class PreUpdateCurrentEventMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return PreUpdateCurrentEventMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): PreUpdateCurrentEventMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;

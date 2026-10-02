@@ -20,18 +20,29 @@ namespace Gs2\Matchmaking\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Matchmaking\Model\Rating;
 
+/**
+ * Result of putResult: Recalculate rating values
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#putresult
+ */
 class PutResultResult implements IResult {
-    /** @var array */
+    /** @var array List of Updated Rating */
     private $items;
 
+    /** @return array|null List of Updated Rating */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Updated Rating */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Updated Rating
+     * @return PutResultResult
+     */
 	public function withItems(?array $items): PutResultResult {
 		$this->items = $items;
 		return $this;

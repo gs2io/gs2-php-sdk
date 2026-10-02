@@ -22,18 +22,29 @@ use Gs2\Inbox\Model\AcquireAction;
 use Gs2\Inbox\Model\TimeSpan;
 use Gs2\Inbox\Model\GlobalMessage;
 
+/**
+ * Result of getGlobalMessage: Get a message for all users
+ *
+ * @see https://docs.gs2.io/api_reference/inbox/sdk/#getglobalmessage
+ */
 class GetGlobalMessageResult implements IResult {
-    /** @var GlobalMessage */
+    /** @var GlobalMessage Message to all users */
     private $item;
 
+    /** @return GlobalMessage|null Message to all users */
 	public function getItem(): ?GlobalMessage {
 		return $this->item;
 	}
 
+    /** @param GlobalMessage|null $item Message to all users */
 	public function setItem(?GlobalMessage $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param GlobalMessage|null $item Message to all users
+     * @return GetGlobalMessageResult
+     */
 	public function withItem(?GlobalMessage $item): GetGlobalMessageResult {
 		$this->item = $item;
 		return $this;

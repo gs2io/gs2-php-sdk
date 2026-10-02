@@ -20,115 +20,168 @@ namespace Gs2\Gateway\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * WebSocketSession
+ *
+ * @see https://docs.gs2.io/api_reference/gateway/sdk/#websocketsession
+ */
 class WebSocketSession implements IModel {
 	/**
-     * @var string
+     * @var string WebSocket Session GRN
 	 */
 	private $webSocketSessionId;
 	/**
-     * @var string
+     * @var string Connection ID
 	 */
 	private $connectionId;
 	/**
-     * @var string
+     * @var string Namespace name
 	 */
 	private $namespaceName;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var string
+     * @var string Session ID
 	 */
 	private $sessionId;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null WebSocket Session GRN */
 	public function getWebSocketSessionId(): ?string {
 		return $this->webSocketSessionId;
 	}
+    /** @param string|null $webSocketSessionId WebSocket Session GRN */
 	public function setWebSocketSessionId(?string $webSocketSessionId) {
 		$this->webSocketSessionId = $webSocketSessionId;
 	}
+    /**
+     * @param string|null $webSocketSessionId WebSocket Session GRN
+     * @return WebSocketSession
+     */
 	public function withWebSocketSessionId(?string $webSocketSessionId): WebSocketSession {
 		$this->webSocketSessionId = $webSocketSessionId;
 		return $this;
 	}
+    /** @return string|null Connection ID */
 	public function getConnectionId(): ?string {
 		return $this->connectionId;
 	}
+    /** @param string|null $connectionId Connection ID */
 	public function setConnectionId(?string $connectionId) {
 		$this->connectionId = $connectionId;
 	}
+    /**
+     * @param string|null $connectionId Connection ID
+     * @return WebSocketSession
+     */
 	public function withConnectionId(?string $connectionId): WebSocketSession {
 		$this->connectionId = $connectionId;
 		return $this;
 	}
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return WebSocketSession
+     */
 	public function withNamespaceName(?string $namespaceName): WebSocketSession {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return WebSocketSession
+     */
 	public function withUserId(?string $userId): WebSocketSession {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Session ID */
 	public function getSessionId(): ?string {
 		return $this->sessionId;
 	}
+    /** @param string|null $sessionId Session ID */
 	public function setSessionId(?string $sessionId) {
 		$this->sessionId = $sessionId;
 	}
+    /**
+     * @param string|null $sessionId Session ID
+     * @return WebSocketSession
+     */
 	public function withSessionId(?string $sessionId): WebSocketSession {
 		$this->sessionId = $sessionId;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return WebSocketSession
+     */
 	public function withCreatedAt(?int $createdAt): WebSocketSession {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return WebSocketSession
+     */
 	public function withUpdatedAt(?int $updatedAt): WebSocketSession {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return WebSocketSession
+     */
 	public function withRevision(?int $revision): WebSocketSession {
 		$this->revision = $revision;
 		return $this;

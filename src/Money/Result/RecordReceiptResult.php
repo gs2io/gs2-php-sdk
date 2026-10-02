@@ -20,18 +20,29 @@ namespace Gs2\Money\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Money\Model\Receipt;
 
+/**
+ * Result of recordReceipt: Record receipt
+ *
+ * @see https://docs.gs2.io/api_reference/money/sdk/#recordreceipt
+ */
 class RecordReceiptResult implements IResult {
-    /** @var Receipt */
+    /** @var Receipt Recorded Receipt */
     private $item;
 
+    /** @return Receipt|null Recorded Receipt */
 	public function getItem(): ?Receipt {
 		return $this->item;
 	}
 
+    /** @param Receipt|null $item Recorded Receipt */
 	public function setItem(?Receipt $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Receipt|null $item Recorded Receipt
+     * @return RecordReceiptResult
+     */
 	public function withItem(?Receipt $item): RecordReceiptResult {
 		$this->item = $item;
 		return $this;

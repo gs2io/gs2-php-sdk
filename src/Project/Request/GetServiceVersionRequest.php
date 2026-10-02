@@ -19,6 +19,7 @@ namespace Gs2\Project\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/** Request for getServiceVersion: Get Microservice Version */
 class GetServiceVersionRequest extends Gs2BasicRequest {
 
     public static function fromJson(?array $data): ?GetServiceVersionRequest {

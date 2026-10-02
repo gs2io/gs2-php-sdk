@@ -19,6 +19,11 @@ namespace Gs2\StateMachine\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of importUserDataByUserId: Execute import of data associated with the specified user ID
+ *
+ * @see https://docs.gs2.io/api_reference/state_machine/sdk/#importuserdatabyuserid
+ */
 class ImportUserDataByUserIdResult implements IResult {
 
     public static function fromJson(?array $data): ?ImportUserDataByUserIdResult {

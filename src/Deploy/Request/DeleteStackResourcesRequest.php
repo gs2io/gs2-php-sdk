@@ -19,15 +19,26 @@ namespace Gs2\Deploy\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for deleteStackResources: Delete Stack Resources
+ *
+ * @see https://docs.gs2.io/api_reference/deploy/sdk/#deletestackresources
+ */
 class DeleteStackResourcesRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Stack name */
     private $stackName;
+    /** @return string|null Stack name */
 	public function getStackName(): ?string {
 		return $this->stackName;
 	}
+    /** @param string|null $stackName Stack name */
 	public function setStackName(?string $stackName) {
 		$this->stackName = $stackName;
 	}
+    /**
+     * @param string|null $stackName Stack name
+     * @return DeleteStackResourcesRequest
+     */
 	public function withStackName(?string $stackName): DeleteStackResourcesRequest {
 		$this->stackName = $stackName;
 		return $this;

@@ -21,75 +21,116 @@ use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Money2\Model\AppleAppStoreContent;
 use Gs2\Money2\Model\GooglePlayContent;
 
+/**
+ * Request for updateStoreContentModelMaster: Update Store Content Master
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#updatestorecontentmodelmaster
+ */
 class UpdateStoreContentModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Store Content Model name */
     private $contentName;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var string */
+    /** @var string Metadata */
     private $metadata;
-    /** @var AppleAppStoreContent */
+    /** @var AppleAppStoreContent Apple App Store Content */
     private $appleAppStore;
-    /** @var GooglePlayContent */
+    /** @var GooglePlayContent Google Play Content */
     private $googlePlay;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UpdateStoreContentModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UpdateStoreContentModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Store Content Model name */
 	public function getContentName(): ?string {
 		return $this->contentName;
 	}
+    /** @param string|null $contentName Store Content Model name */
 	public function setContentName(?string $contentName) {
 		$this->contentName = $contentName;
 	}
+    /**
+     * @param string|null $contentName Store Content Model name
+     * @return UpdateStoreContentModelMasterRequest
+     */
 	public function withContentName(?string $contentName): UpdateStoreContentModelMasterRequest {
 		$this->contentName = $contentName;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return UpdateStoreContentModelMasterRequest
+     */
 	public function withDescription(?string $description): UpdateStoreContentModelMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return UpdateStoreContentModelMasterRequest
+     */
 	public function withMetadata(?string $metadata): UpdateStoreContentModelMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return AppleAppStoreContent|null Apple App Store Content */
 	public function getAppleAppStore(): ?AppleAppStoreContent {
 		return $this->appleAppStore;
 	}
+    /** @param AppleAppStoreContent|null $appleAppStore Apple App Store Content */
 	public function setAppleAppStore(?AppleAppStoreContent $appleAppStore) {
 		$this->appleAppStore = $appleAppStore;
 	}
+    /**
+     * @param AppleAppStoreContent|null $appleAppStore Apple App Store Content
+     * @return UpdateStoreContentModelMasterRequest
+     */
 	public function withAppleAppStore(?AppleAppStoreContent $appleAppStore): UpdateStoreContentModelMasterRequest {
 		$this->appleAppStore = $appleAppStore;
 		return $this;
 	}
+    /** @return GooglePlayContent|null Google Play Content */
 	public function getGooglePlay(): ?GooglePlayContent {
 		return $this->googlePlay;
 	}
+    /** @param GooglePlayContent|null $googlePlay Google Play Content */
 	public function setGooglePlay(?GooglePlayContent $googlePlay) {
 		$this->googlePlay = $googlePlay;
 	}
+    /**
+     * @param GooglePlayContent|null $googlePlay Google Play Content
+     * @return UpdateStoreContentModelMasterRequest
+     */
 	public function withGooglePlay(?GooglePlayContent $googlePlay): UpdateStoreContentModelMasterRequest {
 		$this->googlePlay = $googlePlay;
 		return $this;

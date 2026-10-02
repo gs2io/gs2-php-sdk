@@ -22,18 +22,29 @@ use Gs2\SkillTree\Model\VerifyAction;
 use Gs2\SkillTree\Model\ConsumeAction;
 use Gs2\SkillTree\Model\NodeModelMaster;
 
+/**
+ * Result of deleteNodeModelMaster: Delete Node Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#deletenodemodelmaster
+ */
 class DeleteNodeModelMasterResult implements IResult {
-    /** @var NodeModelMaster */
+    /** @var NodeModelMaster Node Model Master deleted */
     private $item;
 
+    /** @return NodeModelMaster|null Node Model Master deleted */
 	public function getItem(): ?NodeModelMaster {
 		return $this->item;
 	}
 
+    /** @param NodeModelMaster|null $item Node Model Master deleted */
 	public function setItem(?NodeModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param NodeModelMaster|null $item Node Model Master deleted
+     * @return DeleteNodeModelMasterResult
+     */
 	public function withItem(?NodeModelMaster $item): DeleteNodeModelMasterResult {
 		$this->item = $item;
 		return $this;

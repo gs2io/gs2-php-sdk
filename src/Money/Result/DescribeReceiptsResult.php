@@ -20,33 +20,50 @@ namespace Gs2\Money\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Money\Model\Receipt;
 
+/**
+ * Result of describeReceipts: List receipts
+ *
+ * @see https://docs.gs2.io/api_reference/money/sdk/#describereceipts
+ */
 class DescribeReceiptsResult implements IResult {
-    /** @var array */
+    /** @var array List of Receipts */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Receipts */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Receipts */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Receipts
+     * @return DescribeReceiptsResult
+     */
 	public function withItems(?array $items): DescribeReceiptsResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeReceiptsResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeReceiptsResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

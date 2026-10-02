@@ -24,108 +24,159 @@ use Gs2\JobQueue\Model\MobileNotificationMessage;
 use Gs2\JobQueue\Model\NotificationSetting;
 use Gs2\JobQueue\Model\LogSetting;
 
+/**
+ * Request for updateNamespace: Update Namespace
+ *
+ * @see https://docs.gs2.io/api_reference/job_queue/sdk/#updatenamespace
+ */
 class UpdateNamespaceRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var TransactionSetting */
+    /** @var TransactionSetting Transaction Setting */
     private $transactionSetting;
-    /** @var TransactionSettingV2 */
+    /** @var TransactionSettingV2 Transaction Setting (V2) */
     private $transactionSettingV2;
-    /** @var bool */
+    /** @var bool Whether to automatically execute jobs on the server side */
     private $enableAutoRun;
-    /** @var NotificationSetting */
+    /** @var NotificationSetting Push Notification */
     private $pushNotification;
-    /** @var NotificationSetting */
+    /** @var NotificationSetting Run Notification */
     private $runNotification;
-    /** @var LogSetting */
+    /** @var LogSetting Log Output Setting */
     private $logSetting;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UpdateNamespaceRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UpdateNamespaceRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return UpdateNamespaceRequest
+     */
 	public function withDescription(?string $description): UpdateNamespaceRequest {
 		$this->description = $description;
 		return $this;
 	}
     /**
+     * @return TransactionSetting|null Transaction Setting
      * @deprecated
      */
 	public function getTransactionSetting(): ?TransactionSetting {
 		return $this->transactionSetting;
 	}
     /**
+     * @param TransactionSetting|null $transactionSetting Transaction Setting
      * @deprecated
      */
 	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
 		$this->transactionSetting = $transactionSetting;
 	}
     /**
+     * @param TransactionSetting|null $transactionSetting Transaction Setting
+     * @return UpdateNamespaceRequest
      * @deprecated
      */
 	public function withTransactionSetting(?TransactionSetting $transactionSetting): UpdateNamespaceRequest {
 		$this->transactionSetting = $transactionSetting;
 		return $this;
 	}
+    /** @return TransactionSettingV2|null Transaction Setting (V2) */
 	public function getTransactionSettingV2(): ?TransactionSettingV2 {
 		return $this->transactionSettingV2;
 	}
+    /** @param TransactionSettingV2|null $transactionSettingV2 Transaction Setting (V2) */
 	public function setTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2) {
 		$this->transactionSettingV2 = $transactionSettingV2;
 	}
+    /**
+     * @param TransactionSettingV2|null $transactionSettingV2 Transaction Setting (V2)
+     * @return UpdateNamespaceRequest
+     */
 	public function withTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2): UpdateNamespaceRequest {
 		$this->transactionSettingV2 = $transactionSettingV2;
 		return $this;
 	}
+    /** @return bool|null Whether to automatically execute jobs on the server side */
 	public function getEnableAutoRun(): ?bool {
 		return $this->enableAutoRun;
 	}
+    /** @param bool|null $enableAutoRun Whether to automatically execute jobs on the server side */
 	public function setEnableAutoRun(?bool $enableAutoRun) {
 		$this->enableAutoRun = $enableAutoRun;
 	}
+    /**
+     * @param bool|null $enableAutoRun Whether to automatically execute jobs on the server side
+     * @return UpdateNamespaceRequest
+     */
 	public function withEnableAutoRun(?bool $enableAutoRun): UpdateNamespaceRequest {
 		$this->enableAutoRun = $enableAutoRun;
 		return $this;
 	}
+    /** @return NotificationSetting|null Push Notification */
 	public function getPushNotification(): ?NotificationSetting {
 		return $this->pushNotification;
 	}
+    /** @param NotificationSetting|null $pushNotification Push Notification */
 	public function setPushNotification(?NotificationSetting $pushNotification) {
 		$this->pushNotification = $pushNotification;
 	}
+    /**
+     * @param NotificationSetting|null $pushNotification Push Notification
+     * @return UpdateNamespaceRequest
+     */
 	public function withPushNotification(?NotificationSetting $pushNotification): UpdateNamespaceRequest {
 		$this->pushNotification = $pushNotification;
 		return $this;
 	}
+    /** @return NotificationSetting|null Run Notification */
 	public function getRunNotification(): ?NotificationSetting {
 		return $this->runNotification;
 	}
+    /** @param NotificationSetting|null $runNotification Run Notification */
 	public function setRunNotification(?NotificationSetting $runNotification) {
 		$this->runNotification = $runNotification;
 	}
+    /**
+     * @param NotificationSetting|null $runNotification Run Notification
+     * @return UpdateNamespaceRequest
+     */
 	public function withRunNotification(?NotificationSetting $runNotification): UpdateNamespaceRequest {
 		$this->runNotification = $runNotification;
 		return $this;
 	}
+    /** @return LogSetting|null Log Output Setting */
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
+    /** @param LogSetting|null $logSetting Log Output Setting */
 	public function setLogSetting(?LogSetting $logSetting) {
 		$this->logSetting = $logSetting;
 	}
+    /**
+     * @param LogSetting|null $logSetting Log Output Setting
+     * @return UpdateNamespaceRequest
+     */
 	public function withLogSetting(?LogSetting $logSetting): UpdateNamespaceRequest {
 		$this->logSetting = $logSetting;
 		return $this;

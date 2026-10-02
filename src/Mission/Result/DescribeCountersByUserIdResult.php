@@ -21,33 +21,50 @@ use Gs2\Core\Model\IResult;
 use Gs2\Mission\Model\ScopedValue;
 use Gs2\Mission\Model\Counter;
 
+/**
+ * Result of describeCountersByUserId: List counters by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#describecountersbyuserid
+ */
 class DescribeCountersByUserIdResult implements IResult {
-    /** @var array */
+    /** @var array List of Counter */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Counter */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Counter */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Counter
+     * @return DescribeCountersByUserIdResult
+     */
 	public function withItems(?array $items): DescribeCountersByUserIdResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeCountersByUserIdResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeCountersByUserIdResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

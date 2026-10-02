@@ -20,101 +20,148 @@ namespace Gs2\Inventory\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Big Item
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#bigitem
+ */
 class BigItem implements IModel {
 	/**
-     * @var string
+     * @var string Big Item GRN
 	 */
 	private $itemId;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var string
+     * @var string Big Item Model Name
 	 */
 	private $itemName;
 	/**
-     * @var string
+     * @var string Quantity in Possession
 	 */
 	private $count;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Big Item GRN */
 	public function getItemId(): ?string {
 		return $this->itemId;
 	}
+    /** @param string|null $itemId Big Item GRN */
 	public function setItemId(?string $itemId) {
 		$this->itemId = $itemId;
 	}
+    /**
+     * @param string|null $itemId Big Item GRN
+     * @return BigItem
+     */
 	public function withItemId(?string $itemId): BigItem {
 		$this->itemId = $itemId;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return BigItem
+     */
 	public function withUserId(?string $userId): BigItem {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Big Item Model Name */
 	public function getItemName(): ?string {
 		return $this->itemName;
 	}
+    /** @param string|null $itemName Big Item Model Name */
 	public function setItemName(?string $itemName) {
 		$this->itemName = $itemName;
 	}
+    /**
+     * @param string|null $itemName Big Item Model Name
+     * @return BigItem
+     */
 	public function withItemName(?string $itemName): BigItem {
 		$this->itemName = $itemName;
 		return $this;
 	}
+    /** @return string|null Quantity in Possession */
 	public function getCount(): ?string {
 		return $this->count;
 	}
+    /** @param string|null $count Quantity in Possession */
 	public function setCount(?string $count) {
 		$this->count = $count;
 	}
+    /**
+     * @param string|null $count Quantity in Possession
+     * @return BigItem
+     */
 	public function withCount(?string $count): BigItem {
 		$this->count = $count;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return BigItem
+     */
 	public function withCreatedAt(?int $createdAt): BigItem {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return BigItem
+     */
 	public function withUpdatedAt(?int $updatedAt): BigItem {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return BigItem
+     */
 	public function withRevision(?int $revision): BigItem {
 		$this->revision = $revision;
 		return $this;

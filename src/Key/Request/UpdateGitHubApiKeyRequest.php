@@ -19,63 +19,98 @@ namespace Gs2\Key\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for updateGitHubApiKey: Update GitHub API Key
+ *
+ * @see https://docs.gs2.io/api_reference/key/sdk/#updategithubapikey
+ */
 class UpdateGitHubApiKeyRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string GitHub API Key name */
     private $apiKeyName;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var string */
+    /** @var string API Key */
     private $apiKey;
-    /** @var string */
+    /** @var string Encryption Key name */
     private $encryptionKeyName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UpdateGitHubApiKeyRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UpdateGitHubApiKeyRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null GitHub API Key name */
 	public function getApiKeyName(): ?string {
 		return $this->apiKeyName;
 	}
+    /** @param string|null $apiKeyName GitHub API Key name */
 	public function setApiKeyName(?string $apiKeyName) {
 		$this->apiKeyName = $apiKeyName;
 	}
+    /**
+     * @param string|null $apiKeyName GitHub API Key name
+     * @return UpdateGitHubApiKeyRequest
+     */
 	public function withApiKeyName(?string $apiKeyName): UpdateGitHubApiKeyRequest {
 		$this->apiKeyName = $apiKeyName;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return UpdateGitHubApiKeyRequest
+     */
 	public function withDescription(?string $description): UpdateGitHubApiKeyRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null API Key */
 	public function getApiKey(): ?string {
 		return $this->apiKey;
 	}
+    /** @param string|null $apiKey API Key */
 	public function setApiKey(?string $apiKey) {
 		$this->apiKey = $apiKey;
 	}
+    /**
+     * @param string|null $apiKey API Key
+     * @return UpdateGitHubApiKeyRequest
+     */
 	public function withApiKey(?string $apiKey): UpdateGitHubApiKeyRequest {
 		$this->apiKey = $apiKey;
 		return $this;
 	}
+    /** @return string|null Encryption Key name */
 	public function getEncryptionKeyName(): ?string {
 		return $this->encryptionKeyName;
 	}
+    /** @param string|null $encryptionKeyName Encryption Key name */
 	public function setEncryptionKeyName(?string $encryptionKeyName) {
 		$this->encryptionKeyName = $encryptionKeyName;
 	}
+    /**
+     * @param string|null $encryptionKeyName Encryption Key name
+     * @return UpdateGitHubApiKeyRequest
+     */
 	public function withEncryptionKeyName(?string $encryptionKeyName): UpdateGitHubApiKeyRequest {
 		$this->encryptionKeyName = $encryptionKeyName;
 		return $this;

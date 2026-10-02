@@ -19,27 +19,44 @@ namespace Gs2\Inventory\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for describeItemModels: List Item Models
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#describeitemmodels
+ */
 class DescribeItemModelsRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Inventory Model name */
     private $inventoryName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DescribeItemModelsRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DescribeItemModelsRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Inventory Model name */
 	public function getInventoryName(): ?string {
 		return $this->inventoryName;
 	}
+    /** @param string|null $inventoryName Inventory Model name */
 	public function setInventoryName(?string $inventoryName) {
 		$this->inventoryName = $inventoryName;
 	}
+    /**
+     * @param string|null $inventoryName Inventory Model name
+     * @return DescribeItemModelsRequest
+     */
 	public function withInventoryName(?string $inventoryName): DescribeItemModelsRequest {
 		$this->inventoryName = $inventoryName;
 		return $this;

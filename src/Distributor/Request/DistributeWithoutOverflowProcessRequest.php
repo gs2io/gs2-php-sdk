@@ -20,41 +20,64 @@ namespace Gs2\Distributor\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Distributor\Model\DistributeResource;
 
+/**
+ * Request for distributeWithoutOverflowProcess: Distribute possessions (no bailout in case of overflow)
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#distributewithoutoverflowprocess
+ */
 class DistributeWithoutOverflowProcessRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var DistributeResource */
+    /** @var DistributeResource Resources to be added */
     private $distributeResource;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return DistributeWithoutOverflowProcessRequest
+     */
 	public function withUserId(?string $userId): DistributeWithoutOverflowProcessRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return DistributeResource|null Resources to be added */
 	public function getDistributeResource(): ?DistributeResource {
 		return $this->distributeResource;
 	}
+    /** @param DistributeResource|null $distributeResource Resources to be added */
 	public function setDistributeResource(?DistributeResource $distributeResource) {
 		$this->distributeResource = $distributeResource;
 	}
+    /**
+     * @param DistributeResource|null $distributeResource Resources to be added
+     * @return DistributeWithoutOverflowProcessRequest
+     */
 	public function withDistributeResource(?DistributeResource $distributeResource): DistributeWithoutOverflowProcessRequest {
 		$this->distributeResource = $distributeResource;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return DistributeWithoutOverflowProcessRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): DistributeWithoutOverflowProcessRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

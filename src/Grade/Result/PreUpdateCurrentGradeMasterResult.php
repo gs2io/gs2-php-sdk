@@ -19,33 +19,50 @@ namespace Gs2\Grade\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of preUpdateCurrentGradeMaster: Update currently active Grade Model master data (3-phase version)
+ *
+ * @see https://docs.gs2.io/api_reference/grade/sdk/#preupdatecurrentgrademaster
+ */
 class PreUpdateCurrentGradeMasterResult implements IResult {
-    /** @var string */
+    /** @var string Token used to reflect results after upload */
     private $uploadToken;
-    /** @var string */
+    /** @var string URL used to upload */
     private $uploadUrl;
 
+    /** @return string|null Token used to reflect results after upload */
 	public function getUploadToken(): ?string {
 		return $this->uploadToken;
 	}
 
+    /** @param string|null $uploadToken Token used to reflect results after upload */
 	public function setUploadToken(?string $uploadToken) {
 		$this->uploadToken = $uploadToken;
 	}
 
+    /**
+     * @param string|null $uploadToken Token used to reflect results after upload
+     * @return PreUpdateCurrentGradeMasterResult
+     */
 	public function withUploadToken(?string $uploadToken): PreUpdateCurrentGradeMasterResult {
 		$this->uploadToken = $uploadToken;
 		return $this;
 	}
 
+    /** @return string|null URL used to upload */
 	public function getUploadUrl(): ?string {
 		return $this->uploadUrl;
 	}
 
+    /** @param string|null $uploadUrl URL used to upload */
 	public function setUploadUrl(?string $uploadUrl) {
 		$this->uploadUrl = $uploadUrl;
 	}
 
+    /**
+     * @param string|null $uploadUrl URL used to upload
+     * @return PreUpdateCurrentGradeMasterResult
+     */
 	public function withUploadUrl(?string $uploadUrl): PreUpdateCurrentGradeMasterResult {
 		$this->uploadUrl = $uploadUrl;
 		return $this;

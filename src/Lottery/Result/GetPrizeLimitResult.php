@@ -20,18 +20,29 @@ namespace Gs2\Lottery\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Lottery\Model\PrizeLimit;
 
+/**
+ * Result of getPrizeLimit: Get Prize Limit
+ *
+ * @see https://docs.gs2.io/api_reference/lottery/sdk/#getprizelimit
+ */
 class GetPrizeLimitResult implements IResult {
-    /** @var PrizeLimit */
+    /** @var PrizeLimit Prize Limit */
     private $item;
 
+    /** @return PrizeLimit|null Prize Limit */
 	public function getItem(): ?PrizeLimit {
 		return $this->item;
 	}
 
+    /** @param PrizeLimit|null $item Prize Limit */
 	public function setItem(?PrizeLimit $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param PrizeLimit|null $item Prize Limit
+     * @return GetPrizeLimitResult
+     */
 	public function withItem(?PrizeLimit $item): GetPrizeLimitResult {
 		$this->item = $item;
 		return $this;

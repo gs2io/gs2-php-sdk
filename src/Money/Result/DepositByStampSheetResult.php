@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Money\Model\WalletDetail;
 use Gs2\Money\Model\Wallet;
 
+/**
+ * Result of depositByStampSheet: Execute balance addition to wallet as an acquire action
+ *
+ * @see https://docs.gs2.io/api_reference/money/stamp_sheet/#gs2moneydepositbyuserid
+ */
 class DepositByStampSheetResult implements IResult {
-    /** @var Wallet */
+    /** @var Wallet Wallet after deposit */
     private $item;
 
+    /** @return Wallet|null Wallet after deposit */
 	public function getItem(): ?Wallet {
 		return $this->item;
 	}
 
+    /** @param Wallet|null $item Wallet after deposit */
 	public function setItem(?Wallet $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Wallet|null $item Wallet after deposit
+     * @return DepositByStampSheetResult
+     */
 	public function withItem(?Wallet $item): DepositByStampSheetResult {
 		$this->item = $item;
 		return $this;

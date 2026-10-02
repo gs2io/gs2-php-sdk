@@ -19,27 +19,44 @@ namespace Gs2\Script\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getScript: Get Script
+ *
+ * @see https://docs.gs2.io/api_reference/script/sdk/#getscript
+ */
 class GetScriptRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Script name */
     private $scriptName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetScriptRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetScriptRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Script name */
 	public function getScriptName(): ?string {
 		return $this->scriptName;
 	}
+    /** @param string|null $scriptName Script name */
 	public function setScriptName(?string $scriptName) {
 		$this->scriptName = $scriptName;
 	}
+    /**
+     * @param string|null $scriptName Script name
+     * @return GetScriptRequest
+     */
 	public function withScriptName(?string $scriptName): GetScriptRequest {
 		$this->scriptName = $scriptName;
 		return $this;

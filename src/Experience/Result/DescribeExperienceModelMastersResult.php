@@ -21,33 +21,50 @@ use Gs2\Core\Model\IResult;
 use Gs2\Experience\Model\AcquireActionRate;
 use Gs2\Experience\Model\ExperienceModelMaster;
 
+/**
+ * Result of describeExperienceModelMasters: List Experience Model Masters
+ *
+ * @see https://docs.gs2.io/api_reference/experience/sdk/#describeexperiencemodelmasters
+ */
 class DescribeExperienceModelMastersResult implements IResult {
-    /** @var array */
+    /** @var array List of Experience Model Masters */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Experience Model Masters */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Experience Model Masters */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Experience Model Masters
+     * @return DescribeExperienceModelMastersResult
+     */
 	public function withItems(?array $items): DescribeExperienceModelMastersResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeExperienceModelMastersResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeExperienceModelMastersResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

@@ -3995,25 +3995,22 @@ class GetPublicProfileTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 Friend API クライアント
+ * GS2-Friend API client
  *
- * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/friend/sdk/
  */
 class Gs2FriendRestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#describenamespaces
      */
     public function describeNamespacesAsync(
             DescribeNamespacesRequest $request
@@ -4027,8 +4024,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#describenamespaces
      */
     public function describeNamespaces (
             DescribeNamespacesRequest $request
@@ -4039,8 +4039,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#createnamespace
      */
     public function createNamespaceAsync(
             CreateNamespaceRequest $request
@@ -4054,8 +4057,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#createnamespace
      */
     public function createNamespace (
             CreateNamespaceRequest $request
@@ -4066,8 +4072,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#getnamespacestatus
      */
     public function getNamespaceStatusAsync(
             GetNamespaceStatusRequest $request
@@ -4081,8 +4090,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#getnamespacestatus
      */
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
@@ -4093,8 +4105,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#getnamespace
      */
     public function getNamespaceAsync(
             GetNamespaceRequest $request
@@ -4108,8 +4123,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#getnamespace
      */
     public function getNamespace (
             GetNamespaceRequest $request
@@ -4120,8 +4138,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#updatenamespace
      */
     public function updateNamespaceAsync(
             UpdateNamespaceRequest $request
@@ -4135,8 +4156,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#updatenamespace
      */
     public function updateNamespace (
             UpdateNamespaceRequest $request
@@ -4147,8 +4171,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#deletenamespace
      */
     public function deleteNamespaceAsync(
             DeleteNamespaceRequest $request
@@ -4162,8 +4189,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#deletenamespace
      */
     public function deleteNamespace (
             DeleteNamespaceRequest $request
@@ -4174,8 +4204,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get microservice version
+     *
      * @param GetServiceVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#getserviceversion
      */
     public function getServiceVersionAsync(
             GetServiceVersionRequest $request
@@ -4189,8 +4222,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get microservice version
+     *
      * @param GetServiceVersionRequest $request
      * @return GetServiceVersionResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#getserviceversion
      */
     public function getServiceVersion (
             GetServiceVersionRequest $request
@@ -4201,8 +4237,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserIdAsync(
             DumpUserDataByUserIdRequest $request
@@ -4216,8 +4255,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return DumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserId (
             DumpUserDataByUserIdRequest $request
@@ -4228,8 +4270,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserIdAsync(
             CheckDumpUserDataByUserIdRequest $request
@@ -4243,8 +4288,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return CheckDumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserId (
             CheckDumpUserDataByUserIdRequest $request
@@ -4255,8 +4303,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserIdAsync(
             CleanUserDataByUserIdRequest $request
@@ -4270,8 +4321,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return CleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserId (
             CleanUserDataByUserIdRequest $request
@@ -4282,8 +4336,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserIdAsync(
             CheckCleanUserDataByUserIdRequest $request
@@ -4297,8 +4354,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return CheckCleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserId (
             CheckCleanUserDataByUserIdRequest $request
@@ -4309,8 +4369,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserIdAsync(
             PrepareImportUserDataByUserIdRequest $request
@@ -4324,8 +4387,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PrepareImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserId (
             PrepareImportUserDataByUserIdRequest $request
@@ -4336,8 +4402,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserIdAsync(
             ImportUserDataByUserIdRequest $request
@@ -4351,8 +4420,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return ImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserId (
             ImportUserDataByUserIdRequest $request
@@ -4363,8 +4435,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserIdAsync(
             CheckImportUserDataByUserIdRequest $request
@@ -4378,8 +4453,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return CheckImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserId (
             CheckImportUserDataByUserIdRequest $request
@@ -4390,8 +4468,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get profile
+     *
      * @param GetProfileRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#getprofile
      */
     public function getProfileAsync(
             GetProfileRequest $request
@@ -4405,8 +4486,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get profile
+     *
      * @param GetProfileRequest $request
      * @return GetProfileResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#getprofile
      */
     public function getProfile (
             GetProfileRequest $request
@@ -4417,8 +4501,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get profile by User ID
+     *
      * @param GetProfileByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#getprofilebyuserid
      */
     public function getProfileByUserIdAsync(
             GetProfileByUserIdRequest $request
@@ -4432,8 +4519,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get profile by User ID
+     *
      * @param GetProfileByUserIdRequest $request
      * @return GetProfileByUserIdResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#getprofilebyuserid
      */
     public function getProfileByUserId (
             GetProfileByUserIdRequest $request
@@ -4444,8 +4534,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update profile
+     *
      * @param UpdateProfileRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#updateprofile
      */
     public function updateProfileAsync(
             UpdateProfileRequest $request
@@ -4459,8 +4552,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update profile
+     *
      * @param UpdateProfileRequest $request
      * @return UpdateProfileResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#updateprofile
      */
     public function updateProfile (
             UpdateProfileRequest $request
@@ -4471,8 +4567,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update profile by User ID
+     *
      * @param UpdateProfileByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#updateprofilebyuserid
      */
     public function updateProfileByUserIdAsync(
             UpdateProfileByUserIdRequest $request
@@ -4486,8 +4585,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update profile by User ID
+     *
      * @param UpdateProfileByUserIdRequest $request
      * @return UpdateProfileByUserIdResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#updateprofilebyuserid
      */
     public function updateProfileByUserId (
             UpdateProfileByUserIdRequest $request
@@ -4498,8 +4600,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete profile
+     *
      * @param DeleteProfileByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#deleteprofilebyuserid
      */
     public function deleteProfileByUserIdAsync(
             DeleteProfileByUserIdRequest $request
@@ -4513,8 +4618,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete profile
+     *
      * @param DeleteProfileByUserIdRequest $request
      * @return DeleteProfileByUserIdResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#deleteprofilebyuserid
      */
     public function deleteProfileByUserId (
             DeleteProfileByUserIdRequest $request
@@ -4525,8 +4633,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update profile via transaction
+     *
      * @param UpdateProfileByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/stamp_sheet/#gs2friendupdateprofilebyuserid
      */
     public function updateProfileByStampSheetAsync(
             UpdateProfileByStampSheetRequest $request
@@ -4540,8 +4651,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update profile via transaction
+     *
      * @param UpdateProfileByStampSheetRequest $request
      * @return UpdateProfileByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/friend/stamp_sheet/#gs2friendupdateprofilebyuserid
      */
     public function updateProfileByStampSheet (
             UpdateProfileByStampSheetRequest $request
@@ -4552,8 +4666,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Friends
+     *
      * @param DescribeFriendsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#describefriends
      */
     public function describeFriendsAsync(
             DescribeFriendsRequest $request
@@ -4567,8 +4684,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Friends
+     *
      * @param DescribeFriendsRequest $request
      * @return DescribeFriendsResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#describefriends
      */
     public function describeFriends (
             DescribeFriendsRequest $request
@@ -4579,8 +4699,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Friends by User ID
+     *
      * @param DescribeFriendsByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#describefriendsbyuserid
      */
     public function describeFriendsByUserIdAsync(
             DescribeFriendsByUserIdRequest $request
@@ -4594,8 +4717,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Friends by User ID
+     *
      * @param DescribeFriendsByUserIdRequest $request
      * @return DescribeFriendsByUserIdResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#describefriendsbyuserid
      */
     public function describeFriendsByUserId (
             DescribeFriendsByUserIdRequest $request
@@ -4606,8 +4732,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get blacklist
+     *
      * @param DescribeBlackListRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#describeblacklist
      */
     public function describeBlackListAsync(
             DescribeBlackListRequest $request
@@ -4621,8 +4750,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get blacklist
+     *
      * @param DescribeBlackListRequest $request
      * @return DescribeBlackListResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#describeblacklist
      */
     public function describeBlackList (
             DescribeBlackListRequest $request
@@ -4633,8 +4765,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Blacklist by User ID
+     *
      * @param DescribeBlackListByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#describeblacklistbyuserid
      */
     public function describeBlackListByUserIdAsync(
             DescribeBlackListByUserIdRequest $request
@@ -4648,8 +4783,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Blacklist by User ID
+     *
      * @param DescribeBlackListByUserIdRequest $request
      * @return DescribeBlackListByUserIdResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#describeblacklistbyuserid
      */
     public function describeBlackListByUserId (
             DescribeBlackListByUserIdRequest $request
@@ -4660,8 +4798,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Add to blacklist
+     *
      * @param RegisterBlackListRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#registerblacklist
      */
     public function registerBlackListAsync(
             RegisterBlackListRequest $request
@@ -4675,8 +4816,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Add to blacklist
+     *
      * @param RegisterBlackListRequest $request
      * @return RegisterBlackListResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#registerblacklist
      */
     public function registerBlackList (
             RegisterBlackListRequest $request
@@ -4687,8 +4831,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Add to blacklist by User ID
+     *
      * @param RegisterBlackListByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#registerblacklistbyuserid
      */
     public function registerBlackListByUserIdAsync(
             RegisterBlackListByUserIdRequest $request
@@ -4702,8 +4849,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Add to blacklist by User ID
+     *
      * @param RegisterBlackListByUserIdRequest $request
      * @return RegisterBlackListByUserIdResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#registerblacklistbyuserid
      */
     public function registerBlackListByUserId (
             RegisterBlackListByUserIdRequest $request
@@ -4714,8 +4864,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Remove a user from blacklist
+     *
      * @param UnregisterBlackListRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#unregisterblacklist
      */
     public function unregisterBlackListAsync(
             UnregisterBlackListRequest $request
@@ -4729,8 +4882,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Remove a user from blacklist
+     *
      * @param UnregisterBlackListRequest $request
      * @return UnregisterBlackListResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#unregisterblacklist
      */
     public function unregisterBlackList (
             UnregisterBlackListRequest $request
@@ -4741,8 +4897,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Remove a user from the blacklist by User ID
+     *
      * @param UnregisterBlackListByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#unregisterblacklistbyuserid
      */
     public function unregisterBlackListByUserIdAsync(
             UnregisterBlackListByUserIdRequest $request
@@ -4756,8 +4915,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Remove a user from the blacklist by User ID
+     *
      * @param UnregisterBlackListByUserIdRequest $request
      * @return UnregisterBlackListByUserIdResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#unregisterblacklistbyuserid
      */
     public function unregisterBlackListByUserId (
             UnregisterBlackListByUserIdRequest $request
@@ -4768,8 +4930,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List followed users
+     *
      * @param DescribeFollowsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#describefollows
      */
     public function describeFollowsAsync(
             DescribeFollowsRequest $request
@@ -4783,8 +4948,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List followed users
+     *
      * @param DescribeFollowsRequest $request
      * @return DescribeFollowsResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#describefollows
      */
     public function describeFollows (
             DescribeFollowsRequest $request
@@ -4795,8 +4963,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List followed users by User ID
+     *
      * @param DescribeFollowsByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#describefollowsbyuserid
      */
     public function describeFollowsByUserIdAsync(
             DescribeFollowsByUserIdRequest $request
@@ -4810,8 +4981,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List followed users by User ID
+     *
      * @param DescribeFollowsByUserIdRequest $request
      * @return DescribeFollowsByUserIdResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#describefollowsbyuserid
      */
     public function describeFollowsByUserId (
             DescribeFollowsByUserIdRequest $request
@@ -4822,8 +4996,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get a followed user
+     *
      * @param GetFollowRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#getfollow
      */
     public function getFollowAsync(
             GetFollowRequest $request
@@ -4837,8 +5014,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get a followed user
+     *
      * @param GetFollowRequest $request
      * @return GetFollowResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#getfollow
      */
     public function getFollow (
             GetFollowRequest $request
@@ -4849,8 +5029,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get a followed user by User ID
+     *
      * @param GetFollowByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#getfollowbyuserid
      */
     public function getFollowByUserIdAsync(
             GetFollowByUserIdRequest $request
@@ -4864,8 +5047,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get a followed user by User ID
+     *
      * @param GetFollowByUserIdRequest $request
      * @return GetFollowByUserIdResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#getfollowbyuserid
      */
     public function getFollowByUserId (
             GetFollowByUserIdRequest $request
@@ -4876,8 +5062,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Follow a user
+     *
      * @param FollowRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#follow-1
      */
     public function followAsync(
             FollowRequest $request
@@ -4891,8 +5080,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Follow a user
+     *
      * @param FollowRequest $request
      * @return FollowResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#follow-1
      */
     public function follow (
             FollowRequest $request
@@ -4903,8 +5095,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Follow a user by User ID
+     *
      * @param FollowByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#followbyuserid
      */
     public function followByUserIdAsync(
             FollowByUserIdRequest $request
@@ -4918,8 +5113,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Follow a user by User ID
+     *
      * @param FollowByUserIdRequest $request
      * @return FollowByUserIdResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#followbyuserid
      */
     public function followByUserId (
             FollowByUserIdRequest $request
@@ -4930,8 +5128,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Unfollow a user
+     *
      * @param UnfollowRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#unfollow
      */
     public function unfollowAsync(
             UnfollowRequest $request
@@ -4945,8 +5146,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Unfollow a user
+     *
      * @param UnfollowRequest $request
      * @return UnfollowResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#unfollow
      */
     public function unfollow (
             UnfollowRequest $request
@@ -4957,8 +5161,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Unfollow a user by User ID
+     *
      * @param UnfollowByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#unfollowbyuserid
      */
     public function unfollowByUserIdAsync(
             UnfollowByUserIdRequest $request
@@ -4972,8 +5179,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Unfollow a user by User ID
+     *
      * @param UnfollowByUserIdRequest $request
      * @return UnfollowByUserIdResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#unfollowbyuserid
      */
     public function unfollowByUserId (
             UnfollowByUserIdRequest $request
@@ -4984,8 +5194,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get a friend
+     *
      * @param GetFriendRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#getfriend
      */
     public function getFriendAsync(
             GetFriendRequest $request
@@ -4999,8 +5212,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get a friend
+     *
      * @param GetFriendRequest $request
      * @return GetFriendResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#getfriend
      */
     public function getFriend (
             GetFriendRequest $request
@@ -5011,8 +5227,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get a friend by User ID
+     *
      * @param GetFriendByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#getfriendbyuserid
      */
     public function getFriendByUserIdAsync(
             GetFriendByUserIdRequest $request
@@ -5026,8 +5245,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get a friend by User ID
+     *
      * @param GetFriendByUserIdRequest $request
      * @return GetFriendByUserIdResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#getfriendbyuserid
      */
     public function getFriendByUserId (
             GetFriendByUserIdRequest $request
@@ -5038,8 +5260,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Add friend
+     *
      * @param AddFriendRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#addfriend
      */
     public function addFriendAsync(
             AddFriendRequest $request
@@ -5053,8 +5278,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Add friend
+     *
      * @param AddFriendRequest $request
      * @return AddFriendResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#addfriend
      */
     public function addFriend (
             AddFriendRequest $request
@@ -5065,8 +5293,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Add friend by User ID
+     *
      * @param AddFriendByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#addfriendbyuserid
      */
     public function addFriendByUserIdAsync(
             AddFriendByUserIdRequest $request
@@ -5080,8 +5311,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Add friend by User ID
+     *
      * @param AddFriendByUserIdRequest $request
      * @return AddFriendByUserIdResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#addfriendbyuserid
      */
     public function addFriendByUserId (
             AddFriendByUserIdRequest $request
@@ -5092,8 +5326,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete friend
+     *
      * @param DeleteFriendRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#deletefriend
      */
     public function deleteFriendAsync(
             DeleteFriendRequest $request
@@ -5107,8 +5344,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete friend
+     *
      * @param DeleteFriendRequest $request
      * @return DeleteFriendResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#deletefriend
      */
     public function deleteFriend (
             DeleteFriendRequest $request
@@ -5119,8 +5359,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete friend by User ID
+     *
      * @param DeleteFriendByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#deletefriendbyuserid
      */
     public function deleteFriendByUserIdAsync(
             DeleteFriendByUserIdRequest $request
@@ -5134,8 +5377,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete friend by User ID
+     *
      * @param DeleteFriendByUserIdRequest $request
      * @return DeleteFriendByUserIdResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#deletefriendbyuserid
      */
     public function deleteFriendByUserId (
             DeleteFriendByUserIdRequest $request
@@ -5146,8 +5392,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List sent friend requests
+     *
      * @param DescribeSendRequestsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#describesendrequests
      */
     public function describeSendRequestsAsync(
             DescribeSendRequestsRequest $request
@@ -5161,8 +5410,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List sent friend requests
+     *
      * @param DescribeSendRequestsRequest $request
      * @return DescribeSendRequestsResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#describesendrequests
      */
     public function describeSendRequests (
             DescribeSendRequestsRequest $request
@@ -5173,8 +5425,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List sent friend requests by User ID
+     *
      * @param DescribeSendRequestsByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#describesendrequestsbyuserid
      */
     public function describeSendRequestsByUserIdAsync(
             DescribeSendRequestsByUserIdRequest $request
@@ -5188,8 +5443,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List sent friend requests by User ID
+     *
      * @param DescribeSendRequestsByUserIdRequest $request
      * @return DescribeSendRequestsByUserIdResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#describesendrequestsbyuserid
      */
     public function describeSendRequestsByUserId (
             DescribeSendRequestsByUserIdRequest $request
@@ -5200,8 +5458,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get a sent friend request
+     *
      * @param GetSendRequestRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#getsendrequest
      */
     public function getSendRequestAsync(
             GetSendRequestRequest $request
@@ -5215,8 +5476,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get a sent friend request
+     *
      * @param GetSendRequestRequest $request
      * @return GetSendRequestResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#getsendrequest
      */
     public function getSendRequest (
             GetSendRequestRequest $request
@@ -5227,8 +5491,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get a sent friend request by User ID
+     *
      * @param GetSendRequestByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#getsendrequestbyuserid
      */
     public function getSendRequestByUserIdAsync(
             GetSendRequestByUserIdRequest $request
@@ -5242,8 +5509,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get a sent friend request by User ID
+     *
      * @param GetSendRequestByUserIdRequest $request
      * @return GetSendRequestByUserIdResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#getsendrequestbyuserid
      */
     public function getSendRequestByUserId (
             GetSendRequestByUserIdRequest $request
@@ -5254,8 +5524,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Send a friend request
+     *
      * @param SendRequestRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#sendrequest
      */
     public function sendRequestAsync(
             SendRequestRequest $request
@@ -5269,8 +5542,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Send a friend request
+     *
      * @param SendRequestRequest $request
      * @return SendRequestResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#sendrequest
      */
     public function sendRequest (
             SendRequestRequest $request
@@ -5281,8 +5557,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Send a friend request by User ID
+     *
      * @param SendRequestByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#sendrequestbyuserid
      */
     public function sendRequestByUserIdAsync(
             SendRequestByUserIdRequest $request
@@ -5296,8 +5575,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Send a friend request by User ID
+     *
      * @param SendRequestByUserIdRequest $request
      * @return SendRequestByUserIdResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#sendrequestbyuserid
      */
     public function sendRequestByUserId (
             SendRequestByUserIdRequest $request
@@ -5308,8 +5590,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Cancel a sent friend request
+     *
      * @param DeleteRequestRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#deleterequest
      */
     public function deleteRequestAsync(
             DeleteRequestRequest $request
@@ -5323,8 +5608,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Cancel a sent friend request
+     *
      * @param DeleteRequestRequest $request
      * @return DeleteRequestResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#deleterequest
      */
     public function deleteRequest (
             DeleteRequestRequest $request
@@ -5335,8 +5623,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Cancel a sent friend request by User ID
+     *
      * @param DeleteRequestByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#deleterequestbyuserid
      */
     public function deleteRequestByUserIdAsync(
             DeleteRequestByUserIdRequest $request
@@ -5350,8 +5641,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Cancel a sent friend request by User ID
+     *
      * @param DeleteRequestByUserIdRequest $request
      * @return DeleteRequestByUserIdResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#deleterequestbyuserid
      */
     public function deleteRequestByUserId (
             DeleteRequestByUserIdRequest $request
@@ -5362,8 +5656,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List received friend requests
+     *
      * @param DescribeReceiveRequestsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#describereceiverequests
      */
     public function describeReceiveRequestsAsync(
             DescribeReceiveRequestsRequest $request
@@ -5377,8 +5674,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List received friend requests
+     *
      * @param DescribeReceiveRequestsRequest $request
      * @return DescribeReceiveRequestsResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#describereceiverequests
      */
     public function describeReceiveRequests (
             DescribeReceiveRequestsRequest $request
@@ -5389,8 +5689,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List received friend requests by User ID
+     *
      * @param DescribeReceiveRequestsByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#describereceiverequestsbyuserid
      */
     public function describeReceiveRequestsByUserIdAsync(
             DescribeReceiveRequestsByUserIdRequest $request
@@ -5404,8 +5707,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List received friend requests by User ID
+     *
      * @param DescribeReceiveRequestsByUserIdRequest $request
      * @return DescribeReceiveRequestsByUserIdResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#describereceiverequestsbyuserid
      */
     public function describeReceiveRequestsByUserId (
             DescribeReceiveRequestsByUserIdRequest $request
@@ -5416,8 +5722,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get a received friend request
+     *
      * @param GetReceiveRequestRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#getreceiverequest
      */
     public function getReceiveRequestAsync(
             GetReceiveRequestRequest $request
@@ -5431,8 +5740,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get a received friend request
+     *
      * @param GetReceiveRequestRequest $request
      * @return GetReceiveRequestResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#getreceiverequest
      */
     public function getReceiveRequest (
             GetReceiveRequestRequest $request
@@ -5443,8 +5755,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get a received friend request by User ID
+     *
      * @param GetReceiveRequestByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#getreceiverequestbyuserid
      */
     public function getReceiveRequestByUserIdAsync(
             GetReceiveRequestByUserIdRequest $request
@@ -5458,8 +5773,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get a received friend request by User ID
+     *
      * @param GetReceiveRequestByUserIdRequest $request
      * @return GetReceiveRequestByUserIdResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#getreceiverequestbyuserid
      */
     public function getReceiveRequestByUserId (
             GetReceiveRequestByUserIdRequest $request
@@ -5470,8 +5788,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Accept friend request
+     *
      * @param AcceptRequestRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#acceptrequest
      */
     public function acceptRequestAsync(
             AcceptRequestRequest $request
@@ -5485,8 +5806,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Accept friend request
+     *
      * @param AcceptRequestRequest $request
      * @return AcceptRequestResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#acceptrequest
      */
     public function acceptRequest (
             AcceptRequestRequest $request
@@ -5497,8 +5821,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Accept friend request by User ID
+     *
      * @param AcceptRequestByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#acceptrequestbyuserid
      */
     public function acceptRequestByUserIdAsync(
             AcceptRequestByUserIdRequest $request
@@ -5512,8 +5839,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Accept friend request by User ID
+     *
      * @param AcceptRequestByUserIdRequest $request
      * @return AcceptRequestByUserIdResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#acceptrequestbyuserid
      */
     public function acceptRequestByUserId (
             AcceptRequestByUserIdRequest $request
@@ -5524,8 +5854,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Reject friend request
+     *
      * @param RejectRequestRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#rejectrequest
      */
     public function rejectRequestAsync(
             RejectRequestRequest $request
@@ -5539,8 +5872,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Reject friend request
+     *
      * @param RejectRequestRequest $request
      * @return RejectRequestResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#rejectrequest
      */
     public function rejectRequest (
             RejectRequestRequest $request
@@ -5551,8 +5887,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Reject friend request by User ID
+     *
      * @param RejectRequestByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#rejectrequestbyuserid
      */
     public function rejectRequestByUserIdAsync(
             RejectRequestByUserIdRequest $request
@@ -5566,8 +5905,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Reject friend request by User ID
+     *
      * @param RejectRequestByUserIdRequest $request
      * @return RejectRequestByUserIdResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#rejectrequestbyuserid
      */
     public function rejectRequestByUserId (
             RejectRequestByUserIdRequest $request
@@ -5578,8 +5920,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get public profile
+     *
      * @param GetPublicProfileRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#getpublicprofile
      */
     public function getPublicProfileAsync(
             GetPublicProfileRequest $request
@@ -5593,8 +5938,11 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get public profile
+     *
      * @param GetPublicProfileRequest $request
      * @return GetPublicProfileResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#getpublicprofile
      */
     public function getPublicProfile (
             GetPublicProfileRequest $request

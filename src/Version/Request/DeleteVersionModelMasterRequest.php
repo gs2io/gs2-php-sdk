@@ -19,27 +19,44 @@ namespace Gs2\Version\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for deleteVersionModelMaster: Delete Version Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/version/sdk/#deleteversionmodelmaster
+ */
 class DeleteVersionModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Version Model name */
     private $versionName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DeleteVersionModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DeleteVersionModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Version Model name */
 	public function getVersionName(): ?string {
 		return $this->versionName;
 	}
+    /** @param string|null $versionName Version Model name */
 	public function setVersionName(?string $versionName) {
 		$this->versionName = $versionName;
 	}
+    /**
+     * @param string|null $versionName Version Model name
+     * @return DeleteVersionModelMasterRequest
+     */
 	public function withVersionName(?string $versionName): DeleteVersionModelMasterRequest {
 		$this->versionName = $versionName;
 		return $this;

@@ -19,39 +19,62 @@ namespace Gs2\Freeze\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for describeOutputs: List stage update progress outputs
+ *
+ * @see https://docs.gs2.io/api_reference/freeze/sdk/#describeoutputs
+ */
 class DescribeOutputsRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Stage name */
     private $stageName;
-    /** @var string */
+    /** @var string Token specifying the position from which to start acquiring data */
     private $pageToken;
-    /** @var int */
+    /** @var int Number of data items to retrieve */
     private $limit;
+    /** @return string|null Stage name */
 	public function getStageName(): ?string {
 		return $this->stageName;
 	}
+    /** @param string|null $stageName Stage name */
 	public function setStageName(?string $stageName) {
 		$this->stageName = $stageName;
 	}
+    /**
+     * @param string|null $stageName Stage name
+     * @return DescribeOutputsRequest
+     */
 	public function withStageName(?string $stageName): DescribeOutputsRequest {
 		$this->stageName = $stageName;
 		return $this;
 	}
+    /** @return string|null Token specifying the position from which to start acquiring data */
 	public function getPageToken(): ?string {
 		return $this->pageToken;
 	}
+    /** @param string|null $pageToken Token specifying the position from which to start acquiring data */
 	public function setPageToken(?string $pageToken) {
 		$this->pageToken = $pageToken;
 	}
+    /**
+     * @param string|null $pageToken Token specifying the position from which to start acquiring data
+     * @return DescribeOutputsRequest
+     */
 	public function withPageToken(?string $pageToken): DescribeOutputsRequest {
 		$this->pageToken = $pageToken;
 		return $this;
 	}
+    /** @return int|null Number of data items to retrieve */
 	public function getLimit(): ?int {
 		return $this->limit;
 	}
+    /** @param int|null $limit Number of data items to retrieve */
 	public function setLimit(?int $limit) {
 		$this->limit = $limit;
 	}
+    /**
+     * @param int|null $limit Number of data items to retrieve
+     * @return DescribeOutputsRequest
+     */
 	public function withLimit(?int $limit): DescribeOutputsRequest {
 		$this->limit = $limit;
 		return $this;

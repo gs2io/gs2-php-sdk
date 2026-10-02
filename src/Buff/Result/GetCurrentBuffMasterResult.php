@@ -20,18 +20,29 @@ namespace Gs2\Buff\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Buff\Model\CurrentBuffMaster;
 
+/**
+ * Result of getCurrentBuffMaster: Get master data of the currently active Buff Entry Models
+ *
+ * @see https://docs.gs2.io/api_reference/buff/sdk/#getcurrentbuffmaster
+ */
 class GetCurrentBuffMasterResult implements IResult {
-    /** @var CurrentBuffMaster */
+    /** @var CurrentBuffMaster Master data of the currently active Buff Entry Models */
     private $item;
 
+    /** @return CurrentBuffMaster|null Master data of the currently active Buff Entry Models */
 	public function getItem(): ?CurrentBuffMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentBuffMaster|null $item Master data of the currently active Buff Entry Models */
 	public function setItem(?CurrentBuffMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentBuffMaster|null $item Master data of the currently active Buff Entry Models
+     * @return GetCurrentBuffMasterResult
+     */
 	public function withItem(?CurrentBuffMaster $item): GetCurrentBuffMasterResult {
 		$this->item = $item;
 		return $this;

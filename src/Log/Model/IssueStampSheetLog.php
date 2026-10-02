@@ -20,115 +20,168 @@ namespace Gs2\Log\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Issued Transaction Log
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#issuestampsheetlog
+ */
 class IssueStampSheetLog implements IModel {
 	/**
-     * @var int
+     * @var int Timestamp
 	 */
 	private $timestamp;
 	/**
-     * @var string
+     * @var string Transaction ID
 	 */
 	private $transactionId;
 	/**
-     * @var string
+     * @var string Microservice Type
 	 */
 	private $service;
 	/**
-     * @var string
+     * @var string Microservice Method
 	 */
 	private $method;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var string
+     * @var string Acquire Action
 	 */
 	private $action;
 	/**
-     * @var string
+     * @var string Arguments
 	 */
 	private $args;
 	/**
-     * @var array
+     * @var array List of Consume Actions
 	 */
 	private $tasks;
+    /** @return int|null Timestamp */
 	public function getTimestamp(): ?int {
 		return $this->timestamp;
 	}
+    /** @param int|null $timestamp Timestamp */
 	public function setTimestamp(?int $timestamp) {
 		$this->timestamp = $timestamp;
 	}
+    /**
+     * @param int|null $timestamp Timestamp
+     * @return IssueStampSheetLog
+     */
 	public function withTimestamp(?int $timestamp): IssueStampSheetLog {
 		$this->timestamp = $timestamp;
 		return $this;
 	}
+    /** @return string|null Transaction ID */
 	public function getTransactionId(): ?string {
 		return $this->transactionId;
 	}
+    /** @param string|null $transactionId Transaction ID */
 	public function setTransactionId(?string $transactionId) {
 		$this->transactionId = $transactionId;
 	}
+    /**
+     * @param string|null $transactionId Transaction ID
+     * @return IssueStampSheetLog
+     */
 	public function withTransactionId(?string $transactionId): IssueStampSheetLog {
 		$this->transactionId = $transactionId;
 		return $this;
 	}
+    /** @return string|null Microservice Type */
 	public function getService(): ?string {
 		return $this->service;
 	}
+    /** @param string|null $service Microservice Type */
 	public function setService(?string $service) {
 		$this->service = $service;
 	}
+    /**
+     * @param string|null $service Microservice Type
+     * @return IssueStampSheetLog
+     */
 	public function withService(?string $service): IssueStampSheetLog {
 		$this->service = $service;
 		return $this;
 	}
+    /** @return string|null Microservice Method */
 	public function getMethod(): ?string {
 		return $this->method;
 	}
+    /** @param string|null $method Microservice Method */
 	public function setMethod(?string $method) {
 		$this->method = $method;
 	}
+    /**
+     * @param string|null $method Microservice Method
+     * @return IssueStampSheetLog
+     */
 	public function withMethod(?string $method): IssueStampSheetLog {
 		$this->method = $method;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return IssueStampSheetLog
+     */
 	public function withUserId(?string $userId): IssueStampSheetLog {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Acquire Action */
 	public function getAction(): ?string {
 		return $this->action;
 	}
+    /** @param string|null $action Acquire Action */
 	public function setAction(?string $action) {
 		$this->action = $action;
 	}
+    /**
+     * @param string|null $action Acquire Action
+     * @return IssueStampSheetLog
+     */
 	public function withAction(?string $action): IssueStampSheetLog {
 		$this->action = $action;
 		return $this;
 	}
+    /** @return string|null Arguments */
 	public function getArgs(): ?string {
 		return $this->args;
 	}
+    /** @param string|null $args Arguments */
 	public function setArgs(?string $args) {
 		$this->args = $args;
 	}
+    /**
+     * @param string|null $args Arguments
+     * @return IssueStampSheetLog
+     */
 	public function withArgs(?string $args): IssueStampSheetLog {
 		$this->args = $args;
 		return $this;
 	}
+    /** @return array|null List of Consume Actions */
 	public function getTasks(): ?array {
 		return $this->tasks;
 	}
+    /** @param array|null $tasks List of Consume Actions */
 	public function setTasks(?array $tasks) {
 		$this->tasks = $tasks;
 	}
+    /**
+     * @param array|null $tasks List of Consume Actions
+     * @return IssueStampSheetLog
+     */
 	public function withTasks(?array $tasks): IssueStampSheetLog {
 		$this->tasks = $tasks;
 		return $this;

@@ -20,65 +20,100 @@ namespace Gs2\Matchmaking\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Matchmaking\Model\AttributeRange;
 
+/**
+ * Request for updateGatheringByUserId: Update Gathering with User ID
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#updategatheringbyuserid
+ */
 class UpdateGatheringByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Gathering name */
     private $gatheringName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var array */
+    /** @var array Recruitment Requirements */
     private $attributeRanges;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UpdateGatheringByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UpdateGatheringByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Gathering name */
 	public function getGatheringName(): ?string {
 		return $this->gatheringName;
 	}
+    /** @param string|null $gatheringName Gathering name */
 	public function setGatheringName(?string $gatheringName) {
 		$this->gatheringName = $gatheringName;
 	}
+    /**
+     * @param string|null $gatheringName Gathering name
+     * @return UpdateGatheringByUserIdRequest
+     */
 	public function withGatheringName(?string $gatheringName): UpdateGatheringByUserIdRequest {
 		$this->gatheringName = $gatheringName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return UpdateGatheringByUserIdRequest
+     */
 	public function withUserId(?string $userId): UpdateGatheringByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return array|null Recruitment Requirements */
 	public function getAttributeRanges(): ?array {
 		return $this->attributeRanges;
 	}
+    /** @param array|null $attributeRanges Recruitment Requirements */
 	public function setAttributeRanges(?array $attributeRanges) {
 		$this->attributeRanges = $attributeRanges;
 	}
+    /**
+     * @param array|null $attributeRanges Recruitment Requirements
+     * @return UpdateGatheringByUserIdRequest
+     */
 	public function withAttributeRanges(?array $attributeRanges): UpdateGatheringByUserIdRequest {
 		$this->attributeRanges = $attributeRanges;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return UpdateGatheringByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): UpdateGatheringByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

@@ -20,33 +20,50 @@ namespace Gs2\Log\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Log\Model\Label;
 
+/**
+ * Result of describeLabelValues: Get list of label values for a specific metric
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#describelabelvalues
+ */
 class DescribeLabelValuesResult implements IResult {
-    /** @var array */
+    /** @var array List of Label Values */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Label Values */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Label Values */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Label Values
+     * @return DescribeLabelValuesResult
+     */
 	public function withItems(?array $items): DescribeLabelValuesResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeLabelValuesResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeLabelValuesResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

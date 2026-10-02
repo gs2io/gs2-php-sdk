@@ -19,51 +19,80 @@ namespace Gs2\Formation\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for describeMoldModelMasters: List Form Storage Area Masters
+ *
+ * @see https://docs.gs2.io/api_reference/formation/sdk/#describemoldmodelmasters
+ */
 class DescribeMoldModelMastersRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Filter by Form Storage Area name prefix */
     private $namePrefix;
-    /** @var string */
+    /** @var string Token specifying the position from which to start acquiring data */
     private $pageToken;
-    /** @var int */
+    /** @var int Number of data items to retrieve */
     private $limit;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DescribeMoldModelMastersRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DescribeMoldModelMastersRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Filter by Form Storage Area name prefix */
 	public function getNamePrefix(): ?string {
 		return $this->namePrefix;
 	}
+    /** @param string|null $namePrefix Filter by Form Storage Area name prefix */
 	public function setNamePrefix(?string $namePrefix) {
 		$this->namePrefix = $namePrefix;
 	}
+    /**
+     * @param string|null $namePrefix Filter by Form Storage Area name prefix
+     * @return DescribeMoldModelMastersRequest
+     */
 	public function withNamePrefix(?string $namePrefix): DescribeMoldModelMastersRequest {
 		$this->namePrefix = $namePrefix;
 		return $this;
 	}
+    /** @return string|null Token specifying the position from which to start acquiring data */
 	public function getPageToken(): ?string {
 		return $this->pageToken;
 	}
+    /** @param string|null $pageToken Token specifying the position from which to start acquiring data */
 	public function setPageToken(?string $pageToken) {
 		$this->pageToken = $pageToken;
 	}
+    /**
+     * @param string|null $pageToken Token specifying the position from which to start acquiring data
+     * @return DescribeMoldModelMastersRequest
+     */
 	public function withPageToken(?string $pageToken): DescribeMoldModelMastersRequest {
 		$this->pageToken = $pageToken;
 		return $this;
 	}
+    /** @return int|null Number of data items to retrieve */
 	public function getLimit(): ?int {
 		return $this->limit;
 	}
+    /** @param int|null $limit Number of data items to retrieve */
 	public function setLimit(?int $limit) {
 		$this->limit = $limit;
 	}
+    /**
+     * @param int|null $limit Number of data items to retrieve
+     * @return DescribeMoldModelMastersRequest
+     */
 	public function withLimit(?int $limit): DescribeMoldModelMastersRequest {
 		$this->limit = $limit;
 		return $this;

@@ -20,18 +20,29 @@ namespace Gs2\Quest\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Quest\Model\CurrentQuestMaster;
 
+/**
+ * Result of getCurrentQuestMaster: Get currently active Quest Model master data
+ *
+ * @see https://docs.gs2.io/api_reference/quest/sdk/#getcurrentquestmaster
+ */
 class GetCurrentQuestMasterResult implements IResult {
-    /** @var CurrentQuestMaster */
+    /** @var CurrentQuestMaster Currently active Quest Model master data */
     private $item;
 
+    /** @return CurrentQuestMaster|null Currently active Quest Model master data */
 	public function getItem(): ?CurrentQuestMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentQuestMaster|null $item Currently active Quest Model master data */
 	public function setItem(?CurrentQuestMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentQuestMaster|null $item Currently active Quest Model master data
+     * @return GetCurrentQuestMasterResult
+     */
 	public function withItem(?CurrentQuestMaster $item): GetCurrentQuestMasterResult {
 		$this->item = $item;
 		return $this;

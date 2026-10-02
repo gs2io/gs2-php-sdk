@@ -19,75 +19,116 @@ namespace Gs2\Money2\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for describeDailyTransactionHistoriesByCurrency: List daily transaction histories by specifying currency
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#describedailytransactionhistoriesbycurrency
+ */
 class DescribeDailyTransactionHistoriesByCurrencyRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Currency Code */
     private $currency;
-    /** @var int */
+    /** @var int Year */
     private $year;
-    /** @var int */
+    /** @var int Month */
     private $month;
-    /** @var string */
+    /** @var string Token specifying the position from which to start acquiring data */
     private $pageToken;
-    /** @var int */
+    /** @var int Number of data items to retrieve */
     private $limit;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DescribeDailyTransactionHistoriesByCurrencyRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DescribeDailyTransactionHistoriesByCurrencyRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Currency Code */
 	public function getCurrency(): ?string {
 		return $this->currency;
 	}
+    /** @param string|null $currency Currency Code */
 	public function setCurrency(?string $currency) {
 		$this->currency = $currency;
 	}
+    /**
+     * @param string|null $currency Currency Code
+     * @return DescribeDailyTransactionHistoriesByCurrencyRequest
+     */
 	public function withCurrency(?string $currency): DescribeDailyTransactionHistoriesByCurrencyRequest {
 		$this->currency = $currency;
 		return $this;
 	}
+    /** @return int|null Year */
 	public function getYear(): ?int {
 		return $this->year;
 	}
+    /** @param int|null $year Year */
 	public function setYear(?int $year) {
 		$this->year = $year;
 	}
+    /**
+     * @param int|null $year Year
+     * @return DescribeDailyTransactionHistoriesByCurrencyRequest
+     */
 	public function withYear(?int $year): DescribeDailyTransactionHistoriesByCurrencyRequest {
 		$this->year = $year;
 		return $this;
 	}
+    /** @return int|null Month */
 	public function getMonth(): ?int {
 		return $this->month;
 	}
+    /** @param int|null $month Month */
 	public function setMonth(?int $month) {
 		$this->month = $month;
 	}
+    /**
+     * @param int|null $month Month
+     * @return DescribeDailyTransactionHistoriesByCurrencyRequest
+     */
 	public function withMonth(?int $month): DescribeDailyTransactionHistoriesByCurrencyRequest {
 		$this->month = $month;
 		return $this;
 	}
+    /** @return string|null Token specifying the position from which to start acquiring data */
 	public function getPageToken(): ?string {
 		return $this->pageToken;
 	}
+    /** @param string|null $pageToken Token specifying the position from which to start acquiring data */
 	public function setPageToken(?string $pageToken) {
 		$this->pageToken = $pageToken;
 	}
+    /**
+     * @param string|null $pageToken Token specifying the position from which to start acquiring data
+     * @return DescribeDailyTransactionHistoriesByCurrencyRequest
+     */
 	public function withPageToken(?string $pageToken): DescribeDailyTransactionHistoriesByCurrencyRequest {
 		$this->pageToken = $pageToken;
 		return $this;
 	}
+    /** @return int|null Number of data items to retrieve */
 	public function getLimit(): ?int {
 		return $this->limit;
 	}
+    /** @param int|null $limit Number of data items to retrieve */
 	public function setLimit(?int $limit) {
 		$this->limit = $limit;
 	}
+    /**
+     * @param int|null $limit Number of data items to retrieve
+     * @return DescribeDailyTransactionHistoriesByCurrencyRequest
+     */
 	public function withLimit(?int $limit): DescribeDailyTransactionHistoriesByCurrencyRequest {
 		$this->limit = $limit;
 		return $this;

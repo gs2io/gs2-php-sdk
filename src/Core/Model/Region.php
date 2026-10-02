@@ -19,12 +19,12 @@ namespace Gs2\Core\Model;
 use Gs2\Core\Util\Enum;
 
 /**
- * リージョン情報
+ * Region
  * 
  * @author Game Server Services, Inc.
  *
  */
 class Region extends Enum {
-	/** アジアパシフィック北東1(東京) */
+	/** Asia Pacific Northeast 1 (Tokyo) */
 	const AP_NORTHEAST_1 = "ap-northeast-1";
 }

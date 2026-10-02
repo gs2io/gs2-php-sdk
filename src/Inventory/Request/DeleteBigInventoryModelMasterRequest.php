@@ -19,27 +19,44 @@ namespace Gs2\Inventory\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for deleteBigInventoryModelMaster: Delete Big Inventory Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#deletebiginventorymodelmaster
+ */
 class DeleteBigInventoryModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Big Inventory Model name */
     private $inventoryName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DeleteBigInventoryModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DeleteBigInventoryModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Big Inventory Model name */
 	public function getInventoryName(): ?string {
 		return $this->inventoryName;
 	}
+    /** @param string|null $inventoryName Big Inventory Model name */
 	public function setInventoryName(?string $inventoryName) {
 		$this->inventoryName = $inventoryName;
 	}
+    /**
+     * @param string|null $inventoryName Big Inventory Model name
+     * @return DeleteBigInventoryModelMasterRequest
+     */
 	public function withInventoryName(?string $inventoryName): DeleteBigInventoryModelMasterRequest {
 		$this->inventoryName = $inventoryName;
 		return $this;

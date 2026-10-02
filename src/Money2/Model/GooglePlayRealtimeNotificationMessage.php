@@ -20,45 +20,68 @@ namespace Gs2\Money2\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * RTDN Message
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#googleplayrealtimenotificationmessage
+ */
 class GooglePlayRealtimeNotificationMessage implements IModel {
 	/**
-     * @var string
+     * @var string Data
 	 */
 	private $data;
 	/**
-     * @var string
+     * @var string Message ID
 	 */
 	private $messageId;
 	/**
-     * @var string
+     * @var string Publish Time
 	 */
 	private $publishTime;
+    /** @return string|null Data */
 	public function getData(): ?string {
 		return $this->data;
 	}
+    /** @param string|null $data Data */
 	public function setData(?string $data) {
 		$this->data = $data;
 	}
+    /**
+     * @param string|null $data Data
+     * @return GooglePlayRealtimeNotificationMessage
+     */
 	public function withData(?string $data): GooglePlayRealtimeNotificationMessage {
 		$this->data = $data;
 		return $this;
 	}
+    /** @return string|null Message ID */
 	public function getMessageId(): ?string {
 		return $this->messageId;
 	}
+    /** @param string|null $messageId Message ID */
 	public function setMessageId(?string $messageId) {
 		$this->messageId = $messageId;
 	}
+    /**
+     * @param string|null $messageId Message ID
+     * @return GooglePlayRealtimeNotificationMessage
+     */
 	public function withMessageId(?string $messageId): GooglePlayRealtimeNotificationMessage {
 		$this->messageId = $messageId;
 		return $this;
 	}
+    /** @return string|null Publish Time */
 	public function getPublishTime(): ?string {
 		return $this->publishTime;
 	}
+    /** @param string|null $publishTime Publish Time */
 	public function setPublishTime(?string $publishTime) {
 		$this->publishTime = $publishTime;
 	}
+    /**
+     * @param string|null $publishTime Publish Time
+     * @return GooglePlayRealtimeNotificationMessage
+     */
 	public function withPublishTime(?string $publishTime): GooglePlayRealtimeNotificationMessage {
 		$this->publishTime = $publishTime;
 		return $this;

@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Log\Model\Label;
 use Gs2\Log\Model\LogEntry;
 
+/**
+ * Result of getLog: Get a single log entry by request ID
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#getlog
+ */
 class GetLogResult implements IResult {
-    /** @var LogEntry */
+    /** @var LogEntry Access Log */
     private $item;
 
+    /** @return LogEntry|null Access Log */
 	public function getItem(): ?LogEntry {
 		return $this->item;
 	}
 
+    /** @param LogEntry|null $item Access Log */
 	public function setItem(?LogEntry $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param LogEntry|null $item Access Log
+     * @return GetLogResult
+     */
 	public function withItem(?LogEntry $item): GetLogResult {
 		$this->item = $item;
 		return $this;

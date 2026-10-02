@@ -20,77 +20,118 @@ namespace Gs2\Enhance\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Enhance\Model\Config;
 
+/**
+ * Request for unleash: Perform unleash
+ *
+ * @see https://docs.gs2.io/api_reference/enhance/sdk/#unleash
+ */
 class UnleashRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Enhancement Rate Model name */
     private $rateName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string GRN for the Item Set subject to limit break */
     private $targetItemSetId;
-    /** @var array */
+    /** @var array List of materials that break the limit */
     private $materials;
-    /** @var array */
+    /** @var array Configuration values applied to transaction variables */
     private $config;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UnleashRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UnleashRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Enhancement Rate Model name */
 	public function getRateName(): ?string {
 		return $this->rateName;
 	}
+    /** @param string|null $rateName Enhancement Rate Model name */
 	public function setRateName(?string $rateName) {
 		$this->rateName = $rateName;
 	}
+    /**
+     * @param string|null $rateName Enhancement Rate Model name
+     * @return UnleashRequest
+     */
 	public function withRateName(?string $rateName): UnleashRequest {
 		$this->rateName = $rateName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return UnleashRequest
+     */
 	public function withAccessToken(?string $accessToken): UnleashRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null GRN for the Item Set subject to limit break */
 	public function getTargetItemSetId(): ?string {
 		return $this->targetItemSetId;
 	}
+    /** @param string|null $targetItemSetId GRN for the Item Set subject to limit break */
 	public function setTargetItemSetId(?string $targetItemSetId) {
 		$this->targetItemSetId = $targetItemSetId;
 	}
+    /**
+     * @param string|null $targetItemSetId GRN for the Item Set subject to limit break
+     * @return UnleashRequest
+     */
 	public function withTargetItemSetId(?string $targetItemSetId): UnleashRequest {
 		$this->targetItemSetId = $targetItemSetId;
 		return $this;
 	}
+    /** @return array|null List of materials that break the limit */
 	public function getMaterials(): ?array {
 		return $this->materials;
 	}
+    /** @param array|null $materials List of materials that break the limit */
 	public function setMaterials(?array $materials) {
 		$this->materials = $materials;
 	}
+    /**
+     * @param array|null $materials List of materials that break the limit
+     * @return UnleashRequest
+     */
 	public function withMaterials(?array $materials): UnleashRequest {
 		$this->materials = $materials;
 		return $this;
 	}
+    /** @return array|null Configuration values applied to transaction variables */
 	public function getConfig(): ?array {
 		return $this->config;
 	}
+    /** @param array|null $config Configuration values applied to transaction variables */
 	public function setConfig(?array $config) {
 		$this->config = $config;
 	}
+    /**
+     * @param array|null $config Configuration values applied to transaction variables
+     * @return UnleashRequest
+     */
 	public function withConfig(?array $config): UnleashRequest {
 		$this->config = $config;
 		return $this;

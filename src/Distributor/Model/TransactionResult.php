@@ -20,129 +20,188 @@ namespace Gs2\Distributor\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Transaction Execution Result
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#transactionresult
+ */
 class TransactionResult implements IModel {
 	/**
-     * @var string
+     * @var string Transaction Result GRN
 	 */
 	private $transactionResultId;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var string
+     * @var string Transaction ID
 	 */
 	private $transactionId;
 	/**
-     * @var array
+     * @var array List of verify action execution results
 	 */
 	private $verifyResults;
 	/**
-     * @var array
+     * @var array List of Consume Action execution results
 	 */
 	private $consumeResults;
 	/**
-     * @var array
+     * @var array List of acquire action execution results
 	 */
 	private $acquireResults;
 	/**
-     * @var bool
+     * @var bool Whether an error occurred during transaction execution
 	 */
 	private $hasError;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Transaction Result GRN */
 	public function getTransactionResultId(): ?string {
 		return $this->transactionResultId;
 	}
+    /** @param string|null $transactionResultId Transaction Result GRN */
 	public function setTransactionResultId(?string $transactionResultId) {
 		$this->transactionResultId = $transactionResultId;
 	}
+    /**
+     * @param string|null $transactionResultId Transaction Result GRN
+     * @return TransactionResult
+     */
 	public function withTransactionResultId(?string $transactionResultId): TransactionResult {
 		$this->transactionResultId = $transactionResultId;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return TransactionResult
+     */
 	public function withUserId(?string $userId): TransactionResult {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Transaction ID */
 	public function getTransactionId(): ?string {
 		return $this->transactionId;
 	}
+    /** @param string|null $transactionId Transaction ID */
 	public function setTransactionId(?string $transactionId) {
 		$this->transactionId = $transactionId;
 	}
+    /**
+     * @param string|null $transactionId Transaction ID
+     * @return TransactionResult
+     */
 	public function withTransactionId(?string $transactionId): TransactionResult {
 		$this->transactionId = $transactionId;
 		return $this;
 	}
+    /** @return array|null List of verify action execution results */
 	public function getVerifyResults(): ?array {
 		return $this->verifyResults;
 	}
+    /** @param array|null $verifyResults List of verify action execution results */
 	public function setVerifyResults(?array $verifyResults) {
 		$this->verifyResults = $verifyResults;
 	}
+    /**
+     * @param array|null $verifyResults List of verify action execution results
+     * @return TransactionResult
+     */
 	public function withVerifyResults(?array $verifyResults): TransactionResult {
 		$this->verifyResults = $verifyResults;
 		return $this;
 	}
+    /** @return array|null List of Consume Action execution results */
 	public function getConsumeResults(): ?array {
 		return $this->consumeResults;
 	}
+    /** @param array|null $consumeResults List of Consume Action execution results */
 	public function setConsumeResults(?array $consumeResults) {
 		$this->consumeResults = $consumeResults;
 	}
+    /**
+     * @param array|null $consumeResults List of Consume Action execution results
+     * @return TransactionResult
+     */
 	public function withConsumeResults(?array $consumeResults): TransactionResult {
 		$this->consumeResults = $consumeResults;
 		return $this;
 	}
+    /** @return array|null List of acquire action execution results */
 	public function getAcquireResults(): ?array {
 		return $this->acquireResults;
 	}
+    /** @param array|null $acquireResults List of acquire action execution results */
 	public function setAcquireResults(?array $acquireResults) {
 		$this->acquireResults = $acquireResults;
 	}
+    /**
+     * @param array|null $acquireResults List of acquire action execution results
+     * @return TransactionResult
+     */
 	public function withAcquireResults(?array $acquireResults): TransactionResult {
 		$this->acquireResults = $acquireResults;
 		return $this;
 	}
+    /** @return bool|null Whether an error occurred during transaction execution */
 	public function getHasError(): ?bool {
 		return $this->hasError;
 	}
+    /** @param bool|null $hasError Whether an error occurred during transaction execution */
 	public function setHasError(?bool $hasError) {
 		$this->hasError = $hasError;
 	}
+    /**
+     * @param bool|null $hasError Whether an error occurred during transaction execution
+     * @return TransactionResult
+     */
 	public function withHasError(?bool $hasError): TransactionResult {
 		$this->hasError = $hasError;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return TransactionResult
+     */
 	public function withCreatedAt(?int $createdAt): TransactionResult {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return TransactionResult
+     */
 	public function withRevision(?int $revision): TransactionResult {
 		$this->revision = $revision;
 		return $this;

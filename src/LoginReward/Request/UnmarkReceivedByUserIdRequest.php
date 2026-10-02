@@ -19,65 +19,100 @@ namespace Gs2\LoginReward\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for unmarkReceivedByUserId: Unmark as received by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/login_reward/sdk/#unmarkreceivedbyuserid
+ */
 class UnmarkReceivedByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Bonus Model Name */
     private $bonusModelName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var int */
+    /** @var int Step Number */
     private $stepNumber;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UnmarkReceivedByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UnmarkReceivedByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Bonus Model Name */
 	public function getBonusModelName(): ?string {
 		return $this->bonusModelName;
 	}
+    /** @param string|null $bonusModelName Bonus Model Name */
 	public function setBonusModelName(?string $bonusModelName) {
 		$this->bonusModelName = $bonusModelName;
 	}
+    /**
+     * @param string|null $bonusModelName Bonus Model Name
+     * @return UnmarkReceivedByUserIdRequest
+     */
 	public function withBonusModelName(?string $bonusModelName): UnmarkReceivedByUserIdRequest {
 		$this->bonusModelName = $bonusModelName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return UnmarkReceivedByUserIdRequest
+     */
 	public function withUserId(?string $userId): UnmarkReceivedByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return int|null Step Number */
 	public function getStepNumber(): ?int {
 		return $this->stepNumber;
 	}
+    /** @param int|null $stepNumber Step Number */
 	public function setStepNumber(?int $stepNumber) {
 		$this->stepNumber = $stepNumber;
 	}
+    /**
+     * @param int|null $stepNumber Step Number
+     * @return UnmarkReceivedByUserIdRequest
+     */
 	public function withStepNumber(?int $stepNumber): UnmarkReceivedByUserIdRequest {
 		$this->stepNumber = $stepNumber;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return UnmarkReceivedByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): UnmarkReceivedByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

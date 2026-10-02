@@ -19,77 +19,118 @@ namespace Gs2\Schedule\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for verifyTriggerByUserId: Verify the elapsed time since the Trigger was pulled by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/schedule/sdk/#verifytriggerbyuserid
+ */
 class VerifyTriggerByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Trigger name */
     private $triggerName;
-    /** @var string */
+    /** @var string Type of verification */
     private $verifyType;
-    /** @var int */
+    /** @var int Elapsed time (minutes) */
     private $elapsedMinutes;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return VerifyTriggerByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): VerifyTriggerByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return VerifyTriggerByUserIdRequest
+     */
 	public function withUserId(?string $userId): VerifyTriggerByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Trigger name */
 	public function getTriggerName(): ?string {
 		return $this->triggerName;
 	}
+    /** @param string|null $triggerName Trigger name */
 	public function setTriggerName(?string $triggerName) {
 		$this->triggerName = $triggerName;
 	}
+    /**
+     * @param string|null $triggerName Trigger name
+     * @return VerifyTriggerByUserIdRequest
+     */
 	public function withTriggerName(?string $triggerName): VerifyTriggerByUserIdRequest {
 		$this->triggerName = $triggerName;
 		return $this;
 	}
+    /** @return string|null Type of verification */
 	public function getVerifyType(): ?string {
 		return $this->verifyType;
 	}
+    /** @param string|null $verifyType Type of verification */
 	public function setVerifyType(?string $verifyType) {
 		$this->verifyType = $verifyType;
 	}
+    /**
+     * @param string|null $verifyType Type of verification
+     * @return VerifyTriggerByUserIdRequest
+     */
 	public function withVerifyType(?string $verifyType): VerifyTriggerByUserIdRequest {
 		$this->verifyType = $verifyType;
 		return $this;
 	}
+    /** @return int|null Elapsed time (minutes) */
 	public function getElapsedMinutes(): ?int {
 		return $this->elapsedMinutes;
 	}
+    /** @param int|null $elapsedMinutes Elapsed time (minutes) */
 	public function setElapsedMinutes(?int $elapsedMinutes) {
 		$this->elapsedMinutes = $elapsedMinutes;
 	}
+    /**
+     * @param int|null $elapsedMinutes Elapsed time (minutes)
+     * @return VerifyTriggerByUserIdRequest
+     */
 	public function withElapsedMinutes(?int $elapsedMinutes): VerifyTriggerByUserIdRequest {
 		$this->elapsedMinutes = $elapsedMinutes;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return VerifyTriggerByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): VerifyTriggerByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

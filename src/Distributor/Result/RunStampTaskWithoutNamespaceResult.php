@@ -19,48 +19,71 @@ namespace Gs2\Distributor\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of runStampTaskWithoutNamespace: Execute consume action of transaction without specifying the GS2-Distributor Namespace
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#runstamptaskwithoutnamespace
+ */
 class RunStampTaskWithoutNamespaceResult implements IResult {
-    /** @var string */
+    /** @var string Context stack reflecting the task execution result */
     private $contextStack;
-    /** @var int */
+    /** @var int Status code */
     private $statusCode;
-    /** @var string */
+    /** @var string Response content */
     private $result;
 
+    /** @return string|null Context stack reflecting the task execution result */
 	public function getContextStack(): ?string {
 		return $this->contextStack;
 	}
 
+    /** @param string|null $contextStack Context stack reflecting the task execution result */
 	public function setContextStack(?string $contextStack) {
 		$this->contextStack = $contextStack;
 	}
 
+    /**
+     * @param string|null $contextStack Context stack reflecting the task execution result
+     * @return RunStampTaskWithoutNamespaceResult
+     */
 	public function withContextStack(?string $contextStack): RunStampTaskWithoutNamespaceResult {
 		$this->contextStack = $contextStack;
 		return $this;
 	}
 
+    /** @return int|null Status code */
 	public function getStatusCode(): ?int {
 		return $this->statusCode;
 	}
 
+    /** @param int|null $statusCode Status code */
 	public function setStatusCode(?int $statusCode) {
 		$this->statusCode = $statusCode;
 	}
 
+    /**
+     * @param int|null $statusCode Status code
+     * @return RunStampTaskWithoutNamespaceResult
+     */
 	public function withStatusCode(?int $statusCode): RunStampTaskWithoutNamespaceResult {
 		$this->statusCode = $statusCode;
 		return $this;
 	}
 
+    /** @return string|null Response content */
 	public function getResult(): ?string {
 		return $this->result;
 	}
 
+    /** @param string|null $result Response content */
 	public function setResult(?string $result) {
 		$this->result = $result;
 	}
 
+    /**
+     * @param string|null $result Response content
+     * @return RunStampTaskWithoutNamespaceResult
+     */
 	public function withResult(?string $result): RunStampTaskWithoutNamespaceResult {
 		$this->result = $result;
 		return $this;

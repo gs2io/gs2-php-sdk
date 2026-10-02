@@ -20,18 +20,29 @@ namespace Gs2\Version\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Version\Model\CurrentVersionMaster;
 
+/**
+ * Result of exportMaster: Export Version Model Master in a master data format that can be activated
+ *
+ * @see https://docs.gs2.io/api_reference/version/sdk/#exportmaster
+ */
 class ExportMasterResult implements IResult {
-    /** @var CurrentVersionMaster */
+    /** @var CurrentVersionMaster Version Model master data that can be activated */
     private $item;
 
+    /** @return CurrentVersionMaster|null Version Model master data that can be activated */
 	public function getItem(): ?CurrentVersionMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentVersionMaster|null $item Version Model master data that can be activated */
 	public function setItem(?CurrentVersionMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentVersionMaster|null $item Version Model master data that can be activated
+     * @return ExportMasterResult
+     */
 	public function withItem(?CurrentVersionMaster $item): ExportMasterResult {
 		$this->item = $item;
 		return $this;

@@ -50,10 +50,10 @@ class HttpTask {
     }
 
     /**
-     * 最大1回までしか呼べません
+     * Can be called at most once
      *
-     * @param ClientInterface|null $client 送信に使う Guzzle クライアント（null なら都度生成）
-     * @param array $options Guzzle のリクエストオプションに追加するもの（例: connect_timeout）
+     * @param ClientInterface|null $client
+     * @param array $options
      * @return PromiseInterface
      */
     public function send(ClientInterface $client = null, array $options = []): PromiseInterface {

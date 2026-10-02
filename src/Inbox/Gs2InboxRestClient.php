@@ -3231,25 +3231,22 @@ class DeleteReceivedByUserIdTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 Inbox API クライアント
+ * GS2-Inbox API client
  *
- * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/inbox/sdk/
  */
 class Gs2InboxRestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#describenamespaces
      */
     public function describeNamespacesAsync(
             DescribeNamespacesRequest $request
@@ -3263,8 +3260,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#describenamespaces
      */
     public function describeNamespaces (
             DescribeNamespacesRequest $request
@@ -3275,8 +3275,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#createnamespace
      */
     public function createNamespaceAsync(
             CreateNamespaceRequest $request
@@ -3290,8 +3293,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#createnamespace
      */
     public function createNamespace (
             CreateNamespaceRequest $request
@@ -3302,8 +3308,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#getnamespacestatus
      */
     public function getNamespaceStatusAsync(
             GetNamespaceStatusRequest $request
@@ -3317,8 +3326,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#getnamespacestatus
      */
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
@@ -3329,8 +3341,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#getnamespace
      */
     public function getNamespaceAsync(
             GetNamespaceRequest $request
@@ -3344,8 +3359,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#getnamespace
      */
     public function getNamespace (
             GetNamespaceRequest $request
@@ -3356,8 +3374,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#updatenamespace
      */
     public function updateNamespaceAsync(
             UpdateNamespaceRequest $request
@@ -3371,8 +3392,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#updatenamespace
      */
     public function updateNamespace (
             UpdateNamespaceRequest $request
@@ -3383,8 +3407,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#deletenamespace
      */
     public function deleteNamespaceAsync(
             DeleteNamespaceRequest $request
@@ -3398,8 +3425,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#deletenamespace
      */
     public function deleteNamespace (
             DeleteNamespaceRequest $request
@@ -3410,8 +3440,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#getserviceversion
      */
     public function getServiceVersionAsync(
             GetServiceVersionRequest $request
@@ -3425,8 +3458,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return GetServiceVersionResult
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#getserviceversion
      */
     public function getServiceVersion (
             GetServiceVersionRequest $request
@@ -3437,8 +3473,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserIdAsync(
             DumpUserDataByUserIdRequest $request
@@ -3452,8 +3491,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return DumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserId (
             DumpUserDataByUserIdRequest $request
@@ -3464,8 +3506,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserIdAsync(
             CheckDumpUserDataByUserIdRequest $request
@@ -3479,8 +3524,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return CheckDumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserId (
             CheckDumpUserDataByUserIdRequest $request
@@ -3491,8 +3539,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserIdAsync(
             CleanUserDataByUserIdRequest $request
@@ -3506,8 +3557,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return CleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserId (
             CleanUserDataByUserIdRequest $request
@@ -3518,8 +3572,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserIdAsync(
             CheckCleanUserDataByUserIdRequest $request
@@ -3533,8 +3590,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return CheckCleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserId (
             CheckCleanUserDataByUserIdRequest $request
@@ -3545,8 +3605,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserIdAsync(
             PrepareImportUserDataByUserIdRequest $request
@@ -3560,8 +3623,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PrepareImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserId (
             PrepareImportUserDataByUserIdRequest $request
@@ -3572,8 +3638,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserIdAsync(
             ImportUserDataByUserIdRequest $request
@@ -3587,8 +3656,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return ImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserId (
             ImportUserDataByUserIdRequest $request
@@ -3599,8 +3671,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserIdAsync(
             CheckImportUserDataByUserIdRequest $request
@@ -3614,8 +3689,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return CheckImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserId (
             CheckImportUserDataByUserIdRequest $request
@@ -3626,8 +3704,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List messages
+     *
      * @param DescribeMessagesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#describemessages
      */
     public function describeMessagesAsync(
             DescribeMessagesRequest $request
@@ -3641,8 +3722,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List messages
+     *
      * @param DescribeMessagesRequest $request
      * @return DescribeMessagesResult
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#describemessages
      */
     public function describeMessages (
             DescribeMessagesRequest $request
@@ -3653,8 +3737,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List messages by User ID
+     *
      * @param DescribeMessagesByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#describemessagesbyuserid
      */
     public function describeMessagesByUserIdAsync(
             DescribeMessagesByUserIdRequest $request
@@ -3668,8 +3755,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List messages by User ID
+     *
      * @param DescribeMessagesByUserIdRequest $request
      * @return DescribeMessagesByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#describemessagesbyuserid
      */
     public function describeMessagesByUserId (
             DescribeMessagesByUserIdRequest $request
@@ -3680,8 +3770,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Send a message by User ID
+     *
      * @param SendMessageByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#sendmessagebyuserid
      */
     public function sendMessageByUserIdAsync(
             SendMessageByUserIdRequest $request
@@ -3695,8 +3788,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Send a message by User ID
+     *
      * @param SendMessageByUserIdRequest $request
      * @return SendMessageByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#sendmessagebyuserid
      */
     public function sendMessageByUserId (
             SendMessageByUserIdRequest $request
@@ -3707,8 +3803,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Message
+     *
      * @param GetMessageRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#getmessage
      */
     public function getMessageAsync(
             GetMessageRequest $request
@@ -3722,8 +3821,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Message
+     *
      * @param GetMessageRequest $request
      * @return GetMessageResult
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#getmessage
      */
     public function getMessage (
             GetMessageRequest $request
@@ -3734,8 +3836,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get message by User ID
+     *
      * @param GetMessageByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#getmessagebyuserid
      */
     public function getMessageByUserIdAsync(
             GetMessageByUserIdRequest $request
@@ -3749,8 +3854,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get message by User ID
+     *
      * @param GetMessageByUserIdRequest $request
      * @return GetMessageByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#getmessagebyuserid
      */
     public function getMessageByUserId (
             GetMessageByUserIdRequest $request
@@ -3761,8 +3869,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Receive Unreceived Global Messages
+     *
      * @param ReceiveGlobalMessageRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#receiveglobalmessage
      */
     public function receiveGlobalMessageAsync(
             ReceiveGlobalMessageRequest $request
@@ -3776,8 +3887,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Receive Unreceived Global Messages
+     *
      * @param ReceiveGlobalMessageRequest $request
      * @return ReceiveGlobalMessageResult
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#receiveglobalmessage
      */
     public function receiveGlobalMessage (
             ReceiveGlobalMessageRequest $request
@@ -3788,8 +3902,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Receive Unreceived Global Messages by User ID
+     *
      * @param ReceiveGlobalMessageByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#receiveglobalmessagebyuserid
      */
     public function receiveGlobalMessageByUserIdAsync(
             ReceiveGlobalMessageByUserIdRequest $request
@@ -3803,8 +3920,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Receive Unreceived Global Messages by User ID
+     *
      * @param ReceiveGlobalMessageByUserIdRequest $request
      * @return ReceiveGlobalMessageByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#receiveglobalmessagebyuserid
      */
     public function receiveGlobalMessageByUserId (
             ReceiveGlobalMessageByUserIdRequest $request
@@ -3815,8 +3935,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Mark Message as Opened
+     *
      * @param OpenMessageRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#openmessage
      */
     public function openMessageAsync(
             OpenMessageRequest $request
@@ -3830,8 +3953,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Mark Message as Opened
+     *
      * @param OpenMessageRequest $request
      * @return OpenMessageResult
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#openmessage
      */
     public function openMessage (
             OpenMessageRequest $request
@@ -3842,8 +3968,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Mark Message as Opened by User ID
+     *
      * @param OpenMessageByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#openmessagebyuserid
      */
     public function openMessageByUserIdAsync(
             OpenMessageByUserIdRequest $request
@@ -3857,8 +3986,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Mark Message as Opened by User ID
+     *
      * @param OpenMessageByUserIdRequest $request
      * @return OpenMessageByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#openmessagebyuserid
      */
     public function openMessageByUserId (
             OpenMessageByUserIdRequest $request
@@ -3869,8 +4001,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Mark a previously opened message as unread
+     *
      * @param CloseMessageByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#closemessagebyuserid
      */
     public function closeMessageByUserIdAsync(
             CloseMessageByUserIdRequest $request
@@ -3884,8 +4019,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Mark a previously opened message as unread
+     *
      * @param CloseMessageByUserIdRequest $request
      * @return CloseMessageByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#closemessagebyuserid
      */
     public function closeMessageByUserId (
             CloseMessageByUserIdRequest $request
@@ -3896,8 +4034,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Read message
+     *
      * @param ReadMessageRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#readmessage
      */
     public function readMessageAsync(
             ReadMessageRequest $request
@@ -3911,8 +4052,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Read message
+     *
      * @param ReadMessageRequest $request
      * @return ReadMessageResult
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#readmessage
      */
     public function readMessage (
             ReadMessageRequest $request
@@ -3923,8 +4067,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Read message by User ID
+     *
      * @param ReadMessageByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#readmessagebyuserid
      */
     public function readMessageByUserIdAsync(
             ReadMessageByUserIdRequest $request
@@ -3938,8 +4085,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Read message by User ID
+     *
      * @param ReadMessageByUserIdRequest $request
      * @return ReadMessageByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#readmessagebyuserid
      */
     public function readMessageByUserId (
             ReadMessageByUserIdRequest $request
@@ -3950,8 +4100,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Read messages
+     *
      * @param BatchReadMessagesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#batchreadmessages
      */
     public function batchReadMessagesAsync(
             BatchReadMessagesRequest $request
@@ -3965,8 +4118,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Read messages
+     *
      * @param BatchReadMessagesRequest $request
      * @return BatchReadMessagesResult
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#batchreadmessages
      */
     public function batchReadMessages (
             BatchReadMessagesRequest $request
@@ -3977,8 +4133,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Read messages by User ID
+     *
      * @param BatchReadMessagesByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#batchreadmessagesbyuserid
      */
     public function batchReadMessagesByUserIdAsync(
             BatchReadMessagesByUserIdRequest $request
@@ -3992,8 +4151,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Read messages by User ID
+     *
      * @param BatchReadMessagesByUserIdRequest $request
      * @return BatchReadMessagesByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#batchreadmessagesbyuserid
      */
     public function batchReadMessagesByUserId (
             BatchReadMessagesByUserIdRequest $request
@@ -4004,8 +4166,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete message
+     *
      * @param DeleteMessageRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#deletemessage
      */
     public function deleteMessageAsync(
             DeleteMessageRequest $request
@@ -4019,8 +4184,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete message
+     *
      * @param DeleteMessageRequest $request
      * @return DeleteMessageResult
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#deletemessage
      */
     public function deleteMessage (
             DeleteMessageRequest $request
@@ -4031,8 +4199,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete message by User ID
+     *
      * @param DeleteMessageByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#deletemessagebyuserid
      */
     public function deleteMessageByUserIdAsync(
             DeleteMessageByUserIdRequest $request
@@ -4046,8 +4217,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete message by User ID
+     *
      * @param DeleteMessageByUserIdRequest $request
      * @return DeleteMessageByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#deletemessagebyuserid
      */
     public function deleteMessageByUserId (
             DeleteMessageByUserIdRequest $request
@@ -4058,8 +4232,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute sending a message as an acquire action
+     *
      * @param SendByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/stamp_sheet/#gs2inboxsendmessagebyuserid
      */
     public function sendByStampSheetAsync(
             SendByStampSheetRequest $request
@@ -4073,8 +4250,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute sending a message as an acquire action
+     *
      * @param SendByStampSheetRequest $request
      * @return SendByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/inbox/stamp_sheet/#gs2inboxsendmessagebyuserid
      */
     public function sendByStampSheet (
             SendByStampSheetRequest $request
@@ -4085,8 +4265,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute opening a message as a consume action
+     *
      * @param OpenByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/stamp_sheet/#gs2inboxopenmessagebyuserid
      */
     public function openByStampTaskAsync(
             OpenByStampTaskRequest $request
@@ -4100,8 +4283,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute opening a message as a consume action
+     *
      * @param OpenByStampTaskRequest $request
      * @return OpenByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/inbox/stamp_sheet/#gs2inboxopenmessagebyuserid
      */
     public function openByStampTask (
             OpenByStampTaskRequest $request
@@ -4112,8 +4298,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute deleting a Message as a consume action
+     *
      * @param DeleteMessageByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/stamp_sheet/#gs2inboxdeletemessagebyuserid
      */
     public function deleteMessageByStampTaskAsync(
             DeleteMessageByStampTaskRequest $request
@@ -4127,8 +4316,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute deleting a Message as a consume action
+     *
      * @param DeleteMessageByStampTaskRequest $request
      * @return DeleteMessageByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/inbox/stamp_sheet/#gs2inboxdeletemessagebyuserid
      */
     public function deleteMessageByStampTask (
             DeleteMessageByStampTaskRequest $request
@@ -4139,8 +4331,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Global Message Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#exportmaster
      */
     public function exportMasterAsync(
             ExportMasterRequest $request
@@ -4154,8 +4349,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Global Message Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return ExportMasterResult
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#exportmaster
      */
     public function exportMaster (
             ExportMasterRequest $request
@@ -4166,8 +4364,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Global Message master data
+     *
      * @param GetCurrentMessageMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#getcurrentmessagemaster
      */
     public function getCurrentMessageMasterAsync(
             GetCurrentMessageMasterRequest $request
@@ -4181,8 +4382,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Global Message master data
+     *
      * @param GetCurrentMessageMasterRequest $request
      * @return GetCurrentMessageMasterResult
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#getcurrentmessagemaster
      */
     public function getCurrentMessageMaster (
             GetCurrentMessageMasterRequest $request
@@ -4193,8 +4397,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Currently Active Master Data (3-phase version)
+     *
      * @param PreUpdateCurrentMessageMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#preupdatecurrentmessagemaster
      */
     public function preUpdateCurrentMessageMasterAsync(
             PreUpdateCurrentMessageMasterRequest $request
@@ -4208,8 +4415,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Currently Active Master Data (3-phase version)
+     *
      * @param PreUpdateCurrentMessageMasterRequest $request
      * @return PreUpdateCurrentMessageMasterResult
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#preupdatecurrentmessagemaster
      */
     public function preUpdateCurrentMessageMaster (
             PreUpdateCurrentMessageMasterRequest $request
@@ -4220,8 +4430,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Global Message master data
+     *
      * @param UpdateCurrentMessageMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#updatecurrentmessagemaster
      */
     public function updateCurrentMessageMasterAsync(
             UpdateCurrentMessageMasterRequest $request
@@ -4235,8 +4448,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Global Message master data
+     *
      * @param UpdateCurrentMessageMasterRequest $request
      * @return UpdateCurrentMessageMasterResult
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#updatecurrentmessagemaster
      */
     public function updateCurrentMessageMaster (
             UpdateCurrentMessageMasterRequest $request
@@ -4247,8 +4463,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Global Message master data from GitHub
+     *
      * @param UpdateCurrentMessageMasterFromGitHubRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#updatecurrentmessagemasterfromgithub
      */
     public function updateCurrentMessageMasterFromGitHubAsync(
             UpdateCurrentMessageMasterFromGitHubRequest $request
@@ -4262,8 +4481,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Global Message master data from GitHub
+     *
      * @param UpdateCurrentMessageMasterFromGitHubRequest $request
      * @return UpdateCurrentMessageMasterFromGitHubResult
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#updatecurrentmessagemasterfromgithub
      */
     public function updateCurrentMessageMasterFromGitHub (
             UpdateCurrentMessageMasterFromGitHubRequest $request
@@ -4274,8 +4496,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List messages to all users
+     *
      * @param DescribeGlobalMessageMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#describeglobalmessagemasters
      */
     public function describeGlobalMessageMastersAsync(
             DescribeGlobalMessageMastersRequest $request
@@ -4289,8 +4514,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List messages to all users
+     *
      * @param DescribeGlobalMessageMastersRequest $request
      * @return DescribeGlobalMessageMastersResult
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#describeglobalmessagemasters
      */
     public function describeGlobalMessageMasters (
             DescribeGlobalMessageMastersRequest $request
@@ -4301,8 +4529,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Global Message Master
+     *
      * @param CreateGlobalMessageMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#createglobalmessagemaster
      */
     public function createGlobalMessageMasterAsync(
             CreateGlobalMessageMasterRequest $request
@@ -4316,8 +4547,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Global Message Master
+     *
      * @param CreateGlobalMessageMasterRequest $request
      * @return CreateGlobalMessageMasterResult
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#createglobalmessagemaster
      */
     public function createGlobalMessageMaster (
             CreateGlobalMessageMasterRequest $request
@@ -4328,8 +4562,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get a message for all users
+     *
      * @param GetGlobalMessageMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#getglobalmessagemaster
      */
     public function getGlobalMessageMasterAsync(
             GetGlobalMessageMasterRequest $request
@@ -4343,8 +4580,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get a message for all users
+     *
      * @param GetGlobalMessageMasterRequest $request
      * @return GetGlobalMessageMasterResult
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#getglobalmessagemaster
      */
     public function getGlobalMessageMaster (
             GetGlobalMessageMasterRequest $request
@@ -4355,8 +4595,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update message to all users
+     *
      * @param UpdateGlobalMessageMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#updateglobalmessagemaster
      */
     public function updateGlobalMessageMasterAsync(
             UpdateGlobalMessageMasterRequest $request
@@ -4370,8 +4613,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update message to all users
+     *
      * @param UpdateGlobalMessageMasterRequest $request
      * @return UpdateGlobalMessageMasterResult
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#updateglobalmessagemaster
      */
     public function updateGlobalMessageMaster (
             UpdateGlobalMessageMasterRequest $request
@@ -4382,8 +4628,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete messages for all users
+     *
      * @param DeleteGlobalMessageMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#deleteglobalmessagemaster
      */
     public function deleteGlobalMessageMasterAsync(
             DeleteGlobalMessageMasterRequest $request
@@ -4397,8 +4646,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete messages for all users
+     *
      * @param DeleteGlobalMessageMasterRequest $request
      * @return DeleteGlobalMessageMasterResult
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#deleteglobalmessagemaster
      */
     public function deleteGlobalMessageMaster (
             DeleteGlobalMessageMasterRequest $request
@@ -4409,8 +4661,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List messages to all users
+     *
      * @param DescribeGlobalMessagesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#describeglobalmessages
      */
     public function describeGlobalMessagesAsync(
             DescribeGlobalMessagesRequest $request
@@ -4424,8 +4679,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List messages to all users
+     *
      * @param DescribeGlobalMessagesRequest $request
      * @return DescribeGlobalMessagesResult
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#describeglobalmessages
      */
     public function describeGlobalMessages (
             DescribeGlobalMessagesRequest $request
@@ -4436,8 +4694,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get a message for all users
+     *
      * @param GetGlobalMessageRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#getglobalmessage
      */
     public function getGlobalMessageAsync(
             GetGlobalMessageRequest $request
@@ -4451,8 +4712,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get a message for all users
+     *
      * @param GetGlobalMessageRequest $request
      * @return GetGlobalMessageResult
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#getglobalmessage
      */
     public function getGlobalMessage (
             GetGlobalMessageRequest $request
@@ -4463,8 +4727,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Received Global Message by User ID
+     *
      * @param GetReceivedByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#getreceivedbyuserid
      */
     public function getReceivedByUserIdAsync(
             GetReceivedByUserIdRequest $request
@@ -4478,8 +4745,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Received Global Message by User ID
+     *
      * @param GetReceivedByUserIdRequest $request
      * @return GetReceivedByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#getreceivedbyuserid
      */
     public function getReceivedByUserId (
             GetReceivedByUserIdRequest $request
@@ -4490,8 +4760,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Received Global Message by User ID
+     *
      * @param UpdateReceivedByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#updatereceivedbyuserid
      */
     public function updateReceivedByUserIdAsync(
             UpdateReceivedByUserIdRequest $request
@@ -4505,8 +4778,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Received Global Message by User ID
+     *
      * @param UpdateReceivedByUserIdRequest $request
      * @return UpdateReceivedByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#updatereceivedbyuserid
      */
     public function updateReceivedByUserId (
             UpdateReceivedByUserIdRequest $request
@@ -4517,8 +4793,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Received Global Message by User ID
+     *
      * @param DeleteReceivedByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#deletereceivedbyuserid
      */
     public function deleteReceivedByUserIdAsync(
             DeleteReceivedByUserIdRequest $request
@@ -4532,8 +4811,11 @@ class Gs2InboxRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Received Global Message by User ID
+     *
      * @param DeleteReceivedByUserIdRequest $request
      * @return DeleteReceivedByUserIdResult
+     * @see https://docs.gs2.io/api_reference/inbox/sdk/#deletereceivedbyuserid
      */
     public function deleteReceivedByUserId (
             DeleteReceivedByUserIdRequest $request

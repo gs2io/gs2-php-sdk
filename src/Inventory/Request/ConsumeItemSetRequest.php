@@ -19,77 +19,118 @@ namespace Gs2\Inventory\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for consumeItemSet: Consume Item Sets
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#consumeitemset
+ */
 class ConsumeItemSetRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Inventory Model Name */
     private $inventoryName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Item Model Name */
     private $itemName;
-    /** @var int */
+    /** @var int Consumption quantity */
     private $consumeCount;
-    /** @var string */
+    /** @var string Name identifying the Item Set */
     private $itemSetName;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return ConsumeItemSetRequest
+     */
 	public function withNamespaceName(?string $namespaceName): ConsumeItemSetRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Inventory Model Name */
 	public function getInventoryName(): ?string {
 		return $this->inventoryName;
 	}
+    /** @param string|null $inventoryName Inventory Model Name */
 	public function setInventoryName(?string $inventoryName) {
 		$this->inventoryName = $inventoryName;
 	}
+    /**
+     * @param string|null $inventoryName Inventory Model Name
+     * @return ConsumeItemSetRequest
+     */
 	public function withInventoryName(?string $inventoryName): ConsumeItemSetRequest {
 		$this->inventoryName = $inventoryName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return ConsumeItemSetRequest
+     */
 	public function withAccessToken(?string $accessToken): ConsumeItemSetRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Item Model Name */
 	public function getItemName(): ?string {
 		return $this->itemName;
 	}
+    /** @param string|null $itemName Item Model Name */
 	public function setItemName(?string $itemName) {
 		$this->itemName = $itemName;
 	}
+    /**
+     * @param string|null $itemName Item Model Name
+     * @return ConsumeItemSetRequest
+     */
 	public function withItemName(?string $itemName): ConsumeItemSetRequest {
 		$this->itemName = $itemName;
 		return $this;
 	}
+    /** @return int|null Consumption quantity */
 	public function getConsumeCount(): ?int {
 		return $this->consumeCount;
 	}
+    /** @param int|null $consumeCount Consumption quantity */
 	public function setConsumeCount(?int $consumeCount) {
 		$this->consumeCount = $consumeCount;
 	}
+    /**
+     * @param int|null $consumeCount Consumption quantity
+     * @return ConsumeItemSetRequest
+     */
 	public function withConsumeCount(?int $consumeCount): ConsumeItemSetRequest {
 		$this->consumeCount = $consumeCount;
 		return $this;
 	}
+    /** @return string|null Name identifying the Item Set */
 	public function getItemSetName(): ?string {
 		return $this->itemSetName;
 	}
+    /** @param string|null $itemSetName Name identifying the Item Set */
 	public function setItemSetName(?string $itemSetName) {
 		$this->itemSetName = $itemSetName;
 	}
+    /**
+     * @param string|null $itemSetName Name identifying the Item Set
+     * @return ConsumeItemSetRequest
+     */
 	public function withItemSetName(?string $itemSetName): ConsumeItemSetRequest {
 		$this->itemSetName = $itemSetName;
 		return $this;

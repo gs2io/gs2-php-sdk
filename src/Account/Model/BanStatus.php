@@ -20,45 +20,68 @@ namespace Gs2\Account\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Account Ban Status
+ *
+ * @see https://docs.gs2.io/api_reference/account/sdk/#banstatus
+ */
 class BanStatus implements IModel {
 	/**
-     * @var string
+     * @var string Ban status name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Reason for BAN
 	 */
 	private $reason;
 	/**
-     * @var int
+     * @var int Date and time when the BAN will be released
 	 */
 	private $releaseTimestamp;
+    /** @return string|null Ban status name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Ban status name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Ban status name
+     * @return BanStatus
+     */
 	public function withName(?string $name): BanStatus {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Reason for BAN */
 	public function getReason(): ?string {
 		return $this->reason;
 	}
+    /** @param string|null $reason Reason for BAN */
 	public function setReason(?string $reason) {
 		$this->reason = $reason;
 	}
+    /**
+     * @param string|null $reason Reason for BAN
+     * @return BanStatus
+     */
 	public function withReason(?string $reason): BanStatus {
 		$this->reason = $reason;
 		return $this;
 	}
+    /** @return int|null Date and time when the BAN will be released */
 	public function getReleaseTimestamp(): ?int {
 		return $this->releaseTimestamp;
 	}
+    /** @param int|null $releaseTimestamp Date and time when the BAN will be released */
 	public function setReleaseTimestamp(?int $releaseTimestamp) {
 		$this->releaseTimestamp = $releaseTimestamp;
 	}
+    /**
+     * @param int|null $releaseTimestamp Date and time when the BAN will be released
+     * @return BanStatus
+     */
 	public function withReleaseTimestamp(?int $releaseTimestamp): BanStatus {
 		$this->releaseTimestamp = $releaseTimestamp;
 		return $this;

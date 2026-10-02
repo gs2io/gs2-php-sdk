@@ -20,18 +20,29 @@ namespace Gs2\Distributor\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Distributor\Model\BatchResultPayload;
 
+/**
+ * Result of batchExecuteApi: Execute multiple APIs in bulk
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#batchexecuteapi
+ */
 class BatchExecuteApiResult implements IResult {
-    /** @var array */
+    /** @var array Batch result */
     private $results;
 
+    /** @return array|null Batch result */
 	public function getResults(): ?array {
 		return $this->results;
 	}
 
+    /** @param array|null $results Batch result */
 	public function setResults(?array $results) {
 		$this->results = $results;
 	}
 
+    /**
+     * @param array|null $results Batch result
+     * @return BatchExecuteApiResult
+     */
 	public function withResults(?array $results): BatchExecuteApiResult {
 		$this->results = $results;
 		return $this;

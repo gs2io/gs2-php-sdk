@@ -20,18 +20,29 @@ namespace Gs2\Log\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Log\Model\FacetModel;
 
+/**
+ * Result of createFacetModel: Create new facet model
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#createfacetmodel
+ */
 class CreateFacetModelResult implements IResult {
-    /** @var FacetModel */
+    /** @var FacetModel Created Facet Model */
     private $item;
 
+    /** @return FacetModel|null Created Facet Model */
 	public function getItem(): ?FacetModel {
 		return $this->item;
 	}
 
+    /** @param FacetModel|null $item Created Facet Model */
 	public function setItem(?FacetModel $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param FacetModel|null $item Created Facet Model
+     * @return CreateFacetModelResult
+     */
 	public function withItem(?FacetModel $item): CreateFacetModelResult {
 		$this->item = $item;
 		return $this;

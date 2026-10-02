@@ -20,45 +20,68 @@ namespace Gs2\Money2\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Deposit Event
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#depositevent
+ */
 class DepositEvent implements IModel {
 	/**
-     * @var int
+     * @var int Slot Number
 	 */
 	private $slot;
 	/**
-     * @var array
+     * @var array List of deposit transactions
 	 */
 	private $depositTransactions;
 	/**
-     * @var WalletSummary
+     * @var WalletSummary Wallet Status
 	 */
 	private $status;
+    /** @return int|null Slot Number */
 	public function getSlot(): ?int {
 		return $this->slot;
 	}
+    /** @param int|null $slot Slot Number */
 	public function setSlot(?int $slot) {
 		$this->slot = $slot;
 	}
+    /**
+     * @param int|null $slot Slot Number
+     * @return DepositEvent
+     */
 	public function withSlot(?int $slot): DepositEvent {
 		$this->slot = $slot;
 		return $this;
 	}
+    /** @return array|null List of deposit transactions */
 	public function getDepositTransactions(): ?array {
 		return $this->depositTransactions;
 	}
+    /** @param array|null $depositTransactions List of deposit transactions */
 	public function setDepositTransactions(?array $depositTransactions) {
 		$this->depositTransactions = $depositTransactions;
 	}
+    /**
+     * @param array|null $depositTransactions List of deposit transactions
+     * @return DepositEvent
+     */
 	public function withDepositTransactions(?array $depositTransactions): DepositEvent {
 		$this->depositTransactions = $depositTransactions;
 		return $this;
 	}
+    /** @return WalletSummary|null Wallet Status */
 	public function getStatus(): ?WalletSummary {
 		return $this->status;
 	}
+    /** @param WalletSummary|null $status Wallet Status */
 	public function setStatus(?WalletSummary $status) {
 		$this->status = $status;
 	}
+    /**
+     * @param WalletSummary|null $status Wallet Status
+     * @return DepositEvent
+     */
 	public function withStatus(?WalletSummary $status): DepositEvent {
 		$this->status = $status;
 		return $this;

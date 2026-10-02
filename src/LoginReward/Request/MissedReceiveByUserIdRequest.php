@@ -20,77 +20,118 @@ namespace Gs2\LoginReward\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\LoginReward\Model\Config;
 
+/**
+ * Request for missedReceiveByUserId: Receive missed login rewards by userId
+ *
+ * @see https://docs.gs2.io/api_reference/login_reward/sdk/#missedreceivebyuserid
+ */
 class MissedReceiveByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Login Bonus Model name */
     private $bonusModelName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var int */
+    /** @var int Step number to receive. In streaming mode, this can be omitted */
     private $stepNumber;
-    /** @var array */
+    /** @var array Configuration values applied to transaction variables */
     private $config;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return MissedReceiveByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): MissedReceiveByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Login Bonus Model name */
 	public function getBonusModelName(): ?string {
 		return $this->bonusModelName;
 	}
+    /** @param string|null $bonusModelName Login Bonus Model name */
 	public function setBonusModelName(?string $bonusModelName) {
 		$this->bonusModelName = $bonusModelName;
 	}
+    /**
+     * @param string|null $bonusModelName Login Bonus Model name
+     * @return MissedReceiveByUserIdRequest
+     */
 	public function withBonusModelName(?string $bonusModelName): MissedReceiveByUserIdRequest {
 		$this->bonusModelName = $bonusModelName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return MissedReceiveByUserIdRequest
+     */
 	public function withUserId(?string $userId): MissedReceiveByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return int|null Step number to receive. In streaming mode, this can be omitted */
 	public function getStepNumber(): ?int {
 		return $this->stepNumber;
 	}
+    /** @param int|null $stepNumber Step number to receive. In streaming mode, this can be omitted */
 	public function setStepNumber(?int $stepNumber) {
 		$this->stepNumber = $stepNumber;
 	}
+    /**
+     * @param int|null $stepNumber Step number to receive. In streaming mode, this can be omitted
+     * @return MissedReceiveByUserIdRequest
+     */
 	public function withStepNumber(?int $stepNumber): MissedReceiveByUserIdRequest {
 		$this->stepNumber = $stepNumber;
 		return $this;
 	}
+    /** @return array|null Configuration values applied to transaction variables */
 	public function getConfig(): ?array {
 		return $this->config;
 	}
+    /** @param array|null $config Configuration values applied to transaction variables */
 	public function setConfig(?array $config) {
 		$this->config = $config;
 	}
+    /**
+     * @param array|null $config Configuration values applied to transaction variables
+     * @return MissedReceiveByUserIdRequest
+     */
 	public function withConfig(?array $config): MissedReceiveByUserIdRequest {
 		$this->config = $config;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return MissedReceiveByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): MissedReceiveByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

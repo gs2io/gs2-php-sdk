@@ -22,18 +22,29 @@ use Gs2\Lottery\Model\AcquireAction;
 use Gs2\Lottery\Model\Prize;
 use Gs2\Lottery\Model\PrizeTableMaster;
 
+/**
+ * Result of updatePrizeTableMaster: Update Prize Table Master
+ *
+ * @see https://docs.gs2.io/api_reference/lottery/sdk/#updateprizetablemaster
+ */
 class UpdatePrizeTableMasterResult implements IResult {
-    /** @var PrizeTableMaster */
+    /** @var PrizeTableMaster Prize Table Master updated */
     private $item;
 
+    /** @return PrizeTableMaster|null Prize Table Master updated */
 	public function getItem(): ?PrizeTableMaster {
 		return $this->item;
 	}
 
+    /** @param PrizeTableMaster|null $item Prize Table Master updated */
 	public function setItem(?PrizeTableMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param PrizeTableMaster|null $item Prize Table Master updated
+     * @return UpdatePrizeTableMasterResult
+     */
 	public function withItem(?PrizeTableMaster $item): UpdatePrizeTableMasterResult {
 		$this->item = $item;
 		return $this;

@@ -19,77 +19,118 @@ namespace Gs2\Grade\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for verifyGradeUpMaterial: Verify grade up material
+ *
+ * @see https://docs.gs2.io/api_reference/grade/sdk/#verifygradeupmaterial
+ */
 class VerifyGradeUpMaterialRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Grade Model Name */
     private $gradeName;
-    /** @var string */
+    /** @var string Type of verification */
     private $verifyType;
-    /** @var string */
+    /** @var string Property ID */
     private $propertyId;
-    /** @var string */
+    /** @var string Property ID */
     private $materialPropertyId;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return VerifyGradeUpMaterialRequest
+     */
 	public function withNamespaceName(?string $namespaceName): VerifyGradeUpMaterialRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return VerifyGradeUpMaterialRequest
+     */
 	public function withAccessToken(?string $accessToken): VerifyGradeUpMaterialRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Grade Model Name */
 	public function getGradeName(): ?string {
 		return $this->gradeName;
 	}
+    /** @param string|null $gradeName Grade Model Name */
 	public function setGradeName(?string $gradeName) {
 		$this->gradeName = $gradeName;
 	}
+    /**
+     * @param string|null $gradeName Grade Model Name
+     * @return VerifyGradeUpMaterialRequest
+     */
 	public function withGradeName(?string $gradeName): VerifyGradeUpMaterialRequest {
 		$this->gradeName = $gradeName;
 		return $this;
 	}
+    /** @return string|null Type of verification */
 	public function getVerifyType(): ?string {
 		return $this->verifyType;
 	}
+    /** @param string|null $verifyType Type of verification */
 	public function setVerifyType(?string $verifyType) {
 		$this->verifyType = $verifyType;
 	}
+    /**
+     * @param string|null $verifyType Type of verification
+     * @return VerifyGradeUpMaterialRequest
+     */
 	public function withVerifyType(?string $verifyType): VerifyGradeUpMaterialRequest {
 		$this->verifyType = $verifyType;
 		return $this;
 	}
+    /** @return string|null Property ID */
 	public function getPropertyId(): ?string {
 		return $this->propertyId;
 	}
+    /** @param string|null $propertyId Property ID */
 	public function setPropertyId(?string $propertyId) {
 		$this->propertyId = $propertyId;
 	}
+    /**
+     * @param string|null $propertyId Property ID
+     * @return VerifyGradeUpMaterialRequest
+     */
 	public function withPropertyId(?string $propertyId): VerifyGradeUpMaterialRequest {
 		$this->propertyId = $propertyId;
 		return $this;
 	}
+    /** @return string|null Property ID */
 	public function getMaterialPropertyId(): ?string {
 		return $this->materialPropertyId;
 	}
+    /** @param string|null $materialPropertyId Property ID */
 	public function setMaterialPropertyId(?string $materialPropertyId) {
 		$this->materialPropertyId = $materialPropertyId;
 	}
+    /**
+     * @param string|null $materialPropertyId Property ID
+     * @return VerifyGradeUpMaterialRequest
+     */
 	public function withMaterialPropertyId(?string $materialPropertyId): VerifyGradeUpMaterialRequest {
 		$this->materialPropertyId = $materialPropertyId;
 		return $this;

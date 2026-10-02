@@ -20,47 +20,47 @@ namespace Gs2\Core\Control;
 abstract class Gs2BasicRequest {
 
 	/**
-     * GS2認証クライアントID
+     * GS2 client ID
      * @var string
      */
 	private $xGs2ClientId;
 
     /**
-     * GS2リクエストID
+     * GS2 request ID
      * @var string
      */
     private $xGs2RequestId;
 
     /**
-     * コンテキストスタック
+     * Context stack
      * @var string
      */
     private $contextStack;
 
 	/**
-	 * GS2認証クライアントIDを取得。
+	 * Get the GS2 client ID.
 	 * 
-	 * @return string GS2認証クライアントID
+	 * @return string GS2 client ID
 	 */
 	function getxGs2ClientId(): string {
 		return $this->xGs2ClientId;
 	}
 
 	/**
-	 * GS2認証クライアントIDを設定。
-	 * 通常は自動的に計算されるため、この値を設定する必要はありません。
+	 * Set the GS2 client ID.
+	 * Normally computed automatically; there is no need to set it.
 	 * 
-	 * @param string $xGs2ClientId GS2認証クライアントID
+	 * @param string $xGs2ClientId GS2 client ID
 	 */
 	function setxGs2ClientId(string $xGs2ClientId): void {
 		$this->xGs2ClientId = $xGs2ClientId;
 	}
 
 	/**
-	 * GS2認証クライアントIDを設定。
-	 * 通常は自動的に計算されるため、この値を設定する必要はありません。
+	 * Set the GS2 client ID.
+	 * Normally computed automatically; there is no need to set it.
 	 * 
-	 * @param string $xGs2ClientId GS2認証クライアントID
+	 * @param string $xGs2ClientId GS2 client ID
      * @return self
 	 */
     function withxGs2ClientId(string $xGs2ClientId): self {
@@ -69,27 +69,27 @@ abstract class Gs2BasicRequest {
 	}
 
     /**
-     * コンテキストスタックを取得。
+     * Get the context stack.
      *
-     * @return string|null コンテキストスタック
+     * @return string|null Context stack
      */
     function getContextStack() {
         return $this->contextStack;
     }
 
     /**
-     * コンテキストスタックを設定。
+     * Set the context stack.
      *
-     * @param string $contextStack コンテキストスタック
+     * @param string $contextStack Context stack
      */
     function setContextStack(string $contextStack): void {
         $this->contextStack = $contextStack;
     }
 
     /**
-     * コンテキストスタックを設定。
+     * Set the context stack.
      *
-     * @param string $contextStack コンテキストスタック
+     * @param string $contextStack Context stack
      * @return self
      */
     function withContextStack(string $contextStack): self {
@@ -98,27 +98,27 @@ abstract class Gs2BasicRequest {
     }
 
     /**
-     * GS2リクエストIDを取得。
+     * Get the GS2 request ID.
      *
-     * @return string|null GS2リクエストID
+     * @return string|null GS2 request ID
      */
     function getRequestId() {
         return $this->xGs2RequestId;
     }
 
     /**
-     * GS2リクエストIDを設定。
+     * Set the GS2 request ID.
      *
-     * @param string $xGs2RequestId GS2リクエストID
+     * @param string $xGs2RequestId GS2 request ID
      */
     function setRequestId(string $xGs2RequestId): void {
         $this->xGs2RequestId = $xGs2RequestId;
     }
 
     /**
-     * GS2リクエストIDを設定。
+     * Set the GS2 request ID.
      *
-     * @param string $xGs2RequestId GS2リクエストID
+     * @param string $xGs2RequestId GS2 request ID
      * @return self
      */
     function withRequestId(string $xGs2RequestId): self {

@@ -21,39 +21,62 @@ use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Matchmaking\Model\Attribute;
 use Gs2\Matchmaking\Model\Player;
 
+/**
+ * Request for doMatchmakingByPlayer: Find a Gathering in which the Player can participate and join.
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#domatchmakingbyplayer
+ */
 class DoMatchmakingByPlayerRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var Player */
+    /** @var Player Player Information */
     private $player;
-    /** @var string */
+    /** @var string Used to resume search Token that holds matchmaking state */
     private $matchmakingContextToken;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DoMatchmakingByPlayerRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DoMatchmakingByPlayerRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return Player|null Player Information */
 	public function getPlayer(): ?Player {
 		return $this->player;
 	}
+    /** @param Player|null $player Player Information */
 	public function setPlayer(?Player $player) {
 		$this->player = $player;
 	}
+    /**
+     * @param Player|null $player Player Information
+     * @return DoMatchmakingByPlayerRequest
+     */
 	public function withPlayer(?Player $player): DoMatchmakingByPlayerRequest {
 		$this->player = $player;
 		return $this;
 	}
+    /** @return string|null Used to resume search Token that holds matchmaking state */
 	public function getMatchmakingContextToken(): ?string {
 		return $this->matchmakingContextToken;
 	}
+    /** @param string|null $matchmakingContextToken Used to resume search Token that holds matchmaking state */
 	public function setMatchmakingContextToken(?string $matchmakingContextToken) {
 		$this->matchmakingContextToken = $matchmakingContextToken;
 	}
+    /**
+     * @param string|null $matchmakingContextToken Used to resume search Token that holds matchmaking state
+     * @return DoMatchmakingByPlayerRequest
+     */
 	public function withMatchmakingContextToken(?string $matchmakingContextToken): DoMatchmakingByPlayerRequest {
 		$this->matchmakingContextToken = $matchmakingContextToken;
 		return $this;

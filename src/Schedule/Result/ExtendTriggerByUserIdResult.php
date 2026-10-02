@@ -20,18 +20,29 @@ namespace Gs2\Schedule\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Schedule\Model\Trigger;
 
+/**
+ * Result of extendTriggerByUserId: Extend the period of a trigger by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/schedule/sdk/#extendtriggerbyuserid
+ */
 class ExtendTriggerByUserIdResult implements IResult {
-    /** @var Trigger */
+    /** @var Trigger Pulled Trigger */
     private $item;
 
+    /** @return Trigger|null Pulled Trigger */
 	public function getItem(): ?Trigger {
 		return $this->item;
 	}
 
+    /** @param Trigger|null $item Pulled Trigger */
 	public function setItem(?Trigger $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Trigger|null $item Pulled Trigger
+     * @return ExtendTriggerByUserIdResult
+     */
 	public function withItem(?Trigger $item): ExtendTriggerByUserIdResult {
 		$this->item = $item;
 		return $this;

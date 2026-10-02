@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Chat\Model\NotificationType;
 use Gs2\Chat\Model\Subscribe;
 
+/**
+ * Result of updateNotificationTypeByUserId: Update notification methods by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/chat/sdk/#updatenotificationtypebyuserid
+ */
 class UpdateNotificationTypeByUserIdResult implements IResult {
-    /** @var Subscribe */
+    /** @var Subscribe Updated Subscription */
     private $item;
 
+    /** @return Subscribe|null Updated Subscription */
 	public function getItem(): ?Subscribe {
 		return $this->item;
 	}
 
+    /** @param Subscribe|null $item Updated Subscription */
 	public function setItem(?Subscribe $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Subscribe|null $item Updated Subscription
+     * @return UpdateNotificationTypeByUserIdResult
+     */
 	public function withItem(?Subscribe $item): UpdateNotificationTypeByUserIdResult {
 		$this->item = $item;
 		return $this;

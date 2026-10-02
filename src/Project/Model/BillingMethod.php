@@ -20,157 +20,224 @@ namespace Gs2\Project\Model;
 use Gs2\Core\Model\IModel;
 
 
+/** Payment Method */
 class BillingMethod implements IModel {
 	/**
-     * @var string
+     * @var string Payment Method GRN
 	 */
 	private $billingMethodId;
 	/**
-     * @var string
+     * @var string GS2 Account Name
 	 */
 	private $accountName;
 	/**
-     * @var string
+     * @var string Name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Description
 	 */
 	private $description;
 	/**
-     * @var string
+     * @var string Payment Method
 	 */
 	private $methodType;
 	/**
-     * @var string
+     * @var string Card Signatures
 	 */
 	private $cardSignatureName;
 	/**
-     * @var string
+     * @var string Card Brand
 	 */
 	private $cardBrand;
 	/**
-     * @var string
+     * @var string Card Number (Last 4)
 	 */
 	private $cardLast4;
 	/**
-     * @var string
+     * @var string Partner ID
 	 */
 	private $partnerId;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
+    /** @return string|null Payment Method GRN */
 	public function getBillingMethodId(): ?string {
 		return $this->billingMethodId;
 	}
+    /** @param string|null $billingMethodId Payment Method GRN */
 	public function setBillingMethodId(?string $billingMethodId) {
 		$this->billingMethodId = $billingMethodId;
 	}
+    /**
+     * @param string|null $billingMethodId Payment Method GRN
+     * @return BillingMethod
+     */
 	public function withBillingMethodId(?string $billingMethodId): BillingMethod {
 		$this->billingMethodId = $billingMethodId;
 		return $this;
 	}
+    /** @return string|null GS2 Account Name */
 	public function getAccountName(): ?string {
 		return $this->accountName;
 	}
+    /** @param string|null $accountName GS2 Account Name */
 	public function setAccountName(?string $accountName) {
 		$this->accountName = $accountName;
 	}
+    /**
+     * @param string|null $accountName GS2 Account Name
+     * @return BillingMethod
+     */
 	public function withAccountName(?string $accountName): BillingMethod {
 		$this->accountName = $accountName;
 		return $this;
 	}
+    /** @return string|null Name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Name
+     * @return BillingMethod
+     */
 	public function withName(?string $name): BillingMethod {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return BillingMethod
+     */
 	public function withDescription(?string $description): BillingMethod {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Payment Method */
 	public function getMethodType(): ?string {
 		return $this->methodType;
 	}
+    /** @param string|null $methodType Payment Method */
 	public function setMethodType(?string $methodType) {
 		$this->methodType = $methodType;
 	}
+    /**
+     * @param string|null $methodType Payment Method
+     * @return BillingMethod
+     */
 	public function withMethodType(?string $methodType): BillingMethod {
 		$this->methodType = $methodType;
 		return $this;
 	}
+    /** @return string|null Card Signatures */
 	public function getCardSignatureName(): ?string {
 		return $this->cardSignatureName;
 	}
+    /** @param string|null $cardSignatureName Card Signatures */
 	public function setCardSignatureName(?string $cardSignatureName) {
 		$this->cardSignatureName = $cardSignatureName;
 	}
+    /**
+     * @param string|null $cardSignatureName Card Signatures
+     * @return BillingMethod
+     */
 	public function withCardSignatureName(?string $cardSignatureName): BillingMethod {
 		$this->cardSignatureName = $cardSignatureName;
 		return $this;
 	}
+    /** @return string|null Card Brand */
 	public function getCardBrand(): ?string {
 		return $this->cardBrand;
 	}
+    /** @param string|null $cardBrand Card Brand */
 	public function setCardBrand(?string $cardBrand) {
 		$this->cardBrand = $cardBrand;
 	}
+    /**
+     * @param string|null $cardBrand Card Brand
+     * @return BillingMethod
+     */
 	public function withCardBrand(?string $cardBrand): BillingMethod {
 		$this->cardBrand = $cardBrand;
 		return $this;
 	}
+    /** @return string|null Card Number (Last 4) */
 	public function getCardLast4(): ?string {
 		return $this->cardLast4;
 	}
+    /** @param string|null $cardLast4 Card Number (Last 4) */
 	public function setCardLast4(?string $cardLast4) {
 		$this->cardLast4 = $cardLast4;
 	}
+    /**
+     * @param string|null $cardLast4 Card Number (Last 4)
+     * @return BillingMethod
+     */
 	public function withCardLast4(?string $cardLast4): BillingMethod {
 		$this->cardLast4 = $cardLast4;
 		return $this;
 	}
+    /** @return string|null Partner ID */
 	public function getPartnerId(): ?string {
 		return $this->partnerId;
 	}
+    /** @param string|null $partnerId Partner ID */
 	public function setPartnerId(?string $partnerId) {
 		$this->partnerId = $partnerId;
 	}
+    /**
+     * @param string|null $partnerId Partner ID
+     * @return BillingMethod
+     */
 	public function withPartnerId(?string $partnerId): BillingMethod {
 		$this->partnerId = $partnerId;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return BillingMethod
+     */
 	public function withCreatedAt(?int $createdAt): BillingMethod {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return BillingMethod
+     */
 	public function withUpdatedAt(?int $updatedAt): BillingMethod {
 		$this->updatedAt = $updatedAt;
 		return $this;

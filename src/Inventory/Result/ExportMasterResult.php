@@ -20,18 +20,29 @@ namespace Gs2\Inventory\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Inventory\Model\CurrentItemModelMaster;
 
+/**
+ * Result of exportMaster: Export Item Model Master in a master data format that can be activated
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#exportmaster
+ */
 class ExportMasterResult implements IResult {
-    /** @var CurrentItemModelMaster */
+    /** @var CurrentItemModelMaster Item Model Master that can be activated */
     private $item;
 
+    /** @return CurrentItemModelMaster|null Item Model Master that can be activated */
 	public function getItem(): ?CurrentItemModelMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentItemModelMaster|null $item Item Model Master that can be activated */
 	public function setItem(?CurrentItemModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentItemModelMaster|null $item Item Model Master that can be activated
+     * @return ExportMasterResult
+     */
 	public function withItem(?CurrentItemModelMaster $item): ExportMasterResult {
 		$this->item = $item;
 		return $this;

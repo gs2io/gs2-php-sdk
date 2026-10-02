@@ -20,18 +20,29 @@ namespace Gs2\Friend\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Friend\Model\FriendUser;
 
+/**
+ * Result of getFriendByUserId: Get a friend by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/friend/sdk/#getfriendbyuserid
+ */
 class GetFriendByUserIdResult implements IResult {
-    /** @var FriendUser */
+    /** @var FriendUser Friend */
     private $item;
 
+    /** @return FriendUser|null Friend */
 	public function getItem(): ?FriendUser {
 		return $this->item;
 	}
 
+    /** @param FriendUser|null $item Friend */
 	public function setItem(?FriendUser $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param FriendUser|null $item Friend
+     * @return GetFriendByUserIdResult
+     */
 	public function withItem(?FriendUser $item): GetFriendByUserIdResult {
 		$this->item = $item;
 		return $this;

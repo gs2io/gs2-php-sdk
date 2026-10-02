@@ -22,18 +22,29 @@ use Gs2\Guild\Model\RoleModel;
 use Gs2\Guild\Model\Member;
 use Gs2\Guild\Model\Guild;
 
+/**
+ * Result of getGuild: Get Guild
+ *
+ * @see https://docs.gs2.io/api_reference/guild/sdk/#getguild
+ */
 class GetGuildResult implements IResult {
-    /** @var Guild */
+    /** @var Guild Guild */
     private $item;
 
+    /** @return Guild|null Guild */
 	public function getItem(): ?Guild {
 		return $this->item;
 	}
 
+    /** @param Guild|null $item Guild */
 	public function setItem(?Guild $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Guild|null $item Guild
+     * @return GetGuildResult
+     */
 	public function withItem(?Guild $item): GetGuildResult {
 		$this->item = $item;
 		return $this;

@@ -20,157 +20,228 @@ namespace Gs2\Exchange\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Exchange Await
+ *
+ * @see https://docs.gs2.io/api_reference/exchange/sdk/#await
+ */
 class Await implements IModel {
 	/**
-     * @var string
+     * @var string Exchange Await GRN
 	 */
 	private $awaitId;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var string
+     * @var string Exchange Rate Model name
 	 */
 	private $rateName;
 	/**
-     * @var string
+     * @var string Exchange Await name
 	 */
 	private $name;
 	/**
-     * @var int
+     * @var int Number of exchanges
 	 */
 	private $count;
 	/**
-     * @var int
+     * @var int Skip seconds
 	 */
 	private $skipSeconds;
 	/**
-     * @var array
+     * @var array Default configuration values applied when obtaining rewards
 	 */
 	private $config;
 	/**
-     * @var int
+     * @var int Time when rewards become claimable
 	 */
 	private $acquirableAt;
 	/**
-     * @var int
+     * @var int Exchange time
 	 */
 	private $exchangedAt;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Exchange Await GRN */
 	public function getAwaitId(): ?string {
 		return $this->awaitId;
 	}
+    /** @param string|null $awaitId Exchange Await GRN */
 	public function setAwaitId(?string $awaitId) {
 		$this->awaitId = $awaitId;
 	}
+    /**
+     * @param string|null $awaitId Exchange Await GRN
+     * @return Await
+     */
 	public function withAwaitId(?string $awaitId): Await {
 		$this->awaitId = $awaitId;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return Await
+     */
 	public function withUserId(?string $userId): Await {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Exchange Rate Model name */
 	public function getRateName(): ?string {
 		return $this->rateName;
 	}
+    /** @param string|null $rateName Exchange Rate Model name */
 	public function setRateName(?string $rateName) {
 		$this->rateName = $rateName;
 	}
+    /**
+     * @param string|null $rateName Exchange Rate Model name
+     * @return Await
+     */
 	public function withRateName(?string $rateName): Await {
 		$this->rateName = $rateName;
 		return $this;
 	}
+    /** @return string|null Exchange Await name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Exchange Await name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Exchange Await name
+     * @return Await
+     */
 	public function withName(?string $name): Await {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return int|null Number of exchanges */
 	public function getCount(): ?int {
 		return $this->count;
 	}
+    /** @param int|null $count Number of exchanges */
 	public function setCount(?int $count) {
 		$this->count = $count;
 	}
+    /**
+     * @param int|null $count Number of exchanges
+     * @return Await
+     */
 	public function withCount(?int $count): Await {
 		$this->count = $count;
 		return $this;
 	}
+    /** @return int|null Skip seconds */
 	public function getSkipSeconds(): ?int {
 		return $this->skipSeconds;
 	}
+    /** @param int|null $skipSeconds Skip seconds */
 	public function setSkipSeconds(?int $skipSeconds) {
 		$this->skipSeconds = $skipSeconds;
 	}
+    /**
+     * @param int|null $skipSeconds Skip seconds
+     * @return Await
+     */
 	public function withSkipSeconds(?int $skipSeconds): Await {
 		$this->skipSeconds = $skipSeconds;
 		return $this;
 	}
+    /** @return array|null Default configuration values applied when obtaining rewards */
 	public function getConfig(): ?array {
 		return $this->config;
 	}
+    /** @param array|null $config Default configuration values applied when obtaining rewards */
 	public function setConfig(?array $config) {
 		$this->config = $config;
 	}
+    /**
+     * @param array|null $config Default configuration values applied when obtaining rewards
+     * @return Await
+     */
 	public function withConfig(?array $config): Await {
 		$this->config = $config;
 		return $this;
 	}
+    /** @return int|null Time when rewards become claimable */
 	public function getAcquirableAt(): ?int {
 		return $this->acquirableAt;
 	}
+    /** @param int|null $acquirableAt Time when rewards become claimable */
 	public function setAcquirableAt(?int $acquirableAt) {
 		$this->acquirableAt = $acquirableAt;
 	}
+    /**
+     * @param int|null $acquirableAt Time when rewards become claimable
+     * @return Await
+     */
 	public function withAcquirableAt(?int $acquirableAt): Await {
 		$this->acquirableAt = $acquirableAt;
 		return $this;
 	}
+    /** @return int|null Exchange time */
 	public function getExchangedAt(): ?int {
 		return $this->exchangedAt;
 	}
+    /** @param int|null $exchangedAt Exchange time */
 	public function setExchangedAt(?int $exchangedAt) {
 		$this->exchangedAt = $exchangedAt;
 	}
+    /**
+     * @param int|null $exchangedAt Exchange time
+     * @return Await
+     */
 	public function withExchangedAt(?int $exchangedAt): Await {
 		$this->exchangedAt = $exchangedAt;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return Await
+     */
 	public function withCreatedAt(?int $createdAt): Await {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return Await
+     */
 	public function withRevision(?int $revision): Await {
 		$this->revision = $revision;
 		return $this;

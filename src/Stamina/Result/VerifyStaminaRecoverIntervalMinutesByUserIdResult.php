@@ -20,18 +20,29 @@ namespace Gs2\Stamina\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Stamina\Model\Stamina;
 
+/**
+ * Result of verifyStaminaRecoverIntervalMinutesByUserId: Verify the value of the recovery interval minutes by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/stamina/sdk/#verifystaminarecoverintervalminutesbyuserid
+ */
 class VerifyStaminaRecoverIntervalMinutesByUserIdResult implements IResult {
-    /** @var Stamina */
+    /** @var Stamina Stamina */
     private $item;
 
+    /** @return Stamina|null Stamina */
 	public function getItem(): ?Stamina {
 		return $this->item;
 	}
 
+    /** @param Stamina|null $item Stamina */
 	public function setItem(?Stamina $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Stamina|null $item Stamina
+     * @return VerifyStaminaRecoverIntervalMinutesByUserIdResult
+     */
 	public function withItem(?Stamina $item): VerifyStaminaRecoverIntervalMinutesByUserIdResult {
 		$this->item = $item;
 		return $this;

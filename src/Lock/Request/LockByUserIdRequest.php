@@ -19,77 +19,118 @@ namespace Gs2\Lock\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for lockByUserId: Acquire Mutex by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/lock/sdk/#lockbyuserid
+ */
 class LockByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Property ID */
     private $propertyId;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Transaction ID */
     private $transactionId;
-    /** @var int */
+    /** @var int Duration of lock acquisition (seconds) */
     private $ttl;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return LockByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): LockByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Property ID */
 	public function getPropertyId(): ?string {
 		return $this->propertyId;
 	}
+    /** @param string|null $propertyId Property ID */
 	public function setPropertyId(?string $propertyId) {
 		$this->propertyId = $propertyId;
 	}
+    /**
+     * @param string|null $propertyId Property ID
+     * @return LockByUserIdRequest
+     */
 	public function withPropertyId(?string $propertyId): LockByUserIdRequest {
 		$this->propertyId = $propertyId;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return LockByUserIdRequest
+     */
 	public function withUserId(?string $userId): LockByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Transaction ID */
 	public function getTransactionId(): ?string {
 		return $this->transactionId;
 	}
+    /** @param string|null $transactionId Transaction ID */
 	public function setTransactionId(?string $transactionId) {
 		$this->transactionId = $transactionId;
 	}
+    /**
+     * @param string|null $transactionId Transaction ID
+     * @return LockByUserIdRequest
+     */
 	public function withTransactionId(?string $transactionId): LockByUserIdRequest {
 		$this->transactionId = $transactionId;
 		return $this;
 	}
+    /** @return int|null Duration of lock acquisition (seconds) */
 	public function getTtl(): ?int {
 		return $this->ttl;
 	}
+    /** @param int|null $ttl Duration of lock acquisition (seconds) */
 	public function setTtl(?int $ttl) {
 		$this->ttl = $ttl;
 	}
+    /**
+     * @param int|null $ttl Duration of lock acquisition (seconds)
+     * @return LockByUserIdRequest
+     */
 	public function withTtl(?int $ttl): LockByUserIdRequest {
 		$this->ttl = $ttl;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return LockByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): LockByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

@@ -19,27 +19,44 @@ namespace Gs2\Inventory\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for verifyBigItemByStampTask: Execute verification of Big Item as verify action
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventoryverifybigitembyuserid
+ */
 class VerifyBigItemByStampTaskRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Verify Action */
     private $stampTask;
-    /** @var string */
+    /** @var string Encryption Key GRN */
     private $keyId;
+    /** @return string|null Verify Action */
 	public function getStampTask(): ?string {
 		return $this->stampTask;
 	}
+    /** @param string|null $stampTask Verify Action */
 	public function setStampTask(?string $stampTask) {
 		$this->stampTask = $stampTask;
 	}
+    /**
+     * @param string|null $stampTask Verify Action
+     * @return VerifyBigItemByStampTaskRequest
+     */
 	public function withStampTask(?string $stampTask): VerifyBigItemByStampTaskRequest {
 		$this->stampTask = $stampTask;
 		return $this;
 	}
+    /** @return string|null Encryption Key GRN */
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
+    /** @param string|null $keyId Encryption Key GRN */
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
+    /**
+     * @param string|null $keyId Encryption Key GRN
+     * @return VerifyBigItemByStampTaskRequest
+     */
 	public function withKeyId(?string $keyId): VerifyBigItemByStampTaskRequest {
 		$this->keyId = $keyId;
 		return $this;

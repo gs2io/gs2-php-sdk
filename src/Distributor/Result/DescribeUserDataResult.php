@@ -20,33 +20,50 @@ namespace Gs2\Distributor\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Distributor\Model\UserDataEntry;
 
+/**
+ * Result of describeUserData: List all data of the requesting user in bulk
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#describeuserdata
+ */
 class DescribeUserDataResult implements IResult {
-    /** @var array */
+    /** @var array List of user data entries */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of user data entries */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of user data entries */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of user data entries
+     * @return DescribeUserDataResult
+     */
 	public function withItems(?array $items): DescribeUserDataResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeUserDataResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeUserDataResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

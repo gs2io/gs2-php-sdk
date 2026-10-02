@@ -20,73 +20,108 @@ namespace Gs2\Money2\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Push Notification Setting
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#notificationsetting
+ */
 class NotificationSetting implements IModel {
 	/**
-     * @var string
+     * @var string GS2-Gateway Namespace to use for push notifications
 	 */
 	private $gatewayNamespaceId;
 	/**
-     * @var bool
+     * @var bool Whether to forward the notification as a mobile push notification
 	 */
 	private $enableTransferMobileNotification;
 	/**
-     * @var string
+     * @var string Sound file name to be used for mobile push notifications
 	 */
 	private $sound;
 	/**
-     * @var array
+     * @var array Localized title and body used when forwarding to mobile push notifications
 	 */
 	private $mobileNotificationMessages;
 	/**
-     * @var string
+     * @var string Whether to enable push notifications
 	 */
 	private $enable;
+    /** @return string|null GS2-Gateway Namespace to use for push notifications */
 	public function getGatewayNamespaceId(): ?string {
 		return $this->gatewayNamespaceId;
 	}
+    /** @param string|null $gatewayNamespaceId GS2-Gateway Namespace to use for push notifications */
 	public function setGatewayNamespaceId(?string $gatewayNamespaceId) {
 		$this->gatewayNamespaceId = $gatewayNamespaceId;
 	}
+    /**
+     * @param string|null $gatewayNamespaceId GS2-Gateway Namespace to use for push notifications
+     * @return NotificationSetting
+     */
 	public function withGatewayNamespaceId(?string $gatewayNamespaceId): NotificationSetting {
 		$this->gatewayNamespaceId = $gatewayNamespaceId;
 		return $this;
 	}
+    /** @return bool|null Whether to forward the notification as a mobile push notification */
 	public function getEnableTransferMobileNotification(): ?bool {
 		return $this->enableTransferMobileNotification;
 	}
+    /** @param bool|null $enableTransferMobileNotification Whether to forward the notification as a mobile push notification */
 	public function setEnableTransferMobileNotification(?bool $enableTransferMobileNotification) {
 		$this->enableTransferMobileNotification = $enableTransferMobileNotification;
 	}
+    /**
+     * @param bool|null $enableTransferMobileNotification Whether to forward the notification as a mobile push notification
+     * @return NotificationSetting
+     */
 	public function withEnableTransferMobileNotification(?bool $enableTransferMobileNotification): NotificationSetting {
 		$this->enableTransferMobileNotification = $enableTransferMobileNotification;
 		return $this;
 	}
+    /** @return string|null Sound file name to be used for mobile push notifications */
 	public function getSound(): ?string {
 		return $this->sound;
 	}
+    /** @param string|null $sound Sound file name to be used for mobile push notifications */
 	public function setSound(?string $sound) {
 		$this->sound = $sound;
 	}
+    /**
+     * @param string|null $sound Sound file name to be used for mobile push notifications
+     * @return NotificationSetting
+     */
 	public function withSound(?string $sound): NotificationSetting {
 		$this->sound = $sound;
 		return $this;
 	}
+    /** @return array|null Localized title and body used when forwarding to mobile push notifications */
 	public function getMobileNotificationMessages(): ?array {
 		return $this->mobileNotificationMessages;
 	}
+    /** @param array|null $mobileNotificationMessages Localized title and body used when forwarding to mobile push notifications */
 	public function setMobileNotificationMessages(?array $mobileNotificationMessages) {
 		$this->mobileNotificationMessages = $mobileNotificationMessages;
 	}
+    /**
+     * @param array|null $mobileNotificationMessages Localized title and body used when forwarding to mobile push notifications
+     * @return NotificationSetting
+     */
 	public function withMobileNotificationMessages(?array $mobileNotificationMessages): NotificationSetting {
 		$this->mobileNotificationMessages = $mobileNotificationMessages;
 		return $this;
 	}
+    /** @return string|null Whether to enable push notifications */
 	public function getEnable(): ?string {
 		return $this->enable;
 	}
+    /** @param string|null $enable Whether to enable push notifications */
 	public function setEnable(?string $enable) {
 		$this->enable = $enable;
 	}
+    /**
+     * @param string|null $enable Whether to enable push notifications
+     * @return NotificationSetting
+     */
 	public function withEnable(?string $enable): NotificationSetting {
 		$this->enable = $enable;
 		return $this;

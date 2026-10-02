@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Quest\Model\Reward;
 use Gs2\Quest\Model\Progress;
 
+/**
+ * Result of createProgressByUserId: Create Quest Progress by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/quest/sdk/#createprogressbyuserid
+ */
 class CreateProgressByUserIdResult implements IResult {
-    /** @var Progress */
+    /** @var Progress Quest Progress */
     private $item;
 
+    /** @return Progress|null Quest Progress */
 	public function getItem(): ?Progress {
 		return $this->item;
 	}
 
+    /** @param Progress|null $item Quest Progress */
 	public function setItem(?Progress $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Progress|null $item Quest Progress
+     * @return CreateProgressByUserIdResult
+     */
 	public function withItem(?Progress $item): CreateProgressByUserIdResult {
 		$this->item = $item;
 		return $this;

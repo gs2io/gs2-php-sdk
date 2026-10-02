@@ -21,48 +21,67 @@ use Gs2\Core\Model\IResult;
 use Gs2\Project\Model\Gs2Region;
 use Gs2\Project\Model\Project;
 
+/** Result of getProjectTokenByIdentifier: Issue project tokens */
 class GetProjectTokenByIdentifierResult implements IResult {
-    /** @var Project */
+    /** @var Project Projects signed in to */
     private $item;
-    /** @var string */
+    /** @var string Owner ID */
     private $ownerId;
-    /** @var string */
+    /** @var string Signed in to the project token. */
     private $projectToken;
 
+    /** @return Project|null Projects signed in to */
 	public function getItem(): ?Project {
 		return $this->item;
 	}
 
+    /** @param Project|null $item Projects signed in to */
 	public function setItem(?Project $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Project|null $item Projects signed in to
+     * @return GetProjectTokenByIdentifierResult
+     */
 	public function withItem(?Project $item): GetProjectTokenByIdentifierResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null Owner ID */
 	public function getOwnerId(): ?string {
 		return $this->ownerId;
 	}
 
+    /** @param string|null $ownerId Owner ID */
 	public function setOwnerId(?string $ownerId) {
 		$this->ownerId = $ownerId;
 	}
 
+    /**
+     * @param string|null $ownerId Owner ID
+     * @return GetProjectTokenByIdentifierResult
+     */
 	public function withOwnerId(?string $ownerId): GetProjectTokenByIdentifierResult {
 		$this->ownerId = $ownerId;
 		return $this;
 	}
 
+    /** @return string|null Signed in to the project token. */
 	public function getProjectToken(): ?string {
 		return $this->projectToken;
 	}
 
+    /** @param string|null $projectToken Signed in to the project token. */
 	public function setProjectToken(?string $projectToken) {
 		$this->projectToken = $projectToken;
 	}
 
+    /**
+     * @param string|null $projectToken Signed in to the project token.
+     * @return GetProjectTokenByIdentifierResult
+     */
 	public function withProjectToken(?string $projectToken): GetProjectTokenByIdentifierResult {
 		$this->projectToken = $projectToken;
 		return $this;

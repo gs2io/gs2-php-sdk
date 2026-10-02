@@ -23,33 +23,50 @@ use Gs2\Buff\Model\BuffTargetModel;
 use Gs2\Buff\Model\BuffTargetAction;
 use Gs2\Buff\Model\BuffEntryModelMaster;
 
+/**
+ * Result of describeBuffEntryModelMasters: List Buff Entry Model Masters
+ *
+ * @see https://docs.gs2.io/api_reference/buff/sdk/#describebuffentrymodelmasters
+ */
 class DescribeBuffEntryModelMastersResult implements IResult {
-    /** @var array */
+    /** @var array List of Buff Entry Model Master */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Buff Entry Model Master */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Buff Entry Model Master */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Buff Entry Model Master
+     * @return DescribeBuffEntryModelMastersResult
+     */
 	public function withItems(?array $items): DescribeBuffEntryModelMastersResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeBuffEntryModelMastersResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeBuffEntryModelMastersResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

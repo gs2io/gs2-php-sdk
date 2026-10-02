@@ -19,27 +19,44 @@ namespace Gs2\Idle\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for receiveByStampSheet: Execute the receipt of rewards as an acquire action
+ *
+ * @see https://docs.gs2.io/api_reference/idle/stamp_sheet/#gs2idlereceivebyuserid
+ */
 class ReceiveByStampSheetRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Transaction */
     private $stampSheet;
-    /** @var string */
+    /** @var string Encryption Key GRN */
     private $keyId;
+    /** @return string|null Transaction */
 	public function getStampSheet(): ?string {
 		return $this->stampSheet;
 	}
+    /** @param string|null $stampSheet Transaction */
 	public function setStampSheet(?string $stampSheet) {
 		$this->stampSheet = $stampSheet;
 	}
+    /**
+     * @param string|null $stampSheet Transaction
+     * @return ReceiveByStampSheetRequest
+     */
 	public function withStampSheet(?string $stampSheet): ReceiveByStampSheetRequest {
 		$this->stampSheet = $stampSheet;
 		return $this;
 	}
+    /** @return string|null Encryption Key GRN */
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
+    /** @param string|null $keyId Encryption Key GRN */
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
+    /**
+     * @param string|null $keyId Encryption Key GRN
+     * @return ReceiveByStampSheetRequest
+     */
 	public function withKeyId(?string $keyId): ReceiveByStampSheetRequest {
 		$this->keyId = $keyId;
 		return $this;

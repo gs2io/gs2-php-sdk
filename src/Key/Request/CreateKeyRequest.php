@@ -19,39 +19,62 @@ namespace Gs2\Key\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for createKey: Create Encryption Key
+ *
+ * @see https://docs.gs2.io/api_reference/key/sdk/#createkey
+ */
 class CreateKeyRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Encryption Key name */
     private $name;
-    /** @var string */
+    /** @var string Description */
     private $description;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return CreateKeyRequest
+     */
 	public function withNamespaceName(?string $namespaceName): CreateKeyRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Encryption Key name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Encryption Key name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Encryption Key name
+     * @return CreateKeyRequest
+     */
 	public function withName(?string $name): CreateKeyRequest {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return CreateKeyRequest
+     */
 	public function withDescription(?string $description): CreateKeyRequest {
 		$this->description = $description;
 		return $this;

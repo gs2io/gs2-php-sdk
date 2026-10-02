@@ -20,18 +20,29 @@ namespace Gs2\SkillTree\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\SkillTree\Model\CurrentTreeMaster;
 
+/**
+ * Result of updateCurrentTreeMasterFromGitHub: Update currently active Node Model master data from GitHub
+ *
+ * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#updatecurrenttreemasterfromgithub
+ */
 class UpdateCurrentTreeMasterFromGitHubResult implements IResult {
-    /** @var CurrentTreeMaster */
+    /** @var CurrentTreeMaster Updated master data of the currently active Node Models */
     private $item;
 
+    /** @return CurrentTreeMaster|null Updated master data of the currently active Node Models */
 	public function getItem(): ?CurrentTreeMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentTreeMaster|null $item Updated master data of the currently active Node Models */
 	public function setItem(?CurrentTreeMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentTreeMaster|null $item Updated master data of the currently active Node Models
+     * @return UpdateCurrentTreeMasterFromGitHubResult
+     */
 	public function withItem(?CurrentTreeMaster $item): UpdateCurrentTreeMasterFromGitHubResult {
 		$this->item = $item;
 		return $this;

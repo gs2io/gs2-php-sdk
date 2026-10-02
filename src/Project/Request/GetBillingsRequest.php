@@ -19,39 +19,58 @@ namespace Gs2\Project\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/** Request for getBillings: Get list of usage status of the project */
 class GetBillingsRequest extends Gs2BasicRequest {
-    /** @var int */
+    /** @var int Year the event occurred */
     private $year;
-    /** @var int */
+    /** @var int Month the event occurred */
     private $month;
-    /** @var string */
+    /** @var string Service */
     private $service;
+    /** @return int|null Year the event occurred */
 	public function getYear(): ?int {
 		return $this->year;
 	}
+    /** @param int|null $year Year the event occurred */
 	public function setYear(?int $year) {
 		$this->year = $year;
 	}
+    /**
+     * @param int|null $year Year the event occurred
+     * @return GetBillingsRequest
+     */
 	public function withYear(?int $year): GetBillingsRequest {
 		$this->year = $year;
 		return $this;
 	}
+    /** @return int|null Month the event occurred */
 	public function getMonth(): ?int {
 		return $this->month;
 	}
+    /** @param int|null $month Month the event occurred */
 	public function setMonth(?int $month) {
 		$this->month = $month;
 	}
+    /**
+     * @param int|null $month Month the event occurred
+     * @return GetBillingsRequest
+     */
 	public function withMonth(?int $month): GetBillingsRequest {
 		$this->month = $month;
 		return $this;
 	}
+    /** @return string|null Service */
 	public function getService(): ?string {
 		return $this->service;
 	}
+    /** @param string|null $service Service */
 	public function setService(?string $service) {
 		$this->service = $service;
 	}
+    /**
+     * @param string|null $service Service
+     * @return GetBillingsRequest
+     */
 	public function withService(?string $service): GetBillingsRequest {
 		$this->service = $service;
 		return $this;

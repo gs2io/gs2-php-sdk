@@ -20,73 +20,108 @@ namespace Gs2\Matchmaking\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Player
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#player
+ */
 class Player implements IModel {
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var array
+     * @var array List of Attributes
 	 */
 	private $attributes;
 	/**
-     * @var string
+     * @var string Role Name
 	 */
 	private $roleName;
 	/**
-     * @var array
+     * @var array Deny User IDs
 	 */
 	private $denyUserIds;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return Player
+     */
 	public function withUserId(?string $userId): Player {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return array|null List of Attributes */
 	public function getAttributes(): ?array {
 		return $this->attributes;
 	}
+    /** @param array|null $attributes List of Attributes */
 	public function setAttributes(?array $attributes) {
 		$this->attributes = $attributes;
 	}
+    /**
+     * @param array|null $attributes List of Attributes
+     * @return Player
+     */
 	public function withAttributes(?array $attributes): Player {
 		$this->attributes = $attributes;
 		return $this;
 	}
+    /** @return string|null Role Name */
 	public function getRoleName(): ?string {
 		return $this->roleName;
 	}
+    /** @param string|null $roleName Role Name */
 	public function setRoleName(?string $roleName) {
 		$this->roleName = $roleName;
 	}
+    /**
+     * @param string|null $roleName Role Name
+     * @return Player
+     */
 	public function withRoleName(?string $roleName): Player {
 		$this->roleName = $roleName;
 		return $this;
 	}
+    /** @return array|null Deny User IDs */
 	public function getDenyUserIds(): ?array {
 		return $this->denyUserIds;
 	}
+    /** @param array|null $denyUserIds Deny User IDs */
 	public function setDenyUserIds(?array $denyUserIds) {
 		$this->denyUserIds = $denyUserIds;
 	}
+    /**
+     * @param array|null $denyUserIds Deny User IDs
+     * @return Player
+     */
 	public function withDenyUserIds(?array $denyUserIds): Player {
 		$this->denyUserIds = $denyUserIds;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return Player
+     */
 	public function withCreatedAt(?int $createdAt): Player {
 		$this->createdAt = $createdAt;
 		return $this;

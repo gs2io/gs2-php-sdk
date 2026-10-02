@@ -19,77 +19,118 @@ namespace Gs2\SerialKey\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for verifyCodeByUserId: Verify the validity of the Serial Code by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/serial_key/sdk/#verifycodebyuserid
+ */
 class VerifyCodeByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Serial Code */
     private $code;
-    /** @var string */
+    /** @var string Campaign name */
     private $campaignModelName;
-    /** @var string */
+    /** @var string Verification type */
     private $verifyType;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return VerifyCodeByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): VerifyCodeByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return VerifyCodeByUserIdRequest
+     */
 	public function withUserId(?string $userId): VerifyCodeByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Serial Code */
 	public function getCode(): ?string {
 		return $this->code;
 	}
+    /** @param string|null $code Serial Code */
 	public function setCode(?string $code) {
 		$this->code = $code;
 	}
+    /**
+     * @param string|null $code Serial Code
+     * @return VerifyCodeByUserIdRequest
+     */
 	public function withCode(?string $code): VerifyCodeByUserIdRequest {
 		$this->code = $code;
 		return $this;
 	}
+    /** @return string|null Campaign name */
 	public function getCampaignModelName(): ?string {
 		return $this->campaignModelName;
 	}
+    /** @param string|null $campaignModelName Campaign name */
 	public function setCampaignModelName(?string $campaignModelName) {
 		$this->campaignModelName = $campaignModelName;
 	}
+    /**
+     * @param string|null $campaignModelName Campaign name
+     * @return VerifyCodeByUserIdRequest
+     */
 	public function withCampaignModelName(?string $campaignModelName): VerifyCodeByUserIdRequest {
 		$this->campaignModelName = $campaignModelName;
 		return $this;
 	}
+    /** @return string|null Verification type */
 	public function getVerifyType(): ?string {
 		return $this->verifyType;
 	}
+    /** @param string|null $verifyType Verification type */
 	public function setVerifyType(?string $verifyType) {
 		$this->verifyType = $verifyType;
 	}
+    /**
+     * @param string|null $verifyType Verification type
+     * @return VerifyCodeByUserIdRequest
+     */
 	public function withVerifyType(?string $verifyType): VerifyCodeByUserIdRequest {
 		$this->verifyType = $verifyType;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return VerifyCodeByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): VerifyCodeByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

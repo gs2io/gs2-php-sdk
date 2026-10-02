@@ -20,18 +20,29 @@ namespace Gs2\Log\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Log\Model\Dashboard;
 
+/**
+ * Result of deleteDashboard: Delete Dashboard
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#deletedashboard
+ */
 class DeleteDashboardResult implements IResult {
-    /** @var Dashboard */
+    /** @var Dashboard Deleted Dashboard */
     private $item;
 
+    /** @return Dashboard|null Deleted Dashboard */
 	public function getItem(): ?Dashboard {
 		return $this->item;
 	}
 
+    /** @param Dashboard|null $item Deleted Dashboard */
 	public function setItem(?Dashboard $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Dashboard|null $item Deleted Dashboard
+     * @return DeleteDashboardResult
+     */
 	public function withItem(?Dashboard $item): DeleteDashboardResult {
 		$this->item = $item;
 		return $this;

@@ -19,77 +19,118 @@ namespace Gs2\Money\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for withdrawByUserId: Consume balance from Wallet by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/money/sdk/#withdrawbyuserid
+ */
 class WithdrawByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var int */
+    /** @var int Slot Number */
     private $slot;
-    /** @var int */
+    /** @var int Quantity of premium currency to be consumed */
     private $count;
-    /** @var bool */
+    /** @var bool Whether to target only paid currency */
     private $paidOnly;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return WithdrawByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): WithdrawByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return WithdrawByUserIdRequest
+     */
 	public function withUserId(?string $userId): WithdrawByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return int|null Slot Number */
 	public function getSlot(): ?int {
 		return $this->slot;
 	}
+    /** @param int|null $slot Slot Number */
 	public function setSlot(?int $slot) {
 		$this->slot = $slot;
 	}
+    /**
+     * @param int|null $slot Slot Number
+     * @return WithdrawByUserIdRequest
+     */
 	public function withSlot(?int $slot): WithdrawByUserIdRequest {
 		$this->slot = $slot;
 		return $this;
 	}
+    /** @return int|null Quantity of premium currency to be consumed */
 	public function getCount(): ?int {
 		return $this->count;
 	}
+    /** @param int|null $count Quantity of premium currency to be consumed */
 	public function setCount(?int $count) {
 		$this->count = $count;
 	}
+    /**
+     * @param int|null $count Quantity of premium currency to be consumed
+     * @return WithdrawByUserIdRequest
+     */
 	public function withCount(?int $count): WithdrawByUserIdRequest {
 		$this->count = $count;
 		return $this;
 	}
+    /** @return bool|null Whether to target only paid currency */
 	public function getPaidOnly(): ?bool {
 		return $this->paidOnly;
 	}
+    /** @param bool|null $paidOnly Whether to target only paid currency */
 	public function setPaidOnly(?bool $paidOnly) {
 		$this->paidOnly = $paidOnly;
 	}
+    /**
+     * @param bool|null $paidOnly Whether to target only paid currency
+     * @return WithdrawByUserIdRequest
+     */
 	public function withPaidOnly(?bool $paidOnly): WithdrawByUserIdRequest {
 		$this->paidOnly = $paidOnly;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return WithdrawByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): WithdrawByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

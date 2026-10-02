@@ -19,51 +19,80 @@ namespace Gs2\Log\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getLog: Get a single log entry by request ID
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#getlog
+ */
 class GetLogRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Request ID */
     private $logRequestId;
-    /** @var int */
+    /** @var int Search range start date and time */
     private $begin;
-    /** @var int */
+    /** @var int Search range end date and time */
     private $end;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetLogRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetLogRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Request ID */
 	public function getLogRequestId(): ?string {
 		return $this->logRequestId;
 	}
+    /** @param string|null $logRequestId Request ID */
 	public function setLogRequestId(?string $logRequestId) {
 		$this->logRequestId = $logRequestId;
 	}
+    /**
+     * @param string|null $logRequestId Request ID
+     * @return GetLogRequest
+     */
 	public function withLogRequestId(?string $logRequestId): GetLogRequest {
 		$this->logRequestId = $logRequestId;
 		return $this;
 	}
+    /** @return int|null Search range start date and time */
 	public function getBegin(): ?int {
 		return $this->begin;
 	}
+    /** @param int|null $begin Search range start date and time */
 	public function setBegin(?int $begin) {
 		$this->begin = $begin;
 	}
+    /**
+     * @param int|null $begin Search range start date and time
+     * @return GetLogRequest
+     */
 	public function withBegin(?int $begin): GetLogRequest {
 		$this->begin = $begin;
 		return $this;
 	}
+    /** @return int|null Search range end date and time */
 	public function getEnd(): ?int {
 		return $this->end;
 	}
+    /** @param int|null $end Search range end date and time */
 	public function setEnd(?int $end) {
 		$this->end = $end;
 	}
+    /**
+     * @param int|null $end Search range end date and time
+     * @return GetLogRequest
+     */
 	public function withEnd(?int $end): GetLogRequest {
 		$this->end = $end;
 		return $this;

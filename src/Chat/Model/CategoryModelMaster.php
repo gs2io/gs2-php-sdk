@@ -20,101 +20,148 @@ namespace Gs2\Chat\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Message Category Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/chat/sdk/#categorymodelmaster
+ */
 class CategoryModelMaster implements IModel {
 	/**
-     * @var string
+     * @var string Message Category Model Master GRN
 	 */
 	private $categoryModelId;
 	/**
-     * @var int
+     * @var int Category
 	 */
 	private $category;
 	/**
-     * @var string
+     * @var string Description
 	 */
 	private $description;
 	/**
-     * @var string
+     * @var string Reject posts made using player access tokens
 	 */
 	private $rejectAccessTokenPost;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Message Category Model Master GRN */
 	public function getCategoryModelId(): ?string {
 		return $this->categoryModelId;
 	}
+    /** @param string|null $categoryModelId Message Category Model Master GRN */
 	public function setCategoryModelId(?string $categoryModelId) {
 		$this->categoryModelId = $categoryModelId;
 	}
+    /**
+     * @param string|null $categoryModelId Message Category Model Master GRN
+     * @return CategoryModelMaster
+     */
 	public function withCategoryModelId(?string $categoryModelId): CategoryModelMaster {
 		$this->categoryModelId = $categoryModelId;
 		return $this;
 	}
+    /** @return int|null Category */
 	public function getCategory(): ?int {
 		return $this->category;
 	}
+    /** @param int|null $category Category */
 	public function setCategory(?int $category) {
 		$this->category = $category;
 	}
+    /**
+     * @param int|null $category Category
+     * @return CategoryModelMaster
+     */
 	public function withCategory(?int $category): CategoryModelMaster {
 		$this->category = $category;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return CategoryModelMaster
+     */
 	public function withDescription(?string $description): CategoryModelMaster {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Reject posts made using player access tokens */
 	public function getRejectAccessTokenPost(): ?string {
 		return $this->rejectAccessTokenPost;
 	}
+    /** @param string|null $rejectAccessTokenPost Reject posts made using player access tokens */
 	public function setRejectAccessTokenPost(?string $rejectAccessTokenPost) {
 		$this->rejectAccessTokenPost = $rejectAccessTokenPost;
 	}
+    /**
+     * @param string|null $rejectAccessTokenPost Reject posts made using player access tokens
+     * @return CategoryModelMaster
+     */
 	public function withRejectAccessTokenPost(?string $rejectAccessTokenPost): CategoryModelMaster {
 		$this->rejectAccessTokenPost = $rejectAccessTokenPost;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return CategoryModelMaster
+     */
 	public function withCreatedAt(?int $createdAt): CategoryModelMaster {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return CategoryModelMaster
+     */
 	public function withUpdatedAt(?int $updatedAt): CategoryModelMaster {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return CategoryModelMaster
+     */
 	public function withRevision(?int $revision): CategoryModelMaster {
 		$this->revision = $revision;
 		return $this;

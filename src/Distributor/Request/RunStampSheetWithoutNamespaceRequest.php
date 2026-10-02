@@ -19,27 +19,44 @@ namespace Gs2\Distributor\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for runStampSheetWithoutNamespace: Execute acquire action of transaction without specifying the GS2-Distributor Namespace
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#runstampsheetwithoutnamespace
+ */
 class RunStampSheetWithoutNamespaceRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Transaction */
     private $stampSheet;
-    /** @var string */
+    /** @var string Encryption Key GRN */
     private $keyId;
+    /** @return string|null Transaction */
 	public function getStampSheet(): ?string {
 		return $this->stampSheet;
 	}
+    /** @param string|null $stampSheet Transaction */
 	public function setStampSheet(?string $stampSheet) {
 		$this->stampSheet = $stampSheet;
 	}
+    /**
+     * @param string|null $stampSheet Transaction
+     * @return RunStampSheetWithoutNamespaceRequest
+     */
 	public function withStampSheet(?string $stampSheet): RunStampSheetWithoutNamespaceRequest {
 		$this->stampSheet = $stampSheet;
 		return $this;
 	}
+    /** @return string|null Encryption Key GRN */
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
+    /** @param string|null $keyId Encryption Key GRN */
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
+    /**
+     * @param string|null $keyId Encryption Key GRN
+     * @return RunStampSheetWithoutNamespaceRequest
+     */
 	public function withKeyId(?string $keyId): RunStampSheetWithoutNamespaceRequest {
 		$this->keyId = $keyId;
 		return $this;

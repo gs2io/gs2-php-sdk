@@ -20,31 +20,48 @@ namespace Gs2\AdReward\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * AppLovin MAX settings
+ *
+ * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#applovinmax
+ */
 class AppLovinMax implements IModel {
 	/**
-     * @var string
+     * @var string Allowed Ad Unit ID
 	 */
 	private $allowAdUnitId;
 	/**
-     * @var string
+     * @var string AppLovin Event Key
 	 */
 	private $eventKey;
+    /** @return string|null Allowed Ad Unit ID */
 	public function getAllowAdUnitId(): ?string {
 		return $this->allowAdUnitId;
 	}
+    /** @param string|null $allowAdUnitId Allowed Ad Unit ID */
 	public function setAllowAdUnitId(?string $allowAdUnitId) {
 		$this->allowAdUnitId = $allowAdUnitId;
 	}
+    /**
+     * @param string|null $allowAdUnitId Allowed Ad Unit ID
+     * @return AppLovinMax
+     */
 	public function withAllowAdUnitId(?string $allowAdUnitId): AppLovinMax {
 		$this->allowAdUnitId = $allowAdUnitId;
 		return $this;
 	}
+    /** @return string|null AppLovin Event Key */
 	public function getEventKey(): ?string {
 		return $this->eventKey;
 	}
+    /** @param string|null $eventKey AppLovin Event Key */
 	public function setEventKey(?string $eventKey) {
 		$this->eventKey = $eventKey;
 	}
+    /**
+     * @param string|null $eventKey AppLovin Event Key
+     * @return AppLovinMax
+     */
 	public function withEventKey(?string $eventKey): AppLovinMax {
 		$this->eventKey = $eventKey;
 		return $this;

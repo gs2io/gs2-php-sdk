@@ -19,39 +19,62 @@ namespace Gs2\Realtime\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for wantRoom: Request to create a room
+ *
+ * @see https://docs.gs2.io/api_reference/realtime/sdk/#wantroom
+ */
 class WantRoomRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Room name */
     private $name;
-    /** @var array */
+    /** @var array Notification User IDs */
     private $notificationUserIds;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return WantRoomRequest
+     */
 	public function withNamespaceName(?string $namespaceName): WantRoomRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Room name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Room name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Room name
+     * @return WantRoomRequest
+     */
 	public function withName(?string $name): WantRoomRequest {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return array|null Notification User IDs */
 	public function getNotificationUserIds(): ?array {
 		return $this->notificationUserIds;
 	}
+    /** @param array|null $notificationUserIds Notification User IDs */
 	public function setNotificationUserIds(?array $notificationUserIds) {
 		$this->notificationUserIds = $notificationUserIds;
 	}
+    /**
+     * @param array|null $notificationUserIds Notification User IDs
+     * @return WantRoomRequest
+     */
 	public function withNotificationUserIds(?array $notificationUserIds): WantRoomRequest {
 		$this->notificationUserIds = $notificationUserIds;
 		return $this;

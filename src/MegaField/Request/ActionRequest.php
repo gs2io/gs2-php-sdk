@@ -23,77 +23,118 @@ use Gs2\MegaField\Model\Vector;
 use Gs2\MegaField\Model\MyPosition;
 use Gs2\MegaField\Model\Scope;
 
+/**
+ * Request for action: Put position
+ *
+ * @see https://docs.gs2.io/api_reference/mega_field/sdk/#action
+ */
 class ActionRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Area name */
     private $areaModelName;
-    /** @var string */
+    /** @var string Layer name */
     private $layerModelName;
-    /** @var MyPosition */
+    /** @var MyPosition My Location */
     private $position;
-    /** @var array */
+    /** @var array List of Scope of acquisition by other players */
     private $scopes;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return ActionRequest
+     */
 	public function withNamespaceName(?string $namespaceName): ActionRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return ActionRequest
+     */
 	public function withAccessToken(?string $accessToken): ActionRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Area name */
 	public function getAreaModelName(): ?string {
 		return $this->areaModelName;
 	}
+    /** @param string|null $areaModelName Area name */
 	public function setAreaModelName(?string $areaModelName) {
 		$this->areaModelName = $areaModelName;
 	}
+    /**
+     * @param string|null $areaModelName Area name
+     * @return ActionRequest
+     */
 	public function withAreaModelName(?string $areaModelName): ActionRequest {
 		$this->areaModelName = $areaModelName;
 		return $this;
 	}
+    /** @return string|null Layer name */
 	public function getLayerModelName(): ?string {
 		return $this->layerModelName;
 	}
+    /** @param string|null $layerModelName Layer name */
 	public function setLayerModelName(?string $layerModelName) {
 		$this->layerModelName = $layerModelName;
 	}
+    /**
+     * @param string|null $layerModelName Layer name
+     * @return ActionRequest
+     */
 	public function withLayerModelName(?string $layerModelName): ActionRequest {
 		$this->layerModelName = $layerModelName;
 		return $this;
 	}
+    /** @return MyPosition|null My Location */
 	public function getPosition(): ?MyPosition {
 		return $this->position;
 	}
+    /** @param MyPosition|null $position My Location */
 	public function setPosition(?MyPosition $position) {
 		$this->position = $position;
 	}
+    /**
+     * @param MyPosition|null $position My Location
+     * @return ActionRequest
+     */
 	public function withPosition(?MyPosition $position): ActionRequest {
 		$this->position = $position;
 		return $this;
 	}
+    /** @return array|null List of Scope of acquisition by other players */
 	public function getScopes(): ?array {
 		return $this->scopes;
 	}
+    /** @param array|null $scopes List of Scope of acquisition by other players */
 	public function setScopes(?array $scopes) {
 		$this->scopes = $scopes;
 	}
+    /**
+     * @param array|null $scopes List of Scope of acquisition by other players
+     * @return ActionRequest
+     */
 	public function withScopes(?array $scopes): ActionRequest {
 		$this->scopes = $scopes;
 		return $this;

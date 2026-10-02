@@ -21,65 +21,100 @@ use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Quest\Model\Reward;
 use Gs2\Quest\Model\Config;
 
+/**
+ * Request for end: Completed Quest
+ *
+ * @see https://docs.gs2.io/api_reference/quest/sdk/#end
+ */
 class EndRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var array */
+    /** @var array The actual rewards from the quest */
     private $rewards;
-    /** @var bool */
+    /** @var bool Whether the quest has been completed */
     private $isComplete;
-    /** @var array */
+    /** @var array Configuration values applied to transaction variables */
     private $config;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return EndRequest
+     */
 	public function withNamespaceName(?string $namespaceName): EndRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return EndRequest
+     */
 	public function withAccessToken(?string $accessToken): EndRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return array|null The actual rewards from the quest */
 	public function getRewards(): ?array {
 		return $this->rewards;
 	}
+    /** @param array|null $rewards The actual rewards from the quest */
 	public function setRewards(?array $rewards) {
 		$this->rewards = $rewards;
 	}
+    /**
+     * @param array|null $rewards The actual rewards from the quest
+     * @return EndRequest
+     */
 	public function withRewards(?array $rewards): EndRequest {
 		$this->rewards = $rewards;
 		return $this;
 	}
+    /** @return bool|null Whether the quest has been completed */
 	public function getIsComplete(): ?bool {
 		return $this->isComplete;
 	}
+    /** @param bool|null $isComplete Whether the quest has been completed */
 	public function setIsComplete(?bool $isComplete) {
 		$this->isComplete = $isComplete;
 	}
+    /**
+     * @param bool|null $isComplete Whether the quest has been completed
+     * @return EndRequest
+     */
 	public function withIsComplete(?bool $isComplete): EndRequest {
 		$this->isComplete = $isComplete;
 		return $this;
 	}
+    /** @return array|null Configuration values applied to transaction variables */
 	public function getConfig(): ?array {
 		return $this->config;
 	}
+    /** @param array|null $config Configuration values applied to transaction variables */
 	public function setConfig(?array $config) {
 		$this->config = $config;
 	}
+    /**
+     * @param array|null $config Configuration values applied to transaction variables
+     * @return EndRequest
+     */
 	public function withConfig(?array $config): EndRequest {
 		$this->config = $config;
 		return $this;

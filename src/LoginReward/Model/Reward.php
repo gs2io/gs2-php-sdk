@@ -20,17 +20,28 @@ namespace Gs2\LoginReward\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Reward
+ *
+ * @see https://docs.gs2.io/api_reference/login_reward/sdk/#reward
+ */
 class Reward implements IModel {
 	/**
-     * @var array
+     * @var array List of Acquire Actions
 	 */
 	private $acquireActions;
+    /** @return array|null List of Acquire Actions */
 	public function getAcquireActions(): ?array {
 		return $this->acquireActions;
 	}
+    /** @param array|null $acquireActions List of Acquire Actions */
 	public function setAcquireActions(?array $acquireActions) {
 		$this->acquireActions = $acquireActions;
 	}
+    /**
+     * @param array|null $acquireActions List of Acquire Actions
+     * @return Reward
+     */
 	public function withAcquireActions(?array $acquireActions): Reward {
 		$this->acquireActions = $acquireActions;
 		return $this;

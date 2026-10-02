@@ -19,53 +19,82 @@ namespace Gs2\AdReward\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for consumePointByUserId: Consume Point by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#consumepointbyuserid
+ */
 class ConsumePointByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var int */
+    /** @var int Consume Points */
     private $point;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return ConsumePointByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): ConsumePointByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return ConsumePointByUserIdRequest
+     */
 	public function withUserId(?string $userId): ConsumePointByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return int|null Consume Points */
 	public function getPoint(): ?int {
 		return $this->point;
 	}
+    /** @param int|null $point Consume Points */
 	public function setPoint(?int $point) {
 		$this->point = $point;
 	}
+    /**
+     * @param int|null $point Consume Points
+     * @return ConsumePointByUserIdRequest
+     */
 	public function withPoint(?int $point): ConsumePointByUserIdRequest {
 		$this->point = $point;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return ConsumePointByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): ConsumePointByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

@@ -20,17 +20,28 @@ namespace Gs2\Identifier\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Two-Factor Authentication Setting
+ *
+ * @see https://docs.gs2.io/api_reference/identifier/sdk/#twofactorauthenticationsetting
+ */
 class TwoFactorAuthenticationSetting implements IModel {
 	/**
-     * @var string
+     * @var string Status
 	 */
 	private $status;
+    /** @return string|null Status */
 	public function getStatus(): ?string {
 		return $this->status;
 	}
+    /** @param string|null $status Status */
 	public function setStatus(?string $status) {
 		$this->status = $status;
 	}
+    /**
+     * @param string|null $status Status
+     * @return TwoFactorAuthenticationSetting
+     */
 	public function withStatus(?string $status): TwoFactorAuthenticationSetting {
 		$this->status = $status;
 		return $this;

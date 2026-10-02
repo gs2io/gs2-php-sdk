@@ -19,63 +19,98 @@ namespace Gs2\Schedule\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getEventByUserId: Get Event by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/schedule/sdk/#geteventbyuserid
+ */
 class GetEventByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Event name */
     private $eventName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var bool */
+    /** @var bool Are only current events eligible for acquisition */
     private $isInSchedule;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetEventByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetEventByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Event name */
 	public function getEventName(): ?string {
 		return $this->eventName;
 	}
+    /** @param string|null $eventName Event name */
 	public function setEventName(?string $eventName) {
 		$this->eventName = $eventName;
 	}
+    /**
+     * @param string|null $eventName Event name
+     * @return GetEventByUserIdRequest
+     */
 	public function withEventName(?string $eventName): GetEventByUserIdRequest {
 		$this->eventName = $eventName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return GetEventByUserIdRequest
+     */
 	public function withUserId(?string $userId): GetEventByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return bool|null Are only current events eligible for acquisition */
 	public function getIsInSchedule(): ?bool {
 		return $this->isInSchedule;
 	}
+    /** @param bool|null $isInSchedule Are only current events eligible for acquisition */
 	public function setIsInSchedule(?bool $isInSchedule) {
 		$this->isInSchedule = $isInSchedule;
 	}
+    /**
+     * @param bool|null $isInSchedule Are only current events eligible for acquisition
+     * @return GetEventByUserIdRequest
+     */
 	public function withIsInSchedule(?bool $isInSchedule): GetEventByUserIdRequest {
 		$this->isInSchedule = $isInSchedule;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return GetEventByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): GetEventByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

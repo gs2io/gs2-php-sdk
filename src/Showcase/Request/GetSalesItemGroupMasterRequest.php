@@ -19,27 +19,44 @@ namespace Gs2\Showcase\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getSalesItemGroupMaster: Get Sales Item Group Master
+ *
+ * @see https://docs.gs2.io/api_reference/showcase/sdk/#getsalesitemgroupmaster
+ */
 class GetSalesItemGroupMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Sales Item Group name */
     private $salesItemGroupName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetSalesItemGroupMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetSalesItemGroupMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Sales Item Group name */
 	public function getSalesItemGroupName(): ?string {
 		return $this->salesItemGroupName;
 	}
+    /** @param string|null $salesItemGroupName Sales Item Group name */
 	public function setSalesItemGroupName(?string $salesItemGroupName) {
 		$this->salesItemGroupName = $salesItemGroupName;
 	}
+    /**
+     * @param string|null $salesItemGroupName Sales Item Group name
+     * @return GetSalesItemGroupMasterRequest
+     */
 	public function withSalesItemGroupName(?string $salesItemGroupName): GetSalesItemGroupMasterRequest {
 		$this->salesItemGroupName = $salesItemGroupName;
 		return $this;

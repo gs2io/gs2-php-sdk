@@ -20,73 +20,108 @@ namespace Gs2\Log\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Log Entry
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#logentry
+ */
 class LogEntry implements IModel {
 	/**
-     * @var int
+     * @var int Timestamp
 	 */
 	private $timestamp;
 	/**
-     * @var string
+     * @var string Status
 	 */
 	private $status;
 	/**
-     * @var int
+     * @var int Duration (nanoseconds)
 	 */
 	private $duration;
 	/**
-     * @var string
+     * @var string Raw Log Line Data
 	 */
 	private $line;
 	/**
-     * @var array
+     * @var array Labels
 	 */
 	private $labels;
+    /** @return int|null Timestamp */
 	public function getTimestamp(): ?int {
 		return $this->timestamp;
 	}
+    /** @param int|null $timestamp Timestamp */
 	public function setTimestamp(?int $timestamp) {
 		$this->timestamp = $timestamp;
 	}
+    /**
+     * @param int|null $timestamp Timestamp
+     * @return LogEntry
+     */
 	public function withTimestamp(?int $timestamp): LogEntry {
 		$this->timestamp = $timestamp;
 		return $this;
 	}
+    /** @return string|null Status */
 	public function getStatus(): ?string {
 		return $this->status;
 	}
+    /** @param string|null $status Status */
 	public function setStatus(?string $status) {
 		$this->status = $status;
 	}
+    /**
+     * @param string|null $status Status
+     * @return LogEntry
+     */
 	public function withStatus(?string $status): LogEntry {
 		$this->status = $status;
 		return $this;
 	}
+    /** @return int|null Duration (nanoseconds) */
 	public function getDuration(): ?int {
 		return $this->duration;
 	}
+    /** @param int|null $duration Duration (nanoseconds) */
 	public function setDuration(?int $duration) {
 		$this->duration = $duration;
 	}
+    /**
+     * @param int|null $duration Duration (nanoseconds)
+     * @return LogEntry
+     */
 	public function withDuration(?int $duration): LogEntry {
 		$this->duration = $duration;
 		return $this;
 	}
+    /** @return string|null Raw Log Line Data */
 	public function getLine(): ?string {
 		return $this->line;
 	}
+    /** @param string|null $line Raw Log Line Data */
 	public function setLine(?string $line) {
 		$this->line = $line;
 	}
+    /**
+     * @param string|null $line Raw Log Line Data
+     * @return LogEntry
+     */
 	public function withLine(?string $line): LogEntry {
 		$this->line = $line;
 		return $this;
 	}
+    /** @return array|null Labels */
 	public function getLabels(): ?array {
 		return $this->labels;
 	}
+    /** @param array|null $labels Labels */
 	public function setLabels(?array $labels) {
 		$this->labels = $labels;
 	}
+    /**
+     * @param array|null $labels Labels
+     * @return LogEntry
+     */
 	public function withLabels(?array $labels): LogEntry {
 		$this->labels = $labels;
 		return $this;

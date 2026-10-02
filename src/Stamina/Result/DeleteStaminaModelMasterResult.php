@@ -20,18 +20,29 @@ namespace Gs2\Stamina\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Stamina\Model\StaminaModelMaster;
 
+/**
+ * Result of deleteStaminaModelMaster: Delete Stamina Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/stamina/sdk/#deletestaminamodelmaster
+ */
 class DeleteStaminaModelMasterResult implements IResult {
-    /** @var StaminaModelMaster */
+    /** @var StaminaModelMaster Stamina Model Master deleted */
     private $item;
 
+    /** @return StaminaModelMaster|null Stamina Model Master deleted */
 	public function getItem(): ?StaminaModelMaster {
 		return $this->item;
 	}
 
+    /** @param StaminaModelMaster|null $item Stamina Model Master deleted */
 	public function setItem(?StaminaModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param StaminaModelMaster|null $item Stamina Model Master deleted
+     * @return DeleteStaminaModelMasterResult
+     */
 	public function withItem(?StaminaModelMaster $item): DeleteStaminaModelMasterResult {
 		$this->item = $item;
 		return $this;

@@ -19,27 +19,44 @@ namespace Gs2\SeasonRating\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getSeasonModelMaster: Get Season Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/season_rating/sdk/#getseasonmodelmaster
+ */
 class GetSeasonModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Season Model name */
     private $seasonName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetSeasonModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetSeasonModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Season Model name */
 	public function getSeasonName(): ?string {
 		return $this->seasonName;
 	}
+    /** @param string|null $seasonName Season Model name */
 	public function setSeasonName(?string $seasonName) {
 		$this->seasonName = $seasonName;
 	}
+    /**
+     * @param string|null $seasonName Season Model name
+     * @return GetSeasonModelMasterRequest
+     */
 	public function withSeasonName(?string $seasonName): GetSeasonModelMasterRequest {
 		$this->seasonName = $seasonName;
 		return $this;

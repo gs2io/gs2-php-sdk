@@ -20,18 +20,29 @@ namespace Gs2\Mission\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Mission\Model\CurrentMissionMaster;
 
+/**
+ * Result of updateCurrentMissionMaster: Update currently active Mission Model master data
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#updatecurrentmissionmaster
+ */
 class UpdateCurrentMissionMasterResult implements IResult {
-    /** @var CurrentMissionMaster */
+    /** @var CurrentMissionMaster Updated master data of the currently active Mission Models */
     private $item;
 
+    /** @return CurrentMissionMaster|null Updated master data of the currently active Mission Models */
 	public function getItem(): ?CurrentMissionMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentMissionMaster|null $item Updated master data of the currently active Mission Models */
 	public function setItem(?CurrentMissionMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentMissionMaster|null $item Updated master data of the currently active Mission Models
+     * @return UpdateCurrentMissionMasterResult
+     */
 	public function withItem(?CurrentMissionMaster $item): UpdateCurrentMissionMasterResult {
 		$this->item = $item;
 		return $this;

@@ -20,45 +20,68 @@ namespace Gs2\Ranking2\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Subscribed User Information
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/sdk/#subscribeuser
+ */
 class SubscribeUser implements IModel {
 	/**
-     * @var string
+     * @var string Subscribe Ranking Model name
 	 */
 	private $rankingName;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var string
+     * @var string Subscribe Target User ID
 	 */
 	private $targetUserId;
+    /** @return string|null Subscribe Ranking Model name */
 	public function getRankingName(): ?string {
 		return $this->rankingName;
 	}
+    /** @param string|null $rankingName Subscribe Ranking Model name */
 	public function setRankingName(?string $rankingName) {
 		$this->rankingName = $rankingName;
 	}
+    /**
+     * @param string|null $rankingName Subscribe Ranking Model name
+     * @return SubscribeUser
+     */
 	public function withRankingName(?string $rankingName): SubscribeUser {
 		$this->rankingName = $rankingName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return SubscribeUser
+     */
 	public function withUserId(?string $userId): SubscribeUser {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Subscribe Target User ID */
 	public function getTargetUserId(): ?string {
 		return $this->targetUserId;
 	}
+    /** @param string|null $targetUserId Subscribe Target User ID */
 	public function setTargetUserId(?string $targetUserId) {
 		$this->targetUserId = $targetUserId;
 	}
+    /**
+     * @param string|null $targetUserId Subscribe Target User ID
+     * @return SubscribeUser
+     */
 	public function withTargetUserId(?string $targetUserId): SubscribeUser {
 		$this->targetUserId = $targetUserId;
 		return $this;

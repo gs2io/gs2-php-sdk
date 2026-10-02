@@ -20,18 +20,29 @@ namespace Gs2\Inventory\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Inventory\Model\Inventory;
 
+/**
+ * Result of addCapacityByStampSheet: Execute inventory capacity size addition as acquire action
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventoryaddcapacitybyuserid
+ */
 class AddCapacityByStampSheetResult implements IResult {
-    /** @var Inventory */
+    /** @var Inventory Inventory after capacity addition */
     private $item;
 
+    /** @return Inventory|null Inventory after capacity addition */
 	public function getItem(): ?Inventory {
 		return $this->item;
 	}
 
+    /** @param Inventory|null $item Inventory after capacity addition */
 	public function setItem(?Inventory $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Inventory|null $item Inventory after capacity addition
+     * @return AddCapacityByStampSheetResult
+     */
 	public function withItem(?Inventory $item): AddCapacityByStampSheetResult {
 		$this->item = $item;
 		return $this;

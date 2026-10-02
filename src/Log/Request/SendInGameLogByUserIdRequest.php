@@ -20,65 +20,100 @@ namespace Gs2\Log\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Log\Model\InGameLogTag;
 
+/**
+ * Request for sendInGameLogByUserId: Send in-game log by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#sendingamelogbyuserid
+ */
 class SendInGameLogByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var array */
+    /** @var array Tags */
     private $tags;
-    /** @var string */
+    /** @var string Payload */
     private $payload;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return SendInGameLogByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): SendInGameLogByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return SendInGameLogByUserIdRequest
+     */
 	public function withUserId(?string $userId): SendInGameLogByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return array|null Tags */
 	public function getTags(): ?array {
 		return $this->tags;
 	}
+    /** @param array|null $tags Tags */
 	public function setTags(?array $tags) {
 		$this->tags = $tags;
 	}
+    /**
+     * @param array|null $tags Tags
+     * @return SendInGameLogByUserIdRequest
+     */
 	public function withTags(?array $tags): SendInGameLogByUserIdRequest {
 		$this->tags = $tags;
 		return $this;
 	}
+    /** @return string|null Payload */
 	public function getPayload(): ?string {
 		return $this->payload;
 	}
+    /** @param string|null $payload Payload */
 	public function setPayload(?string $payload) {
 		$this->payload = $payload;
 	}
+    /**
+     * @param string|null $payload Payload
+     * @return SendInGameLogByUserIdRequest
+     */
 	public function withPayload(?string $payload): SendInGameLogByUserIdRequest {
 		$this->payload = $payload;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return SendInGameLogByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): SendInGameLogByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

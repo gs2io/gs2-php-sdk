@@ -20,31 +20,48 @@ namespace Gs2\StateMachine\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Stack Entry
+ *
+ * @see https://docs.gs2.io/api_reference/state_machine/sdk/#stackentry
+ */
 class StackEntry implements IModel {
 	/**
-     * @var string
+     * @var string Name of the state machine
 	 */
 	private $stateMachineName;
 	/**
-     * @var string
+     * @var string Task name
 	 */
 	private $taskName;
+    /** @return string|null Name of the state machine */
 	public function getStateMachineName(): ?string {
 		return $this->stateMachineName;
 	}
+    /** @param string|null $stateMachineName Name of the state machine */
 	public function setStateMachineName(?string $stateMachineName) {
 		$this->stateMachineName = $stateMachineName;
 	}
+    /**
+     * @param string|null $stateMachineName Name of the state machine
+     * @return StackEntry
+     */
 	public function withStateMachineName(?string $stateMachineName): StackEntry {
 		$this->stateMachineName = $stateMachineName;
 		return $this;
 	}
+    /** @return string|null Task name */
 	public function getTaskName(): ?string {
 		return $this->taskName;
 	}
+    /** @param string|null $taskName Task name */
 	public function setTaskName(?string $taskName) {
 		$this->taskName = $taskName;
 	}
+    /**
+     * @param string|null $taskName Task name
+     * @return StackEntry
+     */
 	public function withTaskName(?string $taskName): StackEntry {
 		$this->taskName = $taskName;
 		return $this;

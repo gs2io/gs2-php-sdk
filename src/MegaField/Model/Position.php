@@ -20,45 +20,68 @@ namespace Gs2\MegaField\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Position
+ *
+ * @see https://docs.gs2.io/api_reference/mega_field/sdk/#position
+ */
 class Position implements IModel {
 	/**
-     * @var float
+     * @var float X position
 	 */
 	private $x;
 	/**
-     * @var float
+     * @var float Y position
 	 */
 	private $y;
 	/**
-     * @var float
+     * @var float Z position
 	 */
 	private $z;
+    /** @return float|null X position */
 	public function getX(): ?float {
 		return $this->x;
 	}
+    /** @param float|null $x X position */
 	public function setX(?float $x) {
 		$this->x = $x;
 	}
+    /**
+     * @param float|null $x X position
+     * @return Position
+     */
 	public function withX(?float $x): Position {
 		$this->x = $x;
 		return $this;
 	}
+    /** @return float|null Y position */
 	public function getY(): ?float {
 		return $this->y;
 	}
+    /** @param float|null $y Y position */
 	public function setY(?float $y) {
 		$this->y = $y;
 	}
+    /**
+     * @param float|null $y Y position
+     * @return Position
+     */
 	public function withY(?float $y): Position {
 		$this->y = $y;
 		return $this;
 	}
+    /** @return float|null Z position */
 	public function getZ(): ?float {
 		return $this->z;
 	}
+    /** @param float|null $z Z position */
 	public function setZ(?float $z) {
 		$this->z = $z;
 	}
+    /**
+     * @param float|null $z Z position
+     * @return Position
+     */
 	public function withZ(?float $z): Position {
 		$this->z = $z;
 		return $this;

@@ -1788,17 +1788,17 @@ class LoginByUserTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 Identifier API クライアント
+ * GS2-Identifier API client
  *
  * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/identifier/sdk/
  */
 class Gs2IdentifierRestClient extends AbstractGs2Client {
 
 	/**
-	 * コンストラクタ。
+	 * Constructor.
 	 *
-	 * @param Gs2RestSession $session セッション
+	 * @param Gs2RestSession $session Session
 	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);

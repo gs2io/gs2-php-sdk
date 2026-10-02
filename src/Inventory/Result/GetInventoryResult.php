@@ -20,18 +20,29 @@ namespace Gs2\Inventory\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Inventory\Model\Inventory;
 
+/**
+ * Result of getInventory: Get Inventory
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#getinventory
+ */
 class GetInventoryResult implements IResult {
-    /** @var Inventory */
+    /** @var Inventory Inventory */
     private $item;
 
+    /** @return Inventory|null Inventory */
 	public function getItem(): ?Inventory {
 		return $this->item;
 	}
 
+    /** @param Inventory|null $item Inventory */
 	public function setItem(?Inventory $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Inventory|null $item Inventory
+     * @return GetInventoryResult
+     */
 	public function withItem(?Inventory $item): GetInventoryResult {
 		$this->item = $item;
 		return $this;

@@ -20,18 +20,29 @@ namespace Gs2\Lottery\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Lottery\Model\LotteryModelMaster;
 
+/**
+ * Result of deleteLotteryModelMaster: Delete Lottery Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/lottery/sdk/#deletelotterymodelmaster
+ */
 class DeleteLotteryModelMasterResult implements IResult {
-    /** @var LotteryModelMaster */
+    /** @var LotteryModelMaster Lottery Model Master deleted */
     private $item;
 
+    /** @return LotteryModelMaster|null Lottery Model Master deleted */
 	public function getItem(): ?LotteryModelMaster {
 		return $this->item;
 	}
 
+    /** @param LotteryModelMaster|null $item Lottery Model Master deleted */
 	public function setItem(?LotteryModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param LotteryModelMaster|null $item Lottery Model Master deleted
+     * @return DeleteLotteryModelMasterResult
+     */
 	public function withItem(?LotteryModelMaster $item): DeleteLotteryModelMasterResult {
 		$this->item = $item;
 		return $this;

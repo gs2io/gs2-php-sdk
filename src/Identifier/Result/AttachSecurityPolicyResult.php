@@ -20,18 +20,29 @@ namespace Gs2\Identifier\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Identifier\Model\SecurityPolicy;
 
+/**
+ * Result of attachSecurityPolicy: Assign the Security Policy to a user
+ *
+ * @see https://docs.gs2.io/api_reference/identifier/sdk/#attachsecuritypolicy-1
+ */
 class AttachSecurityPolicyResult implements IResult {
-    /** @var array */
+    /** @var array List of Security Policies assigned to a user */
     private $items;
 
+    /** @return array|null List of Security Policies assigned to a user */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Security Policies assigned to a user */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Security Policies assigned to a user
+     * @return AttachSecurityPolicyResult
+     */
 	public function withItems(?array $items): AttachSecurityPolicyResult {
 		$this->items = $items;
 		return $this;

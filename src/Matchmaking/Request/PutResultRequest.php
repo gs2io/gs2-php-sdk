@@ -20,39 +20,62 @@ namespace Gs2\Matchmaking\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Matchmaking\Model\GameResult;
 
+/**
+ * Request for putResult: Recalculate rating values
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#putresult
+ */
 class PutResultRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Rating name */
     private $ratingName;
-    /** @var array */
+    /** @var array List of Results */
     private $gameResults;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return PutResultRequest
+     */
 	public function withNamespaceName(?string $namespaceName): PutResultRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Rating name */
 	public function getRatingName(): ?string {
 		return $this->ratingName;
 	}
+    /** @param string|null $ratingName Rating name */
 	public function setRatingName(?string $ratingName) {
 		$this->ratingName = $ratingName;
 	}
+    /**
+     * @param string|null $ratingName Rating name
+     * @return PutResultRequest
+     */
 	public function withRatingName(?string $ratingName): PutResultRequest {
 		$this->ratingName = $ratingName;
 		return $this;
 	}
+    /** @return array|null List of Results */
 	public function getGameResults(): ?array {
 		return $this->gameResults;
 	}
+    /** @param array|null $gameResults List of Results */
 	public function setGameResults(?array $gameResults) {
 		$this->gameResults = $gameResults;
 	}
+    /**
+     * @param array|null $gameResults List of Results
+     * @return PutResultRequest
+     */
 	public function withGameResults(?array $gameResults): PutResultRequest {
 		$this->gameResults = $gameResults;
 		return $this;

@@ -19,53 +19,82 @@ namespace Gs2\Stamina\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for consumeStamina: Consume Stamina
+ *
+ * @see https://docs.gs2.io/api_reference/stamina/sdk/#consumestamina
+ */
 class ConsumeStaminaRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Stamina Model Name */
     private $staminaName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var int */
+    /** @var int Amount of stamina consumed */
     private $consumeValue;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return ConsumeStaminaRequest
+     */
 	public function withNamespaceName(?string $namespaceName): ConsumeStaminaRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Stamina Model Name */
 	public function getStaminaName(): ?string {
 		return $this->staminaName;
 	}
+    /** @param string|null $staminaName Stamina Model Name */
 	public function setStaminaName(?string $staminaName) {
 		$this->staminaName = $staminaName;
 	}
+    /**
+     * @param string|null $staminaName Stamina Model Name
+     * @return ConsumeStaminaRequest
+     */
 	public function withStaminaName(?string $staminaName): ConsumeStaminaRequest {
 		$this->staminaName = $staminaName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return ConsumeStaminaRequest
+     */
 	public function withAccessToken(?string $accessToken): ConsumeStaminaRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return int|null Amount of stamina consumed */
 	public function getConsumeValue(): ?int {
 		return $this->consumeValue;
 	}
+    /** @param int|null $consumeValue Amount of stamina consumed */
 	public function setConsumeValue(?int $consumeValue) {
 		$this->consumeValue = $consumeValue;
 	}
+    /**
+     * @param int|null $consumeValue Amount of stamina consumed
+     * @return ConsumeStaminaRequest
+     */
 	public function withConsumeValue(?int $consumeValue): ConsumeStaminaRequest {
 		$this->consumeValue = $consumeValue;
 		return $this;

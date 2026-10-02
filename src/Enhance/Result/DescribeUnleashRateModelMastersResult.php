@@ -21,33 +21,50 @@ use Gs2\Core\Model\IResult;
 use Gs2\Enhance\Model\UnleashRateEntryModel;
 use Gs2\Enhance\Model\UnleashRateModelMaster;
 
+/**
+ * Result of describeUnleashRateModelMasters: List Unleash Rate Model Masters
+ *
+ * @see https://docs.gs2.io/api_reference/enhance/sdk/#describeunleashratemodelmasters
+ */
 class DescribeUnleashRateModelMastersResult implements IResult {
-    /** @var array */
+    /** @var array List of Unleash Rate Model Masters */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Unleash Rate Model Masters */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Unleash Rate Model Masters */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Unleash Rate Model Masters
+     * @return DescribeUnleashRateModelMastersResult
+     */
 	public function withItems(?array $items): DescribeUnleashRateModelMastersResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeUnleashRateModelMastersResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeUnleashRateModelMastersResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

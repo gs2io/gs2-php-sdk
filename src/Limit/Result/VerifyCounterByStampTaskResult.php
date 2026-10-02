@@ -20,33 +20,50 @@ namespace Gs2\Limit\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Limit\Model\Counter;
 
+/**
+ * Result of verifyCounterByStampTask: Execute Counter value verification as a verify action
+ *
+ * @see https://docs.gs2.io/api_reference/limit/stamp_sheet/#gs2limitverifycounterbyuserid
+ */
 class VerifyCounterByStampTaskResult implements IResult {
-    /** @var Counter */
+    /** @var Counter Counter deleted */
     private $item;
-    /** @var string */
+    /** @var string Context recording the execution results of verification actions */
     private $newContextStack;
 
+    /** @return Counter|null Counter deleted */
 	public function getItem(): ?Counter {
 		return $this->item;
 	}
 
+    /** @param Counter|null $item Counter deleted */
 	public function setItem(?Counter $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Counter|null $item Counter deleted
+     * @return VerifyCounterByStampTaskResult
+     */
 	public function withItem(?Counter $item): VerifyCounterByStampTaskResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null Context recording the execution results of verification actions */
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
+    /** @param string|null $newContextStack Context recording the execution results of verification actions */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
+    /**
+     * @param string|null $newContextStack Context recording the execution results of verification actions
+     * @return VerifyCounterByStampTaskResult
+     */
 	public function withNewContextStack(?string $newContextStack): VerifyCounterByStampTaskResult {
 		$this->newContextStack = $newContextStack;
 		return $this;

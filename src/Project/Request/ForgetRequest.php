@@ -19,27 +19,40 @@ namespace Gs2\Project\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/** Request for forget: Get password reissue token */
 class ForgetRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string E-Mail */
     private $email;
-    /** @var string */
+    /** @var string Language of the email to be sent */
     private $lang;
+    /** @return string|null E-Mail */
 	public function getEmail(): ?string {
 		return $this->email;
 	}
+    /** @param string|null $email E-Mail */
 	public function setEmail(?string $email) {
 		$this->email = $email;
 	}
+    /**
+     * @param string|null $email E-Mail
+     * @return ForgetRequest
+     */
 	public function withEmail(?string $email): ForgetRequest {
 		$this->email = $email;
 		return $this;
 	}
+    /** @return string|null Language of the email to be sent */
 	public function getLang(): ?string {
 		return $this->lang;
 	}
+    /** @param string|null $lang Language of the email to be sent */
 	public function setLang(?string $lang) {
 		$this->lang = $lang;
 	}
+    /**
+     * @param string|null $lang Language of the email to be sent
+     * @return ForgetRequest
+     */
 	public function withLang(?string $lang): ForgetRequest {
 		$this->lang = $lang;
 		return $this;

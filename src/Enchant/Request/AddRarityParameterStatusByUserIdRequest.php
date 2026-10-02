@@ -19,77 +19,118 @@ namespace Gs2\Enchant\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for addRarityParameterStatusByUserId: Add Rarity Parameter Status by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/enchant/sdk/#addrarityparameterstatusbyuserid
+ */
 class AddRarityParameterStatusByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Rarity Parameter Model name */
     private $parameterName;
-    /** @var string */
+    /** @var string Property ID of the resource that owns the parameter */
     private $propertyId;
-    /** @var int */
+    /** @var int Number of parameters to add */
     private $count;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return AddRarityParameterStatusByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): AddRarityParameterStatusByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return AddRarityParameterStatusByUserIdRequest
+     */
 	public function withUserId(?string $userId): AddRarityParameterStatusByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Rarity Parameter Model name */
 	public function getParameterName(): ?string {
 		return $this->parameterName;
 	}
+    /** @param string|null $parameterName Rarity Parameter Model name */
 	public function setParameterName(?string $parameterName) {
 		$this->parameterName = $parameterName;
 	}
+    /**
+     * @param string|null $parameterName Rarity Parameter Model name
+     * @return AddRarityParameterStatusByUserIdRequest
+     */
 	public function withParameterName(?string $parameterName): AddRarityParameterStatusByUserIdRequest {
 		$this->parameterName = $parameterName;
 		return $this;
 	}
+    /** @return string|null Property ID of the resource that owns the parameter */
 	public function getPropertyId(): ?string {
 		return $this->propertyId;
 	}
+    /** @param string|null $propertyId Property ID of the resource that owns the parameter */
 	public function setPropertyId(?string $propertyId) {
 		$this->propertyId = $propertyId;
 	}
+    /**
+     * @param string|null $propertyId Property ID of the resource that owns the parameter
+     * @return AddRarityParameterStatusByUserIdRequest
+     */
 	public function withPropertyId(?string $propertyId): AddRarityParameterStatusByUserIdRequest {
 		$this->propertyId = $propertyId;
 		return $this;
 	}
+    /** @return int|null Number of parameters to add */
 	public function getCount(): ?int {
 		return $this->count;
 	}
+    /** @param int|null $count Number of parameters to add */
 	public function setCount(?int $count) {
 		$this->count = $count;
 	}
+    /**
+     * @param int|null $count Number of parameters to add
+     * @return AddRarityParameterStatusByUserIdRequest
+     */
 	public function withCount(?int $count): AddRarityParameterStatusByUserIdRequest {
 		$this->count = $count;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return AddRarityParameterStatusByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): AddRarityParameterStatusByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

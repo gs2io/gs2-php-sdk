@@ -19,123 +19,188 @@ namespace Gs2\Log\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for queryAccessLog: List access logs
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#queryaccesslog
+ */
 class QueryAccessLogRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Microservice Type */
     private $service;
-    /** @var string */
+    /** @var string Microservice Method */
     private $method;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var int */
+    /** @var int Search range start date and time */
     private $begin;
-    /** @var int */
+    /** @var int Search range end date and time */
     private $end;
-    /** @var bool */
+    /** @var bool Search logs for periods longer than 7 days */
     private $longTerm;
-    /** @var string */
+    /** @var string Token specifying the position from which to start acquiring data */
     private $pageToken;
-    /** @var int */
+    /** @var int Number of data items to retrieve */
     private $limit;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return QueryAccessLogRequest
+     */
 	public function withNamespaceName(?string $namespaceName): QueryAccessLogRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Microservice Type */
 	public function getService(): ?string {
 		return $this->service;
 	}
+    /** @param string|null $service Microservice Type */
 	public function setService(?string $service) {
 		$this->service = $service;
 	}
+    /**
+     * @param string|null $service Microservice Type
+     * @return QueryAccessLogRequest
+     */
 	public function withService(?string $service): QueryAccessLogRequest {
 		$this->service = $service;
 		return $this;
 	}
+    /** @return string|null Microservice Method */
 	public function getMethod(): ?string {
 		return $this->method;
 	}
+    /** @param string|null $method Microservice Method */
 	public function setMethod(?string $method) {
 		$this->method = $method;
 	}
+    /**
+     * @param string|null $method Microservice Method
+     * @return QueryAccessLogRequest
+     */
 	public function withMethod(?string $method): QueryAccessLogRequest {
 		$this->method = $method;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return QueryAccessLogRequest
+     */
 	public function withUserId(?string $userId): QueryAccessLogRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return int|null Search range start date and time */
 	public function getBegin(): ?int {
 		return $this->begin;
 	}
+    /** @param int|null $begin Search range start date and time */
 	public function setBegin(?int $begin) {
 		$this->begin = $begin;
 	}
+    /**
+     * @param int|null $begin Search range start date and time
+     * @return QueryAccessLogRequest
+     */
 	public function withBegin(?int $begin): QueryAccessLogRequest {
 		$this->begin = $begin;
 		return $this;
 	}
+    /** @return int|null Search range end date and time */
 	public function getEnd(): ?int {
 		return $this->end;
 	}
+    /** @param int|null $end Search range end date and time */
 	public function setEnd(?int $end) {
 		$this->end = $end;
 	}
+    /**
+     * @param int|null $end Search range end date and time
+     * @return QueryAccessLogRequest
+     */
 	public function withEnd(?int $end): QueryAccessLogRequest {
 		$this->end = $end;
 		return $this;
 	}
+    /** @return bool|null Search logs for periods longer than 7 days */
 	public function getLongTerm(): ?bool {
 		return $this->longTerm;
 	}
+    /** @param bool|null $longTerm Search logs for periods longer than 7 days */
 	public function setLongTerm(?bool $longTerm) {
 		$this->longTerm = $longTerm;
 	}
+    /**
+     * @param bool|null $longTerm Search logs for periods longer than 7 days
+     * @return QueryAccessLogRequest
+     */
 	public function withLongTerm(?bool $longTerm): QueryAccessLogRequest {
 		$this->longTerm = $longTerm;
 		return $this;
 	}
+    /** @return string|null Token specifying the position from which to start acquiring data */
 	public function getPageToken(): ?string {
 		return $this->pageToken;
 	}
+    /** @param string|null $pageToken Token specifying the position from which to start acquiring data */
 	public function setPageToken(?string $pageToken) {
 		$this->pageToken = $pageToken;
 	}
+    /**
+     * @param string|null $pageToken Token specifying the position from which to start acquiring data
+     * @return QueryAccessLogRequest
+     */
 	public function withPageToken(?string $pageToken): QueryAccessLogRequest {
 		$this->pageToken = $pageToken;
 		return $this;
 	}
+    /** @return int|null Number of data items to retrieve */
 	public function getLimit(): ?int {
 		return $this->limit;
 	}
+    /** @param int|null $limit Number of data items to retrieve */
 	public function setLimit(?int $limit) {
 		$this->limit = $limit;
 	}
+    /**
+     * @param int|null $limit Number of data items to retrieve
+     * @return QueryAccessLogRequest
+     */
 	public function withLimit(?int $limit): QueryAccessLogRequest {
 		$this->limit = $limit;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return QueryAccessLogRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): QueryAccessLogRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

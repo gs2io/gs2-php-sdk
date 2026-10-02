@@ -19,15 +19,26 @@ namespace Gs2\Distributor\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getCurrentDistributorMaster: Get currently active Distributor Model master data
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#getcurrentdistributormaster
+ */
 class GetCurrentDistributorMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetCurrentDistributorMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetCurrentDistributorMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;

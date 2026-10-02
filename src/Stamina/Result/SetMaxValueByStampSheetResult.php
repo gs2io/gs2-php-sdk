@@ -24,48 +24,71 @@ use Gs2\Stamina\Model\RecoverIntervalTable;
 use Gs2\Stamina\Model\RecoverValueTable;
 use Gs2\Stamina\Model\StaminaModel;
 
+/**
+ * Result of setMaxValueByStampSheet: Execute maximum stamina value update as an acquire action
+ *
+ * @see https://docs.gs2.io/api_reference/stamina/stamp_sheet/#gs2staminasetmaxvaluebyuserid
+ */
 class SetMaxValueByStampSheetResult implements IResult {
-    /** @var Stamina */
+    /** @var Stamina Stamina */
     private $item;
-    /** @var Stamina */
+    /** @var Stamina Stamina */
     private $old;
-    /** @var StaminaModel */
+    /** @var StaminaModel Stamina Model */
     private $staminaModel;
 
+    /** @return Stamina|null Stamina */
 	public function getItem(): ?Stamina {
 		return $this->item;
 	}
 
+    /** @param Stamina|null $item Stamina */
 	public function setItem(?Stamina $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Stamina|null $item Stamina
+     * @return SetMaxValueByStampSheetResult
+     */
 	public function withItem(?Stamina $item): SetMaxValueByStampSheetResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return Stamina|null Stamina */
 	public function getOld(): ?Stamina {
 		return $this->old;
 	}
 
+    /** @param Stamina|null $old Stamina */
 	public function setOld(?Stamina $old) {
 		$this->old = $old;
 	}
 
+    /**
+     * @param Stamina|null $old Stamina
+     * @return SetMaxValueByStampSheetResult
+     */
 	public function withOld(?Stamina $old): SetMaxValueByStampSheetResult {
 		$this->old = $old;
 		return $this;
 	}
 
+    /** @return StaminaModel|null Stamina Model */
 	public function getStaminaModel(): ?StaminaModel {
 		return $this->staminaModel;
 	}
 
+    /** @param StaminaModel|null $staminaModel Stamina Model */
 	public function setStaminaModel(?StaminaModel $staminaModel) {
 		$this->staminaModel = $staminaModel;
 	}
 
+    /**
+     * @param StaminaModel|null $staminaModel Stamina Model
+     * @return SetMaxValueByStampSheetResult
+     */
 	public function withStaminaModel(?StaminaModel $staminaModel): SetMaxValueByStampSheetResult {
 		$this->staminaModel = $staminaModel;
 		return $this;

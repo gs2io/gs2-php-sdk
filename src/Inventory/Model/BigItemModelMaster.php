@@ -20,101 +20,148 @@ namespace Gs2\Inventory\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Big Item Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#bigitemmodelmaster
+ */
 class BigItemModelMaster implements IModel {
 	/**
-     * @var string
+     * @var string Big Item Model Master GRN
 	 */
 	private $itemModelId;
 	/**
-     * @var string
+     * @var string Big Item Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Description
 	 */
 	private $description;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Big Item Model Master GRN */
 	public function getItemModelId(): ?string {
 		return $this->itemModelId;
 	}
+    /** @param string|null $itemModelId Big Item Model Master GRN */
 	public function setItemModelId(?string $itemModelId) {
 		$this->itemModelId = $itemModelId;
 	}
+    /**
+     * @param string|null $itemModelId Big Item Model Master GRN
+     * @return BigItemModelMaster
+     */
 	public function withItemModelId(?string $itemModelId): BigItemModelMaster {
 		$this->itemModelId = $itemModelId;
 		return $this;
 	}
+    /** @return string|null Big Item Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Big Item Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Big Item Model name
+     * @return BigItemModelMaster
+     */
 	public function withName(?string $name): BigItemModelMaster {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return BigItemModelMaster
+     */
 	public function withDescription(?string $description): BigItemModelMaster {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return BigItemModelMaster
+     */
 	public function withMetadata(?string $metadata): BigItemModelMaster {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return BigItemModelMaster
+     */
 	public function withCreatedAt(?int $createdAt): BigItemModelMaster {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return BigItemModelMaster
+     */
 	public function withUpdatedAt(?int $updatedAt): BigItemModelMaster {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return BigItemModelMaster
+     */
 	public function withRevision(?int $revision): BigItemModelMaster {
 		$this->revision = $revision;
 		return $this;

@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Identifier\Model\TwoFactorAuthenticationSetting;
 use Gs2\Identifier\Model\Password;
 
+/**
+ * Result of getPassword: Get Password
+ *
+ * @see https://docs.gs2.io/api_reference/identifier/sdk/#getpassword
+ */
 class GetPasswordResult implements IResult {
-    /** @var Password */
+    /** @var Password Password */
     private $item;
 
+    /** @return Password|null Password */
 	public function getItem(): ?Password {
 		return $this->item;
 	}
 
+    /** @param Password|null $item Password */
 	public function setItem(?Password $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Password|null $item Password
+     * @return GetPasswordResult
+     */
 	public function withItem(?Password $item): GetPasswordResult {
 		$this->item = $item;
 		return $this;

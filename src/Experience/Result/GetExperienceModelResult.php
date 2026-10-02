@@ -22,18 +22,29 @@ use Gs2\Experience\Model\Threshold;
 use Gs2\Experience\Model\AcquireActionRate;
 use Gs2\Experience\Model\ExperienceModel;
 
+/**
+ * Result of getExperienceModel: Get Experience Model
+ *
+ * @see https://docs.gs2.io/api_reference/experience/sdk/#getexperiencemodel
+ */
 class GetExperienceModelResult implements IResult {
-    /** @var ExperienceModel */
+    /** @var ExperienceModel Experience Model */
     private $item;
 
+    /** @return ExperienceModel|null Experience Model */
 	public function getItem(): ?ExperienceModel {
 		return $this->item;
 	}
 
+    /** @param ExperienceModel|null $item Experience Model */
 	public function setItem(?ExperienceModel $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param ExperienceModel|null $item Experience Model
+     * @return GetExperienceModelResult
+     */
 	public function withItem(?ExperienceModel $item): GetExperienceModelResult {
 		$this->item = $item;
 		return $this;

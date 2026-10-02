@@ -20,18 +20,29 @@ namespace Gs2\SerialKey\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\SerialKey\Model\CurrentCampaignMaster;
 
+/**
+ * Result of updateCurrentCampaignMasterFromGitHub: Update currently active Campaign Model master data from GitHub
+ *
+ * @see https://docs.gs2.io/api_reference/serial_key/sdk/#updatecurrentcampaignmasterfromgithub
+ */
 class UpdateCurrentCampaignMasterFromGitHubResult implements IResult {
-    /** @var CurrentCampaignMaster */
+    /** @var CurrentCampaignMaster Updated master data of the currently active Campaign Models */
     private $item;
 
+    /** @return CurrentCampaignMaster|null Updated master data of the currently active Campaign Models */
 	public function getItem(): ?CurrentCampaignMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentCampaignMaster|null $item Updated master data of the currently active Campaign Models */
 	public function setItem(?CurrentCampaignMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentCampaignMaster|null $item Updated master data of the currently active Campaign Models
+     * @return UpdateCurrentCampaignMasterFromGitHubResult
+     */
 	public function withItem(?CurrentCampaignMaster $item): UpdateCurrentCampaignMasterFromGitHubResult {
 		$this->item = $item;
 		return $this;

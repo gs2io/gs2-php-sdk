@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\MegaField\Model\LayerModel;
 use Gs2\MegaField\Model\AreaModel;
 
+/**
+ * Result of describeAreaModels: List Area Models
+ *
+ * @see https://docs.gs2.io/api_reference/mega_field/sdk/#describeareamodels
+ */
 class DescribeAreaModelsResult implements IResult {
-    /** @var array */
+    /** @var array List of Area Models */
     private $items;
 
+    /** @return array|null List of Area Models */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Area Models */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Area Models
+     * @return DescribeAreaModelsResult
+     */
 	public function withItems(?array $items): DescribeAreaModelsResult {
 		$this->items = $items;
 		return $this;

@@ -22,18 +22,29 @@ use Gs2\Version\Model\Version;
 use Gs2\Version\Model\ScheduleVersion;
 use Gs2\Version\Model\VersionModelMaster;
 
+/**
+ * Result of deleteVersionModelMaster: Delete Version Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/version/sdk/#deleteversionmodelmaster
+ */
 class DeleteVersionModelMasterResult implements IResult {
-    /** @var VersionModelMaster */
+    /** @var VersionModelMaster Version Model Master deleted */
     private $item;
 
+    /** @return VersionModelMaster|null Version Model Master deleted */
 	public function getItem(): ?VersionModelMaster {
 		return $this->item;
 	}
 
+    /** @param VersionModelMaster|null $item Version Model Master deleted */
 	public function setItem(?VersionModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param VersionModelMaster|null $item Version Model Master deleted
+     * @return DeleteVersionModelMasterResult
+     */
 	public function withItem(?VersionModelMaster $item): DeleteVersionModelMasterResult {
 		$this->item = $item;
 		return $this;

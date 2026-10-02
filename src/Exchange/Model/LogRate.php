@@ -20,31 +20,48 @@ namespace Gs2\Exchange\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Logarithmic reward correction
+ *
+ * @see https://docs.gs2.io/api_reference/exchange/sdk/#lograte
+ */
 class LogRate implements IModel {
 	/**
-     * @var float
+     * @var float Base
 	 */
 	private $base;
 	/**
-     * @var array
+     * @var array List of logs
 	 */
 	private $logs;
+    /** @return float|null Base */
 	public function getBase(): ?float {
 		return $this->base;
 	}
+    /** @param float|null $base Base */
 	public function setBase(?float $base) {
 		$this->base = $base;
 	}
+    /**
+     * @param float|null $base Base
+     * @return LogRate
+     */
 	public function withBase(?float $base): LogRate {
 		$this->base = $base;
 		return $this;
 	}
+    /** @return array|null List of logs */
 	public function getLogs(): ?array {
 		return $this->logs;
 	}
+    /** @param array|null $logs List of logs */
 	public function setLogs(?array $logs) {
 		$this->logs = $logs;
 	}
+    /**
+     * @param array|null $logs List of logs
+     * @return LogRate
+     */
 	public function withLogs(?array $logs): LogRate {
 		$this->logs = $logs;
 		return $this;

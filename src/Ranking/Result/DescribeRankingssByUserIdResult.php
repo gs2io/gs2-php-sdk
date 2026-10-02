@@ -20,33 +20,50 @@ namespace Gs2\Ranking\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Ranking\Model\Ranking;
 
+/**
+ * Result of describeRankingssByUserId: Get ranking by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/ranking/sdk/#describerankingssbyuserid
+ */
 class DescribeRankingssByUserIdResult implements IResult {
-    /** @var array */
+    /** @var array List of Ranking Scores */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Ranking Scores */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Ranking Scores */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Ranking Scores
+     * @return DescribeRankingssByUserIdResult
+     */
 	public function withItems(?array $items): DescribeRankingssByUserIdResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeRankingssByUserIdResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeRankingssByUserIdResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

@@ -19,15 +19,26 @@ namespace Gs2\Distributor\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for preUpdateCurrentDistributorMaster: Update currently active Distributor Model master data (3-phase version)
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#preupdatecurrentdistributormaster
+ */
 class PreUpdateCurrentDistributorMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return PreUpdateCurrentDistributorMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): PreUpdateCurrentDistributorMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;

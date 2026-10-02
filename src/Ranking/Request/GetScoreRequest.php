@@ -19,63 +19,98 @@ namespace Gs2\Ranking\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getScore: Get Score
+ *
+ * @see https://docs.gs2.io/api_reference/ranking/sdk/#getscore
+ */
 class GetScoreRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Category Name */
     private $categoryName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string User ID of the user who earned the score */
     private $scorerUserId;
-    /** @var string */
+    /** @var string Score Unique ID */
     private $uniqueId;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetScoreRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetScoreRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Category Name */
 	public function getCategoryName(): ?string {
 		return $this->categoryName;
 	}
+    /** @param string|null $categoryName Category Name */
 	public function setCategoryName(?string $categoryName) {
 		$this->categoryName = $categoryName;
 	}
+    /**
+     * @param string|null $categoryName Category Name
+     * @return GetScoreRequest
+     */
 	public function withCategoryName(?string $categoryName): GetScoreRequest {
 		$this->categoryName = $categoryName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return GetScoreRequest
+     */
 	public function withAccessToken(?string $accessToken): GetScoreRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null User ID of the user who earned the score */
 	public function getScorerUserId(): ?string {
 		return $this->scorerUserId;
 	}
+    /** @param string|null $scorerUserId User ID of the user who earned the score */
 	public function setScorerUserId(?string $scorerUserId) {
 		$this->scorerUserId = $scorerUserId;
 	}
+    /**
+     * @param string|null $scorerUserId User ID of the user who earned the score
+     * @return GetScoreRequest
+     */
 	public function withScorerUserId(?string $scorerUserId): GetScoreRequest {
 		$this->scorerUserId = $scorerUserId;
 		return $this;
 	}
+    /** @return string|null Score Unique ID */
 	public function getUniqueId(): ?string {
 		return $this->uniqueId;
 	}
+    /** @param string|null $uniqueId Score Unique ID */
 	public function setUniqueId(?string $uniqueId) {
 		$this->uniqueId = $uniqueId;
 	}
+    /**
+     * @param string|null $uniqueId Score Unique ID
+     * @return GetScoreRequest
+     */
 	public function withUniqueId(?string $uniqueId): GetScoreRequest {
 		$this->uniqueId = $uniqueId;
 		return $this;

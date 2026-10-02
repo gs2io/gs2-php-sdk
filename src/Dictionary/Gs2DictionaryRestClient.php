@@ -3351,25 +3351,22 @@ class UpdateCurrentEntryMasterFromGitHubTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 Dictionary API クライアント
+ * GS2-Dictionary API client
  *
- * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/dictionary/sdk/
  */
 class Gs2DictionaryRestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#describenamespaces
      */
     public function describeNamespacesAsync(
             DescribeNamespacesRequest $request
@@ -3383,8 +3380,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#describenamespaces
      */
     public function describeNamespaces (
             DescribeNamespacesRequest $request
@@ -3395,8 +3395,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#createnamespace
      */
     public function createNamespaceAsync(
             CreateNamespaceRequest $request
@@ -3410,8 +3413,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#createnamespace
      */
     public function createNamespace (
             CreateNamespaceRequest $request
@@ -3422,8 +3428,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#getnamespacestatus
      */
     public function getNamespaceStatusAsync(
             GetNamespaceStatusRequest $request
@@ -3437,8 +3446,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#getnamespacestatus
      */
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
@@ -3449,8 +3461,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#getnamespace
      */
     public function getNamespaceAsync(
             GetNamespaceRequest $request
@@ -3464,8 +3479,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#getnamespace
      */
     public function getNamespace (
             GetNamespaceRequest $request
@@ -3476,8 +3494,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#updatenamespace
      */
     public function updateNamespaceAsync(
             UpdateNamespaceRequest $request
@@ -3491,8 +3512,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#updatenamespace
      */
     public function updateNamespace (
             UpdateNamespaceRequest $request
@@ -3503,8 +3527,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#deletenamespace
      */
     public function deleteNamespaceAsync(
             DeleteNamespaceRequest $request
@@ -3518,8 +3545,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#deletenamespace
      */
     public function deleteNamespace (
             DeleteNamespaceRequest $request
@@ -3530,8 +3560,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get microservice version
+     *
      * @param GetServiceVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#getserviceversion
      */
     public function getServiceVersionAsync(
             GetServiceVersionRequest $request
@@ -3545,8 +3578,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get microservice version
+     *
      * @param GetServiceVersionRequest $request
      * @return GetServiceVersionResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#getserviceversion
      */
     public function getServiceVersion (
             GetServiceVersionRequest $request
@@ -3557,8 +3593,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserIdAsync(
             DumpUserDataByUserIdRequest $request
@@ -3572,8 +3611,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return DumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserId (
             DumpUserDataByUserIdRequest $request
@@ -3584,8 +3626,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserIdAsync(
             CheckDumpUserDataByUserIdRequest $request
@@ -3599,8 +3644,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return CheckDumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserId (
             CheckDumpUserDataByUserIdRequest $request
@@ -3611,8 +3659,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserIdAsync(
             CleanUserDataByUserIdRequest $request
@@ -3626,8 +3677,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return CleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserId (
             CleanUserDataByUserIdRequest $request
@@ -3638,8 +3692,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserIdAsync(
             CheckCleanUserDataByUserIdRequest $request
@@ -3653,8 +3710,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return CheckCleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserId (
             CheckCleanUserDataByUserIdRequest $request
@@ -3665,8 +3725,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserIdAsync(
             PrepareImportUserDataByUserIdRequest $request
@@ -3680,8 +3743,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PrepareImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserId (
             PrepareImportUserDataByUserIdRequest $request
@@ -3692,8 +3758,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserIdAsync(
             ImportUserDataByUserIdRequest $request
@@ -3707,8 +3776,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return ImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserId (
             ImportUserDataByUserIdRequest $request
@@ -3719,8 +3791,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserIdAsync(
             CheckImportUserDataByUserIdRequest $request
@@ -3734,8 +3809,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return CheckImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserId (
             CheckImportUserDataByUserIdRequest $request
@@ -3746,8 +3824,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Entry Models
+     *
      * @param DescribeEntryModelsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#describeentrymodels
      */
     public function describeEntryModelsAsync(
             DescribeEntryModelsRequest $request
@@ -3761,8 +3842,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Entry Models
+     *
      * @param DescribeEntryModelsRequest $request
      * @return DescribeEntryModelsResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#describeentrymodels
      */
     public function describeEntryModels (
             DescribeEntryModelsRequest $request
@@ -3773,8 +3857,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Entry Model
+     *
      * @param GetEntryModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#getentrymodel
      */
     public function getEntryModelAsync(
             GetEntryModelRequest $request
@@ -3788,8 +3875,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Entry Model
+     *
      * @param GetEntryModelRequest $request
      * @return GetEntryModelResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#getentrymodel
      */
     public function getEntryModel (
             GetEntryModelRequest $request
@@ -3800,8 +3890,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Entry Model Masters
+     *
      * @param DescribeEntryModelMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#describeentrymodelmasters
      */
     public function describeEntryModelMastersAsync(
             DescribeEntryModelMastersRequest $request
@@ -3815,8 +3908,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Entry Model Masters
+     *
      * @param DescribeEntryModelMastersRequest $request
      * @return DescribeEntryModelMastersResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#describeentrymodelmasters
      */
     public function describeEntryModelMasters (
             DescribeEntryModelMastersRequest $request
@@ -3827,8 +3923,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Entry Model Master
+     *
      * @param CreateEntryModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#createentrymodelmaster
      */
     public function createEntryModelMasterAsync(
             CreateEntryModelMasterRequest $request
@@ -3842,8 +3941,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Entry Model Master
+     *
      * @param CreateEntryModelMasterRequest $request
      * @return CreateEntryModelMasterResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#createentrymodelmaster
      */
     public function createEntryModelMaster (
             CreateEntryModelMasterRequest $request
@@ -3854,8 +3956,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Entry Model Master
+     *
      * @param GetEntryModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#getentrymodelmaster
      */
     public function getEntryModelMasterAsync(
             GetEntryModelMasterRequest $request
@@ -3869,8 +3974,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Entry Model Master
+     *
      * @param GetEntryModelMasterRequest $request
      * @return GetEntryModelMasterResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#getentrymodelmaster
      */
     public function getEntryModelMaster (
             GetEntryModelMasterRequest $request
@@ -3881,8 +3989,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Entry Model Master
+     *
      * @param UpdateEntryModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#updateentrymodelmaster
      */
     public function updateEntryModelMasterAsync(
             UpdateEntryModelMasterRequest $request
@@ -3896,8 +4007,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Entry Model Master
+     *
      * @param UpdateEntryModelMasterRequest $request
      * @return UpdateEntryModelMasterResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#updateentrymodelmaster
      */
     public function updateEntryModelMaster (
             UpdateEntryModelMasterRequest $request
@@ -3908,8 +4022,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Entry Model Master
+     *
      * @param DeleteEntryModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#deleteentrymodelmaster
      */
     public function deleteEntryModelMasterAsync(
             DeleteEntryModelMasterRequest $request
@@ -3923,8 +4040,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Entry Model Master
+     *
      * @param DeleteEntryModelMasterRequest $request
      * @return DeleteEntryModelMasterResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#deleteentrymodelmaster
      */
     public function deleteEntryModelMaster (
             DeleteEntryModelMasterRequest $request
@@ -3935,8 +4055,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Entries
+     *
      * @param DescribeEntriesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#describeentries
      */
     public function describeEntriesAsync(
             DescribeEntriesRequest $request
@@ -3950,8 +4073,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Entries
+     *
      * @param DescribeEntriesRequest $request
      * @return DescribeEntriesResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#describeentries
      */
     public function describeEntries (
             DescribeEntriesRequest $request
@@ -3962,8 +4088,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Entries by User ID
+     *
      * @param DescribeEntriesByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#describeentriesbyuserid
      */
     public function describeEntriesByUserIdAsync(
             DescribeEntriesByUserIdRequest $request
@@ -3977,8 +4106,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Entries by User ID
+     *
      * @param DescribeEntriesByUserIdRequest $request
      * @return DescribeEntriesByUserIdResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#describeentriesbyuserid
      */
     public function describeEntriesByUserId (
             DescribeEntriesByUserIdRequest $request
@@ -3989,8 +4121,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Add entries by User ID
+     *
      * @param AddEntriesByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#addentriesbyuserid
      */
     public function addEntriesByUserIdAsync(
             AddEntriesByUserIdRequest $request
@@ -4004,8 +4139,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Add entries by User ID
+     *
      * @param AddEntriesByUserIdRequest $request
      * @return AddEntriesByUserIdResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#addentriesbyuserid
      */
     public function addEntriesByUserId (
             AddEntriesByUserIdRequest $request
@@ -4016,8 +4154,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get an Entry
+     *
      * @param GetEntryRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#getentry
      */
     public function getEntryAsync(
             GetEntryRequest $request
@@ -4031,8 +4172,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get an Entry
+     *
      * @param GetEntryRequest $request
      * @return GetEntryResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#getentry
      */
     public function getEntry (
             GetEntryRequest $request
@@ -4043,8 +4187,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Entry by User ID
+     *
      * @param GetEntryByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#getentrybyuserid
      */
     public function getEntryByUserIdAsync(
             GetEntryByUserIdRequest $request
@@ -4058,8 +4205,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Entry by User ID
+     *
      * @param GetEntryByUserIdRequest $request
      * @return GetEntryByUserIdResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#getentrybyuserid
      */
     public function getEntryByUserId (
             GetEntryByUserIdRequest $request
@@ -4070,8 +4220,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Entry with cryptographic signature
+     *
      * @param GetEntryWithSignatureRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#getentrywithsignature
      */
     public function getEntryWithSignatureAsync(
             GetEntryWithSignatureRequest $request
@@ -4085,8 +4238,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Entry with cryptographic signature
+     *
      * @param GetEntryWithSignatureRequest $request
      * @return GetEntryWithSignatureResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#getentrywithsignature
      */
     public function getEntryWithSignature (
             GetEntryWithSignatureRequest $request
@@ -4097,8 +4253,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Entry with cryptographic signature by User ID
+     *
      * @param GetEntryWithSignatureByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#getentrywithsignaturebyuserid
      */
     public function getEntryWithSignatureByUserIdAsync(
             GetEntryWithSignatureByUserIdRequest $request
@@ -4112,8 +4271,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Entry with cryptographic signature by User ID
+     *
      * @param GetEntryWithSignatureByUserIdRequest $request
      * @return GetEntryWithSignatureByUserIdResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#getentrywithsignaturebyuserid
      */
     public function getEntryWithSignatureByUserId (
             GetEntryWithSignatureByUserIdRequest $request
@@ -4124,8 +4286,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Reset entries
+     *
      * @param ResetByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#resetbyuserid
      */
     public function resetByUserIdAsync(
             ResetByUserIdRequest $request
@@ -4139,8 +4304,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Reset entries
+     *
      * @param ResetByUserIdRequest $request
      * @return ResetByUserIdResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#resetbyuserid
      */
     public function resetByUserId (
             ResetByUserIdRequest $request
@@ -4151,8 +4319,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify Entry
+     *
      * @param VerifyEntryRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#verifyentry
      */
     public function verifyEntryAsync(
             VerifyEntryRequest $request
@@ -4166,8 +4337,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify Entry
+     *
      * @param VerifyEntryRequest $request
      * @return VerifyEntryResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#verifyentry
      */
     public function verifyEntry (
             VerifyEntryRequest $request
@@ -4178,8 +4352,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify Entry by User ID
+     *
      * @param VerifyEntryByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#verifyentrybyuserid
      */
     public function verifyEntryByUserIdAsync(
             VerifyEntryByUserIdRequest $request
@@ -4193,8 +4370,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify Entry by User ID
+     *
      * @param VerifyEntryByUserIdRequest $request
      * @return VerifyEntryByUserIdResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#verifyentrybyuserid
      */
     public function verifyEntryByUserId (
             VerifyEntryByUserIdRequest $request
@@ -4205,8 +4385,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete entries
+     *
      * @param DeleteEntriesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#deleteentries
      */
     public function deleteEntriesAsync(
             DeleteEntriesRequest $request
@@ -4220,8 +4403,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete entries
+     *
      * @param DeleteEntriesRequest $request
      * @return DeleteEntriesResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#deleteentries
      */
     public function deleteEntries (
             DeleteEntriesRequest $request
@@ -4232,8 +4418,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete entries by User ID
+     *
      * @param DeleteEntriesByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#deleteentriesbyuserid
      */
     public function deleteEntriesByUserIdAsync(
             DeleteEntriesByUserIdRequest $request
@@ -4247,8 +4436,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete entries by User ID
+     *
      * @param DeleteEntriesByUserIdRequest $request
      * @return DeleteEntriesByUserIdResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#deleteentriesbyuserid
      */
     public function deleteEntriesByUserId (
             DeleteEntriesByUserIdRequest $request
@@ -4259,8 +4451,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the entry addition as an acquire action
+     *
      * @param AddEntriesByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/stamp_sheet/#gs2dictionaryaddentriesbyuserid
      */
     public function addEntriesByStampSheetAsync(
             AddEntriesByStampSheetRequest $request
@@ -4274,8 +4469,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the entry addition as an acquire action
+     *
      * @param AddEntriesByStampSheetRequest $request
      * @return AddEntriesByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/dictionary/stamp_sheet/#gs2dictionaryaddentriesbyuserid
      */
     public function addEntriesByStampSheet (
             AddEntriesByStampSheetRequest $request
@@ -4286,8 +4484,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the entry deletion as a consume action
+     *
      * @param DeleteEntriesByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/stamp_sheet/#gs2dictionarydeleteentriesbyuserid
      */
     public function deleteEntriesByStampTaskAsync(
             DeleteEntriesByStampTaskRequest $request
@@ -4301,8 +4502,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the entry deletion as a consume action
+     *
      * @param DeleteEntriesByStampTaskRequest $request
      * @return DeleteEntriesByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/dictionary/stamp_sheet/#gs2dictionarydeleteentriesbyuserid
      */
     public function deleteEntriesByStampTask (
             DeleteEntriesByStampTaskRequest $request
@@ -4313,8 +4517,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the entry verification as a verify action
+     *
      * @param VerifyEntryByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/stamp_sheet/#gs2dictionaryverifyentrybyuserid
      */
     public function verifyEntryByStampTaskAsync(
             VerifyEntryByStampTaskRequest $request
@@ -4328,8 +4535,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the entry verification as a verify action
+     *
      * @param VerifyEntryByStampTaskRequest $request
      * @return VerifyEntryByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/dictionary/stamp_sheet/#gs2dictionaryverifyentrybyuserid
      */
     public function verifyEntryByStampTask (
             VerifyEntryByStampTaskRequest $request
@@ -4340,8 +4550,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Likes
+     *
      * @param DescribeLikesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#describelikes
      */
     public function describeLikesAsync(
             DescribeLikesRequest $request
@@ -4355,8 +4568,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Likes
+     *
      * @param DescribeLikesRequest $request
      * @return DescribeLikesResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#describelikes
      */
     public function describeLikes (
             DescribeLikesRequest $request
@@ -4367,8 +4583,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Likes by User ID
+     *
      * @param DescribeLikesByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#describelikesbyuserid
      */
     public function describeLikesByUserIdAsync(
             DescribeLikesByUserIdRequest $request
@@ -4382,8 +4601,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Likes by User ID
+     *
      * @param DescribeLikesByUserIdRequest $request
      * @return DescribeLikesByUserIdResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#describelikesbyuserid
      */
     public function describeLikesByUserId (
             DescribeLikesByUserIdRequest $request
@@ -4394,8 +4616,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Add likes
+     *
      * @param AddLikesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#addlikes
      */
     public function addLikesAsync(
             AddLikesRequest $request
@@ -4409,8 +4634,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Add likes
+     *
      * @param AddLikesRequest $request
      * @return AddLikesResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#addlikes
      */
     public function addLikes (
             AddLikesRequest $request
@@ -4421,8 +4649,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Add likes by User ID
+     *
      * @param AddLikesByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#addlikesbyuserid
      */
     public function addLikesByUserIdAsync(
             AddLikesByUserIdRequest $request
@@ -4436,8 +4667,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Add likes by User ID
+     *
      * @param AddLikesByUserIdRequest $request
      * @return AddLikesByUserIdResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#addlikesbyuserid
      */
     public function addLikesByUserId (
             AddLikesByUserIdRequest $request
@@ -4448,8 +4682,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Like
+     *
      * @param GetLikeRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#getlike
      */
     public function getLikeAsync(
             GetLikeRequest $request
@@ -4463,8 +4700,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Like
+     *
      * @param GetLikeRequest $request
      * @return GetLikeResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#getlike
      */
     public function getLike (
             GetLikeRequest $request
@@ -4475,8 +4715,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Like by User ID
+     *
      * @param GetLikeByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#getlikebyuserid
      */
     public function getLikeByUserIdAsync(
             GetLikeByUserIdRequest $request
@@ -4490,8 +4733,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Like by User ID
+     *
      * @param GetLikeByUserIdRequest $request
      * @return GetLikeByUserIdResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#getlikebyuserid
      */
     public function getLikeByUserId (
             GetLikeByUserIdRequest $request
@@ -4502,8 +4748,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Reset likes
+     *
      * @param ResetLikesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#resetlikes
      */
     public function resetLikesAsync(
             ResetLikesRequest $request
@@ -4517,8 +4766,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Reset likes
+     *
      * @param ResetLikesRequest $request
      * @return ResetLikesResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#resetlikes
      */
     public function resetLikes (
             ResetLikesRequest $request
@@ -4529,8 +4781,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Reset likes by User ID
+     *
      * @param ResetLikesByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#resetlikesbyuserid
      */
     public function resetLikesByUserIdAsync(
             ResetLikesByUserIdRequest $request
@@ -4544,8 +4799,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Reset likes by User ID
+     *
      * @param ResetLikesByUserIdRequest $request
      * @return ResetLikesByUserIdResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#resetlikesbyuserid
      */
     public function resetLikesByUserId (
             ResetLikesByUserIdRequest $request
@@ -4556,8 +4814,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete likes
+     *
      * @param DeleteLikesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#deletelikes
      */
     public function deleteLikesAsync(
             DeleteLikesRequest $request
@@ -4571,8 +4832,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete likes
+     *
      * @param DeleteLikesRequest $request
      * @return DeleteLikesResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#deletelikes
      */
     public function deleteLikes (
             DeleteLikesRequest $request
@@ -4583,8 +4847,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete likes by User ID
+     *
      * @param DeleteLikesByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#deletelikesbyuserid
      */
     public function deleteLikesByUserIdAsync(
             DeleteLikesByUserIdRequest $request
@@ -4598,8 +4865,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete likes by User ID
+     *
      * @param DeleteLikesByUserIdRequest $request
      * @return DeleteLikesByUserIdResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#deletelikesbyuserid
      */
     public function deleteLikesByUserId (
             DeleteLikesByUserIdRequest $request
@@ -4610,8 +4880,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Entry Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#exportmaster
      */
     public function exportMasterAsync(
             ExportMasterRequest $request
@@ -4625,8 +4898,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Entry Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return ExportMasterResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#exportmaster
      */
     public function exportMaster (
             ExportMasterRequest $request
@@ -4637,8 +4913,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Entry Model master data
+     *
      * @param GetCurrentEntryMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#getcurrententrymaster
      */
     public function getCurrentEntryMasterAsync(
             GetCurrentEntryMasterRequest $request
@@ -4652,8 +4931,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Entry Model master data
+     *
      * @param GetCurrentEntryMasterRequest $request
      * @return GetCurrentEntryMasterResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#getcurrententrymaster
      */
     public function getCurrentEntryMaster (
             GetCurrentEntryMasterRequest $request
@@ -4664,8 +4946,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Entry Model master data (3-phase version)
+     *
      * @param PreUpdateCurrentEntryMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#preupdatecurrententrymaster
      */
     public function preUpdateCurrentEntryMasterAsync(
             PreUpdateCurrentEntryMasterRequest $request
@@ -4679,8 +4964,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Entry Model master data (3-phase version)
+     *
      * @param PreUpdateCurrentEntryMasterRequest $request
      * @return PreUpdateCurrentEntryMasterResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#preupdatecurrententrymaster
      */
     public function preUpdateCurrentEntryMaster (
             PreUpdateCurrentEntryMasterRequest $request
@@ -4691,8 +4979,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Entry Model master data
+     *
      * @param UpdateCurrentEntryMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#updatecurrententrymaster
      */
     public function updateCurrentEntryMasterAsync(
             UpdateCurrentEntryMasterRequest $request
@@ -4706,8 +4997,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Entry Model master data
+     *
      * @param UpdateCurrentEntryMasterRequest $request
      * @return UpdateCurrentEntryMasterResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#updatecurrententrymaster
      */
     public function updateCurrentEntryMaster (
             UpdateCurrentEntryMasterRequest $request
@@ -4718,8 +5012,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Entry Model master data from GitHub
+     *
      * @param UpdateCurrentEntryMasterFromGitHubRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#updatecurrententrymasterfromgithub
      */
     public function updateCurrentEntryMasterFromGitHubAsync(
             UpdateCurrentEntryMasterFromGitHubRequest $request
@@ -4733,8 +5030,11 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Entry Model master data from GitHub
+     *
      * @param UpdateCurrentEntryMasterFromGitHubRequest $request
      * @return UpdateCurrentEntryMasterFromGitHubResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#updatecurrententrymasterfromgithub
      */
     public function updateCurrentEntryMasterFromGitHub (
             UpdateCurrentEntryMasterFromGitHubRequest $request

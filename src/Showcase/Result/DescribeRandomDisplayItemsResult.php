@@ -23,18 +23,29 @@ use Gs2\Showcase\Model\ConsumeAction;
 use Gs2\Showcase\Model\AcquireAction;
 use Gs2\Showcase\Model\RandomDisplayItem;
 
+/**
+ * Result of describeRandomDisplayItems: List Random Displayed Items
+ *
+ * @see https://docs.gs2.io/api_reference/showcase/sdk/#describerandomdisplayitems
+ */
 class DescribeRandomDisplayItemsResult implements IResult {
-    /** @var array */
+    /** @var array List of Displayed Items on Random Showcase */
     private $items;
 
+    /** @return array|null List of Displayed Items on Random Showcase */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Displayed Items on Random Showcase */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Displayed Items on Random Showcase
+     * @return DescribeRandomDisplayItemsResult
+     */
 	public function withItems(?array $items): DescribeRandomDisplayItemsResult {
 		$this->items = $items;
 		return $this;

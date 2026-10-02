@@ -19,51 +19,80 @@ namespace Gs2\Chat\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for createCategoryModelMaster: Create Message Category Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/chat/sdk/#createcategorymodelmaster
+ */
 class CreateCategoryModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var int */
+    /** @var int Category */
     private $category;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var string */
+    /** @var string Reject posts made using player access tokens */
     private $rejectAccessTokenPost;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return CreateCategoryModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): CreateCategoryModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return int|null Category */
 	public function getCategory(): ?int {
 		return $this->category;
 	}
+    /** @param int|null $category Category */
 	public function setCategory(?int $category) {
 		$this->category = $category;
 	}
+    /**
+     * @param int|null $category Category
+     * @return CreateCategoryModelMasterRequest
+     */
 	public function withCategory(?int $category): CreateCategoryModelMasterRequest {
 		$this->category = $category;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return CreateCategoryModelMasterRequest
+     */
 	public function withDescription(?string $description): CreateCategoryModelMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Reject posts made using player access tokens */
 	public function getRejectAccessTokenPost(): ?string {
 		return $this->rejectAccessTokenPost;
 	}
+    /** @param string|null $rejectAccessTokenPost Reject posts made using player access tokens */
 	public function setRejectAccessTokenPost(?string $rejectAccessTokenPost) {
 		$this->rejectAccessTokenPost = $rejectAccessTokenPost;
 	}
+    /**
+     * @param string|null $rejectAccessTokenPost Reject posts made using player access tokens
+     * @return CreateCategoryModelMasterRequest
+     */
 	public function withRejectAccessTokenPost(?string $rejectAccessTokenPost): CreateCategoryModelMasterRequest {
 		$this->rejectAccessTokenPost = $rejectAccessTokenPost;
 		return $this;

@@ -20,101 +20,148 @@ namespace Gs2\Account\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Takeover Information
+ *
+ * @see https://docs.gs2.io/api_reference/account/sdk/#takeover
+ */
 class TakeOver implements IModel {
 	/**
-     * @var string
+     * @var string Takeover Information GRN
 	 */
 	private $takeOverId;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var int
+     * @var int Slot Number
 	 */
 	private $type;
 	/**
-     * @var string
+     * @var string User ID for takeover
 	 */
 	private $userIdentifier;
 	/**
-     * @var string
+     * @var string Password
 	 */
 	private $password;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Takeover Information GRN */
 	public function getTakeOverId(): ?string {
 		return $this->takeOverId;
 	}
+    /** @param string|null $takeOverId Takeover Information GRN */
 	public function setTakeOverId(?string $takeOverId) {
 		$this->takeOverId = $takeOverId;
 	}
+    /**
+     * @param string|null $takeOverId Takeover Information GRN
+     * @return TakeOver
+     */
 	public function withTakeOverId(?string $takeOverId): TakeOver {
 		$this->takeOverId = $takeOverId;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return TakeOver
+     */
 	public function withUserId(?string $userId): TakeOver {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return int|null Slot Number */
 	public function getType(): ?int {
 		return $this->type;
 	}
+    /** @param int|null $type Slot Number */
 	public function setType(?int $type) {
 		$this->type = $type;
 	}
+    /**
+     * @param int|null $type Slot Number
+     * @return TakeOver
+     */
 	public function withType(?int $type): TakeOver {
 		$this->type = $type;
 		return $this;
 	}
+    /** @return string|null User ID for takeover */
 	public function getUserIdentifier(): ?string {
 		return $this->userIdentifier;
 	}
+    /** @param string|null $userIdentifier User ID for takeover */
 	public function setUserIdentifier(?string $userIdentifier) {
 		$this->userIdentifier = $userIdentifier;
 	}
+    /**
+     * @param string|null $userIdentifier User ID for takeover
+     * @return TakeOver
+     */
 	public function withUserIdentifier(?string $userIdentifier): TakeOver {
 		$this->userIdentifier = $userIdentifier;
 		return $this;
 	}
+    /** @return string|null Password */
 	public function getPassword(): ?string {
 		return $this->password;
 	}
+    /** @param string|null $password Password */
 	public function setPassword(?string $password) {
 		$this->password = $password;
 	}
+    /**
+     * @param string|null $password Password
+     * @return TakeOver
+     */
 	public function withPassword(?string $password): TakeOver {
 		$this->password = $password;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return TakeOver
+     */
 	public function withCreatedAt(?int $createdAt): TakeOver {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return TakeOver
+     */
 	public function withRevision(?int $revision): TakeOver {
 		$this->revision = $revision;
 		return $this;

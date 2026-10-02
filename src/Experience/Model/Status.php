@@ -20,157 +20,228 @@ namespace Gs2\Experience\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Status
+ *
+ * @see https://docs.gs2.io/api_reference/experience/sdk/#status
+ */
 class Status implements IModel {
 	/**
-     * @var string
+     * @var string Status GRN
 	 */
 	private $statusId;
 	/**
-     * @var string
+     * @var string Experience Model name
 	 */
 	private $experienceName;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var string
+     * @var string Property ID
 	 */
 	private $propertyId;
 	/**
-     * @var int
+     * @var int Cumulative experience gained
 	 */
 	private $experienceValue;
 	/**
-     * @var int
+     * @var int Current Rank
 	 */
 	private $rankValue;
 	/**
-     * @var int
+     * @var int Current Rank Cap
 	 */
 	private $rankCapValue;
 	/**
-     * @var int
+     * @var int Experience points required for the next rank-up
 	 */
 	private $nextRankUpExperienceValue;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Status GRN */
 	public function getStatusId(): ?string {
 		return $this->statusId;
 	}
+    /** @param string|null $statusId Status GRN */
 	public function setStatusId(?string $statusId) {
 		$this->statusId = $statusId;
 	}
+    /**
+     * @param string|null $statusId Status GRN
+     * @return Status
+     */
 	public function withStatusId(?string $statusId): Status {
 		$this->statusId = $statusId;
 		return $this;
 	}
+    /** @return string|null Experience Model name */
 	public function getExperienceName(): ?string {
 		return $this->experienceName;
 	}
+    /** @param string|null $experienceName Experience Model name */
 	public function setExperienceName(?string $experienceName) {
 		$this->experienceName = $experienceName;
 	}
+    /**
+     * @param string|null $experienceName Experience Model name
+     * @return Status
+     */
 	public function withExperienceName(?string $experienceName): Status {
 		$this->experienceName = $experienceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return Status
+     */
 	public function withUserId(?string $userId): Status {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Property ID */
 	public function getPropertyId(): ?string {
 		return $this->propertyId;
 	}
+    /** @param string|null $propertyId Property ID */
 	public function setPropertyId(?string $propertyId) {
 		$this->propertyId = $propertyId;
 	}
+    /**
+     * @param string|null $propertyId Property ID
+     * @return Status
+     */
 	public function withPropertyId(?string $propertyId): Status {
 		$this->propertyId = $propertyId;
 		return $this;
 	}
+    /** @return int|null Cumulative experience gained */
 	public function getExperienceValue(): ?int {
 		return $this->experienceValue;
 	}
+    /** @param int|null $experienceValue Cumulative experience gained */
 	public function setExperienceValue(?int $experienceValue) {
 		$this->experienceValue = $experienceValue;
 	}
+    /**
+     * @param int|null $experienceValue Cumulative experience gained
+     * @return Status
+     */
 	public function withExperienceValue(?int $experienceValue): Status {
 		$this->experienceValue = $experienceValue;
 		return $this;
 	}
+    /** @return int|null Current Rank */
 	public function getRankValue(): ?int {
 		return $this->rankValue;
 	}
+    /** @param int|null $rankValue Current Rank */
 	public function setRankValue(?int $rankValue) {
 		$this->rankValue = $rankValue;
 	}
+    /**
+     * @param int|null $rankValue Current Rank
+     * @return Status
+     */
 	public function withRankValue(?int $rankValue): Status {
 		$this->rankValue = $rankValue;
 		return $this;
 	}
+    /** @return int|null Current Rank Cap */
 	public function getRankCapValue(): ?int {
 		return $this->rankCapValue;
 	}
+    /** @param int|null $rankCapValue Current Rank Cap */
 	public function setRankCapValue(?int $rankCapValue) {
 		$this->rankCapValue = $rankCapValue;
 	}
+    /**
+     * @param int|null $rankCapValue Current Rank Cap
+     * @return Status
+     */
 	public function withRankCapValue(?int $rankCapValue): Status {
 		$this->rankCapValue = $rankCapValue;
 		return $this;
 	}
+    /** @return int|null Experience points required for the next rank-up */
 	public function getNextRankUpExperienceValue(): ?int {
 		return $this->nextRankUpExperienceValue;
 	}
+    /** @param int|null $nextRankUpExperienceValue Experience points required for the next rank-up */
 	public function setNextRankUpExperienceValue(?int $nextRankUpExperienceValue) {
 		$this->nextRankUpExperienceValue = $nextRankUpExperienceValue;
 	}
+    /**
+     * @param int|null $nextRankUpExperienceValue Experience points required for the next rank-up
+     * @return Status
+     */
 	public function withNextRankUpExperienceValue(?int $nextRankUpExperienceValue): Status {
 		$this->nextRankUpExperienceValue = $nextRankUpExperienceValue;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return Status
+     */
 	public function withCreatedAt(?int $createdAt): Status {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return Status
+     */
 	public function withUpdatedAt(?int $updatedAt): Status {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return Status
+     */
 	public function withRevision(?int $revision): Status {
 		$this->revision = $revision;
 		return $this;

@@ -20,33 +20,50 @@ namespace Gs2\Account\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Account\Model\TakeOver;
 
+/**
+ * Result of describeTakeOversByUserId: List Takeover Information by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/account/sdk/#describetakeoversbyuserid
+ */
 class DescribeTakeOversByUserIdResult implements IResult {
-    /** @var array */
+    /** @var array List of Takeover Information */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Takeover Information */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Takeover Information */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Takeover Information
+     * @return DescribeTakeOversByUserIdResult
+     */
 	public function withItems(?array $items): DescribeTakeOversByUserIdResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeTakeOversByUserIdResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeTakeOversByUserIdResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

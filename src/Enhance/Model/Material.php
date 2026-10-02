@@ -20,31 +20,48 @@ namespace Gs2\Enhance\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Enhance Material
+ *
+ * @see https://docs.gs2.io/api_reference/enhance/sdk/#material
+ */
 class Material implements IModel {
 	/**
-     * @var string
+     * @var string GRN of Item Set that will be used as materials for enhancement
 	 */
 	private $materialItemSetId;
 	/**
-     * @var int
+     * @var int Number of consumption
 	 */
 	private $count;
+    /** @return string|null GRN of Item Set that will be used as materials for enhancement */
 	public function getMaterialItemSetId(): ?string {
 		return $this->materialItemSetId;
 	}
+    /** @param string|null $materialItemSetId GRN of Item Set that will be used as materials for enhancement */
 	public function setMaterialItemSetId(?string $materialItemSetId) {
 		$this->materialItemSetId = $materialItemSetId;
 	}
+    /**
+     * @param string|null $materialItemSetId GRN of Item Set that will be used as materials for enhancement
+     * @return Material
+     */
 	public function withMaterialItemSetId(?string $materialItemSetId): Material {
 		$this->materialItemSetId = $materialItemSetId;
 		return $this;
 	}
+    /** @return int|null Number of consumption */
 	public function getCount(): ?int {
 		return $this->count;
 	}
+    /** @param int|null $count Number of consumption */
 	public function setCount(?int $count) {
 		$this->count = $count;
 	}
+    /**
+     * @param int|null $count Number of consumption
+     * @return Material
+     */
 	public function withCount(?int $count): Material {
 		$this->count = $count;
 		return $this;

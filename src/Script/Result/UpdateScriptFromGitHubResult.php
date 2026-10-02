@@ -20,18 +20,29 @@ namespace Gs2\Script\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Script\Model\Script;
 
+/**
+ * Result of updateScriptFromGitHub: Update scripts using GitHub as a data source
+ *
+ * @see https://docs.gs2.io/api_reference/script/sdk/#updatescriptfromgithub
+ */
 class UpdateScriptFromGitHubResult implements IResult {
-    /** @var Script */
+    /** @var Script Script updated */
     private $item;
 
+    /** @return Script|null Script updated */
 	public function getItem(): ?Script {
 		return $this->item;
 	}
 
+    /** @param Script|null $item Script updated */
 	public function setItem(?Script $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Script|null $item Script updated
+     * @return UpdateScriptFromGitHubResult
+     */
 	public function withItem(?Script $item): UpdateScriptFromGitHubResult {
 		$this->item = $item;
 		return $this;

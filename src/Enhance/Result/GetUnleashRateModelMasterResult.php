@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Enhance\Model\UnleashRateEntryModel;
 use Gs2\Enhance\Model\UnleashRateModelMaster;
 
+/**
+ * Result of getUnleashRateModelMaster: Get Unleash Rate Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/enhance/sdk/#getunleashratemodelmaster
+ */
 class GetUnleashRateModelMasterResult implements IResult {
-    /** @var UnleashRateModelMaster */
+    /** @var UnleashRateModelMaster Unleash Rate Model Master */
     private $item;
 
+    /** @return UnleashRateModelMaster|null Unleash Rate Model Master */
 	public function getItem(): ?UnleashRateModelMaster {
 		return $this->item;
 	}
 
+    /** @param UnleashRateModelMaster|null $item Unleash Rate Model Master */
 	public function setItem(?UnleashRateModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param UnleashRateModelMaster|null $item Unleash Rate Model Master
+     * @return GetUnleashRateModelMasterResult
+     */
 	public function withItem(?UnleashRateModelMaster $item): GetUnleashRateModelMasterResult {
 		$this->item = $item;
 		return $this;

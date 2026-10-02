@@ -19,6 +19,11 @@ namespace Gs2\Deploy\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for preCreateStack: Prepare to Create Stack (pre-upload)
+ *
+ * @see https://docs.gs2.io/api_reference/deploy/sdk/#precreatestack
+ */
 class PreCreateStackRequest extends Gs2BasicRequest {
 
     public static function fromJson(?array $data): ?PreCreateStackRequest {

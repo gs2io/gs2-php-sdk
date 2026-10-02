@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Deploy\Model\OutputField;
 use Gs2\Deploy\Model\Resource;
 
+/**
+ * Result of getResource: Get Resource
+ *
+ * @see https://docs.gs2.io/api_reference/deploy/sdk/#getresource
+ */
 class GetResourceResult implements IResult {
-    /** @var Resource */
+    /** @var Resource Resource */
     private $item;
 
+    /** @return Resource|null Resource */
 	public function getItem(): ?Resource {
 		return $this->item;
 	}
 
+    /** @param Resource|null $item Resource */
 	public function setItem(?Resource $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Resource|null $item Resource
+     * @return GetResourceResult
+     */
 	public function withItem(?Resource $item): GetResourceResult {
 		$this->item = $item;
 		return $this;

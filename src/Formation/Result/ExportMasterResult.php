@@ -20,18 +20,29 @@ namespace Gs2\Formation\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Formation\Model\CurrentFormMaster;
 
+/**
+ * Result of exportMaster: Export Form Model Master in a master data format that can be activated
+ *
+ * @see https://docs.gs2.io/api_reference/formation/sdk/#exportmaster
+ */
 class ExportMasterResult implements IResult {
-    /** @var CurrentFormMaster */
+    /** @var CurrentFormMaster Form Model master data that can be activated */
     private $item;
 
+    /** @return CurrentFormMaster|null Form Model master data that can be activated */
 	public function getItem(): ?CurrentFormMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentFormMaster|null $item Form Model master data that can be activated */
 	public function setItem(?CurrentFormMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentFormMaster|null $item Form Model master data that can be activated
+     * @return ExportMasterResult
+     */
 	public function withItem(?CurrentFormMaster $item): ExportMasterResult {
 		$this->item = $item;
 		return $this;

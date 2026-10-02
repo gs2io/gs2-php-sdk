@@ -20,53 +20,82 @@ namespace Gs2\Distributor\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Distributor\Model\VerifyAction;
 
+/**
+ * Request for orExpressionByUserId: Perform multiple verification actions and determine if any are true
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#orexpressionbyuserid
+ */
 class OrExpressionByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var array */
+    /** @var array List of Verify Actions */
     private $actions;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return OrExpressionByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): OrExpressionByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return OrExpressionByUserIdRequest
+     */
 	public function withUserId(?string $userId): OrExpressionByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return array|null List of Verify Actions */
 	public function getActions(): ?array {
 		return $this->actions;
 	}
+    /** @param array|null $actions List of Verify Actions */
 	public function setActions(?array $actions) {
 		$this->actions = $actions;
 	}
+    /**
+     * @param array|null $actions List of Verify Actions
+     * @return OrExpressionByUserIdRequest
+     */
 	public function withActions(?array $actions): OrExpressionByUserIdRequest {
 		$this->actions = $actions;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return OrExpressionByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): OrExpressionByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

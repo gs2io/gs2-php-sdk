@@ -20,18 +20,29 @@ namespace Gs2\Mission\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Mission\Model\Complete;
 
+/**
+ * Result of revertReceiveByStampSheet: Revert mission reward receipt as an acquire action within a distributed transaction
+ *
+ * @see https://docs.gs2.io/api_reference/mission/stamp_sheet/#gs2missionrevertreceivebyuserid
+ */
 class RevertReceiveByStampSheetResult implements IResult {
-    /** @var Complete */
+    /** @var Complete Completion Status */
     private $item;
 
+    /** @return Complete|null Completion Status */
 	public function getItem(): ?Complete {
 		return $this->item;
 	}
 
+    /** @param Complete|null $item Completion Status */
 	public function setItem(?Complete $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Complete|null $item Completion Status
+     * @return RevertReceiveByStampSheetResult
+     */
 	public function withItem(?Complete $item): RevertReceiveByStampSheetResult {
 		$this->item = $item;
 		return $this;

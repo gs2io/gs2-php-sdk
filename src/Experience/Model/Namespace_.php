@@ -20,208 +20,295 @@ namespace Gs2\Experience\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Namespace
+ *
+ * @see https://docs.gs2.io/api_reference/experience/sdk/#namespace
+ */
 class Namespace_ implements IModel {
 	/**
-     * @var string
+     * @var string Namespace GRN
 	 */
 	private $namespaceId;
 	/**
-     * @var string
+     * @var string Namespace name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Description
 	 */
 	private $description;
 	/**
-     * @var TransactionSetting
+     * @var TransactionSetting Transaction Setting
 	 */
 	private $transactionSetting;
 	/**
-     * @var TransactionSettingV2
+     * @var TransactionSettingV2 Transaction Setting (V2)
 	 */
 	private $transactionSettingV2;
 	/**
-     * @var string
+     * @var string Script GRN to dynamically determine rank caps
 	 */
 	private $rankCapScriptId;
 	/**
-     * @var ScriptSetting
+     * @var ScriptSetting Script setting to be executed when experience value changes
 	 */
 	private $changeExperienceScript;
 	/**
-     * @var ScriptSetting
+     * @var ScriptSetting Script setting to be executed when rank changes
 	 */
 	private $changeRankScript;
 	/**
-     * @var ScriptSetting
+     * @var ScriptSetting Script setting to be executed when rank cap changes
 	 */
 	private $changeRankCapScript;
 	/**
-     * @var string
+     * @var string GRN of the script executed when experience overflows
 	 */
 	private $overflowExperienceScript;
 	/**
-     * @var LogSetting
+     * @var LogSetting Log Output Setting
 	 */
 	private $logSetting;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Namespace GRN */
 	public function getNamespaceId(): ?string {
 		return $this->namespaceId;
 	}
+    /** @param string|null $namespaceId Namespace GRN */
 	public function setNamespaceId(?string $namespaceId) {
 		$this->namespaceId = $namespaceId;
 	}
+    /**
+     * @param string|null $namespaceId Namespace GRN
+     * @return Namespace_
+     */
 	public function withNamespaceId(?string $namespaceId): Namespace_ {
 		$this->namespaceId = $namespaceId;
 		return $this;
 	}
+    /** @return string|null Namespace name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Namespace name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Namespace name
+     * @return Namespace_
+     */
 	public function withName(?string $name): Namespace_ {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return Namespace_
+     */
 	public function withDescription(?string $description): Namespace_ {
 		$this->description = $description;
 		return $this;
 	}
     /**
+     * @return TransactionSetting|null Transaction Setting
      * @deprecated
      */
 	public function getTransactionSetting(): ?TransactionSetting {
 		return $this->transactionSetting;
 	}
     /**
+     * @param TransactionSetting|null $transactionSetting Transaction Setting
      * @deprecated
      */
 	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
 		$this->transactionSetting = $transactionSetting;
 	}
     /**
+     * @param TransactionSetting|null $transactionSetting Transaction Setting
+     * @return Namespace_
      * @deprecated
      */
 	public function withTransactionSetting(?TransactionSetting $transactionSetting): Namespace_ {
 		$this->transactionSetting = $transactionSetting;
 		return $this;
 	}
+    /** @return TransactionSettingV2|null Transaction Setting (V2) */
 	public function getTransactionSettingV2(): ?TransactionSettingV2 {
 		return $this->transactionSettingV2;
 	}
+    /** @param TransactionSettingV2|null $transactionSettingV2 Transaction Setting (V2) */
 	public function setTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2) {
 		$this->transactionSettingV2 = $transactionSettingV2;
 	}
+    /**
+     * @param TransactionSettingV2|null $transactionSettingV2 Transaction Setting (V2)
+     * @return Namespace_
+     */
 	public function withTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2): Namespace_ {
 		$this->transactionSettingV2 = $transactionSettingV2;
 		return $this;
 	}
+    /** @return string|null Script GRN to dynamically determine rank caps */
 	public function getRankCapScriptId(): ?string {
 		return $this->rankCapScriptId;
 	}
+    /** @param string|null $rankCapScriptId Script GRN to dynamically determine rank caps */
 	public function setRankCapScriptId(?string $rankCapScriptId) {
 		$this->rankCapScriptId = $rankCapScriptId;
 	}
+    /**
+     * @param string|null $rankCapScriptId Script GRN to dynamically determine rank caps
+     * @return Namespace_
+     */
 	public function withRankCapScriptId(?string $rankCapScriptId): Namespace_ {
 		$this->rankCapScriptId = $rankCapScriptId;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to be executed when experience value changes */
 	public function getChangeExperienceScript(): ?ScriptSetting {
 		return $this->changeExperienceScript;
 	}
+    /** @param ScriptSetting|null $changeExperienceScript Script setting to be executed when experience value changes */
 	public function setChangeExperienceScript(?ScriptSetting $changeExperienceScript) {
 		$this->changeExperienceScript = $changeExperienceScript;
 	}
+    /**
+     * @param ScriptSetting|null $changeExperienceScript Script setting to be executed when experience value changes
+     * @return Namespace_
+     */
 	public function withChangeExperienceScript(?ScriptSetting $changeExperienceScript): Namespace_ {
 		$this->changeExperienceScript = $changeExperienceScript;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to be executed when rank changes */
 	public function getChangeRankScript(): ?ScriptSetting {
 		return $this->changeRankScript;
 	}
+    /** @param ScriptSetting|null $changeRankScript Script setting to be executed when rank changes */
 	public function setChangeRankScript(?ScriptSetting $changeRankScript) {
 		$this->changeRankScript = $changeRankScript;
 	}
+    /**
+     * @param ScriptSetting|null $changeRankScript Script setting to be executed when rank changes
+     * @return Namespace_
+     */
 	public function withChangeRankScript(?ScriptSetting $changeRankScript): Namespace_ {
 		$this->changeRankScript = $changeRankScript;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to be executed when rank cap changes */
 	public function getChangeRankCapScript(): ?ScriptSetting {
 		return $this->changeRankCapScript;
 	}
+    /** @param ScriptSetting|null $changeRankCapScript Script setting to be executed when rank cap changes */
 	public function setChangeRankCapScript(?ScriptSetting $changeRankCapScript) {
 		$this->changeRankCapScript = $changeRankCapScript;
 	}
+    /**
+     * @param ScriptSetting|null $changeRankCapScript Script setting to be executed when rank cap changes
+     * @return Namespace_
+     */
 	public function withChangeRankCapScript(?ScriptSetting $changeRankCapScript): Namespace_ {
 		$this->changeRankCapScript = $changeRankCapScript;
 		return $this;
 	}
+    /** @return string|null GRN of the script executed when experience overflows */
 	public function getOverflowExperienceScript(): ?string {
 		return $this->overflowExperienceScript;
 	}
+    /** @param string|null $overflowExperienceScript GRN of the script executed when experience overflows */
 	public function setOverflowExperienceScript(?string $overflowExperienceScript) {
 		$this->overflowExperienceScript = $overflowExperienceScript;
 	}
+    /**
+     * @param string|null $overflowExperienceScript GRN of the script executed when experience overflows
+     * @return Namespace_
+     */
 	public function withOverflowExperienceScript(?string $overflowExperienceScript): Namespace_ {
 		$this->overflowExperienceScript = $overflowExperienceScript;
 		return $this;
 	}
+    /** @return LogSetting|null Log Output Setting */
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
+    /** @param LogSetting|null $logSetting Log Output Setting */
 	public function setLogSetting(?LogSetting $logSetting) {
 		$this->logSetting = $logSetting;
 	}
+    /**
+     * @param LogSetting|null $logSetting Log Output Setting
+     * @return Namespace_
+     */
 	public function withLogSetting(?LogSetting $logSetting): Namespace_ {
 		$this->logSetting = $logSetting;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return Namespace_
+     */
 	public function withCreatedAt(?int $createdAt): Namespace_ {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return Namespace_
+     */
 	public function withUpdatedAt(?int $updatedAt): Namespace_ {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return Namespace_
+     */
 	public function withRevision(?int $revision): Namespace_ {
 		$this->revision = $revision;
 		return $this;

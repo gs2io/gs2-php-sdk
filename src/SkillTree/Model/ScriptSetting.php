@@ -20,59 +20,88 @@ namespace Gs2\SkillTree\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Script Setting
+ *
+ * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#scriptsetting
+ */
 class ScriptSetting implements IModel {
 	/**
-     * @var string
+     * @var string GS2-Script script GRN executed synchronously when the API is executed
 	 */
 	private $triggerScriptId;
 	/**
-     * @var string
+     * @var string Asynchronous script execution method
 	 */
 	private $doneTriggerTargetType;
 	/**
-     * @var string
+     * @var string GS2-Script script GRN for asynchronous execution
 	 */
 	private $doneTriggerScriptId;
 	/**
-     * @var string
+     * @var string GS2-JobQueue Namespace GRN used to execute asynchronous scripts
 	 */
 	private $doneTriggerQueueNamespaceId;
+    /** @return string|null GS2-Script script GRN executed synchronously when the API is executed */
 	public function getTriggerScriptId(): ?string {
 		return $this->triggerScriptId;
 	}
+    /** @param string|null $triggerScriptId GS2-Script script GRN executed synchronously when the API is executed */
 	public function setTriggerScriptId(?string $triggerScriptId) {
 		$this->triggerScriptId = $triggerScriptId;
 	}
+    /**
+     * @param string|null $triggerScriptId GS2-Script script GRN executed synchronously when the API is executed
+     * @return ScriptSetting
+     */
 	public function withTriggerScriptId(?string $triggerScriptId): ScriptSetting {
 		$this->triggerScriptId = $triggerScriptId;
 		return $this;
 	}
+    /** @return string|null Asynchronous script execution method */
 	public function getDoneTriggerTargetType(): ?string {
 		return $this->doneTriggerTargetType;
 	}
+    /** @param string|null $doneTriggerTargetType Asynchronous script execution method */
 	public function setDoneTriggerTargetType(?string $doneTriggerTargetType) {
 		$this->doneTriggerTargetType = $doneTriggerTargetType;
 	}
+    /**
+     * @param string|null $doneTriggerTargetType Asynchronous script execution method
+     * @return ScriptSetting
+     */
 	public function withDoneTriggerTargetType(?string $doneTriggerTargetType): ScriptSetting {
 		$this->doneTriggerTargetType = $doneTriggerTargetType;
 		return $this;
 	}
+    /** @return string|null GS2-Script script GRN for asynchronous execution */
 	public function getDoneTriggerScriptId(): ?string {
 		return $this->doneTriggerScriptId;
 	}
+    /** @param string|null $doneTriggerScriptId GS2-Script script GRN for asynchronous execution */
 	public function setDoneTriggerScriptId(?string $doneTriggerScriptId) {
 		$this->doneTriggerScriptId = $doneTriggerScriptId;
 	}
+    /**
+     * @param string|null $doneTriggerScriptId GS2-Script script GRN for asynchronous execution
+     * @return ScriptSetting
+     */
 	public function withDoneTriggerScriptId(?string $doneTriggerScriptId): ScriptSetting {
 		$this->doneTriggerScriptId = $doneTriggerScriptId;
 		return $this;
 	}
+    /** @return string|null GS2-JobQueue Namespace GRN used to execute asynchronous scripts */
 	public function getDoneTriggerQueueNamespaceId(): ?string {
 		return $this->doneTriggerQueueNamespaceId;
 	}
+    /** @param string|null $doneTriggerQueueNamespaceId GS2-JobQueue Namespace GRN used to execute asynchronous scripts */
 	public function setDoneTriggerQueueNamespaceId(?string $doneTriggerQueueNamespaceId) {
 		$this->doneTriggerQueueNamespaceId = $doneTriggerQueueNamespaceId;
 	}
+    /**
+     * @param string|null $doneTriggerQueueNamespaceId GS2-JobQueue Namespace GRN used to execute asynchronous scripts
+     * @return ScriptSetting
+     */
 	public function withDoneTriggerQueueNamespaceId(?string $doneTriggerQueueNamespaceId): ScriptSetting {
 		$this->doneTriggerQueueNamespaceId = $doneTriggerQueueNamespaceId;
 		return $this;

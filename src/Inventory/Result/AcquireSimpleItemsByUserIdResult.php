@@ -20,18 +20,29 @@ namespace Gs2\Inventory\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Inventory\Model\SimpleItem;
 
+/**
+ * Result of acquireSimpleItemsByUserId: Acquire Simple Items by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#acquiresimpleitemsbyuserid
+ */
 class AcquireSimpleItemsByUserIdResult implements IResult {
-    /** @var array */
+    /** @var array List of Simple Items after addition */
     private $items;
 
+    /** @return array|null List of Simple Items after addition */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Simple Items after addition */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Simple Items after addition
+     * @return AcquireSimpleItemsByUserIdResult
+     */
 	public function withItems(?array $items): AcquireSimpleItemsByUserIdResult {
 		$this->items = $items;
 		return $this;

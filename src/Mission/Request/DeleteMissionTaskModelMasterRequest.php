@@ -19,39 +19,62 @@ namespace Gs2\Mission\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for deleteMissionTaskModelMaster: Delete Mission Task Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#deletemissiontaskmodelmaster
+ */
 class DeleteMissionTaskModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Mission Group Model name */
     private $missionGroupName;
-    /** @var string */
+    /** @var string Mission Task Model name */
     private $missionTaskName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DeleteMissionTaskModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DeleteMissionTaskModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Mission Group Model name */
 	public function getMissionGroupName(): ?string {
 		return $this->missionGroupName;
 	}
+    /** @param string|null $missionGroupName Mission Group Model name */
 	public function setMissionGroupName(?string $missionGroupName) {
 		$this->missionGroupName = $missionGroupName;
 	}
+    /**
+     * @param string|null $missionGroupName Mission Group Model name
+     * @return DeleteMissionTaskModelMasterRequest
+     */
 	public function withMissionGroupName(?string $missionGroupName): DeleteMissionTaskModelMasterRequest {
 		$this->missionGroupName = $missionGroupName;
 		return $this;
 	}
+    /** @return string|null Mission Task Model name */
 	public function getMissionTaskName(): ?string {
 		return $this->missionTaskName;
 	}
+    /** @param string|null $missionTaskName Mission Task Model name */
 	public function setMissionTaskName(?string $missionTaskName) {
 		$this->missionTaskName = $missionTaskName;
 	}
+    /**
+     * @param string|null $missionTaskName Mission Task Model name
+     * @return DeleteMissionTaskModelMasterRequest
+     */
 	public function withMissionTaskName(?string $missionTaskName): DeleteMissionTaskModelMasterRequest {
 		$this->missionTaskName = $missionTaskName;
 		return $this;

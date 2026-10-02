@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\MegaField\Model\LogSetting;
 use Gs2\MegaField\Model\Namespace_;
 
+/**
+ * Result of deleteNamespace: Delete Namespace
+ *
+ * @see https://docs.gs2.io/api_reference/mega_field/sdk/#deletenamespace
+ */
 class DeleteNamespaceResult implements IResult {
-    /** @var Namespace_ */
+    /** @var Namespace_ Deleted Namespace */
     private $item;
 
+    /** @return Namespace_|null Deleted Namespace */
 	public function getItem(): ?Namespace_ {
 		return $this->item;
 	}
 
+    /** @param Namespace_|null $item Deleted Namespace */
 	public function setItem(?Namespace_ $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Namespace_|null $item Deleted Namespace
+     * @return DeleteNamespaceResult
+     */
 	public function withItem(?Namespace_ $item): DeleteNamespaceResult {
 		$this->item = $item;
 		return $this;

@@ -20,45 +20,68 @@ namespace Gs2\Showcase\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Sales Item Group
+ *
+ * @see https://docs.gs2.io/api_reference/showcase/sdk/#salesitemgroup
+ */
 class SalesItemGroup implements IModel {
 	/**
-     * @var string
+     * @var string Sales Item Group name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var array
+     * @var array Sales Items included in the Sales Item Group
 	 */
 	private $salesItems;
+    /** @return string|null Sales Item Group name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Sales Item Group name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Sales Item Group name
+     * @return SalesItemGroup
+     */
 	public function withName(?string $name): SalesItemGroup {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return SalesItemGroup
+     */
 	public function withMetadata(?string $metadata): SalesItemGroup {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return array|null Sales Items included in the Sales Item Group */
 	public function getSalesItems(): ?array {
 		return $this->salesItems;
 	}
+    /** @param array|null $salesItems Sales Items included in the Sales Item Group */
 	public function setSalesItems(?array $salesItems) {
 		$this->salesItems = $salesItems;
 	}
+    /**
+     * @param array|null $salesItems Sales Items included in the Sales Item Group
+     * @return SalesItemGroup
+     */
 	public function withSalesItems(?array $salesItems): SalesItemGroup {
 		$this->salesItems = $salesItems;
 		return $this;

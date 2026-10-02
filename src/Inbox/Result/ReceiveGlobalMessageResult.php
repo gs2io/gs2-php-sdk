@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Inbox\Model\AcquireAction;
 use Gs2\Inbox\Model\Message;
 
+/**
+ * Result of receiveGlobalMessage: Receive Unreceived Global Messages
+ *
+ * @see https://docs.gs2.io/api_reference/inbox/sdk/#receiveglobalmessage
+ */
 class ReceiveGlobalMessageResult implements IResult {
-    /** @var array */
+    /** @var array List of received messages */
     private $item;
 
+    /** @return array|null List of received messages */
 	public function getItem(): ?array {
 		return $this->item;
 	}
 
+    /** @param array|null $item List of received messages */
 	public function setItem(?array $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param array|null $item List of received messages
+     * @return ReceiveGlobalMessageResult
+     */
 	public function withItem(?array $item): ReceiveGlobalMessageResult {
 		$this->item = $item;
 		return $this;

@@ -23,18 +23,29 @@ use Gs2\Showcase\Model\ConsumeAction;
 use Gs2\Showcase\Model\AcquireAction;
 use Gs2\Showcase\Model\SalesItemMaster;
 
+/**
+ * Result of deleteSalesItemMaster: Delete Sales Item Master
+ *
+ * @see https://docs.gs2.io/api_reference/showcase/sdk/#deletesalesitemmaster
+ */
 class DeleteSalesItemMasterResult implements IResult {
-    /** @var SalesItemMaster */
+    /** @var SalesItemMaster Sales Item Master deleted */
     private $item;
 
+    /** @return SalesItemMaster|null Sales Item Master deleted */
 	public function getItem(): ?SalesItemMaster {
 		return $this->item;
 	}
 
+    /** @param SalesItemMaster|null $item Sales Item Master deleted */
 	public function setItem(?SalesItemMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param SalesItemMaster|null $item Sales Item Master deleted
+     * @return DeleteSalesItemMasterResult
+     */
 	public function withItem(?SalesItemMaster $item): DeleteSalesItemMasterResult {
 		$this->item = $item;
 		return $this;

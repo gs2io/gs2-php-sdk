@@ -20,45 +20,68 @@ namespace Gs2\Friend\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Friend User
+ *
+ * @see https://docs.gs2.io/api_reference/friend/sdk/#frienduser
+ */
 class FriendUser implements IModel {
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var string
+     * @var string Public profile
 	 */
 	private $publicProfile;
 	/**
-     * @var string
+     * @var string Profile for friends
 	 */
 	private $friendProfile;
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return FriendUser
+     */
 	public function withUserId(?string $userId): FriendUser {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Public profile */
 	public function getPublicProfile(): ?string {
 		return $this->publicProfile;
 	}
+    /** @param string|null $publicProfile Public profile */
 	public function setPublicProfile(?string $publicProfile) {
 		$this->publicProfile = $publicProfile;
 	}
+    /**
+     * @param string|null $publicProfile Public profile
+     * @return FriendUser
+     */
 	public function withPublicProfile(?string $publicProfile): FriendUser {
 		$this->publicProfile = $publicProfile;
 		return $this;
 	}
+    /** @return string|null Profile for friends */
 	public function getFriendProfile(): ?string {
 		return $this->friendProfile;
 	}
+    /** @param string|null $friendProfile Profile for friends */
 	public function setFriendProfile(?string $friendProfile) {
 		$this->friendProfile = $friendProfile;
 	}
+    /**
+     * @param string|null $friendProfile Profile for friends
+     * @return FriendUser
+     */
 	public function withFriendProfile(?string $friendProfile): FriendUser {
 		$this->friendProfile = $friendProfile;
 		return $this;

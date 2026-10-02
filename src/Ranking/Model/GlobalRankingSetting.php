@@ -20,87 +20,128 @@ namespace Gs2\Ranking\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Global Ranking Setting
+ *
+ * @see https://docs.gs2.io/api_reference/ranking/sdk/#globalrankingsetting
+ */
 class GlobalRankingSetting implements IModel {
 	/**
-     * @var bool
+     * @var bool Unique By User ID
 	 */
 	private $uniqueByUserId;
 	/**
-     * @var int
+     * @var int Calculate Interval Minutes
 	 */
 	private $calculateIntervalMinutes;
 	/**
-     * @var FixedTiming
+     * @var FixedTiming Calculate Fixed Timing
 	 */
 	private $calculateFixedTiming;
 	/**
-     * @var array
+     * @var array Additional Scopes
 	 */
 	private $additionalScopes;
 	/**
-     * @var array
+     * @var array Ignore User IDs
 	 */
 	private $ignoreUserIds;
 	/**
-     * @var string
+     * @var string Generation
 	 */
 	private $generation;
+    /** @return bool|null Unique By User ID */
 	public function getUniqueByUserId(): ?bool {
 		return $this->uniqueByUserId;
 	}
+    /** @param bool|null $uniqueByUserId Unique By User ID */
 	public function setUniqueByUserId(?bool $uniqueByUserId) {
 		$this->uniqueByUserId = $uniqueByUserId;
 	}
+    /**
+     * @param bool|null $uniqueByUserId Unique By User ID
+     * @return GlobalRankingSetting
+     */
 	public function withUniqueByUserId(?bool $uniqueByUserId): GlobalRankingSetting {
 		$this->uniqueByUserId = $uniqueByUserId;
 		return $this;
 	}
+    /** @return int|null Calculate Interval Minutes */
 	public function getCalculateIntervalMinutes(): ?int {
 		return $this->calculateIntervalMinutes;
 	}
+    /** @param int|null $calculateIntervalMinutes Calculate Interval Minutes */
 	public function setCalculateIntervalMinutes(?int $calculateIntervalMinutes) {
 		$this->calculateIntervalMinutes = $calculateIntervalMinutes;
 	}
+    /**
+     * @param int|null $calculateIntervalMinutes Calculate Interval Minutes
+     * @return GlobalRankingSetting
+     */
 	public function withCalculateIntervalMinutes(?int $calculateIntervalMinutes): GlobalRankingSetting {
 		$this->calculateIntervalMinutes = $calculateIntervalMinutes;
 		return $this;
 	}
+    /** @return FixedTiming|null Calculate Fixed Timing */
 	public function getCalculateFixedTiming(): ?FixedTiming {
 		return $this->calculateFixedTiming;
 	}
+    /** @param FixedTiming|null $calculateFixedTiming Calculate Fixed Timing */
 	public function setCalculateFixedTiming(?FixedTiming $calculateFixedTiming) {
 		$this->calculateFixedTiming = $calculateFixedTiming;
 	}
+    /**
+     * @param FixedTiming|null $calculateFixedTiming Calculate Fixed Timing
+     * @return GlobalRankingSetting
+     */
 	public function withCalculateFixedTiming(?FixedTiming $calculateFixedTiming): GlobalRankingSetting {
 		$this->calculateFixedTiming = $calculateFixedTiming;
 		return $this;
 	}
+    /** @return array|null Additional Scopes */
 	public function getAdditionalScopes(): ?array {
 		return $this->additionalScopes;
 	}
+    /** @param array|null $additionalScopes Additional Scopes */
 	public function setAdditionalScopes(?array $additionalScopes) {
 		$this->additionalScopes = $additionalScopes;
 	}
+    /**
+     * @param array|null $additionalScopes Additional Scopes
+     * @return GlobalRankingSetting
+     */
 	public function withAdditionalScopes(?array $additionalScopes): GlobalRankingSetting {
 		$this->additionalScopes = $additionalScopes;
 		return $this;
 	}
+    /** @return array|null Ignore User IDs */
 	public function getIgnoreUserIds(): ?array {
 		return $this->ignoreUserIds;
 	}
+    /** @param array|null $ignoreUserIds Ignore User IDs */
 	public function setIgnoreUserIds(?array $ignoreUserIds) {
 		$this->ignoreUserIds = $ignoreUserIds;
 	}
+    /**
+     * @param array|null $ignoreUserIds Ignore User IDs
+     * @return GlobalRankingSetting
+     */
 	public function withIgnoreUserIds(?array $ignoreUserIds): GlobalRankingSetting {
 		$this->ignoreUserIds = $ignoreUserIds;
 		return $this;
 	}
+    /** @return string|null Generation */
 	public function getGeneration(): ?string {
 		return $this->generation;
 	}
+    /** @param string|null $generation Generation */
 	public function setGeneration(?string $generation) {
 		$this->generation = $generation;
 	}
+    /**
+     * @param string|null $generation Generation
+     * @return GlobalRankingSetting
+     */
 	public function withGeneration(?string $generation): GlobalRankingSetting {
 		$this->generation = $generation;
 		return $this;

@@ -21,33 +21,50 @@ use Gs2\Core\Model\IResult;
 use Gs2\Enchant\Model\RarityParameterValue;
 use Gs2\Enchant\Model\RarityParameterStatus;
 
+/**
+ * Result of setRarityParameterStatusByUserId: Set any value to rarity parameter by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/enchant/sdk/#setrarityparameterstatusbyuserid
+ */
 class SetRarityParameterStatusByUserIdResult implements IResult {
-    /** @var RarityParameterStatus */
+    /** @var RarityParameterStatus Rarity Parameter Status updated */
     private $item;
-    /** @var RarityParameterStatus */
+    /** @var RarityParameterStatus Rarity Parameter Status before update */
     private $old;
 
+    /** @return RarityParameterStatus|null Rarity Parameter Status updated */
 	public function getItem(): ?RarityParameterStatus {
 		return $this->item;
 	}
 
+    /** @param RarityParameterStatus|null $item Rarity Parameter Status updated */
 	public function setItem(?RarityParameterStatus $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param RarityParameterStatus|null $item Rarity Parameter Status updated
+     * @return SetRarityParameterStatusByUserIdResult
+     */
 	public function withItem(?RarityParameterStatus $item): SetRarityParameterStatusByUserIdResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return RarityParameterStatus|null Rarity Parameter Status before update */
 	public function getOld(): ?RarityParameterStatus {
 		return $this->old;
 	}
 
+    /** @param RarityParameterStatus|null $old Rarity Parameter Status before update */
 	public function setOld(?RarityParameterStatus $old) {
 		$this->old = $old;
 	}
 
+    /**
+     * @param RarityParameterStatus|null $old Rarity Parameter Status before update
+     * @return SetRarityParameterStatusByUserIdResult
+     */
 	public function withOld(?RarityParameterStatus $old): SetRarityParameterStatusByUserIdResult {
 		$this->old = $old;
 		return $this;

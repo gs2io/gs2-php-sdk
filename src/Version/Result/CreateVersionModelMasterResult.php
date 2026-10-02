@@ -22,18 +22,29 @@ use Gs2\Version\Model\Version;
 use Gs2\Version\Model\ScheduleVersion;
 use Gs2\Version\Model\VersionModelMaster;
 
+/**
+ * Result of createVersionModelMaster: Create Version Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/version/sdk/#createversionmodelmaster
+ */
 class CreateVersionModelMasterResult implements IResult {
-    /** @var VersionModelMaster */
+    /** @var VersionModelMaster Version Model Master created */
     private $item;
 
+    /** @return VersionModelMaster|null Version Model Master created */
 	public function getItem(): ?VersionModelMaster {
 		return $this->item;
 	}
 
+    /** @param VersionModelMaster|null $item Version Model Master created */
 	public function setItem(?VersionModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param VersionModelMaster|null $item Version Model Master created
+     * @return CreateVersionModelMasterResult
+     */
 	public function withItem(?VersionModelMaster $item): CreateVersionModelMasterResult {
 		$this->item = $item;
 		return $this;

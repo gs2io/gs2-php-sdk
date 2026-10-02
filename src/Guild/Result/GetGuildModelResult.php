@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Guild\Model\RoleModel;
 use Gs2\Guild\Model\GuildModel;
 
+/**
+ * Result of getGuildModel: Get Guild Model
+ *
+ * @see https://docs.gs2.io/api_reference/guild/sdk/#getguildmodel
+ */
 class GetGuildModelResult implements IResult {
-    /** @var GuildModel */
+    /** @var GuildModel Guild Model */
     private $item;
 
+    /** @return GuildModel|null Guild Model */
 	public function getItem(): ?GuildModel {
 		return $this->item;
 	}
 
+    /** @param GuildModel|null $item Guild Model */
 	public function setItem(?GuildModel $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param GuildModel|null $item Guild Model
+     * @return GetGuildModelResult
+     */
 	public function withItem(?GuildModel $item): GetGuildModelResult {
 		$this->item = $item;
 		return $this;

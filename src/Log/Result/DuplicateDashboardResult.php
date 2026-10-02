@@ -20,18 +20,29 @@ namespace Gs2\Log\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Log\Model\Dashboard;
 
+/**
+ * Result of duplicateDashboard: Duplicate Dashboard
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#duplicatedashboard
+ */
 class DuplicateDashboardResult implements IResult {
-    /** @var Dashboard */
+    /** @var Dashboard Created Dashboard */
     private $item;
 
+    /** @return Dashboard|null Created Dashboard */
 	public function getItem(): ?Dashboard {
 		return $this->item;
 	}
 
+    /** @param Dashboard|null $item Created Dashboard */
 	public function setItem(?Dashboard $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Dashboard|null $item Created Dashboard
+     * @return DuplicateDashboardResult
+     */
 	public function withItem(?Dashboard $item): DuplicateDashboardResult {
 		$this->item = $item;
 		return $this;

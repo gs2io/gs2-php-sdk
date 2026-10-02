@@ -19,51 +19,80 @@ namespace Gs2\Enchant\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for updateCurrentParameterMaster: Update currently active Parameter Model master data
+ *
+ * @see https://docs.gs2.io/api_reference/enchant/sdk/#updatecurrentparametermaster
+ */
 class UpdateCurrentParameterMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Update mode */
     private $mode;
-    /** @var string */
+    /** @var string Master Data */
     private $settings;
-    /** @var string */
+    /** @var string Token obtained by pre-upload */
     private $uploadToken;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UpdateCurrentParameterMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UpdateCurrentParameterMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Update mode */
 	public function getMode(): ?string {
 		return $this->mode;
 	}
+    /** @param string|null $mode Update mode */
 	public function setMode(?string $mode) {
 		$this->mode = $mode;
 	}
+    /**
+     * @param string|null $mode Update mode
+     * @return UpdateCurrentParameterMasterRequest
+     */
 	public function withMode(?string $mode): UpdateCurrentParameterMasterRequest {
 		$this->mode = $mode;
 		return $this;
 	}
+    /** @return string|null Master Data */
 	public function getSettings(): ?string {
 		return $this->settings;
 	}
+    /** @param string|null $settings Master Data */
 	public function setSettings(?string $settings) {
 		$this->settings = $settings;
 	}
+    /**
+     * @param string|null $settings Master Data
+     * @return UpdateCurrentParameterMasterRequest
+     */
 	public function withSettings(?string $settings): UpdateCurrentParameterMasterRequest {
 		$this->settings = $settings;
 		return $this;
 	}
+    /** @return string|null Token obtained by pre-upload */
 	public function getUploadToken(): ?string {
 		return $this->uploadToken;
 	}
+    /** @param string|null $uploadToken Token obtained by pre-upload */
 	public function setUploadToken(?string $uploadToken) {
 		$this->uploadToken = $uploadToken;
 	}
+    /**
+     * @param string|null $uploadToken Token obtained by pre-upload
+     * @return UpdateCurrentParameterMasterRequest
+     */
 	public function withUploadToken(?string $uploadToken): UpdateCurrentParameterMasterRequest {
 		$this->uploadToken = $uploadToken;
 		return $this;

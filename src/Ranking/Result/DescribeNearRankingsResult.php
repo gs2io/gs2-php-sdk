@@ -20,18 +20,29 @@ namespace Gs2\Ranking\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Ranking\Model\Ranking;
 
+/**
+ * Result of describeNearRankings: Get ranking near the specified score
+ *
+ * @see https://docs.gs2.io/api_reference/ranking/sdk/#describenearrankings
+ */
 class DescribeNearRankingsResult implements IResult {
-    /** @var array */
+    /** @var array List of Ranking Scores */
     private $items;
 
+    /** @return array|null List of Ranking Scores */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Ranking Scores */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Ranking Scores
+     * @return DescribeNearRankingsResult
+     */
 	public function withItems(?array $items): DescribeNearRankingsResult {
 		$this->items = $items;
 		return $this;

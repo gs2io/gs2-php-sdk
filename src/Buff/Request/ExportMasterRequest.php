@@ -19,15 +19,26 @@ namespace Gs2\Buff\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for exportMaster: Export Buff Entry Model Master in a master data format that can be activated
+ *
+ * @see https://docs.gs2.io/api_reference/buff/sdk/#exportmaster
+ */
 class ExportMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return ExportMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): ExportMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;

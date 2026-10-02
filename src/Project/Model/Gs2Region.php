@@ -20,31 +20,44 @@ namespace Gs2\Project\Model;
 use Gs2\Core\Model\IModel;
 
 
+/** Region */
 class Gs2Region implements IModel {
 	/**
-     * @var string
+     * @var string Region Name
 	 */
 	private $regionName;
 	/**
-     * @var string
+     * @var string Status
 	 */
 	private $status;
+    /** @return string|null Region Name */
 	public function getRegionName(): ?string {
 		return $this->regionName;
 	}
+    /** @param string|null $regionName Region Name */
 	public function setRegionName(?string $regionName) {
 		$this->regionName = $regionName;
 	}
+    /**
+     * @param string|null $regionName Region Name
+     * @return Gs2Region
+     */
 	public function withRegionName(?string $regionName): Gs2Region {
 		$this->regionName = $regionName;
 		return $this;
 	}
+    /** @return string|null Status */
 	public function getStatus(): ?string {
 		return $this->status;
 	}
+    /** @param string|null $status Status */
 	public function setStatus(?string $status) {
 		$this->status = $status;
 	}
+    /**
+     * @param string|null $status Status
+     * @return Gs2Region
+     */
 	public function withStatus(?string $status): Gs2Region {
 		$this->status = $status;
 		return $this;

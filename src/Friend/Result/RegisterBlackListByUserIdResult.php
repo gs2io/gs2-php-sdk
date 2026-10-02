@@ -20,18 +20,29 @@ namespace Gs2\Friend\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Friend\Model\BlackList;
 
+/**
+ * Result of registerBlackListByUserId: Add to blacklist by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/friend/sdk/#registerblacklistbyuserid
+ */
 class RegisterBlackListByUserIdResult implements IResult {
-    /** @var BlackList */
+    /** @var BlackList blacklist */
     private $item;
 
+    /** @return BlackList|null blacklist */
 	public function getItem(): ?BlackList {
 		return $this->item;
 	}
 
+    /** @param BlackList|null $item blacklist */
 	public function setItem(?BlackList $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param BlackList|null $item blacklist
+     * @return RegisterBlackListByUserIdResult
+     */
 	public function withItem(?BlackList $item): RegisterBlackListByUserIdResult {
 		$this->item = $item;
 		return $this;

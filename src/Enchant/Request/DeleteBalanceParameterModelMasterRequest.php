@@ -19,27 +19,44 @@ namespace Gs2\Enchant\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for deleteBalanceParameterModelMaster: Delete Balance Parameter Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/enchant/sdk/#deletebalanceparametermodelmaster
+ */
 class DeleteBalanceParameterModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Balance Parameter Model name */
     private $parameterName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DeleteBalanceParameterModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DeleteBalanceParameterModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Balance Parameter Model name */
 	public function getParameterName(): ?string {
 		return $this->parameterName;
 	}
+    /** @param string|null $parameterName Balance Parameter Model name */
 	public function setParameterName(?string $parameterName) {
 		$this->parameterName = $parameterName;
 	}
+    /**
+     * @param string|null $parameterName Balance Parameter Model name
+     * @return DeleteBalanceParameterModelMasterRequest
+     */
 	public function withParameterName(?string $parameterName): DeleteBalanceParameterModelMasterRequest {
 		$this->parameterName = $parameterName;
 		return $this;

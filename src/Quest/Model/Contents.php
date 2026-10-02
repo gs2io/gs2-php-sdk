@@ -20,45 +20,68 @@ namespace Gs2\Quest\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Contents
+ *
+ * @see https://docs.gs2.io/api_reference/quest/sdk/#contents
+ */
 class Contents implements IModel {
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var array
+     * @var array Complete Acquire Actions
 	 */
 	private $completeAcquireActions;
 	/**
-     * @var int
+     * @var int Draw Weight
 	 */
 	private $weight;
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return Contents
+     */
 	public function withMetadata(?string $metadata): Contents {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return array|null Complete Acquire Actions */
 	public function getCompleteAcquireActions(): ?array {
 		return $this->completeAcquireActions;
 	}
+    /** @param array|null $completeAcquireActions Complete Acquire Actions */
 	public function setCompleteAcquireActions(?array $completeAcquireActions) {
 		$this->completeAcquireActions = $completeAcquireActions;
 	}
+    /**
+     * @param array|null $completeAcquireActions Complete Acquire Actions
+     * @return Contents
+     */
 	public function withCompleteAcquireActions(?array $completeAcquireActions): Contents {
 		$this->completeAcquireActions = $completeAcquireActions;
 		return $this;
 	}
+    /** @return int|null Draw Weight */
 	public function getWeight(): ?int {
 		return $this->weight;
 	}
+    /** @param int|null $weight Draw Weight */
 	public function setWeight(?int $weight) {
 		$this->weight = $weight;
 	}
+    /**
+     * @param int|null $weight Draw Weight
+     * @return Contents
+     */
 	public function withWeight(?int $weight): Contents {
 		$this->weight = $weight;
 		return $this;

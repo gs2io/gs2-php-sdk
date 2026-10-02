@@ -20,143 +20,208 @@ namespace Gs2\Formation\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Form Storage Area Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/formation/sdk/#moldmodelmaster
+ */
 class MoldModelMaster implements IModel {
 	/**
-     * @var string
+     * @var string Form Storage Area Model Master GRN
 	 */
 	private $moldModelId;
 	/**
-     * @var string
+     * @var string Form Storage Area Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Description
 	 */
 	private $description;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var int
+     * @var int Initial capacity to store forms
 	 */
 	private $initialMaxCapacity;
 	/**
-     * @var int
+     * @var int Maximum capacity to store forms
 	 */
 	private $maxCapacity;
 	/**
-     * @var string
+     * @var string Form Model name
 	 */
 	private $formModelName;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Form Storage Area Model Master GRN */
 	public function getMoldModelId(): ?string {
 		return $this->moldModelId;
 	}
+    /** @param string|null $moldModelId Form Storage Area Model Master GRN */
 	public function setMoldModelId(?string $moldModelId) {
 		$this->moldModelId = $moldModelId;
 	}
+    /**
+     * @param string|null $moldModelId Form Storage Area Model Master GRN
+     * @return MoldModelMaster
+     */
 	public function withMoldModelId(?string $moldModelId): MoldModelMaster {
 		$this->moldModelId = $moldModelId;
 		return $this;
 	}
+    /** @return string|null Form Storage Area Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Form Storage Area Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Form Storage Area Model name
+     * @return MoldModelMaster
+     */
 	public function withName(?string $name): MoldModelMaster {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return MoldModelMaster
+     */
 	public function withDescription(?string $description): MoldModelMaster {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return MoldModelMaster
+     */
 	public function withMetadata(?string $metadata): MoldModelMaster {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return int|null Initial capacity to store forms */
 	public function getInitialMaxCapacity(): ?int {
 		return $this->initialMaxCapacity;
 	}
+    /** @param int|null $initialMaxCapacity Initial capacity to store forms */
 	public function setInitialMaxCapacity(?int $initialMaxCapacity) {
 		$this->initialMaxCapacity = $initialMaxCapacity;
 	}
+    /**
+     * @param int|null $initialMaxCapacity Initial capacity to store forms
+     * @return MoldModelMaster
+     */
 	public function withInitialMaxCapacity(?int $initialMaxCapacity): MoldModelMaster {
 		$this->initialMaxCapacity = $initialMaxCapacity;
 		return $this;
 	}
+    /** @return int|null Maximum capacity to store forms */
 	public function getMaxCapacity(): ?int {
 		return $this->maxCapacity;
 	}
+    /** @param int|null $maxCapacity Maximum capacity to store forms */
 	public function setMaxCapacity(?int $maxCapacity) {
 		$this->maxCapacity = $maxCapacity;
 	}
+    /**
+     * @param int|null $maxCapacity Maximum capacity to store forms
+     * @return MoldModelMaster
+     */
 	public function withMaxCapacity(?int $maxCapacity): MoldModelMaster {
 		$this->maxCapacity = $maxCapacity;
 		return $this;
 	}
+    /** @return string|null Form Model name */
 	public function getFormModelName(): ?string {
 		return $this->formModelName;
 	}
+    /** @param string|null $formModelName Form Model name */
 	public function setFormModelName(?string $formModelName) {
 		$this->formModelName = $formModelName;
 	}
+    /**
+     * @param string|null $formModelName Form Model name
+     * @return MoldModelMaster
+     */
 	public function withFormModelName(?string $formModelName): MoldModelMaster {
 		$this->formModelName = $formModelName;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return MoldModelMaster
+     */
 	public function withCreatedAt(?int $createdAt): MoldModelMaster {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return MoldModelMaster
+     */
 	public function withUpdatedAt(?int $updatedAt): MoldModelMaster {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return MoldModelMaster
+     */
 	public function withRevision(?int $revision): MoldModelMaster {
 		$this->revision = $revision;
 		return $this;

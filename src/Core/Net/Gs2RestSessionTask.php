@@ -70,13 +70,11 @@ class Gs2RestSessionTask extends Gs2SessionTask {
      *
      */
     public function executeImpl(): PromiseInterface {
-        // ★送信はセッションに任せる（Steady 宛なら接続段階の上限と、接続段階の失敗の 1 回だけの再送）
         return $this->gs2RestSession->sendHttpTask($this->builder)->then(
             function (ResponseInterface $response) {
                 return (new ReflectionMethod($this->clazz, 'fromJson'))->invoke(null, json_decode($response->getBody()->getContents(), true));
             },
             function ($e) {
-                // 応答のある失敗は従来どおりステータス→例外の写像、それ以外（接続失敗など）はそのまま
                 throw Gs2RestSession::mapRejection($e);
             }
         );

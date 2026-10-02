@@ -20,18 +20,29 @@ namespace Gs2\Ranking\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Ranking\Model\CurrentRankingMaster;
 
+/**
+ * Result of updateCurrentRankingMasterFromGitHub: Update currently active Ranking Model master data from GitHub
+ *
+ * @see https://docs.gs2.io/api_reference/ranking/sdk/#updatecurrentrankingmasterfromgithub
+ */
 class UpdateCurrentRankingMasterFromGitHubResult implements IResult {
-    /** @var CurrentRankingMaster */
+    /** @var CurrentRankingMaster Updated master data of the currently active Ranking Models */
     private $item;
 
+    /** @return CurrentRankingMaster|null Updated master data of the currently active Ranking Models */
 	public function getItem(): ?CurrentRankingMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentRankingMaster|null $item Updated master data of the currently active Ranking Models */
 	public function setItem(?CurrentRankingMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentRankingMaster|null $item Updated master data of the currently active Ranking Models
+     * @return UpdateCurrentRankingMasterFromGitHubResult
+     */
 	public function withItem(?CurrentRankingMaster $item): UpdateCurrentRankingMasterFromGitHubResult {
 		$this->item = $item;
 		return $this;

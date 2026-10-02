@@ -22,48 +22,71 @@ use Gs2\Mission\Model\ScopedValue;
 use Gs2\Mission\Model\Counter;
 use Gs2\Mission\Model\Complete;
 
+/**
+ * Result of decreaseByStampTask: Execute counter subtraction as a consume action within a distributed transaction
+ *
+ * @see https://docs.gs2.io/api_reference/mission/stamp_sheet/#gs2missiondecreasecounterbyuserid
+ */
 class DecreaseByStampTaskResult implements IResult {
-    /** @var Counter */
+    /** @var Counter Counter after counter addition */
     private $item;
-    /** @var array */
+    /** @var array List of updated Completion Statuses */
     private $changedCompletes;
-    /** @var string */
+    /** @var string Context recording the execution results of Consume Actions */
     private $newContextStack;
 
+    /** @return Counter|null Counter after counter addition */
 	public function getItem(): ?Counter {
 		return $this->item;
 	}
 
+    /** @param Counter|null $item Counter after counter addition */
 	public function setItem(?Counter $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Counter|null $item Counter after counter addition
+     * @return DecreaseByStampTaskResult
+     */
 	public function withItem(?Counter $item): DecreaseByStampTaskResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return array|null List of updated Completion Statuses */
 	public function getChangedCompletes(): ?array {
 		return $this->changedCompletes;
 	}
 
+    /** @param array|null $changedCompletes List of updated Completion Statuses */
 	public function setChangedCompletes(?array $changedCompletes) {
 		$this->changedCompletes = $changedCompletes;
 	}
 
+    /**
+     * @param array|null $changedCompletes List of updated Completion Statuses
+     * @return DecreaseByStampTaskResult
+     */
 	public function withChangedCompletes(?array $changedCompletes): DecreaseByStampTaskResult {
 		$this->changedCompletes = $changedCompletes;
 		return $this;
 	}
 
+    /** @return string|null Context recording the execution results of Consume Actions */
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
+    /** @param string|null $newContextStack Context recording the execution results of Consume Actions */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
+    /**
+     * @param string|null $newContextStack Context recording the execution results of Consume Actions
+     * @return DecreaseByStampTaskResult
+     */
 	public function withNewContextStack(?string $newContextStack): DecreaseByStampTaskResult {
 		$this->newContextStack = $newContextStack;
 		return $this;

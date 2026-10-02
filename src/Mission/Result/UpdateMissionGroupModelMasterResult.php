@@ -20,18 +20,29 @@ namespace Gs2\Mission\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Mission\Model\MissionGroupModelMaster;
 
+/**
+ * Result of updateMissionGroupModelMaster: Update Mission Group Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#updatemissiongroupmodelmaster
+ */
 class UpdateMissionGroupModelMasterResult implements IResult {
-    /** @var MissionGroupModelMaster */
+    /** @var MissionGroupModelMaster Mission Group Model Master updated */
     private $item;
 
+    /** @return MissionGroupModelMaster|null Mission Group Model Master updated */
 	public function getItem(): ?MissionGroupModelMaster {
 		return $this->item;
 	}
 
+    /** @param MissionGroupModelMaster|null $item Mission Group Model Master updated */
 	public function setItem(?MissionGroupModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param MissionGroupModelMaster|null $item Mission Group Model Master updated
+     * @return UpdateMissionGroupModelMasterResult
+     */
 	public function withItem(?MissionGroupModelMaster $item): UpdateMissionGroupModelMasterResult {
 		$this->item = $item;
 		return $this;

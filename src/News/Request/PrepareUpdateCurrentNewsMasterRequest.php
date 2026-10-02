@@ -19,15 +19,26 @@ namespace Gs2\News\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for prepareUpdateCurrentNewsMaster: Prepare updates to Currently Active Notice
+ *
+ * @see https://docs.gs2.io/api_reference/news/sdk/#prepareupdatecurrentnewsmaster
+ */
 class PrepareUpdateCurrentNewsMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return PrepareUpdateCurrentNewsMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): PrepareUpdateCurrentNewsMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;

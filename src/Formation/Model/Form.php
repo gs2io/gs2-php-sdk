@@ -20,101 +20,148 @@ namespace Gs2\Formation\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Form
+ *
+ * @see https://docs.gs2.io/api_reference/formation/sdk/#form
+ */
 class Form implements IModel {
 	/**
-     * @var string
+     * @var string Form GRN
 	 */
 	private $formId;
 	/**
-     * @var string
+     * @var string Form name
 	 */
 	private $name;
 	/**
-     * @var int
+     * @var int Index of form
 	 */
 	private $index;
 	/**
-     * @var array
+     * @var array List of Slots
 	 */
 	private $slots;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Form GRN */
 	public function getFormId(): ?string {
 		return $this->formId;
 	}
+    /** @param string|null $formId Form GRN */
 	public function setFormId(?string $formId) {
 		$this->formId = $formId;
 	}
+    /**
+     * @param string|null $formId Form GRN
+     * @return Form
+     */
 	public function withFormId(?string $formId): Form {
 		$this->formId = $formId;
 		return $this;
 	}
+    /** @return string|null Form name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Form name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Form name
+     * @return Form
+     */
 	public function withName(?string $name): Form {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return int|null Index of form */
 	public function getIndex(): ?int {
 		return $this->index;
 	}
+    /** @param int|null $index Index of form */
 	public function setIndex(?int $index) {
 		$this->index = $index;
 	}
+    /**
+     * @param int|null $index Index of form
+     * @return Form
+     */
 	public function withIndex(?int $index): Form {
 		$this->index = $index;
 		return $this;
 	}
+    /** @return array|null List of Slots */
 	public function getSlots(): ?array {
 		return $this->slots;
 	}
+    /** @param array|null $slots List of Slots */
 	public function setSlots(?array $slots) {
 		$this->slots = $slots;
 	}
+    /**
+     * @param array|null $slots List of Slots
+     * @return Form
+     */
 	public function withSlots(?array $slots): Form {
 		$this->slots = $slots;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return Form
+     */
 	public function withCreatedAt(?int $createdAt): Form {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return Form
+     */
 	public function withUpdatedAt(?int $updatedAt): Form {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return Form
+     */
 	public function withRevision(?int $revision): Form {
 		$this->revision = $revision;
 		return $this;

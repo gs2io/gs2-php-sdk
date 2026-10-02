@@ -20,87 +20,128 @@ namespace Gs2\Lottery\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Prize Limit
+ *
+ * @see https://docs.gs2.io/api_reference/lottery/sdk/#prizelimit
+ */
 class PrizeLimit implements IModel {
 	/**
-     * @var string
+     * @var string Prize Limit GRN
 	 */
 	private $prizeLimitId;
 	/**
-     * @var string
+     * @var string Prize ID
 	 */
 	private $prizeId;
 	/**
-     * @var int
+     * @var int Drawn Count
 	 */
 	private $drawnCount;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Prize Limit GRN */
 	public function getPrizeLimitId(): ?string {
 		return $this->prizeLimitId;
 	}
+    /** @param string|null $prizeLimitId Prize Limit GRN */
 	public function setPrizeLimitId(?string $prizeLimitId) {
 		$this->prizeLimitId = $prizeLimitId;
 	}
+    /**
+     * @param string|null $prizeLimitId Prize Limit GRN
+     * @return PrizeLimit
+     */
 	public function withPrizeLimitId(?string $prizeLimitId): PrizeLimit {
 		$this->prizeLimitId = $prizeLimitId;
 		return $this;
 	}
+    /** @return string|null Prize ID */
 	public function getPrizeId(): ?string {
 		return $this->prizeId;
 	}
+    /** @param string|null $prizeId Prize ID */
 	public function setPrizeId(?string $prizeId) {
 		$this->prizeId = $prizeId;
 	}
+    /**
+     * @param string|null $prizeId Prize ID
+     * @return PrizeLimit
+     */
 	public function withPrizeId(?string $prizeId): PrizeLimit {
 		$this->prizeId = $prizeId;
 		return $this;
 	}
+    /** @return int|null Drawn Count */
 	public function getDrawnCount(): ?int {
 		return $this->drawnCount;
 	}
+    /** @param int|null $drawnCount Drawn Count */
 	public function setDrawnCount(?int $drawnCount) {
 		$this->drawnCount = $drawnCount;
 	}
+    /**
+     * @param int|null $drawnCount Drawn Count
+     * @return PrizeLimit
+     */
 	public function withDrawnCount(?int $drawnCount): PrizeLimit {
 		$this->drawnCount = $drawnCount;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return PrizeLimit
+     */
 	public function withCreatedAt(?int $createdAt): PrizeLimit {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return PrizeLimit
+     */
 	public function withUpdatedAt(?int $updatedAt): PrizeLimit {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return PrizeLimit
+     */
 	public function withRevision(?int $revision): PrizeLimit {
 		$this->revision = $revision;
 		return $this;

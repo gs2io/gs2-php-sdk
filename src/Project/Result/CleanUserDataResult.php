@@ -20,18 +20,25 @@ namespace Gs2\Project\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Project\Model\CleanProgress;
 
+/** Result of cleanUserData: Start clean user data */
 class CleanUserDataResult implements IResult {
-    /** @var CleanProgress */
+    /** @var CleanProgress CleanProgress */
     private $item;
 
+    /** @return CleanProgress|null CleanProgress */
 	public function getItem(): ?CleanProgress {
 		return $this->item;
 	}
 
+    /** @param CleanProgress|null $item CleanProgress */
 	public function setItem(?CleanProgress $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CleanProgress|null $item CleanProgress
+     * @return CleanUserDataResult
+     */
 	public function withItem(?CleanProgress $item): CleanUserDataResult {
 		$this->item = $item;
 		return $this;

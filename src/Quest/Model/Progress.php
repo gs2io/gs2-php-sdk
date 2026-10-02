@@ -20,157 +20,228 @@ namespace Gs2\Quest\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Quest Progress
+ *
+ * @see https://docs.gs2.io/api_reference/quest/sdk/#progress
+ */
 class Progress implements IModel {
 	/**
-     * @var string
+     * @var string Quest Progress GRN
 	 */
 	private $progressId;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var string
+     * @var string Transaction ID
 	 */
 	private $transactionId;
 	/**
-     * @var string
+     * @var string Quest Model GRN
 	 */
 	private $questModelId;
 	/**
-     * @var int
+     * @var int Random Seed
 	 */
 	private $randomSeed;
 	/**
-     * @var array
+     * @var array Completion Rewards
 	 */
 	private $rewards;
 	/**
-     * @var array
+     * @var array Failed Rewards
 	 */
 	private $failedRewards;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Quest Progress GRN */
 	public function getProgressId(): ?string {
 		return $this->progressId;
 	}
+    /** @param string|null $progressId Quest Progress GRN */
 	public function setProgressId(?string $progressId) {
 		$this->progressId = $progressId;
 	}
+    /**
+     * @param string|null $progressId Quest Progress GRN
+     * @return Progress
+     */
 	public function withProgressId(?string $progressId): Progress {
 		$this->progressId = $progressId;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return Progress
+     */
 	public function withUserId(?string $userId): Progress {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Transaction ID */
 	public function getTransactionId(): ?string {
 		return $this->transactionId;
 	}
+    /** @param string|null $transactionId Transaction ID */
 	public function setTransactionId(?string $transactionId) {
 		$this->transactionId = $transactionId;
 	}
+    /**
+     * @param string|null $transactionId Transaction ID
+     * @return Progress
+     */
 	public function withTransactionId(?string $transactionId): Progress {
 		$this->transactionId = $transactionId;
 		return $this;
 	}
+    /** @return string|null Quest Model GRN */
 	public function getQuestModelId(): ?string {
 		return $this->questModelId;
 	}
+    /** @param string|null $questModelId Quest Model GRN */
 	public function setQuestModelId(?string $questModelId) {
 		$this->questModelId = $questModelId;
 	}
+    /**
+     * @param string|null $questModelId Quest Model GRN
+     * @return Progress
+     */
 	public function withQuestModelId(?string $questModelId): Progress {
 		$this->questModelId = $questModelId;
 		return $this;
 	}
+    /** @return int|null Random Seed */
 	public function getRandomSeed(): ?int {
 		return $this->randomSeed;
 	}
+    /** @param int|null $randomSeed Random Seed */
 	public function setRandomSeed(?int $randomSeed) {
 		$this->randomSeed = $randomSeed;
 	}
+    /**
+     * @param int|null $randomSeed Random Seed
+     * @return Progress
+     */
 	public function withRandomSeed(?int $randomSeed): Progress {
 		$this->randomSeed = $randomSeed;
 		return $this;
 	}
+    /** @return array|null Completion Rewards */
 	public function getRewards(): ?array {
 		return $this->rewards;
 	}
+    /** @param array|null $rewards Completion Rewards */
 	public function setRewards(?array $rewards) {
 		$this->rewards = $rewards;
 	}
+    /**
+     * @param array|null $rewards Completion Rewards
+     * @return Progress
+     */
 	public function withRewards(?array $rewards): Progress {
 		$this->rewards = $rewards;
 		return $this;
 	}
+    /** @return array|null Failed Rewards */
 	public function getFailedRewards(): ?array {
 		return $this->failedRewards;
 	}
+    /** @param array|null $failedRewards Failed Rewards */
 	public function setFailedRewards(?array $failedRewards) {
 		$this->failedRewards = $failedRewards;
 	}
+    /**
+     * @param array|null $failedRewards Failed Rewards
+     * @return Progress
+     */
 	public function withFailedRewards(?array $failedRewards): Progress {
 		$this->failedRewards = $failedRewards;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return Progress
+     */
 	public function withMetadata(?string $metadata): Progress {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return Progress
+     */
 	public function withCreatedAt(?int $createdAt): Progress {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return Progress
+     */
 	public function withUpdatedAt(?int $updatedAt): Progress {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return Progress
+     */
 	public function withRevision(?int $revision): Progress {
 		$this->revision = $revision;
 		return $this;

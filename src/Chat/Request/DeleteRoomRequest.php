@@ -19,41 +19,64 @@ namespace Gs2\Chat\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for deleteRoom: Delete Room
+ *
+ * @see https://docs.gs2.io/api_reference/chat/sdk/#deleteroom
+ */
 class DeleteRoomRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Room name */
     private $roomName;
-    /** @var string */
+    /** @var string Owner User ID */
     private $accessToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DeleteRoomRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DeleteRoomRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Room name */
 	public function getRoomName(): ?string {
 		return $this->roomName;
 	}
+    /** @param string|null $roomName Room name */
 	public function setRoomName(?string $roomName) {
 		$this->roomName = $roomName;
 	}
+    /**
+     * @param string|null $roomName Room name
+     * @return DeleteRoomRequest
+     */
 	public function withRoomName(?string $roomName): DeleteRoomRequest {
 		$this->roomName = $roomName;
 		return $this;
 	}
+    /** @return string|null Owner User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken Owner User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken Owner User ID
+     * @return DeleteRoomRequest
+     */
 	public function withAccessToken(?string $accessToken): DeleteRoomRequest {
 		$this->accessToken = $accessToken;
 		return $this;

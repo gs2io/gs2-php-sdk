@@ -20,18 +20,29 @@ namespace Gs2\Inventory\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Inventory\Model\SimpleItem;
 
+/**
+ * Result of verifySimpleItemByUserId: Verify the quantity of possessions in simple items by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#verifysimpleitembyuserid
+ */
 class VerifySimpleItemByUserIdResult implements IResult {
-    /** @var SimpleItem */
+    /** @var SimpleItem Quantity of simple items */
     private $item;
 
+    /** @return SimpleItem|null Quantity of simple items */
 	public function getItem(): ?SimpleItem {
 		return $this->item;
 	}
 
+    /** @param SimpleItem|null $item Quantity of simple items */
 	public function setItem(?SimpleItem $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param SimpleItem|null $item Quantity of simple items
+     * @return VerifySimpleItemByUserIdResult
+     */
 	public function withItem(?SimpleItem $item): VerifySimpleItemByUserIdResult {
 		$this->item = $item;
 		return $this;

@@ -19,27 +19,44 @@ namespace Gs2\Inventory\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for deleteInventoryModelMaster: Delete Inventory Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#deleteinventorymodelmaster
+ */
 class DeleteInventoryModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Inventory Model name */
     private $inventoryName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DeleteInventoryModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DeleteInventoryModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Inventory Model name */
 	public function getInventoryName(): ?string {
 		return $this->inventoryName;
 	}
+    /** @param string|null $inventoryName Inventory Model name */
 	public function setInventoryName(?string $inventoryName) {
 		$this->inventoryName = $inventoryName;
 	}
+    /**
+     * @param string|null $inventoryName Inventory Model name
+     * @return DeleteInventoryModelMasterRequest
+     */
 	public function withInventoryName(?string $inventoryName): DeleteInventoryModelMasterRequest {
 		$this->inventoryName = $inventoryName;
 		return $this;

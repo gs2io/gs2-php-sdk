@@ -17,7 +17,7 @@
 namespace Gs2\Core\Model;
 
 /**
- * 認証情報。
+ * Credential.
  * 
  * @author Game Server Services, Inc.
  *

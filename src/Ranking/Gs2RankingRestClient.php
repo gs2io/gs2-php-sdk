@@ -3126,25 +3126,22 @@ class DescribeSubscribesByCategoryNameAndUserIdTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 Ranking API クライアント
+ * GS2-Ranking API client
  *
- * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/ranking/sdk/
  */
 class Gs2RankingRestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#describenamespaces
      */
     public function describeNamespacesAsync(
             DescribeNamespacesRequest $request
@@ -3158,8 +3155,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#describenamespaces
      */
     public function describeNamespaces (
             DescribeNamespacesRequest $request
@@ -3170,8 +3170,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#createnamespace
      */
     public function createNamespaceAsync(
             CreateNamespaceRequest $request
@@ -3185,8 +3188,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#createnamespace
      */
     public function createNamespace (
             CreateNamespaceRequest $request
@@ -3197,8 +3203,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#getnamespacestatus
      */
     public function getNamespaceStatusAsync(
             GetNamespaceStatusRequest $request
@@ -3212,8 +3221,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#getnamespacestatus
      */
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
@@ -3224,8 +3236,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#getnamespace
      */
     public function getNamespaceAsync(
             GetNamespaceRequest $request
@@ -3239,8 +3254,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#getnamespace
      */
     public function getNamespace (
             GetNamespaceRequest $request
@@ -3251,8 +3269,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#updatenamespace
      */
     public function updateNamespaceAsync(
             UpdateNamespaceRequest $request
@@ -3266,8 +3287,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#updatenamespace
      */
     public function updateNamespace (
             UpdateNamespaceRequest $request
@@ -3278,8 +3302,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#deletenamespace
      */
     public function deleteNamespaceAsync(
             DeleteNamespaceRequest $request
@@ -3293,8 +3320,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#deletenamespace
      */
     public function deleteNamespace (
             DeleteNamespaceRequest $request
@@ -3305,8 +3335,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#getserviceversion
      */
     public function getServiceVersionAsync(
             GetServiceVersionRequest $request
@@ -3320,8 +3353,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return GetServiceVersionResult
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#getserviceversion
      */
     public function getServiceVersion (
             GetServiceVersionRequest $request
@@ -3332,8 +3368,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserIdAsync(
             DumpUserDataByUserIdRequest $request
@@ -3347,8 +3386,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return DumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserId (
             DumpUserDataByUserIdRequest $request
@@ -3359,8 +3401,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserIdAsync(
             CheckDumpUserDataByUserIdRequest $request
@@ -3374,8 +3419,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return CheckDumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserId (
             CheckDumpUserDataByUserIdRequest $request
@@ -3386,8 +3434,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserIdAsync(
             CleanUserDataByUserIdRequest $request
@@ -3401,8 +3452,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return CleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserId (
             CleanUserDataByUserIdRequest $request
@@ -3413,8 +3467,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the clean of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserIdAsync(
             CheckCleanUserDataByUserIdRequest $request
@@ -3428,8 +3485,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the clean of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return CheckCleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserId (
             CheckCleanUserDataByUserIdRequest $request
@@ -3440,8 +3500,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserIdAsync(
             PrepareImportUserDataByUserIdRequest $request
@@ -3455,8 +3518,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PrepareImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserId (
             PrepareImportUserDataByUserIdRequest $request
@@ -3467,8 +3533,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserIdAsync(
             ImportUserDataByUserIdRequest $request
@@ -3482,8 +3551,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return ImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserId (
             ImportUserDataByUserIdRequest $request
@@ -3494,8 +3566,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserIdAsync(
             CheckImportUserDataByUserIdRequest $request
@@ -3509,8 +3584,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return CheckImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserId (
             CheckImportUserDataByUserIdRequest $request
@@ -3521,8 +3599,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Category Models
+     *
      * @param DescribeCategoryModelsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#describecategorymodels
      */
     public function describeCategoryModelsAsync(
             DescribeCategoryModelsRequest $request
@@ -3536,8 +3617,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Category Models
+     *
      * @param DescribeCategoryModelsRequest $request
      * @return DescribeCategoryModelsResult
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#describecategorymodels
      */
     public function describeCategoryModels (
             DescribeCategoryModelsRequest $request
@@ -3548,8 +3632,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Category Model
+     *
      * @param GetCategoryModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#getcategorymodel
      */
     public function getCategoryModelAsync(
             GetCategoryModelRequest $request
@@ -3563,8 +3650,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Category Model
+     *
      * @param GetCategoryModelRequest $request
      * @return GetCategoryModelResult
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#getcategorymodel
      */
     public function getCategoryModel (
             GetCategoryModelRequest $request
@@ -3575,8 +3665,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Category Model Masters
+     *
      * @param DescribeCategoryModelMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#describecategorymodelmasters
      */
     public function describeCategoryModelMastersAsync(
             DescribeCategoryModelMastersRequest $request
@@ -3590,8 +3683,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Category Model Masters
+     *
      * @param DescribeCategoryModelMastersRequest $request
      * @return DescribeCategoryModelMastersResult
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#describecategorymodelmasters
      */
     public function describeCategoryModelMasters (
             DescribeCategoryModelMastersRequest $request
@@ -3602,8 +3698,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Category Model Master
+     *
      * @param CreateCategoryModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#createcategorymodelmaster
      */
     public function createCategoryModelMasterAsync(
             CreateCategoryModelMasterRequest $request
@@ -3617,8 +3716,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Category Model Master
+     *
      * @param CreateCategoryModelMasterRequest $request
      * @return CreateCategoryModelMasterResult
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#createcategorymodelmaster
      */
     public function createCategoryModelMaster (
             CreateCategoryModelMasterRequest $request
@@ -3629,8 +3731,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Category Model Master
+     *
      * @param GetCategoryModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#getcategorymodelmaster
      */
     public function getCategoryModelMasterAsync(
             GetCategoryModelMasterRequest $request
@@ -3644,8 +3749,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Category Model Master
+     *
      * @param GetCategoryModelMasterRequest $request
      * @return GetCategoryModelMasterResult
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#getcategorymodelmaster
      */
     public function getCategoryModelMaster (
             GetCategoryModelMasterRequest $request
@@ -3656,8 +3764,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Category Model Master
+     *
      * @param UpdateCategoryModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#updatecategorymodelmaster
      */
     public function updateCategoryModelMasterAsync(
             UpdateCategoryModelMasterRequest $request
@@ -3671,8 +3782,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Category Model Master
+     *
      * @param UpdateCategoryModelMasterRequest $request
      * @return UpdateCategoryModelMasterResult
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#updatecategorymodelmaster
      */
     public function updateCategoryModelMaster (
             UpdateCategoryModelMasterRequest $request
@@ -3683,8 +3797,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Category Model Master
+     *
      * @param DeleteCategoryModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#deletecategorymodelmaster
      */
     public function deleteCategoryModelMasterAsync(
             DeleteCategoryModelMasterRequest $request
@@ -3698,8 +3815,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Category Model Master
+     *
      * @param DeleteCategoryModelMasterRequest $request
      * @return DeleteCategoryModelMasterResult
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#deletecategorymodelmaster
      */
     public function deleteCategoryModelMaster (
             DeleteCategoryModelMasterRequest $request
@@ -3710,8 +3830,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Subscribe to target users
+     *
      * @param SubscribeRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#subscribe-1
      */
     public function subscribeAsync(
             SubscribeRequest $request
@@ -3725,8 +3848,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Subscribe to target users
+     *
      * @param SubscribeRequest $request
      * @return SubscribeResult
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#subscribe-1
      */
     public function subscribe (
             SubscribeRequest $request
@@ -3737,8 +3863,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Subscribe to the target user by User ID
+     *
      * @param SubscribeByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#subscribebyuserid
      */
     public function subscribeByUserIdAsync(
             SubscribeByUserIdRequest $request
@@ -3752,8 +3881,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Subscribe to the target user by User ID
+     *
      * @param SubscribeByUserIdRequest $request
      * @return SubscribeByUserIdResult
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#subscribebyuserid
      */
     public function subscribeByUserId (
             SubscribeByUserIdRequest $request
@@ -3764,8 +3896,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Scores
+     *
      * @param DescribeScoresRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#describescores
      */
     public function describeScoresAsync(
             DescribeScoresRequest $request
@@ -3779,8 +3914,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Scores
+     *
      * @param DescribeScoresRequest $request
      * @return DescribeScoresResult
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#describescores
      */
     public function describeScores (
             DescribeScoresRequest $request
@@ -3791,8 +3929,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Scores by User ID
+     *
      * @param DescribeScoresByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#describescoresbyuserid
      */
     public function describeScoresByUserIdAsync(
             DescribeScoresByUserIdRequest $request
@@ -3806,8 +3947,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Scores by User ID
+     *
      * @param DescribeScoresByUserIdRequest $request
      * @return DescribeScoresByUserIdResult
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#describescoresbyuserid
      */
     public function describeScoresByUserId (
             DescribeScoresByUserIdRequest $request
@@ -3818,8 +3962,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Score
+     *
      * @param GetScoreRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#getscore
      */
     public function getScoreAsync(
             GetScoreRequest $request
@@ -3833,8 +3980,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Score
+     *
      * @param GetScoreRequest $request
      * @return GetScoreResult
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#getscore
      */
     public function getScore (
             GetScoreRequest $request
@@ -3845,8 +3995,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get score by User ID
+     *
      * @param GetScoreByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#getscorebyuserid
      */
     public function getScoreByUserIdAsync(
             GetScoreByUserIdRequest $request
@@ -3860,8 +4013,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get score by User ID
+     *
      * @param GetScoreByUserIdRequest $request
      * @return GetScoreByUserIdResult
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#getscorebyuserid
      */
     public function getScoreByUserId (
             GetScoreByUserIdRequest $request
@@ -3872,8 +4028,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Ranking
+     *
      * @param DescribeRankingsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#describerankings
      */
     public function describeRankingsAsync(
             DescribeRankingsRequest $request
@@ -3887,8 +4046,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Ranking
+     *
      * @param DescribeRankingsRequest $request
      * @return DescribeRankingsResult
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#describerankings
      */
     public function describeRankings (
             DescribeRankingsRequest $request
@@ -3899,8 +4061,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get ranking by User ID
+     *
      * @param DescribeRankingssByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#describerankingssbyuserid
      */
     public function describeRankingssByUserIdAsync(
             DescribeRankingssByUserIdRequest $request
@@ -3914,8 +4079,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get ranking by User ID
+     *
      * @param DescribeRankingssByUserIdRequest $request
      * @return DescribeRankingssByUserIdResult
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#describerankingssbyuserid
      */
     public function describeRankingssByUserId (
             DescribeRankingssByUserIdRequest $request
@@ -3926,8 +4094,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get ranking near the specified score
+     *
      * @param DescribeNearRankingsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#describenearrankings
      */
     public function describeNearRankingsAsync(
             DescribeNearRankingsRequest $request
@@ -3941,8 +4112,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get ranking near the specified score
+     *
      * @param DescribeNearRankingsRequest $request
      * @return DescribeNearRankingsResult
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#describenearrankings
      */
     public function describeNearRankings (
             DescribeNearRankingsRequest $request
@@ -3953,8 +4127,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Ranking
+     *
      * @param GetRankingRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#getranking
      */
     public function getRankingAsync(
             GetRankingRequest $request
@@ -3968,8 +4145,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Ranking
+     *
      * @param GetRankingRequest $request
      * @return GetRankingResult
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#getranking
      */
     public function getRanking (
             GetRankingRequest $request
@@ -3980,8 +4160,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get ranking by User ID
+     *
      * @param GetRankingByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#getrankingbyuserid
      */
     public function getRankingByUserIdAsync(
             GetRankingByUserIdRequest $request
@@ -3995,8 +4178,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get ranking by User ID
+     *
      * @param GetRankingByUserIdRequest $request
      * @return GetRankingByUserIdResult
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#getrankingbyuserid
      */
     public function getRankingByUserId (
             GetRankingByUserIdRequest $request
@@ -4007,8 +4193,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Register score
+     *
      * @param PutScoreRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#putscore
      */
     public function putScoreAsync(
             PutScoreRequest $request
@@ -4022,8 +4211,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Register score
+     *
      * @param PutScoreRequest $request
      * @return PutScoreResult
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#putscore
      */
     public function putScore (
             PutScoreRequest $request
@@ -4034,8 +4226,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Register scores by User ID
+     *
      * @param PutScoreByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#putscorebyuserid
      */
     public function putScoreByUserIdAsync(
             PutScoreByUserIdRequest $request
@@ -4049,8 +4244,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Register scores by User ID
+     *
      * @param PutScoreByUserIdRequest $request
      * @return PutScoreByUserIdResult
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#putscorebyuserid
      */
     public function putScoreByUserId (
             PutScoreByUserIdRequest $request
@@ -4061,8 +4259,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Forced execution of the ranking calculation process
+     *
      * @param CalcRankingRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#calcranking
      */
     public function calcRankingAsync(
             CalcRankingRequest $request
@@ -4076,8 +4277,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Forced execution of the ranking calculation process
+     *
      * @param CalcRankingRequest $request
      * @return CalcRankingResult
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#calcranking
      */
     public function calcRanking (
             CalcRankingRequest $request
@@ -4088,8 +4292,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#exportmaster
      */
     public function exportMasterAsync(
             ExportMasterRequest $request
@@ -4103,8 +4310,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return ExportMasterResult
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#exportmaster
      */
     public function exportMaster (
             ExportMasterRequest $request
@@ -4115,8 +4325,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Ranking Model master data
+     *
      * @param GetCurrentRankingMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#getcurrentrankingmaster
      */
     public function getCurrentRankingMasterAsync(
             GetCurrentRankingMasterRequest $request
@@ -4130,8 +4343,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Ranking Model master data
+     *
      * @param GetCurrentRankingMasterRequest $request
      * @return GetCurrentRankingMasterResult
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#getcurrentrankingmaster
      */
     public function getCurrentRankingMaster (
             GetCurrentRankingMasterRequest $request
@@ -4142,8 +4358,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Ranking Model master data (3-phase version)
+     *
      * @param PreUpdateCurrentRankingMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#preupdatecurrentrankingmaster
      */
     public function preUpdateCurrentRankingMasterAsync(
             PreUpdateCurrentRankingMasterRequest $request
@@ -4157,8 +4376,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Ranking Model master data (3-phase version)
+     *
      * @param PreUpdateCurrentRankingMasterRequest $request
      * @return PreUpdateCurrentRankingMasterResult
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#preupdatecurrentrankingmaster
      */
     public function preUpdateCurrentRankingMaster (
             PreUpdateCurrentRankingMasterRequest $request
@@ -4169,8 +4391,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Ranking Model master data
+     *
      * @param UpdateCurrentRankingMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#updatecurrentrankingmaster
      */
     public function updateCurrentRankingMasterAsync(
             UpdateCurrentRankingMasterRequest $request
@@ -4184,8 +4409,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Ranking Model master data
+     *
      * @param UpdateCurrentRankingMasterRequest $request
      * @return UpdateCurrentRankingMasterResult
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#updatecurrentrankingmaster
      */
     public function updateCurrentRankingMaster (
             UpdateCurrentRankingMasterRequest $request
@@ -4196,8 +4424,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Ranking Model master data from GitHub
+     *
      * @param UpdateCurrentRankingMasterFromGitHubRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#updatecurrentrankingmasterfromgithub
      */
     public function updateCurrentRankingMasterFromGitHubAsync(
             UpdateCurrentRankingMasterFromGitHubRequest $request
@@ -4211,8 +4442,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Ranking Model master data from GitHub
+     *
      * @param UpdateCurrentRankingMasterFromGitHubRequest $request
      * @return UpdateCurrentRankingMasterFromGitHubResult
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#updatecurrentrankingmasterfromgithub
      */
     public function updateCurrentRankingMasterFromGitHub (
             UpdateCurrentRankingMasterFromGitHubRequest $request
@@ -4223,8 +4457,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Subscribed User Information
+     *
      * @param GetSubscribeRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#getsubscribe
      */
     public function getSubscribeAsync(
             GetSubscribeRequest $request
@@ -4238,8 +4475,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Subscribed User Information
+     *
      * @param GetSubscribeRequest $request
      * @return GetSubscribeResult
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#getsubscribe
      */
     public function getSubscribe (
             GetSubscribeRequest $request
@@ -4250,8 +4490,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Subscribed User Information by User ID
+     *
      * @param GetSubscribeByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#getsubscribebyuserid
      */
     public function getSubscribeByUserIdAsync(
             GetSubscribeByUserIdRequest $request
@@ -4265,8 +4508,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Subscribed User Information by User ID
+     *
      * @param GetSubscribeByUserIdRequest $request
      * @return GetSubscribeByUserIdResult
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#getsubscribebyuserid
      */
     public function getSubscribeByUserId (
             GetSubscribeByUserIdRequest $request
@@ -4277,8 +4523,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Unsubscribe the target user
+     *
      * @param UnsubscribeRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#unsubscribe
      */
     public function unsubscribeAsync(
             UnsubscribeRequest $request
@@ -4292,8 +4541,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Unsubscribe the target user
+     *
      * @param UnsubscribeRequest $request
      * @return UnsubscribeResult
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#unsubscribe
      */
     public function unsubscribe (
             UnsubscribeRequest $request
@@ -4304,8 +4556,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Unsubscribe the target user by User ID
+     *
      * @param UnsubscribeByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#unsubscribebyuserid
      */
     public function unsubscribeByUserIdAsync(
             UnsubscribeByUserIdRequest $request
@@ -4319,8 +4574,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Unsubscribe the target user by User ID
+     *
      * @param UnsubscribeByUserIdRequest $request
      * @return UnsubscribeByUserIdResult
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#unsubscribebyuserid
      */
     public function unsubscribeByUserId (
             UnsubscribeByUserIdRequest $request
@@ -4331,8 +4589,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Obtaining a list of user IDs of subscribed users
+     *
      * @param DescribeSubscribesByCategoryNameRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#describesubscribesbycategoryname
      */
     public function describeSubscribesByCategoryNameAsync(
             DescribeSubscribesByCategoryNameRequest $request
@@ -4346,8 +4607,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Obtaining a list of user IDs of subscribed users
+     *
      * @param DescribeSubscribesByCategoryNameRequest $request
      * @return DescribeSubscribesByCategoryNameResult
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#describesubscribesbycategoryname
      */
     public function describeSubscribesByCategoryName (
             DescribeSubscribesByCategoryNameRequest $request
@@ -4358,8 +4622,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Obtaining a list of users to which the user is subscribed by specifying the user ID
+     *
      * @param DescribeSubscribesByCategoryNameAndUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#describesubscribesbycategorynameanduserid
      */
     public function describeSubscribesByCategoryNameAndUserIdAsync(
             DescribeSubscribesByCategoryNameAndUserIdRequest $request
@@ -4373,8 +4640,11 @@ class Gs2RankingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Obtaining a list of users to which the user is subscribed by specifying the user ID
+     *
      * @param DescribeSubscribesByCategoryNameAndUserIdRequest $request
      * @return DescribeSubscribesByCategoryNameAndUserIdResult
+     * @see https://docs.gs2.io/api_reference/ranking/sdk/#describesubscribesbycategorynameanduserid
      */
     public function describeSubscribesByCategoryNameAndUserId (
             DescribeSubscribesByCategoryNameAndUserIdRequest $request

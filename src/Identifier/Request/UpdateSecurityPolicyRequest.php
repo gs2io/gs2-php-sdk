@@ -19,39 +19,62 @@ namespace Gs2\Identifier\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for updateSecurityPolicy: Update Security Policy
+ *
+ * @see https://docs.gs2.io/api_reference/identifier/sdk/#updatesecuritypolicy
+ */
 class UpdateSecurityPolicyRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Security Policy Name */
     private $securityPolicyName;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var string */
+    /** @var string Policy Document */
     private $policy;
+    /** @return string|null Security Policy Name */
 	public function getSecurityPolicyName(): ?string {
 		return $this->securityPolicyName;
 	}
+    /** @param string|null $securityPolicyName Security Policy Name */
 	public function setSecurityPolicyName(?string $securityPolicyName) {
 		$this->securityPolicyName = $securityPolicyName;
 	}
+    /**
+     * @param string|null $securityPolicyName Security Policy Name
+     * @return UpdateSecurityPolicyRequest
+     */
 	public function withSecurityPolicyName(?string $securityPolicyName): UpdateSecurityPolicyRequest {
 		$this->securityPolicyName = $securityPolicyName;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return UpdateSecurityPolicyRequest
+     */
 	public function withDescription(?string $description): UpdateSecurityPolicyRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Policy Document */
 	public function getPolicy(): ?string {
 		return $this->policy;
 	}
+    /** @param string|null $policy Policy Document */
 	public function setPolicy(?string $policy) {
 		$this->policy = $policy;
 	}
+    /**
+     * @param string|null $policy Policy Document
+     * @return UpdateSecurityPolicyRequest
+     */
 	public function withPolicy(?string $policy): UpdateSecurityPolicyRequest {
 		$this->policy = $policy;
 		return $this;

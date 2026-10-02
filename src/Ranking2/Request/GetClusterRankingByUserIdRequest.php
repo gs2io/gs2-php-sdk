@@ -19,75 +19,116 @@ namespace Gs2\Ranking2\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getClusterRankingByUserId: Get Cluster Ranking by specifying the user ID
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/sdk/#getclusterrankingbyuserid
+ */
 class GetClusterRankingByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Cluster Ranking Model name */
     private $rankingName;
-    /** @var string */
+    /** @var string Cluster Name */
     private $clusterName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var int */
+    /** @var int Season */
     private $season;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetClusterRankingByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetClusterRankingByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Cluster Ranking Model name */
 	public function getRankingName(): ?string {
 		return $this->rankingName;
 	}
+    /** @param string|null $rankingName Cluster Ranking Model name */
 	public function setRankingName(?string $rankingName) {
 		$this->rankingName = $rankingName;
 	}
+    /**
+     * @param string|null $rankingName Cluster Ranking Model name
+     * @return GetClusterRankingByUserIdRequest
+     */
 	public function withRankingName(?string $rankingName): GetClusterRankingByUserIdRequest {
 		$this->rankingName = $rankingName;
 		return $this;
 	}
+    /** @return string|null Cluster Name */
 	public function getClusterName(): ?string {
 		return $this->clusterName;
 	}
+    /** @param string|null $clusterName Cluster Name */
 	public function setClusterName(?string $clusterName) {
 		$this->clusterName = $clusterName;
 	}
+    /**
+     * @param string|null $clusterName Cluster Name
+     * @return GetClusterRankingByUserIdRequest
+     */
 	public function withClusterName(?string $clusterName): GetClusterRankingByUserIdRequest {
 		$this->clusterName = $clusterName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return GetClusterRankingByUserIdRequest
+     */
 	public function withUserId(?string $userId): GetClusterRankingByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return int|null Season */
 	public function getSeason(): ?int {
 		return $this->season;
 	}
+    /** @param int|null $season Season */
 	public function setSeason(?int $season) {
 		$this->season = $season;
 	}
+    /**
+     * @param int|null $season Season
+     * @return GetClusterRankingByUserIdRequest
+     */
 	public function withSeason(?int $season): GetClusterRankingByUserIdRequest {
 		$this->season = $season;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return GetClusterRankingByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): GetClusterRankingByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

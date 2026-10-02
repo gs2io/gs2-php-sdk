@@ -20,33 +20,50 @@ namespace Gs2\Experience\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Experience\Model\Status;
 
+/**
+ * Result of verifyRankCapByStampTask: Execute rank cap verification as a verify action
+ *
+ * @see https://docs.gs2.io/api_reference/experience/stamp_sheet/#gs2experienceverifyrankcapbyuserid
+ */
 class VerifyRankCapByStampTaskResult implements IResult {
-    /** @var Status */
+    /** @var Status Status updated */
     private $item;
-    /** @var string */
+    /** @var string Context recording the execution results of verification actions */
     private $newContextStack;
 
+    /** @return Status|null Status updated */
 	public function getItem(): ?Status {
 		return $this->item;
 	}
 
+    /** @param Status|null $item Status updated */
 	public function setItem(?Status $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Status|null $item Status updated
+     * @return VerifyRankCapByStampTaskResult
+     */
 	public function withItem(?Status $item): VerifyRankCapByStampTaskResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null Context recording the execution results of verification actions */
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
+    /** @param string|null $newContextStack Context recording the execution results of verification actions */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
+    /**
+     * @param string|null $newContextStack Context recording the execution results of verification actions
+     * @return VerifyRankCapByStampTaskResult
+     */
 	public function withNewContextStack(?string $newContextStack): VerifyRankCapByStampTaskResult {
 		$this->newContextStack = $newContextStack;
 		return $this;

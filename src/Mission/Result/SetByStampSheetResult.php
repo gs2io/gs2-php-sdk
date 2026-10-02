@@ -22,48 +22,71 @@ use Gs2\Mission\Model\ScopedValue;
 use Gs2\Mission\Model\Counter;
 use Gs2\Mission\Model\Complete;
 
+/**
+ * Result of setByStampSheet: Execute counter setting any values as an acquire action within a distributed transaction
+ *
+ * @see https://docs.gs2.io/api_reference/mission/stamp_sheet/#gs2missionsetcounterbyuserid
+ */
 class SetByStampSheetResult implements IResult {
-    /** @var Counter */
+    /** @var Counter Counter after counter addition */
     private $item;
-    /** @var Counter */
+    /** @var Counter Counter after counter addition */
     private $old;
-    /** @var array */
+    /** @var array List of updated Completion Status */
     private $changedCompletes;
 
+    /** @return Counter|null Counter after counter addition */
 	public function getItem(): ?Counter {
 		return $this->item;
 	}
 
+    /** @param Counter|null $item Counter after counter addition */
 	public function setItem(?Counter $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Counter|null $item Counter after counter addition
+     * @return SetByStampSheetResult
+     */
 	public function withItem(?Counter $item): SetByStampSheetResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return Counter|null Counter after counter addition */
 	public function getOld(): ?Counter {
 		return $this->old;
 	}
 
+    /** @param Counter|null $old Counter after counter addition */
 	public function setOld(?Counter $old) {
 		$this->old = $old;
 	}
 
+    /**
+     * @param Counter|null $old Counter after counter addition
+     * @return SetByStampSheetResult
+     */
 	public function withOld(?Counter $old): SetByStampSheetResult {
 		$this->old = $old;
 		return $this;
 	}
 
+    /** @return array|null List of updated Completion Status */
 	public function getChangedCompletes(): ?array {
 		return $this->changedCompletes;
 	}
 
+    /** @param array|null $changedCompletes List of updated Completion Status */
 	public function setChangedCompletes(?array $changedCompletes) {
 		$this->changedCompletes = $changedCompletes;
 	}
 
+    /**
+     * @param array|null $changedCompletes List of updated Completion Status
+     * @return SetByStampSheetResult
+     */
 	public function withChangedCompletes(?array $changedCompletes): SetByStampSheetResult {
 		$this->changedCompletes = $changedCompletes;
 		return $this;

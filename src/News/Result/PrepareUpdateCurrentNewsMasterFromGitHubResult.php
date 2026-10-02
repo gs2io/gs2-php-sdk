@@ -19,18 +19,29 @@ namespace Gs2\News\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of prepareUpdateCurrentNewsMasterFromGitHub: Update currently available notices from GitHub
+ *
+ * @see https://docs.gs2.io/api_reference/news/sdk/#prepareupdatecurrentnewsmasterfromgithub
+ */
 class PrepareUpdateCurrentNewsMasterFromGitHubResult implements IResult {
-    /** @var string */
+    /** @var string Token used to reflect results after upload */
     private $uploadToken;
 
+    /** @return string|null Token used to reflect results after upload */
 	public function getUploadToken(): ?string {
 		return $this->uploadToken;
 	}
 
+    /** @param string|null $uploadToken Token used to reflect results after upload */
 	public function setUploadToken(?string $uploadToken) {
 		$this->uploadToken = $uploadToken;
 	}
 
+    /**
+     * @param string|null $uploadToken Token used to reflect results after upload
+     * @return PrepareUpdateCurrentNewsMasterFromGitHubResult
+     */
 	public function withUploadToken(?string $uploadToken): PrepareUpdateCurrentNewsMasterFromGitHubResult {
 		$this->uploadToken = $uploadToken;
 		return $this;

@@ -20,33 +20,50 @@ namespace Gs2\Money\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Money\Model\Receipt;
 
+/**
+ * Result of recordReceiptByStampTask: Execute receipt recording as a consume action
+ *
+ * @see https://docs.gs2.io/api_reference/money/stamp_sheet/#gs2moneyrecordreceipt
+ */
 class RecordReceiptByStampTaskResult implements IResult {
-    /** @var Receipt */
+    /** @var Receipt Recorded Receipt */
     private $item;
-    /** @var string */
+    /** @var string Context recording the execution results of Consume Actions */
     private $newContextStack;
 
+    /** @return Receipt|null Recorded Receipt */
 	public function getItem(): ?Receipt {
 		return $this->item;
 	}
 
+    /** @param Receipt|null $item Recorded Receipt */
 	public function setItem(?Receipt $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Receipt|null $item Recorded Receipt
+     * @return RecordReceiptByStampTaskResult
+     */
 	public function withItem(?Receipt $item): RecordReceiptByStampTaskResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null Context recording the execution results of Consume Actions */
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
+    /** @param string|null $newContextStack Context recording the execution results of Consume Actions */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
+    /**
+     * @param string|null $newContextStack Context recording the execution results of Consume Actions
+     * @return RecordReceiptByStampTaskResult
+     */
 	public function withNewContextStack(?string $newContextStack): RecordReceiptByStampTaskResult {
 		$this->newContextStack = $newContextStack;
 		return $this;

@@ -20,18 +20,29 @@ namespace Gs2\Guild\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Guild\Model\SendMemberRequest;
 
+/**
+ * Result of getSendRequestByUserId: Get Sent Join Request by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/guild/sdk/#getsendrequestbyuserid
+ */
 class GetSendRequestByUserIdResult implements IResult {
-    /** @var SendMemberRequest */
+    /** @var SendMemberRequest Join Request */
     private $item;
 
+    /** @return SendMemberRequest|null Join Request */
 	public function getItem(): ?SendMemberRequest {
 		return $this->item;
 	}
 
+    /** @param SendMemberRequest|null $item Join Request */
 	public function setItem(?SendMemberRequest $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param SendMemberRequest|null $item Join Request
+     * @return GetSendRequestByUserIdResult
+     */
 	public function withItem(?SendMemberRequest $item): GetSendRequestByUserIdResult {
 		$this->item = $item;
 		return $this;

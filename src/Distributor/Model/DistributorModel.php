@@ -20,73 +20,108 @@ namespace Gs2\Distributor\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Distributor Model
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#distributormodel
+ */
 class DistributorModel implements IModel {
 	/**
-     * @var string
+     * @var string Distributor Model GRN
 	 */
 	private $distributorModelId;
 	/**
-     * @var string
+     * @var string Distributor Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var string
+     * @var string GS2-Inbox Namespace GRN to transfer overflow resources
 	 */
 	private $inboxNamespaceId;
 	/**
-     * @var array
+     * @var array Whitelist of target resource GRN prefixes that can be processed through GS2-Distributor
 	 */
 	private $whiteListTargetIds;
+    /** @return string|null Distributor Model GRN */
 	public function getDistributorModelId(): ?string {
 		return $this->distributorModelId;
 	}
+    /** @param string|null $distributorModelId Distributor Model GRN */
 	public function setDistributorModelId(?string $distributorModelId) {
 		$this->distributorModelId = $distributorModelId;
 	}
+    /**
+     * @param string|null $distributorModelId Distributor Model GRN
+     * @return DistributorModel
+     */
 	public function withDistributorModelId(?string $distributorModelId): DistributorModel {
 		$this->distributorModelId = $distributorModelId;
 		return $this;
 	}
+    /** @return string|null Distributor Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Distributor Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Distributor Model name
+     * @return DistributorModel
+     */
 	public function withName(?string $name): DistributorModel {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return DistributorModel
+     */
 	public function withMetadata(?string $metadata): DistributorModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return string|null GS2-Inbox Namespace GRN to transfer overflow resources */
 	public function getInboxNamespaceId(): ?string {
 		return $this->inboxNamespaceId;
 	}
+    /** @param string|null $inboxNamespaceId GS2-Inbox Namespace GRN to transfer overflow resources */
 	public function setInboxNamespaceId(?string $inboxNamespaceId) {
 		$this->inboxNamespaceId = $inboxNamespaceId;
 	}
+    /**
+     * @param string|null $inboxNamespaceId GS2-Inbox Namespace GRN to transfer overflow resources
+     * @return DistributorModel
+     */
 	public function withInboxNamespaceId(?string $inboxNamespaceId): DistributorModel {
 		$this->inboxNamespaceId = $inboxNamespaceId;
 		return $this;
 	}
+    /** @return array|null Whitelist of target resource GRN prefixes that can be processed through GS2-Distributor */
 	public function getWhiteListTargetIds(): ?array {
 		return $this->whiteListTargetIds;
 	}
+    /** @param array|null $whiteListTargetIds Whitelist of target resource GRN prefixes that can be processed through GS2-Distributor */
 	public function setWhiteListTargetIds(?array $whiteListTargetIds) {
 		$this->whiteListTargetIds = $whiteListTargetIds;
 	}
+    /**
+     * @param array|null $whiteListTargetIds Whitelist of target resource GRN prefixes that can be processed through GS2-Distributor
+     * @return DistributorModel
+     */
 	public function withWhiteListTargetIds(?array $whiteListTargetIds): DistributorModel {
 		$this->whiteListTargetIds = $whiteListTargetIds;
 		return $this;

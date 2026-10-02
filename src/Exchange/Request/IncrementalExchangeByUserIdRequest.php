@@ -20,77 +20,118 @@ namespace Gs2\Exchange\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Exchange\Model\Config;
 
+/**
+ * Request for incrementalExchangeByUserId: Perform incremental cost exchange by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/exchange/sdk/#incrementalexchangebyuserid
+ */
 class IncrementalExchangeByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Incremental Cost Exchange Rate Model name */
     private $rateName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var int */
+    /** @var int Number of exchanges */
     private $count;
-    /** @var array */
+    /** @var array Configuration values applied to transaction variables */
     private $config;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return IncrementalExchangeByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): IncrementalExchangeByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Incremental Cost Exchange Rate Model name */
 	public function getRateName(): ?string {
 		return $this->rateName;
 	}
+    /** @param string|null $rateName Incremental Cost Exchange Rate Model name */
 	public function setRateName(?string $rateName) {
 		$this->rateName = $rateName;
 	}
+    /**
+     * @param string|null $rateName Incremental Cost Exchange Rate Model name
+     * @return IncrementalExchangeByUserIdRequest
+     */
 	public function withRateName(?string $rateName): IncrementalExchangeByUserIdRequest {
 		$this->rateName = $rateName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return IncrementalExchangeByUserIdRequest
+     */
 	public function withUserId(?string $userId): IncrementalExchangeByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return int|null Number of exchanges */
 	public function getCount(): ?int {
 		return $this->count;
 	}
+    /** @param int|null $count Number of exchanges */
 	public function setCount(?int $count) {
 		$this->count = $count;
 	}
+    /**
+     * @param int|null $count Number of exchanges
+     * @return IncrementalExchangeByUserIdRequest
+     */
 	public function withCount(?int $count): IncrementalExchangeByUserIdRequest {
 		$this->count = $count;
 		return $this;
 	}
+    /** @return array|null Configuration values applied to transaction variables */
 	public function getConfig(): ?array {
 		return $this->config;
 	}
+    /** @param array|null $config Configuration values applied to transaction variables */
 	public function setConfig(?array $config) {
 		$this->config = $config;
 	}
+    /**
+     * @param array|null $config Configuration values applied to transaction variables
+     * @return IncrementalExchangeByUserIdRequest
+     */
 	public function withConfig(?array $config): IncrementalExchangeByUserIdRequest {
 		$this->config = $config;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return IncrementalExchangeByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): IncrementalExchangeByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

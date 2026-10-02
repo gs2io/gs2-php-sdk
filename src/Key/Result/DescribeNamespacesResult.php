@@ -21,33 +21,50 @@ use Gs2\Core\Model\IResult;
 use Gs2\Key\Model\LogSetting;
 use Gs2\Key\Model\Namespace_;
 
+/**
+ * Result of describeNamespaces: List Namespaces
+ *
+ * @see https://docs.gs2.io/api_reference/key/sdk/#describenamespaces
+ */
 class DescribeNamespacesResult implements IResult {
-    /** @var array */
+    /** @var array List of Namespaces */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Namespaces */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Namespaces */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Namespaces
+     * @return DescribeNamespacesResult
+     */
 	public function withItems(?array $items): DescribeNamespacesResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeNamespacesResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeNamespacesResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

@@ -20,33 +20,50 @@ namespace Gs2\LoginReward\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\LoginReward\Model\ReceiveStatus;
 
+/**
+ * Result of describeReceiveStatuses: List Receive Statuses
+ *
+ * @see https://docs.gs2.io/api_reference/login_reward/sdk/#describereceivestatuses
+ */
 class DescribeReceiveStatusesResult implements IResult {
-    /** @var array */
+    /** @var array List of ReceiveStatuses */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of ReceiveStatuses */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of ReceiveStatuses */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of ReceiveStatuses
+     * @return DescribeReceiveStatusesResult
+     */
 	public function withItems(?array $items): DescribeReceiveStatusesResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeReceiveStatusesResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeReceiveStatusesResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

@@ -20,18 +20,29 @@ namespace Gs2\Matchmaking\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Matchmaking\Model\RatingModel;
 
+/**
+ * Result of getRatingModel: Get Rating Model
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#getratingmodel
+ */
 class GetRatingModelResult implements IResult {
-    /** @var RatingModel */
+    /** @var RatingModel Rating Model */
     private $item;
 
+    /** @return RatingModel|null Rating Model */
 	public function getItem(): ?RatingModel {
 		return $this->item;
 	}
 
+    /** @param RatingModel|null $item Rating Model */
 	public function setItem(?RatingModel $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param RatingModel|null $item Rating Model
+     * @return GetRatingModelResult
+     */
 	public function withItem(?RatingModel $item): GetRatingModelResult {
 		$this->item = $item;
 		return $this;

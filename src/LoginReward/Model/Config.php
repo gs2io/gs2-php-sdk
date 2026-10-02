@@ -20,31 +20,48 @@ namespace Gs2\LoginReward\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Configuration
+ *
+ * @see https://docs.gs2.io/api_reference/login_reward/sdk/#config
+ */
 class Config implements IModel {
 	/**
-     * @var string
+     * @var string Key
 	 */
 	private $key;
 	/**
-     * @var string
+     * @var string Value
 	 */
 	private $value;
+    /** @return string|null Key */
 	public function getKey(): ?string {
 		return $this->key;
 	}
+    /** @param string|null $key Key */
 	public function setKey(?string $key) {
 		$this->key = $key;
 	}
+    /**
+     * @param string|null $key Key
+     * @return Config
+     */
 	public function withKey(?string $key): Config {
 		$this->key = $key;
 		return $this;
 	}
+    /** @return string|null Value */
 	public function getValue(): ?string {
 		return $this->value;
 	}
+    /** @param string|null $value Value */
 	public function setValue(?string $value) {
 		$this->value = $value;
 	}
+    /**
+     * @param string|null $value Value
+     * @return Config
+     */
 	public function withValue(?string $value): Config {
 		$this->value = $value;
 		return $this;

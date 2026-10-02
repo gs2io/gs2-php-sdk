@@ -20,33 +20,50 @@ namespace Gs2\Inventory\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Inventory\Model\SimpleItem;
 
+/**
+ * Result of verifySimpleItemByStampTask: Execute the verification of the quantity of simple items as a verify action
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventoryverifysimpleitembyuserid
+ */
 class VerifySimpleItemByStampTaskResult implements IResult {
-    /** @var SimpleItem */
+    /** @var SimpleItem Quantity of simple items */
     private $item;
-    /** @var string */
+    /** @var string Context recording the execution results of verification actions */
     private $newContextStack;
 
+    /** @return SimpleItem|null Quantity of simple items */
 	public function getItem(): ?SimpleItem {
 		return $this->item;
 	}
 
+    /** @param SimpleItem|null $item Quantity of simple items */
 	public function setItem(?SimpleItem $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param SimpleItem|null $item Quantity of simple items
+     * @return VerifySimpleItemByStampTaskResult
+     */
 	public function withItem(?SimpleItem $item): VerifySimpleItemByStampTaskResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null Context recording the execution results of verification actions */
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
+    /** @param string|null $newContextStack Context recording the execution results of verification actions */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
+    /**
+     * @param string|null $newContextStack Context recording the execution results of verification actions
+     * @return VerifySimpleItemByStampTaskResult
+     */
 	public function withNewContextStack(?string $newContextStack): VerifySimpleItemByStampTaskResult {
 		$this->newContextStack = $newContextStack;
 		return $this;

@@ -22,33 +22,50 @@ use Gs2\Log\Model\TimeseriesValue;
 use Gs2\Log\Model\TimeseriesPoint;
 use Gs2\Log\Model\TimeseriesMetadata;
 
+/**
+ * Result of queryMetricsTimeseries: Time Series Query (Metrics)
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#querymetricstimeseries
+ */
 class QueryMetricsTimeseriesResult implements IResult {
-    /** @var array */
+    /** @var array List of Time Series Values */
     private $items;
-    /** @var TimeseriesMetadata */
+    /** @var TimeseriesMetadata Metadata of Time Series */
     private $timeseriesMetadata;
 
+    /** @return array|null List of Time Series Values */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Time Series Values */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Time Series Values
+     * @return QueryMetricsTimeseriesResult
+     */
 	public function withItems(?array $items): QueryMetricsTimeseriesResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return TimeseriesMetadata|null Metadata of Time Series */
 	public function getTimeseriesMetadata(): ?TimeseriesMetadata {
 		return $this->timeseriesMetadata;
 	}
 
+    /** @param TimeseriesMetadata|null $timeseriesMetadata Metadata of Time Series */
 	public function setTimeseriesMetadata(?TimeseriesMetadata $timeseriesMetadata) {
 		$this->timeseriesMetadata = $timeseriesMetadata;
 	}
 
+    /**
+     * @param TimeseriesMetadata|null $timeseriesMetadata Metadata of Time Series
+     * @return QueryMetricsTimeseriesResult
+     */
 	public function withTimeseriesMetadata(?TimeseriesMetadata $timeseriesMetadata): QueryMetricsTimeseriesResult {
 		$this->timeseriesMetadata = $timeseriesMetadata;
 		return $this;

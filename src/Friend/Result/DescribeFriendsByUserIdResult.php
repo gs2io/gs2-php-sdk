@@ -20,33 +20,50 @@ namespace Gs2\Friend\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Friend\Model\FriendUser;
 
+/**
+ * Result of describeFriendsByUserId: List Friends by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/friend/sdk/#describefriendsbyuserid
+ */
 class DescribeFriendsByUserIdResult implements IResult {
-    /** @var array */
+    /** @var array List of Friend */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Friend */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Friend */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Friend
+     * @return DescribeFriendsByUserIdResult
+     */
 	public function withItems(?array $items): DescribeFriendsByUserIdResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeFriendsByUserIdResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeFriendsByUserIdResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

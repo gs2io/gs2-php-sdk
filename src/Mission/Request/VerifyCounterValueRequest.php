@@ -19,113 +19,172 @@ namespace Gs2\Mission\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for verifyCounterValue: Verify counter value
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#verifycountervalue
+ */
 class VerifyCounterValueRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Counter Model name */
     private $counterName;
-    /** @var string */
+    /** @var string Type of verification */
     private $verifyType;
-    /** @var string */
+    /** @var string Scope type */
     private $scopeType;
-    /** @var string */
+    /** @var string Reset timing */
     private $resetType;
-    /** @var string */
+    /** @var string Condition Name */
     private $conditionName;
-    /** @var int */
+    /** @var int Count value */
     private $value;
-    /** @var bool */
+    /** @var bool Whether to multiply the value used for verification when specifying the quantity */
     private $multiplyValueSpecifyingQuantity;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return VerifyCounterValueRequest
+     */
 	public function withNamespaceName(?string $namespaceName): VerifyCounterValueRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return VerifyCounterValueRequest
+     */
 	public function withAccessToken(?string $accessToken): VerifyCounterValueRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Counter Model name */
 	public function getCounterName(): ?string {
 		return $this->counterName;
 	}
+    /** @param string|null $counterName Counter Model name */
 	public function setCounterName(?string $counterName) {
 		$this->counterName = $counterName;
 	}
+    /**
+     * @param string|null $counterName Counter Model name
+     * @return VerifyCounterValueRequest
+     */
 	public function withCounterName(?string $counterName): VerifyCounterValueRequest {
 		$this->counterName = $counterName;
 		return $this;
 	}
+    /** @return string|null Type of verification */
 	public function getVerifyType(): ?string {
 		return $this->verifyType;
 	}
+    /** @param string|null $verifyType Type of verification */
 	public function setVerifyType(?string $verifyType) {
 		$this->verifyType = $verifyType;
 	}
+    /**
+     * @param string|null $verifyType Type of verification
+     * @return VerifyCounterValueRequest
+     */
 	public function withVerifyType(?string $verifyType): VerifyCounterValueRequest {
 		$this->verifyType = $verifyType;
 		return $this;
 	}
+    /** @return string|null Scope type */
 	public function getScopeType(): ?string {
 		return $this->scopeType;
 	}
+    /** @param string|null $scopeType Scope type */
 	public function setScopeType(?string $scopeType) {
 		$this->scopeType = $scopeType;
 	}
+    /**
+     * @param string|null $scopeType Scope type
+     * @return VerifyCounterValueRequest
+     */
 	public function withScopeType(?string $scopeType): VerifyCounterValueRequest {
 		$this->scopeType = $scopeType;
 		return $this;
 	}
+    /** @return string|null Reset timing */
 	public function getResetType(): ?string {
 		return $this->resetType;
 	}
+    /** @param string|null $resetType Reset timing */
 	public function setResetType(?string $resetType) {
 		$this->resetType = $resetType;
 	}
+    /**
+     * @param string|null $resetType Reset timing
+     * @return VerifyCounterValueRequest
+     */
 	public function withResetType(?string $resetType): VerifyCounterValueRequest {
 		$this->resetType = $resetType;
 		return $this;
 	}
+    /** @return string|null Condition Name */
 	public function getConditionName(): ?string {
 		return $this->conditionName;
 	}
+    /** @param string|null $conditionName Condition Name */
 	public function setConditionName(?string $conditionName) {
 		$this->conditionName = $conditionName;
 	}
+    /**
+     * @param string|null $conditionName Condition Name
+     * @return VerifyCounterValueRequest
+     */
 	public function withConditionName(?string $conditionName): VerifyCounterValueRequest {
 		$this->conditionName = $conditionName;
 		return $this;
 	}
+    /** @return int|null Count value */
 	public function getValue(): ?int {
 		return $this->value;
 	}
+    /** @param int|null $value Count value */
 	public function setValue(?int $value) {
 		$this->value = $value;
 	}
+    /**
+     * @param int|null $value Count value
+     * @return VerifyCounterValueRequest
+     */
 	public function withValue(?int $value): VerifyCounterValueRequest {
 		$this->value = $value;
 		return $this;
 	}
+    /** @return bool|null Whether to multiply the value used for verification when specifying the quantity */
 	public function getMultiplyValueSpecifyingQuantity(): ?bool {
 		return $this->multiplyValueSpecifyingQuantity;
 	}
+    /** @param bool|null $multiplyValueSpecifyingQuantity Whether to multiply the value used for verification when specifying the quantity */
 	public function setMultiplyValueSpecifyingQuantity(?bool $multiplyValueSpecifyingQuantity) {
 		$this->multiplyValueSpecifyingQuantity = $multiplyValueSpecifyingQuantity;
 	}
+    /**
+     * @param bool|null $multiplyValueSpecifyingQuantity Whether to multiply the value used for verification when specifying the quantity
+     * @return VerifyCounterValueRequest
+     */
 	public function withMultiplyValueSpecifyingQuantity(?bool $multiplyValueSpecifyingQuantity): VerifyCounterValueRequest {
 		$this->multiplyValueSpecifyingQuantity = $multiplyValueSpecifyingQuantity;
 		return $this;

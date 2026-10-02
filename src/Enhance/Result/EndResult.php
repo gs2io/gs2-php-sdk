@@ -24,153 +24,218 @@ use Gs2\Core\Model\ConsumeActionResult as CoreConsumeActionResult;
 use Gs2\Core\Model\AcquireActionResult as CoreAcquireActionResult;
 use Gs2\Core\Model\TransactionResult as CoreTransactionResult;
 
+/**
+ * Result of end: Complete enhancement
+ *
+ * @see https://docs.gs2.io/api_reference/enhance/sdk/#end
+ */
 class EndResult implements IResult {
-    /** @var Progress */
+    /** @var Progress progress information for enhancement */
     private $item;
-    /** @var string */
+    /** @var string Issued transaction ID */
     private $transactionId;
-    /** @var string */
+    /** @var string Stamp sheet used to execute the reward granting process */
     private $stampSheet;
-    /** @var string */
+    /** @var string Cryptographic key GRN used for stamp sheet signature calculations */
     private $stampSheetEncryptionKeyId;
-    /** @var bool */
+    /** @var bool Whether automatic transaction execution is enabled */
     private $autoRunStampSheet;
-    /** @var bool */
+    /** @var bool Whether to commit the transaction atomically */
     private $atomicCommit;
-    /** @var string */
+    /** @var string Issued transaction */
     private $transaction;
-    /** @var CoreTransactionResult */
+    /** @var CoreTransactionResult Transaction Execution Result */
     private $transactionResult;
-    /** @var int */
+    /** @var int Amount of experience gained */
     private $acquireExperience;
-    /** @var float */
+    /** @var float Experience bonus multiplier (1.0 = no bonus) */
     private $bonusRate;
 
+    /** @return Progress|null progress information for enhancement */
 	public function getItem(): ?Progress {
 		return $this->item;
 	}
 
+    /** @param Progress|null $item progress information for enhancement */
 	public function setItem(?Progress $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Progress|null $item progress information for enhancement
+     * @return EndResult
+     */
 	public function withItem(?Progress $item): EndResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null Issued transaction ID */
 	public function getTransactionId(): ?string {
 		return $this->transactionId;
 	}
 
+    /** @param string|null $transactionId Issued transaction ID */
 	public function setTransactionId(?string $transactionId) {
 		$this->transactionId = $transactionId;
 	}
 
+    /**
+     * @param string|null $transactionId Issued transaction ID
+     * @return EndResult
+     */
 	public function withTransactionId(?string $transactionId): EndResult {
 		$this->transactionId = $transactionId;
 		return $this;
 	}
 
+    /** @return string|null Stamp sheet used to execute the reward granting process */
 	public function getStampSheet(): ?string {
 		return $this->stampSheet;
 	}
 
+    /** @param string|null $stampSheet Stamp sheet used to execute the reward granting process */
 	public function setStampSheet(?string $stampSheet) {
 		$this->stampSheet = $stampSheet;
 	}
 
+    /**
+     * @param string|null $stampSheet Stamp sheet used to execute the reward granting process
+     * @return EndResult
+     */
 	public function withStampSheet(?string $stampSheet): EndResult {
 		$this->stampSheet = $stampSheet;
 		return $this;
 	}
 
+    /** @return string|null Cryptographic key GRN used for stamp sheet signature calculations */
 	public function getStampSheetEncryptionKeyId(): ?string {
 		return $this->stampSheetEncryptionKeyId;
 	}
 
+    /** @param string|null $stampSheetEncryptionKeyId Cryptographic key GRN used for stamp sheet signature calculations */
 	public function setStampSheetEncryptionKeyId(?string $stampSheetEncryptionKeyId) {
 		$this->stampSheetEncryptionKeyId = $stampSheetEncryptionKeyId;
 	}
 
+    /**
+     * @param string|null $stampSheetEncryptionKeyId Cryptographic key GRN used for stamp sheet signature calculations
+     * @return EndResult
+     */
 	public function withStampSheetEncryptionKeyId(?string $stampSheetEncryptionKeyId): EndResult {
 		$this->stampSheetEncryptionKeyId = $stampSheetEncryptionKeyId;
 		return $this;
 	}
 
+    /** @return bool|null Whether automatic transaction execution is enabled */
 	public function getAutoRunStampSheet(): ?bool {
 		return $this->autoRunStampSheet;
 	}
 
+    /** @param bool|null $autoRunStampSheet Whether automatic transaction execution is enabled */
 	public function setAutoRunStampSheet(?bool $autoRunStampSheet) {
 		$this->autoRunStampSheet = $autoRunStampSheet;
 	}
 
+    /**
+     * @param bool|null $autoRunStampSheet Whether automatic transaction execution is enabled
+     * @return EndResult
+     */
 	public function withAutoRunStampSheet(?bool $autoRunStampSheet): EndResult {
 		$this->autoRunStampSheet = $autoRunStampSheet;
 		return $this;
 	}
 
+    /** @return bool|null Whether to commit the transaction atomically */
 	public function getAtomicCommit(): ?bool {
 		return $this->atomicCommit;
 	}
 
+    /** @param bool|null $atomicCommit Whether to commit the transaction atomically */
 	public function setAtomicCommit(?bool $atomicCommit) {
 		$this->atomicCommit = $atomicCommit;
 	}
 
+    /**
+     * @param bool|null $atomicCommit Whether to commit the transaction atomically
+     * @return EndResult
+     */
 	public function withAtomicCommit(?bool $atomicCommit): EndResult {
 		$this->atomicCommit = $atomicCommit;
 		return $this;
 	}
 
+    /** @return string|null Issued transaction */
 	public function getTransaction(): ?string {
 		return $this->transaction;
 	}
 
+    /** @param string|null $transaction Issued transaction */
 	public function setTransaction(?string $transaction) {
 		$this->transaction = $transaction;
 	}
 
+    /**
+     * @param string|null $transaction Issued transaction
+     * @return EndResult
+     */
 	public function withTransaction(?string $transaction): EndResult {
 		$this->transaction = $transaction;
 		return $this;
 	}
 
+    /** @return CoreTransactionResult|null Transaction Execution Result */
 	public function getTransactionResult(): ?CoreTransactionResult {
 		return $this->transactionResult;
 	}
 
+    /** @param CoreTransactionResult|null $transactionResult Transaction Execution Result */
 	public function setTransactionResult(?CoreTransactionResult $transactionResult) {
 		$this->transactionResult = $transactionResult;
 	}
 
+    /**
+     * @param CoreTransactionResult|null $transactionResult Transaction Execution Result
+     * @return EndResult
+     */
 	public function withTransactionResult(?CoreTransactionResult $transactionResult): EndResult {
 		$this->transactionResult = $transactionResult;
 		return $this;
 	}
 
+    /** @return int|null Amount of experience gained */
 	public function getAcquireExperience(): ?int {
 		return $this->acquireExperience;
 	}
 
+    /** @param int|null $acquireExperience Amount of experience gained */
 	public function setAcquireExperience(?int $acquireExperience) {
 		$this->acquireExperience = $acquireExperience;
 	}
 
+    /**
+     * @param int|null $acquireExperience Amount of experience gained
+     * @return EndResult
+     */
 	public function withAcquireExperience(?int $acquireExperience): EndResult {
 		$this->acquireExperience = $acquireExperience;
 		return $this;
 	}
 
+    /** @return float|null Experience bonus multiplier (1.0 = no bonus) */
 	public function getBonusRate(): ?float {
 		return $this->bonusRate;
 	}
 
+    /** @param float|null $bonusRate Experience bonus multiplier (1.0 = no bonus) */
 	public function setBonusRate(?float $bonusRate) {
 		$this->bonusRate = $bonusRate;
 	}
 
+    /**
+     * @param float|null $bonusRate Experience bonus multiplier (1.0 = no bonus)
+     * @return EndResult
+     */
 	public function withBonusRate(?float $bonusRate): EndResult {
 		$this->bonusRate = $bonusRate;
 		return $this;

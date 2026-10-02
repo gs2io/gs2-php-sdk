@@ -20,31 +20,48 @@ namespace Gs2\Ranking\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Aggregation Scope
+ *
+ * @see https://docs.gs2.io/api_reference/ranking/sdk/#scope
+ */
 class Scope implements IModel {
 	/**
-     * @var string
+     * @var string Scope Name
 	 */
 	private $name;
 	/**
-     * @var int
+     * @var int Target Days
 	 */
 	private $targetDays;
+    /** @return string|null Scope Name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Scope Name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Scope Name
+     * @return Scope
+     */
 	public function withName(?string $name): Scope {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return int|null Target Days */
 	public function getTargetDays(): ?int {
 		return $this->targetDays;
 	}
+    /** @param int|null $targetDays Target Days */
 	public function setTargetDays(?int $targetDays) {
 		$this->targetDays = $targetDays;
 	}
+    /**
+     * @param int|null $targetDays Target Days
+     * @return Scope
+     */
 	public function withTargetDays(?int $targetDays): Scope {
 		$this->targetDays = $targetDays;
 		return $this;

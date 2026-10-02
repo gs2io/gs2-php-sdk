@@ -25,33 +25,50 @@ use Gs2\LoginReward\Model\VerifyAction;
 use Gs2\LoginReward\Model\ConsumeAction;
 use Gs2\LoginReward\Model\BonusModel;
 
+/**
+ * Result of unmarkReceivedByStampSheet: Execute unmark as received as acquire action
+ *
+ * @see https://docs.gs2.io/api_reference/login_reward/stamp_sheet/#gs2loginrewardunmarkreceivedbyuserid
+ */
 class UnmarkReceivedByStampSheetResult implements IResult {
-    /** @var ReceiveStatus */
+    /** @var ReceiveStatus ReceiveStatus */
     private $item;
-    /** @var BonusModel */
+    /** @var BonusModel Login Bonus Model */
     private $bonusModel;
 
+    /** @return ReceiveStatus|null ReceiveStatus */
 	public function getItem(): ?ReceiveStatus {
 		return $this->item;
 	}
 
+    /** @param ReceiveStatus|null $item ReceiveStatus */
 	public function setItem(?ReceiveStatus $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param ReceiveStatus|null $item ReceiveStatus
+     * @return UnmarkReceivedByStampSheetResult
+     */
 	public function withItem(?ReceiveStatus $item): UnmarkReceivedByStampSheetResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return BonusModel|null Login Bonus Model */
 	public function getBonusModel(): ?BonusModel {
 		return $this->bonusModel;
 	}
 
+    /** @param BonusModel|null $bonusModel Login Bonus Model */
 	public function setBonusModel(?BonusModel $bonusModel) {
 		$this->bonusModel = $bonusModel;
 	}
 
+    /**
+     * @param BonusModel|null $bonusModel Login Bonus Model
+     * @return UnmarkReceivedByStampSheetResult
+     */
 	public function withBonusModel(?BonusModel $bonusModel): UnmarkReceivedByStampSheetResult {
 		$this->bonusModel = $bonusModel;
 		return $this;

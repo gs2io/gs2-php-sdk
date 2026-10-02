@@ -20,18 +20,29 @@ namespace Gs2\Dictionary\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Dictionary\Model\CurrentEntryMaster;
 
+/**
+ * Result of getCurrentEntryMaster: Get currently active Entry Model master data
+ *
+ * @see https://docs.gs2.io/api_reference/dictionary/sdk/#getcurrententrymaster
+ */
 class GetCurrentEntryMasterResult implements IResult {
-    /** @var CurrentEntryMaster */
+    /** @var CurrentEntryMaster Currently active Entry Model master data */
     private $item;
 
+    /** @return CurrentEntryMaster|null Currently active Entry Model master data */
 	public function getItem(): ?CurrentEntryMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentEntryMaster|null $item Currently active Entry Model master data */
 	public function setItem(?CurrentEntryMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentEntryMaster|null $item Currently active Entry Model master data
+     * @return GetCurrentEntryMasterResult
+     */
 	public function withItem(?CurrentEntryMaster $item): GetCurrentEntryMasterResult {
 		$this->item = $item;
 		return $this;

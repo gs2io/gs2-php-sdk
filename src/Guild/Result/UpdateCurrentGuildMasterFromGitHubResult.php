@@ -20,18 +20,29 @@ namespace Gs2\Guild\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Guild\Model\CurrentGuildMaster;
 
+/**
+ * Result of updateCurrentGuildMasterFromGitHub: Update the currently active guild settings from GitHub
+ *
+ * @see https://docs.gs2.io/api_reference/guild/sdk/#updatecurrentguildmasterfromgithub
+ */
 class UpdateCurrentGuildMasterFromGitHubResult implements IResult {
-    /** @var CurrentGuildMaster */
+    /** @var CurrentGuildMaster Updated master data of the currently active Guild Models */
     private $item;
 
+    /** @return CurrentGuildMaster|null Updated master data of the currently active Guild Models */
 	public function getItem(): ?CurrentGuildMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentGuildMaster|null $item Updated master data of the currently active Guild Models */
 	public function setItem(?CurrentGuildMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentGuildMaster|null $item Updated master data of the currently active Guild Models
+     * @return UpdateCurrentGuildMasterFromGitHubResult
+     */
 	public function withItem(?CurrentGuildMaster $item): UpdateCurrentGuildMasterFromGitHubResult {
 		$this->item = $item;
 		return $this;

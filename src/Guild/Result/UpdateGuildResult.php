@@ -22,18 +22,29 @@ use Gs2\Guild\Model\RoleModel;
 use Gs2\Guild\Model\Member;
 use Gs2\Guild\Model\Guild;
 
+/**
+ * Result of updateGuild: Update Guild
+ *
+ * @see https://docs.gs2.io/api_reference/guild/sdk/#updateguild
+ */
 class UpdateGuildResult implements IResult {
-    /** @var Guild */
+    /** @var Guild Guild updated */
     private $item;
 
+    /** @return Guild|null Guild updated */
 	public function getItem(): ?Guild {
 		return $this->item;
 	}
 
+    /** @param Guild|null $item Guild updated */
 	public function setItem(?Guild $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Guild|null $item Guild updated
+     * @return UpdateGuildResult
+     */
 	public function withItem(?Guild $item): UpdateGuildResult {
 		$this->item = $item;
 		return $this;

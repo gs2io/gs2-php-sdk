@@ -19,6 +19,7 @@ namespace Gs2\Project\Result;
 
 use Gs2\Core\Model\IResult;
 
+/** Result of forget: Get password reissue token */
 class ForgetResult implements IResult {
 
     public static function fromJson(?array $data): ?ForgetResult {

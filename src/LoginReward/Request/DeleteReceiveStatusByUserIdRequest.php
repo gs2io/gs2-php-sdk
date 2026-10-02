@@ -19,53 +19,82 @@ namespace Gs2\LoginReward\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for deleteReceiveStatusByUserId: Delete Receive Status by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/login_reward/sdk/#deletereceivestatusbyuserid
+ */
 class DeleteReceiveStatusByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Bonus Model Name */
     private $bonusModelName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DeleteReceiveStatusByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DeleteReceiveStatusByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Bonus Model Name */
 	public function getBonusModelName(): ?string {
 		return $this->bonusModelName;
 	}
+    /** @param string|null $bonusModelName Bonus Model Name */
 	public function setBonusModelName(?string $bonusModelName) {
 		$this->bonusModelName = $bonusModelName;
 	}
+    /**
+     * @param string|null $bonusModelName Bonus Model Name
+     * @return DeleteReceiveStatusByUserIdRequest
+     */
 	public function withBonusModelName(?string $bonusModelName): DeleteReceiveStatusByUserIdRequest {
 		$this->bonusModelName = $bonusModelName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return DeleteReceiveStatusByUserIdRequest
+     */
 	public function withUserId(?string $userId): DeleteReceiveStatusByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return DeleteReceiveStatusByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): DeleteReceiveStatusByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

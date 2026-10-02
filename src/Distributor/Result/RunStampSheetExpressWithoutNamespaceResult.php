@@ -19,93 +19,134 @@ namespace Gs2\Distributor\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of runStampSheetExpressWithoutNamespace: Execute transactions without specifying the GS2-Distributor Namespace
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#runstampsheetexpresswithoutnamespace
+ */
 class RunStampSheetExpressWithoutNamespaceResult implements IResult {
-    /** @var array */
+    /** @var array Verify Action execution status code */
     private $verifyTaskResultCodes;
-    /** @var array */
+    /** @var array Verify Action execution results */
     private $verifyTaskResults;
-    /** @var array */
+    /** @var array Consume Action execution status code */
     private $taskResultCodes;
-    /** @var array */
+    /** @var array Consume Action execution results */
     private $taskResults;
-    /** @var int */
+    /** @var int Acquire Action execution status code */
     private $sheetResultCode;
-    /** @var string */
+    /** @var string Acquire Action execution result response content */
     private $sheetResult;
 
+    /** @return array|null Verify Action execution status code */
 	public function getVerifyTaskResultCodes(): ?array {
 		return $this->verifyTaskResultCodes;
 	}
 
+    /** @param array|null $verifyTaskResultCodes Verify Action execution status code */
 	public function setVerifyTaskResultCodes(?array $verifyTaskResultCodes) {
 		$this->verifyTaskResultCodes = $verifyTaskResultCodes;
 	}
 
+    /**
+     * @param array|null $verifyTaskResultCodes Verify Action execution status code
+     * @return RunStampSheetExpressWithoutNamespaceResult
+     */
 	public function withVerifyTaskResultCodes(?array $verifyTaskResultCodes): RunStampSheetExpressWithoutNamespaceResult {
 		$this->verifyTaskResultCodes = $verifyTaskResultCodes;
 		return $this;
 	}
 
+    /** @return array|null Verify Action execution results */
 	public function getVerifyTaskResults(): ?array {
 		return $this->verifyTaskResults;
 	}
 
+    /** @param array|null $verifyTaskResults Verify Action execution results */
 	public function setVerifyTaskResults(?array $verifyTaskResults) {
 		$this->verifyTaskResults = $verifyTaskResults;
 	}
 
+    /**
+     * @param array|null $verifyTaskResults Verify Action execution results
+     * @return RunStampSheetExpressWithoutNamespaceResult
+     */
 	public function withVerifyTaskResults(?array $verifyTaskResults): RunStampSheetExpressWithoutNamespaceResult {
 		$this->verifyTaskResults = $verifyTaskResults;
 		return $this;
 	}
 
+    /** @return array|null Consume Action execution status code */
 	public function getTaskResultCodes(): ?array {
 		return $this->taskResultCodes;
 	}
 
+    /** @param array|null $taskResultCodes Consume Action execution status code */
 	public function setTaskResultCodes(?array $taskResultCodes) {
 		$this->taskResultCodes = $taskResultCodes;
 	}
 
+    /**
+     * @param array|null $taskResultCodes Consume Action execution status code
+     * @return RunStampSheetExpressWithoutNamespaceResult
+     */
 	public function withTaskResultCodes(?array $taskResultCodes): RunStampSheetExpressWithoutNamespaceResult {
 		$this->taskResultCodes = $taskResultCodes;
 		return $this;
 	}
 
+    /** @return array|null Consume Action execution results */
 	public function getTaskResults(): ?array {
 		return $this->taskResults;
 	}
 
+    /** @param array|null $taskResults Consume Action execution results */
 	public function setTaskResults(?array $taskResults) {
 		$this->taskResults = $taskResults;
 	}
 
+    /**
+     * @param array|null $taskResults Consume Action execution results
+     * @return RunStampSheetExpressWithoutNamespaceResult
+     */
 	public function withTaskResults(?array $taskResults): RunStampSheetExpressWithoutNamespaceResult {
 		$this->taskResults = $taskResults;
 		return $this;
 	}
 
+    /** @return int|null Acquire Action execution status code */
 	public function getSheetResultCode(): ?int {
 		return $this->sheetResultCode;
 	}
 
+    /** @param int|null $sheetResultCode Acquire Action execution status code */
 	public function setSheetResultCode(?int $sheetResultCode) {
 		$this->sheetResultCode = $sheetResultCode;
 	}
 
+    /**
+     * @param int|null $sheetResultCode Acquire Action execution status code
+     * @return RunStampSheetExpressWithoutNamespaceResult
+     */
 	public function withSheetResultCode(?int $sheetResultCode): RunStampSheetExpressWithoutNamespaceResult {
 		$this->sheetResultCode = $sheetResultCode;
 		return $this;
 	}
 
+    /** @return string|null Acquire Action execution result response content */
 	public function getSheetResult(): ?string {
 		return $this->sheetResult;
 	}
 
+    /** @param string|null $sheetResult Acquire Action execution result response content */
 	public function setSheetResult(?string $sheetResult) {
 		$this->sheetResult = $sheetResult;
 	}
 
+    /**
+     * @param string|null $sheetResult Acquire Action execution result response content
+     * @return RunStampSheetExpressWithoutNamespaceResult
+     */
 	public function withSheetResult(?string $sheetResult): RunStampSheetExpressWithoutNamespaceResult {
 		$this->sheetResult = $sheetResult;
 		return $this;

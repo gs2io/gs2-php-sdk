@@ -20,18 +20,29 @@ namespace Gs2\Lottery\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Lottery\Model\CurrentLotteryMaster;
 
+/**
+ * Result of getCurrentLotteryMaster: Get currently active Lottery Model master data
+ *
+ * @see https://docs.gs2.io/api_reference/lottery/sdk/#getcurrentlotterymaster
+ */
 class GetCurrentLotteryMasterResult implements IResult {
-    /** @var CurrentLotteryMaster */
+    /** @var CurrentLotteryMaster Currently Active Lottery Model Master Data */
     private $item;
 
+    /** @return CurrentLotteryMaster|null Currently Active Lottery Model Master Data */
 	public function getItem(): ?CurrentLotteryMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentLotteryMaster|null $item Currently Active Lottery Model Master Data */
 	public function setItem(?CurrentLotteryMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentLotteryMaster|null $item Currently Active Lottery Model Master Data
+     * @return GetCurrentLotteryMasterResult
+     */
 	public function withItem(?CurrentLotteryMaster $item): GetCurrentLotteryMasterResult {
 		$this->item = $item;
 		return $this;

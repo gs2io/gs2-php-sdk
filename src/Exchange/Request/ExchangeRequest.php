@@ -20,65 +20,100 @@ namespace Gs2\Exchange\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Exchange\Model\Config;
 
+/**
+ * Request for exchange: Perform exchange
+ *
+ * @see https://docs.gs2.io/api_reference/exchange/sdk/#exchange
+ */
 class ExchangeRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Exchange Rate Model name */
     private $rateName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var int */
+    /** @var int Number of exchanges */
     private $count;
-    /** @var array */
+    /** @var array Configuration values applied to transaction variables */
     private $config;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return ExchangeRequest
+     */
 	public function withNamespaceName(?string $namespaceName): ExchangeRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Exchange Rate Model name */
 	public function getRateName(): ?string {
 		return $this->rateName;
 	}
+    /** @param string|null $rateName Exchange Rate Model name */
 	public function setRateName(?string $rateName) {
 		$this->rateName = $rateName;
 	}
+    /**
+     * @param string|null $rateName Exchange Rate Model name
+     * @return ExchangeRequest
+     */
 	public function withRateName(?string $rateName): ExchangeRequest {
 		$this->rateName = $rateName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return ExchangeRequest
+     */
 	public function withAccessToken(?string $accessToken): ExchangeRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return int|null Number of exchanges */
 	public function getCount(): ?int {
 		return $this->count;
 	}
+    /** @param int|null $count Number of exchanges */
 	public function setCount(?int $count) {
 		$this->count = $count;
 	}
+    /**
+     * @param int|null $count Number of exchanges
+     * @return ExchangeRequest
+     */
 	public function withCount(?int $count): ExchangeRequest {
 		$this->count = $count;
 		return $this;
 	}
+    /** @return array|null Configuration values applied to transaction variables */
 	public function getConfig(): ?array {
 		return $this->config;
 	}
+    /** @param array|null $config Configuration values applied to transaction variables */
 	public function setConfig(?array $config) {
 		$this->config = $config;
 	}
+    /**
+     * @param array|null $config Configuration values applied to transaction variables
+     * @return ExchangeRequest
+     */
 	public function withConfig(?array $config): ExchangeRequest {
 		$this->config = $config;
 		return $this;

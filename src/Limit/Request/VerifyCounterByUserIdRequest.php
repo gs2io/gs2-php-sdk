@@ -19,101 +19,154 @@ namespace Gs2\Limit\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for verifyCounterByUserId: Verify Counter value by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/limit/sdk/#verifycounterbyuserid
+ */
 class VerifyCounterByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Usage Limit Model Name */
     private $limitName;
-    /** @var string */
+    /** @var string Counter Name */
     private $counterName;
-    /** @var string */
+    /** @var string Type of verification */
     private $verifyType;
-    /** @var int */
+    /** @var int Count Value */
     private $count;
-    /** @var bool */
+    /** @var bool Whether to multiply the value used for verification when specifying the quantity */
     private $multiplyValueSpecifyingQuantity;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return VerifyCounterByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): VerifyCounterByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return VerifyCounterByUserIdRequest
+     */
 	public function withUserId(?string $userId): VerifyCounterByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Usage Limit Model Name */
 	public function getLimitName(): ?string {
 		return $this->limitName;
 	}
+    /** @param string|null $limitName Usage Limit Model Name */
 	public function setLimitName(?string $limitName) {
 		$this->limitName = $limitName;
 	}
+    /**
+     * @param string|null $limitName Usage Limit Model Name
+     * @return VerifyCounterByUserIdRequest
+     */
 	public function withLimitName(?string $limitName): VerifyCounterByUserIdRequest {
 		$this->limitName = $limitName;
 		return $this;
 	}
+    /** @return string|null Counter Name */
 	public function getCounterName(): ?string {
 		return $this->counterName;
 	}
+    /** @param string|null $counterName Counter Name */
 	public function setCounterName(?string $counterName) {
 		$this->counterName = $counterName;
 	}
+    /**
+     * @param string|null $counterName Counter Name
+     * @return VerifyCounterByUserIdRequest
+     */
 	public function withCounterName(?string $counterName): VerifyCounterByUserIdRequest {
 		$this->counterName = $counterName;
 		return $this;
 	}
+    /** @return string|null Type of verification */
 	public function getVerifyType(): ?string {
 		return $this->verifyType;
 	}
+    /** @param string|null $verifyType Type of verification */
 	public function setVerifyType(?string $verifyType) {
 		$this->verifyType = $verifyType;
 	}
+    /**
+     * @param string|null $verifyType Type of verification
+     * @return VerifyCounterByUserIdRequest
+     */
 	public function withVerifyType(?string $verifyType): VerifyCounterByUserIdRequest {
 		$this->verifyType = $verifyType;
 		return $this;
 	}
+    /** @return int|null Count Value */
 	public function getCount(): ?int {
 		return $this->count;
 	}
+    /** @param int|null $count Count Value */
 	public function setCount(?int $count) {
 		$this->count = $count;
 	}
+    /**
+     * @param int|null $count Count Value
+     * @return VerifyCounterByUserIdRequest
+     */
 	public function withCount(?int $count): VerifyCounterByUserIdRequest {
 		$this->count = $count;
 		return $this;
 	}
+    /** @return bool|null Whether to multiply the value used for verification when specifying the quantity */
 	public function getMultiplyValueSpecifyingQuantity(): ?bool {
 		return $this->multiplyValueSpecifyingQuantity;
 	}
+    /** @param bool|null $multiplyValueSpecifyingQuantity Whether to multiply the value used for verification when specifying the quantity */
 	public function setMultiplyValueSpecifyingQuantity(?bool $multiplyValueSpecifyingQuantity) {
 		$this->multiplyValueSpecifyingQuantity = $multiplyValueSpecifyingQuantity;
 	}
+    /**
+     * @param bool|null $multiplyValueSpecifyingQuantity Whether to multiply the value used for verification when specifying the quantity
+     * @return VerifyCounterByUserIdRequest
+     */
 	public function withMultiplyValueSpecifyingQuantity(?bool $multiplyValueSpecifyingQuantity): VerifyCounterByUserIdRequest {
 		$this->multiplyValueSpecifyingQuantity = $multiplyValueSpecifyingQuantity;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return VerifyCounterByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): VerifyCounterByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

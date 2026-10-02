@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Formation\Model\SlotModel;
 use Gs2\Formation\Model\PropertyFormModel;
 
+/**
+ * Result of describePropertyFormModels: List Property Form Models
+ *
+ * @see https://docs.gs2.io/api_reference/formation/sdk/#describepropertyformmodels
+ */
 class DescribePropertyFormModelsResult implements IResult {
-    /** @var array */
+    /** @var array List of Property Form Model name */
     private $items;
 
+    /** @return array|null List of Property Form Model name */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Property Form Model name */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Property Form Model name
+     * @return DescribePropertyFormModelsResult
+     */
 	public function withItems(?array $items): DescribePropertyFormModelsResult {
 		$this->items = $items;
 		return $this;

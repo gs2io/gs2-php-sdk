@@ -20,59 +20,88 @@ namespace Gs2\Version\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Sign Target Version
+ *
+ * @see https://docs.gs2.io/api_reference/version/sdk/#signtargetversion
+ */
 class SignTargetVersion implements IModel {
 	/**
-     * @var string
+     * @var string Region
 	 */
 	private $region;
 	/**
-     * @var string
+     * @var string Namespace name
 	 */
 	private $namespaceName;
 	/**
-     * @var string
+     * @var string Version Model name
 	 */
 	private $versionName;
 	/**
-     * @var Version
+     * @var Version Version
 	 */
 	private $version;
+    /** @return string|null Region */
 	public function getRegion(): ?string {
 		return $this->region;
 	}
+    /** @param string|null $region Region */
 	public function setRegion(?string $region) {
 		$this->region = $region;
 	}
+    /**
+     * @param string|null $region Region
+     * @return SignTargetVersion
+     */
 	public function withRegion(?string $region): SignTargetVersion {
 		$this->region = $region;
 		return $this;
 	}
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return SignTargetVersion
+     */
 	public function withNamespaceName(?string $namespaceName): SignTargetVersion {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Version Model name */
 	public function getVersionName(): ?string {
 		return $this->versionName;
 	}
+    /** @param string|null $versionName Version Model name */
 	public function setVersionName(?string $versionName) {
 		$this->versionName = $versionName;
 	}
+    /**
+     * @param string|null $versionName Version Model name
+     * @return SignTargetVersion
+     */
 	public function withVersionName(?string $versionName): SignTargetVersion {
 		$this->versionName = $versionName;
 		return $this;
 	}
+    /** @return Version|null Version */
 	public function getVersion(): ?Version {
 		return $this->version;
 	}
+    /** @param Version|null $version Version */
 	public function setVersion(?Version $version) {
 		$this->version = $version;
 	}
+    /**
+     * @param Version|null $version Version
+     * @return SignTargetVersion
+     */
 	public function withVersion(?Version $version): SignTargetVersion {
 		$this->version = $version;
 		return $this;

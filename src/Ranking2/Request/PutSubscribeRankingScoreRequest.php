@@ -19,65 +19,100 @@ namespace Gs2\Ranking2\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for putSubscribeRankingScore: Register Subscribe Ranking Score
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/sdk/#putsubscriberankingscore
+ */
 class PutSubscribeRankingScoreRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Subscribe Ranking Model name */
     private $rankingName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var int */
+    /** @var int Score */
     private $score;
-    /** @var string */
+    /** @var string Metadata */
     private $metadata;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return PutSubscribeRankingScoreRequest
+     */
 	public function withNamespaceName(?string $namespaceName): PutSubscribeRankingScoreRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Subscribe Ranking Model name */
 	public function getRankingName(): ?string {
 		return $this->rankingName;
 	}
+    /** @param string|null $rankingName Subscribe Ranking Model name */
 	public function setRankingName(?string $rankingName) {
 		$this->rankingName = $rankingName;
 	}
+    /**
+     * @param string|null $rankingName Subscribe Ranking Model name
+     * @return PutSubscribeRankingScoreRequest
+     */
 	public function withRankingName(?string $rankingName): PutSubscribeRankingScoreRequest {
 		$this->rankingName = $rankingName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return PutSubscribeRankingScoreRequest
+     */
 	public function withAccessToken(?string $accessToken): PutSubscribeRankingScoreRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return int|null Score */
 	public function getScore(): ?int {
 		return $this->score;
 	}
+    /** @param int|null $score Score */
 	public function setScore(?int $score) {
 		$this->score = $score;
 	}
+    /**
+     * @param int|null $score Score
+     * @return PutSubscribeRankingScoreRequest
+     */
 	public function withScore(?int $score): PutSubscribeRankingScoreRequest {
 		$this->score = $score;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return PutSubscribeRankingScoreRequest
+     */
 	public function withMetadata(?string $metadata): PutSubscribeRankingScoreRequest {
 		$this->metadata = $metadata;
 		return $this;

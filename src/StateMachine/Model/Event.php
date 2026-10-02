@@ -20,45 +20,68 @@ namespace Gs2\StateMachine\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Event
+ *
+ * @see https://docs.gs2.io/api_reference/state_machine/sdk/#event
+ */
 class Event implements IModel {
 	/**
-     * @var string
+     * @var string Event type
 	 */
 	private $eventType;
 	/**
-     * @var ChangeStateEvent
+     * @var ChangeStateEvent Change state
 	 */
 	private $changeStateEvent;
 	/**
-     * @var EmitEvent
+     * @var EmitEvent Send a message
 	 */
 	private $emitEvent;
+    /** @return string|null Event type */
 	public function getEventType(): ?string {
 		return $this->eventType;
 	}
+    /** @param string|null $eventType Event type */
 	public function setEventType(?string $eventType) {
 		$this->eventType = $eventType;
 	}
+    /**
+     * @param string|null $eventType Event type
+     * @return Event
+     */
 	public function withEventType(?string $eventType): Event {
 		$this->eventType = $eventType;
 		return $this;
 	}
+    /** @return ChangeStateEvent|null Change state */
 	public function getChangeStateEvent(): ?ChangeStateEvent {
 		return $this->changeStateEvent;
 	}
+    /** @param ChangeStateEvent|null $changeStateEvent Change state */
 	public function setChangeStateEvent(?ChangeStateEvent $changeStateEvent) {
 		$this->changeStateEvent = $changeStateEvent;
 	}
+    /**
+     * @param ChangeStateEvent|null $changeStateEvent Change state
+     * @return Event
+     */
 	public function withChangeStateEvent(?ChangeStateEvent $changeStateEvent): Event {
 		$this->changeStateEvent = $changeStateEvent;
 		return $this;
 	}
+    /** @return EmitEvent|null Send a message */
 	public function getEmitEvent(): ?EmitEvent {
 		return $this->emitEvent;
 	}
+    /** @param EmitEvent|null $emitEvent Send a message */
 	public function setEmitEvent(?EmitEvent $emitEvent) {
 		$this->emitEvent = $emitEvent;
 	}
+    /**
+     * @param EmitEvent|null $emitEvent Send a message
+     * @return Event
+     */
 	public function withEmitEvent(?EmitEvent $emitEvent): Event {
 		$this->emitEvent = $emitEvent;
 		return $this;

@@ -2252,25 +2252,22 @@ class ActionByUserIdTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 MegaField API クライアント
+ * GS2-MegaField API client
  *
- * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/mega_field/sdk/
  */
 class Gs2MegaFieldRestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#describenamespaces
      */
     public function describeNamespacesAsync(
             DescribeNamespacesRequest $request
@@ -2284,8 +2281,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#describenamespaces
      */
     public function describeNamespaces (
             DescribeNamespacesRequest $request
@@ -2296,8 +2296,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#createnamespace
      */
     public function createNamespaceAsync(
             CreateNamespaceRequest $request
@@ -2311,8 +2314,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#createnamespace
      */
     public function createNamespace (
             CreateNamespaceRequest $request
@@ -2323,8 +2329,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#getnamespacestatus
      */
     public function getNamespaceStatusAsync(
             GetNamespaceStatusRequest $request
@@ -2338,8 +2347,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#getnamespacestatus
      */
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
@@ -2350,8 +2362,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#getnamespace
      */
     public function getNamespaceAsync(
             GetNamespaceRequest $request
@@ -2365,8 +2380,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#getnamespace
      */
     public function getNamespace (
             GetNamespaceRequest $request
@@ -2377,8 +2395,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#updatenamespace
      */
     public function updateNamespaceAsync(
             UpdateNamespaceRequest $request
@@ -2392,8 +2413,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#updatenamespace
      */
     public function updateNamespace (
             UpdateNamespaceRequest $request
@@ -2404,8 +2428,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#deletenamespace
      */
     public function deleteNamespaceAsync(
             DeleteNamespaceRequest $request
@@ -2419,8 +2446,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#deletenamespace
      */
     public function deleteNamespace (
             DeleteNamespaceRequest $request
@@ -2431,8 +2461,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#getserviceversion
      */
     public function getServiceVersionAsync(
             GetServiceVersionRequest $request
@@ -2446,8 +2479,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Microservice Version
+     *
      * @param GetServiceVersionRequest $request
      * @return GetServiceVersionResult
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#getserviceversion
      */
     public function getServiceVersion (
             GetServiceVersionRequest $request
@@ -2458,8 +2494,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Area Models
+     *
      * @param DescribeAreaModelsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#describeareamodels
      */
     public function describeAreaModelsAsync(
             DescribeAreaModelsRequest $request
@@ -2473,8 +2512,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Area Models
+     *
      * @param DescribeAreaModelsRequest $request
      * @return DescribeAreaModelsResult
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#describeareamodels
      */
     public function describeAreaModels (
             DescribeAreaModelsRequest $request
@@ -2485,8 +2527,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Area Model
+     *
      * @param GetAreaModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#getareamodel
      */
     public function getAreaModelAsync(
             GetAreaModelRequest $request
@@ -2500,8 +2545,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Area Model
+     *
      * @param GetAreaModelRequest $request
      * @return GetAreaModelResult
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#getareamodel
      */
     public function getAreaModel (
             GetAreaModelRequest $request
@@ -2512,8 +2560,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Area Model Masters
+     *
      * @param DescribeAreaModelMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#describeareamodelmasters
      */
     public function describeAreaModelMastersAsync(
             DescribeAreaModelMastersRequest $request
@@ -2527,8 +2578,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Area Model Masters
+     *
      * @param DescribeAreaModelMastersRequest $request
      * @return DescribeAreaModelMastersResult
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#describeareamodelmasters
      */
     public function describeAreaModelMasters (
             DescribeAreaModelMastersRequest $request
@@ -2539,8 +2593,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Area Model Master
+     *
      * @param CreateAreaModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#createareamodelmaster
      */
     public function createAreaModelMasterAsync(
             CreateAreaModelMasterRequest $request
@@ -2554,8 +2611,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Area Model Master
+     *
      * @param CreateAreaModelMasterRequest $request
      * @return CreateAreaModelMasterResult
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#createareamodelmaster
      */
     public function createAreaModelMaster (
             CreateAreaModelMasterRequest $request
@@ -2566,8 +2626,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Area Model Master
+     *
      * @param GetAreaModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#getareamodelmaster
      */
     public function getAreaModelMasterAsync(
             GetAreaModelMasterRequest $request
@@ -2581,8 +2644,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Area Model Master
+     *
      * @param GetAreaModelMasterRequest $request
      * @return GetAreaModelMasterResult
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#getareamodelmaster
      */
     public function getAreaModelMaster (
             GetAreaModelMasterRequest $request
@@ -2593,8 +2659,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Area Model Master
+     *
      * @param UpdateAreaModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#updateareamodelmaster
      */
     public function updateAreaModelMasterAsync(
             UpdateAreaModelMasterRequest $request
@@ -2608,8 +2677,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Area Model Master
+     *
      * @param UpdateAreaModelMasterRequest $request
      * @return UpdateAreaModelMasterResult
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#updateareamodelmaster
      */
     public function updateAreaModelMaster (
             UpdateAreaModelMasterRequest $request
@@ -2620,8 +2692,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Area Model Master
+     *
      * @param DeleteAreaModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#deleteareamodelmaster
      */
     public function deleteAreaModelMasterAsync(
             DeleteAreaModelMasterRequest $request
@@ -2635,8 +2710,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Area Model Master
+     *
      * @param DeleteAreaModelMasterRequest $request
      * @return DeleteAreaModelMasterResult
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#deleteareamodelmaster
      */
     public function deleteAreaModelMaster (
             DeleteAreaModelMasterRequest $request
@@ -2647,8 +2725,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Layer Models
+     *
      * @param DescribeLayerModelsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#describelayermodels
      */
     public function describeLayerModelsAsync(
             DescribeLayerModelsRequest $request
@@ -2662,8 +2743,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Layer Models
+     *
      * @param DescribeLayerModelsRequest $request
      * @return DescribeLayerModelsResult
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#describelayermodels
      */
     public function describeLayerModels (
             DescribeLayerModelsRequest $request
@@ -2674,8 +2758,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Layer Model
+     *
      * @param GetLayerModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#getlayermodel
      */
     public function getLayerModelAsync(
             GetLayerModelRequest $request
@@ -2689,8 +2776,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Layer Model
+     *
      * @param GetLayerModelRequest $request
      * @return GetLayerModelResult
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#getlayermodel
      */
     public function getLayerModel (
             GetLayerModelRequest $request
@@ -2701,8 +2791,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Layer Model Masters
+     *
      * @param DescribeLayerModelMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#describelayermodelmasters
      */
     public function describeLayerModelMastersAsync(
             DescribeLayerModelMastersRequest $request
@@ -2716,8 +2809,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Layer Model Masters
+     *
      * @param DescribeLayerModelMastersRequest $request
      * @return DescribeLayerModelMastersResult
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#describelayermodelmasters
      */
     public function describeLayerModelMasters (
             DescribeLayerModelMastersRequest $request
@@ -2728,8 +2824,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Layer Model Master
+     *
      * @param CreateLayerModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#createlayermodelmaster
      */
     public function createLayerModelMasterAsync(
             CreateLayerModelMasterRequest $request
@@ -2743,8 +2842,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Layer Model Master
+     *
      * @param CreateLayerModelMasterRequest $request
      * @return CreateLayerModelMasterResult
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#createlayermodelmaster
      */
     public function createLayerModelMaster (
             CreateLayerModelMasterRequest $request
@@ -2755,8 +2857,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Layer Model Master
+     *
      * @param GetLayerModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#getlayermodelmaster
      */
     public function getLayerModelMasterAsync(
             GetLayerModelMasterRequest $request
@@ -2770,8 +2875,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Layer Model Master
+     *
      * @param GetLayerModelMasterRequest $request
      * @return GetLayerModelMasterResult
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#getlayermodelmaster
      */
     public function getLayerModelMaster (
             GetLayerModelMasterRequest $request
@@ -2782,8 +2890,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Layer Model Master
+     *
      * @param UpdateLayerModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#updatelayermodelmaster
      */
     public function updateLayerModelMasterAsync(
             UpdateLayerModelMasterRequest $request
@@ -2797,8 +2908,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Layer Model Master
+     *
      * @param UpdateLayerModelMasterRequest $request
      * @return UpdateLayerModelMasterResult
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#updatelayermodelmaster
      */
     public function updateLayerModelMaster (
             UpdateLayerModelMasterRequest $request
@@ -2809,8 +2923,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Layer Model Master
+     *
      * @param DeleteLayerModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#deletelayermodelmaster
      */
     public function deleteLayerModelMasterAsync(
             DeleteLayerModelMasterRequest $request
@@ -2824,8 +2941,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Layer Model Master
+     *
      * @param DeleteLayerModelMasterRequest $request
      * @return DeleteLayerModelMasterResult
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#deletelayermodelmaster
      */
     public function deleteLayerModelMaster (
             DeleteLayerModelMasterRequest $request
@@ -2836,8 +2956,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#exportmaster
      */
     public function exportMasterAsync(
             ExportMasterRequest $request
@@ -2851,8 +2974,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return ExportMasterResult
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#exportmaster
      */
     public function exportMaster (
             ExportMasterRequest $request
@@ -2863,8 +2989,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Field Model master data
+     *
      * @param GetCurrentFieldMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#getcurrentfieldmaster
      */
     public function getCurrentFieldMasterAsync(
             GetCurrentFieldMasterRequest $request
@@ -2878,8 +3007,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Field Model master data
+     *
      * @param GetCurrentFieldMasterRequest $request
      * @return GetCurrentFieldMasterResult
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#getcurrentfieldmaster
      */
     public function getCurrentFieldMaster (
             GetCurrentFieldMasterRequest $request
@@ -2890,8 +3022,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Field Model master data (3-phase version)
+     *
      * @param PreUpdateCurrentFieldMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#preupdatecurrentfieldmaster
      */
     public function preUpdateCurrentFieldMasterAsync(
             PreUpdateCurrentFieldMasterRequest $request
@@ -2905,8 +3040,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Field Model master data (3-phase version)
+     *
      * @param PreUpdateCurrentFieldMasterRequest $request
      * @return PreUpdateCurrentFieldMasterResult
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#preupdatecurrentfieldmaster
      */
     public function preUpdateCurrentFieldMaster (
             PreUpdateCurrentFieldMasterRequest $request
@@ -2917,8 +3055,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Field Model master data
+     *
      * @param UpdateCurrentFieldMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#updatecurrentfieldmaster
      */
     public function updateCurrentFieldMasterAsync(
             UpdateCurrentFieldMasterRequest $request
@@ -2932,8 +3073,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Field Model master data
+     *
      * @param UpdateCurrentFieldMasterRequest $request
      * @return UpdateCurrentFieldMasterResult
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#updatecurrentfieldmaster
      */
     public function updateCurrentFieldMaster (
             UpdateCurrentFieldMasterRequest $request
@@ -2944,8 +3088,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Field Model master data from GitHub
+     *
      * @param UpdateCurrentFieldMasterFromGitHubRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#updatecurrentfieldmasterfromgithub
      */
     public function updateCurrentFieldMasterFromGitHubAsync(
             UpdateCurrentFieldMasterFromGitHubRequest $request
@@ -2959,8 +3106,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Field Model master data from GitHub
+     *
      * @param UpdateCurrentFieldMasterFromGitHubRequest $request
      * @return UpdateCurrentFieldMasterFromGitHubResult
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#updatecurrentfieldmasterfromgithub
      */
     public function updateCurrentFieldMasterFromGitHub (
             UpdateCurrentFieldMasterFromGitHubRequest $request
@@ -2971,8 +3121,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Put position
+     *
      * @param PutPositionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#putposition
      */
     public function putPositionAsync(
             PutPositionRequest $request
@@ -2986,8 +3139,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Put position
+     *
      * @param PutPositionRequest $request
      * @return PutPositionResult
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#putposition
      */
     public function putPosition (
             PutPositionRequest $request
@@ -2998,8 +3154,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Put position by User ID
+     *
      * @param PutPositionByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#putpositionbyuserid
      */
     public function putPositionByUserIdAsync(
             PutPositionByUserIdRequest $request
@@ -3013,8 +3172,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Put position by User ID
+     *
      * @param PutPositionByUserIdRequest $request
      * @return PutPositionByUserIdResult
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#putpositionbyuserid
      */
     public function putPositionByUserId (
             PutPositionByUserIdRequest $request
@@ -3025,8 +3187,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Fetch position
+     *
      * @param FetchPositionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#fetchposition
      */
     public function fetchPositionAsync(
             FetchPositionRequest $request
@@ -3040,8 +3205,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Fetch position
+     *
      * @param FetchPositionRequest $request
      * @return FetchPositionResult
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#fetchposition
      */
     public function fetchPosition (
             FetchPositionRequest $request
@@ -3052,8 +3220,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Fetch position
+     *
      * @param FetchPositionFromSystemRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#fetchpositionfromsystem
      */
     public function fetchPositionFromSystemAsync(
             FetchPositionFromSystemRequest $request
@@ -3067,8 +3238,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Fetch position
+     *
      * @param FetchPositionFromSystemRequest $request
      * @return FetchPositionFromSystemResult
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#fetchpositionfromsystem
      */
     public function fetchPositionFromSystem (
             FetchPositionFromSystemRequest $request
@@ -3079,8 +3253,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Fetch list of nearby user IDs
+     *
      * @param NearUserIdsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#nearuserids
      */
     public function nearUserIdsAsync(
             NearUserIdsRequest $request
@@ -3094,8 +3271,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Fetch list of nearby user IDs
+     *
      * @param NearUserIdsRequest $request
      * @return NearUserIdsResult
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#nearuserids
      */
     public function nearUserIds (
             NearUserIdsRequest $request
@@ -3106,8 +3286,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Fetch list of nearby user IDs
+     *
      * @param NearUserIdsFromSystemRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#nearuseridsfromsystem
      */
     public function nearUserIdsFromSystemAsync(
             NearUserIdsFromSystemRequest $request
@@ -3121,8 +3304,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Fetch list of nearby user IDs
+     *
      * @param NearUserIdsFromSystemRequest $request
      * @return NearUserIdsFromSystemResult
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#nearuseridsfromsystem
      */
     public function nearUserIdsFromSystem (
             NearUserIdsFromSystemRequest $request
@@ -3133,8 +3319,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Put position
+     *
      * @param ActionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#action
      */
     public function actionAsync(
             ActionRequest $request
@@ -3148,8 +3337,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Put position
+     *
      * @param ActionRequest $request
      * @return ActionResult
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#action
      */
     public function action (
             ActionRequest $request
@@ -3160,8 +3352,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Put position by User ID
+     *
      * @param ActionByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#actionbyuserid
      */
     public function actionByUserIdAsync(
             ActionByUserIdRequest $request
@@ -3175,8 +3370,11 @@ class Gs2MegaFieldRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Put position by User ID
+     *
      * @param ActionByUserIdRequest $request
      * @return ActionByUserIdResult
+     * @see https://docs.gs2.io/api_reference/mega_field/sdk/#actionbyuserid
      */
     public function actionByUserId (
             ActionByUserIdRequest $request

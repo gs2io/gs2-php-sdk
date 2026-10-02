@@ -20,45 +20,68 @@ namespace Gs2\MegaField\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * My Location
+ *
+ * @see https://docs.gs2.io/api_reference/mega_field/sdk/#myposition
+ */
 class MyPosition implements IModel {
 	/**
-     * @var Position
+     * @var Position Position
 	 */
 	private $position;
 	/**
-     * @var Vector
+     * @var Vector Vector
 	 */
 	private $vector;
 	/**
-     * @var float
+     * @var float Radius
 	 */
 	private $r;
+    /** @return Position|null Position */
 	public function getPosition(): ?Position {
 		return $this->position;
 	}
+    /** @param Position|null $position Position */
 	public function setPosition(?Position $position) {
 		$this->position = $position;
 	}
+    /**
+     * @param Position|null $position Position
+     * @return MyPosition
+     */
 	public function withPosition(?Position $position): MyPosition {
 		$this->position = $position;
 		return $this;
 	}
+    /** @return Vector|null Vector */
 	public function getVector(): ?Vector {
 		return $this->vector;
 	}
+    /** @param Vector|null $vector Vector */
 	public function setVector(?Vector $vector) {
 		$this->vector = $vector;
 	}
+    /**
+     * @param Vector|null $vector Vector
+     * @return MyPosition
+     */
 	public function withVector(?Vector $vector): MyPosition {
 		$this->vector = $vector;
 		return $this;
 	}
+    /** @return float|null Radius */
 	public function getR(): ?float {
 		return $this->r;
 	}
+    /** @param float|null $r Radius */
 	public function setR(?float $r) {
 		$this->r = $r;
 	}
+    /**
+     * @param float|null $r Radius
+     * @return MyPosition
+     */
 	public function withR(?float $r): MyPosition {
 		$this->r = $r;
 		return $this;

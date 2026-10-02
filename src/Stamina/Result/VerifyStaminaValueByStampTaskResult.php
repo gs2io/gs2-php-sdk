@@ -20,33 +20,50 @@ namespace Gs2\Stamina\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Stamina\Model\Stamina;
 
+/**
+ * Result of verifyStaminaValueByStampTask: Verify the current value of stamina as a verification action
+ *
+ * @see https://docs.gs2.io/api_reference/stamina/stamp_sheet/#gs2staminaverifystaminavaluebyuserid
+ */
 class VerifyStaminaValueByStampTaskResult implements IResult {
-    /** @var Stamina */
+    /** @var Stamina Stamina */
     private $item;
-    /** @var string */
+    /** @var string Context recording the execution results of verification actions */
     private $newContextStack;
 
+    /** @return Stamina|null Stamina */
 	public function getItem(): ?Stamina {
 		return $this->item;
 	}
 
+    /** @param Stamina|null $item Stamina */
 	public function setItem(?Stamina $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Stamina|null $item Stamina
+     * @return VerifyStaminaValueByStampTaskResult
+     */
 	public function withItem(?Stamina $item): VerifyStaminaValueByStampTaskResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null Context recording the execution results of verification actions */
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
+    /** @param string|null $newContextStack Context recording the execution results of verification actions */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
+    /**
+     * @param string|null $newContextStack Context recording the execution results of verification actions
+     * @return VerifyStaminaValueByStampTaskResult
+     */
 	public function withNewContextStack(?string $newContextStack): VerifyStaminaValueByStampTaskResult {
 		$this->newContextStack = $newContextStack;
 		return $this;

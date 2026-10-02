@@ -19,27 +19,44 @@ namespace Gs2\Enhance\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for directEnhanceByStampSheet: Execute enhancement as an acquire action
+ *
+ * @see https://docs.gs2.io/api_reference/enhance/stamp_sheet/#gs2enhancedirectenhancebyuserid
+ */
 class DirectEnhanceByStampSheetRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Transaction */
     private $stampSheet;
-    /** @var string */
+    /** @var string Encryption Key GRN */
     private $keyId;
+    /** @return string|null Transaction */
 	public function getStampSheet(): ?string {
 		return $this->stampSheet;
 	}
+    /** @param string|null $stampSheet Transaction */
 	public function setStampSheet(?string $stampSheet) {
 		$this->stampSheet = $stampSheet;
 	}
+    /**
+     * @param string|null $stampSheet Transaction
+     * @return DirectEnhanceByStampSheetRequest
+     */
 	public function withStampSheet(?string $stampSheet): DirectEnhanceByStampSheetRequest {
 		$this->stampSheet = $stampSheet;
 		return $this;
 	}
+    /** @return string|null Encryption Key GRN */
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
+    /** @param string|null $keyId Encryption Key GRN */
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
+    /**
+     * @param string|null $keyId Encryption Key GRN
+     * @return DirectEnhanceByStampSheetRequest
+     */
 	public function withKeyId(?string $keyId): DirectEnhanceByStampSheetRequest {
 		$this->keyId = $keyId;
 		return $this;

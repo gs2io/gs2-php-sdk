@@ -20,31 +20,48 @@ namespace Gs2\Log\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Timeseries Value
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#timeseriesvalue
+ */
 class TimeseriesValue implements IModel {
 	/**
-     * @var string
+     * @var string Group key (\"count\" if no grouping)
 	 */
 	private $key;
 	/**
-     * @var float
+     * @var float Aggregated value
 	 */
 	private $value;
+    /** @return string|null Group key (\"count\" if no grouping) */
 	public function getKey(): ?string {
 		return $this->key;
 	}
+    /** @param string|null $key Group key (\"count\" if no grouping) */
 	public function setKey(?string $key) {
 		$this->key = $key;
 	}
+    /**
+     * @param string|null $key Group key (\"count\" if no grouping)
+     * @return TimeseriesValue
+     */
 	public function withKey(?string $key): TimeseriesValue {
 		$this->key = $key;
 		return $this;
 	}
+    /** @return float|null Aggregated value */
 	public function getValue(): ?float {
 		return $this->value;
 	}
+    /** @param float|null $value Aggregated value */
 	public function setValue(?float $value) {
 		$this->value = $value;
 	}
+    /**
+     * @param float|null $value Aggregated value
+     * @return TimeseriesValue
+     */
 	public function withValue(?float $value): TimeseriesValue {
 		$this->value = $value;
 		return $this;

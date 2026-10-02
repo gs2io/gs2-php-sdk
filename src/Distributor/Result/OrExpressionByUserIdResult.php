@@ -19,6 +19,11 @@ namespace Gs2\Distributor\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of orExpressionByUserId: Perform multiple verification actions and determine if any are true
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#orexpressionbyuserid
+ */
 class OrExpressionByUserIdResult implements IResult {
 
     public static function fromJson(?array $data): ?OrExpressionByUserIdResult {

@@ -28,33 +28,50 @@ use Gs2\Money2\Model\WithdrawEvent;
 use Gs2\Money2\Model\RefundEvent;
 use Gs2\Money2\Model\Event;
 
+/**
+ * Result of verifyReceiptByStampTask: Execute receipt verification as a consume action within a distributed transaction
+ *
+ * @see https://docs.gs2.io/api_reference/money2/stamp_sheet/#gs2money2verifyreceiptbyuserid
+ */
 class VerifyReceiptByStampTaskResult implements IResult {
-    /** @var Event */
+    /** @var Event Event */
     private $item;
-    /** @var string */
+    /** @var string Context recording the execution results of Consume Actions */
     private $newContextStack;
 
+    /** @return Event|null Event */
 	public function getItem(): ?Event {
 		return $this->item;
 	}
 
+    /** @param Event|null $item Event */
 	public function setItem(?Event $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Event|null $item Event
+     * @return VerifyReceiptByStampTaskResult
+     */
 	public function withItem(?Event $item): VerifyReceiptByStampTaskResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null Context recording the execution results of Consume Actions */
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
+    /** @param string|null $newContextStack Context recording the execution results of Consume Actions */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
+    /**
+     * @param string|null $newContextStack Context recording the execution results of Consume Actions
+     * @return VerifyReceiptByStampTaskResult
+     */
 	public function withNewContextStack(?string $newContextStack): VerifyReceiptByStampTaskResult {
 		$this->newContextStack = $newContextStack;
 		return $this;

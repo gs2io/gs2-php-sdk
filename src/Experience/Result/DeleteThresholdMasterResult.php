@@ -20,18 +20,29 @@ namespace Gs2\Experience\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Experience\Model\ThresholdMaster;
 
+/**
+ * Result of deleteThresholdMaster: Delete Rank Up Threshold Master
+ *
+ * @see https://docs.gs2.io/api_reference/experience/sdk/#deletethresholdmaster
+ */
 class DeleteThresholdMasterResult implements IResult {
-    /** @var ThresholdMaster */
+    /** @var ThresholdMaster Rank Up Threshold Master deleted */
     private $item;
 
+    /** @return ThresholdMaster|null Rank Up Threshold Master deleted */
 	public function getItem(): ?ThresholdMaster {
 		return $this->item;
 	}
 
+    /** @param ThresholdMaster|null $item Rank Up Threshold Master deleted */
 	public function setItem(?ThresholdMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param ThresholdMaster|null $item Rank Up Threshold Master deleted
+     * @return DeleteThresholdMasterResult
+     */
 	public function withItem(?ThresholdMaster $item): DeleteThresholdMasterResult {
 		$this->item = $item;
 		return $this;

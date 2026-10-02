@@ -20,101 +20,148 @@ namespace Gs2\Gateway\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Send Notification Entry
+ *
+ * @see https://docs.gs2.io/api_reference/gateway/sdk/#sendnotificationentry
+ */
 class SendNotificationEntry implements IModel {
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var string
+     * @var string Notification source service
 	 */
 	private $issuer;
 	/**
-     * @var string
+     * @var string Subject
 	 */
 	private $subject;
 	/**
-     * @var string
+     * @var string Payload
 	 */
 	private $payload;
 	/**
-     * @var bool
+     * @var bool Whether to forward the notification as a mobile push notification when the target user is offline
 	 */
 	private $enableTransferMobileNotification;
 	/**
-     * @var string
+     * @var string Name of the audio file to play
 	 */
 	private $sound;
 	/**
-     * @var array
+     * @var array Localized title and body used when forwarding to mobile push notifications
 	 */
 	private $mobileNotificationMessages;
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return SendNotificationEntry
+     */
 	public function withUserId(?string $userId): SendNotificationEntry {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Notification source service */
 	public function getIssuer(): ?string {
 		return $this->issuer;
 	}
+    /** @param string|null $issuer Notification source service */
 	public function setIssuer(?string $issuer) {
 		$this->issuer = $issuer;
 	}
+    /**
+     * @param string|null $issuer Notification source service
+     * @return SendNotificationEntry
+     */
 	public function withIssuer(?string $issuer): SendNotificationEntry {
 		$this->issuer = $issuer;
 		return $this;
 	}
+    /** @return string|null Subject */
 	public function getSubject(): ?string {
 		return $this->subject;
 	}
+    /** @param string|null $subject Subject */
 	public function setSubject(?string $subject) {
 		$this->subject = $subject;
 	}
+    /**
+     * @param string|null $subject Subject
+     * @return SendNotificationEntry
+     */
 	public function withSubject(?string $subject): SendNotificationEntry {
 		$this->subject = $subject;
 		return $this;
 	}
+    /** @return string|null Payload */
 	public function getPayload(): ?string {
 		return $this->payload;
 	}
+    /** @param string|null $payload Payload */
 	public function setPayload(?string $payload) {
 		$this->payload = $payload;
 	}
+    /**
+     * @param string|null $payload Payload
+     * @return SendNotificationEntry
+     */
 	public function withPayload(?string $payload): SendNotificationEntry {
 		$this->payload = $payload;
 		return $this;
 	}
+    /** @return bool|null Whether to forward the notification as a mobile push notification when the target user is offline */
 	public function getEnableTransferMobileNotification(): ?bool {
 		return $this->enableTransferMobileNotification;
 	}
+    /** @param bool|null $enableTransferMobileNotification Whether to forward the notification as a mobile push notification when the target user is offline */
 	public function setEnableTransferMobileNotification(?bool $enableTransferMobileNotification) {
 		$this->enableTransferMobileNotification = $enableTransferMobileNotification;
 	}
+    /**
+     * @param bool|null $enableTransferMobileNotification Whether to forward the notification as a mobile push notification when the target user is offline
+     * @return SendNotificationEntry
+     */
 	public function withEnableTransferMobileNotification(?bool $enableTransferMobileNotification): SendNotificationEntry {
 		$this->enableTransferMobileNotification = $enableTransferMobileNotification;
 		return $this;
 	}
+    /** @return string|null Name of the audio file to play */
 	public function getSound(): ?string {
 		return $this->sound;
 	}
+    /** @param string|null $sound Name of the audio file to play */
 	public function setSound(?string $sound) {
 		$this->sound = $sound;
 	}
+    /**
+     * @param string|null $sound Name of the audio file to play
+     * @return SendNotificationEntry
+     */
 	public function withSound(?string $sound): SendNotificationEntry {
 		$this->sound = $sound;
 		return $this;
 	}
+    /** @return array|null Localized title and body used when forwarding to mobile push notifications */
 	public function getMobileNotificationMessages(): ?array {
 		return $this->mobileNotificationMessages;
 	}
+    /** @param array|null $mobileNotificationMessages Localized title and body used when forwarding to mobile push notifications */
 	public function setMobileNotificationMessages(?array $mobileNotificationMessages) {
 		$this->mobileNotificationMessages = $mobileNotificationMessages;
 	}
+    /**
+     * @param array|null $mobileNotificationMessages Localized title and body used when forwarding to mobile push notifications
+     * @return SendNotificationEntry
+     */
 	public function withMobileNotificationMessages(?array $mobileNotificationMessages): SendNotificationEntry {
 		$this->mobileNotificationMessages = $mobileNotificationMessages;
 		return $this;

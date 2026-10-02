@@ -20,18 +20,29 @@ namespace Gs2\Deploy\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Deploy\Model\Event;
 
+/**
+ * Result of getEvent: Get Event
+ *
+ * @see https://docs.gs2.io/api_reference/deploy/sdk/#getevent
+ */
 class GetEventResult implements IResult {
-    /** @var Event */
+    /** @var Event Event */
     private $item;
 
+    /** @return Event|null Event */
 	public function getItem(): ?Event {
 		return $this->item;
 	}
 
+    /** @param Event|null $item Event */
 	public function setItem(?Event $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Event|null $item Event
+     * @return GetEventResult
+     */
 	public function withItem(?Event $item): GetEventResult {
 		$this->item = $item;
 		return $this;

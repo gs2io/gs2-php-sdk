@@ -22,18 +22,29 @@ use Gs2\Mission\Model\VerifyAction;
 use Gs2\Mission\Model\CounterScopeModel;
 use Gs2\Mission\Model\CounterModelMaster;
 
+/**
+ * Result of getCounterModelMaster: Get Counter Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#getcountermodelmaster
+ */
 class GetCounterModelMasterResult implements IResult {
-    /** @var CounterModelMaster */
+    /** @var CounterModelMaster Counter Model Master */
     private $item;
 
+    /** @return CounterModelMaster|null Counter Model Master */
 	public function getItem(): ?CounterModelMaster {
 		return $this->item;
 	}
 
+    /** @param CounterModelMaster|null $item Counter Model Master */
 	public function setItem(?CounterModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CounterModelMaster|null $item Counter Model Master
+     * @return GetCounterModelMasterResult
+     */
 	public function withItem(?CounterModelMaster $item): GetCounterModelMasterResult {
 		$this->item = $item;
 		return $this;

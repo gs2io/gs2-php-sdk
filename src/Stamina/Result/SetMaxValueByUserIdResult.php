@@ -24,48 +24,71 @@ use Gs2\Stamina\Model\RecoverIntervalTable;
 use Gs2\Stamina\Model\RecoverValueTable;
 use Gs2\Stamina\Model\StaminaModel;
 
+/**
+ * Result of setMaxValueByUserId: Update the maximum value of stamina by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/stamina/sdk/#setmaxvaluebyuserid
+ */
 class SetMaxValueByUserIdResult implements IResult {
-    /** @var Stamina */
+    /** @var Stamina Stamina */
     private $item;
-    /** @var Stamina */
+    /** @var Stamina Stamina */
     private $old;
-    /** @var StaminaModel */
+    /** @var StaminaModel Stamina Model */
     private $staminaModel;
 
+    /** @return Stamina|null Stamina */
 	public function getItem(): ?Stamina {
 		return $this->item;
 	}
 
+    /** @param Stamina|null $item Stamina */
 	public function setItem(?Stamina $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Stamina|null $item Stamina
+     * @return SetMaxValueByUserIdResult
+     */
 	public function withItem(?Stamina $item): SetMaxValueByUserIdResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return Stamina|null Stamina */
 	public function getOld(): ?Stamina {
 		return $this->old;
 	}
 
+    /** @param Stamina|null $old Stamina */
 	public function setOld(?Stamina $old) {
 		$this->old = $old;
 	}
 
+    /**
+     * @param Stamina|null $old Stamina
+     * @return SetMaxValueByUserIdResult
+     */
 	public function withOld(?Stamina $old): SetMaxValueByUserIdResult {
 		$this->old = $old;
 		return $this;
 	}
 
+    /** @return StaminaModel|null Stamina Model */
 	public function getStaminaModel(): ?StaminaModel {
 		return $this->staminaModel;
 	}
 
+    /** @param StaminaModel|null $staminaModel Stamina Model */
 	public function setStaminaModel(?StaminaModel $staminaModel) {
 		$this->staminaModel = $staminaModel;
 	}
 
+    /**
+     * @param StaminaModel|null $staminaModel Stamina Model
+     * @return SetMaxValueByUserIdResult
+     */
 	public function withStaminaModel(?StaminaModel $staminaModel): SetMaxValueByUserIdResult {
 		$this->staminaModel = $staminaModel;
 		return $this;

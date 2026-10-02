@@ -19,51 +19,80 @@ namespace Gs2\Account\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getPlatformIdByUserId: Get External Platform Account ID by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/account/sdk/#getplatformidbyuserid
+ */
 class GetPlatformIdByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string GS2-Account User ID */
     private $userId;
-    /** @var int */
+    /** @var int Slot Number */
     private $type;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetPlatformIdByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetPlatformIdByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null GS2-Account User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId GS2-Account User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId GS2-Account User ID
+     * @return GetPlatformIdByUserIdRequest
+     */
 	public function withUserId(?string $userId): GetPlatformIdByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return int|null Slot Number */
 	public function getType(): ?int {
 		return $this->type;
 	}
+    /** @param int|null $type Slot Number */
 	public function setType(?int $type) {
 		$this->type = $type;
 	}
+    /**
+     * @param int|null $type Slot Number
+     * @return GetPlatformIdByUserIdRequest
+     */
 	public function withType(?int $type): GetPlatformIdByUserIdRequest {
 		$this->type = $type;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return GetPlatformIdByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): GetPlatformIdByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

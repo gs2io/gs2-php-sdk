@@ -20,31 +20,48 @@ namespace Gs2\Money\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Wallet Detail
+ *
+ * @see https://docs.gs2.io/api_reference/money/sdk/#walletdetail
+ */
 class WalletDetail implements IModel {
 	/**
-     * @var float
+     * @var float Unit Price
 	 */
 	private $price;
 	/**
-     * @var int
+     * @var int Count
 	 */
 	private $count;
+    /** @return float|null Unit Price */
 	public function getPrice(): ?float {
 		return $this->price;
 	}
+    /** @param float|null $price Unit Price */
 	public function setPrice(?float $price) {
 		$this->price = $price;
 	}
+    /**
+     * @param float|null $price Unit Price
+     * @return WalletDetail
+     */
 	public function withPrice(?float $price): WalletDetail {
 		$this->price = $price;
 		return $this;
 	}
+    /** @return int|null Count */
 	public function getCount(): ?int {
 		return $this->count;
 	}
+    /** @param int|null $count Count */
 	public function setCount(?int $count) {
 		$this->count = $count;
 	}
+    /**
+     * @param int|null $count Count
+     * @return WalletDetail
+     */
 	public function withCount(?int $count): WalletDetail {
 		$this->count = $count;
 		return $this;

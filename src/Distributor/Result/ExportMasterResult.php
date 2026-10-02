@@ -20,18 +20,29 @@ namespace Gs2\Distributor\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Distributor\Model\CurrentDistributorMaster;
 
+/**
+ * Result of exportMaster: Export Distributor Model Master in a master data format that can be activated
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#exportmaster
+ */
 class ExportMasterResult implements IResult {
-    /** @var CurrentDistributorMaster */
+    /** @var CurrentDistributorMaster Distributor Model master data that can be activated */
     private $item;
 
+    /** @return CurrentDistributorMaster|null Distributor Model master data that can be activated */
 	public function getItem(): ?CurrentDistributorMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentDistributorMaster|null $item Distributor Model master data that can be activated */
 	public function setItem(?CurrentDistributorMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentDistributorMaster|null $item Distributor Model master data that can be activated
+     * @return ExportMasterResult
+     */
 	public function withItem(?CurrentDistributorMaster $item): ExportMasterResult {
 		$this->item = $item;
 		return $this;

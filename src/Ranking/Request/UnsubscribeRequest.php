@@ -19,53 +19,82 @@ namespace Gs2\Ranking\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for unsubscribe: Unsubscribe the target user
+ *
+ * @see https://docs.gs2.io/api_reference/ranking/sdk/#unsubscribe
+ */
 class UnsubscribeRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Category Name */
     private $categoryName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Target User ID */
     private $targetUserId;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UnsubscribeRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UnsubscribeRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Category Name */
 	public function getCategoryName(): ?string {
 		return $this->categoryName;
 	}
+    /** @param string|null $categoryName Category Name */
 	public function setCategoryName(?string $categoryName) {
 		$this->categoryName = $categoryName;
 	}
+    /**
+     * @param string|null $categoryName Category Name
+     * @return UnsubscribeRequest
+     */
 	public function withCategoryName(?string $categoryName): UnsubscribeRequest {
 		$this->categoryName = $categoryName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return UnsubscribeRequest
+     */
 	public function withAccessToken(?string $accessToken): UnsubscribeRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Target User ID */
 	public function getTargetUserId(): ?string {
 		return $this->targetUserId;
 	}
+    /** @param string|null $targetUserId Target User ID */
 	public function setTargetUserId(?string $targetUserId) {
 		$this->targetUserId = $targetUserId;
 	}
+    /**
+     * @param string|null $targetUserId Target User ID
+     * @return UnsubscribeRequest
+     */
 	public function withTargetUserId(?string $targetUserId): UnsubscribeRequest {
 		$this->targetUserId = $targetUserId;
 		return $this;

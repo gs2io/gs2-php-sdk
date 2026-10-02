@@ -20,18 +20,25 @@ namespace Gs2\Project\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Project\Model\CleanProgress;
 
+/** Result of waitCleanUserData: Wait for the completion of user data clean */
 class WaitCleanUserDataResult implements IResult {
-    /** @var CleanProgress */
+    /** @var CleanProgress CleanProgress */
     private $item;
 
+    /** @return CleanProgress|null CleanProgress */
 	public function getItem(): ?CleanProgress {
 		return $this->item;
 	}
 
+    /** @param CleanProgress|null $item CleanProgress */
 	public function setItem(?CleanProgress $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CleanProgress|null $item CleanProgress
+     * @return WaitCleanUserDataResult
+     */
 	public function withItem(?CleanProgress $item): WaitCleanUserDataResult {
 		$this->item = $item;
 		return $this;

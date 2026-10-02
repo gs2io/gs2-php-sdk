@@ -19,147 +19,224 @@ namespace Gs2\Stamina\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for updateStaminaModelMaster: Update Stamina Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/stamina/sdk/#updatestaminamodelmaster
+ */
 class UpdateStaminaModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Stamina Model name */
     private $staminaName;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var string */
+    /** @var string Metadata */
     private $metadata;
-    /** @var int */
+    /** @var int Recover Interval Minutes */
     private $recoverIntervalMinutes;
-    /** @var int */
+    /** @var int Recover Value */
     private $recoverValue;
-    /** @var int */
+    /** @var int Initial Capacity */
     private $initialCapacity;
-    /** @var bool */
+    /** @var bool Is Overflow */
     private $isOverflow;
-    /** @var int */
+    /** @var int Max Capacity */
     private $maxCapacity;
-    /** @var string */
+    /** @var string Max Stamina Table Name */
     private $maxStaminaTableName;
-    /** @var string */
+    /** @var string Recover Interval Table Name */
     private $recoverIntervalTableName;
-    /** @var string */
+    /** @var string Recover Value Table Name */
     private $recoverValueTableName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UpdateStaminaModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UpdateStaminaModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Stamina Model name */
 	public function getStaminaName(): ?string {
 		return $this->staminaName;
 	}
+    /** @param string|null $staminaName Stamina Model name */
 	public function setStaminaName(?string $staminaName) {
 		$this->staminaName = $staminaName;
 	}
+    /**
+     * @param string|null $staminaName Stamina Model name
+     * @return UpdateStaminaModelMasterRequest
+     */
 	public function withStaminaName(?string $staminaName): UpdateStaminaModelMasterRequest {
 		$this->staminaName = $staminaName;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return UpdateStaminaModelMasterRequest
+     */
 	public function withDescription(?string $description): UpdateStaminaModelMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return UpdateStaminaModelMasterRequest
+     */
 	public function withMetadata(?string $metadata): UpdateStaminaModelMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return int|null Recover Interval Minutes */
 	public function getRecoverIntervalMinutes(): ?int {
 		return $this->recoverIntervalMinutes;
 	}
+    /** @param int|null $recoverIntervalMinutes Recover Interval Minutes */
 	public function setRecoverIntervalMinutes(?int $recoverIntervalMinutes) {
 		$this->recoverIntervalMinutes = $recoverIntervalMinutes;
 	}
+    /**
+     * @param int|null $recoverIntervalMinutes Recover Interval Minutes
+     * @return UpdateStaminaModelMasterRequest
+     */
 	public function withRecoverIntervalMinutes(?int $recoverIntervalMinutes): UpdateStaminaModelMasterRequest {
 		$this->recoverIntervalMinutes = $recoverIntervalMinutes;
 		return $this;
 	}
+    /** @return int|null Recover Value */
 	public function getRecoverValue(): ?int {
 		return $this->recoverValue;
 	}
+    /** @param int|null $recoverValue Recover Value */
 	public function setRecoverValue(?int $recoverValue) {
 		$this->recoverValue = $recoverValue;
 	}
+    /**
+     * @param int|null $recoverValue Recover Value
+     * @return UpdateStaminaModelMasterRequest
+     */
 	public function withRecoverValue(?int $recoverValue): UpdateStaminaModelMasterRequest {
 		$this->recoverValue = $recoverValue;
 		return $this;
 	}
+    /** @return int|null Initial Capacity */
 	public function getInitialCapacity(): ?int {
 		return $this->initialCapacity;
 	}
+    /** @param int|null $initialCapacity Initial Capacity */
 	public function setInitialCapacity(?int $initialCapacity) {
 		$this->initialCapacity = $initialCapacity;
 	}
+    /**
+     * @param int|null $initialCapacity Initial Capacity
+     * @return UpdateStaminaModelMasterRequest
+     */
 	public function withInitialCapacity(?int $initialCapacity): UpdateStaminaModelMasterRequest {
 		$this->initialCapacity = $initialCapacity;
 		return $this;
 	}
+    /** @return bool|null Is Overflow */
 	public function getIsOverflow(): ?bool {
 		return $this->isOverflow;
 	}
+    /** @param bool|null $isOverflow Is Overflow */
 	public function setIsOverflow(?bool $isOverflow) {
 		$this->isOverflow = $isOverflow;
 	}
+    /**
+     * @param bool|null $isOverflow Is Overflow
+     * @return UpdateStaminaModelMasterRequest
+     */
 	public function withIsOverflow(?bool $isOverflow): UpdateStaminaModelMasterRequest {
 		$this->isOverflow = $isOverflow;
 		return $this;
 	}
+    /** @return int|null Max Capacity */
 	public function getMaxCapacity(): ?int {
 		return $this->maxCapacity;
 	}
+    /** @param int|null $maxCapacity Max Capacity */
 	public function setMaxCapacity(?int $maxCapacity) {
 		$this->maxCapacity = $maxCapacity;
 	}
+    /**
+     * @param int|null $maxCapacity Max Capacity
+     * @return UpdateStaminaModelMasterRequest
+     */
 	public function withMaxCapacity(?int $maxCapacity): UpdateStaminaModelMasterRequest {
 		$this->maxCapacity = $maxCapacity;
 		return $this;
 	}
+    /** @return string|null Max Stamina Table Name */
 	public function getMaxStaminaTableName(): ?string {
 		return $this->maxStaminaTableName;
 	}
+    /** @param string|null $maxStaminaTableName Max Stamina Table Name */
 	public function setMaxStaminaTableName(?string $maxStaminaTableName) {
 		$this->maxStaminaTableName = $maxStaminaTableName;
 	}
+    /**
+     * @param string|null $maxStaminaTableName Max Stamina Table Name
+     * @return UpdateStaminaModelMasterRequest
+     */
 	public function withMaxStaminaTableName(?string $maxStaminaTableName): UpdateStaminaModelMasterRequest {
 		$this->maxStaminaTableName = $maxStaminaTableName;
 		return $this;
 	}
+    /** @return string|null Recover Interval Table Name */
 	public function getRecoverIntervalTableName(): ?string {
 		return $this->recoverIntervalTableName;
 	}
+    /** @param string|null $recoverIntervalTableName Recover Interval Table Name */
 	public function setRecoverIntervalTableName(?string $recoverIntervalTableName) {
 		$this->recoverIntervalTableName = $recoverIntervalTableName;
 	}
+    /**
+     * @param string|null $recoverIntervalTableName Recover Interval Table Name
+     * @return UpdateStaminaModelMasterRequest
+     */
 	public function withRecoverIntervalTableName(?string $recoverIntervalTableName): UpdateStaminaModelMasterRequest {
 		$this->recoverIntervalTableName = $recoverIntervalTableName;
 		return $this;
 	}
+    /** @return string|null Recover Value Table Name */
 	public function getRecoverValueTableName(): ?string {
 		return $this->recoverValueTableName;
 	}
+    /** @param string|null $recoverValueTableName Recover Value Table Name */
 	public function setRecoverValueTableName(?string $recoverValueTableName) {
 		$this->recoverValueTableName = $recoverValueTableName;
 	}
+    /**
+     * @param string|null $recoverValueTableName Recover Value Table Name
+     * @return UpdateStaminaModelMasterRequest
+     */
 	public function withRecoverValueTableName(?string $recoverValueTableName): UpdateStaminaModelMasterRequest {
 		$this->recoverValueTableName = $recoverValueTableName;
 		return $this;

@@ -25,240 +25,357 @@ use Gs2\Friend\Model\MobileNotificationMessage;
 use Gs2\Friend\Model\NotificationSetting;
 use Gs2\Friend\Model\LogSetting;
 
+/**
+ * Request for createNamespace: Create Namespace
+ *
+ * @see https://docs.gs2.io/api_reference/friend/sdk/#createnamespace
+ */
 class CreateNamespaceRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $name;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var TransactionSetting */
+    /** @var TransactionSetting Transaction Setting */
     private $transactionSetting;
-    /** @var TransactionSettingV2 */
+    /** @var TransactionSettingV2 Transaction Setting (V2) */
     private $transactionSettingV2;
-    /** @var ScriptSetting */
+    /** @var ScriptSetting Script setting to be executed when followed */
     private $followScript;
-    /** @var ScriptSetting */
+    /** @var ScriptSetting Script setting to be executed when unfollowed */
     private $unfollowScript;
-    /** @var ScriptSetting */
+    /** @var ScriptSetting Script setting to be executed when a friend request is issued */
     private $sendRequestScript;
-    /** @var ScriptSetting */
+    /** @var ScriptSetting Script setting to execute when a friend request is canceled */
     private $cancelRequestScript;
-    /** @var ScriptSetting */
+    /** @var ScriptSetting Script setting to be executed when a friend request is accepted */
     private $acceptRequestScript;
-    /** @var ScriptSetting */
+    /** @var ScriptSetting Script setting to execute when a friend request is rejected */
     private $rejectRequestScript;
-    /** @var ScriptSetting */
+    /** @var ScriptSetting Script setting to be executed when a friend is deleted */
     private $deleteFriendScript;
-    /** @var ScriptSetting */
+    /** @var ScriptSetting Script setting to be executed when a profile is updated */
     private $updateProfileScript;
-    /** @var NotificationSetting */
+    /** @var NotificationSetting Push notification when followed */
     private $followNotification;
-    /** @var NotificationSetting */
+    /** @var NotificationSetting Push notification when a friend request is received */
     private $receiveRequestNotification;
-    /** @var NotificationSetting */
+    /** @var NotificationSetting Push notification when a received friend request is canceled */
     private $cancelRequestNotification;
-    /** @var NotificationSetting */
+    /** @var NotificationSetting Push notification when a friend request is approved */
     private $acceptRequestNotification;
-    /** @var NotificationSetting */
+    /** @var NotificationSetting Push notification when a friend request is rejected */
     private $rejectRequestNotification;
-    /** @var NotificationSetting */
+    /** @var NotificationSetting Push notification when a friend is deleted */
     private $deleteFriendNotification;
-    /** @var LogSetting */
+    /** @var LogSetting Log Output Setting */
     private $logSetting;
+    /** @return string|null Namespace name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Namespace name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Namespace name
+     * @return CreateNamespaceRequest
+     */
 	public function withName(?string $name): CreateNamespaceRequest {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return CreateNamespaceRequest
+     */
 	public function withDescription(?string $description): CreateNamespaceRequest {
 		$this->description = $description;
 		return $this;
 	}
     /**
+     * @return TransactionSetting|null Transaction Setting
      * @deprecated
      */
 	public function getTransactionSetting(): ?TransactionSetting {
 		return $this->transactionSetting;
 	}
     /**
+     * @param TransactionSetting|null $transactionSetting Transaction Setting
      * @deprecated
      */
 	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
 		$this->transactionSetting = $transactionSetting;
 	}
     /**
+     * @param TransactionSetting|null $transactionSetting Transaction Setting
+     * @return CreateNamespaceRequest
      * @deprecated
      */
 	public function withTransactionSetting(?TransactionSetting $transactionSetting): CreateNamespaceRequest {
 		$this->transactionSetting = $transactionSetting;
 		return $this;
 	}
+    /** @return TransactionSettingV2|null Transaction Setting (V2) */
 	public function getTransactionSettingV2(): ?TransactionSettingV2 {
 		return $this->transactionSettingV2;
 	}
+    /** @param TransactionSettingV2|null $transactionSettingV2 Transaction Setting (V2) */
 	public function setTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2) {
 		$this->transactionSettingV2 = $transactionSettingV2;
 	}
+    /**
+     * @param TransactionSettingV2|null $transactionSettingV2 Transaction Setting (V2)
+     * @return CreateNamespaceRequest
+     */
 	public function withTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2): CreateNamespaceRequest {
 		$this->transactionSettingV2 = $transactionSettingV2;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to be executed when followed */
 	public function getFollowScript(): ?ScriptSetting {
 		return $this->followScript;
 	}
+    /** @param ScriptSetting|null $followScript Script setting to be executed when followed */
 	public function setFollowScript(?ScriptSetting $followScript) {
 		$this->followScript = $followScript;
 	}
+    /**
+     * @param ScriptSetting|null $followScript Script setting to be executed when followed
+     * @return CreateNamespaceRequest
+     */
 	public function withFollowScript(?ScriptSetting $followScript): CreateNamespaceRequest {
 		$this->followScript = $followScript;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to be executed when unfollowed */
 	public function getUnfollowScript(): ?ScriptSetting {
 		return $this->unfollowScript;
 	}
+    /** @param ScriptSetting|null $unfollowScript Script setting to be executed when unfollowed */
 	public function setUnfollowScript(?ScriptSetting $unfollowScript) {
 		$this->unfollowScript = $unfollowScript;
 	}
+    /**
+     * @param ScriptSetting|null $unfollowScript Script setting to be executed when unfollowed
+     * @return CreateNamespaceRequest
+     */
 	public function withUnfollowScript(?ScriptSetting $unfollowScript): CreateNamespaceRequest {
 		$this->unfollowScript = $unfollowScript;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to be executed when a friend request is issued */
 	public function getSendRequestScript(): ?ScriptSetting {
 		return $this->sendRequestScript;
 	}
+    /** @param ScriptSetting|null $sendRequestScript Script setting to be executed when a friend request is issued */
 	public function setSendRequestScript(?ScriptSetting $sendRequestScript) {
 		$this->sendRequestScript = $sendRequestScript;
 	}
+    /**
+     * @param ScriptSetting|null $sendRequestScript Script setting to be executed when a friend request is issued
+     * @return CreateNamespaceRequest
+     */
 	public function withSendRequestScript(?ScriptSetting $sendRequestScript): CreateNamespaceRequest {
 		$this->sendRequestScript = $sendRequestScript;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to execute when a friend request is canceled */
 	public function getCancelRequestScript(): ?ScriptSetting {
 		return $this->cancelRequestScript;
 	}
+    /** @param ScriptSetting|null $cancelRequestScript Script setting to execute when a friend request is canceled */
 	public function setCancelRequestScript(?ScriptSetting $cancelRequestScript) {
 		$this->cancelRequestScript = $cancelRequestScript;
 	}
+    /**
+     * @param ScriptSetting|null $cancelRequestScript Script setting to execute when a friend request is canceled
+     * @return CreateNamespaceRequest
+     */
 	public function withCancelRequestScript(?ScriptSetting $cancelRequestScript): CreateNamespaceRequest {
 		$this->cancelRequestScript = $cancelRequestScript;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to be executed when a friend request is accepted */
 	public function getAcceptRequestScript(): ?ScriptSetting {
 		return $this->acceptRequestScript;
 	}
+    /** @param ScriptSetting|null $acceptRequestScript Script setting to be executed when a friend request is accepted */
 	public function setAcceptRequestScript(?ScriptSetting $acceptRequestScript) {
 		$this->acceptRequestScript = $acceptRequestScript;
 	}
+    /**
+     * @param ScriptSetting|null $acceptRequestScript Script setting to be executed when a friend request is accepted
+     * @return CreateNamespaceRequest
+     */
 	public function withAcceptRequestScript(?ScriptSetting $acceptRequestScript): CreateNamespaceRequest {
 		$this->acceptRequestScript = $acceptRequestScript;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to execute when a friend request is rejected */
 	public function getRejectRequestScript(): ?ScriptSetting {
 		return $this->rejectRequestScript;
 	}
+    /** @param ScriptSetting|null $rejectRequestScript Script setting to execute when a friend request is rejected */
 	public function setRejectRequestScript(?ScriptSetting $rejectRequestScript) {
 		$this->rejectRequestScript = $rejectRequestScript;
 	}
+    /**
+     * @param ScriptSetting|null $rejectRequestScript Script setting to execute when a friend request is rejected
+     * @return CreateNamespaceRequest
+     */
 	public function withRejectRequestScript(?ScriptSetting $rejectRequestScript): CreateNamespaceRequest {
 		$this->rejectRequestScript = $rejectRequestScript;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to be executed when a friend is deleted */
 	public function getDeleteFriendScript(): ?ScriptSetting {
 		return $this->deleteFriendScript;
 	}
+    /** @param ScriptSetting|null $deleteFriendScript Script setting to be executed when a friend is deleted */
 	public function setDeleteFriendScript(?ScriptSetting $deleteFriendScript) {
 		$this->deleteFriendScript = $deleteFriendScript;
 	}
+    /**
+     * @param ScriptSetting|null $deleteFriendScript Script setting to be executed when a friend is deleted
+     * @return CreateNamespaceRequest
+     */
 	public function withDeleteFriendScript(?ScriptSetting $deleteFriendScript): CreateNamespaceRequest {
 		$this->deleteFriendScript = $deleteFriendScript;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to be executed when a profile is updated */
 	public function getUpdateProfileScript(): ?ScriptSetting {
 		return $this->updateProfileScript;
 	}
+    /** @param ScriptSetting|null $updateProfileScript Script setting to be executed when a profile is updated */
 	public function setUpdateProfileScript(?ScriptSetting $updateProfileScript) {
 		$this->updateProfileScript = $updateProfileScript;
 	}
+    /**
+     * @param ScriptSetting|null $updateProfileScript Script setting to be executed when a profile is updated
+     * @return CreateNamespaceRequest
+     */
 	public function withUpdateProfileScript(?ScriptSetting $updateProfileScript): CreateNamespaceRequest {
 		$this->updateProfileScript = $updateProfileScript;
 		return $this;
 	}
+    /** @return NotificationSetting|null Push notification when followed */
 	public function getFollowNotification(): ?NotificationSetting {
 		return $this->followNotification;
 	}
+    /** @param NotificationSetting|null $followNotification Push notification when followed */
 	public function setFollowNotification(?NotificationSetting $followNotification) {
 		$this->followNotification = $followNotification;
 	}
+    /**
+     * @param NotificationSetting|null $followNotification Push notification when followed
+     * @return CreateNamespaceRequest
+     */
 	public function withFollowNotification(?NotificationSetting $followNotification): CreateNamespaceRequest {
 		$this->followNotification = $followNotification;
 		return $this;
 	}
+    /** @return NotificationSetting|null Push notification when a friend request is received */
 	public function getReceiveRequestNotification(): ?NotificationSetting {
 		return $this->receiveRequestNotification;
 	}
+    /** @param NotificationSetting|null $receiveRequestNotification Push notification when a friend request is received */
 	public function setReceiveRequestNotification(?NotificationSetting $receiveRequestNotification) {
 		$this->receiveRequestNotification = $receiveRequestNotification;
 	}
+    /**
+     * @param NotificationSetting|null $receiveRequestNotification Push notification when a friend request is received
+     * @return CreateNamespaceRequest
+     */
 	public function withReceiveRequestNotification(?NotificationSetting $receiveRequestNotification): CreateNamespaceRequest {
 		$this->receiveRequestNotification = $receiveRequestNotification;
 		return $this;
 	}
+    /** @return NotificationSetting|null Push notification when a received friend request is canceled */
 	public function getCancelRequestNotification(): ?NotificationSetting {
 		return $this->cancelRequestNotification;
 	}
+    /** @param NotificationSetting|null $cancelRequestNotification Push notification when a received friend request is canceled */
 	public function setCancelRequestNotification(?NotificationSetting $cancelRequestNotification) {
 		$this->cancelRequestNotification = $cancelRequestNotification;
 	}
+    /**
+     * @param NotificationSetting|null $cancelRequestNotification Push notification when a received friend request is canceled
+     * @return CreateNamespaceRequest
+     */
 	public function withCancelRequestNotification(?NotificationSetting $cancelRequestNotification): CreateNamespaceRequest {
 		$this->cancelRequestNotification = $cancelRequestNotification;
 		return $this;
 	}
+    /** @return NotificationSetting|null Push notification when a friend request is approved */
 	public function getAcceptRequestNotification(): ?NotificationSetting {
 		return $this->acceptRequestNotification;
 	}
+    /** @param NotificationSetting|null $acceptRequestNotification Push notification when a friend request is approved */
 	public function setAcceptRequestNotification(?NotificationSetting $acceptRequestNotification) {
 		$this->acceptRequestNotification = $acceptRequestNotification;
 	}
+    /**
+     * @param NotificationSetting|null $acceptRequestNotification Push notification when a friend request is approved
+     * @return CreateNamespaceRequest
+     */
 	public function withAcceptRequestNotification(?NotificationSetting $acceptRequestNotification): CreateNamespaceRequest {
 		$this->acceptRequestNotification = $acceptRequestNotification;
 		return $this;
 	}
+    /** @return NotificationSetting|null Push notification when a friend request is rejected */
 	public function getRejectRequestNotification(): ?NotificationSetting {
 		return $this->rejectRequestNotification;
 	}
+    /** @param NotificationSetting|null $rejectRequestNotification Push notification when a friend request is rejected */
 	public function setRejectRequestNotification(?NotificationSetting $rejectRequestNotification) {
 		$this->rejectRequestNotification = $rejectRequestNotification;
 	}
+    /**
+     * @param NotificationSetting|null $rejectRequestNotification Push notification when a friend request is rejected
+     * @return CreateNamespaceRequest
+     */
 	public function withRejectRequestNotification(?NotificationSetting $rejectRequestNotification): CreateNamespaceRequest {
 		$this->rejectRequestNotification = $rejectRequestNotification;
 		return $this;
 	}
+    /** @return NotificationSetting|null Push notification when a friend is deleted */
 	public function getDeleteFriendNotification(): ?NotificationSetting {
 		return $this->deleteFriendNotification;
 	}
+    /** @param NotificationSetting|null $deleteFriendNotification Push notification when a friend is deleted */
 	public function setDeleteFriendNotification(?NotificationSetting $deleteFriendNotification) {
 		$this->deleteFriendNotification = $deleteFriendNotification;
 	}
+    /**
+     * @param NotificationSetting|null $deleteFriendNotification Push notification when a friend is deleted
+     * @return CreateNamespaceRequest
+     */
 	public function withDeleteFriendNotification(?NotificationSetting $deleteFriendNotification): CreateNamespaceRequest {
 		$this->deleteFriendNotification = $deleteFriendNotification;
 		return $this;
 	}
+    /** @return LogSetting|null Log Output Setting */
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
+    /** @param LogSetting|null $logSetting Log Output Setting */
 	public function setLogSetting(?LogSetting $logSetting) {
 		$this->logSetting = $logSetting;
 	}
+    /**
+     * @param LogSetting|null $logSetting Log Output Setting
+     * @return CreateNamespaceRequest
+     */
 	public function withLogSetting(?LogSetting $logSetting): CreateNamespaceRequest {
 		$this->logSetting = $logSetting;
 		return $this;

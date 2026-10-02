@@ -20,115 +20,168 @@ namespace Gs2\Exchange\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Exchange Rate Model
+ *
+ * @see https://docs.gs2.io/api_reference/exchange/sdk/#ratemodel
+ */
 class RateModel implements IModel {
 	/**
-     * @var string
+     * @var string Exchange Rate Model GRN
 	 */
 	private $rateModelId;
 	/**
-     * @var string
+     * @var string Exchange Rate Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var array
+     * @var array List of Verify Actions
 	 */
 	private $verifyActions;
 	/**
-     * @var array
+     * @var array List of Consume Actions
 	 */
 	private $consumeActions;
 	/**
-     * @var string
+     * @var string Type of exchange
 	 */
 	private $timingType;
 	/**
-     * @var int
+     * @var int Waiting time (minutes) from the execution of the exchange until the reward is actually received
 	 */
 	private $lockTime;
 	/**
-     * @var array
+     * @var array List of Acquire Actions
 	 */
 	private $acquireActions;
+    /** @return string|null Exchange Rate Model GRN */
 	public function getRateModelId(): ?string {
 		return $this->rateModelId;
 	}
+    /** @param string|null $rateModelId Exchange Rate Model GRN */
 	public function setRateModelId(?string $rateModelId) {
 		$this->rateModelId = $rateModelId;
 	}
+    /**
+     * @param string|null $rateModelId Exchange Rate Model GRN
+     * @return RateModel
+     */
 	public function withRateModelId(?string $rateModelId): RateModel {
 		$this->rateModelId = $rateModelId;
 		return $this;
 	}
+    /** @return string|null Exchange Rate Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Exchange Rate Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Exchange Rate Model name
+     * @return RateModel
+     */
 	public function withName(?string $name): RateModel {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return RateModel
+     */
 	public function withMetadata(?string $metadata): RateModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return array|null List of Verify Actions */
 	public function getVerifyActions(): ?array {
 		return $this->verifyActions;
 	}
+    /** @param array|null $verifyActions List of Verify Actions */
 	public function setVerifyActions(?array $verifyActions) {
 		$this->verifyActions = $verifyActions;
 	}
+    /**
+     * @param array|null $verifyActions List of Verify Actions
+     * @return RateModel
+     */
 	public function withVerifyActions(?array $verifyActions): RateModel {
 		$this->verifyActions = $verifyActions;
 		return $this;
 	}
+    /** @return array|null List of Consume Actions */
 	public function getConsumeActions(): ?array {
 		return $this->consumeActions;
 	}
+    /** @param array|null $consumeActions List of Consume Actions */
 	public function setConsumeActions(?array $consumeActions) {
 		$this->consumeActions = $consumeActions;
 	}
+    /**
+     * @param array|null $consumeActions List of Consume Actions
+     * @return RateModel
+     */
 	public function withConsumeActions(?array $consumeActions): RateModel {
 		$this->consumeActions = $consumeActions;
 		return $this;
 	}
+    /** @return string|null Type of exchange */
 	public function getTimingType(): ?string {
 		return $this->timingType;
 	}
+    /** @param string|null $timingType Type of exchange */
 	public function setTimingType(?string $timingType) {
 		$this->timingType = $timingType;
 	}
+    /**
+     * @param string|null $timingType Type of exchange
+     * @return RateModel
+     */
 	public function withTimingType(?string $timingType): RateModel {
 		$this->timingType = $timingType;
 		return $this;
 	}
+    /** @return int|null Waiting time (minutes) from the execution of the exchange until the reward is actually received */
 	public function getLockTime(): ?int {
 		return $this->lockTime;
 	}
+    /** @param int|null $lockTime Waiting time (minutes) from the execution of the exchange until the reward is actually received */
 	public function setLockTime(?int $lockTime) {
 		$this->lockTime = $lockTime;
 	}
+    /**
+     * @param int|null $lockTime Waiting time (minutes) from the execution of the exchange until the reward is actually received
+     * @return RateModel
+     */
 	public function withLockTime(?int $lockTime): RateModel {
 		$this->lockTime = $lockTime;
 		return $this;
 	}
+    /** @return array|null List of Acquire Actions */
 	public function getAcquireActions(): ?array {
 		return $this->acquireActions;
 	}
+    /** @param array|null $acquireActions List of Acquire Actions */
 	public function setAcquireActions(?array $acquireActions) {
 		$this->acquireActions = $acquireActions;
 	}
+    /**
+     * @param array|null $acquireActions List of Acquire Actions
+     * @return RateModel
+     */
 	public function withAcquireActions(?array $acquireActions): RateModel {
 		$this->acquireActions = $acquireActions;
 		return $this;

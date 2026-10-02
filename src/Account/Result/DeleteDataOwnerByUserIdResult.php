@@ -20,18 +20,29 @@ namespace Gs2\Account\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Account\Model\DataOwner;
 
+/**
+ * Result of deleteDataOwnerByUserId: Delete Data Owner
+ *
+ * @see https://docs.gs2.io/api_reference/account/sdk/#deletedataownerbyuserid
+ */
 class DeleteDataOwnerByUserIdResult implements IResult {
-    /** @var DataOwner */
+    /** @var DataOwner The deleted Data Owner */
     private $item;
 
+    /** @return DataOwner|null The deleted Data Owner */
 	public function getItem(): ?DataOwner {
 		return $this->item;
 	}
 
+    /** @param DataOwner|null $item The deleted Data Owner */
 	public function setItem(?DataOwner $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param DataOwner|null $item The deleted Data Owner
+     * @return DeleteDataOwnerByUserIdResult
+     */
 	public function withItem(?DataOwner $item): DeleteDataOwnerByUserIdResult {
 		$this->item = $item;
 		return $this;

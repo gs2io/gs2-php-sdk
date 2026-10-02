@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Money\Model\WalletDetail;
 use Gs2\Money\Model\Wallet;
 
+/**
+ * Result of getWalletByUserId: Get Wallet by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/money/sdk/#getwalletbyuserid
+ */
 class GetWalletByUserIdResult implements IResult {
-    /** @var Wallet */
+    /** @var Wallet Wallet */
     private $item;
 
+    /** @return Wallet|null Wallet */
 	public function getItem(): ?Wallet {
 		return $this->item;
 	}
 
+    /** @param Wallet|null $item Wallet */
 	public function setItem(?Wallet $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Wallet|null $item Wallet
+     * @return GetWalletByUserIdResult
+     */
 	public function withItem(?Wallet $item): GetWalletByUserIdResult {
 		$this->item = $item;
 		return $this;

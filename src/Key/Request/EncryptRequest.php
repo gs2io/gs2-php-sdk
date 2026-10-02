@@ -19,39 +19,62 @@ namespace Gs2\Key\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for encrypt: Encrypt data
+ *
+ * @see https://docs.gs2.io/api_reference/key/sdk/#encrypt
+ */
 class EncryptRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Encryption Key name */
     private $keyName;
     /** @var string */
     private $data;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return EncryptRequest
+     */
 	public function withNamespaceName(?string $namespaceName): EncryptRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Encryption Key name */
 	public function getKeyName(): ?string {
 		return $this->keyName;
 	}
+    /** @param string|null $keyName Encryption Key name */
 	public function setKeyName(?string $keyName) {
 		$this->keyName = $keyName;
 	}
+    /**
+     * @param string|null $keyName Encryption Key name
+     * @return EncryptRequest
+     */
 	public function withKeyName(?string $keyName): EncryptRequest {
 		$this->keyName = $keyName;
 		return $this;
 	}
+    /** @return string|null */
 	public function getData(): ?string {
 		return $this->data;
 	}
+    /** @param string|null $data */
 	public function setData(?string $data) {
 		$this->data = $data;
 	}
+    /**
+     * @param string|null $data
+     * @return EncryptRequest
+     */
 	public function withData(?string $data): EncryptRequest {
 		$this->data = $data;
 		return $this;

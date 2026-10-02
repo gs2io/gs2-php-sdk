@@ -20,17 +20,28 @@ namespace Gs2\Money2\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Google Play Subscription Content
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#googleplaysubscriptioncontent
+ */
 class GooglePlaySubscriptionContent implements IModel {
 	/**
-     * @var string
+     * @var string Product ID
 	 */
 	private $productId;
+    /** @return string|null Product ID */
 	public function getProductId(): ?string {
 		return $this->productId;
 	}
+    /** @param string|null $productId Product ID */
 	public function setProductId(?string $productId) {
 		$this->productId = $productId;
 	}
+    /**
+     * @param string|null $productId Product ID
+     * @return GooglePlaySubscriptionContent
+     */
 	public function withProductId(?string $productId): GooglePlaySubscriptionContent {
 		$this->productId = $productId;
 		return $this;

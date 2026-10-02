@@ -20,101 +20,148 @@ namespace Gs2\Lock\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Mutex
+ *
+ * @see https://docs.gs2.io/api_reference/lock/sdk/#mutex
+ */
 class Mutex implements IModel {
 	/**
-     * @var string
+     * @var string Mutex GRN
 	 */
 	private $mutexId;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var string
+     * @var string Property ID
 	 */
 	private $propertyId;
 	/**
-     * @var string
+     * @var string Transaction ID
 	 */
 	private $transactionId;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Expiration datetime
 	 */
 	private $ttlAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Mutex GRN */
 	public function getMutexId(): ?string {
 		return $this->mutexId;
 	}
+    /** @param string|null $mutexId Mutex GRN */
 	public function setMutexId(?string $mutexId) {
 		$this->mutexId = $mutexId;
 	}
+    /**
+     * @param string|null $mutexId Mutex GRN
+     * @return Mutex
+     */
 	public function withMutexId(?string $mutexId): Mutex {
 		$this->mutexId = $mutexId;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return Mutex
+     */
 	public function withUserId(?string $userId): Mutex {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Property ID */
 	public function getPropertyId(): ?string {
 		return $this->propertyId;
 	}
+    /** @param string|null $propertyId Property ID */
 	public function setPropertyId(?string $propertyId) {
 		$this->propertyId = $propertyId;
 	}
+    /**
+     * @param string|null $propertyId Property ID
+     * @return Mutex
+     */
 	public function withPropertyId(?string $propertyId): Mutex {
 		$this->propertyId = $propertyId;
 		return $this;
 	}
+    /** @return string|null Transaction ID */
 	public function getTransactionId(): ?string {
 		return $this->transactionId;
 	}
+    /** @param string|null $transactionId Transaction ID */
 	public function setTransactionId(?string $transactionId) {
 		$this->transactionId = $transactionId;
 	}
+    /**
+     * @param string|null $transactionId Transaction ID
+     * @return Mutex
+     */
 	public function withTransactionId(?string $transactionId): Mutex {
 		$this->transactionId = $transactionId;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return Mutex
+     */
 	public function withCreatedAt(?int $createdAt): Mutex {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Expiration datetime */
 	public function getTtlAt(): ?int {
 		return $this->ttlAt;
 	}
+    /** @param int|null $ttlAt Expiration datetime */
 	public function setTtlAt(?int $ttlAt) {
 		$this->ttlAt = $ttlAt;
 	}
+    /**
+     * @param int|null $ttlAt Expiration datetime
+     * @return Mutex
+     */
 	public function withTtlAt(?int $ttlAt): Mutex {
 		$this->ttlAt = $ttlAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return Mutex
+     */
 	public function withRevision(?int $revision): Mutex {
 		$this->revision = $revision;
 		return $this;

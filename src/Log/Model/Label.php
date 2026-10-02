@@ -20,31 +20,48 @@ namespace Gs2\Log\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Label
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#label
+ */
 class Label implements IModel {
 	/**
-     * @var string
+     * @var string Label Key
 	 */
 	private $key;
 	/**
-     * @var string
+     * @var string Label Value
 	 */
 	private $value;
+    /** @return string|null Label Key */
 	public function getKey(): ?string {
 		return $this->key;
 	}
+    /** @param string|null $key Label Key */
 	public function setKey(?string $key) {
 		$this->key = $key;
 	}
+    /**
+     * @param string|null $key Label Key
+     * @return Label
+     */
 	public function withKey(?string $key): Label {
 		$this->key = $key;
 		return $this;
 	}
+    /** @return string|null Label Value */
 	public function getValue(): ?string {
 		return $this->value;
 	}
+    /** @param string|null $value Label Value */
 	public function setValue(?string $value) {
 		$this->value = $value;
 	}
+    /**
+     * @param string|null $value Label Value
+     * @return Label
+     */
 	public function withValue(?string $value): Label {
 		$this->value = $value;
 		return $this;

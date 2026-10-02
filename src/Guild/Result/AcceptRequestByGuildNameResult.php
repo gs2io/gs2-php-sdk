@@ -23,33 +23,50 @@ use Gs2\Guild\Model\RoleModel;
 use Gs2\Guild\Model\Member;
 use Gs2\Guild\Model\Guild;
 
+/**
+ * Result of acceptRequestByGuildName: Accept join request by specifying a Guild name
+ *
+ * @see https://docs.gs2.io/api_reference/guild/sdk/#acceptrequestbyguildname
+ */
 class AcceptRequestByGuildNameResult implements IResult {
-    /** @var ReceiveMemberRequest */
+    /** @var ReceiveMemberRequest Accepted join request */
     private $item;
-    /** @var Guild */
+    /** @var Guild Guild */
     private $guild;
 
+    /** @return ReceiveMemberRequest|null Accepted join request */
 	public function getItem(): ?ReceiveMemberRequest {
 		return $this->item;
 	}
 
+    /** @param ReceiveMemberRequest|null $item Accepted join request */
 	public function setItem(?ReceiveMemberRequest $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param ReceiveMemberRequest|null $item Accepted join request
+     * @return AcceptRequestByGuildNameResult
+     */
 	public function withItem(?ReceiveMemberRequest $item): AcceptRequestByGuildNameResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return Guild|null Guild */
 	public function getGuild(): ?Guild {
 		return $this->guild;
 	}
 
+    /** @param Guild|null $guild Guild */
 	public function setGuild(?Guild $guild) {
 		$this->guild = $guild;
 	}
 
+    /**
+     * @param Guild|null $guild Guild
+     * @return AcceptRequestByGuildNameResult
+     */
 	public function withGuild(?Guild $guild): AcceptRequestByGuildNameResult {
 		$this->guild = $guild;
 		return $this;

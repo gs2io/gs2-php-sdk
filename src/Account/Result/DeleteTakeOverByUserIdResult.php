@@ -20,18 +20,29 @@ namespace Gs2\Account\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Account\Model\TakeOver;
 
+/**
+ * Result of deleteTakeOverByUserId: Delete Takeover Information by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/account/sdk/#deletetakeoverbyuserid
+ */
 class DeleteTakeOverByUserIdResult implements IResult {
-    /** @var TakeOver */
+    /** @var TakeOver Takeover Information deleted */
     private $item;
 
+    /** @return TakeOver|null Takeover Information deleted */
 	public function getItem(): ?TakeOver {
 		return $this->item;
 	}
 
+    /** @param TakeOver|null $item Takeover Information deleted */
 	public function setItem(?TakeOver $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param TakeOver|null $item Takeover Information deleted
+     * @return DeleteTakeOverByUserIdResult
+     */
 	public function withItem(?TakeOver $item): DeleteTakeOverByUserIdResult {
 		$this->item = $item;
 		return $this;

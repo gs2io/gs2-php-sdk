@@ -20,18 +20,29 @@ namespace Gs2\Inventory\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Inventory\Model\BigItem;
 
+/**
+ * Result of acquireBigItemByStampSheet: Execute acquisition of big items as acquire action
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventoryacquirebigitembyuserid
+ */
 class AcquireBigItemByStampSheetResult implements IResult {
-    /** @var BigItem */
+    /** @var BigItem Big Item after addition */
     private $item;
 
+    /** @return BigItem|null Big Item after addition */
 	public function getItem(): ?BigItem {
 		return $this->item;
 	}
 
+    /** @param BigItem|null $item Big Item after addition */
 	public function setItem(?BigItem $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param BigItem|null $item Big Item after addition
+     * @return AcquireBigItemByStampSheetResult
+     */
 	public function withItem(?BigItem $item): AcquireBigItemByStampSheetResult {
 		$this->item = $item;
 		return $this;

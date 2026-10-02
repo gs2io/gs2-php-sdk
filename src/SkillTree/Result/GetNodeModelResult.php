@@ -23,18 +23,29 @@ use Gs2\SkillTree\Model\ConsumeAction;
 use Gs2\SkillTree\Model\AcquireAction;
 use Gs2\SkillTree\Model\NodeModel;
 
+/**
+ * Result of getNodeModel: Get Node Model
+ *
+ * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#getnodemodel
+ */
 class GetNodeModelResult implements IResult {
-    /** @var NodeModel */
+    /** @var NodeModel Node Model */
     private $item;
 
+    /** @return NodeModel|null Node Model */
 	public function getItem(): ?NodeModel {
 		return $this->item;
 	}
 
+    /** @param NodeModel|null $item Node Model */
 	public function setItem(?NodeModel $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param NodeModel|null $item Node Model
+     * @return GetNodeModelResult
+     */
 	public function withItem(?NodeModel $item): GetNodeModelResult {
 		$this->item = $item;
 		return $this;

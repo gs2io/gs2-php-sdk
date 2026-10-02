@@ -19,18 +19,29 @@ namespace Gs2\Identifier\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of describeAttachedGuards: List assigned GS2-Guard Namespace GRNs
+ *
+ * @see https://docs.gs2.io/api_reference/identifier/sdk/#describeattachedguards
+ */
 class DescribeAttachedGuardsResult implements IResult {
-    /** @var array */
+    /** @var array List of GS2-Guard Namespace GRN */
     private $items;
 
+    /** @return array|null List of GS2-Guard Namespace GRN */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of GS2-Guard Namespace GRN */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of GS2-Guard Namespace GRN
+     * @return DescribeAttachedGuardsResult
+     */
 	public function withItems(?array $items): DescribeAttachedGuardsResult {
 		$this->items = $items;
 		return $this;

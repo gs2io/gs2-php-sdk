@@ -24,33 +24,50 @@ use Gs2\Stamina\Model\RecoverIntervalTable;
 use Gs2\Stamina\Model\RecoverValueTable;
 use Gs2\Stamina\Model\StaminaModel;
 
+/**
+ * Result of consumeStamina: Consume Stamina
+ *
+ * @see https://docs.gs2.io/api_reference/stamina/sdk/#consumestamina
+ */
 class ConsumeStaminaResult implements IResult {
-    /** @var Stamina */
+    /** @var Stamina Stamina */
     private $item;
-    /** @var StaminaModel */
+    /** @var StaminaModel Stamina Model */
     private $staminaModel;
 
+    /** @return Stamina|null Stamina */
 	public function getItem(): ?Stamina {
 		return $this->item;
 	}
 
+    /** @param Stamina|null $item Stamina */
 	public function setItem(?Stamina $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Stamina|null $item Stamina
+     * @return ConsumeStaminaResult
+     */
 	public function withItem(?Stamina $item): ConsumeStaminaResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return StaminaModel|null Stamina Model */
 	public function getStaminaModel(): ?StaminaModel {
 		return $this->staminaModel;
 	}
 
+    /** @param StaminaModel|null $staminaModel Stamina Model */
 	public function setStaminaModel(?StaminaModel $staminaModel) {
 		$this->staminaModel = $staminaModel;
 	}
 
+    /**
+     * @param StaminaModel|null $staminaModel Stamina Model
+     * @return ConsumeStaminaResult
+     */
 	public function withStaminaModel(?StaminaModel $staminaModel): ConsumeStaminaResult {
 		$this->staminaModel = $staminaModel;
 		return $this;

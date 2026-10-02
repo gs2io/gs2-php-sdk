@@ -20,18 +20,29 @@ namespace Gs2\Schedule\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Schedule\Model\CurrentEventMaster;
 
+/**
+ * Result of updateCurrentEventMaster: Update currently active Event master data
+ *
+ * @see https://docs.gs2.io/api_reference/schedule/sdk/#updatecurrenteventmaster
+ */
 class UpdateCurrentEventMasterResult implements IResult {
-    /** @var CurrentEventMaster */
+    /** @var CurrentEventMaster Updated master data of the currently active Event */
     private $item;
 
+    /** @return CurrentEventMaster|null Updated master data of the currently active Event */
 	public function getItem(): ?CurrentEventMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentEventMaster|null $item Updated master data of the currently active Event */
 	public function setItem(?CurrentEventMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentEventMaster|null $item Updated master data of the currently active Event
+     * @return UpdateCurrentEventMasterResult
+     */
 	public function withItem(?CurrentEventMaster $item): UpdateCurrentEventMasterResult {
 		$this->item = $item;
 		return $this;

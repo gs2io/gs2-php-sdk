@@ -19,15 +19,26 @@ namespace Gs2\Freeze\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getStage: Get stage
+ *
+ * @see https://docs.gs2.io/api_reference/freeze/sdk/#getstage
+ */
 class GetStageRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Stage name */
     private $stageName;
+    /** @return string|null Stage name */
 	public function getStageName(): ?string {
 		return $this->stageName;
 	}
+    /** @param string|null $stageName Stage name */
 	public function setStageName(?string $stageName) {
 		$this->stageName = $stageName;
 	}
+    /**
+     * @param string|null $stageName Stage name
+     * @return GetStageRequest
+     */
 	public function withStageName(?string $stageName): GetStageRequest {
 		$this->stageName = $stageName;
 		return $this;

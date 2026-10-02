@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Experience\Model\AcquireActionRate;
 use Gs2\Experience\Model\ExperienceModelMaster;
 
+/**
+ * Result of getExperienceModelMaster: Get Experience Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/experience/sdk/#getexperiencemodelmaster
+ */
 class GetExperienceModelMasterResult implements IResult {
-    /** @var ExperienceModelMaster */
+    /** @var ExperienceModelMaster Experience Model Master */
     private $item;
 
+    /** @return ExperienceModelMaster|null Experience Model Master */
 	public function getItem(): ?ExperienceModelMaster {
 		return $this->item;
 	}
 
+    /** @param ExperienceModelMaster|null $item Experience Model Master */
 	public function setItem(?ExperienceModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param ExperienceModelMaster|null $item Experience Model Master
+     * @return GetExperienceModelMasterResult
+     */
 	public function withItem(?ExperienceModelMaster $item): GetExperienceModelMasterResult {
 		$this->item = $item;
 		return $this;

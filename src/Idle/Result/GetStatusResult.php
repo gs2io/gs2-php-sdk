@@ -20,18 +20,29 @@ namespace Gs2\Idle\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Idle\Model\Status;
 
+/**
+ * Result of getStatus: Get Status
+ *
+ * @see https://docs.gs2.io/api_reference/idle/sdk/#getstatus
+ */
 class GetStatusResult implements IResult {
-    /** @var Status */
+    /** @var Status Status */
     private $item;
 
+    /** @return Status|null Status */
 	public function getItem(): ?Status {
 		return $this->item;
 	}
 
+    /** @param Status|null $item Status */
 	public function setItem(?Status $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Status|null $item Status
+     * @return GetStatusResult
+     */
 	public function withItem(?Status $item): GetStatusResult {
 		$this->item = $item;
 		return $this;

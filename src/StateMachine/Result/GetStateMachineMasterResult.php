@@ -20,18 +20,29 @@ namespace Gs2\StateMachine\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\StateMachine\Model\StateMachineMaster;
 
+/**
+ * Result of getStateMachineMaster: Get State Machine Master
+ *
+ * @see https://docs.gs2.io/api_reference/state_machine/sdk/#getstatemachinemaster
+ */
 class GetStateMachineMasterResult implements IResult {
-    /** @var StateMachineMaster */
+    /** @var StateMachineMaster State Machine Master */
     private $item;
 
+    /** @return StateMachineMaster|null State Machine Master */
 	public function getItem(): ?StateMachineMaster {
 		return $this->item;
 	}
 
+    /** @param StateMachineMaster|null $item State Machine Master */
 	public function setItem(?StateMachineMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param StateMachineMaster|null $item State Machine Master
+     * @return GetStateMachineMasterResult
+     */
 	public function withItem(?StateMachineMaster $item): GetStateMachineMasterResult {
 		$this->item = $item;
 		return $this;

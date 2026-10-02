@@ -23,18 +23,29 @@ use Gs2\Mission\Model\VerifyAction;
 use Gs2\Mission\Model\AcquireAction;
 use Gs2\Mission\Model\MissionTaskModelMaster;
 
+/**
+ * Result of deleteMissionTaskModelMaster: Delete Mission Task Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#deletemissiontaskmodelmaster
+ */
 class DeleteMissionTaskModelMasterResult implements IResult {
-    /** @var MissionTaskModelMaster */
+    /** @var MissionTaskModelMaster Mission Task Model Master deleted */
     private $item;
 
+    /** @return MissionTaskModelMaster|null Mission Task Model Master deleted */
 	public function getItem(): ?MissionTaskModelMaster {
 		return $this->item;
 	}
 
+    /** @param MissionTaskModelMaster|null $item Mission Task Model Master deleted */
 	public function setItem(?MissionTaskModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param MissionTaskModelMaster|null $item Mission Task Model Master deleted
+     * @return DeleteMissionTaskModelMasterResult
+     */
 	public function withItem(?MissionTaskModelMaster $item): DeleteMissionTaskModelMasterResult {
 		$this->item = $item;
 		return $this;

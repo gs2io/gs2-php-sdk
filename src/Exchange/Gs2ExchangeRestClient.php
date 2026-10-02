@@ -3702,25 +3702,22 @@ class DeleteAwaitByStampTaskTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 Exchange API クライアント
+ * GS2-Exchange API client
  *
- * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/exchange/sdk/
  */
 class Gs2ExchangeRestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#describenamespaces
      */
     public function describeNamespacesAsync(
             DescribeNamespacesRequest $request
@@ -3734,8 +3731,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#describenamespaces
      */
     public function describeNamespaces (
             DescribeNamespacesRequest $request
@@ -3746,8 +3746,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#createnamespace
      */
     public function createNamespaceAsync(
             CreateNamespaceRequest $request
@@ -3761,8 +3764,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#createnamespace
      */
     public function createNamespace (
             CreateNamespaceRequest $request
@@ -3773,8 +3779,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#getnamespacestatus
      */
     public function getNamespaceStatusAsync(
             GetNamespaceStatusRequest $request
@@ -3788,8 +3797,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#getnamespacestatus
      */
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
@@ -3800,8 +3812,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#getnamespace
      */
     public function getNamespaceAsync(
             GetNamespaceRequest $request
@@ -3815,8 +3830,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#getnamespace
      */
     public function getNamespace (
             GetNamespaceRequest $request
@@ -3827,8 +3845,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#updatenamespace
      */
     public function updateNamespaceAsync(
             UpdateNamespaceRequest $request
@@ -3842,8 +3863,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#updatenamespace
      */
     public function updateNamespace (
             UpdateNamespaceRequest $request
@@ -3854,8 +3878,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#deletenamespace
      */
     public function deleteNamespaceAsync(
             DeleteNamespaceRequest $request
@@ -3869,8 +3896,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#deletenamespace
      */
     public function deleteNamespace (
             DeleteNamespaceRequest $request
@@ -3881,8 +3911,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get microservice version
+     *
      * @param GetServiceVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#getserviceversion
      */
     public function getServiceVersionAsync(
             GetServiceVersionRequest $request
@@ -3896,8 +3929,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get microservice version
+     *
      * @param GetServiceVersionRequest $request
      * @return GetServiceVersionResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#getserviceversion
      */
     public function getServiceVersion (
             GetServiceVersionRequest $request
@@ -3908,8 +3944,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserIdAsync(
             DumpUserDataByUserIdRequest $request
@@ -3923,8 +3962,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return DumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserId (
             DumpUserDataByUserIdRequest $request
@@ -3935,8 +3977,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserIdAsync(
             CheckDumpUserDataByUserIdRequest $request
@@ -3950,8 +3995,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return CheckDumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserId (
             CheckDumpUserDataByUserIdRequest $request
@@ -3962,8 +4010,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserIdAsync(
             CleanUserDataByUserIdRequest $request
@@ -3977,8 +4028,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return CleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserId (
             CleanUserDataByUserIdRequest $request
@@ -3989,8 +4043,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserIdAsync(
             CheckCleanUserDataByUserIdRequest $request
@@ -4004,8 +4061,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return CheckCleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserId (
             CheckCleanUserDataByUserIdRequest $request
@@ -4016,8 +4076,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserIdAsync(
             PrepareImportUserDataByUserIdRequest $request
@@ -4031,8 +4094,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PrepareImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserId (
             PrepareImportUserDataByUserIdRequest $request
@@ -4043,8 +4109,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserIdAsync(
             ImportUserDataByUserIdRequest $request
@@ -4058,8 +4127,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return ImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserId (
             ImportUserDataByUserIdRequest $request
@@ -4070,8 +4142,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserIdAsync(
             CheckImportUserDataByUserIdRequest $request
@@ -4085,8 +4160,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return CheckImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserId (
             CheckImportUserDataByUserIdRequest $request
@@ -4097,8 +4175,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Exchange Rate Models
+     *
      * @param DescribeRateModelsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#describeratemodels
      */
     public function describeRateModelsAsync(
             DescribeRateModelsRequest $request
@@ -4112,8 +4193,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Exchange Rate Models
+     *
      * @param DescribeRateModelsRequest $request
      * @return DescribeRateModelsResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#describeratemodels
      */
     public function describeRateModels (
             DescribeRateModelsRequest $request
@@ -4124,8 +4208,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Exchange Rate Model
+     *
      * @param GetRateModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#getratemodel
      */
     public function getRateModelAsync(
             GetRateModelRequest $request
@@ -4139,8 +4226,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Exchange Rate Model
+     *
      * @param GetRateModelRequest $request
      * @return GetRateModelResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#getratemodel
      */
     public function getRateModel (
             GetRateModelRequest $request
@@ -4151,8 +4241,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Exchange Rate Model Masters
+     *
      * @param DescribeRateModelMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#describeratemodelmasters
      */
     public function describeRateModelMastersAsync(
             DescribeRateModelMastersRequest $request
@@ -4166,8 +4259,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Exchange Rate Model Masters
+     *
      * @param DescribeRateModelMastersRequest $request
      * @return DescribeRateModelMastersResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#describeratemodelmasters
      */
     public function describeRateModelMasters (
             DescribeRateModelMastersRequest $request
@@ -4178,8 +4274,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Exchange Rate Model Master
+     *
      * @param CreateRateModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#createratemodelmaster
      */
     public function createRateModelMasterAsync(
             CreateRateModelMasterRequest $request
@@ -4193,8 +4292,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Exchange Rate Model Master
+     *
      * @param CreateRateModelMasterRequest $request
      * @return CreateRateModelMasterResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#createratemodelmaster
      */
     public function createRateModelMaster (
             CreateRateModelMasterRequest $request
@@ -4205,8 +4307,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Exchange Rate Model Master
+     *
      * @param GetRateModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#getratemodelmaster
      */
     public function getRateModelMasterAsync(
             GetRateModelMasterRequest $request
@@ -4220,8 +4325,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Exchange Rate Model Master
+     *
      * @param GetRateModelMasterRequest $request
      * @return GetRateModelMasterResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#getratemodelmaster
      */
     public function getRateModelMaster (
             GetRateModelMasterRequest $request
@@ -4232,8 +4340,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Exchange Rate Model Master
+     *
      * @param UpdateRateModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#updateratemodelmaster
      */
     public function updateRateModelMasterAsync(
             UpdateRateModelMasterRequest $request
@@ -4247,8 +4358,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Exchange Rate Model Master
+     *
      * @param UpdateRateModelMasterRequest $request
      * @return UpdateRateModelMasterResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#updateratemodelmaster
      */
     public function updateRateModelMaster (
             UpdateRateModelMasterRequest $request
@@ -4259,8 +4373,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Exchange Rate Model Master
+     *
      * @param DeleteRateModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#deleteratemodelmaster
      */
     public function deleteRateModelMasterAsync(
             DeleteRateModelMasterRequest $request
@@ -4274,8 +4391,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Exchange Rate Model Master
+     *
      * @param DeleteRateModelMasterRequest $request
      * @return DeleteRateModelMasterResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#deleteratemodelmaster
      */
     public function deleteRateModelMaster (
             DeleteRateModelMasterRequest $request
@@ -4286,8 +4406,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Incremental Cost Exchange Rate Models
+     *
      * @param DescribeIncrementalRateModelsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#describeincrementalratemodels
      */
     public function describeIncrementalRateModelsAsync(
             DescribeIncrementalRateModelsRequest $request
@@ -4301,8 +4424,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Incremental Cost Exchange Rate Models
+     *
      * @param DescribeIncrementalRateModelsRequest $request
      * @return DescribeIncrementalRateModelsResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#describeincrementalratemodels
      */
     public function describeIncrementalRateModels (
             DescribeIncrementalRateModelsRequest $request
@@ -4313,8 +4439,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get an Incremental Cost Exchange Rate Model
+     *
      * @param GetIncrementalRateModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#getincrementalratemodel
      */
     public function getIncrementalRateModelAsync(
             GetIncrementalRateModelRequest $request
@@ -4328,8 +4457,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get an Incremental Cost Exchange Rate Model
+     *
      * @param GetIncrementalRateModelRequest $request
      * @return GetIncrementalRateModelResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#getincrementalratemodel
      */
     public function getIncrementalRateModel (
             GetIncrementalRateModelRequest $request
@@ -4340,8 +4472,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Incremental Cost Exchange Rate Model Masters
+     *
      * @param DescribeIncrementalRateModelMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#describeincrementalratemodelmasters
      */
     public function describeIncrementalRateModelMastersAsync(
             DescribeIncrementalRateModelMastersRequest $request
@@ -4355,8 +4490,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Incremental Cost Exchange Rate Model Masters
+     *
      * @param DescribeIncrementalRateModelMastersRequest $request
      * @return DescribeIncrementalRateModelMastersResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#describeincrementalratemodelmasters
      */
     public function describeIncrementalRateModelMasters (
             DescribeIncrementalRateModelMastersRequest $request
@@ -4367,8 +4505,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Incremental Cost Exchange Rate Model Master
+     *
      * @param CreateIncrementalRateModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#createincrementalratemodelmaster
      */
     public function createIncrementalRateModelMasterAsync(
             CreateIncrementalRateModelMasterRequest $request
@@ -4382,8 +4523,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Incremental Cost Exchange Rate Model Master
+     *
      * @param CreateIncrementalRateModelMasterRequest $request
      * @return CreateIncrementalRateModelMasterResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#createincrementalratemodelmaster
      */
     public function createIncrementalRateModelMaster (
             CreateIncrementalRateModelMasterRequest $request
@@ -4394,8 +4538,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Incremental Cost Exchange Rate Model Master
+     *
      * @param GetIncrementalRateModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#getincrementalratemodelmaster
      */
     public function getIncrementalRateModelMasterAsync(
             GetIncrementalRateModelMasterRequest $request
@@ -4409,8 +4556,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Incremental Cost Exchange Rate Model Master
+     *
      * @param GetIncrementalRateModelMasterRequest $request
      * @return GetIncrementalRateModelMasterResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#getincrementalratemodelmaster
      */
     public function getIncrementalRateModelMaster (
             GetIncrementalRateModelMasterRequest $request
@@ -4421,8 +4571,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Incremental Cost Exchange Rate Model Master
+     *
      * @param UpdateIncrementalRateModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#updateincrementalratemodelmaster
      */
     public function updateIncrementalRateModelMasterAsync(
             UpdateIncrementalRateModelMasterRequest $request
@@ -4436,8 +4589,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Incremental Cost Exchange Rate Model Master
+     *
      * @param UpdateIncrementalRateModelMasterRequest $request
      * @return UpdateIncrementalRateModelMasterResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#updateincrementalratemodelmaster
      */
     public function updateIncrementalRateModelMaster (
             UpdateIncrementalRateModelMasterRequest $request
@@ -4448,8 +4604,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Incremental Cost Exchange Rate Model Master
+     *
      * @param DeleteIncrementalRateModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#deleteincrementalratemodelmaster
      */
     public function deleteIncrementalRateModelMasterAsync(
             DeleteIncrementalRateModelMasterRequest $request
@@ -4463,8 +4622,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Incremental Cost Exchange Rate Model Master
+     *
      * @param DeleteIncrementalRateModelMasterRequest $request
      * @return DeleteIncrementalRateModelMasterResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#deleteincrementalratemodelmaster
      */
     public function deleteIncrementalRateModelMaster (
             DeleteIncrementalRateModelMasterRequest $request
@@ -4475,8 +4637,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Perform exchange
+     *
      * @param ExchangeRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#exchange
      */
     public function exchangeAsync(
             ExchangeRequest $request
@@ -4490,8 +4655,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Perform exchange
+     *
      * @param ExchangeRequest $request
      * @return ExchangeResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#exchange
      */
     public function exchange (
             ExchangeRequest $request
@@ -4502,8 +4670,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Perform exchange by User ID
+     *
      * @param ExchangeByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#exchangebyuserid
      */
     public function exchangeByUserIdAsync(
             ExchangeByUserIdRequest $request
@@ -4517,8 +4688,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Perform exchange by User ID
+     *
      * @param ExchangeByUserIdRequest $request
      * @return ExchangeByUserIdResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#exchangebyuserid
      */
     public function exchangeByUserId (
             ExchangeByUserIdRequest $request
@@ -4529,8 +4703,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute exchange as an acquire action
+     *
      * @param ExchangeByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/stamp_sheet/#gs2exchangeexchangebyuserid
      */
     public function exchangeByStampSheetAsync(
             ExchangeByStampSheetRequest $request
@@ -4544,8 +4721,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute exchange as an acquire action
+     *
      * @param ExchangeByStampSheetRequest $request
      * @return ExchangeByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/exchange/stamp_sheet/#gs2exchangeexchangebyuserid
      */
     public function exchangeByStampSheet (
             ExchangeByStampSheetRequest $request
@@ -4556,8 +4736,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Perform incremental cost exchange
+     *
      * @param IncrementalExchangeRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#incrementalexchange
      */
     public function incrementalExchangeAsync(
             IncrementalExchangeRequest $request
@@ -4571,8 +4754,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Perform incremental cost exchange
+     *
      * @param IncrementalExchangeRequest $request
      * @return IncrementalExchangeResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#incrementalexchange
      */
     public function incrementalExchange (
             IncrementalExchangeRequest $request
@@ -4583,8 +4769,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Perform incremental cost exchange by User ID
+     *
      * @param IncrementalExchangeByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#incrementalexchangebyuserid
      */
     public function incrementalExchangeByUserIdAsync(
             IncrementalExchangeByUserIdRequest $request
@@ -4598,8 +4787,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Perform incremental cost exchange by User ID
+     *
      * @param IncrementalExchangeByUserIdRequest $request
      * @return IncrementalExchangeByUserIdResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#incrementalexchangebyuserid
      */
     public function incrementalExchangeByUserId (
             IncrementalExchangeByUserIdRequest $request
@@ -4610,8 +4802,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute incremental cost exchange as an acquire action
+     *
      * @param IncrementalExchangeByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/stamp_sheet/#gs2exchangeincrementalexchangebyuserid
      */
     public function incrementalExchangeByStampSheetAsync(
             IncrementalExchangeByStampSheetRequest $request
@@ -4625,8 +4820,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute incremental cost exchange as an acquire action
+     *
      * @param IncrementalExchangeByStampSheetRequest $request
      * @return IncrementalExchangeByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/exchange/stamp_sheet/#gs2exchangeincrementalexchangebyuserid
      */
     public function incrementalExchangeByStampSheet (
             IncrementalExchangeByStampSheetRequest $request
@@ -4637,8 +4835,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Rate Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#exportmaster
      */
     public function exportMasterAsync(
             ExportMasterRequest $request
@@ -4652,8 +4853,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Rate Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return ExportMasterResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#exportmaster
      */
     public function exportMaster (
             ExportMasterRequest $request
@@ -4664,8 +4868,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Rate Model master data
+     *
      * @param GetCurrentRateMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#getcurrentratemaster
      */
     public function getCurrentRateMasterAsync(
             GetCurrentRateMasterRequest $request
@@ -4679,8 +4886,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Rate Model master data
+     *
      * @param GetCurrentRateMasterRequest $request
      * @return GetCurrentRateMasterResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#getcurrentratemaster
      */
     public function getCurrentRateMaster (
             GetCurrentRateMasterRequest $request
@@ -4691,8 +4901,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Rate Model master data (3-phase version)
+     *
      * @param PreUpdateCurrentRateMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#preupdatecurrentratemaster
      */
     public function preUpdateCurrentRateMasterAsync(
             PreUpdateCurrentRateMasterRequest $request
@@ -4706,8 +4919,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Rate Model master data (3-phase version)
+     *
      * @param PreUpdateCurrentRateMasterRequest $request
      * @return PreUpdateCurrentRateMasterResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#preupdatecurrentratemaster
      */
     public function preUpdateCurrentRateMaster (
             PreUpdateCurrentRateMasterRequest $request
@@ -4718,8 +4934,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Rate Model master data
+     *
      * @param UpdateCurrentRateMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#updatecurrentratemaster
      */
     public function updateCurrentRateMasterAsync(
             UpdateCurrentRateMasterRequest $request
@@ -4733,8 +4952,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Rate Model master data
+     *
      * @param UpdateCurrentRateMasterRequest $request
      * @return UpdateCurrentRateMasterResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#updatecurrentratemaster
      */
     public function updateCurrentRateMaster (
             UpdateCurrentRateMasterRequest $request
@@ -4745,8 +4967,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Rate Model master data from GitHub
+     *
      * @param UpdateCurrentRateMasterFromGitHubRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#updatecurrentratemasterfromgithub
      */
     public function updateCurrentRateMasterFromGitHubAsync(
             UpdateCurrentRateMasterFromGitHubRequest $request
@@ -4760,8 +4985,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Rate Model master data from GitHub
+     *
      * @param UpdateCurrentRateMasterFromGitHubRequest $request
      * @return UpdateCurrentRateMasterFromGitHubResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#updatecurrentratemasterfromgithub
      */
     public function updateCurrentRateMasterFromGitHub (
             UpdateCurrentRateMasterFromGitHubRequest $request
@@ -4772,8 +5000,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Exchange Await by User ID
+     *
      * @param CreateAwaitByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#createawaitbyuserid
      */
     public function createAwaitByUserIdAsync(
             CreateAwaitByUserIdRequest $request
@@ -4787,8 +5018,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Exchange Await by User ID
+     *
      * @param CreateAwaitByUserIdRequest $request
      * @return CreateAwaitByUserIdResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#createawaitbyuserid
      */
     public function createAwaitByUserId (
             CreateAwaitByUserIdRequest $request
@@ -4799,8 +5033,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Exchange Awaits
+     *
      * @param DescribeAwaitsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#describeawaits
      */
     public function describeAwaitsAsync(
             DescribeAwaitsRequest $request
@@ -4814,8 +5051,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Exchange Awaits
+     *
      * @param DescribeAwaitsRequest $request
      * @return DescribeAwaitsResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#describeawaits
      */
     public function describeAwaits (
             DescribeAwaitsRequest $request
@@ -4826,8 +5066,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Exchange Awaits by User ID
+     *
      * @param DescribeAwaitsByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#describeawaitsbyuserid
      */
     public function describeAwaitsByUserIdAsync(
             DescribeAwaitsByUserIdRequest $request
@@ -4841,8 +5084,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Exchange Awaits by User ID
+     *
      * @param DescribeAwaitsByUserIdRequest $request
      * @return DescribeAwaitsByUserIdResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#describeawaitsbyuserid
      */
     public function describeAwaitsByUserId (
             DescribeAwaitsByUserIdRequest $request
@@ -4853,8 +5099,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Exchange Await
+     *
      * @param GetAwaitRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#getawait
      */
     public function getAwaitAsync(
             GetAwaitRequest $request
@@ -4868,8 +5117,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Exchange Await
+     *
      * @param GetAwaitRequest $request
      * @return GetAwaitResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#getawait
      */
     public function getAwait (
             GetAwaitRequest $request
@@ -4880,8 +5132,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Exchange Await by User ID
+     *
      * @param GetAwaitByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#getawaitbyuserid
      */
     public function getAwaitByUserIdAsync(
             GetAwaitByUserIdRequest $request
@@ -4895,8 +5150,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Exchange Await by User ID
+     *
      * @param GetAwaitByUserIdRequest $request
      * @return GetAwaitByUserIdResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#getawaitbyuserid
      */
     public function getAwaitByUserId (
             GetAwaitByUserIdRequest $request
@@ -4907,8 +5165,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Receive rewards for Exchange Await
+     *
      * @param AcquireRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#acquire
      */
     public function acquireAsync(
             AcquireRequest $request
@@ -4922,8 +5183,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Receive rewards for Exchange Await
+     *
      * @param AcquireRequest $request
      * @return AcquireResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#acquire
      */
     public function acquire (
             AcquireRequest $request
@@ -4934,8 +5198,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Receive rewards for Exchange Await by User ID
+     *
      * @param AcquireByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#acquirebyuserid
      */
     public function acquireByUserIdAsync(
             AcquireByUserIdRequest $request
@@ -4949,8 +5216,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Receive rewards for Exchange Await by User ID
+     *
      * @param AcquireByUserIdRequest $request
      * @return AcquireByUserIdResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#acquirebyuserid
      */
     public function acquireByUserId (
             AcquireByUserIdRequest $request
@@ -4961,8 +5231,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Receive rewards for Exchange Await without waiting for the lock time
+     *
      * @param AcquireForceByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#acquireforcebyuserid
      */
     public function acquireForceByUserIdAsync(
             AcquireForceByUserIdRequest $request
@@ -4976,8 +5249,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Receive rewards for Exchange Await without waiting for the lock time
+     *
      * @param AcquireForceByUserIdRequest $request
      * @return AcquireForceByUserIdResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#acquireforcebyuserid
      */
     public function acquireForceByUserId (
             AcquireForceByUserIdRequest $request
@@ -4988,8 +5264,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Skip Exchange Await by User ID
+     *
      * @param SkipByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#skipbyuserid
      */
     public function skipByUserIdAsync(
             SkipByUserIdRequest $request
@@ -5003,8 +5282,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Skip Exchange Await by User ID
+     *
      * @param SkipByUserIdRequest $request
      * @return SkipByUserIdResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#skipbyuserid
      */
     public function skipByUserId (
             SkipByUserIdRequest $request
@@ -5015,8 +5297,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Exchange Await
+     *
      * @param DeleteAwaitRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#deleteawait
      */
     public function deleteAwaitAsync(
             DeleteAwaitRequest $request
@@ -5030,8 +5315,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Exchange Await
+     *
      * @param DeleteAwaitRequest $request
      * @return DeleteAwaitResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#deleteawait
      */
     public function deleteAwait (
             DeleteAwaitRequest $request
@@ -5042,8 +5330,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Exchange Await by User ID
+     *
      * @param DeleteAwaitByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#deleteawaitbyuserid
      */
     public function deleteAwaitByUserIdAsync(
             DeleteAwaitByUserIdRequest $request
@@ -5057,8 +5348,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Exchange Await by User ID
+     *
      * @param DeleteAwaitByUserIdRequest $request
      * @return DeleteAwaitByUserIdResult
+     * @see https://docs.gs2.io/api_reference/exchange/sdk/#deleteawaitbyuserid
      */
     public function deleteAwaitByUserId (
             DeleteAwaitByUserIdRequest $request
@@ -5069,8 +5363,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute creation of Exchange Await as an acquire action
+     *
      * @param CreateAwaitByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/stamp_sheet/#gs2exchangecreateawaitbyuserid
      */
     public function createAwaitByStampSheetAsync(
             CreateAwaitByStampSheetRequest $request
@@ -5084,8 +5381,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute creation of Exchange Await as an acquire action
+     *
      * @param CreateAwaitByStampSheetRequest $request
      * @return CreateAwaitByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/exchange/stamp_sheet/#gs2exchangecreateawaitbyuserid
      */
     public function createAwaitByStampSheet (
             CreateAwaitByStampSheetRequest $request
@@ -5096,8 +5396,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute force acquisition of Exchange Await as an acquire action
+     *
      * @param AcquireForceByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/stamp_sheet/#gs2exchangeacquireforcebyuserid
      */
     public function acquireForceByStampSheetAsync(
             AcquireForceByStampSheetRequest $request
@@ -5111,8 +5414,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute force acquisition of Exchange Await as an acquire action
+     *
      * @param AcquireForceByStampSheetRequest $request
      * @return AcquireForceByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/exchange/stamp_sheet/#gs2exchangeacquireforcebyuserid
      */
     public function acquireForceByStampSheet (
             AcquireForceByStampSheetRequest $request
@@ -5123,8 +5429,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute skipping Exchange Await as an acquire action
+     *
      * @param SkipByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/stamp_sheet/#gs2exchangeskipbyuserid
      */
     public function skipByStampSheetAsync(
             SkipByStampSheetRequest $request
@@ -5138,8 +5447,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute skipping Exchange Await as an acquire action
+     *
      * @param SkipByStampSheetRequest $request
      * @return SkipByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/exchange/stamp_sheet/#gs2exchangeskipbyuserid
      */
     public function skipByStampSheet (
             SkipByStampSheetRequest $request
@@ -5150,8 +5462,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Exchange Await as a consume action
+     *
      * @param DeleteAwaitByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/exchange/stamp_sheet/#gs2exchangedeleteawaitbyuserid
      */
     public function deleteAwaitByStampTaskAsync(
             DeleteAwaitByStampTaskRequest $request
@@ -5165,8 +5480,11 @@ class Gs2ExchangeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Exchange Await as a consume action
+     *
      * @param DeleteAwaitByStampTaskRequest $request
      * @return DeleteAwaitByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/exchange/stamp_sheet/#gs2exchangedeleteawaitbyuserid
      */
     public function deleteAwaitByStampTask (
             DeleteAwaitByStampTaskRequest $request

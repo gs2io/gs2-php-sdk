@@ -20,87 +20,128 @@ namespace Gs2\Account\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * External Platform Account ID
+ *
+ * @see https://docs.gs2.io/api_reference/account/sdk/#platformid
+ */
 class PlatformId implements IModel {
 	/**
-     * @var string
+     * @var string Platform Id GRN
 	 */
 	private $platformId;
 	/**
-     * @var string
+     * @var string GS2-Account User ID
 	 */
 	private $userId;
 	/**
-     * @var int
+     * @var int Slot Number
 	 */
 	private $type;
 	/**
-     * @var string
+     * @var string External Platform User ID
 	 */
 	private $userIdentifier;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Platform Id GRN */
 	public function getPlatformId(): ?string {
 		return $this->platformId;
 	}
+    /** @param string|null $platformId Platform Id GRN */
 	public function setPlatformId(?string $platformId) {
 		$this->platformId = $platformId;
 	}
+    /**
+     * @param string|null $platformId Platform Id GRN
+     * @return PlatformId
+     */
 	public function withPlatformId(?string $platformId): PlatformId {
 		$this->platformId = $platformId;
 		return $this;
 	}
+    /** @return string|null GS2-Account User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId GS2-Account User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId GS2-Account User ID
+     * @return PlatformId
+     */
 	public function withUserId(?string $userId): PlatformId {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return int|null Slot Number */
 	public function getType(): ?int {
 		return $this->type;
 	}
+    /** @param int|null $type Slot Number */
 	public function setType(?int $type) {
 		$this->type = $type;
 	}
+    /**
+     * @param int|null $type Slot Number
+     * @return PlatformId
+     */
 	public function withType(?int $type): PlatformId {
 		$this->type = $type;
 		return $this;
 	}
+    /** @return string|null External Platform User ID */
 	public function getUserIdentifier(): ?string {
 		return $this->userIdentifier;
 	}
+    /** @param string|null $userIdentifier External Platform User ID */
 	public function setUserIdentifier(?string $userIdentifier) {
 		$this->userIdentifier = $userIdentifier;
 	}
+    /**
+     * @param string|null $userIdentifier External Platform User ID
+     * @return PlatformId
+     */
 	public function withUserIdentifier(?string $userIdentifier): PlatformId {
 		$this->userIdentifier = $userIdentifier;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return PlatformId
+     */
 	public function withCreatedAt(?int $createdAt): PlatformId {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return PlatformId
+     */
 	public function withRevision(?int $revision): PlatformId {
 		$this->revision = $revision;
 		return $this;

@@ -20,18 +20,29 @@ namespace Gs2\Account\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Account\Model\TakeOver;
 
+/**
+ * Result of updateTakeOverByUserId: Update Takeover Information by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/account/sdk/#updatetakeoverbyuserid
+ */
 class UpdateTakeOverByUserIdResult implements IResult {
-    /** @var TakeOver */
+    /** @var TakeOver Takeover Information updated */
     private $item;
 
+    /** @return TakeOver|null Takeover Information updated */
 	public function getItem(): ?TakeOver {
 		return $this->item;
 	}
 
+    /** @param TakeOver|null $item Takeover Information updated */
 	public function setItem(?TakeOver $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param TakeOver|null $item Takeover Information updated
+     * @return UpdateTakeOverByUserIdResult
+     */
 	public function withItem(?TakeOver $item): UpdateTakeOverByUserIdResult {
 		$this->item = $item;
 		return $this;

@@ -20,18 +20,29 @@ namespace Gs2\Ranking2\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Ranking2\Model\SubscribeUser;
 
+/**
+ * Result of getSubscribeByUserId: Get Subscribe Target User ID specifying User ID
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/sdk/#getsubscribebyuserid
+ */
 class GetSubscribeByUserIdResult implements IResult {
-    /** @var SubscribeUser */
+    /** @var SubscribeUser Subscribed User Information */
     private $item;
 
+    /** @return SubscribeUser|null Subscribed User Information */
 	public function getItem(): ?SubscribeUser {
 		return $this->item;
 	}
 
+    /** @param SubscribeUser|null $item Subscribed User Information */
 	public function setItem(?SubscribeUser $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param SubscribeUser|null $item Subscribed User Information
+     * @return GetSubscribeByUserIdResult
+     */
 	public function withItem(?SubscribeUser $item): GetSubscribeByUserIdResult {
 		$this->item = $item;
 		return $this;

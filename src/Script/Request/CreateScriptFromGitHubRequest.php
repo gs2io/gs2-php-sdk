@@ -20,63 +20,98 @@ namespace Gs2\Script\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Script\Model\GitHubCheckoutSetting;
 
+/**
+ * Request for createScriptFromGitHub: Create script from code in the GitHub repository
+ *
+ * @see https://docs.gs2.io/api_reference/script/sdk/#createscriptfromgithub
+ */
 class CreateScriptFromGitHubRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Script name */
     private $name;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var GitHubCheckoutSetting */
+    /** @var GitHubCheckoutSetting Setup to check out source code from GitHub */
     private $checkoutSetting;
-    /** @var bool */
+    /** @var bool Disable String-Number Conversion */
     private $disableStringNumberToNumber;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return CreateScriptFromGitHubRequest
+     */
 	public function withNamespaceName(?string $namespaceName): CreateScriptFromGitHubRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Script name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Script name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Script name
+     * @return CreateScriptFromGitHubRequest
+     */
 	public function withName(?string $name): CreateScriptFromGitHubRequest {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return CreateScriptFromGitHubRequest
+     */
 	public function withDescription(?string $description): CreateScriptFromGitHubRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return GitHubCheckoutSetting|null Setup to check out source code from GitHub */
 	public function getCheckoutSetting(): ?GitHubCheckoutSetting {
 		return $this->checkoutSetting;
 	}
+    /** @param GitHubCheckoutSetting|null $checkoutSetting Setup to check out source code from GitHub */
 	public function setCheckoutSetting(?GitHubCheckoutSetting $checkoutSetting) {
 		$this->checkoutSetting = $checkoutSetting;
 	}
+    /**
+     * @param GitHubCheckoutSetting|null $checkoutSetting Setup to check out source code from GitHub
+     * @return CreateScriptFromGitHubRequest
+     */
 	public function withCheckoutSetting(?GitHubCheckoutSetting $checkoutSetting): CreateScriptFromGitHubRequest {
 		$this->checkoutSetting = $checkoutSetting;
 		return $this;
 	}
+    /** @return bool|null Disable String-Number Conversion */
 	public function getDisableStringNumberToNumber(): ?bool {
 		return $this->disableStringNumberToNumber;
 	}
+    /** @param bool|null $disableStringNumberToNumber Disable String-Number Conversion */
 	public function setDisableStringNumberToNumber(?bool $disableStringNumberToNumber) {
 		$this->disableStringNumberToNumber = $disableStringNumberToNumber;
 	}
+    /**
+     * @param bool|null $disableStringNumberToNumber Disable String-Number Conversion
+     * @return CreateScriptFromGitHubRequest
+     */
 	public function withDisableStringNumberToNumber(?bool $disableStringNumberToNumber): CreateScriptFromGitHubRequest {
 		$this->disableStringNumberToNumber = $disableStringNumberToNumber;
 		return $this;

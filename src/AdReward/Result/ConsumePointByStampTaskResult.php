@@ -20,33 +20,50 @@ namespace Gs2\AdReward\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\AdReward\Model\Point;
 
+/**
+ * Result of consumePointByStampTask: Consume Point Consume Action
+ *
+ * @see https://docs.gs2.io/api_reference/ad_reward/stamp_sheet/#gs2adrewardconsumepointbyuserid
+ */
 class ConsumePointByStampTaskResult implements IResult {
-    /** @var Point */
+    /** @var Point Point */
     private $item;
-    /** @var string */
+    /** @var string Context recording the execution results of Consume Actions */
     private $newContextStack;
 
+    /** @return Point|null Point */
 	public function getItem(): ?Point {
 		return $this->item;
 	}
 
+    /** @param Point|null $item Point */
 	public function setItem(?Point $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Point|null $item Point
+     * @return ConsumePointByStampTaskResult
+     */
 	public function withItem(?Point $item): ConsumePointByStampTaskResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null Context recording the execution results of Consume Actions */
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
+    /** @param string|null $newContextStack Context recording the execution results of Consume Actions */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
+    /**
+     * @param string|null $newContextStack Context recording the execution results of Consume Actions
+     * @return ConsumePointByStampTaskResult
+     */
 	public function withNewContextStack(?string $newContextStack): ConsumePointByStampTaskResult {
 		$this->newContextStack = $newContextStack;
 		return $this;

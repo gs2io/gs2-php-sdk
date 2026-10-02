@@ -20,31 +20,48 @@ namespace Gs2\Script\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Used Random Numbers
+ *
+ * @see https://docs.gs2.io/api_reference/script/sdk/#randomused
+ */
 class RandomUsed implements IModel {
 	/**
-     * @var int
+     * @var int Category
 	 */
 	private $category;
 	/**
-     * @var int
+     * @var int Used Count
 	 */
 	private $used;
+    /** @return int|null Category */
 	public function getCategory(): ?int {
 		return $this->category;
 	}
+    /** @param int|null $category Category */
 	public function setCategory(?int $category) {
 		$this->category = $category;
 	}
+    /**
+     * @param int|null $category Category
+     * @return RandomUsed
+     */
 	public function withCategory(?int $category): RandomUsed {
 		$this->category = $category;
 		return $this;
 	}
+    /** @return int|null Used Count */
 	public function getUsed(): ?int {
 		return $this->used;
 	}
+    /** @param int|null $used Used Count */
 	public function setUsed(?int $used) {
 		$this->used = $used;
 	}
+    /**
+     * @param int|null $used Used Count
+     * @return RandomUsed
+     */
 	public function withUsed(?int $used): RandomUsed {
 		$this->used = $used;
 		return $this;

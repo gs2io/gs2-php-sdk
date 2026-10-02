@@ -20,31 +20,48 @@ namespace Gs2\News\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Set Cookie Request Entry
+ *
+ * @see https://docs.gs2.io/api_reference/news/sdk/#setcookierequestentry
+ */
 class SetCookieRequestEntry implements IModel {
 	/**
-     * @var string
+     * @var string Cookie Key
 	 */
 	private $key;
 	/**
-     * @var string
+     * @var string Cookie Value
 	 */
 	private $value;
+    /** @return string|null Cookie Key */
 	public function getKey(): ?string {
 		return $this->key;
 	}
+    /** @param string|null $key Cookie Key */
 	public function setKey(?string $key) {
 		$this->key = $key;
 	}
+    /**
+     * @param string|null $key Cookie Key
+     * @return SetCookieRequestEntry
+     */
 	public function withKey(?string $key): SetCookieRequestEntry {
 		$this->key = $key;
 		return $this;
 	}
+    /** @return string|null Cookie Value */
 	public function getValue(): ?string {
 		return $this->value;
 	}
+    /** @param string|null $value Cookie Value */
 	public function setValue(?string $value) {
 		$this->value = $value;
 	}
+    /**
+     * @param string|null $value Cookie Value
+     * @return SetCookieRequestEntry
+     */
 	public function withValue(?string $value): SetCookieRequestEntry {
 		$this->value = $value;
 		return $this;

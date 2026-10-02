@@ -22,18 +22,29 @@ use Gs2\Lottery\Model\AcquireAction;
 use Gs2\Lottery\Model\Prize;
 use Gs2\Lottery\Model\PrizeTableMaster;
 
+/**
+ * Result of deletePrizeTableMaster: Delete Prize Table Master
+ *
+ * @see https://docs.gs2.io/api_reference/lottery/sdk/#deleteprizetablemaster
+ */
 class DeletePrizeTableMasterResult implements IResult {
-    /** @var PrizeTableMaster */
+    /** @var PrizeTableMaster Prize Table Master deleted */
     private $item;
 
+    /** @return PrizeTableMaster|null Prize Table Master deleted */
 	public function getItem(): ?PrizeTableMaster {
 		return $this->item;
 	}
 
+    /** @param PrizeTableMaster|null $item Prize Table Master deleted */
 	public function setItem(?PrizeTableMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param PrizeTableMaster|null $item Prize Table Master deleted
+     * @return DeletePrizeTableMasterResult
+     */
 	public function withItem(?PrizeTableMaster $item): DeletePrizeTableMasterResult {
 		$this->item = $item;
 		return $this;

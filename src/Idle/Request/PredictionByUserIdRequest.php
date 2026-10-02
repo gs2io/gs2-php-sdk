@@ -19,51 +19,80 @@ namespace Gs2\Idle\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for predictionByUserId: Get a list of available rewards by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/idle/sdk/#predictionbyuserid
+ */
 class PredictionByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Category Model Name */
     private $categoryName;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return PredictionByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): PredictionByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return PredictionByUserIdRequest
+     */
 	public function withUserId(?string $userId): PredictionByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Category Model Name */
 	public function getCategoryName(): ?string {
 		return $this->categoryName;
 	}
+    /** @param string|null $categoryName Category Model Name */
 	public function setCategoryName(?string $categoryName) {
 		$this->categoryName = $categoryName;
 	}
+    /**
+     * @param string|null $categoryName Category Model Name
+     * @return PredictionByUserIdRequest
+     */
 	public function withCategoryName(?string $categoryName): PredictionByUserIdRequest {
 		$this->categoryName = $categoryName;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return PredictionByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): PredictionByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

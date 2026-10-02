@@ -20,18 +20,29 @@ namespace Gs2\Distributor\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Distributor\Model\DistributorModelMaster;
 
+/**
+ * Result of createDistributorModelMaster: Create Distributor Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#createdistributormodelmaster
+ */
 class CreateDistributorModelMasterResult implements IResult {
-    /** @var DistributorModelMaster */
+    /** @var DistributorModelMaster Created Distributor Model Master */
     private $item;
 
+    /** @return DistributorModelMaster|null Created Distributor Model Master */
 	public function getItem(): ?DistributorModelMaster {
 		return $this->item;
 	}
 
+    /** @param DistributorModelMaster|null $item Created Distributor Model Master */
 	public function setItem(?DistributorModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param DistributorModelMaster|null $item Created Distributor Model Master
+     * @return CreateDistributorModelMasterResult
+     */
 	public function withItem(?DistributorModelMaster $item): CreateDistributorModelMasterResult {
 		$this->item = $item;
 		return $this;

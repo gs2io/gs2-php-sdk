@@ -20,115 +20,168 @@ namespace Gs2\Enchant\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Rarity Parameter Status
+ *
+ * @see https://docs.gs2.io/api_reference/enchant/sdk/#rarityparameterstatus
+ */
 class RarityParameterStatus implements IModel {
 	/**
-     * @var string
+     * @var string Rarity Parameter Status GRN
 	 */
 	private $rarityParameterStatusId;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var string
+     * @var string Rarity Parameter Model name
 	 */
 	private $parameterName;
 	/**
-     * @var string
+     * @var string Property ID of the resource that owns the parameter
 	 */
 	private $propertyId;
 	/**
-     * @var array
+     * @var array List of rarity parameter values
 	 */
 	private $parameterValues;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Rarity Parameter Status GRN */
 	public function getRarityParameterStatusId(): ?string {
 		return $this->rarityParameterStatusId;
 	}
+    /** @param string|null $rarityParameterStatusId Rarity Parameter Status GRN */
 	public function setRarityParameterStatusId(?string $rarityParameterStatusId) {
 		$this->rarityParameterStatusId = $rarityParameterStatusId;
 	}
+    /**
+     * @param string|null $rarityParameterStatusId Rarity Parameter Status GRN
+     * @return RarityParameterStatus
+     */
 	public function withRarityParameterStatusId(?string $rarityParameterStatusId): RarityParameterStatus {
 		$this->rarityParameterStatusId = $rarityParameterStatusId;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return RarityParameterStatus
+     */
 	public function withUserId(?string $userId): RarityParameterStatus {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Rarity Parameter Model name */
 	public function getParameterName(): ?string {
 		return $this->parameterName;
 	}
+    /** @param string|null $parameterName Rarity Parameter Model name */
 	public function setParameterName(?string $parameterName) {
 		$this->parameterName = $parameterName;
 	}
+    /**
+     * @param string|null $parameterName Rarity Parameter Model name
+     * @return RarityParameterStatus
+     */
 	public function withParameterName(?string $parameterName): RarityParameterStatus {
 		$this->parameterName = $parameterName;
 		return $this;
 	}
+    /** @return string|null Property ID of the resource that owns the parameter */
 	public function getPropertyId(): ?string {
 		return $this->propertyId;
 	}
+    /** @param string|null $propertyId Property ID of the resource that owns the parameter */
 	public function setPropertyId(?string $propertyId) {
 		$this->propertyId = $propertyId;
 	}
+    /**
+     * @param string|null $propertyId Property ID of the resource that owns the parameter
+     * @return RarityParameterStatus
+     */
 	public function withPropertyId(?string $propertyId): RarityParameterStatus {
 		$this->propertyId = $propertyId;
 		return $this;
 	}
+    /** @return array|null List of rarity parameter values */
 	public function getParameterValues(): ?array {
 		return $this->parameterValues;
 	}
+    /** @param array|null $parameterValues List of rarity parameter values */
 	public function setParameterValues(?array $parameterValues) {
 		$this->parameterValues = $parameterValues;
 	}
+    /**
+     * @param array|null $parameterValues List of rarity parameter values
+     * @return RarityParameterStatus
+     */
 	public function withParameterValues(?array $parameterValues): RarityParameterStatus {
 		$this->parameterValues = $parameterValues;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return RarityParameterStatus
+     */
 	public function withCreatedAt(?int $createdAt): RarityParameterStatus {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return RarityParameterStatus
+     */
 	public function withUpdatedAt(?int $updatedAt): RarityParameterStatus {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return RarityParameterStatus
+     */
 	public function withRevision(?int $revision): RarityParameterStatus {
 		$this->revision = $revision;
 		return $this;

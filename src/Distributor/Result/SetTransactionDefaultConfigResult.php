@@ -19,18 +19,29 @@ namespace Gs2\Distributor\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of setTransactionDefaultConfig: Set the default value of Config to be specified for the Transaction Issuance API
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#settransactiondefaultconfig
+ */
 class SetTransactionDefaultConfigResult implements IResult {
-    /** @var string */
+    /** @var string Context stack for applying the default configuration */
     private $newContextStack;
 
+    /** @return string|null Context stack for applying the default configuration */
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
+    /** @param string|null $newContextStack Context stack for applying the default configuration */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
+    /**
+     * @param string|null $newContextStack Context stack for applying the default configuration
+     * @return SetTransactionDefaultConfigResult
+     */
 	public function withNewContextStack(?string $newContextStack): SetTransactionDefaultConfigResult {
 		$this->newContextStack = $newContextStack;
 		return $this;

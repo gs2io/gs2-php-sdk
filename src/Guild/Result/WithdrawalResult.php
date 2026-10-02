@@ -23,33 +23,50 @@ use Gs2\Guild\Model\RoleModel;
 use Gs2\Guild\Model\Member;
 use Gs2\Guild\Model\Guild;
 
+/**
+ * Result of withdrawal: Withdrawal from the Guild
+ *
+ * @see https://docs.gs2.io/api_reference/guild/sdk/#withdrawal
+ */
 class WithdrawalResult implements IResult {
-    /** @var JoinedGuild */
+    /** @var JoinedGuild Guild that withdrew */
     private $item;
-    /** @var Guild */
+    /** @var Guild Guild */
     private $guild;
 
+    /** @return JoinedGuild|null Guild that withdrew */
 	public function getItem(): ?JoinedGuild {
 		return $this->item;
 	}
 
+    /** @param JoinedGuild|null $item Guild that withdrew */
 	public function setItem(?JoinedGuild $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param JoinedGuild|null $item Guild that withdrew
+     * @return WithdrawalResult
+     */
 	public function withItem(?JoinedGuild $item): WithdrawalResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return Guild|null Guild */
 	public function getGuild(): ?Guild {
 		return $this->guild;
 	}
 
+    /** @param Guild|null $guild Guild */
 	public function setGuild(?Guild $guild) {
 		$this->guild = $guild;
 	}
 
+    /**
+     * @param Guild|null $guild Guild
+     * @return WithdrawalResult
+     */
 	public function withGuild(?Guild $guild): WithdrawalResult {
 		$this->guild = $guild;
 		return $this;

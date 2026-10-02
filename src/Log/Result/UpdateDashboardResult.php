@@ -20,18 +20,29 @@ namespace Gs2\Log\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Log\Model\Dashboard;
 
+/**
+ * Result of updateDashboard: Update Dashboard
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#updatedashboard
+ */
 class UpdateDashboardResult implements IResult {
-    /** @var Dashboard */
+    /** @var Dashboard Updated Dashboard */
     private $item;
 
+    /** @return Dashboard|null Updated Dashboard */
 	public function getItem(): ?Dashboard {
 		return $this->item;
 	}
 
+    /** @param Dashboard|null $item Updated Dashboard */
 	public function setItem(?Dashboard $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Dashboard|null $item Updated Dashboard
+     * @return UpdateDashboardResult
+     */
 	public function withItem(?Dashboard $item): UpdateDashboardResult {
 		$this->item = $item;
 		return $this;

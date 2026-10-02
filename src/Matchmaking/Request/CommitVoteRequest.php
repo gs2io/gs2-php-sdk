@@ -19,39 +19,62 @@ namespace Gs2\Matchmaking\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for commitVote: Forced determination of voting status
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#commitvote
+ */
 class CommitVoteRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Rating Model name */
     private $ratingName;
-    /** @var string */
+    /** @var string Gathering name */
     private $gatheringName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return CommitVoteRequest
+     */
 	public function withNamespaceName(?string $namespaceName): CommitVoteRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Rating Model name */
 	public function getRatingName(): ?string {
 		return $this->ratingName;
 	}
+    /** @param string|null $ratingName Rating Model name */
 	public function setRatingName(?string $ratingName) {
 		$this->ratingName = $ratingName;
 	}
+    /**
+     * @param string|null $ratingName Rating Model name
+     * @return CommitVoteRequest
+     */
 	public function withRatingName(?string $ratingName): CommitVoteRequest {
 		$this->ratingName = $ratingName;
 		return $this;
 	}
+    /** @return string|null Gathering name */
 	public function getGatheringName(): ?string {
 		return $this->gatheringName;
 	}
+    /** @param string|null $gatheringName Gathering name */
 	public function setGatheringName(?string $gatheringName) {
 		$this->gatheringName = $gatheringName;
 	}
+    /**
+     * @param string|null $gatheringName Gathering name
+     * @return CommitVoteRequest
+     */
 	public function withGatheringName(?string $gatheringName): CommitVoteRequest {
 		$this->gatheringName = $gatheringName;
 		return $this;

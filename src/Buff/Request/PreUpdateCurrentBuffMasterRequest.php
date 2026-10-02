@@ -19,15 +19,26 @@ namespace Gs2\Buff\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for preUpdateCurrentBuffMaster: Update master data of the currently active Buff Entry Models (3-phase version)
+ *
+ * @see https://docs.gs2.io/api_reference/buff/sdk/#preupdatecurrentbuffmaster
+ */
 class PreUpdateCurrentBuffMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return PreUpdateCurrentBuffMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): PreUpdateCurrentBuffMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;

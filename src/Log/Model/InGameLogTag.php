@@ -20,31 +20,48 @@ namespace Gs2\Log\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * In-game Log Tag
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#ingamelogtag
+ */
 class InGameLogTag implements IModel {
 	/**
-     * @var string
+     * @var string Tag Key
 	 */
 	private $key;
 	/**
-     * @var string
+     * @var string Tag Value
 	 */
 	private $value;
+    /** @return string|null Tag Key */
 	public function getKey(): ?string {
 		return $this->key;
 	}
+    /** @param string|null $key Tag Key */
 	public function setKey(?string $key) {
 		$this->key = $key;
 	}
+    /**
+     * @param string|null $key Tag Key
+     * @return InGameLogTag
+     */
 	public function withKey(?string $key): InGameLogTag {
 		$this->key = $key;
 		return $this;
 	}
+    /** @return string|null Tag Value */
 	public function getValue(): ?string {
 		return $this->value;
 	}
+    /** @param string|null $value Tag Value */
 	public function setValue(?string $value) {
 		$this->value = $value;
 	}
+    /**
+     * @param string|null $value Tag Value
+     * @return InGameLogTag
+     */
 	public function withValue(?string $value): InGameLogTag {
 		$this->value = $value;
 		return $this;

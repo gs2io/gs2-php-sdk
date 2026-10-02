@@ -20,18 +20,29 @@ namespace Gs2\Freeze\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Freeze\Model\Output;
 
+/**
+ * Result of getOutput: Get stage update progress output
+ *
+ * @see https://docs.gs2.io/api_reference/freeze/sdk/#getoutput
+ */
 class GetOutputResult implements IResult {
-    /** @var Output */
+    /** @var Output Output */
     private $item;
 
+    /** @return Output|null Output */
 	public function getItem(): ?Output {
 		return $this->item;
 	}
 
+    /** @param Output|null $item Output */
 	public function setItem(?Output $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Output|null $item Output
+     * @return GetOutputResult
+     */
 	public function withItem(?Output $item): GetOutputResult {
 		$this->item = $item;
 		return $this;

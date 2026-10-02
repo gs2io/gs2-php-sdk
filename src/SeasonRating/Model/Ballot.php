@@ -20,59 +20,88 @@ namespace Gs2\SeasonRating\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Ballot
+ *
+ * @see https://docs.gs2.io/api_reference/season_rating/sdk/#ballot
+ */
 class Ballot implements IModel {
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var string
+     * @var string Season Name
 	 */
 	private $seasonName;
 	/**
-     * @var string
+     * @var string Session Name
 	 */
 	private $sessionName;
 	/**
-     * @var int
+     * @var int Number of Players
 	 */
 	private $numberOfPlayer;
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return Ballot
+     */
 	public function withUserId(?string $userId): Ballot {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Season Name */
 	public function getSeasonName(): ?string {
 		return $this->seasonName;
 	}
+    /** @param string|null $seasonName Season Name */
 	public function setSeasonName(?string $seasonName) {
 		$this->seasonName = $seasonName;
 	}
+    /**
+     * @param string|null $seasonName Season Name
+     * @return Ballot
+     */
 	public function withSeasonName(?string $seasonName): Ballot {
 		$this->seasonName = $seasonName;
 		return $this;
 	}
+    /** @return string|null Session Name */
 	public function getSessionName(): ?string {
 		return $this->sessionName;
 	}
+    /** @param string|null $sessionName Session Name */
 	public function setSessionName(?string $sessionName) {
 		$this->sessionName = $sessionName;
 	}
+    /**
+     * @param string|null $sessionName Session Name
+     * @return Ballot
+     */
 	public function withSessionName(?string $sessionName): Ballot {
 		$this->sessionName = $sessionName;
 		return $this;
 	}
+    /** @return int|null Number of Players */
 	public function getNumberOfPlayer(): ?int {
 		return $this->numberOfPlayer;
 	}
+    /** @param int|null $numberOfPlayer Number of Players */
 	public function setNumberOfPlayer(?int $numberOfPlayer) {
 		$this->numberOfPlayer = $numberOfPlayer;
 	}
+    /**
+     * @param int|null $numberOfPlayer Number of Players
+     * @return Ballot
+     */
 	public function withNumberOfPlayer(?int $numberOfPlayer): Ballot {
 		$this->numberOfPlayer = $numberOfPlayer;
 		return $this;

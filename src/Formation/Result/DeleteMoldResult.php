@@ -20,18 +20,29 @@ namespace Gs2\Formation\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Formation\Model\Mold;
 
+/**
+ * Result of deleteMold: Delete Form Storage Area
+ *
+ * @see https://docs.gs2.io/api_reference/formation/sdk/#deletemold
+ */
 class DeleteMoldResult implements IResult {
-    /** @var Mold */
+    /** @var Mold Form Storage Area */
     private $item;
 
+    /** @return Mold|null Form Storage Area */
 	public function getItem(): ?Mold {
 		return $this->item;
 	}
 
+    /** @param Mold|null $item Form Storage Area */
 	public function setItem(?Mold $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Mold|null $item Form Storage Area
+     * @return DeleteMoldResult
+     */
 	public function withItem(?Mold $item): DeleteMoldResult {
 		$this->item = $item;
 		return $this;

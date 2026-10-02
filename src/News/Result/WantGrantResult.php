@@ -20,48 +20,71 @@ namespace Gs2\News\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\News\Model\SetCookieRequestEntry;
 
+/**
+ * Result of wantGrant: Get the information needed to access the News Article
+ *
+ * @see https://docs.gs2.io/api_reference/news/sdk/#wantgrant
+ */
 class WantGrantResult implements IResult {
-    /** @var array */
+    /** @var array List of cookies that need to be set in order to access the content */
     private $items;
-    /** @var string */
+    /** @var string URL to access the content */
     private $browserUrl;
-    /** @var string */
+    /** @var string URL to access the announcement contents in ZIP format (Cookie setting is not required for access) */
     private $zipUrl;
 
+    /** @return array|null List of cookies that need to be set in order to access the content */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of cookies that need to be set in order to access the content */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of cookies that need to be set in order to access the content
+     * @return WantGrantResult
+     */
 	public function withItems(?array $items): WantGrantResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null URL to access the content */
 	public function getBrowserUrl(): ?string {
 		return $this->browserUrl;
 	}
 
+    /** @param string|null $browserUrl URL to access the content */
 	public function setBrowserUrl(?string $browserUrl) {
 		$this->browserUrl = $browserUrl;
 	}
 
+    /**
+     * @param string|null $browserUrl URL to access the content
+     * @return WantGrantResult
+     */
 	public function withBrowserUrl(?string $browserUrl): WantGrantResult {
 		$this->browserUrl = $browserUrl;
 		return $this;
 	}
 
+    /** @return string|null URL to access the announcement contents in ZIP format (Cookie setting is not required for access) */
 	public function getZipUrl(): ?string {
 		return $this->zipUrl;
 	}
 
+    /** @param string|null $zipUrl URL to access the announcement contents in ZIP format (Cookie setting is not required for access) */
 	public function setZipUrl(?string $zipUrl) {
 		$this->zipUrl = $zipUrl;
 	}
 
+    /**
+     * @param string|null $zipUrl URL to access the announcement contents in ZIP format (Cookie setting is not required for access)
+     * @return WantGrantResult
+     */
 	public function withZipUrl(?string $zipUrl): WantGrantResult {
 		$this->zipUrl = $zipUrl;
 		return $this;

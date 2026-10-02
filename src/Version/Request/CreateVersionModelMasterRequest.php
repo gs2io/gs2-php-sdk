@@ -21,159 +21,242 @@ use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Version\Model\Version;
 use Gs2\Version\Model\ScheduleVersion;
 
+/**
+ * Request for createVersionModelMaster: Create Version Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/version/sdk/#createversionmodelmaster
+ */
 class CreateVersionModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Version Model name */
     private $name;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var string */
+    /** @var string Metadata */
     private $metadata;
-    /** @var string */
+    /** @var string Type of version value used for judgment */
     private $scope;
-    /** @var string */
+    /** @var string Version Check Mode */
     private $type;
-    /** @var Version */
+    /** @var Version Current Version */
     private $currentVersion;
-    /** @var Version */
+    /** @var Version Version that prompts for version upgrade */
     private $warningVersion;
-    /** @var Version */
+    /** @var Version Version that is determined to be an error by the version check */
     private $errorVersion;
-    /** @var array */
+    /** @var array List of Version check content that switches over time series */
     private $scheduleVersions;
-    /** @var bool */
+    /** @var bool Whether the version value to be determined requires signature verification */
     private $needSignature;
-    /** @var string */
+    /** @var string Encryption Key GRN */
     private $signatureKeyId;
-    /** @var string */
+    /** @var string Requirement for approval */
     private $approveRequirement;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return CreateVersionModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): CreateVersionModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Version Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Version Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Version Model name
+     * @return CreateVersionModelMasterRequest
+     */
 	public function withName(?string $name): CreateVersionModelMasterRequest {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return CreateVersionModelMasterRequest
+     */
 	public function withDescription(?string $description): CreateVersionModelMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return CreateVersionModelMasterRequest
+     */
 	public function withMetadata(?string $metadata): CreateVersionModelMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return string|null Type of version value used for judgment */
 	public function getScope(): ?string {
 		return $this->scope;
 	}
+    /** @param string|null $scope Type of version value used for judgment */
 	public function setScope(?string $scope) {
 		$this->scope = $scope;
 	}
+    /**
+     * @param string|null $scope Type of version value used for judgment
+     * @return CreateVersionModelMasterRequest
+     */
 	public function withScope(?string $scope): CreateVersionModelMasterRequest {
 		$this->scope = $scope;
 		return $this;
 	}
+    /** @return string|null Version Check Mode */
 	public function getType(): ?string {
 		return $this->type;
 	}
+    /** @param string|null $type Version Check Mode */
 	public function setType(?string $type) {
 		$this->type = $type;
 	}
+    /**
+     * @param string|null $type Version Check Mode
+     * @return CreateVersionModelMasterRequest
+     */
 	public function withType(?string $type): CreateVersionModelMasterRequest {
 		$this->type = $type;
 		return $this;
 	}
+    /** @return Version|null Current Version */
 	public function getCurrentVersion(): ?Version {
 		return $this->currentVersion;
 	}
+    /** @param Version|null $currentVersion Current Version */
 	public function setCurrentVersion(?Version $currentVersion) {
 		$this->currentVersion = $currentVersion;
 	}
+    /**
+     * @param Version|null $currentVersion Current Version
+     * @return CreateVersionModelMasterRequest
+     */
 	public function withCurrentVersion(?Version $currentVersion): CreateVersionModelMasterRequest {
 		$this->currentVersion = $currentVersion;
 		return $this;
 	}
+    /** @return Version|null Version that prompts for version upgrade */
 	public function getWarningVersion(): ?Version {
 		return $this->warningVersion;
 	}
+    /** @param Version|null $warningVersion Version that prompts for version upgrade */
 	public function setWarningVersion(?Version $warningVersion) {
 		$this->warningVersion = $warningVersion;
 	}
+    /**
+     * @param Version|null $warningVersion Version that prompts for version upgrade
+     * @return CreateVersionModelMasterRequest
+     */
 	public function withWarningVersion(?Version $warningVersion): CreateVersionModelMasterRequest {
 		$this->warningVersion = $warningVersion;
 		return $this;
 	}
+    /** @return Version|null Version that is determined to be an error by the version check */
 	public function getErrorVersion(): ?Version {
 		return $this->errorVersion;
 	}
+    /** @param Version|null $errorVersion Version that is determined to be an error by the version check */
 	public function setErrorVersion(?Version $errorVersion) {
 		$this->errorVersion = $errorVersion;
 	}
+    /**
+     * @param Version|null $errorVersion Version that is determined to be an error by the version check
+     * @return CreateVersionModelMasterRequest
+     */
 	public function withErrorVersion(?Version $errorVersion): CreateVersionModelMasterRequest {
 		$this->errorVersion = $errorVersion;
 		return $this;
 	}
+    /** @return array|null List of Version check content that switches over time series */
 	public function getScheduleVersions(): ?array {
 		return $this->scheduleVersions;
 	}
+    /** @param array|null $scheduleVersions List of Version check content that switches over time series */
 	public function setScheduleVersions(?array $scheduleVersions) {
 		$this->scheduleVersions = $scheduleVersions;
 	}
+    /**
+     * @param array|null $scheduleVersions List of Version check content that switches over time series
+     * @return CreateVersionModelMasterRequest
+     */
 	public function withScheduleVersions(?array $scheduleVersions): CreateVersionModelMasterRequest {
 		$this->scheduleVersions = $scheduleVersions;
 		return $this;
 	}
+    /** @return bool|null Whether the version value to be determined requires signature verification */
 	public function getNeedSignature(): ?bool {
 		return $this->needSignature;
 	}
+    /** @param bool|null $needSignature Whether the version value to be determined requires signature verification */
 	public function setNeedSignature(?bool $needSignature) {
 		$this->needSignature = $needSignature;
 	}
+    /**
+     * @param bool|null $needSignature Whether the version value to be determined requires signature verification
+     * @return CreateVersionModelMasterRequest
+     */
 	public function withNeedSignature(?bool $needSignature): CreateVersionModelMasterRequest {
 		$this->needSignature = $needSignature;
 		return $this;
 	}
+    /** @return string|null Encryption Key GRN */
 	public function getSignatureKeyId(): ?string {
 		return $this->signatureKeyId;
 	}
+    /** @param string|null $signatureKeyId Encryption Key GRN */
 	public function setSignatureKeyId(?string $signatureKeyId) {
 		$this->signatureKeyId = $signatureKeyId;
 	}
+    /**
+     * @param string|null $signatureKeyId Encryption Key GRN
+     * @return CreateVersionModelMasterRequest
+     */
 	public function withSignatureKeyId(?string $signatureKeyId): CreateVersionModelMasterRequest {
 		$this->signatureKeyId = $signatureKeyId;
 		return $this;
 	}
+    /** @return string|null Requirement for approval */
 	public function getApproveRequirement(): ?string {
 		return $this->approveRequirement;
 	}
+    /** @param string|null $approveRequirement Requirement for approval */
 	public function setApproveRequirement(?string $approveRequirement) {
 		$this->approveRequirement = $approveRequirement;
 	}
+    /**
+     * @param string|null $approveRequirement Requirement for approval
+     * @return CreateVersionModelMasterRequest
+     */
 	public function withApproveRequirement(?string $approveRequirement): CreateVersionModelMasterRequest {
 		$this->approveRequirement = $approveRequirement;
 		return $this;

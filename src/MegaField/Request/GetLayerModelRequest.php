@@ -19,39 +19,62 @@ namespace Gs2\MegaField\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getLayerModel: Get Layer Model
+ *
+ * @see https://docs.gs2.io/api_reference/mega_field/sdk/#getlayermodel
+ */
 class GetLayerModelRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Area Model name */
     private $areaModelName;
-    /** @var string */
+    /** @var string Layer Model name */
     private $layerModelName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetLayerModelRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetLayerModelRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Area Model name */
 	public function getAreaModelName(): ?string {
 		return $this->areaModelName;
 	}
+    /** @param string|null $areaModelName Area Model name */
 	public function setAreaModelName(?string $areaModelName) {
 		$this->areaModelName = $areaModelName;
 	}
+    /**
+     * @param string|null $areaModelName Area Model name
+     * @return GetLayerModelRequest
+     */
 	public function withAreaModelName(?string $areaModelName): GetLayerModelRequest {
 		$this->areaModelName = $areaModelName;
 		return $this;
 	}
+    /** @return string|null Layer Model name */
 	public function getLayerModelName(): ?string {
 		return $this->layerModelName;
 	}
+    /** @param string|null $layerModelName Layer Model name */
 	public function setLayerModelName(?string $layerModelName) {
 		$this->layerModelName = $layerModelName;
 	}
+    /**
+     * @param string|null $layerModelName Layer Model name
+     * @return GetLayerModelRequest
+     */
 	public function withLayerModelName(?string $layerModelName): GetLayerModelRequest {
 		$this->layerModelName = $layerModelName;
 		return $this;

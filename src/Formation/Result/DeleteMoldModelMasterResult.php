@@ -20,18 +20,29 @@ namespace Gs2\Formation\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Formation\Model\MoldModelMaster;
 
+/**
+ * Result of deleteMoldModelMaster: Delete Form Storage Area Master
+ *
+ * @see https://docs.gs2.io/api_reference/formation/sdk/#deletemoldmodelmaster
+ */
 class DeleteMoldModelMasterResult implements IResult {
-    /** @var MoldModelMaster */
+    /** @var MoldModelMaster Form Storage Area Master deleted */
     private $item;
 
+    /** @return MoldModelMaster|null Form Storage Area Master deleted */
 	public function getItem(): ?MoldModelMaster {
 		return $this->item;
 	}
 
+    /** @param MoldModelMaster|null $item Form Storage Area Master deleted */
 	public function setItem(?MoldModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param MoldModelMaster|null $item Form Storage Area Master deleted
+     * @return DeleteMoldModelMasterResult
+     */
 	public function withItem(?MoldModelMaster $item): DeleteMoldModelMasterResult {
 		$this->item = $item;
 		return $this;

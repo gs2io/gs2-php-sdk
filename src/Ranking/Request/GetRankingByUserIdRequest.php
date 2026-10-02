@@ -19,87 +19,134 @@ namespace Gs2\Ranking\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getRankingByUserId: Get ranking by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/ranking/sdk/#getrankingbyuserid
+ */
 class GetRankingByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Category Model name */
     private $categoryName;
-    /** @var string */
+    /** @var string User ID from which the ranking is obtained (used to determine the duration of the GS2-Schedule). */
     private $userId;
-    /** @var string */
+    /** @var string User ID of the user who earned the score */
     private $scorerUserId;
-    /** @var string */
+    /** @var string Score Unique ID */
     private $uniqueId;
-    /** @var string */
+    /** @var string Scope Name */
     private $additionalScopeName;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetRankingByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetRankingByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Category Model name */
 	public function getCategoryName(): ?string {
 		return $this->categoryName;
 	}
+    /** @param string|null $categoryName Category Model name */
 	public function setCategoryName(?string $categoryName) {
 		$this->categoryName = $categoryName;
 	}
+    /**
+     * @param string|null $categoryName Category Model name
+     * @return GetRankingByUserIdRequest
+     */
 	public function withCategoryName(?string $categoryName): GetRankingByUserIdRequest {
 		$this->categoryName = $categoryName;
 		return $this;
 	}
+    /** @return string|null User ID from which the ranking is obtained (used to determine the duration of the GS2-Schedule). */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID from which the ranking is obtained (used to determine the duration of the GS2-Schedule). */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID from which the ranking is obtained (used to determine the duration of the GS2-Schedule).
+     * @return GetRankingByUserIdRequest
+     */
 	public function withUserId(?string $userId): GetRankingByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null User ID of the user who earned the score */
 	public function getScorerUserId(): ?string {
 		return $this->scorerUserId;
 	}
+    /** @param string|null $scorerUserId User ID of the user who earned the score */
 	public function setScorerUserId(?string $scorerUserId) {
 		$this->scorerUserId = $scorerUserId;
 	}
+    /**
+     * @param string|null $scorerUserId User ID of the user who earned the score
+     * @return GetRankingByUserIdRequest
+     */
 	public function withScorerUserId(?string $scorerUserId): GetRankingByUserIdRequest {
 		$this->scorerUserId = $scorerUserId;
 		return $this;
 	}
+    /** @return string|null Score Unique ID */
 	public function getUniqueId(): ?string {
 		return $this->uniqueId;
 	}
+    /** @param string|null $uniqueId Score Unique ID */
 	public function setUniqueId(?string $uniqueId) {
 		$this->uniqueId = $uniqueId;
 	}
+    /**
+     * @param string|null $uniqueId Score Unique ID
+     * @return GetRankingByUserIdRequest
+     */
 	public function withUniqueId(?string $uniqueId): GetRankingByUserIdRequest {
 		$this->uniqueId = $uniqueId;
 		return $this;
 	}
+    /** @return string|null Scope Name */
 	public function getAdditionalScopeName(): ?string {
 		return $this->additionalScopeName;
 	}
+    /** @param string|null $additionalScopeName Scope Name */
 	public function setAdditionalScopeName(?string $additionalScopeName) {
 		$this->additionalScopeName = $additionalScopeName;
 	}
+    /**
+     * @param string|null $additionalScopeName Scope Name
+     * @return GetRankingByUserIdRequest
+     */
 	public function withAdditionalScopeName(?string $additionalScopeName): GetRankingByUserIdRequest {
 		$this->additionalScopeName = $additionalScopeName;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return GetRankingByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): GetRankingByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

@@ -20,18 +20,29 @@ namespace Gs2\AdReward\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\AdReward\Model\Point;
 
+/**
+ * Result of acquirePointByUserId: Acquire Point by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#acquirepointbyuserid
+ */
 class AcquirePointByUserIdResult implements IResult {
-    /** @var Point */
+    /** @var Point Point */
     private $item;
 
+    /** @return Point|null Point */
 	public function getItem(): ?Point {
 		return $this->item;
 	}
 
+    /** @param Point|null $item Point */
 	public function setItem(?Point $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Point|null $item Point
+     * @return AcquirePointByUserIdResult
+     */
 	public function withItem(?Point $item): AcquirePointByUserIdResult {
 		$this->item = $item;
 		return $this;

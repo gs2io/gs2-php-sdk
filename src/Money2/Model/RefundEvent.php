@@ -20,59 +20,88 @@ namespace Gs2\Money2\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Refund Event
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#refundevent
+ */
 class RefundEvent implements IModel {
 	/**
-     * @var string
+     * @var string Store Content Model name
 	 */
 	private $contentName;
 	/**
-     * @var string
+     * @var string Store Platform
 	 */
 	private $platform;
 	/**
-     * @var AppleAppStoreVerifyReceiptEvent
+     * @var AppleAppStoreVerifyReceiptEvent Apple App Store Verify Receipt Event
 	 */
 	private $appleAppStoreRefundEvent;
 	/**
-     * @var GooglePlayVerifyReceiptEvent
+     * @var GooglePlayVerifyReceiptEvent Google Play Verify Receipt Event
 	 */
 	private $googlePlayRefundEvent;
+    /** @return string|null Store Content Model name */
 	public function getContentName(): ?string {
 		return $this->contentName;
 	}
+    /** @param string|null $contentName Store Content Model name */
 	public function setContentName(?string $contentName) {
 		$this->contentName = $contentName;
 	}
+    /**
+     * @param string|null $contentName Store Content Model name
+     * @return RefundEvent
+     */
 	public function withContentName(?string $contentName): RefundEvent {
 		$this->contentName = $contentName;
 		return $this;
 	}
+    /** @return string|null Store Platform */
 	public function getPlatform(): ?string {
 		return $this->platform;
 	}
+    /** @param string|null $platform Store Platform */
 	public function setPlatform(?string $platform) {
 		$this->platform = $platform;
 	}
+    /**
+     * @param string|null $platform Store Platform
+     * @return RefundEvent
+     */
 	public function withPlatform(?string $platform): RefundEvent {
 		$this->platform = $platform;
 		return $this;
 	}
+    /** @return AppleAppStoreVerifyReceiptEvent|null Apple App Store Verify Receipt Event */
 	public function getAppleAppStoreRefundEvent(): ?AppleAppStoreVerifyReceiptEvent {
 		return $this->appleAppStoreRefundEvent;
 	}
+    /** @param AppleAppStoreVerifyReceiptEvent|null $appleAppStoreRefundEvent Apple App Store Verify Receipt Event */
 	public function setAppleAppStoreRefundEvent(?AppleAppStoreVerifyReceiptEvent $appleAppStoreRefundEvent) {
 		$this->appleAppStoreRefundEvent = $appleAppStoreRefundEvent;
 	}
+    /**
+     * @param AppleAppStoreVerifyReceiptEvent|null $appleAppStoreRefundEvent Apple App Store Verify Receipt Event
+     * @return RefundEvent
+     */
 	public function withAppleAppStoreRefundEvent(?AppleAppStoreVerifyReceiptEvent $appleAppStoreRefundEvent): RefundEvent {
 		$this->appleAppStoreRefundEvent = $appleAppStoreRefundEvent;
 		return $this;
 	}
+    /** @return GooglePlayVerifyReceiptEvent|null Google Play Verify Receipt Event */
 	public function getGooglePlayRefundEvent(): ?GooglePlayVerifyReceiptEvent {
 		return $this->googlePlayRefundEvent;
 	}
+    /** @param GooglePlayVerifyReceiptEvent|null $googlePlayRefundEvent Google Play Verify Receipt Event */
 	public function setGooglePlayRefundEvent(?GooglePlayVerifyReceiptEvent $googlePlayRefundEvent) {
 		$this->googlePlayRefundEvent = $googlePlayRefundEvent;
 	}
+    /**
+     * @param GooglePlayVerifyReceiptEvent|null $googlePlayRefundEvent Google Play Verify Receipt Event
+     * @return RefundEvent
+     */
 	public function withGooglePlayRefundEvent(?GooglePlayVerifyReceiptEvent $googlePlayRefundEvent): RefundEvent {
 		$this->googlePlayRefundEvent = $googlePlayRefundEvent;
 		return $this;

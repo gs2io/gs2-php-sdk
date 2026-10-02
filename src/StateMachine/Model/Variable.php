@@ -20,31 +20,48 @@ namespace Gs2\StateMachine\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * State variables per state machine
+ *
+ * @see https://docs.gs2.io/api_reference/state_machine/sdk/#variable
+ */
 class Variable implements IModel {
 	/**
-     * @var string
+     * @var string Name of the state machine
 	 */
 	private $stateMachineName;
 	/**
-     * @var string
+     * @var string Value
 	 */
 	private $value;
+    /** @return string|null Name of the state machine */
 	public function getStateMachineName(): ?string {
 		return $this->stateMachineName;
 	}
+    /** @param string|null $stateMachineName Name of the state machine */
 	public function setStateMachineName(?string $stateMachineName) {
 		$this->stateMachineName = $stateMachineName;
 	}
+    /**
+     * @param string|null $stateMachineName Name of the state machine
+     * @return Variable
+     */
 	public function withStateMachineName(?string $stateMachineName): Variable {
 		$this->stateMachineName = $stateMachineName;
 		return $this;
 	}
+    /** @return string|null Value */
 	public function getValue(): ?string {
 		return $this->value;
 	}
+    /** @param string|null $value Value */
 	public function setValue(?string $value) {
 		$this->value = $value;
 	}
+    /**
+     * @param string|null $value Value
+     * @return Variable
+     */
 	public function withValue(?string $value): Variable {
 		$this->value = $value;
 		return $this;

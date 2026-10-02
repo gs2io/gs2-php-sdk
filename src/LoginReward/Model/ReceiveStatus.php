@@ -20,115 +20,168 @@ namespace Gs2\LoginReward\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Receive Status
+ *
+ * @see https://docs.gs2.io/api_reference/login_reward/sdk/#receivestatus
+ */
 class ReceiveStatus implements IModel {
 	/**
-     * @var string
+     * @var string Receive status GRN
 	 */
 	private $receiveStatusId;
 	/**
-     * @var string
+     * @var string Bonus Model Name
 	 */
 	private $bonusModelName;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var array
+     * @var array Received Steps
 	 */
 	private $receivedSteps;
 	/**
-     * @var int
+     * @var int Last Received At
 	 */
 	private $lastReceivedAt;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Receive status GRN */
 	public function getReceiveStatusId(): ?string {
 		return $this->receiveStatusId;
 	}
+    /** @param string|null $receiveStatusId Receive status GRN */
 	public function setReceiveStatusId(?string $receiveStatusId) {
 		$this->receiveStatusId = $receiveStatusId;
 	}
+    /**
+     * @param string|null $receiveStatusId Receive status GRN
+     * @return ReceiveStatus
+     */
 	public function withReceiveStatusId(?string $receiveStatusId): ReceiveStatus {
 		$this->receiveStatusId = $receiveStatusId;
 		return $this;
 	}
+    /** @return string|null Bonus Model Name */
 	public function getBonusModelName(): ?string {
 		return $this->bonusModelName;
 	}
+    /** @param string|null $bonusModelName Bonus Model Name */
 	public function setBonusModelName(?string $bonusModelName) {
 		$this->bonusModelName = $bonusModelName;
 	}
+    /**
+     * @param string|null $bonusModelName Bonus Model Name
+     * @return ReceiveStatus
+     */
 	public function withBonusModelName(?string $bonusModelName): ReceiveStatus {
 		$this->bonusModelName = $bonusModelName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return ReceiveStatus
+     */
 	public function withUserId(?string $userId): ReceiveStatus {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return array|null Received Steps */
 	public function getReceivedSteps(): ?array {
 		return $this->receivedSteps;
 	}
+    /** @param array|null $receivedSteps Received Steps */
 	public function setReceivedSteps(?array $receivedSteps) {
 		$this->receivedSteps = $receivedSteps;
 	}
+    /**
+     * @param array|null $receivedSteps Received Steps
+     * @return ReceiveStatus
+     */
 	public function withReceivedSteps(?array $receivedSteps): ReceiveStatus {
 		$this->receivedSteps = $receivedSteps;
 		return $this;
 	}
+    /** @return int|null Last Received At */
 	public function getLastReceivedAt(): ?int {
 		return $this->lastReceivedAt;
 	}
+    /** @param int|null $lastReceivedAt Last Received At */
 	public function setLastReceivedAt(?int $lastReceivedAt) {
 		$this->lastReceivedAt = $lastReceivedAt;
 	}
+    /**
+     * @param int|null $lastReceivedAt Last Received At
+     * @return ReceiveStatus
+     */
 	public function withLastReceivedAt(?int $lastReceivedAt): ReceiveStatus {
 		$this->lastReceivedAt = $lastReceivedAt;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return ReceiveStatus
+     */
 	public function withCreatedAt(?int $createdAt): ReceiveStatus {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return ReceiveStatus
+     */
 	public function withUpdatedAt(?int $updatedAt): ReceiveStatus {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return ReceiveStatus
+     */
 	public function withRevision(?int $revision): ReceiveStatus {
 		$this->revision = $revision;
 		return $this;

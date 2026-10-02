@@ -20,45 +20,68 @@ namespace Gs2\Dictionary\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Entry Model
+ *
+ * @see https://docs.gs2.io/api_reference/dictionary/sdk/#entrymodel
+ */
 class EntryModel implements IModel {
 	/**
-     * @var string
+     * @var string Entry Model GRN
 	 */
 	private $entryModelId;
 	/**
-     * @var string
+     * @var string Entry Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
+    /** @return string|null Entry Model GRN */
 	public function getEntryModelId(): ?string {
 		return $this->entryModelId;
 	}
+    /** @param string|null $entryModelId Entry Model GRN */
 	public function setEntryModelId(?string $entryModelId) {
 		$this->entryModelId = $entryModelId;
 	}
+    /**
+     * @param string|null $entryModelId Entry Model GRN
+     * @return EntryModel
+     */
 	public function withEntryModelId(?string $entryModelId): EntryModel {
 		$this->entryModelId = $entryModelId;
 		return $this;
 	}
+    /** @return string|null Entry Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Entry Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Entry Model name
+     * @return EntryModel
+     */
 	public function withName(?string $name): EntryModel {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return EntryModel
+     */
 	public function withMetadata(?string $metadata): EntryModel {
 		$this->metadata = $metadata;
 		return $this;

@@ -20,129 +20,188 @@ namespace Gs2\Idle\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Category Model
+ *
+ * @see https://docs.gs2.io/api_reference/idle/sdk/#categorymodel
+ */
 class CategoryModel implements IModel {
 	/**
-     * @var string
+     * @var string Category Model GRN
 	 */
 	private $categoryModelId;
 	/**
-     * @var string
+     * @var string Category Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var int
+     * @var int Reward Interval (Minutes)
 	 */
 	private $rewardIntervalMinutes;
 	/**
-     * @var int
+     * @var int Default Maximum Idle Time (Minutes)
 	 */
 	private $defaultMaximumIdleMinutes;
 	/**
-     * @var string
+     * @var string Reward Reset Mode
 	 */
 	private $rewardResetMode;
 	/**
-     * @var array
+     * @var array List of acquire actions for each idle time
 	 */
 	private $acquireActions;
 	/**
-     * @var string
+     * @var string Idle Period Schedule ID
 	 */
 	private $idlePeriodScheduleId;
 	/**
-     * @var string
+     * @var string Receive Period Schedule ID
 	 */
 	private $receivePeriodScheduleId;
+    /** @return string|null Category Model GRN */
 	public function getCategoryModelId(): ?string {
 		return $this->categoryModelId;
 	}
+    /** @param string|null $categoryModelId Category Model GRN */
 	public function setCategoryModelId(?string $categoryModelId) {
 		$this->categoryModelId = $categoryModelId;
 	}
+    /**
+     * @param string|null $categoryModelId Category Model GRN
+     * @return CategoryModel
+     */
 	public function withCategoryModelId(?string $categoryModelId): CategoryModel {
 		$this->categoryModelId = $categoryModelId;
 		return $this;
 	}
+    /** @return string|null Category Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Category Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Category Model name
+     * @return CategoryModel
+     */
 	public function withName(?string $name): CategoryModel {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return CategoryModel
+     */
 	public function withMetadata(?string $metadata): CategoryModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return int|null Reward Interval (Minutes) */
 	public function getRewardIntervalMinutes(): ?int {
 		return $this->rewardIntervalMinutes;
 	}
+    /** @param int|null $rewardIntervalMinutes Reward Interval (Minutes) */
 	public function setRewardIntervalMinutes(?int $rewardIntervalMinutes) {
 		$this->rewardIntervalMinutes = $rewardIntervalMinutes;
 	}
+    /**
+     * @param int|null $rewardIntervalMinutes Reward Interval (Minutes)
+     * @return CategoryModel
+     */
 	public function withRewardIntervalMinutes(?int $rewardIntervalMinutes): CategoryModel {
 		$this->rewardIntervalMinutes = $rewardIntervalMinutes;
 		return $this;
 	}
+    /** @return int|null Default Maximum Idle Time (Minutes) */
 	public function getDefaultMaximumIdleMinutes(): ?int {
 		return $this->defaultMaximumIdleMinutes;
 	}
+    /** @param int|null $defaultMaximumIdleMinutes Default Maximum Idle Time (Minutes) */
 	public function setDefaultMaximumIdleMinutes(?int $defaultMaximumIdleMinutes) {
 		$this->defaultMaximumIdleMinutes = $defaultMaximumIdleMinutes;
 	}
+    /**
+     * @param int|null $defaultMaximumIdleMinutes Default Maximum Idle Time (Minutes)
+     * @return CategoryModel
+     */
 	public function withDefaultMaximumIdleMinutes(?int $defaultMaximumIdleMinutes): CategoryModel {
 		$this->defaultMaximumIdleMinutes = $defaultMaximumIdleMinutes;
 		return $this;
 	}
+    /** @return string|null Reward Reset Mode */
 	public function getRewardResetMode(): ?string {
 		return $this->rewardResetMode;
 	}
+    /** @param string|null $rewardResetMode Reward Reset Mode */
 	public function setRewardResetMode(?string $rewardResetMode) {
 		$this->rewardResetMode = $rewardResetMode;
 	}
+    /**
+     * @param string|null $rewardResetMode Reward Reset Mode
+     * @return CategoryModel
+     */
 	public function withRewardResetMode(?string $rewardResetMode): CategoryModel {
 		$this->rewardResetMode = $rewardResetMode;
 		return $this;
 	}
+    /** @return array|null List of acquire actions for each idle time */
 	public function getAcquireActions(): ?array {
 		return $this->acquireActions;
 	}
+    /** @param array|null $acquireActions List of acquire actions for each idle time */
 	public function setAcquireActions(?array $acquireActions) {
 		$this->acquireActions = $acquireActions;
 	}
+    /**
+     * @param array|null $acquireActions List of acquire actions for each idle time
+     * @return CategoryModel
+     */
 	public function withAcquireActions(?array $acquireActions): CategoryModel {
 		$this->acquireActions = $acquireActions;
 		return $this;
 	}
+    /** @return string|null Idle Period Schedule ID */
 	public function getIdlePeriodScheduleId(): ?string {
 		return $this->idlePeriodScheduleId;
 	}
+    /** @param string|null $idlePeriodScheduleId Idle Period Schedule ID */
 	public function setIdlePeriodScheduleId(?string $idlePeriodScheduleId) {
 		$this->idlePeriodScheduleId = $idlePeriodScheduleId;
 	}
+    /**
+     * @param string|null $idlePeriodScheduleId Idle Period Schedule ID
+     * @return CategoryModel
+     */
 	public function withIdlePeriodScheduleId(?string $idlePeriodScheduleId): CategoryModel {
 		$this->idlePeriodScheduleId = $idlePeriodScheduleId;
 		return $this;
 	}
+    /** @return string|null Receive Period Schedule ID */
 	public function getReceivePeriodScheduleId(): ?string {
 		return $this->receivePeriodScheduleId;
 	}
+    /** @param string|null $receivePeriodScheduleId Receive Period Schedule ID */
 	public function setReceivePeriodScheduleId(?string $receivePeriodScheduleId) {
 		$this->receivePeriodScheduleId = $receivePeriodScheduleId;
 	}
+    /**
+     * @param string|null $receivePeriodScheduleId Receive Period Schedule ID
+     * @return CategoryModel
+     */
 	public function withReceivePeriodScheduleId(?string $receivePeriodScheduleId): CategoryModel {
 		$this->receivePeriodScheduleId = $receivePeriodScheduleId;
 		return $this;

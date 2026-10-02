@@ -20,73 +20,108 @@ namespace Gs2\Matchmaking\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Rating Model
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#ratingmodel
+ */
 class RatingModel implements IModel {
 	/**
-     * @var string
+     * @var string Rating Model GRN
 	 */
 	private $ratingModelId;
 	/**
-     * @var string
+     * @var string Rating Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var int
+     * @var int Initial Rating Value
 	 */
 	private $initialValue;
 	/**
-     * @var int
+     * @var int Rating Volatility
 	 */
 	private $volatility;
+    /** @return string|null Rating Model GRN */
 	public function getRatingModelId(): ?string {
 		return $this->ratingModelId;
 	}
+    /** @param string|null $ratingModelId Rating Model GRN */
 	public function setRatingModelId(?string $ratingModelId) {
 		$this->ratingModelId = $ratingModelId;
 	}
+    /**
+     * @param string|null $ratingModelId Rating Model GRN
+     * @return RatingModel
+     */
 	public function withRatingModelId(?string $ratingModelId): RatingModel {
 		$this->ratingModelId = $ratingModelId;
 		return $this;
 	}
+    /** @return string|null Rating Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Rating Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Rating Model name
+     * @return RatingModel
+     */
 	public function withName(?string $name): RatingModel {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return RatingModel
+     */
 	public function withMetadata(?string $metadata): RatingModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return int|null Initial Rating Value */
 	public function getInitialValue(): ?int {
 		return $this->initialValue;
 	}
+    /** @param int|null $initialValue Initial Rating Value */
 	public function setInitialValue(?int $initialValue) {
 		$this->initialValue = $initialValue;
 	}
+    /**
+     * @param int|null $initialValue Initial Rating Value
+     * @return RatingModel
+     */
 	public function withInitialValue(?int $initialValue): RatingModel {
 		$this->initialValue = $initialValue;
 		return $this;
 	}
+    /** @return int|null Rating Volatility */
 	public function getVolatility(): ?int {
 		return $this->volatility;
 	}
+    /** @param int|null $volatility Rating Volatility */
 	public function setVolatility(?int $volatility) {
 		$this->volatility = $volatility;
 	}
+    /**
+     * @param int|null $volatility Rating Volatility
+     * @return RatingModel
+     */
 	public function withVolatility(?int $volatility): RatingModel {
 		$this->volatility = $volatility;
 		return $this;

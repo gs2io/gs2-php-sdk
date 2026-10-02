@@ -20,18 +20,29 @@ namespace Gs2\Dictionary\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Dictionary\Model\EntryModel;
 
+/**
+ * Result of describeEntryModels: List Entry Models
+ *
+ * @see https://docs.gs2.io/api_reference/dictionary/sdk/#describeentrymodels
+ */
 class DescribeEntryModelsResult implements IResult {
-    /** @var array */
+    /** @var array List of Entry Models */
     private $items;
 
+    /** @return array|null List of Entry Models */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Entry Models */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Entry Models
+     * @return DescribeEntryModelsResult
+     */
 	public function withItems(?array $items): DescribeEntryModelsResult {
 		$this->items = $items;
 		return $this;

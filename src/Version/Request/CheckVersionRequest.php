@@ -21,41 +21,64 @@ use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Version\Model\Version;
 use Gs2\Version\Model\TargetVersion;
 
+/**
+ * Request for checkVersion: Check Version
+ *
+ * @see https://docs.gs2.io/api_reference/version/sdk/#checkversion
+ */
 class CheckVersionRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var array */
+    /** @var array List of Versions to be verified */
     private $targetVersions;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return CheckVersionRequest
+     */
 	public function withNamespaceName(?string $namespaceName): CheckVersionRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return CheckVersionRequest
+     */
 	public function withAccessToken(?string $accessToken): CheckVersionRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return array|null List of Versions to be verified */
 	public function getTargetVersions(): ?array {
 		return $this->targetVersions;
 	}
+    /** @param array|null $targetVersions List of Versions to be verified */
 	public function setTargetVersions(?array $targetVersions) {
 		$this->targetVersions = $targetVersions;
 	}
+    /**
+     * @param array|null $targetVersions List of Versions to be verified
+     * @return CheckVersionRequest
+     */
 	public function withTargetVersions(?array $targetVersions): CheckVersionRequest {
 		$this->targetVersions = $targetVersions;
 		return $this;

@@ -22,18 +22,29 @@ use Gs2\Lottery\Model\AcquireAction;
 use Gs2\Lottery\Model\BoxItem;
 use Gs2\Lottery\Model\BoxItems;
 
+/**
+ * Result of resetBox: Reset Box
+ *
+ * @see https://docs.gs2.io/api_reference/lottery/sdk/#resetbox
+ */
 class ResetBoxResult implements IResult {
-    /** @var BoxItems */
+    /** @var BoxItems Box state including prizes and their initial quantities */
     private $item;
 
+    /** @return BoxItems|null Box state including prizes and their initial quantities */
 	public function getItem(): ?BoxItems {
 		return $this->item;
 	}
 
+    /** @param BoxItems|null $item Box state including prizes and their initial quantities */
 	public function setItem(?BoxItems $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param BoxItems|null $item Box state including prizes and their initial quantities
+     * @return ResetBoxResult
+     */
 	public function withItem(?BoxItems $item): ResetBoxResult {
 		$this->item = $item;
 		return $this;

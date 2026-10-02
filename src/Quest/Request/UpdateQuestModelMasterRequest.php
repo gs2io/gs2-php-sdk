@@ -23,147 +23,224 @@ use Gs2\Quest\Model\Contents;
 use Gs2\Quest\Model\VerifyAction;
 use Gs2\Quest\Model\ConsumeAction;
 
+/**
+ * Request for updateQuestModelMaster: Update Quest Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/quest/sdk/#updatequestmodelmaster
+ */
 class UpdateQuestModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Quest Group Model name */
     private $questGroupName;
-    /** @var string */
+    /** @var string Quest Model name */
     private $questName;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var string */
+    /** @var string Metadata */
     private $metadata;
-    /** @var array */
+    /** @var array Quest content variations */
     private $contents;
-    /** @var string */
+    /** @var string Challenge Period Event GRN */
     private $challengePeriodEventId;
-    /** @var array */
+    /** @var array First Completion Acquire Actions */
     private $firstCompleteAcquireActions;
-    /** @var array */
+    /** @var array List of Verify Actions */
     private $verifyActions;
-    /** @var array */
+    /** @var array List of Acquire Actions */
     private $consumeActions;
-    /** @var array */
+    /** @var array Failed Acquire Actions */
     private $failedAcquireActions;
-    /** @var array */
+    /** @var array Prerequisite Quest Names */
     private $premiseQuestNames;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UpdateQuestModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UpdateQuestModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Quest Group Model name */
 	public function getQuestGroupName(): ?string {
 		return $this->questGroupName;
 	}
+    /** @param string|null $questGroupName Quest Group Model name */
 	public function setQuestGroupName(?string $questGroupName) {
 		$this->questGroupName = $questGroupName;
 	}
+    /**
+     * @param string|null $questGroupName Quest Group Model name
+     * @return UpdateQuestModelMasterRequest
+     */
 	public function withQuestGroupName(?string $questGroupName): UpdateQuestModelMasterRequest {
 		$this->questGroupName = $questGroupName;
 		return $this;
 	}
+    /** @return string|null Quest Model name */
 	public function getQuestName(): ?string {
 		return $this->questName;
 	}
+    /** @param string|null $questName Quest Model name */
 	public function setQuestName(?string $questName) {
 		$this->questName = $questName;
 	}
+    /**
+     * @param string|null $questName Quest Model name
+     * @return UpdateQuestModelMasterRequest
+     */
 	public function withQuestName(?string $questName): UpdateQuestModelMasterRequest {
 		$this->questName = $questName;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return UpdateQuestModelMasterRequest
+     */
 	public function withDescription(?string $description): UpdateQuestModelMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return UpdateQuestModelMasterRequest
+     */
 	public function withMetadata(?string $metadata): UpdateQuestModelMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return array|null Quest content variations */
 	public function getContents(): ?array {
 		return $this->contents;
 	}
+    /** @param array|null $contents Quest content variations */
 	public function setContents(?array $contents) {
 		$this->contents = $contents;
 	}
+    /**
+     * @param array|null $contents Quest content variations
+     * @return UpdateQuestModelMasterRequest
+     */
 	public function withContents(?array $contents): UpdateQuestModelMasterRequest {
 		$this->contents = $contents;
 		return $this;
 	}
+    /** @return string|null Challenge Period Event GRN */
 	public function getChallengePeriodEventId(): ?string {
 		return $this->challengePeriodEventId;
 	}
+    /** @param string|null $challengePeriodEventId Challenge Period Event GRN */
 	public function setChallengePeriodEventId(?string $challengePeriodEventId) {
 		$this->challengePeriodEventId = $challengePeriodEventId;
 	}
+    /**
+     * @param string|null $challengePeriodEventId Challenge Period Event GRN
+     * @return UpdateQuestModelMasterRequest
+     */
 	public function withChallengePeriodEventId(?string $challengePeriodEventId): UpdateQuestModelMasterRequest {
 		$this->challengePeriodEventId = $challengePeriodEventId;
 		return $this;
 	}
+    /** @return array|null First Completion Acquire Actions */
 	public function getFirstCompleteAcquireActions(): ?array {
 		return $this->firstCompleteAcquireActions;
 	}
+    /** @param array|null $firstCompleteAcquireActions First Completion Acquire Actions */
 	public function setFirstCompleteAcquireActions(?array $firstCompleteAcquireActions) {
 		$this->firstCompleteAcquireActions = $firstCompleteAcquireActions;
 	}
+    /**
+     * @param array|null $firstCompleteAcquireActions First Completion Acquire Actions
+     * @return UpdateQuestModelMasterRequest
+     */
 	public function withFirstCompleteAcquireActions(?array $firstCompleteAcquireActions): UpdateQuestModelMasterRequest {
 		$this->firstCompleteAcquireActions = $firstCompleteAcquireActions;
 		return $this;
 	}
+    /** @return array|null List of Verify Actions */
 	public function getVerifyActions(): ?array {
 		return $this->verifyActions;
 	}
+    /** @param array|null $verifyActions List of Verify Actions */
 	public function setVerifyActions(?array $verifyActions) {
 		$this->verifyActions = $verifyActions;
 	}
+    /**
+     * @param array|null $verifyActions List of Verify Actions
+     * @return UpdateQuestModelMasterRequest
+     */
 	public function withVerifyActions(?array $verifyActions): UpdateQuestModelMasterRequest {
 		$this->verifyActions = $verifyActions;
 		return $this;
 	}
+    /** @return array|null List of Acquire Actions */
 	public function getConsumeActions(): ?array {
 		return $this->consumeActions;
 	}
+    /** @param array|null $consumeActions List of Acquire Actions */
 	public function setConsumeActions(?array $consumeActions) {
 		$this->consumeActions = $consumeActions;
 	}
+    /**
+     * @param array|null $consumeActions List of Acquire Actions
+     * @return UpdateQuestModelMasterRequest
+     */
 	public function withConsumeActions(?array $consumeActions): UpdateQuestModelMasterRequest {
 		$this->consumeActions = $consumeActions;
 		return $this;
 	}
+    /** @return array|null Failed Acquire Actions */
 	public function getFailedAcquireActions(): ?array {
 		return $this->failedAcquireActions;
 	}
+    /** @param array|null $failedAcquireActions Failed Acquire Actions */
 	public function setFailedAcquireActions(?array $failedAcquireActions) {
 		$this->failedAcquireActions = $failedAcquireActions;
 	}
+    /**
+     * @param array|null $failedAcquireActions Failed Acquire Actions
+     * @return UpdateQuestModelMasterRequest
+     */
 	public function withFailedAcquireActions(?array $failedAcquireActions): UpdateQuestModelMasterRequest {
 		$this->failedAcquireActions = $failedAcquireActions;
 		return $this;
 	}
+    /** @return array|null Prerequisite Quest Names */
 	public function getPremiseQuestNames(): ?array {
 		return $this->premiseQuestNames;
 	}
+    /** @param array|null $premiseQuestNames Prerequisite Quest Names */
 	public function setPremiseQuestNames(?array $premiseQuestNames) {
 		$this->premiseQuestNames = $premiseQuestNames;
 	}
+    /**
+     * @param array|null $premiseQuestNames Prerequisite Quest Names
+     * @return UpdateQuestModelMasterRequest
+     */
 	public function withPremiseQuestNames(?array $premiseQuestNames): UpdateQuestModelMasterRequest {
 		$this->premiseQuestNames = $premiseQuestNames;
 		return $this;

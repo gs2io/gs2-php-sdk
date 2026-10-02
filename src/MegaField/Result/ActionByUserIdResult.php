@@ -22,18 +22,29 @@ use Gs2\MegaField\Model\Position;
 use Gs2\MegaField\Model\Vector;
 use Gs2\MegaField\Model\Spatial;
 
+/**
+ * Result of actionByUserId: Put position by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/mega_field/sdk/#actionbyuserid
+ */
 class ActionByUserIdResult implements IResult {
-    /** @var array */
+    /** @var array List of Spatial */
     private $items;
 
+    /** @return array|null List of Spatial */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Spatial */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Spatial
+     * @return ActionByUserIdResult
+     */
 	public function withItems(?array $items): ActionByUserIdResult {
 		$this->items = $items;
 		return $this;

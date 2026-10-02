@@ -25,18 +25,29 @@ use Gs2\Quest\Model\ConsumeAction;
 use Gs2\Quest\Model\QuestModel;
 use Gs2\Quest\Model\QuestGroupModel;
 
+/**
+ * Result of describeQuestGroupModels: List Quest Groups
+ *
+ * @see https://docs.gs2.io/api_reference/quest/sdk/#describequestgroupmodels
+ */
 class DescribeQuestGroupModelsResult implements IResult {
-    /** @var array */
+    /** @var array List of Quest Group Models */
     private $items;
 
+    /** @return array|null List of Quest Group Models */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Quest Group Models */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Quest Group Models
+     * @return DescribeQuestGroupModelsResult
+     */
 	public function withItems(?array $items): DescribeQuestGroupModelsResult {
 		$this->items = $items;
 		return $this;

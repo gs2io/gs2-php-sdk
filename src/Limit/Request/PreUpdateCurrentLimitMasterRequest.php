@@ -19,15 +19,26 @@ namespace Gs2\Limit\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for preUpdateCurrentLimitMaster: Update currently active Usage Limit Model master data (3-phase version)
+ *
+ * @see https://docs.gs2.io/api_reference/limit/sdk/#preupdatecurrentlimitmaster
+ */
 class PreUpdateCurrentLimitMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return PreUpdateCurrentLimitMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): PreUpdateCurrentLimitMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;

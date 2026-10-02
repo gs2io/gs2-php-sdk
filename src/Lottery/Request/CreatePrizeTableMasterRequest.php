@@ -21,63 +21,98 @@ use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Lottery\Model\AcquireAction;
 use Gs2\Lottery\Model\Prize;
 
+/**
+ * Request for createPrizeTableMaster: Create Prize Table Master
+ *
+ * @see https://docs.gs2.io/api_reference/lottery/sdk/#createprizetablemaster
+ */
 class CreatePrizeTableMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Prize Table Name */
     private $name;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var string */
+    /** @var string Metadata */
     private $metadata;
-    /** @var array */
+    /** @var array Prizes */
     private $prizes;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return CreatePrizeTableMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): CreatePrizeTableMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Prize Table Name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Prize Table Name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Prize Table Name
+     * @return CreatePrizeTableMasterRequest
+     */
 	public function withName(?string $name): CreatePrizeTableMasterRequest {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return CreatePrizeTableMasterRequest
+     */
 	public function withDescription(?string $description): CreatePrizeTableMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return CreatePrizeTableMasterRequest
+     */
 	public function withMetadata(?string $metadata): CreatePrizeTableMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return array|null Prizes */
 	public function getPrizes(): ?array {
 		return $this->prizes;
 	}
+    /** @param array|null $prizes Prizes */
 	public function setPrizes(?array $prizes) {
 		$this->prizes = $prizes;
 	}
+    /**
+     * @param array|null $prizes Prizes
+     * @return CreatePrizeTableMasterRequest
+     */
 	public function withPrizes(?array $prizes): CreatePrizeTableMasterRequest {
 		$this->prizes = $prizes;
 		return $this;

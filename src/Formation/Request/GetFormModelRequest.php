@@ -19,27 +19,44 @@ namespace Gs2\Formation\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getFormModel: Get Form Model
+ *
+ * @see https://docs.gs2.io/api_reference/formation/sdk/#getformmodel
+ */
 class GetFormModelRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Form Storage Area Model name */
     private $moldModelName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetFormModelRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetFormModelRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Form Storage Area Model name */
 	public function getMoldModelName(): ?string {
 		return $this->moldModelName;
 	}
+    /** @param string|null $moldModelName Form Storage Area Model name */
 	public function setMoldModelName(?string $moldModelName) {
 		$this->moldModelName = $moldModelName;
 	}
+    /**
+     * @param string|null $moldModelName Form Storage Area Model name
+     * @return GetFormModelRequest
+     */
 	public function withMoldModelName(?string $moldModelName): GetFormModelRequest {
 		$this->moldModelName = $moldModelName;
 		return $this;

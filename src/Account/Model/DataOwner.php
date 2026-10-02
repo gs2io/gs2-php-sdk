@@ -20,73 +20,108 @@ namespace Gs2\Account\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Data Owner
+ *
+ * @see https://docs.gs2.io/api_reference/account/sdk/#dataowner
+ */
 class DataOwner implements IModel {
 	/**
-     * @var string
+     * @var string Data Owner setting GRN
 	 */
 	private $dataOwnerId;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var string
+     * @var string Data Owner ID
 	 */
 	private $name;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Data Owner setting GRN */
 	public function getDataOwnerId(): ?string {
 		return $this->dataOwnerId;
 	}
+    /** @param string|null $dataOwnerId Data Owner setting GRN */
 	public function setDataOwnerId(?string $dataOwnerId) {
 		$this->dataOwnerId = $dataOwnerId;
 	}
+    /**
+     * @param string|null $dataOwnerId Data Owner setting GRN
+     * @return DataOwner
+     */
 	public function withDataOwnerId(?string $dataOwnerId): DataOwner {
 		$this->dataOwnerId = $dataOwnerId;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return DataOwner
+     */
 	public function withUserId(?string $userId): DataOwner {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Data Owner ID */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Data Owner ID */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Data Owner ID
+     * @return DataOwner
+     */
 	public function withName(?string $name): DataOwner {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return DataOwner
+     */
 	public function withCreatedAt(?int $createdAt): DataOwner {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return DataOwner
+     */
 	public function withRevision(?int $revision): DataOwner {
 		$this->revision = $revision;
 		return $this;

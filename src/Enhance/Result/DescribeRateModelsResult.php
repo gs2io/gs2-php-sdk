@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Enhance\Model\BonusRate;
 use Gs2\Enhance\Model\RateModel;
 
+/**
+ * Result of describeRateModels: List Enhancement Rate Models
+ *
+ * @see https://docs.gs2.io/api_reference/enhance/sdk/#describeratemodels
+ */
 class DescribeRateModelsResult implements IResult {
-    /** @var array */
+    /** @var array List of Enhancement Rate Models */
     private $items;
 
+    /** @return array|null List of Enhancement Rate Models */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Enhancement Rate Models */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Enhancement Rate Models
+     * @return DescribeRateModelsResult
+     */
 	public function withItems(?array $items): DescribeRateModelsResult {
 		$this->items = $items;
 		return $this;

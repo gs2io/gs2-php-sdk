@@ -21,51 +21,80 @@ use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Matchmaking\Model\SignedBallot;
 use Gs2\Matchmaking\Model\GameResult;
 
+/**
+ * Request for voteMultiple: Compile match results and vote
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#votemultiple
+ */
 class VoteMultipleRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var array */
+    /** @var array List of Ballot with signatures */
     private $signedBallots;
-    /** @var array */
+    /** @var array List of Results */
     private $gameResults;
-    /** @var string */
+    /** @var string Encryption Key GRN */
     private $keyId;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return VoteMultipleRequest
+     */
 	public function withNamespaceName(?string $namespaceName): VoteMultipleRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return array|null List of Ballot with signatures */
 	public function getSignedBallots(): ?array {
 		return $this->signedBallots;
 	}
+    /** @param array|null $signedBallots List of Ballot with signatures */
 	public function setSignedBallots(?array $signedBallots) {
 		$this->signedBallots = $signedBallots;
 	}
+    /**
+     * @param array|null $signedBallots List of Ballot with signatures
+     * @return VoteMultipleRequest
+     */
 	public function withSignedBallots(?array $signedBallots): VoteMultipleRequest {
 		$this->signedBallots = $signedBallots;
 		return $this;
 	}
+    /** @return array|null List of Results */
 	public function getGameResults(): ?array {
 		return $this->gameResults;
 	}
+    /** @param array|null $gameResults List of Results */
 	public function setGameResults(?array $gameResults) {
 		$this->gameResults = $gameResults;
 	}
+    /**
+     * @param array|null $gameResults List of Results
+     * @return VoteMultipleRequest
+     */
 	public function withGameResults(?array $gameResults): VoteMultipleRequest {
 		$this->gameResults = $gameResults;
 		return $this;
 	}
+    /** @return string|null Encryption Key GRN */
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
+    /** @param string|null $keyId Encryption Key GRN */
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
+    /**
+     * @param string|null $keyId Encryption Key GRN
+     * @return VoteMultipleRequest
+     */
 	public function withKeyId(?string $keyId): VoteMultipleRequest {
 		$this->keyId = $keyId;
 		return $this;

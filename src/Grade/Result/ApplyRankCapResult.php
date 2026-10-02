@@ -21,48 +21,71 @@ use Gs2\Core\Model\IResult;
 use Gs2\Grade\Model\Status;
 use Gs2\Experience\Model\Status as ExperienceStatus;
 
+/**
+ * Result of applyRankCap: Apply rank cap to GS2-Experience Status
+ *
+ * @see https://docs.gs2.io/api_reference/grade/sdk/#applyrankcap
+ */
 class ApplyRankCapResult implements IResult {
-    /** @var Status */
+    /** @var Status Status */
     private $item;
-    /** @var string */
+    /** @var string GS2-Experience Namespace Name */
     private $experienceNamespaceName;
-    /** @var ExperienceStatus */
+    /** @var ExperienceStatus GS2-Experience Status after addition */
     private $experienceStatus;
 
+    /** @return Status|null Status */
 	public function getItem(): ?Status {
 		return $this->item;
 	}
 
+    /** @param Status|null $item Status */
 	public function setItem(?Status $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Status|null $item Status
+     * @return ApplyRankCapResult
+     */
 	public function withItem(?Status $item): ApplyRankCapResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null GS2-Experience Namespace Name */
 	public function getExperienceNamespaceName(): ?string {
 		return $this->experienceNamespaceName;
 	}
 
+    /** @param string|null $experienceNamespaceName GS2-Experience Namespace Name */
 	public function setExperienceNamespaceName(?string $experienceNamespaceName) {
 		$this->experienceNamespaceName = $experienceNamespaceName;
 	}
 
+    /**
+     * @param string|null $experienceNamespaceName GS2-Experience Namespace Name
+     * @return ApplyRankCapResult
+     */
 	public function withExperienceNamespaceName(?string $experienceNamespaceName): ApplyRankCapResult {
 		$this->experienceNamespaceName = $experienceNamespaceName;
 		return $this;
 	}
 
+    /** @return ExperienceStatus|null GS2-Experience Status after addition */
 	public function getExperienceStatus(): ?ExperienceStatus {
 		return $this->experienceStatus;
 	}
 
+    /** @param ExperienceStatus|null $experienceStatus GS2-Experience Status after addition */
 	public function setExperienceStatus(?ExperienceStatus $experienceStatus) {
 		$this->experienceStatus = $experienceStatus;
 	}
 
+    /**
+     * @param ExperienceStatus|null $experienceStatus GS2-Experience Status after addition
+     * @return ApplyRankCapResult
+     */
 	public function withExperienceStatus(?ExperienceStatus $experienceStatus): ApplyRankCapResult {
 		$this->experienceStatus = $experienceStatus;
 		return $this;

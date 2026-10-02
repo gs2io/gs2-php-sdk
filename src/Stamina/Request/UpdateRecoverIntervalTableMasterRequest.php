@@ -19,75 +19,116 @@ namespace Gs2\Stamina\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for updateRecoverIntervalTableMaster: Update Recovery Interval Table Master
+ *
+ * @see https://docs.gs2.io/api_reference/stamina/sdk/#updaterecoverintervaltablemaster
+ */
 class UpdateRecoverIntervalTableMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Recovery Interval Table name */
     private $recoverIntervalTableName;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var string */
+    /** @var string Metadata */
     private $metadata;
-    /** @var string */
+    /** @var string Experience Model ID */
     private $experienceModelId;
-    /** @var array */
+    /** @var array Recovery Interval Values by Rank (Minutes) */
     private $values;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UpdateRecoverIntervalTableMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UpdateRecoverIntervalTableMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Recovery Interval Table name */
 	public function getRecoverIntervalTableName(): ?string {
 		return $this->recoverIntervalTableName;
 	}
+    /** @param string|null $recoverIntervalTableName Recovery Interval Table name */
 	public function setRecoverIntervalTableName(?string $recoverIntervalTableName) {
 		$this->recoverIntervalTableName = $recoverIntervalTableName;
 	}
+    /**
+     * @param string|null $recoverIntervalTableName Recovery Interval Table name
+     * @return UpdateRecoverIntervalTableMasterRequest
+     */
 	public function withRecoverIntervalTableName(?string $recoverIntervalTableName): UpdateRecoverIntervalTableMasterRequest {
 		$this->recoverIntervalTableName = $recoverIntervalTableName;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return UpdateRecoverIntervalTableMasterRequest
+     */
 	public function withDescription(?string $description): UpdateRecoverIntervalTableMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return UpdateRecoverIntervalTableMasterRequest
+     */
 	public function withMetadata(?string $metadata): UpdateRecoverIntervalTableMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return string|null Experience Model ID */
 	public function getExperienceModelId(): ?string {
 		return $this->experienceModelId;
 	}
+    /** @param string|null $experienceModelId Experience Model ID */
 	public function setExperienceModelId(?string $experienceModelId) {
 		$this->experienceModelId = $experienceModelId;
 	}
+    /**
+     * @param string|null $experienceModelId Experience Model ID
+     * @return UpdateRecoverIntervalTableMasterRequest
+     */
 	public function withExperienceModelId(?string $experienceModelId): UpdateRecoverIntervalTableMasterRequest {
 		$this->experienceModelId = $experienceModelId;
 		return $this;
 	}
+    /** @return array|null Recovery Interval Values by Rank (Minutes) */
 	public function getValues(): ?array {
 		return $this->values;
 	}
+    /** @param array|null $values Recovery Interval Values by Rank (Minutes) */
 	public function setValues(?array $values) {
 		$this->values = $values;
 	}
+    /**
+     * @param array|null $values Recovery Interval Values by Rank (Minutes)
+     * @return UpdateRecoverIntervalTableMasterRequest
+     */
 	public function withValues(?array $values): UpdateRecoverIntervalTableMasterRequest {
 		$this->values = $values;
 		return $this;

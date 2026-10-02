@@ -20,59 +20,88 @@ namespace Gs2\Grade\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Grade Entry Model
+ *
+ * @see https://docs.gs2.io/api_reference/grade/sdk/#gradeentrymodel
+ */
 class GradeEntryModel implements IModel {
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var int
+     * @var int Rank Cap Value
 	 */
 	private $rankCapValue;
 	/**
-     * @var string
+     * @var string Property ID Regex
 	 */
 	private $propertyIdRegex;
 	/**
-     * @var string
+     * @var string Grade-Up Property ID Regex
 	 */
 	private $gradeUpPropertyIdRegex;
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return GradeEntryModel
+     */
 	public function withMetadata(?string $metadata): GradeEntryModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return int|null Rank Cap Value */
 	public function getRankCapValue(): ?int {
 		return $this->rankCapValue;
 	}
+    /** @param int|null $rankCapValue Rank Cap Value */
 	public function setRankCapValue(?int $rankCapValue) {
 		$this->rankCapValue = $rankCapValue;
 	}
+    /**
+     * @param int|null $rankCapValue Rank Cap Value
+     * @return GradeEntryModel
+     */
 	public function withRankCapValue(?int $rankCapValue): GradeEntryModel {
 		$this->rankCapValue = $rankCapValue;
 		return $this;
 	}
+    /** @return string|null Property ID Regex */
 	public function getPropertyIdRegex(): ?string {
 		return $this->propertyIdRegex;
 	}
+    /** @param string|null $propertyIdRegex Property ID Regex */
 	public function setPropertyIdRegex(?string $propertyIdRegex) {
 		$this->propertyIdRegex = $propertyIdRegex;
 	}
+    /**
+     * @param string|null $propertyIdRegex Property ID Regex
+     * @return GradeEntryModel
+     */
 	public function withPropertyIdRegex(?string $propertyIdRegex): GradeEntryModel {
 		$this->propertyIdRegex = $propertyIdRegex;
 		return $this;
 	}
+    /** @return string|null Grade-Up Property ID Regex */
 	public function getGradeUpPropertyIdRegex(): ?string {
 		return $this->gradeUpPropertyIdRegex;
 	}
+    /** @param string|null $gradeUpPropertyIdRegex Grade-Up Property ID Regex */
 	public function setGradeUpPropertyIdRegex(?string $gradeUpPropertyIdRegex) {
 		$this->gradeUpPropertyIdRegex = $gradeUpPropertyIdRegex;
 	}
+    /**
+     * @param string|null $gradeUpPropertyIdRegex Grade-Up Property ID Regex
+     * @return GradeEntryModel
+     */
 	public function withGradeUpPropertyIdRegex(?string $gradeUpPropertyIdRegex): GradeEntryModel {
 		$this->gradeUpPropertyIdRegex = $gradeUpPropertyIdRegex;
 		return $this;

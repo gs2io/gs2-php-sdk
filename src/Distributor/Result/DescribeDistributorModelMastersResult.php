@@ -20,33 +20,50 @@ namespace Gs2\Distributor\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Distributor\Model\DistributorModelMaster;
 
+/**
+ * Result of describeDistributorModelMasters: List Distributor Model Masters
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#describedistributormodelmasters
+ */
 class DescribeDistributorModelMastersResult implements IResult {
-    /** @var array */
+    /** @var array List of Distributor Model Masters */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Distributor Model Masters */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Distributor Model Masters */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Distributor Model Masters
+     * @return DescribeDistributorModelMastersResult
+     */
 	public function withItems(?array $items): DescribeDistributorModelMastersResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeDistributorModelMastersResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeDistributorModelMastersResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

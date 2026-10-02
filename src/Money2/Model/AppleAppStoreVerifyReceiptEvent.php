@@ -20,17 +20,28 @@ namespace Gs2\Money2\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Apple App Store Receipt
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#appleappstoreverifyreceiptevent
+ */
 class AppleAppStoreVerifyReceiptEvent implements IModel {
 	/**
-     * @var string
+     * @var string Environment
 	 */
 	private $environment;
+    /** @return string|null Environment */
 	public function getEnvironment(): ?string {
 		return $this->environment;
 	}
+    /** @param string|null $environment Environment */
 	public function setEnvironment(?string $environment) {
 		$this->environment = $environment;
 	}
+    /**
+     * @param string|null $environment Environment
+     * @return AppleAppStoreVerifyReceiptEvent
+     */
 	public function withEnvironment(?string $environment): AppleAppStoreVerifyReceiptEvent {
 		$this->environment = $environment;
 		return $this;

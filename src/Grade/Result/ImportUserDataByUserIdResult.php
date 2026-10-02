@@ -19,6 +19,11 @@ namespace Gs2\Grade\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of importUserDataByUserId: Prepare User Data Import by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/grade/sdk/#importuserdatabyuserid
+ */
 class ImportUserDataByUserIdResult implements IResult {
 
     public static function fromJson(?array $data): ?ImportUserDataByUserIdResult {

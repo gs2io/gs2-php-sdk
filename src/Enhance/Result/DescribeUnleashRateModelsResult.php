@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Enhance\Model\UnleashRateEntryModel;
 use Gs2\Enhance\Model\UnleashRateModel;
 
+/**
+ * Result of describeUnleashRateModels: List Unleash Rate Models
+ *
+ * @see https://docs.gs2.io/api_reference/enhance/sdk/#describeunleashratemodels
+ */
 class DescribeUnleashRateModelsResult implements IResult {
-    /** @var array */
+    /** @var array List of Unleash Rate Model */
     private $items;
 
+    /** @return array|null List of Unleash Rate Model */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Unleash Rate Model */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Unleash Rate Model
+     * @return DescribeUnleashRateModelsResult
+     */
 	public function withItems(?array $items): DescribeUnleashRateModelsResult {
 		$this->items = $items;
 		return $this;

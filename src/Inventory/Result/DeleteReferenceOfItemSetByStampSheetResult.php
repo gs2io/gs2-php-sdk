@@ -22,63 +22,92 @@ use Gs2\Inventory\Model\ItemSet;
 use Gs2\Inventory\Model\ItemModel;
 use Gs2\Inventory\Model\Inventory;
 
+/**
+ * Result of deleteReferenceOfItemSetByStampSheet: Execute deletion of reference source as acquire action
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/stamp_sheet/#gs2inventorydeletereferenceofbyuserid
+ */
 class DeleteReferenceOfItemSetByStampSheetResult implements IResult {
-    /** @var string */
+    /** @var string References for this possession */
     private $item;
-    /** @var ItemSet */
+    /** @var ItemSet Item Set after deleting the reference source */
     private $itemSet;
-    /** @var ItemModel */
+    /** @var ItemModel Item Model */
     private $itemModel;
-    /** @var Inventory */
+    /** @var Inventory Inventory */
     private $inventory;
 
+    /** @return string|null References for this possession */
 	public function getItem(): ?string {
 		return $this->item;
 	}
 
+    /** @param string|null $item References for this possession */
 	public function setItem(?string $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param string|null $item References for this possession
+     * @return DeleteReferenceOfItemSetByStampSheetResult
+     */
 	public function withItem(?string $item): DeleteReferenceOfItemSetByStampSheetResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return ItemSet|null Item Set after deleting the reference source */
 	public function getItemSet(): ?ItemSet {
 		return $this->itemSet;
 	}
 
+    /** @param ItemSet|null $itemSet Item Set after deleting the reference source */
 	public function setItemSet(?ItemSet $itemSet) {
 		$this->itemSet = $itemSet;
 	}
 
+    /**
+     * @param ItemSet|null $itemSet Item Set after deleting the reference source
+     * @return DeleteReferenceOfItemSetByStampSheetResult
+     */
 	public function withItemSet(?ItemSet $itemSet): DeleteReferenceOfItemSetByStampSheetResult {
 		$this->itemSet = $itemSet;
 		return $this;
 	}
 
+    /** @return ItemModel|null Item Model */
 	public function getItemModel(): ?ItemModel {
 		return $this->itemModel;
 	}
 
+    /** @param ItemModel|null $itemModel Item Model */
 	public function setItemModel(?ItemModel $itemModel) {
 		$this->itemModel = $itemModel;
 	}
 
+    /**
+     * @param ItemModel|null $itemModel Item Model
+     * @return DeleteReferenceOfItemSetByStampSheetResult
+     */
 	public function withItemModel(?ItemModel $itemModel): DeleteReferenceOfItemSetByStampSheetResult {
 		$this->itemModel = $itemModel;
 		return $this;
 	}
 
+    /** @return Inventory|null Inventory */
 	public function getInventory(): ?Inventory {
 		return $this->inventory;
 	}
 
+    /** @param Inventory|null $inventory Inventory */
 	public function setInventory(?Inventory $inventory) {
 		$this->inventory = $inventory;
 	}
 
+    /**
+     * @param Inventory|null $inventory Inventory
+     * @return DeleteReferenceOfItemSetByStampSheetResult
+     */
 	public function withInventory(?Inventory $inventory): DeleteReferenceOfItemSetByStampSheetResult {
 		$this->inventory = $inventory;
 		return $this;

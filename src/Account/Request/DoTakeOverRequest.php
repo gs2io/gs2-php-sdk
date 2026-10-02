@@ -19,51 +19,80 @@ namespace Gs2\Account\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for doTakeOver: Execute Account Takeover
+ *
+ * @see https://docs.gs2.io/api_reference/account/sdk/#dotakeover
+ */
 class DoTakeOverRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var int */
+    /** @var int Slot Number */
     private $type;
-    /** @var string */
+    /** @var string User ID for takeover */
     private $userIdentifier;
-    /** @var string */
+    /** @var string Password */
     private $password;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DoTakeOverRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DoTakeOverRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return int|null Slot Number */
 	public function getType(): ?int {
 		return $this->type;
 	}
+    /** @param int|null $type Slot Number */
 	public function setType(?int $type) {
 		$this->type = $type;
 	}
+    /**
+     * @param int|null $type Slot Number
+     * @return DoTakeOverRequest
+     */
 	public function withType(?int $type): DoTakeOverRequest {
 		$this->type = $type;
 		return $this;
 	}
+    /** @return string|null User ID for takeover */
 	public function getUserIdentifier(): ?string {
 		return $this->userIdentifier;
 	}
+    /** @param string|null $userIdentifier User ID for takeover */
 	public function setUserIdentifier(?string $userIdentifier) {
 		$this->userIdentifier = $userIdentifier;
 	}
+    /**
+     * @param string|null $userIdentifier User ID for takeover
+     * @return DoTakeOverRequest
+     */
 	public function withUserIdentifier(?string $userIdentifier): DoTakeOverRequest {
 		$this->userIdentifier = $userIdentifier;
 		return $this;
 	}
+    /** @return string|null Password */
 	public function getPassword(): ?string {
 		return $this->password;
 	}
+    /** @param string|null $password Password */
 	public function setPassword(?string $password) {
 		$this->password = $password;
 	}
+    /**
+     * @param string|null $password Password
+     * @return DoTakeOverRequest
+     */
 	public function withPassword(?string $password): DoTakeOverRequest {
 		$this->password = $password;
 		return $this;

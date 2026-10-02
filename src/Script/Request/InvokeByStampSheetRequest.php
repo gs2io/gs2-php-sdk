@@ -19,27 +19,44 @@ namespace Gs2\Script\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for invokeByStampSheet: Execute the script as an Acquire Action
+ *
+ * @see https://docs.gs2.io/api_reference/script/stamp_sheet/#gs2scriptinvokescript
+ */
 class InvokeByStampSheetRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Transaction */
     private $stampSheet;
-    /** @var string */
+    /** @var string Encryption Key GRN */
     private $keyId;
+    /** @return string|null Transaction */
 	public function getStampSheet(): ?string {
 		return $this->stampSheet;
 	}
+    /** @param string|null $stampSheet Transaction */
 	public function setStampSheet(?string $stampSheet) {
 		$this->stampSheet = $stampSheet;
 	}
+    /**
+     * @param string|null $stampSheet Transaction
+     * @return InvokeByStampSheetRequest
+     */
 	public function withStampSheet(?string $stampSheet): InvokeByStampSheetRequest {
 		$this->stampSheet = $stampSheet;
 		return $this;
 	}
+    /** @return string|null Encryption Key GRN */
 	public function getKeyId(): ?string {
 		return $this->keyId;
 	}
+    /** @param string|null $keyId Encryption Key GRN */
 	public function setKeyId(?string $keyId) {
 		$this->keyId = $keyId;
 	}
+    /**
+     * @param string|null $keyId Encryption Key GRN
+     * @return InvokeByStampSheetRequest
+     */
 	public function withKeyId(?string $keyId): InvokeByStampSheetRequest {
 		$this->keyId = $keyId;
 		return $this;

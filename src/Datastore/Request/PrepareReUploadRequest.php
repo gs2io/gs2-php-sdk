@@ -19,53 +19,82 @@ namespace Gs2\Datastore\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for prepareReUpload: Prepare to re-upload data object
+ *
+ * @see https://docs.gs2.io/api_reference/datastore/sdk/#preparereupload
+ */
 class PrepareReUploadRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Data Object Name */
     private $dataObjectName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string MIME-Type of the data object to be uploaded */
     private $contentType;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return PrepareReUploadRequest
+     */
 	public function withNamespaceName(?string $namespaceName): PrepareReUploadRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Data Object Name */
 	public function getDataObjectName(): ?string {
 		return $this->dataObjectName;
 	}
+    /** @param string|null $dataObjectName Data Object Name */
 	public function setDataObjectName(?string $dataObjectName) {
 		$this->dataObjectName = $dataObjectName;
 	}
+    /**
+     * @param string|null $dataObjectName Data Object Name
+     * @return PrepareReUploadRequest
+     */
 	public function withDataObjectName(?string $dataObjectName): PrepareReUploadRequest {
 		$this->dataObjectName = $dataObjectName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return PrepareReUploadRequest
+     */
 	public function withAccessToken(?string $accessToken): PrepareReUploadRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null MIME-Type of the data object to be uploaded */
 	public function getContentType(): ?string {
 		return $this->contentType;
 	}
+    /** @param string|null $contentType MIME-Type of the data object to be uploaded */
 	public function setContentType(?string $contentType) {
 		$this->contentType = $contentType;
 	}
+    /**
+     * @param string|null $contentType MIME-Type of the data object to be uploaded
+     * @return PrepareReUploadRequest
+     */
 	public function withContentType(?string $contentType): PrepareReUploadRequest {
 		$this->contentType = $contentType;
 		return $this;

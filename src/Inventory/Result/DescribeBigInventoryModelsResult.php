@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Inventory\Model\BigItemModel;
 use Gs2\Inventory\Model\BigInventoryModel;
 
+/**
+ * Result of describeBigInventoryModels: List Big Inventory Models
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#describebiginventorymodels
+ */
 class DescribeBigInventoryModelsResult implements IResult {
-    /** @var array */
+    /** @var array List of Big Inventory Models */
     private $items;
 
+    /** @return array|null List of Big Inventory Models */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Big Inventory Models */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Big Inventory Models
+     * @return DescribeBigInventoryModelsResult
+     */
 	public function withItems(?array $items): DescribeBigInventoryModelsResult {
 		$this->items = $items;
 		return $this;

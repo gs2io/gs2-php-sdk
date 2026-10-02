@@ -20,18 +20,29 @@ namespace Gs2\Lottery\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Lottery\Model\LotteryModelMaster;
 
+/**
+ * Result of updateLotteryModelMaster: Update Lottery Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/lottery/sdk/#updatelotterymodelmaster
+ */
 class UpdateLotteryModelMasterResult implements IResult {
-    /** @var LotteryModelMaster */
+    /** @var LotteryModelMaster Lottery Model Master updated */
     private $item;
 
+    /** @return LotteryModelMaster|null Lottery Model Master updated */
 	public function getItem(): ?LotteryModelMaster {
 		return $this->item;
 	}
 
+    /** @param LotteryModelMaster|null $item Lottery Model Master updated */
 	public function setItem(?LotteryModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param LotteryModelMaster|null $item Lottery Model Master updated
+     * @return UpdateLotteryModelMasterResult
+     */
 	public function withItem(?LotteryModelMaster $item): UpdateLotteryModelMasterResult {
 		$this->item = $item;
 		return $this;

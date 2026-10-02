@@ -20,45 +20,68 @@ namespace Gs2\Deploy\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Change Details
+ *
+ * @see https://docs.gs2.io/api_reference/deploy/sdk/#changeset
+ */
 class ChangeSet implements IModel {
 	/**
-     * @var string
+     * @var string Resource name
 	 */
 	private $resourceName;
 	/**
-     * @var string
+     * @var string Resource type
 	 */
 	private $resourceType;
 	/**
-     * @var string
+     * @var string Change type
 	 */
 	private $operation;
+    /** @return string|null Resource name */
 	public function getResourceName(): ?string {
 		return $this->resourceName;
 	}
+    /** @param string|null $resourceName Resource name */
 	public function setResourceName(?string $resourceName) {
 		$this->resourceName = $resourceName;
 	}
+    /**
+     * @param string|null $resourceName Resource name
+     * @return ChangeSet
+     */
 	public function withResourceName(?string $resourceName): ChangeSet {
 		$this->resourceName = $resourceName;
 		return $this;
 	}
+    /** @return string|null Resource type */
 	public function getResourceType(): ?string {
 		return $this->resourceType;
 	}
+    /** @param string|null $resourceType Resource type */
 	public function setResourceType(?string $resourceType) {
 		$this->resourceType = $resourceType;
 	}
+    /**
+     * @param string|null $resourceType Resource type
+     * @return ChangeSet
+     */
 	public function withResourceType(?string $resourceType): ChangeSet {
 		$this->resourceType = $resourceType;
 		return $this;
 	}
+    /** @return string|null Change type */
 	public function getOperation(): ?string {
 		return $this->operation;
 	}
+    /** @param string|null $operation Change type */
 	public function setOperation(?string $operation) {
 		$this->operation = $operation;
 	}
+    /**
+     * @param string|null $operation Change type
+     * @return ChangeSet
+     */
 	public function withOperation(?string $operation): ChangeSet {
 		$this->operation = $operation;
 		return $this;

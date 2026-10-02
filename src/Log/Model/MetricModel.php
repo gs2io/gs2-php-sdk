@@ -20,45 +20,68 @@ namespace Gs2\Log\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Metric Model
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#metricmodel
+ */
 class MetricModel implements IModel {
 	/**
-     * @var string
+     * @var string Metric Name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Metric Data Type
 	 */
 	private $type;
 	/**
-     * @var array
+     * @var array Labels
 	 */
 	private $labels;
+    /** @return string|null Metric Name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Metric Name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Metric Name
+     * @return MetricModel
+     */
 	public function withName(?string $name): MetricModel {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metric Data Type */
 	public function getType(): ?string {
 		return $this->type;
 	}
+    /** @param string|null $type Metric Data Type */
 	public function setType(?string $type) {
 		$this->type = $type;
 	}
+    /**
+     * @param string|null $type Metric Data Type
+     * @return MetricModel
+     */
 	public function withType(?string $type): MetricModel {
 		$this->type = $type;
 		return $this;
 	}
+    /** @return array|null Labels */
 	public function getLabels(): ?array {
 		return $this->labels;
 	}
+    /** @param array|null $labels Labels */
 	public function setLabels(?array $labels) {
 		$this->labels = $labels;
 	}
+    /**
+     * @param array|null $labels Labels
+     * @return MetricModel
+     */
 	public function withLabels(?array $labels): MetricModel {
 		$this->labels = $labels;
 		return $this;

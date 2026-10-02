@@ -19,33 +19,50 @@ namespace Gs2\SeasonRating\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of preUpdateCurrentSeasonModelMaster: Update currently active Season Model master data (3-phase version)
+ *
+ * @see https://docs.gs2.io/api_reference/season_rating/sdk/#preupdatecurrentseasonmodelmaster
+ */
 class PreUpdateCurrentSeasonModelMasterResult implements IResult {
-    /** @var string */
+    /** @var string Token used to reflect results after upload */
     private $uploadToken;
-    /** @var string */
+    /** @var string URL used to upload */
     private $uploadUrl;
 
+    /** @return string|null Token used to reflect results after upload */
 	public function getUploadToken(): ?string {
 		return $this->uploadToken;
 	}
 
+    /** @param string|null $uploadToken Token used to reflect results after upload */
 	public function setUploadToken(?string $uploadToken) {
 		$this->uploadToken = $uploadToken;
 	}
 
+    /**
+     * @param string|null $uploadToken Token used to reflect results after upload
+     * @return PreUpdateCurrentSeasonModelMasterResult
+     */
 	public function withUploadToken(?string $uploadToken): PreUpdateCurrentSeasonModelMasterResult {
 		$this->uploadToken = $uploadToken;
 		return $this;
 	}
 
+    /** @return string|null URL used to upload */
 	public function getUploadUrl(): ?string {
 		return $this->uploadUrl;
 	}
 
+    /** @param string|null $uploadUrl URL used to upload */
 	public function setUploadUrl(?string $uploadUrl) {
 		$this->uploadUrl = $uploadUrl;
 	}
 
+    /**
+     * @param string|null $uploadUrl URL used to upload
+     * @return PreUpdateCurrentSeasonModelMasterResult
+     */
 	public function withUploadUrl(?string $uploadUrl): PreUpdateCurrentSeasonModelMasterResult {
 		$this->uploadUrl = $uploadUrl;
 		return $this;

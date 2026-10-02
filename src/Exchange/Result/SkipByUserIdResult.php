@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Exchange\Model\Config;
 use Gs2\Exchange\Model\Await;
 
+/**
+ * Result of skipByUserId: Skip Exchange Await by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/exchange/sdk/#skipbyuserid
+ */
 class SkipByUserIdResult implements IResult {
-    /** @var Await */
+    /** @var Await Exchange Await */
     private $item;
 
+    /** @return Await|null Exchange Await */
 	public function getItem(): ?Await {
 		return $this->item;
 	}
 
+    /** @param Await|null $item Exchange Await */
 	public function setItem(?Await $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Await|null $item Exchange Await
+     * @return SkipByUserIdResult
+     */
 	public function withItem(?Await $item): SkipByUserIdResult {
 		$this->item = $item;
 		return $this;

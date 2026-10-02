@@ -20,18 +20,29 @@ namespace Gs2\Ranking2\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Ranking2\Model\SubscribeUser;
 
+/**
+ * Result of deleteSubscribeByUserId: Delete Subscribe Target User ID specifying User ID
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/sdk/#deletesubscribebyuserid
+ */
 class DeleteSubscribeByUserIdResult implements IResult {
-    /** @var SubscribeUser */
+    /** @var SubscribeUser Subscribed User Information deleted */
     private $item;
 
+    /** @return SubscribeUser|null Subscribed User Information deleted */
 	public function getItem(): ?SubscribeUser {
 		return $this->item;
 	}
 
+    /** @param SubscribeUser|null $item Subscribed User Information deleted */
 	public function setItem(?SubscribeUser $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param SubscribeUser|null $item Subscribed User Information deleted
+     * @return DeleteSubscribeByUserIdResult
+     */
 	public function withItem(?SubscribeUser $item): DeleteSubscribeByUserIdResult {
 		$this->item = $item;
 		return $this;

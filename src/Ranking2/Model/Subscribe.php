@@ -20,115 +20,168 @@ namespace Gs2\Ranking2\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Subscribe
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/sdk/#subscribe
+ */
 class Subscribe implements IModel {
 	/**
-     * @var string
+     * @var string Subscribe Score GRN
 	 */
 	private $subscribeId;
 	/**
-     * @var string
+     * @var string Subscribe Ranking Model name
 	 */
 	private $rankingName;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var array
+     * @var array Subscribe Target User IDs
 	 */
 	private $targetUserIds;
 	/**
-     * @var array
+     * @var array Subscribe From User IDs
 	 */
 	private $fromUserIds;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Subscribe Score GRN */
 	public function getSubscribeId(): ?string {
 		return $this->subscribeId;
 	}
+    /** @param string|null $subscribeId Subscribe Score GRN */
 	public function setSubscribeId(?string $subscribeId) {
 		$this->subscribeId = $subscribeId;
 	}
+    /**
+     * @param string|null $subscribeId Subscribe Score GRN
+     * @return Subscribe
+     */
 	public function withSubscribeId(?string $subscribeId): Subscribe {
 		$this->subscribeId = $subscribeId;
 		return $this;
 	}
+    /** @return string|null Subscribe Ranking Model name */
 	public function getRankingName(): ?string {
 		return $this->rankingName;
 	}
+    /** @param string|null $rankingName Subscribe Ranking Model name */
 	public function setRankingName(?string $rankingName) {
 		$this->rankingName = $rankingName;
 	}
+    /**
+     * @param string|null $rankingName Subscribe Ranking Model name
+     * @return Subscribe
+     */
 	public function withRankingName(?string $rankingName): Subscribe {
 		$this->rankingName = $rankingName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return Subscribe
+     */
 	public function withUserId(?string $userId): Subscribe {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return array|null Subscribe Target User IDs */
 	public function getTargetUserIds(): ?array {
 		return $this->targetUserIds;
 	}
+    /** @param array|null $targetUserIds Subscribe Target User IDs */
 	public function setTargetUserIds(?array $targetUserIds) {
 		$this->targetUserIds = $targetUserIds;
 	}
+    /**
+     * @param array|null $targetUserIds Subscribe Target User IDs
+     * @return Subscribe
+     */
 	public function withTargetUserIds(?array $targetUserIds): Subscribe {
 		$this->targetUserIds = $targetUserIds;
 		return $this;
 	}
+    /** @return array|null Subscribe From User IDs */
 	public function getFromUserIds(): ?array {
 		return $this->fromUserIds;
 	}
+    /** @param array|null $fromUserIds Subscribe From User IDs */
 	public function setFromUserIds(?array $fromUserIds) {
 		$this->fromUserIds = $fromUserIds;
 	}
+    /**
+     * @param array|null $fromUserIds Subscribe From User IDs
+     * @return Subscribe
+     */
 	public function withFromUserIds(?array $fromUserIds): Subscribe {
 		$this->fromUserIds = $fromUserIds;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return Subscribe
+     */
 	public function withCreatedAt(?int $createdAt): Subscribe {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return Subscribe
+     */
 	public function withUpdatedAt(?int $updatedAt): Subscribe {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return Subscribe
+     */
 	public function withRevision(?int $revision): Subscribe {
 		$this->revision = $revision;
 		return $this;

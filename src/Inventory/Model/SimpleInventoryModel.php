@@ -20,59 +20,88 @@ namespace Gs2\Inventory\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Simple Inventory Model
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#simpleinventorymodel
+ */
 class SimpleInventoryModel implements IModel {
 	/**
-     * @var string
+     * @var string Simple Inventory Model GRN
 	 */
 	private $inventoryModelId;
 	/**
-     * @var string
+     * @var string Simple Inventory Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var array
+     * @var array List of Simple Item Models
 	 */
 	private $simpleItemModels;
+    /** @return string|null Simple Inventory Model GRN */
 	public function getInventoryModelId(): ?string {
 		return $this->inventoryModelId;
 	}
+    /** @param string|null $inventoryModelId Simple Inventory Model GRN */
 	public function setInventoryModelId(?string $inventoryModelId) {
 		$this->inventoryModelId = $inventoryModelId;
 	}
+    /**
+     * @param string|null $inventoryModelId Simple Inventory Model GRN
+     * @return SimpleInventoryModel
+     */
 	public function withInventoryModelId(?string $inventoryModelId): SimpleInventoryModel {
 		$this->inventoryModelId = $inventoryModelId;
 		return $this;
 	}
+    /** @return string|null Simple Inventory Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Simple Inventory Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Simple Inventory Model name
+     * @return SimpleInventoryModel
+     */
 	public function withName(?string $name): SimpleInventoryModel {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return SimpleInventoryModel
+     */
 	public function withMetadata(?string $metadata): SimpleInventoryModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return array|null List of Simple Item Models */
 	public function getSimpleItemModels(): ?array {
 		return $this->simpleItemModels;
 	}
+    /** @param array|null $simpleItemModels List of Simple Item Models */
 	public function setSimpleItemModels(?array $simpleItemModels) {
 		$this->simpleItemModels = $simpleItemModels;
 	}
+    /**
+     * @param array|null $simpleItemModels List of Simple Item Models
+     * @return SimpleInventoryModel
+     */
 	public function withSimpleItemModels(?array $simpleItemModels): SimpleInventoryModel {
 		$this->simpleItemModels = $simpleItemModels;
 		return $this;

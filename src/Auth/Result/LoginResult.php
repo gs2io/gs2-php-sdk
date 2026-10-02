@@ -19,48 +19,71 @@ namespace Gs2\Auth\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of login: Log in to GS2 by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/auth/sdk/#login
+ */
 class LoginResult implements IResult {
-    /** @var string */
+    /** @var string Access token */
     private $token;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var int */
+    /** @var int Expiration time */
     private $expire;
 
+    /** @return string|null Access token */
 	public function getToken(): ?string {
 		return $this->token;
 	}
 
+    /** @param string|null $token Access token */
 	public function setToken(?string $token) {
 		$this->token = $token;
 	}
 
+    /**
+     * @param string|null $token Access token
+     * @return LoginResult
+     */
 	public function withToken(?string $token): LoginResult {
 		$this->token = $token;
 		return $this;
 	}
 
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
 
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
 
+    /**
+     * @param string|null $userId User ID
+     * @return LoginResult
+     */
 	public function withUserId(?string $userId): LoginResult {
 		$this->userId = $userId;
 		return $this;
 	}
 
+    /** @return int|null Expiration time */
 	public function getExpire(): ?int {
 		return $this->expire;
 	}
 
+    /** @param int|null $expire Expiration time */
 	public function setExpire(?int $expire) {
 		$this->expire = $expire;
 	}
 
+    /**
+     * @param int|null $expire Expiration time
+     * @return LoginResult
+     */
 	public function withExpire(?int $expire): LoginResult {
 		$this->expire = $expire;
 		return $this;

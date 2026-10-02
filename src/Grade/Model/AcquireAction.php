@@ -20,31 +20,48 @@ namespace Gs2\Grade\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Acquire Action
+ *
+ * @see https://docs.gs2.io/api_reference/grade/sdk/#acquireaction
+ */
 class AcquireAction implements IModel {
 	/**
-     * @var string
+     * @var string Type of Acquire Action
 	 */
 	private $action;
 	/**
-     * @var string
+     * @var string JSON string of the request used when executing the action
 	 */
 	private $request;
+    /** @return string|null Type of Acquire Action */
 	public function getAction(): ?string {
 		return $this->action;
 	}
+    /** @param string|null $action Type of Acquire Action */
 	public function setAction(?string $action) {
 		$this->action = $action;
 	}
+    /**
+     * @param string|null $action Type of Acquire Action
+     * @return AcquireAction
+     */
 	public function withAction(?string $action): AcquireAction {
 		$this->action = $action;
 		return $this;
 	}
+    /** @return string|null JSON string of the request used when executing the action */
 	public function getRequest(): ?string {
 		return $this->request;
 	}
+    /** @param string|null $request JSON string of the request used when executing the action */
 	public function setRequest(?string $request) {
 		$this->request = $request;
 	}
+    /**
+     * @param string|null $request JSON string of the request used when executing the action
+     * @return AcquireAction
+     */
 	public function withRequest(?string $request): AcquireAction {
 		$this->request = $request;
 		return $this;

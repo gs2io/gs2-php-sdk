@@ -19,75 +19,116 @@ namespace Gs2\Matchmaking\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for updateRatingModelMaster: Update Rating Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#updateratingmodelmaster
+ */
 class UpdateRatingModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Rating Model name */
     private $ratingName;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var string */
+    /** @var string Metadata */
     private $metadata;
-    /** @var int */
+    /** @var int Initial Rating Value */
     private $initialValue;
-    /** @var int */
+    /** @var int Rating Volatility */
     private $volatility;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UpdateRatingModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UpdateRatingModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Rating Model name */
 	public function getRatingName(): ?string {
 		return $this->ratingName;
 	}
+    /** @param string|null $ratingName Rating Model name */
 	public function setRatingName(?string $ratingName) {
 		$this->ratingName = $ratingName;
 	}
+    /**
+     * @param string|null $ratingName Rating Model name
+     * @return UpdateRatingModelMasterRequest
+     */
 	public function withRatingName(?string $ratingName): UpdateRatingModelMasterRequest {
 		$this->ratingName = $ratingName;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return UpdateRatingModelMasterRequest
+     */
 	public function withDescription(?string $description): UpdateRatingModelMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return UpdateRatingModelMasterRequest
+     */
 	public function withMetadata(?string $metadata): UpdateRatingModelMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return int|null Initial Rating Value */
 	public function getInitialValue(): ?int {
 		return $this->initialValue;
 	}
+    /** @param int|null $initialValue Initial Rating Value */
 	public function setInitialValue(?int $initialValue) {
 		$this->initialValue = $initialValue;
 	}
+    /**
+     * @param int|null $initialValue Initial Rating Value
+     * @return UpdateRatingModelMasterRequest
+     */
 	public function withInitialValue(?int $initialValue): UpdateRatingModelMasterRequest {
 		$this->initialValue = $initialValue;
 		return $this;
 	}
+    /** @return int|null Rating Volatility */
 	public function getVolatility(): ?int {
 		return $this->volatility;
 	}
+    /** @param int|null $volatility Rating Volatility */
 	public function setVolatility(?int $volatility) {
 		$this->volatility = $volatility;
 	}
+    /**
+     * @param int|null $volatility Rating Volatility
+     * @return UpdateRatingModelMasterRequest
+     */
 	public function withVolatility(?int $volatility): UpdateRatingModelMasterRequest {
 		$this->volatility = $volatility;
 		return $this;

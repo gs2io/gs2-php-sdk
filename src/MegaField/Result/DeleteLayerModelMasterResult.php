@@ -20,18 +20,29 @@ namespace Gs2\MegaField\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\MegaField\Model\LayerModelMaster;
 
+/**
+ * Result of deleteLayerModelMaster: Delete Layer Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/mega_field/sdk/#deletelayermodelmaster
+ */
 class DeleteLayerModelMasterResult implements IResult {
-    /** @var LayerModelMaster */
+    /** @var LayerModelMaster Layer Model Master deleted */
     private $item;
 
+    /** @return LayerModelMaster|null Layer Model Master deleted */
 	public function getItem(): ?LayerModelMaster {
 		return $this->item;
 	}
 
+    /** @param LayerModelMaster|null $item Layer Model Master deleted */
 	public function setItem(?LayerModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param LayerModelMaster|null $item Layer Model Master deleted
+     * @return DeleteLayerModelMasterResult
+     */
 	public function withItem(?LayerModelMaster $item): DeleteLayerModelMasterResult {
 		$this->item = $item;
 		return $this;

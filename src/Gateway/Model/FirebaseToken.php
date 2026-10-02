@@ -20,101 +20,148 @@ namespace Gs2\Gateway\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Firebase Device Token
+ *
+ * @see https://docs.gs2.io/api_reference/gateway/sdk/#firebasetoken
+ */
 class FirebaseToken implements IModel {
 	/**
-     * @var string
+     * @var string Firebase Device Token GRN
 	 */
 	private $firebaseTokenId;
 	/**
-     * @var string
+     * @var string User ID
 	 */
 	private $userId;
 	/**
-     * @var string
+     * @var string Device Token for Firebase Cloud Messaging
 	 */
 	private $token;
 	/**
-     * @var string
+     * @var string Locale of the notification message
 	 */
 	private $locale;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Firebase Device Token GRN */
 	public function getFirebaseTokenId(): ?string {
 		return $this->firebaseTokenId;
 	}
+    /** @param string|null $firebaseTokenId Firebase Device Token GRN */
 	public function setFirebaseTokenId(?string $firebaseTokenId) {
 		$this->firebaseTokenId = $firebaseTokenId;
 	}
+    /**
+     * @param string|null $firebaseTokenId Firebase Device Token GRN
+     * @return FirebaseToken
+     */
 	public function withFirebaseTokenId(?string $firebaseTokenId): FirebaseToken {
 		$this->firebaseTokenId = $firebaseTokenId;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return FirebaseToken
+     */
 	public function withUserId(?string $userId): FirebaseToken {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Device Token for Firebase Cloud Messaging */
 	public function getToken(): ?string {
 		return $this->token;
 	}
+    /** @param string|null $token Device Token for Firebase Cloud Messaging */
 	public function setToken(?string $token) {
 		$this->token = $token;
 	}
+    /**
+     * @param string|null $token Device Token for Firebase Cloud Messaging
+     * @return FirebaseToken
+     */
 	public function withToken(?string $token): FirebaseToken {
 		$this->token = $token;
 		return $this;
 	}
+    /** @return string|null Locale of the notification message */
 	public function getLocale(): ?string {
 		return $this->locale;
 	}
+    /** @param string|null $locale Locale of the notification message */
 	public function setLocale(?string $locale) {
 		$this->locale = $locale;
 	}
+    /**
+     * @param string|null $locale Locale of the notification message
+     * @return FirebaseToken
+     */
 	public function withLocale(?string $locale): FirebaseToken {
 		$this->locale = $locale;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return FirebaseToken
+     */
 	public function withCreatedAt(?int $createdAt): FirebaseToken {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return FirebaseToken
+     */
 	public function withUpdatedAt(?int $updatedAt): FirebaseToken {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return FirebaseToken
+     */
 	public function withRevision(?int $revision): FirebaseToken {
 		$this->revision = $revision;
 		return $this;

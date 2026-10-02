@@ -19,53 +19,82 @@ namespace Gs2\Account\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for updateBanned: Update whether the Account is currently banned of Game Player Account
+ *
+ * @see https://docs.gs2.io/api_reference/account/sdk/#updatebanned
+ */
 class UpdateBannedRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var bool */
+    /** @var bool Whether the Account is currently banned */
     private $banned;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UpdateBannedRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UpdateBannedRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return UpdateBannedRequest
+     */
 	public function withUserId(?string $userId): UpdateBannedRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return bool|null Whether the Account is currently banned */
 	public function getBanned(): ?bool {
 		return $this->banned;
 	}
+    /** @param bool|null $banned Whether the Account is currently banned */
 	public function setBanned(?bool $banned) {
 		$this->banned = $banned;
 	}
+    /**
+     * @param bool|null $banned Whether the Account is currently banned
+     * @return UpdateBannedRequest
+     */
 	public function withBanned(?bool $banned): UpdateBannedRequest {
 		$this->banned = $banned;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return UpdateBannedRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): UpdateBannedRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

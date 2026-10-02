@@ -25,93 +25,134 @@ use Gs2\Formation\Model\SlotModel;
 use Gs2\Formation\Model\FormModel;
 use Gs2\Formation\Model\MoldModel;
 
+/**
+ * Result of getFormWithSignature: Retrieve signed forms
+ *
+ * @see https://docs.gs2.io/api_reference/formation/sdk/#getformwithsignature
+ */
 class GetFormWithSignatureResult implements IResult {
-    /** @var Form */
+    /** @var Form Form */
     private $item;
-    /** @var string */
+    /** @var string Value to be signed */
     private $body;
-    /** @var string */
+    /** @var string Signature */
     private $signature;
-    /** @var Mold */
+    /** @var Mold Form Storage Area */
     private $mold;
-    /** @var MoldModel */
+    /** @var MoldModel Form Storage Area Model */
     private $moldModel;
-    /** @var FormModel */
+    /** @var FormModel Form Model */
     private $formModel;
 
+    /** @return Form|null Form */
 	public function getItem(): ?Form {
 		return $this->item;
 	}
 
+    /** @param Form|null $item Form */
 	public function setItem(?Form $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Form|null $item Form
+     * @return GetFormWithSignatureResult
+     */
 	public function withItem(?Form $item): GetFormWithSignatureResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null Value to be signed */
 	public function getBody(): ?string {
 		return $this->body;
 	}
 
+    /** @param string|null $body Value to be signed */
 	public function setBody(?string $body) {
 		$this->body = $body;
 	}
 
+    /**
+     * @param string|null $body Value to be signed
+     * @return GetFormWithSignatureResult
+     */
 	public function withBody(?string $body): GetFormWithSignatureResult {
 		$this->body = $body;
 		return $this;
 	}
 
+    /** @return string|null Signature */
 	public function getSignature(): ?string {
 		return $this->signature;
 	}
 
+    /** @param string|null $signature Signature */
 	public function setSignature(?string $signature) {
 		$this->signature = $signature;
 	}
 
+    /**
+     * @param string|null $signature Signature
+     * @return GetFormWithSignatureResult
+     */
 	public function withSignature(?string $signature): GetFormWithSignatureResult {
 		$this->signature = $signature;
 		return $this;
 	}
 
+    /** @return Mold|null Form Storage Area */
 	public function getMold(): ?Mold {
 		return $this->mold;
 	}
 
+    /** @param Mold|null $mold Form Storage Area */
 	public function setMold(?Mold $mold) {
 		$this->mold = $mold;
 	}
 
+    /**
+     * @param Mold|null $mold Form Storage Area
+     * @return GetFormWithSignatureResult
+     */
 	public function withMold(?Mold $mold): GetFormWithSignatureResult {
 		$this->mold = $mold;
 		return $this;
 	}
 
+    /** @return MoldModel|null Form Storage Area Model */
 	public function getMoldModel(): ?MoldModel {
 		return $this->moldModel;
 	}
 
+    /** @param MoldModel|null $moldModel Form Storage Area Model */
 	public function setMoldModel(?MoldModel $moldModel) {
 		$this->moldModel = $moldModel;
 	}
 
+    /**
+     * @param MoldModel|null $moldModel Form Storage Area Model
+     * @return GetFormWithSignatureResult
+     */
 	public function withMoldModel(?MoldModel $moldModel): GetFormWithSignatureResult {
 		$this->moldModel = $moldModel;
 		return $this;
 	}
 
+    /** @return FormModel|null Form Model */
 	public function getFormModel(): ?FormModel {
 		return $this->formModel;
 	}
 
+    /** @param FormModel|null $formModel Form Model */
 	public function setFormModel(?FormModel $formModel) {
 		$this->formModel = $formModel;
 	}
 
+    /**
+     * @param FormModel|null $formModel Form Model
+     * @return GetFormWithSignatureResult
+     */
 	public function withFormModel(?FormModel $formModel): GetFormWithSignatureResult {
 		$this->formModel = $formModel;
 		return $this;

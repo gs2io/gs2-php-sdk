@@ -20,17 +20,28 @@ namespace Gs2\Gateway\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Log Output Setting
+ *
+ * @see https://docs.gs2.io/api_reference/gateway/sdk/#logsetting
+ */
 class LogSetting implements IModel {
 	/**
-     * @var string
+     * @var string GS2-Log Namespace GRN to output logs
 	 */
 	private $loggingNamespaceId;
+    /** @return string|null GS2-Log Namespace GRN to output logs */
 	public function getLoggingNamespaceId(): ?string {
 		return $this->loggingNamespaceId;
 	}
+    /** @param string|null $loggingNamespaceId GS2-Log Namespace GRN to output logs */
 	public function setLoggingNamespaceId(?string $loggingNamespaceId) {
 		$this->loggingNamespaceId = $loggingNamespaceId;
 	}
+    /**
+     * @param string|null $loggingNamespaceId GS2-Log Namespace GRN to output logs
+     * @return LogSetting
+     */
 	public function withLoggingNamespaceId(?string $loggingNamespaceId): LogSetting {
 		$this->loggingNamespaceId = $loggingNamespaceId;
 		return $this;

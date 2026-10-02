@@ -20,18 +20,29 @@ namespace Gs2\Account\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Account\Model\TakeOver;
 
+/**
+ * Result of createTakeOverOpenIdConnect: Create Takeover Information using OpenID Connect
+ *
+ * @see https://docs.gs2.io/api_reference/account/sdk/#createtakeoveropenidconnect
+ */
 class CreateTakeOverOpenIdConnectResult implements IResult {
-    /** @var TakeOver */
+    /** @var TakeOver Takeover Information created */
     private $item;
 
+    /** @return TakeOver|null Takeover Information created */
 	public function getItem(): ?TakeOver {
 		return $this->item;
 	}
 
+    /** @param TakeOver|null $item Takeover Information created */
 	public function setItem(?TakeOver $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param TakeOver|null $item Takeover Information created
+     * @return CreateTakeOverOpenIdConnectResult
+     */
 	public function withItem(?TakeOver $item): CreateTakeOverOpenIdConnectResult {
 		$this->item = $item;
 		return $this;

@@ -20,17 +20,28 @@ namespace Gs2\Identifier\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Project Token
+ *
+ * @see https://docs.gs2.io/api_reference/identifier/sdk/#projecttoken
+ */
 class ProjectToken implements IModel {
 	/**
-     * @var string
+     * @var string Project Token
 	 */
 	private $token;
+    /** @return string|null Project Token */
 	public function getToken(): ?string {
 		return $this->token;
 	}
+    /** @param string|null $token Project Token */
 	public function setToken(?string $token) {
 		$this->token = $token;
 	}
+    /**
+     * @param string|null $token Project Token
+     * @return ProjectToken
+     */
 	public function withToken(?string $token): ProjectToken {
 		$this->token = $token;
 		return $this;

@@ -20,73 +20,108 @@ namespace Gs2\SeasonRating\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Tier Model
+ *
+ * @see https://docs.gs2.io/api_reference/season_rating/sdk/#tiermodel
+ */
 class TierModel implements IModel {
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var int
+     * @var int Raise Rank Bonus
 	 */
 	private $raiseRankBonus;
 	/**
-     * @var int
+     * @var int Entry Fee
 	 */
 	private $entryFee;
 	/**
-     * @var int
+     * @var int Minimum Change Point
 	 */
 	private $minimumChangePoint;
 	/**
-     * @var int
+     * @var int Maximum Change Point
 	 */
 	private $maximumChangePoint;
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return TierModel
+     */
 	public function withMetadata(?string $metadata): TierModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return int|null Raise Rank Bonus */
 	public function getRaiseRankBonus(): ?int {
 		return $this->raiseRankBonus;
 	}
+    /** @param int|null $raiseRankBonus Raise Rank Bonus */
 	public function setRaiseRankBonus(?int $raiseRankBonus) {
 		$this->raiseRankBonus = $raiseRankBonus;
 	}
+    /**
+     * @param int|null $raiseRankBonus Raise Rank Bonus
+     * @return TierModel
+     */
 	public function withRaiseRankBonus(?int $raiseRankBonus): TierModel {
 		$this->raiseRankBonus = $raiseRankBonus;
 		return $this;
 	}
+    /** @return int|null Entry Fee */
 	public function getEntryFee(): ?int {
 		return $this->entryFee;
 	}
+    /** @param int|null $entryFee Entry Fee */
 	public function setEntryFee(?int $entryFee) {
 		$this->entryFee = $entryFee;
 	}
+    /**
+     * @param int|null $entryFee Entry Fee
+     * @return TierModel
+     */
 	public function withEntryFee(?int $entryFee): TierModel {
 		$this->entryFee = $entryFee;
 		return $this;
 	}
+    /** @return int|null Minimum Change Point */
 	public function getMinimumChangePoint(): ?int {
 		return $this->minimumChangePoint;
 	}
+    /** @param int|null $minimumChangePoint Minimum Change Point */
 	public function setMinimumChangePoint(?int $minimumChangePoint) {
 		$this->minimumChangePoint = $minimumChangePoint;
 	}
+    /**
+     * @param int|null $minimumChangePoint Minimum Change Point
+     * @return TierModel
+     */
 	public function withMinimumChangePoint(?int $minimumChangePoint): TierModel {
 		$this->minimumChangePoint = $minimumChangePoint;
 		return $this;
 	}
+    /** @return int|null Maximum Change Point */
 	public function getMaximumChangePoint(): ?int {
 		return $this->maximumChangePoint;
 	}
+    /** @param int|null $maximumChangePoint Maximum Change Point */
 	public function setMaximumChangePoint(?int $maximumChangePoint) {
 		$this->maximumChangePoint = $maximumChangePoint;
 	}
+    /**
+     * @param int|null $maximumChangePoint Maximum Change Point
+     * @return TierModel
+     */
 	public function withMaximumChangePoint(?int $maximumChangePoint): TierModel {
 		$this->maximumChangePoint = $maximumChangePoint;
 		return $this;

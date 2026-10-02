@@ -19,99 +19,152 @@ namespace Gs2\Inventory\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for createItemModelMaster: Create Item Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#createitemmodelmaster
+ */
 class CreateItemModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Inventory Model Name */
     private $inventoryName;
-    /** @var string */
+    /** @var string Item Model name */
     private $name;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var string */
+    /** @var string Metadata */
     private $metadata;
-    /** @var int */
+    /** @var int Maximum Stackable Quantity */
     private $stackingLimit;
-    /** @var bool */
+    /** @var bool Allow Multiple Stacks */
     private $allowMultipleStacks;
-    /** @var int */
+    /** @var int Display Order */
     private $sortValue;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return CreateItemModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): CreateItemModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Inventory Model Name */
 	public function getInventoryName(): ?string {
 		return $this->inventoryName;
 	}
+    /** @param string|null $inventoryName Inventory Model Name */
 	public function setInventoryName(?string $inventoryName) {
 		$this->inventoryName = $inventoryName;
 	}
+    /**
+     * @param string|null $inventoryName Inventory Model Name
+     * @return CreateItemModelMasterRequest
+     */
 	public function withInventoryName(?string $inventoryName): CreateItemModelMasterRequest {
 		$this->inventoryName = $inventoryName;
 		return $this;
 	}
+    /** @return string|null Item Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Item Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Item Model name
+     * @return CreateItemModelMasterRequest
+     */
 	public function withName(?string $name): CreateItemModelMasterRequest {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return CreateItemModelMasterRequest
+     */
 	public function withDescription(?string $description): CreateItemModelMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return CreateItemModelMasterRequest
+     */
 	public function withMetadata(?string $metadata): CreateItemModelMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return int|null Maximum Stackable Quantity */
 	public function getStackingLimit(): ?int {
 		return $this->stackingLimit;
 	}
+    /** @param int|null $stackingLimit Maximum Stackable Quantity */
 	public function setStackingLimit(?int $stackingLimit) {
 		$this->stackingLimit = $stackingLimit;
 	}
+    /**
+     * @param int|null $stackingLimit Maximum Stackable Quantity
+     * @return CreateItemModelMasterRequest
+     */
 	public function withStackingLimit(?int $stackingLimit): CreateItemModelMasterRequest {
 		$this->stackingLimit = $stackingLimit;
 		return $this;
 	}
+    /** @return bool|null Allow Multiple Stacks */
 	public function getAllowMultipleStacks(): ?bool {
 		return $this->allowMultipleStacks;
 	}
+    /** @param bool|null $allowMultipleStacks Allow Multiple Stacks */
 	public function setAllowMultipleStacks(?bool $allowMultipleStacks) {
 		$this->allowMultipleStacks = $allowMultipleStacks;
 	}
+    /**
+     * @param bool|null $allowMultipleStacks Allow Multiple Stacks
+     * @return CreateItemModelMasterRequest
+     */
 	public function withAllowMultipleStacks(?bool $allowMultipleStacks): CreateItemModelMasterRequest {
 		$this->allowMultipleStacks = $allowMultipleStacks;
 		return $this;
 	}
+    /** @return int|null Display Order */
 	public function getSortValue(): ?int {
 		return $this->sortValue;
 	}
+    /** @param int|null $sortValue Display Order */
 	public function setSortValue(?int $sortValue) {
 		$this->sortValue = $sortValue;
 	}
+    /**
+     * @param int|null $sortValue Display Order
+     * @return CreateItemModelMasterRequest
+     */
 	public function withSortValue(?int $sortValue): CreateItemModelMasterRequest {
 		$this->sortValue = $sortValue;
 		return $this;

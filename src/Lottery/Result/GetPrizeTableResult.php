@@ -22,18 +22,29 @@ use Gs2\Lottery\Model\AcquireAction;
 use Gs2\Lottery\Model\Prize;
 use Gs2\Lottery\Model\PrizeTable;
 
+/**
+ * Result of getPrizeTable: Get Prize Table
+ *
+ * @see https://docs.gs2.io/api_reference/lottery/sdk/#getprizetable
+ */
 class GetPrizeTableResult implements IResult {
-    /** @var PrizeTable */
+    /** @var PrizeTable Prize Table */
     private $item;
 
+    /** @return PrizeTable|null Prize Table */
 	public function getItem(): ?PrizeTable {
 		return $this->item;
 	}
 
+    /** @param PrizeTable|null $item Prize Table */
 	public function setItem(?PrizeTable $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param PrizeTable|null $item Prize Table
+     * @return GetPrizeTableResult
+     */
 	public function withItem(?PrizeTable $item): GetPrizeTableResult {
 		$this->item = $item;
 		return $this;

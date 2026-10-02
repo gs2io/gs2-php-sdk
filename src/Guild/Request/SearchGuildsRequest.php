@@ -19,173 +19,262 @@ namespace Gs2\Guild\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for searchGuilds: Search Guilds
+ *
+ * @see https://docs.gs2.io/api_reference/guild/sdk/#searchguilds
+ */
 class SearchGuildsRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Guild Model name */
     private $guildModelName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Display name to search for guild */
     private $displayName;
-    /** @var array */
+    /** @var array List of guild operation policies to search for guild */
     private $attributes1;
-    /** @var array */
+    /** @var array List of guild operation policies to search for guild */
     private $attributes2;
-    /** @var array */
+    /** @var array List of guild operation policies to search for guild */
     private $attributes3;
-    /** @var array */
+    /** @var array List of guild operation policies to search for guild */
     private $attributes4;
-    /** @var array */
+    /** @var array List of guild operation policies to search for guild */
     private $attributes5;
-    /** @var array */
+    /** @var array List of guild join policies to search for guild */
     private $joinPolicies;
-    /** @var bool */
+    /** @var bool Whether to include full guilds in search results */
     private $includeFullMembersGuild;
-    /** @var string */
+    /** @var string Sort order */
     private $orderBy;
-    /** @var string */
+    /** @var string Token specifying the position from which to start acquiring data */
     private $pageToken;
-    /** @var int */
+    /** @var int Number of data items to retrieve */
     private $limit;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return SearchGuildsRequest
+     */
 	public function withNamespaceName(?string $namespaceName): SearchGuildsRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Guild Model name */
 	public function getGuildModelName(): ?string {
 		return $this->guildModelName;
 	}
+    /** @param string|null $guildModelName Guild Model name */
 	public function setGuildModelName(?string $guildModelName) {
 		$this->guildModelName = $guildModelName;
 	}
+    /**
+     * @param string|null $guildModelName Guild Model name
+     * @return SearchGuildsRequest
+     */
 	public function withGuildModelName(?string $guildModelName): SearchGuildsRequest {
 		$this->guildModelName = $guildModelName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return SearchGuildsRequest
+     */
 	public function withAccessToken(?string $accessToken): SearchGuildsRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Display name to search for guild */
 	public function getDisplayName(): ?string {
 		return $this->displayName;
 	}
+    /** @param string|null $displayName Display name to search for guild */
 	public function setDisplayName(?string $displayName) {
 		$this->displayName = $displayName;
 	}
+    /**
+     * @param string|null $displayName Display name to search for guild
+     * @return SearchGuildsRequest
+     */
 	public function withDisplayName(?string $displayName): SearchGuildsRequest {
 		$this->displayName = $displayName;
 		return $this;
 	}
+    /** @return array|null List of guild operation policies to search for guild */
 	public function getAttributes1(): ?array {
 		return $this->attributes1;
 	}
+    /** @param array|null $attributes1 List of guild operation policies to search for guild */
 	public function setAttributes1(?array $attributes1) {
 		$this->attributes1 = $attributes1;
 	}
+    /**
+     * @param array|null $attributes1 List of guild operation policies to search for guild
+     * @return SearchGuildsRequest
+     */
 	public function withAttributes1(?array $attributes1): SearchGuildsRequest {
 		$this->attributes1 = $attributes1;
 		return $this;
 	}
+    /** @return array|null List of guild operation policies to search for guild */
 	public function getAttributes2(): ?array {
 		return $this->attributes2;
 	}
+    /** @param array|null $attributes2 List of guild operation policies to search for guild */
 	public function setAttributes2(?array $attributes2) {
 		$this->attributes2 = $attributes2;
 	}
+    /**
+     * @param array|null $attributes2 List of guild operation policies to search for guild
+     * @return SearchGuildsRequest
+     */
 	public function withAttributes2(?array $attributes2): SearchGuildsRequest {
 		$this->attributes2 = $attributes2;
 		return $this;
 	}
+    /** @return array|null List of guild operation policies to search for guild */
 	public function getAttributes3(): ?array {
 		return $this->attributes3;
 	}
+    /** @param array|null $attributes3 List of guild operation policies to search for guild */
 	public function setAttributes3(?array $attributes3) {
 		$this->attributes3 = $attributes3;
 	}
+    /**
+     * @param array|null $attributes3 List of guild operation policies to search for guild
+     * @return SearchGuildsRequest
+     */
 	public function withAttributes3(?array $attributes3): SearchGuildsRequest {
 		$this->attributes3 = $attributes3;
 		return $this;
 	}
+    /** @return array|null List of guild operation policies to search for guild */
 	public function getAttributes4(): ?array {
 		return $this->attributes4;
 	}
+    /** @param array|null $attributes4 List of guild operation policies to search for guild */
 	public function setAttributes4(?array $attributes4) {
 		$this->attributes4 = $attributes4;
 	}
+    /**
+     * @param array|null $attributes4 List of guild operation policies to search for guild
+     * @return SearchGuildsRequest
+     */
 	public function withAttributes4(?array $attributes4): SearchGuildsRequest {
 		$this->attributes4 = $attributes4;
 		return $this;
 	}
+    /** @return array|null List of guild operation policies to search for guild */
 	public function getAttributes5(): ?array {
 		return $this->attributes5;
 	}
+    /** @param array|null $attributes5 List of guild operation policies to search for guild */
 	public function setAttributes5(?array $attributes5) {
 		$this->attributes5 = $attributes5;
 	}
+    /**
+     * @param array|null $attributes5 List of guild operation policies to search for guild
+     * @return SearchGuildsRequest
+     */
 	public function withAttributes5(?array $attributes5): SearchGuildsRequest {
 		$this->attributes5 = $attributes5;
 		return $this;
 	}
+    /** @return array|null List of guild join policies to search for guild */
 	public function getJoinPolicies(): ?array {
 		return $this->joinPolicies;
 	}
+    /** @param array|null $joinPolicies List of guild join policies to search for guild */
 	public function setJoinPolicies(?array $joinPolicies) {
 		$this->joinPolicies = $joinPolicies;
 	}
+    /**
+     * @param array|null $joinPolicies List of guild join policies to search for guild
+     * @return SearchGuildsRequest
+     */
 	public function withJoinPolicies(?array $joinPolicies): SearchGuildsRequest {
 		$this->joinPolicies = $joinPolicies;
 		return $this;
 	}
+    /** @return bool|null Whether to include full guilds in search results */
 	public function getIncludeFullMembersGuild(): ?bool {
 		return $this->includeFullMembersGuild;
 	}
+    /** @param bool|null $includeFullMembersGuild Whether to include full guilds in search results */
 	public function setIncludeFullMembersGuild(?bool $includeFullMembersGuild) {
 		$this->includeFullMembersGuild = $includeFullMembersGuild;
 	}
+    /**
+     * @param bool|null $includeFullMembersGuild Whether to include full guilds in search results
+     * @return SearchGuildsRequest
+     */
 	public function withIncludeFullMembersGuild(?bool $includeFullMembersGuild): SearchGuildsRequest {
 		$this->includeFullMembersGuild = $includeFullMembersGuild;
 		return $this;
 	}
+    /** @return string|null Sort order */
 	public function getOrderBy(): ?string {
 		return $this->orderBy;
 	}
+    /** @param string|null $orderBy Sort order */
 	public function setOrderBy(?string $orderBy) {
 		$this->orderBy = $orderBy;
 	}
+    /**
+     * @param string|null $orderBy Sort order
+     * @return SearchGuildsRequest
+     */
 	public function withOrderBy(?string $orderBy): SearchGuildsRequest {
 		$this->orderBy = $orderBy;
 		return $this;
 	}
+    /** @return string|null Token specifying the position from which to start acquiring data */
 	public function getPageToken(): ?string {
 		return $this->pageToken;
 	}
+    /** @param string|null $pageToken Token specifying the position from which to start acquiring data */
 	public function setPageToken(?string $pageToken) {
 		$this->pageToken = $pageToken;
 	}
+    /**
+     * @param string|null $pageToken Token specifying the position from which to start acquiring data
+     * @return SearchGuildsRequest
+     */
 	public function withPageToken(?string $pageToken): SearchGuildsRequest {
 		$this->pageToken = $pageToken;
 		return $this;
 	}
+    /** @return int|null Number of data items to retrieve */
 	public function getLimit(): ?int {
 		return $this->limit;
 	}
+    /** @param int|null $limit Number of data items to retrieve */
 	public function setLimit(?int $limit) {
 		$this->limit = $limit;
 	}
+    /**
+     * @param int|null $limit Number of data items to retrieve
+     * @return SearchGuildsRequest
+     */
 	public function withLimit(?int $limit): SearchGuildsRequest {
 		$this->limit = $limit;
 		return $this;

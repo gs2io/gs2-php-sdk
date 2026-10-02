@@ -20,18 +20,29 @@ namespace Gs2\Showcase\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Showcase\Model\CurrentShowcaseMaster;
 
+/**
+ * Result of getCurrentShowcaseMaster: Get currently active Showcase master data
+ *
+ * @see https://docs.gs2.io/api_reference/showcase/sdk/#getcurrentshowcasemaster
+ */
 class GetCurrentShowcaseMasterResult implements IResult {
-    /** @var CurrentShowcaseMaster */
+    /** @var CurrentShowcaseMaster Currently active Showcase master data */
     private $item;
 
+    /** @return CurrentShowcaseMaster|null Currently active Showcase master data */
 	public function getItem(): ?CurrentShowcaseMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentShowcaseMaster|null $item Currently active Showcase master data */
 	public function setItem(?CurrentShowcaseMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentShowcaseMaster|null $item Currently active Showcase master data
+     * @return GetCurrentShowcaseMasterResult
+     */
 	public function withItem(?CurrentShowcaseMaster $item): GetCurrentShowcaseMasterResult {
 		$this->item = $item;
 		return $this;

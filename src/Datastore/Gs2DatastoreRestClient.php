@@ -2618,25 +2618,22 @@ class GetDataObjectHistoryByUserIdTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 Datastore API クライアント
+ * GS2-Datastore API client
  *
- * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/datastore/sdk/
  */
 class Gs2DatastoreRestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#describenamespaces
      */
     public function describeNamespacesAsync(
             DescribeNamespacesRequest $request
@@ -2650,8 +2647,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#describenamespaces
      */
     public function describeNamespaces (
             DescribeNamespacesRequest $request
@@ -2662,8 +2662,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#createnamespace
      */
     public function createNamespaceAsync(
             CreateNamespaceRequest $request
@@ -2677,8 +2680,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#createnamespace
      */
     public function createNamespace (
             CreateNamespaceRequest $request
@@ -2689,8 +2695,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#getnamespacestatus
      */
     public function getNamespaceStatusAsync(
             GetNamespaceStatusRequest $request
@@ -2704,8 +2713,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#getnamespacestatus
      */
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
@@ -2716,8 +2728,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#getnamespace
      */
     public function getNamespaceAsync(
             GetNamespaceRequest $request
@@ -2731,8 +2746,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#getnamespace
      */
     public function getNamespace (
             GetNamespaceRequest $request
@@ -2743,8 +2761,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#updatenamespace
      */
     public function updateNamespaceAsync(
             UpdateNamespaceRequest $request
@@ -2758,8 +2779,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#updatenamespace
      */
     public function updateNamespace (
             UpdateNamespaceRequest $request
@@ -2770,8 +2794,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#deletenamespace
      */
     public function deleteNamespaceAsync(
             DeleteNamespaceRequest $request
@@ -2785,8 +2812,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#deletenamespace
      */
     public function deleteNamespace (
             DeleteNamespaceRequest $request
@@ -2797,8 +2827,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get microservice version
+     *
      * @param GetServiceVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#getserviceversion
      */
     public function getServiceVersionAsync(
             GetServiceVersionRequest $request
@@ -2812,8 +2845,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get microservice version
+     *
      * @param GetServiceVersionRequest $request
      * @return GetServiceVersionResult
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#getserviceversion
      */
     public function getServiceVersion (
             GetServiceVersionRequest $request
@@ -2824,8 +2860,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserIdAsync(
             DumpUserDataByUserIdRequest $request
@@ -2839,8 +2878,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return DumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserId (
             DumpUserDataByUserIdRequest $request
@@ -2851,8 +2893,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserIdAsync(
             CheckDumpUserDataByUserIdRequest $request
@@ -2866,8 +2911,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return CheckDumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserId (
             CheckDumpUserDataByUserIdRequest $request
@@ -2878,8 +2926,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserIdAsync(
             CleanUserDataByUserIdRequest $request
@@ -2893,8 +2944,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return CleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserId (
             CleanUserDataByUserIdRequest $request
@@ -2905,8 +2959,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserIdAsync(
             CheckCleanUserDataByUserIdRequest $request
@@ -2920,8 +2977,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return CheckCleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserId (
             CheckCleanUserDataByUserIdRequest $request
@@ -2932,8 +2992,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserIdAsync(
             PrepareImportUserDataByUserIdRequest $request
@@ -2947,8 +3010,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PrepareImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserId (
             PrepareImportUserDataByUserIdRequest $request
@@ -2959,8 +3025,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserIdAsync(
             ImportUserDataByUserIdRequest $request
@@ -2974,8 +3043,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return ImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserId (
             ImportUserDataByUserIdRequest $request
@@ -2986,8 +3058,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserIdAsync(
             CheckImportUserDataByUserIdRequest $request
@@ -3001,8 +3076,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return CheckImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserId (
             CheckImportUserDataByUserIdRequest $request
@@ -3013,8 +3091,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Data Objects
+     *
      * @param DescribeDataObjectsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#describedataobjects
      */
     public function describeDataObjectsAsync(
             DescribeDataObjectsRequest $request
@@ -3028,8 +3109,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Data Objects
+     *
      * @param DescribeDataObjectsRequest $request
      * @return DescribeDataObjectsResult
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#describedataobjects
      */
     public function describeDataObjects (
             DescribeDataObjectsRequest $request
@@ -3040,8 +3124,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Data Objects by User ID
+     *
      * @param DescribeDataObjectsByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#describedataobjectsbyuserid
      */
     public function describeDataObjectsByUserIdAsync(
             DescribeDataObjectsByUserIdRequest $request
@@ -3055,8 +3142,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Data Objects by User ID
+     *
      * @param DescribeDataObjectsByUserIdRequest $request
      * @return DescribeDataObjectsByUserIdResult
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#describedataobjectsbyuserid
      */
     public function describeDataObjectsByUserId (
             DescribeDataObjectsByUserIdRequest $request
@@ -3067,8 +3157,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare to upload Data Objects
+     *
      * @param PrepareUploadRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#prepareupload
      */
     public function prepareUploadAsync(
             PrepareUploadRequest $request
@@ -3082,8 +3175,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare to upload Data Objects
+     *
      * @param PrepareUploadRequest $request
      * @return PrepareUploadResult
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#prepareupload
      */
     public function prepareUpload (
             PrepareUploadRequest $request
@@ -3094,8 +3190,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare to upload Data Object by User ID
+     *
      * @param PrepareUploadByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#prepareuploadbyuserid
      */
     public function prepareUploadByUserIdAsync(
             PrepareUploadByUserIdRequest $request
@@ -3109,8 +3208,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare to upload Data Object by User ID
+     *
      * @param PrepareUploadByUserIdRequest $request
      * @return PrepareUploadByUserIdResult
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#prepareuploadbyuserid
      */
     public function prepareUploadByUserId (
             PrepareUploadByUserIdRequest $request
@@ -3121,8 +3223,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Data Objects
+     *
      * @param UpdateDataObjectRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#updatedataobject
      */
     public function updateDataObjectAsync(
             UpdateDataObjectRequest $request
@@ -3136,8 +3241,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Data Objects
+     *
      * @param UpdateDataObjectRequest $request
      * @return UpdateDataObjectResult
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#updatedataobject
      */
     public function updateDataObject (
             UpdateDataObjectRequest $request
@@ -3148,8 +3256,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Data Object by User ID
+     *
      * @param UpdateDataObjectByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#updatedataobjectbyuserid
      */
     public function updateDataObjectByUserIdAsync(
             UpdateDataObjectByUserIdRequest $request
@@ -3163,8 +3274,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Data Object by User ID
+     *
      * @param UpdateDataObjectByUserIdRequest $request
      * @return UpdateDataObjectByUserIdResult
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#updatedataobjectbyuserid
      */
     public function updateDataObjectByUserId (
             UpdateDataObjectByUserIdRequest $request
@@ -3175,8 +3289,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare to re-upload data object
+     *
      * @param PrepareReUploadRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#preparereupload
      */
     public function prepareReUploadAsync(
             PrepareReUploadRequest $request
@@ -3190,8 +3307,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare to re-upload data object
+     *
      * @param PrepareReUploadRequest $request
      * @return PrepareReUploadResult
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#preparereupload
      */
     public function prepareReUpload (
             PrepareReUploadRequest $request
@@ -3202,8 +3322,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare to re-upload data object by User ID
+     *
      * @param PrepareReUploadByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#preparereuploadbyuserid
      */
     public function prepareReUploadByUserIdAsync(
             PrepareReUploadByUserIdRequest $request
@@ -3217,8 +3340,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare to re-upload data object by User ID
+     *
      * @param PrepareReUploadByUserIdRequest $request
      * @return PrepareReUploadByUserIdResult
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#preparereuploadbyuserid
      */
     public function prepareReUploadByUserId (
             PrepareReUploadByUserIdRequest $request
@@ -3229,8 +3355,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Report completion of data object upload
+     *
      * @param DoneUploadRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#doneupload
      */
     public function doneUploadAsync(
             DoneUploadRequest $request
@@ -3244,8 +3373,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Report completion of data object upload
+     *
      * @param DoneUploadRequest $request
      * @return DoneUploadResult
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#doneupload
      */
     public function doneUpload (
             DoneUploadRequest $request
@@ -3256,8 +3388,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Report completion of data object upload by User ID
+     *
      * @param DoneUploadByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#doneuploadbyuserid
      */
     public function doneUploadByUserIdAsync(
             DoneUploadByUserIdRequest $request
@@ -3271,8 +3406,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Report completion of data object upload by User ID
+     *
      * @param DoneUploadByUserIdRequest $request
      * @return DoneUploadByUserIdResult
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#doneuploadbyuserid
      */
     public function doneUploadByUserId (
             DoneUploadByUserIdRequest $request
@@ -3283,8 +3421,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete data object
+     *
      * @param DeleteDataObjectRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#deletedataobject
      */
     public function deleteDataObjectAsync(
             DeleteDataObjectRequest $request
@@ -3298,8 +3439,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete data object
+     *
      * @param DeleteDataObjectRequest $request
      * @return DeleteDataObjectResult
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#deletedataobject
      */
     public function deleteDataObject (
             DeleteDataObjectRequest $request
@@ -3310,8 +3454,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete a data object by User ID
+     *
      * @param DeleteDataObjectByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#deletedataobjectbyuserid
      */
     public function deleteDataObjectByUserIdAsync(
             DeleteDataObjectByUserIdRequest $request
@@ -3325,8 +3472,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete a data object by User ID
+     *
      * @param DeleteDataObjectByUserIdRequest $request
      * @return DeleteDataObjectByUserIdResult
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#deletedataobjectbyuserid
      */
     public function deleteDataObjectByUserId (
             DeleteDataObjectByUserIdRequest $request
@@ -3337,8 +3487,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare data object for download
+     *
      * @param PrepareDownloadRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#preparedownload
      */
     public function prepareDownloadAsync(
             PrepareDownloadRequest $request
@@ -3352,8 +3505,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare data object for download
+     *
      * @param PrepareDownloadRequest $request
      * @return PrepareDownloadResult
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#preparedownload
      */
     public function prepareDownload (
             PrepareDownloadRequest $request
@@ -3364,8 +3520,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare data object for download by User ID
+     *
      * @param PrepareDownloadByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#preparedownloadbyuserid
      */
     public function prepareDownloadByUserIdAsync(
             PrepareDownloadByUserIdRequest $request
@@ -3379,8 +3538,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare data object for download by User ID
+     *
      * @param PrepareDownloadByUserIdRequest $request
      * @return PrepareDownloadByUserIdResult
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#preparedownloadbyuserid
      */
     public function prepareDownloadByUserId (
             PrepareDownloadByUserIdRequest $request
@@ -3391,8 +3553,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare data object for download by specifying the generation
+     *
      * @param PrepareDownloadByGenerationRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#preparedownloadbygeneration
      */
     public function prepareDownloadByGenerationAsync(
             PrepareDownloadByGenerationRequest $request
@@ -3406,8 +3571,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare data object for download by specifying the generation
+     *
      * @param PrepareDownloadByGenerationRequest $request
      * @return PrepareDownloadByGenerationResult
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#preparedownloadbygeneration
      */
     public function prepareDownloadByGeneration (
             PrepareDownloadByGenerationRequest $request
@@ -3418,8 +3586,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare data object for download by specifying user ID and generation
+     *
      * @param PrepareDownloadByGenerationAndUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#preparedownloadbygenerationanduserid
      */
     public function prepareDownloadByGenerationAndUserIdAsync(
             PrepareDownloadByGenerationAndUserIdRequest $request
@@ -3433,8 +3604,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare data object for download by specifying user ID and generation
+     *
      * @param PrepareDownloadByGenerationAndUserIdRequest $request
      * @return PrepareDownloadByGenerationAndUserIdResult
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#preparedownloadbygenerationanduserid
      */
     public function prepareDownloadByGenerationAndUserId (
             PrepareDownloadByGenerationAndUserIdRequest $request
@@ -3445,8 +3619,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare own data object for download by name
+     *
      * @param PrepareDownloadOwnDataRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#preparedownloadowndata
      */
     public function prepareDownloadOwnDataAsync(
             PrepareDownloadOwnDataRequest $request
@@ -3460,8 +3637,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare own data object for download by name
+     *
      * @param PrepareDownloadOwnDataRequest $request
      * @return PrepareDownloadOwnDataResult
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#preparedownloadowndata
      */
     public function prepareDownloadOwnData (
             PrepareDownloadOwnDataRequest $request
@@ -3472,8 +3652,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare data object for download by specifying user ID and object name
+     *
      * @param PrepareDownloadByUserIdAndDataObjectNameRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#preparedownloadbyuseridanddataobjectname
      */
     public function prepareDownloadByUserIdAndDataObjectNameAsync(
             PrepareDownloadByUserIdAndDataObjectNameRequest $request
@@ -3487,8 +3670,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare data object for download by specifying user ID and object name
+     *
      * @param PrepareDownloadByUserIdAndDataObjectNameRequest $request
      * @return PrepareDownloadByUserIdAndDataObjectNameResult
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#preparedownloadbyuseridanddataobjectname
      */
     public function prepareDownloadByUserIdAndDataObjectName (
             PrepareDownloadByUserIdAndDataObjectNameRequest $request
@@ -3499,8 +3685,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare own data object for download by specifying the generation
+     *
      * @param PrepareDownloadOwnDataByGenerationRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#preparedownloadowndatabygeneration
      */
     public function prepareDownloadOwnDataByGenerationAsync(
             PrepareDownloadOwnDataByGenerationRequest $request
@@ -3514,8 +3703,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare own data object for download by specifying the generation
+     *
      * @param PrepareDownloadOwnDataByGenerationRequest $request
      * @return PrepareDownloadOwnDataByGenerationResult
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#preparedownloadowndatabygeneration
      */
     public function prepareDownloadOwnDataByGeneration (
             PrepareDownloadOwnDataByGenerationRequest $request
@@ -3526,8 +3718,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare data object for download by specifying user ID, object name, and generation
+     *
      * @param PrepareDownloadByUserIdAndDataObjectNameAndGenerationRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#preparedownloadbyuseridanddataobjectnameandgeneration
      */
     public function prepareDownloadByUserIdAndDataObjectNameAndGenerationAsync(
             PrepareDownloadByUserIdAndDataObjectNameAndGenerationRequest $request
@@ -3541,8 +3736,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare data object for download by specifying user ID, object name, and generation
+     *
      * @param PrepareDownloadByUserIdAndDataObjectNameAndGenerationRequest $request
      * @return PrepareDownloadByUserIdAndDataObjectNameAndGenerationResult
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#preparedownloadbyuseridanddataobjectnameandgeneration
      */
     public function prepareDownloadByUserIdAndDataObjectNameAndGeneration (
             PrepareDownloadByUserIdAndDataObjectNameAndGenerationRequest $request
@@ -3553,8 +3751,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Repair management information on data objects
+     *
      * @param RestoreDataObjectRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#restoredataobject
      */
     public function restoreDataObjectAsync(
             RestoreDataObjectRequest $request
@@ -3568,8 +3769,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Repair management information on data objects
+     *
      * @param RestoreDataObjectRequest $request
      * @return RestoreDataObjectResult
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#restoredataobject
      */
     public function restoreDataObject (
             RestoreDataObjectRequest $request
@@ -3580,8 +3784,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Data Object Histories
+     *
      * @param DescribeDataObjectHistoriesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#describedataobjecthistories
      */
     public function describeDataObjectHistoriesAsync(
             DescribeDataObjectHistoriesRequest $request
@@ -3595,8 +3802,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Data Object Histories
+     *
      * @param DescribeDataObjectHistoriesRequest $request
      * @return DescribeDataObjectHistoriesResult
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#describedataobjecthistories
      */
     public function describeDataObjectHistories (
             DescribeDataObjectHistoriesRequest $request
@@ -3607,8 +3817,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Data Object Histories by User ID
+     *
      * @param DescribeDataObjectHistoriesByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#describedataobjecthistoriesbyuserid
      */
     public function describeDataObjectHistoriesByUserIdAsync(
             DescribeDataObjectHistoriesByUserIdRequest $request
@@ -3622,8 +3835,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Data Object Histories by User ID
+     *
      * @param DescribeDataObjectHistoriesByUserIdRequest $request
      * @return DescribeDataObjectHistoriesByUserIdResult
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#describedataobjecthistoriesbyuserid
      */
     public function describeDataObjectHistoriesByUserId (
             DescribeDataObjectHistoriesByUserIdRequest $request
@@ -3634,8 +3850,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Data Object History
+     *
      * @param GetDataObjectHistoryRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#getdataobjecthistory
      */
     public function getDataObjectHistoryAsync(
             GetDataObjectHistoryRequest $request
@@ -3649,8 +3868,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Data Object History
+     *
      * @param GetDataObjectHistoryRequest $request
      * @return GetDataObjectHistoryResult
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#getdataobjecthistory
      */
     public function getDataObjectHistory (
             GetDataObjectHistoryRequest $request
@@ -3661,8 +3883,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Data Object History by User ID
+     *
      * @param GetDataObjectHistoryByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#getdataobjecthistorybyuserid
      */
     public function getDataObjectHistoryByUserIdAsync(
             GetDataObjectHistoryByUserIdRequest $request
@@ -3676,8 +3901,11 @@ class Gs2DatastoreRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Data Object History by User ID
+     *
      * @param GetDataObjectHistoryByUserIdRequest $request
      * @return GetDataObjectHistoryByUserIdResult
+     * @see https://docs.gs2.io/api_reference/datastore/sdk/#getdataobjecthistorybyuserid
      */
     public function getDataObjectHistoryByUserId (
             GetDataObjectHistoryByUserIdRequest $request

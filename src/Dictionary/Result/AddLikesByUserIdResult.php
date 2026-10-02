@@ -20,18 +20,29 @@ namespace Gs2\Dictionary\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Dictionary\Model\Like;
 
+/**
+ * Result of addLikesByUserId: Add likes by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/dictionary/sdk/#addlikesbyuserid
+ */
 class AddLikesByUserIdResult implements IResult {
-    /** @var array */
+    /** @var array List of Added Likes */
     private $items;
 
+    /** @return array|null List of Added Likes */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Added Likes */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Added Likes
+     * @return AddLikesByUserIdResult
+     */
 	public function withItems(?array $items): AddLikesByUserIdResult {
 		$this->items = $items;
 		return $this;

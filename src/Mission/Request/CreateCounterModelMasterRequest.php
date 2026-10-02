@@ -21,75 +21,116 @@ use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Mission\Model\VerifyAction;
 use Gs2\Mission\Model\CounterScopeModel;
 
+/**
+ * Request for createCounterModelMaster: Create Counter Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/mission/sdk/#createcountermodelmaster
+ */
 class CreateCounterModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Counter Model name */
     private $name;
-    /** @var string */
+    /** @var string Metadata */
     private $metadata;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var array */
+    /** @var array List of Counter reset timing */
     private $scopes;
-    /** @var string */
+    /** @var string GS2-Schedule event GRN that sets the period during which the counter can be operated */
     private $challengePeriodEventId;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return CreateCounterModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): CreateCounterModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Counter Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Counter Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Counter Model name
+     * @return CreateCounterModelMasterRequest
+     */
 	public function withName(?string $name): CreateCounterModelMasterRequest {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return CreateCounterModelMasterRequest
+     */
 	public function withMetadata(?string $metadata): CreateCounterModelMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return CreateCounterModelMasterRequest
+     */
 	public function withDescription(?string $description): CreateCounterModelMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return array|null List of Counter reset timing */
 	public function getScopes(): ?array {
 		return $this->scopes;
 	}
+    /** @param array|null $scopes List of Counter reset timing */
 	public function setScopes(?array $scopes) {
 		$this->scopes = $scopes;
 	}
+    /**
+     * @param array|null $scopes List of Counter reset timing
+     * @return CreateCounterModelMasterRequest
+     */
 	public function withScopes(?array $scopes): CreateCounterModelMasterRequest {
 		$this->scopes = $scopes;
 		return $this;
 	}
+    /** @return string|null GS2-Schedule event GRN that sets the period during which the counter can be operated */
 	public function getChallengePeriodEventId(): ?string {
 		return $this->challengePeriodEventId;
 	}
+    /** @param string|null $challengePeriodEventId GS2-Schedule event GRN that sets the period during which the counter can be operated */
 	public function setChallengePeriodEventId(?string $challengePeriodEventId) {
 		$this->challengePeriodEventId = $challengePeriodEventId;
 	}
+    /**
+     * @param string|null $challengePeriodEventId GS2-Schedule event GRN that sets the period during which the counter can be operated
+     * @return CreateCounterModelMasterRequest
+     */
 	public function withChallengePeriodEventId(?string $challengePeriodEventId): CreateCounterModelMasterRequest {
 		$this->challengePeriodEventId = $challengePeriodEventId;
 		return $this;

@@ -20,31 +20,48 @@ namespace Gs2\Log\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Numeric range.
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#numericrange
+ */
 class NumericRange implements IModel {
 	/**
-     * @var float
+     * @var float Minimum Value
 	 */
 	private $min;
 	/**
-     * @var float
+     * @var float Maximum Value
 	 */
 	private $max;
+    /** @return float|null Minimum Value */
 	public function getMin(): ?float {
 		return $this->min;
 	}
+    /** @param float|null $min Minimum Value */
 	public function setMin(?float $min) {
 		$this->min = $min;
 	}
+    /**
+     * @param float|null $min Minimum Value
+     * @return NumericRange
+     */
 	public function withMin(?float $min): NumericRange {
 		$this->min = $min;
 		return $this;
 	}
+    /** @return float|null Maximum Value */
 	public function getMax(): ?float {
 		return $this->max;
 	}
+    /** @param float|null $max Maximum Value */
 	public function setMax(?float $max) {
 		$this->max = $max;
 	}
+    /**
+     * @param float|null $max Maximum Value
+     * @return NumericRange
+     */
 	public function withMax(?float $max): NumericRange {
 		$this->max = $max;
 		return $this;

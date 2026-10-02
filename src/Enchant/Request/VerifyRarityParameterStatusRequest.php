@@ -19,101 +19,154 @@ namespace Gs2\Enchant\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for verifyRarityParameterStatus: Verify rarity parameter
+ *
+ * @see https://docs.gs2.io/api_reference/enchant/sdk/#verifyrarityparameterstatus
+ */
 class VerifyRarityParameterStatusRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Rarity Parameter Model name */
     private $parameterName;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Property ID of the resource that owns the parameter */
     private $propertyId;
-    /** @var string */
+    /** @var string Type of verification */
     private $verifyType;
-    /** @var string */
+    /** @var string Name */
     private $parameterValueName;
-    /** @var int */
+    /** @var int Number of parameters to verify */
     private $parameterCount;
-    /** @var bool */
+    /** @var bool Whether to multiply the value used for verification when specifying the quantity */
     private $multiplyValueSpecifyingQuantity;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return VerifyRarityParameterStatusRequest
+     */
 	public function withNamespaceName(?string $namespaceName): VerifyRarityParameterStatusRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Rarity Parameter Model name */
 	public function getParameterName(): ?string {
 		return $this->parameterName;
 	}
+    /** @param string|null $parameterName Rarity Parameter Model name */
 	public function setParameterName(?string $parameterName) {
 		$this->parameterName = $parameterName;
 	}
+    /**
+     * @param string|null $parameterName Rarity Parameter Model name
+     * @return VerifyRarityParameterStatusRequest
+     */
 	public function withParameterName(?string $parameterName): VerifyRarityParameterStatusRequest {
 		$this->parameterName = $parameterName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return VerifyRarityParameterStatusRequest
+     */
 	public function withAccessToken(?string $accessToken): VerifyRarityParameterStatusRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Property ID of the resource that owns the parameter */
 	public function getPropertyId(): ?string {
 		return $this->propertyId;
 	}
+    /** @param string|null $propertyId Property ID of the resource that owns the parameter */
 	public function setPropertyId(?string $propertyId) {
 		$this->propertyId = $propertyId;
 	}
+    /**
+     * @param string|null $propertyId Property ID of the resource that owns the parameter
+     * @return VerifyRarityParameterStatusRequest
+     */
 	public function withPropertyId(?string $propertyId): VerifyRarityParameterStatusRequest {
 		$this->propertyId = $propertyId;
 		return $this;
 	}
+    /** @return string|null Type of verification */
 	public function getVerifyType(): ?string {
 		return $this->verifyType;
 	}
+    /** @param string|null $verifyType Type of verification */
 	public function setVerifyType(?string $verifyType) {
 		$this->verifyType = $verifyType;
 	}
+    /**
+     * @param string|null $verifyType Type of verification
+     * @return VerifyRarityParameterStatusRequest
+     */
 	public function withVerifyType(?string $verifyType): VerifyRarityParameterStatusRequest {
 		$this->verifyType = $verifyType;
 		return $this;
 	}
+    /** @return string|null Name */
 	public function getParameterValueName(): ?string {
 		return $this->parameterValueName;
 	}
+    /** @param string|null $parameterValueName Name */
 	public function setParameterValueName(?string $parameterValueName) {
 		$this->parameterValueName = $parameterValueName;
 	}
+    /**
+     * @param string|null $parameterValueName Name
+     * @return VerifyRarityParameterStatusRequest
+     */
 	public function withParameterValueName(?string $parameterValueName): VerifyRarityParameterStatusRequest {
 		$this->parameterValueName = $parameterValueName;
 		return $this;
 	}
+    /** @return int|null Number of parameters to verify */
 	public function getParameterCount(): ?int {
 		return $this->parameterCount;
 	}
+    /** @param int|null $parameterCount Number of parameters to verify */
 	public function setParameterCount(?int $parameterCount) {
 		$this->parameterCount = $parameterCount;
 	}
+    /**
+     * @param int|null $parameterCount Number of parameters to verify
+     * @return VerifyRarityParameterStatusRequest
+     */
 	public function withParameterCount(?int $parameterCount): VerifyRarityParameterStatusRequest {
 		$this->parameterCount = $parameterCount;
 		return $this;
 	}
+    /** @return bool|null Whether to multiply the value used for verification when specifying the quantity */
 	public function getMultiplyValueSpecifyingQuantity(): ?bool {
 		return $this->multiplyValueSpecifyingQuantity;
 	}
+    /** @param bool|null $multiplyValueSpecifyingQuantity Whether to multiply the value used for verification when specifying the quantity */
 	public function setMultiplyValueSpecifyingQuantity(?bool $multiplyValueSpecifyingQuantity) {
 		$this->multiplyValueSpecifyingQuantity = $multiplyValueSpecifyingQuantity;
 	}
+    /**
+     * @param bool|null $multiplyValueSpecifyingQuantity Whether to multiply the value used for verification when specifying the quantity
+     * @return VerifyRarityParameterStatusRequest
+     */
 	public function withMultiplyValueSpecifyingQuantity(?bool $multiplyValueSpecifyingQuantity): VerifyRarityParameterStatusRequest {
 		$this->multiplyValueSpecifyingQuantity = $multiplyValueSpecifyingQuantity;
 		return $this;

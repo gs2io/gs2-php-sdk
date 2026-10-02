@@ -24,18 +24,29 @@ use Gs2\StateMachine\Model\StackEntry;
 use Gs2\StateMachine\Model\Variable;
 use Gs2\StateMachine\Model\Status;
 
+/**
+ * Result of emitByUserId: Send an event to the state machine by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/state_machine/sdk/#emitbyuserid
+ */
 class EmitByUserIdResult implements IResult {
-    /** @var Status */
+    /** @var Status Status of State Machine */
     private $item;
 
+    /** @return Status|null Status of State Machine */
 	public function getItem(): ?Status {
 		return $this->item;
 	}
 
+    /** @param Status|null $item Status of State Machine */
 	public function setItem(?Status $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Status|null $item Status of State Machine
+     * @return EmitByUserIdResult
+     */
 	public function withItem(?Status $item): EmitByUserIdResult {
 		$this->item = $item;
 		return $this;

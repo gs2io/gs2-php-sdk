@@ -24,33 +24,50 @@ use Gs2\LoginReward\Model\VerifyAction;
 use Gs2\LoginReward\Model\ConsumeAction;
 use Gs2\LoginReward\Model\BonusModelMaster;
 
+/**
+ * Result of describeBonusModelMasters: List Login Bonus Model Masters
+ *
+ * @see https://docs.gs2.io/api_reference/login_reward/sdk/#describebonusmodelmasters
+ */
 class DescribeBonusModelMastersResult implements IResult {
-    /** @var array */
+    /** @var array List of Login Bonus Model Masters */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Login Bonus Model Masters */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Login Bonus Model Masters */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Login Bonus Model Masters
+     * @return DescribeBonusModelMastersResult
+     */
 	public function withItems(?array $items): DescribeBonusModelMastersResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeBonusModelMastersResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeBonusModelMastersResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

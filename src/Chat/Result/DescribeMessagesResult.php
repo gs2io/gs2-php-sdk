@@ -20,18 +20,29 @@ namespace Gs2\Chat\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Chat\Model\Message;
 
+/**
+ * Result of describeMessages: List Messages
+ *
+ * @see https://docs.gs2.io/api_reference/chat/sdk/#describemessages
+ */
 class DescribeMessagesResult implements IResult {
-    /** @var array */
+    /** @var array List of Messages */
     private $items;
 
+    /** @return array|null List of Messages */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Messages */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Messages
+     * @return DescribeMessagesResult
+     */
 	public function withItems(?array $items): DescribeMessagesResult {
 		$this->items = $items;
 		return $this;

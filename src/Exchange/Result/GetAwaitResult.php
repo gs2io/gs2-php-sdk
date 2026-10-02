@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Exchange\Model\Config;
 use Gs2\Exchange\Model\Await;
 
+/**
+ * Result of getAwait: Get Exchange Await
+ *
+ * @see https://docs.gs2.io/api_reference/exchange/sdk/#getawait
+ */
 class GetAwaitResult implements IResult {
-    /** @var Await */
+    /** @var Await Exchange Await */
     private $item;
 
+    /** @return Await|null Exchange Await */
 	public function getItem(): ?Await {
 		return $this->item;
 	}
 
+    /** @param Await|null $item Exchange Await */
 	public function setItem(?Await $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Await|null $item Exchange Await
+     * @return GetAwaitResult
+     */
 	public function withItem(?Await $item): GetAwaitResult {
 		$this->item = $item;
 		return $this;

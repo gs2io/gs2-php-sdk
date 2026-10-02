@@ -20,17 +20,28 @@ namespace Gs2\Money2\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Fake Setting for Debug
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#fakesetting
+ */
 class FakeSetting implements IModel {
 	/**
-     * @var string
+     * @var string Whether to allow payments using fake receipts output by Unity Editor
 	 */
 	private $acceptFakeReceipt;
+    /** @return string|null Whether to allow payments using fake receipts output by Unity Editor */
 	public function getAcceptFakeReceipt(): ?string {
 		return $this->acceptFakeReceipt;
 	}
+    /** @param string|null $acceptFakeReceipt Whether to allow payments using fake receipts output by Unity Editor */
 	public function setAcceptFakeReceipt(?string $acceptFakeReceipt) {
 		$this->acceptFakeReceipt = $acceptFakeReceipt;
 	}
+    /**
+     * @param string|null $acceptFakeReceipt Whether to allow payments using fake receipts output by Unity Editor
+     * @return FakeSetting
+     */
 	public function withAcceptFakeReceipt(?string $acceptFakeReceipt): FakeSetting {
 		$this->acceptFakeReceipt = $acceptFakeReceipt;
 		return $this;

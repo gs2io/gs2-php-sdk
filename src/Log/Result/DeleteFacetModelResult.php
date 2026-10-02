@@ -20,18 +20,29 @@ namespace Gs2\Log\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Log\Model\FacetModel;
 
+/**
+ * Result of deleteFacetModel: Delete Facet Model
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#deletefacetmodel
+ */
 class DeleteFacetModelResult implements IResult {
-    /** @var FacetModel */
+    /** @var FacetModel Deleted Facet Model */
     private $item;
 
+    /** @return FacetModel|null Deleted Facet Model */
 	public function getItem(): ?FacetModel {
 		return $this->item;
 	}
 
+    /** @param FacetModel|null $item Deleted Facet Model */
 	public function setItem(?FacetModel $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param FacetModel|null $item Deleted Facet Model
+     * @return DeleteFacetModelResult
+     */
 	public function withItem(?FacetModel $item): DeleteFacetModelResult {
 		$this->item = $item;
 		return $this;

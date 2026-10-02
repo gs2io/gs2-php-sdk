@@ -20,18 +20,29 @@ namespace Gs2\Chat\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Chat\Model\CurrentModelMaster;
 
+/**
+ * Result of getCurrentModelMaster: Get currently active Message Category Model master data
+ *
+ * @see https://docs.gs2.io/api_reference/chat/sdk/#getcurrentmodelmaster
+ */
 class GetCurrentModelMasterResult implements IResult {
-    /** @var CurrentModelMaster */
+    /** @var CurrentModelMaster Currently active Message Category Model master data */
     private $item;
 
+    /** @return CurrentModelMaster|null Currently active Message Category Model master data */
 	public function getItem(): ?CurrentModelMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentModelMaster|null $item Currently active Message Category Model master data */
 	public function setItem(?CurrentModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentModelMaster|null $item Currently active Message Category Model master data
+     * @return GetCurrentModelMasterResult
+     */
 	public function withItem(?CurrentModelMaster $item): GetCurrentModelMasterResult {
 		$this->item = $item;
 		return $this;

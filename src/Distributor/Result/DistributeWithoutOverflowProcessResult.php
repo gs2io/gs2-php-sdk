@@ -20,33 +20,50 @@ namespace Gs2\Distributor\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Distributor\Model\DistributeResource;
 
+/**
+ * Result of distributeWithoutOverflowProcess: Distribute possessions (no bailout in case of overflow)
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#distributewithoutoverflowprocess
+ */
 class DistributeWithoutOverflowProcessResult implements IResult {
-    /** @var DistributeResource */
+    /** @var DistributeResource Processed DistributeResource */
     private $distributeResource;
-    /** @var string */
+    /** @var string Response content */
     private $result;
 
+    /** @return DistributeResource|null Processed DistributeResource */
 	public function getDistributeResource(): ?DistributeResource {
 		return $this->distributeResource;
 	}
 
+    /** @param DistributeResource|null $distributeResource Processed DistributeResource */
 	public function setDistributeResource(?DistributeResource $distributeResource) {
 		$this->distributeResource = $distributeResource;
 	}
 
+    /**
+     * @param DistributeResource|null $distributeResource Processed DistributeResource
+     * @return DistributeWithoutOverflowProcessResult
+     */
 	public function withDistributeResource(?DistributeResource $distributeResource): DistributeWithoutOverflowProcessResult {
 		$this->distributeResource = $distributeResource;
 		return $this;
 	}
 
+    /** @return string|null Response content */
 	public function getResult(): ?string {
 		return $this->result;
 	}
 
+    /** @param string|null $result Response content */
 	public function setResult(?string $result) {
 		$this->result = $result;
 	}
 
+    /**
+     * @param string|null $result Response content
+     * @return DistributeWithoutOverflowProcessResult
+     */
 	public function withResult(?string $result): DistributeWithoutOverflowProcessResult {
 		$this->result = $result;
 		return $this;

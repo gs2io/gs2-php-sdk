@@ -20,18 +20,29 @@ namespace Gs2\Account\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Account\Model\PlatformId;
 
+/**
+ * Result of createPlatformIdByUserId: Create External Platform Account ID by specifying GS2-Account user ID
+ *
+ * @see https://docs.gs2.io/api_reference/account/sdk/#createplatformidbyuserid
+ */
 class CreatePlatformIdByUserIdResult implements IResult {
-    /** @var PlatformId */
+    /** @var PlatformId External Platform Account ID created */
     private $item;
 
+    /** @return PlatformId|null External Platform Account ID created */
 	public function getItem(): ?PlatformId {
 		return $this->item;
 	}
 
+    /** @param PlatformId|null $item External Platform Account ID created */
 	public function setItem(?PlatformId $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param PlatformId|null $item External Platform Account ID created
+     * @return CreatePlatformIdByUserIdResult
+     */
 	public function withItem(?PlatformId $item): CreatePlatformIdByUserIdResult {
 		$this->item = $item;
 		return $this;

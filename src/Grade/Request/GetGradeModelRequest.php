@@ -19,27 +19,44 @@ namespace Gs2\Grade\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for getGradeModel: Get Grade Model
+ *
+ * @see https://docs.gs2.io/api_reference/grade/sdk/#getgrademodel
+ */
 class GetGradeModelRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Grade Model name */
     private $gradeName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return GetGradeModelRequest
+     */
 	public function withNamespaceName(?string $namespaceName): GetGradeModelRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Grade Model name */
 	public function getGradeName(): ?string {
 		return $this->gradeName;
 	}
+    /** @param string|null $gradeName Grade Model name */
 	public function setGradeName(?string $gradeName) {
 		$this->gradeName = $gradeName;
 	}
+    /**
+     * @param string|null $gradeName Grade Model name
+     * @return GetGradeModelRequest
+     */
 	public function withGradeName(?string $gradeName): GetGradeModelRequest {
 		$this->gradeName = $gradeName;
 		return $this;

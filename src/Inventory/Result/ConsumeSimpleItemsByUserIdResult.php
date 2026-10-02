@@ -20,18 +20,29 @@ namespace Gs2\Inventory\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Inventory\Model\SimpleItem;
 
+/**
+ * Result of consumeSimpleItemsByUserId: Consume Simple Items by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#consumesimpleitemsbyuserid
+ */
 class ConsumeSimpleItemsByUserIdResult implements IResult {
-    /** @var array */
+    /** @var array List of Simple Items per post-consumption */
     private $items;
 
+    /** @return array|null List of Simple Items per post-consumption */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Simple Items per post-consumption */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Simple Items per post-consumption
+     * @return ConsumeSimpleItemsByUserIdResult
+     */
 	public function withItems(?array $items): ConsumeSimpleItemsByUserIdResult {
 		$this->items = $items;
 		return $this;

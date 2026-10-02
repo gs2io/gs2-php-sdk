@@ -20,33 +20,50 @@ namespace Gs2\Money2\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Money2\Model\UnusedBalance;
 
+/**
+ * Result of describeUnusedBalances: List Unused Balances
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#describeunusedbalances
+ */
 class DescribeUnusedBalancesResult implements IResult {
-    /** @var array */
+    /** @var array List of Unused Balances */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Unused Balances */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Unused Balances */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Unused Balances
+     * @return DescribeUnusedBalancesResult
+     */
 	public function withItems(?array $items): DescribeUnusedBalancesResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeUnusedBalancesResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeUnusedBalancesResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

@@ -19,77 +19,118 @@ namespace Gs2\Datastore\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for updateDataObjectByUserId: Update Data Object by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/datastore/sdk/#updatedataobjectbyuserid
+ */
 class UpdateDataObjectByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Data Object Name */
     private $dataObjectName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string File access permission */
     private $scope;
-    /** @var array */
+    /** @var array List of user IDs to be published */
     private $allowUserIds;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UpdateDataObjectByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UpdateDataObjectByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Data Object Name */
 	public function getDataObjectName(): ?string {
 		return $this->dataObjectName;
 	}
+    /** @param string|null $dataObjectName Data Object Name */
 	public function setDataObjectName(?string $dataObjectName) {
 		$this->dataObjectName = $dataObjectName;
 	}
+    /**
+     * @param string|null $dataObjectName Data Object Name
+     * @return UpdateDataObjectByUserIdRequest
+     */
 	public function withDataObjectName(?string $dataObjectName): UpdateDataObjectByUserIdRequest {
 		$this->dataObjectName = $dataObjectName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return UpdateDataObjectByUserIdRequest
+     */
 	public function withUserId(?string $userId): UpdateDataObjectByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null File access permission */
 	public function getScope(): ?string {
 		return $this->scope;
 	}
+    /** @param string|null $scope File access permission */
 	public function setScope(?string $scope) {
 		$this->scope = $scope;
 	}
+    /**
+     * @param string|null $scope File access permission
+     * @return UpdateDataObjectByUserIdRequest
+     */
 	public function withScope(?string $scope): UpdateDataObjectByUserIdRequest {
 		$this->scope = $scope;
 		return $this;
 	}
+    /** @return array|null List of user IDs to be published */
 	public function getAllowUserIds(): ?array {
 		return $this->allowUserIds;
 	}
+    /** @param array|null $allowUserIds List of user IDs to be published */
 	public function setAllowUserIds(?array $allowUserIds) {
 		$this->allowUserIds = $allowUserIds;
 	}
+    /**
+     * @param array|null $allowUserIds List of user IDs to be published
+     * @return UpdateDataObjectByUserIdRequest
+     */
 	public function withAllowUserIds(?array $allowUserIds): UpdateDataObjectByUserIdRequest {
 		$this->allowUserIds = $allowUserIds;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return UpdateDataObjectByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): UpdateDataObjectByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

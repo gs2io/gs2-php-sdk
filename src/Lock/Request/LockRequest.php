@@ -19,65 +19,100 @@ namespace Gs2\Lock\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for lock: Acquire Mutex
+ *
+ * @see https://docs.gs2.io/api_reference/lock/sdk/#lock
+ */
 class LockRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Property ID */
     private $propertyId;
-    /** @var string */
+    /** @var string User ID */
     private $accessToken;
-    /** @var string */
+    /** @var string Transaction ID */
     private $transactionId;
-    /** @var int */
+    /** @var int Duration of lock acquisition (seconds) */
     private $ttl;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return LockRequest
+     */
 	public function withNamespaceName(?string $namespaceName): LockRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Property ID */
 	public function getPropertyId(): ?string {
 		return $this->propertyId;
 	}
+    /** @param string|null $propertyId Property ID */
 	public function setPropertyId(?string $propertyId) {
 		$this->propertyId = $propertyId;
 	}
+    /**
+     * @param string|null $propertyId Property ID
+     * @return LockRequest
+     */
 	public function withPropertyId(?string $propertyId): LockRequest {
 		$this->propertyId = $propertyId;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getAccessToken(): ?string {
 		return $this->accessToken;
 	}
+    /** @param string|null $accessToken User ID */
 	public function setAccessToken(?string $accessToken) {
 		$this->accessToken = $accessToken;
 	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return LockRequest
+     */
 	public function withAccessToken(?string $accessToken): LockRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
+    /** @return string|null Transaction ID */
 	public function getTransactionId(): ?string {
 		return $this->transactionId;
 	}
+    /** @param string|null $transactionId Transaction ID */
 	public function setTransactionId(?string $transactionId) {
 		$this->transactionId = $transactionId;
 	}
+    /**
+     * @param string|null $transactionId Transaction ID
+     * @return LockRequest
+     */
 	public function withTransactionId(?string $transactionId): LockRequest {
 		$this->transactionId = $transactionId;
 		return $this;
 	}
+    /** @return int|null Duration of lock acquisition (seconds) */
 	public function getTtl(): ?int {
 		return $this->ttl;
 	}
+    /** @param int|null $ttl Duration of lock acquisition (seconds) */
 	public function setTtl(?int $ttl) {
 		$this->ttl = $ttl;
 	}
+    /**
+     * @param int|null $ttl Duration of lock acquisition (seconds)
+     * @return LockRequest
+     */
 	public function withTtl(?int $ttl): LockRequest {
 		$this->ttl = $ttl;
 		return $this;

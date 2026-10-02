@@ -19,63 +19,98 @@ namespace Gs2\Log\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for updateFacetModel: Update Facet Model
+ *
+ * @see https://docs.gs2.io/api_reference/log/sdk/#updatefacetmodel
+ */
 class UpdateFacetModelRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Facet Field Name */
     private $field;
-    /** @var string */
+    /** @var string Facet Data Type */
     private $type;
-    /** @var string */
+    /** @var string Display Name */
     private $displayName;
-    /** @var int */
+    /** @var int Display Order */
     private $order;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UpdateFacetModelRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UpdateFacetModelRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Facet Field Name */
 	public function getField(): ?string {
 		return $this->field;
 	}
+    /** @param string|null $field Facet Field Name */
 	public function setField(?string $field) {
 		$this->field = $field;
 	}
+    /**
+     * @param string|null $field Facet Field Name
+     * @return UpdateFacetModelRequest
+     */
 	public function withField(?string $field): UpdateFacetModelRequest {
 		$this->field = $field;
 		return $this;
 	}
+    /** @return string|null Facet Data Type */
 	public function getType(): ?string {
 		return $this->type;
 	}
+    /** @param string|null $type Facet Data Type */
 	public function setType(?string $type) {
 		$this->type = $type;
 	}
+    /**
+     * @param string|null $type Facet Data Type
+     * @return UpdateFacetModelRequest
+     */
 	public function withType(?string $type): UpdateFacetModelRequest {
 		$this->type = $type;
 		return $this;
 	}
+    /** @return string|null Display Name */
 	public function getDisplayName(): ?string {
 		return $this->displayName;
 	}
+    /** @param string|null $displayName Display Name */
 	public function setDisplayName(?string $displayName) {
 		$this->displayName = $displayName;
 	}
+    /**
+     * @param string|null $displayName Display Name
+     * @return UpdateFacetModelRequest
+     */
 	public function withDisplayName(?string $displayName): UpdateFacetModelRequest {
 		$this->displayName = $displayName;
 		return $this;
 	}
+    /** @return int|null Display Order */
 	public function getOrder(): ?int {
 		return $this->order;
 	}
+    /** @param int|null $order Display Order */
 	public function setOrder(?int $order) {
 		$this->order = $order;
 	}
+    /**
+     * @param int|null $order Display Order
+     * @return UpdateFacetModelRequest
+     */
 	public function withOrder(?int $order): UpdateFacetModelRequest {
 		$this->order = $order;
 		return $this;

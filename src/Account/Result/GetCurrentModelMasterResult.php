@@ -20,18 +20,29 @@ namespace Gs2\Account\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Account\Model\CurrentModelMaster;
 
+/**
+ * Result of getCurrentModelMaster: Get master data of the currently active Takeover Type Models
+ *
+ * @see https://docs.gs2.io/api_reference/account/sdk/#getcurrentmodelmaster
+ */
 class GetCurrentModelMasterResult implements IResult {
-    /** @var CurrentModelMaster */
+    /** @var CurrentModelMaster Master data of the currently active Takeover Type Models */
     private $item;
 
+    /** @return CurrentModelMaster|null Master data of the currently active Takeover Type Models */
 	public function getItem(): ?CurrentModelMaster {
 		return $this->item;
 	}
 
+    /** @param CurrentModelMaster|null $item Master data of the currently active Takeover Type Models */
 	public function setItem(?CurrentModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param CurrentModelMaster|null $item Master data of the currently active Takeover Type Models
+     * @return GetCurrentModelMasterResult
+     */
 	public function withItem(?CurrentModelMaster $item): GetCurrentModelMasterResult {
 		$this->item = $item;
 		return $this;

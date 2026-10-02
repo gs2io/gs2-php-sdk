@@ -20,129 +20,188 @@ namespace Gs2\Limit\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Usage Limit Model
+ *
+ * @see https://docs.gs2.io/api_reference/limit/sdk/#limitmodel
+ */
 class LimitModel implements IModel {
 	/**
-     * @var string
+     * @var string Usage Limit Model GRN
 	 */
 	private $limitModelId;
 	/**
-     * @var string
+     * @var string Usage Limit Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var string
+     * @var string Reset Timing
 	 */
 	private $resetType;
 	/**
-     * @var int
+     * @var int Reset Day of Month
 	 */
 	private $resetDayOfMonth;
 	/**
-     * @var string
+     * @var string Reset Day of Week
 	 */
 	private $resetDayOfWeek;
 	/**
-     * @var int
+     * @var int Reset Hour
 	 */
 	private $resetHour;
 	/**
-     * @var int
+     * @var int Base date and time for counting elapsed days
 	 */
 	private $anchorTimestamp;
 	/**
-     * @var int
+     * @var int Number of Days to Reset
 	 */
 	private $days;
+    /** @return string|null Usage Limit Model GRN */
 	public function getLimitModelId(): ?string {
 		return $this->limitModelId;
 	}
+    /** @param string|null $limitModelId Usage Limit Model GRN */
 	public function setLimitModelId(?string $limitModelId) {
 		$this->limitModelId = $limitModelId;
 	}
+    /**
+     * @param string|null $limitModelId Usage Limit Model GRN
+     * @return LimitModel
+     */
 	public function withLimitModelId(?string $limitModelId): LimitModel {
 		$this->limitModelId = $limitModelId;
 		return $this;
 	}
+    /** @return string|null Usage Limit Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Usage Limit Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Usage Limit Model name
+     * @return LimitModel
+     */
 	public function withName(?string $name): LimitModel {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return LimitModel
+     */
 	public function withMetadata(?string $metadata): LimitModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return string|null Reset Timing */
 	public function getResetType(): ?string {
 		return $this->resetType;
 	}
+    /** @param string|null $resetType Reset Timing */
 	public function setResetType(?string $resetType) {
 		$this->resetType = $resetType;
 	}
+    /**
+     * @param string|null $resetType Reset Timing
+     * @return LimitModel
+     */
 	public function withResetType(?string $resetType): LimitModel {
 		$this->resetType = $resetType;
 		return $this;
 	}
+    /** @return int|null Reset Day of Month */
 	public function getResetDayOfMonth(): ?int {
 		return $this->resetDayOfMonth;
 	}
+    /** @param int|null $resetDayOfMonth Reset Day of Month */
 	public function setResetDayOfMonth(?int $resetDayOfMonth) {
 		$this->resetDayOfMonth = $resetDayOfMonth;
 	}
+    /**
+     * @param int|null $resetDayOfMonth Reset Day of Month
+     * @return LimitModel
+     */
 	public function withResetDayOfMonth(?int $resetDayOfMonth): LimitModel {
 		$this->resetDayOfMonth = $resetDayOfMonth;
 		return $this;
 	}
+    /** @return string|null Reset Day of Week */
 	public function getResetDayOfWeek(): ?string {
 		return $this->resetDayOfWeek;
 	}
+    /** @param string|null $resetDayOfWeek Reset Day of Week */
 	public function setResetDayOfWeek(?string $resetDayOfWeek) {
 		$this->resetDayOfWeek = $resetDayOfWeek;
 	}
+    /**
+     * @param string|null $resetDayOfWeek Reset Day of Week
+     * @return LimitModel
+     */
 	public function withResetDayOfWeek(?string $resetDayOfWeek): LimitModel {
 		$this->resetDayOfWeek = $resetDayOfWeek;
 		return $this;
 	}
+    /** @return int|null Reset Hour */
 	public function getResetHour(): ?int {
 		return $this->resetHour;
 	}
+    /** @param int|null $resetHour Reset Hour */
 	public function setResetHour(?int $resetHour) {
 		$this->resetHour = $resetHour;
 	}
+    /**
+     * @param int|null $resetHour Reset Hour
+     * @return LimitModel
+     */
 	public function withResetHour(?int $resetHour): LimitModel {
 		$this->resetHour = $resetHour;
 		return $this;
 	}
+    /** @return int|null Base date and time for counting elapsed days */
 	public function getAnchorTimestamp(): ?int {
 		return $this->anchorTimestamp;
 	}
+    /** @param int|null $anchorTimestamp Base date and time for counting elapsed days */
 	public function setAnchorTimestamp(?int $anchorTimestamp) {
 		$this->anchorTimestamp = $anchorTimestamp;
 	}
+    /**
+     * @param int|null $anchorTimestamp Base date and time for counting elapsed days
+     * @return LimitModel
+     */
 	public function withAnchorTimestamp(?int $anchorTimestamp): LimitModel {
 		$this->anchorTimestamp = $anchorTimestamp;
 		return $this;
 	}
+    /** @return int|null Number of Days to Reset */
 	public function getDays(): ?int {
 		return $this->days;
 	}
+    /** @param int|null $days Number of Days to Reset */
 	public function setDays(?int $days) {
 		$this->days = $days;
 	}
+    /**
+     * @param int|null $days Number of Days to Reset
+     * @return LimitModel
+     */
 	public function withDays(?int $days): LimitModel {
 		$this->days = $days;
 		return $this;

@@ -20,185 +20,268 @@ namespace Gs2\Buff\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Buff Entry Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/buff/sdk/#buffentrymodelmaster
+ */
 class BuffEntryModelMaster implements IModel {
 	/**
-     * @var string
+     * @var string Buff Entry Model Master GRN
 	 */
 	private $buffEntryModelId;
 	/**
-     * @var string
+     * @var string Buff Entry Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Description
 	 */
 	private $description;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var string
+     * @var string Application type of buff
 	 */
 	private $expression;
 	/**
-     * @var string
+     * @var string Type of target to apply buff
 	 */
 	private $targetType;
 	/**
-     * @var BuffTargetModel
+     * @var BuffTargetModel Model to apply buff
 	 */
 	private $targetModel;
 	/**
-     * @var BuffTargetAction
+     * @var BuffTargetAction Action to apply buff
 	 */
 	private $targetAction;
 	/**
-     * @var int
+     * @var int Priority of buff application
 	 */
 	private $priority;
 	/**
-     * @var string
+     * @var string Event period GRN to apply buff
 	 */
 	private $applyPeriodScheduleEventId;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Buff Entry Model Master GRN */
 	public function getBuffEntryModelId(): ?string {
 		return $this->buffEntryModelId;
 	}
+    /** @param string|null $buffEntryModelId Buff Entry Model Master GRN */
 	public function setBuffEntryModelId(?string $buffEntryModelId) {
 		$this->buffEntryModelId = $buffEntryModelId;
 	}
+    /**
+     * @param string|null $buffEntryModelId Buff Entry Model Master GRN
+     * @return BuffEntryModelMaster
+     */
 	public function withBuffEntryModelId(?string $buffEntryModelId): BuffEntryModelMaster {
 		$this->buffEntryModelId = $buffEntryModelId;
 		return $this;
 	}
+    /** @return string|null Buff Entry Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Buff Entry Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Buff Entry Model name
+     * @return BuffEntryModelMaster
+     */
 	public function withName(?string $name): BuffEntryModelMaster {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return BuffEntryModelMaster
+     */
 	public function withDescription(?string $description): BuffEntryModelMaster {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return BuffEntryModelMaster
+     */
 	public function withMetadata(?string $metadata): BuffEntryModelMaster {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return string|null Application type of buff */
 	public function getExpression(): ?string {
 		return $this->expression;
 	}
+    /** @param string|null $expression Application type of buff */
 	public function setExpression(?string $expression) {
 		$this->expression = $expression;
 	}
+    /**
+     * @param string|null $expression Application type of buff
+     * @return BuffEntryModelMaster
+     */
 	public function withExpression(?string $expression): BuffEntryModelMaster {
 		$this->expression = $expression;
 		return $this;
 	}
+    /** @return string|null Type of target to apply buff */
 	public function getTargetType(): ?string {
 		return $this->targetType;
 	}
+    /** @param string|null $targetType Type of target to apply buff */
 	public function setTargetType(?string $targetType) {
 		$this->targetType = $targetType;
 	}
+    /**
+     * @param string|null $targetType Type of target to apply buff
+     * @return BuffEntryModelMaster
+     */
 	public function withTargetType(?string $targetType): BuffEntryModelMaster {
 		$this->targetType = $targetType;
 		return $this;
 	}
+    /** @return BuffTargetModel|null Model to apply buff */
 	public function getTargetModel(): ?BuffTargetModel {
 		return $this->targetModel;
 	}
+    /** @param BuffTargetModel|null $targetModel Model to apply buff */
 	public function setTargetModel(?BuffTargetModel $targetModel) {
 		$this->targetModel = $targetModel;
 	}
+    /**
+     * @param BuffTargetModel|null $targetModel Model to apply buff
+     * @return BuffEntryModelMaster
+     */
 	public function withTargetModel(?BuffTargetModel $targetModel): BuffEntryModelMaster {
 		$this->targetModel = $targetModel;
 		return $this;
 	}
+    /** @return BuffTargetAction|null Action to apply buff */
 	public function getTargetAction(): ?BuffTargetAction {
 		return $this->targetAction;
 	}
+    /** @param BuffTargetAction|null $targetAction Action to apply buff */
 	public function setTargetAction(?BuffTargetAction $targetAction) {
 		$this->targetAction = $targetAction;
 	}
+    /**
+     * @param BuffTargetAction|null $targetAction Action to apply buff
+     * @return BuffEntryModelMaster
+     */
 	public function withTargetAction(?BuffTargetAction $targetAction): BuffEntryModelMaster {
 		$this->targetAction = $targetAction;
 		return $this;
 	}
+    /** @return int|null Priority of buff application */
 	public function getPriority(): ?int {
 		return $this->priority;
 	}
+    /** @param int|null $priority Priority of buff application */
 	public function setPriority(?int $priority) {
 		$this->priority = $priority;
 	}
+    /**
+     * @param int|null $priority Priority of buff application
+     * @return BuffEntryModelMaster
+     */
 	public function withPriority(?int $priority): BuffEntryModelMaster {
 		$this->priority = $priority;
 		return $this;
 	}
+    /** @return string|null Event period GRN to apply buff */
 	public function getApplyPeriodScheduleEventId(): ?string {
 		return $this->applyPeriodScheduleEventId;
 	}
+    /** @param string|null $applyPeriodScheduleEventId Event period GRN to apply buff */
 	public function setApplyPeriodScheduleEventId(?string $applyPeriodScheduleEventId) {
 		$this->applyPeriodScheduleEventId = $applyPeriodScheduleEventId;
 	}
+    /**
+     * @param string|null $applyPeriodScheduleEventId Event period GRN to apply buff
+     * @return BuffEntryModelMaster
+     */
 	public function withApplyPeriodScheduleEventId(?string $applyPeriodScheduleEventId): BuffEntryModelMaster {
 		$this->applyPeriodScheduleEventId = $applyPeriodScheduleEventId;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return BuffEntryModelMaster
+     */
 	public function withCreatedAt(?int $createdAt): BuffEntryModelMaster {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return BuffEntryModelMaster
+     */
 	public function withUpdatedAt(?int $updatedAt): BuffEntryModelMaster {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return BuffEntryModelMaster
+     */
 	public function withRevision(?int $revision): BuffEntryModelMaster {
 		$this->revision = $revision;
 		return $this;

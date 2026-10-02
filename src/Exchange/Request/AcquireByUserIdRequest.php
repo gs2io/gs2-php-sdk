@@ -20,65 +20,100 @@ namespace Gs2\Exchange\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Exchange\Model\Config;
 
+/**
+ * Request for acquireByUserId: Receive rewards for Exchange Await by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/exchange/sdk/#acquirebyuserid
+ */
 class AcquireByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Exchange Await name */
     private $awaitName;
-    /** @var array */
+    /** @var array Configuration values applied to transaction variables */
     private $config;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return AcquireByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): AcquireByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return AcquireByUserIdRequest
+     */
 	public function withUserId(?string $userId): AcquireByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Exchange Await name */
 	public function getAwaitName(): ?string {
 		return $this->awaitName;
 	}
+    /** @param string|null $awaitName Exchange Await name */
 	public function setAwaitName(?string $awaitName) {
 		$this->awaitName = $awaitName;
 	}
+    /**
+     * @param string|null $awaitName Exchange Await name
+     * @return AcquireByUserIdRequest
+     */
 	public function withAwaitName(?string $awaitName): AcquireByUserIdRequest {
 		$this->awaitName = $awaitName;
 		return $this;
 	}
+    /** @return array|null Configuration values applied to transaction variables */
 	public function getConfig(): ?array {
 		return $this->config;
 	}
+    /** @param array|null $config Configuration values applied to transaction variables */
 	public function setConfig(?array $config) {
 		$this->config = $config;
 	}
+    /**
+     * @param array|null $config Configuration values applied to transaction variables
+     * @return AcquireByUserIdRequest
+     */
 	public function withConfig(?array $config): AcquireByUserIdRequest {
 		$this->config = $config;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return AcquireByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): AcquireByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

@@ -20,33 +20,50 @@ namespace Gs2\Matchmaking\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Matchmaking\Model\Rating;
 
+/**
+ * Result of describeRatingsByUserId: List ratings by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#describeratingsbyuserid
+ */
 class DescribeRatingsByUserIdResult implements IResult {
-    /** @var array */
+    /** @var array List of Rating */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of Rating */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Rating */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Rating
+     * @return DescribeRatingsByUserIdResult
+     */
 	public function withItems(?array $items): DescribeRatingsByUserIdResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeRatingsByUserIdResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeRatingsByUserIdResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

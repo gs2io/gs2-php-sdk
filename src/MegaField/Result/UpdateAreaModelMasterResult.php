@@ -20,18 +20,29 @@ namespace Gs2\MegaField\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\MegaField\Model\AreaModelMaster;
 
+/**
+ * Result of updateAreaModelMaster: Update Area Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/mega_field/sdk/#updateareamodelmaster
+ */
 class UpdateAreaModelMasterResult implements IResult {
-    /** @var AreaModelMaster */
+    /** @var AreaModelMaster Area Model Master updated */
     private $item;
 
+    /** @return AreaModelMaster|null Area Model Master updated */
 	public function getItem(): ?AreaModelMaster {
 		return $this->item;
 	}
 
+    /** @param AreaModelMaster|null $item Area Model Master updated */
 	public function setItem(?AreaModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param AreaModelMaster|null $item Area Model Master updated
+     * @return UpdateAreaModelMasterResult
+     */
 	public function withItem(?AreaModelMaster $item): UpdateAreaModelMasterResult {
 		$this->item = $item;
 		return $this;

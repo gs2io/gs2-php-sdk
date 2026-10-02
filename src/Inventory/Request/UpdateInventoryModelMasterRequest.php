@@ -19,87 +19,134 @@ namespace Gs2\Inventory\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for updateInventoryModelMaster: Update Inventory Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#updateinventorymodelmaster
+ */
 class UpdateInventoryModelMasterRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Inventory Model name */
     private $inventoryName;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var string */
+    /** @var string Metadata */
     private $metadata;
-    /** @var int */
+    /** @var int Initial Capacity */
     private $initialCapacity;
-    /** @var int */
+    /** @var int Maximum Capacity */
     private $maxCapacity;
-    /** @var bool */
+    /** @var bool Protect Referenced Items */
     private $protectReferencedItem;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UpdateInventoryModelMasterRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UpdateInventoryModelMasterRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Inventory Model name */
 	public function getInventoryName(): ?string {
 		return $this->inventoryName;
 	}
+    /** @param string|null $inventoryName Inventory Model name */
 	public function setInventoryName(?string $inventoryName) {
 		$this->inventoryName = $inventoryName;
 	}
+    /**
+     * @param string|null $inventoryName Inventory Model name
+     * @return UpdateInventoryModelMasterRequest
+     */
 	public function withInventoryName(?string $inventoryName): UpdateInventoryModelMasterRequest {
 		$this->inventoryName = $inventoryName;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return UpdateInventoryModelMasterRequest
+     */
 	public function withDescription(?string $description): UpdateInventoryModelMasterRequest {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return UpdateInventoryModelMasterRequest
+     */
 	public function withMetadata(?string $metadata): UpdateInventoryModelMasterRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return int|null Initial Capacity */
 	public function getInitialCapacity(): ?int {
 		return $this->initialCapacity;
 	}
+    /** @param int|null $initialCapacity Initial Capacity */
 	public function setInitialCapacity(?int $initialCapacity) {
 		$this->initialCapacity = $initialCapacity;
 	}
+    /**
+     * @param int|null $initialCapacity Initial Capacity
+     * @return UpdateInventoryModelMasterRequest
+     */
 	public function withInitialCapacity(?int $initialCapacity): UpdateInventoryModelMasterRequest {
 		$this->initialCapacity = $initialCapacity;
 		return $this;
 	}
+    /** @return int|null Maximum Capacity */
 	public function getMaxCapacity(): ?int {
 		return $this->maxCapacity;
 	}
+    /** @param int|null $maxCapacity Maximum Capacity */
 	public function setMaxCapacity(?int $maxCapacity) {
 		$this->maxCapacity = $maxCapacity;
 	}
+    /**
+     * @param int|null $maxCapacity Maximum Capacity
+     * @return UpdateInventoryModelMasterRequest
+     */
 	public function withMaxCapacity(?int $maxCapacity): UpdateInventoryModelMasterRequest {
 		$this->maxCapacity = $maxCapacity;
 		return $this;
 	}
+    /** @return bool|null Protect Referenced Items */
 	public function getProtectReferencedItem(): ?bool {
 		return $this->protectReferencedItem;
 	}
+    /** @param bool|null $protectReferencedItem Protect Referenced Items */
 	public function setProtectReferencedItem(?bool $protectReferencedItem) {
 		$this->protectReferencedItem = $protectReferencedItem;
 	}
+    /**
+     * @param bool|null $protectReferencedItem Protect Referenced Items
+     * @return UpdateInventoryModelMasterRequest
+     */
 	public function withProtectReferencedItem(?bool $protectReferencedItem): UpdateInventoryModelMasterRequest {
 		$this->protectReferencedItem = $protectReferencedItem;
 		return $this;

@@ -28,18 +28,29 @@ use Gs2\Money2\Model\WithdrawEvent;
 use Gs2\Money2\Model\RefundEvent;
 use Gs2\Money2\Model\Event;
 
+/**
+ * Result of verifyReceipt: Record receipt
+ *
+ * @see https://docs.gs2.io/api_reference/money2/sdk/#verifyreceipt
+ */
 class VerifyReceiptResult implements IResult {
-    /** @var Event */
+    /** @var Event Event */
     private $item;
 
+    /** @return Event|null Event */
 	public function getItem(): ?Event {
 		return $this->item;
 	}
 
+    /** @param Event|null $item Event */
 	public function setItem(?Event $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Event|null $item Event
+     * @return VerifyReceiptResult
+     */
 	public function withItem(?Event $item): VerifyReceiptResult {
 		$this->item = $item;
 		return $this;

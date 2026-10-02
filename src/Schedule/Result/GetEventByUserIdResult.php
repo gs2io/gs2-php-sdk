@@ -22,93 +22,134 @@ use Gs2\Schedule\Model\RepeatSetting;
 use Gs2\Schedule\Model\Event;
 use Gs2\Schedule\Model\RepeatSchedule;
 
+/**
+ * Result of getEventByUserId: Get Event by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/schedule/sdk/#geteventbyuserid
+ */
 class GetEventByUserIdResult implements IResult {
-    /** @var Event */
+    /** @var Event Event */
     private $item;
-    /** @var bool */
+    /** @var bool Whether in schedule */
     private $inSchedule;
-    /** @var int */
+    /** @var int Schedule start time */
     private $scheduleStartAt;
-    /** @var int */
+    /** @var int Schedule end time */
     private $scheduleEndAt;
-    /** @var RepeatSchedule */
+    /** @var RepeatSchedule Repeat Schedule */
     private $repeatSchedule;
-    /** @var bool */
+    /** @var bool Is the event a global schedule */
     private $isGlobalSchedule;
 
+    /** @return Event|null Event */
 	public function getItem(): ?Event {
 		return $this->item;
 	}
 
+    /** @param Event|null $item Event */
 	public function setItem(?Event $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Event|null $item Event
+     * @return GetEventByUserIdResult
+     */
 	public function withItem(?Event $item): GetEventByUserIdResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return bool|null Whether in schedule */
 	public function getInSchedule(): ?bool {
 		return $this->inSchedule;
 	}
 
+    /** @param bool|null $inSchedule Whether in schedule */
 	public function setInSchedule(?bool $inSchedule) {
 		$this->inSchedule = $inSchedule;
 	}
 
+    /**
+     * @param bool|null $inSchedule Whether in schedule
+     * @return GetEventByUserIdResult
+     */
 	public function withInSchedule(?bool $inSchedule): GetEventByUserIdResult {
 		$this->inSchedule = $inSchedule;
 		return $this;
 	}
 
+    /** @return int|null Schedule start time */
 	public function getScheduleStartAt(): ?int {
 		return $this->scheduleStartAt;
 	}
 
+    /** @param int|null $scheduleStartAt Schedule start time */
 	public function setScheduleStartAt(?int $scheduleStartAt) {
 		$this->scheduleStartAt = $scheduleStartAt;
 	}
 
+    /**
+     * @param int|null $scheduleStartAt Schedule start time
+     * @return GetEventByUserIdResult
+     */
 	public function withScheduleStartAt(?int $scheduleStartAt): GetEventByUserIdResult {
 		$this->scheduleStartAt = $scheduleStartAt;
 		return $this;
 	}
 
+    /** @return int|null Schedule end time */
 	public function getScheduleEndAt(): ?int {
 		return $this->scheduleEndAt;
 	}
 
+    /** @param int|null $scheduleEndAt Schedule end time */
 	public function setScheduleEndAt(?int $scheduleEndAt) {
 		$this->scheduleEndAt = $scheduleEndAt;
 	}
 
+    /**
+     * @param int|null $scheduleEndAt Schedule end time
+     * @return GetEventByUserIdResult
+     */
 	public function withScheduleEndAt(?int $scheduleEndAt): GetEventByUserIdResult {
 		$this->scheduleEndAt = $scheduleEndAt;
 		return $this;
 	}
 
+    /** @return RepeatSchedule|null Repeat Schedule */
 	public function getRepeatSchedule(): ?RepeatSchedule {
 		return $this->repeatSchedule;
 	}
 
+    /** @param RepeatSchedule|null $repeatSchedule Repeat Schedule */
 	public function setRepeatSchedule(?RepeatSchedule $repeatSchedule) {
 		$this->repeatSchedule = $repeatSchedule;
 	}
 
+    /**
+     * @param RepeatSchedule|null $repeatSchedule Repeat Schedule
+     * @return GetEventByUserIdResult
+     */
 	public function withRepeatSchedule(?RepeatSchedule $repeatSchedule): GetEventByUserIdResult {
 		$this->repeatSchedule = $repeatSchedule;
 		return $this;
 	}
 
+    /** @return bool|null Is the event a global schedule */
 	public function getIsGlobalSchedule(): ?bool {
 		return $this->isGlobalSchedule;
 	}
 
+    /** @param bool|null $isGlobalSchedule Is the event a global schedule */
 	public function setIsGlobalSchedule(?bool $isGlobalSchedule) {
 		$this->isGlobalSchedule = $isGlobalSchedule;
 	}
 
+    /**
+     * @param bool|null $isGlobalSchedule Is the event a global schedule
+     * @return GetEventByUserIdResult
+     */
 	public function withIsGlobalSchedule(?bool $isGlobalSchedule): GetEventByUserIdResult {
 		$this->isGlobalSchedule = $isGlobalSchedule;
 		return $this;

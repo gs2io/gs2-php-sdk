@@ -19,6 +19,11 @@ namespace Gs2\Freeze\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for describeStages: List stages
+ *
+ * @see https://docs.gs2.io/api_reference/freeze/sdk/#describestages
+ */
 class DescribeStagesRequest extends Gs2BasicRequest {
 
     public static function fromJson(?array $data): ?DescribeStagesRequest {

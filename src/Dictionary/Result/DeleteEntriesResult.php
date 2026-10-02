@@ -20,18 +20,29 @@ namespace Gs2\Dictionary\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Dictionary\Model\Entry;
 
+/**
+ * Result of deleteEntries: Delete entries
+ *
+ * @see https://docs.gs2.io/api_reference/dictionary/sdk/#deleteentries
+ */
 class DeleteEntriesResult implements IResult {
-    /** @var array */
+    /** @var array List of Deleted Entries */
     private $items;
 
+    /** @return array|null List of Deleted Entries */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Deleted Entries */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Deleted Entries
+     * @return DeleteEntriesResult
+     */
 	public function withItems(?array $items): DeleteEntriesResult {
 		$this->items = $items;
 		return $this;

@@ -30,65 +30,100 @@ use Gs2\Core\Model\TransactionResult;
 use Gs2\Core\Model\ScriptTransactionResult;
 use Gs2\Core\Model\ResultMetadata;
 
+/**
+ * Request for runTransaction: Execute transaction
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#runtransaction
+ */
 class RunTransactionRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Owner ID */
     private $ownerId;
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Transaction */
     private $transaction;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Owner ID */
 	public function getOwnerId(): ?string {
 		return $this->ownerId;
 	}
+    /** @param string|null $ownerId Owner ID */
 	public function setOwnerId(?string $ownerId) {
 		$this->ownerId = $ownerId;
 	}
+    /**
+     * @param string|null $ownerId Owner ID
+     * @return RunTransactionRequest
+     */
 	public function withOwnerId(?string $ownerId): RunTransactionRequest {
 		$this->ownerId = $ownerId;
 		return $this;
 	}
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return RunTransactionRequest
+     */
 	public function withNamespaceName(?string $namespaceName): RunTransactionRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return RunTransactionRequest
+     */
 	public function withUserId(?string $userId): RunTransactionRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Transaction */
 	public function getTransaction(): ?string {
 		return $this->transaction;
 	}
+    /** @param string|null $transaction Transaction */
 	public function setTransaction(?string $transaction) {
 		$this->transaction = $transaction;
 	}
+    /**
+     * @param string|null $transaction Transaction
+     * @return RunTransactionRequest
+     */
 	public function withTransaction(?string $transaction): RunTransactionRequest {
 		$this->transaction = $transaction;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return RunTransactionRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): RunTransactionRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

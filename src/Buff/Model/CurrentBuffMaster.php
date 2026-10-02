@@ -20,31 +20,48 @@ namespace Gs2\Buff\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Master data of the currently active Buff Entry Models
+ *
+ * @see https://docs.gs2.io/api_reference/buff/sdk/#currentbuffmaster
+ */
 class CurrentBuffMaster implements IModel {
 	/**
-     * @var string
+     * @var string Namespace GRN
 	 */
 	private $namespaceId;
 	/**
-     * @var string
+     * @var string Master Data
 	 */
 	private $settings;
+    /** @return string|null Namespace GRN */
 	public function getNamespaceId(): ?string {
 		return $this->namespaceId;
 	}
+    /** @param string|null $namespaceId Namespace GRN */
 	public function setNamespaceId(?string $namespaceId) {
 		$this->namespaceId = $namespaceId;
 	}
+    /**
+     * @param string|null $namespaceId Namespace GRN
+     * @return CurrentBuffMaster
+     */
 	public function withNamespaceId(?string $namespaceId): CurrentBuffMaster {
 		$this->namespaceId = $namespaceId;
 		return $this;
 	}
+    /** @return string|null Master Data */
 	public function getSettings(): ?string {
 		return $this->settings;
 	}
+    /** @param string|null $settings Master Data */
 	public function setSettings(?string $settings) {
 		$this->settings = $settings;
 	}
+    /**
+     * @param string|null $settings Master Data
+     * @return CurrentBuffMaster
+     */
 	public function withSettings(?string $settings): CurrentBuffMaster {
 		$this->settings = $settings;
 		return $this;

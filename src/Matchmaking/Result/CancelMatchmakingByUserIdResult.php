@@ -24,18 +24,29 @@ use Gs2\Matchmaking\Model\Player;
 use Gs2\Matchmaking\Model\CapacityOfRole;
 use Gs2\Matchmaking\Model\Gathering;
 
+/**
+ * Result of cancelMatchmakingByUserId: Cancel matchmaking by specifying user ID
+ *
+ * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#cancelmatchmakingbyuserid
+ */
 class CancelMatchmakingByUserIdResult implements IResult {
-    /** @var Gathering */
+    /** @var Gathering Canceled Gathering */
     private $item;
 
+    /** @return Gathering|null Canceled Gathering */
 	public function getItem(): ?Gathering {
 		return $this->item;
 	}
 
+    /** @param Gathering|null $item Canceled Gathering */
 	public function setItem(?Gathering $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Gathering|null $item Canceled Gathering
+     * @return CancelMatchmakingByUserIdResult
+     */
 	public function withItem(?Gathering $item): CancelMatchmakingByUserIdResult {
 		$this->item = $item;
 		return $this;

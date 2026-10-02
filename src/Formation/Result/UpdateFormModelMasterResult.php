@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Formation\Model\SlotModel;
 use Gs2\Formation\Model\FormModelMaster;
 
+/**
+ * Result of updateFormModelMaster: Update Form Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/formation/sdk/#updateformmodelmaster
+ */
 class UpdateFormModelMasterResult implements IResult {
-    /** @var FormModelMaster */
+    /** @var FormModelMaster Form Model Master updated */
     private $item;
 
+    /** @return FormModelMaster|null Form Model Master updated */
 	public function getItem(): ?FormModelMaster {
 		return $this->item;
 	}
 
+    /** @param FormModelMaster|null $item Form Model Master updated */
 	public function setItem(?FormModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param FormModelMaster|null $item Form Model Master updated
+     * @return UpdateFormModelMasterResult
+     */
 	public function withItem(?FormModelMaster $item): UpdateFormModelMasterResult {
 		$this->item = $item;
 		return $this;

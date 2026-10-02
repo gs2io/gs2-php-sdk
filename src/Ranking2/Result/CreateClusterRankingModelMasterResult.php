@@ -22,18 +22,29 @@ use Gs2\Ranking2\Model\AcquireAction;
 use Gs2\Ranking2\Model\RankingReward;
 use Gs2\Ranking2\Model\ClusterRankingModelMaster;
 
+/**
+ * Result of createClusterRankingModelMaster: Create Cluster Ranking Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/ranking2/sdk/#createclusterrankingmodelmaster
+ */
 class CreateClusterRankingModelMasterResult implements IResult {
-    /** @var ClusterRankingModelMaster */
+    /** @var ClusterRankingModelMaster Cluster Ranking Model Master created */
     private $item;
 
+    /** @return ClusterRankingModelMaster|null Cluster Ranking Model Master created */
 	public function getItem(): ?ClusterRankingModelMaster {
 		return $this->item;
 	}
 
+    /** @param ClusterRankingModelMaster|null $item Cluster Ranking Model Master created */
 	public function setItem(?ClusterRankingModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param ClusterRankingModelMaster|null $item Cluster Ranking Model Master created
+     * @return CreateClusterRankingModelMasterResult
+     */
 	public function withItem(?ClusterRankingModelMaster $item): CreateClusterRankingModelMasterResult {
 		$this->item = $item;
 		return $this;

@@ -20,33 +20,50 @@ namespace Gs2\SkillTree\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\SkillTree\Model\Status;
 
+/**
+ * Result of markRestrainByStampTask: Execute reverting a node to unreleased state as a consume action
+ *
+ * @see https://docs.gs2.io/api_reference/skill_tree/stamp_sheet/#gs2skilltreemarkrestrainbyuserid
+ */
 class MarkRestrainByStampTaskResult implements IResult {
-    /** @var Status */
+    /** @var Status Status */
     private $item;
-    /** @var string */
+    /** @var string Context recording the execution results of Consume Actions */
     private $newContextStack;
 
+    /** @return Status|null Status */
 	public function getItem(): ?Status {
 		return $this->item;
 	}
 
+    /** @param Status|null $item Status */
 	public function setItem(?Status $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Status|null $item Status
+     * @return MarkRestrainByStampTaskResult
+     */
 	public function withItem(?Status $item): MarkRestrainByStampTaskResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null Context recording the execution results of Consume Actions */
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
+    /** @param string|null $newContextStack Context recording the execution results of Consume Actions */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
+    /**
+     * @param string|null $newContextStack Context recording the execution results of Consume Actions
+     * @return MarkRestrainByStampTaskResult
+     */
 	public function withNewContextStack(?string $newContextStack): MarkRestrainByStampTaskResult {
 		$this->newContextStack = $newContextStack;
 		return $this;

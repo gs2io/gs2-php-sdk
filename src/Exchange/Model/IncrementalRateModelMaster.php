@@ -20,213 +20,308 @@ namespace Gs2\Exchange\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Incremental Cost Exchange Rate Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/exchange/sdk/#incrementalratemodelmaster
+ */
 class IncrementalRateModelMaster implements IModel {
 	/**
-     * @var string
+     * @var string Incremental Cost Exchange Rate Model Master GRN
 	 */
 	private $incrementalRateModelId;
 	/**
-     * @var string
+     * @var string Incremental Cost Exchange Rate Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Description
 	 */
 	private $description;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var ConsumeAction
+     * @var ConsumeAction Consume Action (Quantity and Value are overwritten automatically)
 	 */
 	private $consumeAction;
 	/**
-     * @var string
+     * @var string Calculation method for cost increase amount
 	 */
 	private $calculateType;
 	/**
-     * @var int
+     * @var int Base Value
 	 */
 	private $baseValue;
 	/**
-     * @var int
+     * @var int Coefficient Value
 	 */
 	private $coefficientValue;
 	/**
-     * @var string
+     * @var string GRN of cost calculation script
 	 */
 	private $calculateScriptId;
 	/**
-     * @var string
+     * @var string GS2-Limit Usage Limit Model GRN for managing exchange execution counts
 	 */
 	private $exchangeCountId;
 	/**
-     * @var int
+     * @var int Maximum number of exchanges
 	 */
 	private $maximumExchangeCount;
 	/**
-     * @var array
+     * @var array List of Acquire Actions
 	 */
 	private $acquireActions;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Incremental Cost Exchange Rate Model Master GRN */
 	public function getIncrementalRateModelId(): ?string {
 		return $this->incrementalRateModelId;
 	}
+    /** @param string|null $incrementalRateModelId Incremental Cost Exchange Rate Model Master GRN */
 	public function setIncrementalRateModelId(?string $incrementalRateModelId) {
 		$this->incrementalRateModelId = $incrementalRateModelId;
 	}
+    /**
+     * @param string|null $incrementalRateModelId Incremental Cost Exchange Rate Model Master GRN
+     * @return IncrementalRateModelMaster
+     */
 	public function withIncrementalRateModelId(?string $incrementalRateModelId): IncrementalRateModelMaster {
 		$this->incrementalRateModelId = $incrementalRateModelId;
 		return $this;
 	}
+    /** @return string|null Incremental Cost Exchange Rate Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Incremental Cost Exchange Rate Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Incremental Cost Exchange Rate Model name
+     * @return IncrementalRateModelMaster
+     */
 	public function withName(?string $name): IncrementalRateModelMaster {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return IncrementalRateModelMaster
+     */
 	public function withDescription(?string $description): IncrementalRateModelMaster {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return IncrementalRateModelMaster
+     */
 	public function withMetadata(?string $metadata): IncrementalRateModelMaster {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return ConsumeAction|null Consume Action (Quantity and Value are overwritten automatically) */
 	public function getConsumeAction(): ?ConsumeAction {
 		return $this->consumeAction;
 	}
+    /** @param ConsumeAction|null $consumeAction Consume Action (Quantity and Value are overwritten automatically) */
 	public function setConsumeAction(?ConsumeAction $consumeAction) {
 		$this->consumeAction = $consumeAction;
 	}
+    /**
+     * @param ConsumeAction|null $consumeAction Consume Action (Quantity and Value are overwritten automatically)
+     * @return IncrementalRateModelMaster
+     */
 	public function withConsumeAction(?ConsumeAction $consumeAction): IncrementalRateModelMaster {
 		$this->consumeAction = $consumeAction;
 		return $this;
 	}
+    /** @return string|null Calculation method for cost increase amount */
 	public function getCalculateType(): ?string {
 		return $this->calculateType;
 	}
+    /** @param string|null $calculateType Calculation method for cost increase amount */
 	public function setCalculateType(?string $calculateType) {
 		$this->calculateType = $calculateType;
 	}
+    /**
+     * @param string|null $calculateType Calculation method for cost increase amount
+     * @return IncrementalRateModelMaster
+     */
 	public function withCalculateType(?string $calculateType): IncrementalRateModelMaster {
 		$this->calculateType = $calculateType;
 		return $this;
 	}
+    /** @return int|null Base Value */
 	public function getBaseValue(): ?int {
 		return $this->baseValue;
 	}
+    /** @param int|null $baseValue Base Value */
 	public function setBaseValue(?int $baseValue) {
 		$this->baseValue = $baseValue;
 	}
+    /**
+     * @param int|null $baseValue Base Value
+     * @return IncrementalRateModelMaster
+     */
 	public function withBaseValue(?int $baseValue): IncrementalRateModelMaster {
 		$this->baseValue = $baseValue;
 		return $this;
 	}
+    /** @return int|null Coefficient Value */
 	public function getCoefficientValue(): ?int {
 		return $this->coefficientValue;
 	}
+    /** @param int|null $coefficientValue Coefficient Value */
 	public function setCoefficientValue(?int $coefficientValue) {
 		$this->coefficientValue = $coefficientValue;
 	}
+    /**
+     * @param int|null $coefficientValue Coefficient Value
+     * @return IncrementalRateModelMaster
+     */
 	public function withCoefficientValue(?int $coefficientValue): IncrementalRateModelMaster {
 		$this->coefficientValue = $coefficientValue;
 		return $this;
 	}
+    /** @return string|null GRN of cost calculation script */
 	public function getCalculateScriptId(): ?string {
 		return $this->calculateScriptId;
 	}
+    /** @param string|null $calculateScriptId GRN of cost calculation script */
 	public function setCalculateScriptId(?string $calculateScriptId) {
 		$this->calculateScriptId = $calculateScriptId;
 	}
+    /**
+     * @param string|null $calculateScriptId GRN of cost calculation script
+     * @return IncrementalRateModelMaster
+     */
 	public function withCalculateScriptId(?string $calculateScriptId): IncrementalRateModelMaster {
 		$this->calculateScriptId = $calculateScriptId;
 		return $this;
 	}
+    /** @return string|null GS2-Limit Usage Limit Model GRN for managing exchange execution counts */
 	public function getExchangeCountId(): ?string {
 		return $this->exchangeCountId;
 	}
+    /** @param string|null $exchangeCountId GS2-Limit Usage Limit Model GRN for managing exchange execution counts */
 	public function setExchangeCountId(?string $exchangeCountId) {
 		$this->exchangeCountId = $exchangeCountId;
 	}
+    /**
+     * @param string|null $exchangeCountId GS2-Limit Usage Limit Model GRN for managing exchange execution counts
+     * @return IncrementalRateModelMaster
+     */
 	public function withExchangeCountId(?string $exchangeCountId): IncrementalRateModelMaster {
 		$this->exchangeCountId = $exchangeCountId;
 		return $this;
 	}
+    /** @return int|null Maximum number of exchanges */
 	public function getMaximumExchangeCount(): ?int {
 		return $this->maximumExchangeCount;
 	}
+    /** @param int|null $maximumExchangeCount Maximum number of exchanges */
 	public function setMaximumExchangeCount(?int $maximumExchangeCount) {
 		$this->maximumExchangeCount = $maximumExchangeCount;
 	}
+    /**
+     * @param int|null $maximumExchangeCount Maximum number of exchanges
+     * @return IncrementalRateModelMaster
+     */
 	public function withMaximumExchangeCount(?int $maximumExchangeCount): IncrementalRateModelMaster {
 		$this->maximumExchangeCount = $maximumExchangeCount;
 		return $this;
 	}
+    /** @return array|null List of Acquire Actions */
 	public function getAcquireActions(): ?array {
 		return $this->acquireActions;
 	}
+    /** @param array|null $acquireActions List of Acquire Actions */
 	public function setAcquireActions(?array $acquireActions) {
 		$this->acquireActions = $acquireActions;
 	}
+    /**
+     * @param array|null $acquireActions List of Acquire Actions
+     * @return IncrementalRateModelMaster
+     */
 	public function withAcquireActions(?array $acquireActions): IncrementalRateModelMaster {
 		$this->acquireActions = $acquireActions;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return IncrementalRateModelMaster
+     */
 	public function withCreatedAt(?int $createdAt): IncrementalRateModelMaster {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return IncrementalRateModelMaster
+     */
 	public function withUpdatedAt(?int $updatedAt): IncrementalRateModelMaster {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return IncrementalRateModelMaster
+     */
 	public function withRevision(?int $revision): IncrementalRateModelMaster {
 		$this->revision = $revision;
 		return $this;

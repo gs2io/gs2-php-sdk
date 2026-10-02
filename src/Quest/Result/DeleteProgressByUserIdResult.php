@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Quest\Model\Reward;
 use Gs2\Quest\Model\Progress;
 
+/**
+ * Result of deleteProgressByUserId: Delete Quest Progress by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/quest/sdk/#deleteprogressbyuserid
+ */
 class DeleteProgressByUserIdResult implements IResult {
-    /** @var Progress */
+    /** @var Progress Quest Progress */
     private $item;
 
+    /** @return Progress|null Quest Progress */
 	public function getItem(): ?Progress {
 		return $this->item;
 	}
 
+    /** @param Progress|null $item Quest Progress */
 	public function setItem(?Progress $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Progress|null $item Quest Progress
+     * @return DeleteProgressByUserIdResult
+     */
 	public function withItem(?Progress $item): DeleteProgressByUserIdResult {
 		$this->item = $item;
 		return $this;

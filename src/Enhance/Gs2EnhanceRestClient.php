@@ -3442,25 +3442,22 @@ class UpdateCurrentRateMasterFromGitHubTask extends Gs2RestSessionTask {
 }
 
 /**
- * GS2 Enhance API クライアント
+ * GS2-Enhance API client
  *
- * @author Game Server Services, Inc.
- *
+ * @see https://docs.gs2.io/api_reference/enhance/sdk/
  */
 class Gs2EnhanceRestClient extends AbstractGs2Client {
 
-	/**
-	 * コンストラクタ。
-	 *
-	 * @param Gs2RestSession $session セッション
-	 */
 	public function __construct(Gs2RestSession $session) {
 		parent::__construct($session);
 	}
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#describenamespaces
      */
     public function describeNamespacesAsync(
             DescribeNamespacesRequest $request
@@ -3474,8 +3471,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Namespaces
+     *
      * @param DescribeNamespacesRequest $request
      * @return DescribeNamespacesResult
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#describenamespaces
      */
     public function describeNamespaces (
             DescribeNamespacesRequest $request
@@ -3486,8 +3486,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#createnamespace
      */
     public function createNamespaceAsync(
             CreateNamespaceRequest $request
@@ -3501,8 +3504,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Namespace
+     *
      * @param CreateNamespaceRequest $request
      * @return CreateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#createnamespace
      */
     public function createNamespace (
             CreateNamespaceRequest $request
@@ -3513,8 +3519,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#getnamespacestatus
      */
     public function getNamespaceStatusAsync(
             GetNamespaceStatusRequest $request
@@ -3528,8 +3537,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace Status
+     *
      * @param GetNamespaceStatusRequest $request
      * @return GetNamespaceStatusResult
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#getnamespacestatus
      */
     public function getNamespaceStatus (
             GetNamespaceStatusRequest $request
@@ -3540,8 +3552,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#getnamespace
      */
     public function getNamespaceAsync(
             GetNamespaceRequest $request
@@ -3555,8 +3570,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Namespace
+     *
      * @param GetNamespaceRequest $request
      * @return GetNamespaceResult
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#getnamespace
      */
     public function getNamespace (
             GetNamespaceRequest $request
@@ -3567,8 +3585,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#updatenamespace
      */
     public function updateNamespaceAsync(
             UpdateNamespaceRequest $request
@@ -3582,8 +3603,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Namespace
+     *
      * @param UpdateNamespaceRequest $request
      * @return UpdateNamespaceResult
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#updatenamespace
      */
     public function updateNamespace (
             UpdateNamespaceRequest $request
@@ -3594,8 +3618,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#deletenamespace
      */
     public function deleteNamespaceAsync(
             DeleteNamespaceRequest $request
@@ -3609,8 +3636,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Namespace
+     *
      * @param DeleteNamespaceRequest $request
      * @return DeleteNamespaceResult
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#deletenamespace
      */
     public function deleteNamespace (
             DeleteNamespaceRequest $request
@@ -3621,8 +3651,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get microservice version
+     *
      * @param GetServiceVersionRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#getserviceversion
      */
     public function getServiceVersionAsync(
             GetServiceVersionRequest $request
@@ -3636,8 +3669,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get microservice version
+     *
      * @param GetServiceVersionRequest $request
      * @return GetServiceVersionResult
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#getserviceversion
      */
     public function getServiceVersion (
             GetServiceVersionRequest $request
@@ -3648,8 +3684,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserIdAsync(
             DumpUserDataByUserIdRequest $request
@@ -3663,8 +3702,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Dump data associated with the specified user ID
+     *
      * @param DumpUserDataByUserIdRequest $request
      * @return DumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#dumpuserdatabyuserid
      */
     public function dumpUserDataByUserId (
             DumpUserDataByUserIdRequest $request
@@ -3675,8 +3717,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserIdAsync(
             CheckDumpUserDataByUserIdRequest $request
@@ -3690,8 +3735,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the dump of the data associated with the specified user ID is complete
+     *
      * @param CheckDumpUserDataByUserIdRequest $request
      * @return CheckDumpUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#checkdumpuserdatabyuserid
      */
     public function checkDumpUserDataByUserId (
             CheckDumpUserDataByUserIdRequest $request
@@ -3702,8 +3750,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserIdAsync(
             CleanUserDataByUserIdRequest $request
@@ -3717,8 +3768,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Clean User Data by User ID
+     *
      * @param CleanUserDataByUserIdRequest $request
      * @return CleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#cleanuserdatabyuserid
      */
     public function cleanUserDataByUserId (
             CleanUserDataByUserIdRequest $request
@@ -3729,8 +3783,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserIdAsync(
             CheckCleanUserDataByUserIdRequest $request
@@ -3744,8 +3801,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the cleaning of the data associated with the specified user ID is complete
+     *
      * @param CheckCleanUserDataByUserIdRequest $request
      * @return CheckCleanUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#checkcleanuserdatabyuserid
      */
     public function checkCleanUserDataByUserId (
             CheckCleanUserDataByUserIdRequest $request
@@ -3756,8 +3816,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserIdAsync(
             PrepareImportUserDataByUserIdRequest $request
@@ -3771,8 +3834,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Prepare User Data Import by User ID
+     *
      * @param PrepareImportUserDataByUserIdRequest $request
      * @return PrepareImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#prepareimportuserdatabyuserid
      */
     public function prepareImportUserDataByUserId (
             PrepareImportUserDataByUserIdRequest $request
@@ -3783,8 +3849,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserIdAsync(
             ImportUserDataByUserIdRequest $request
@@ -3798,8 +3867,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute import of data associated with the specified user ID
+     *
      * @param ImportUserDataByUserIdRequest $request
      * @return ImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#importuserdatabyuserid
      */
     public function importUserDataByUserId (
             ImportUserDataByUserIdRequest $request
@@ -3810,8 +3882,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserIdAsync(
             CheckImportUserDataByUserIdRequest $request
@@ -3825,8 +3900,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Check if the import of the data associated with the specified user ID is complete
+     *
      * @param CheckImportUserDataByUserIdRequest $request
      * @return CheckImportUserDataByUserIdResult
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#checkimportuserdatabyuserid
      */
     public function checkImportUserDataByUserId (
             CheckImportUserDataByUserIdRequest $request
@@ -3837,8 +3915,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Enhancement Rate Models
+     *
      * @param DescribeRateModelsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#describeratemodels
      */
     public function describeRateModelsAsync(
             DescribeRateModelsRequest $request
@@ -3852,8 +3933,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Enhancement Rate Models
+     *
      * @param DescribeRateModelsRequest $request
      * @return DescribeRateModelsResult
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#describeratemodels
      */
     public function describeRateModels (
             DescribeRateModelsRequest $request
@@ -3864,8 +3948,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Enhancement Rate Model
+     *
      * @param GetRateModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#getratemodel
      */
     public function getRateModelAsync(
             GetRateModelRequest $request
@@ -3879,8 +3966,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Enhancement Rate Model
+     *
      * @param GetRateModelRequest $request
      * @return GetRateModelResult
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#getratemodel
      */
     public function getRateModel (
             GetRateModelRequest $request
@@ -3891,8 +3981,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Enhancement Rate Model Masters
+     *
      * @param DescribeRateModelMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#describeratemodelmasters
      */
     public function describeRateModelMastersAsync(
             DescribeRateModelMastersRequest $request
@@ -3906,8 +3999,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Enhancement Rate Model Masters
+     *
      * @param DescribeRateModelMastersRequest $request
      * @return DescribeRateModelMastersResult
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#describeratemodelmasters
      */
     public function describeRateModelMasters (
             DescribeRateModelMastersRequest $request
@@ -3918,8 +4014,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Enhancement Rate Master
+     *
      * @param CreateRateModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#createratemodelmaster
      */
     public function createRateModelMasterAsync(
             CreateRateModelMasterRequest $request
@@ -3933,8 +4032,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Enhancement Rate Master
+     *
      * @param CreateRateModelMasterRequest $request
      * @return CreateRateModelMasterResult
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#createratemodelmaster
      */
     public function createRateModelMaster (
             CreateRateModelMasterRequest $request
@@ -3945,8 +4047,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Enhancement Rate Master
+     *
      * @param GetRateModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#getratemodelmaster
      */
     public function getRateModelMasterAsync(
             GetRateModelMasterRequest $request
@@ -3960,8 +4065,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Enhancement Rate Master
+     *
      * @param GetRateModelMasterRequest $request
      * @return GetRateModelMasterResult
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#getratemodelmaster
      */
     public function getRateModelMaster (
             GetRateModelMasterRequest $request
@@ -3972,8 +4080,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Enhancement Rate Master
+     *
      * @param UpdateRateModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#updateratemodelmaster
      */
     public function updateRateModelMasterAsync(
             UpdateRateModelMasterRequest $request
@@ -3987,8 +4098,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Enhancement Rate Master
+     *
      * @param UpdateRateModelMasterRequest $request
      * @return UpdateRateModelMasterResult
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#updateratemodelmaster
      */
     public function updateRateModelMaster (
             UpdateRateModelMasterRequest $request
@@ -3999,8 +4113,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Enhancement Rate Master
+     *
      * @param DeleteRateModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#deleteratemodelmaster
      */
     public function deleteRateModelMasterAsync(
             DeleteRateModelMasterRequest $request
@@ -4014,8 +4131,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Enhancement Rate Master
+     *
      * @param DeleteRateModelMasterRequest $request
      * @return DeleteRateModelMasterResult
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#deleteratemodelmaster
      */
     public function deleteRateModelMaster (
             DeleteRateModelMasterRequest $request
@@ -4026,8 +4146,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Unleash Rate Models
+     *
      * @param DescribeUnleashRateModelsRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#describeunleashratemodels
      */
     public function describeUnleashRateModelsAsync(
             DescribeUnleashRateModelsRequest $request
@@ -4041,8 +4164,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Unleash Rate Models
+     *
      * @param DescribeUnleashRateModelsRequest $request
      * @return DescribeUnleashRateModelsResult
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#describeunleashratemodels
      */
     public function describeUnleashRateModels (
             DescribeUnleashRateModelsRequest $request
@@ -4053,8 +4179,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Unleash Rate Model
+     *
      * @param GetUnleashRateModelRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#getunleashratemodel
      */
     public function getUnleashRateModelAsync(
             GetUnleashRateModelRequest $request
@@ -4068,8 +4197,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Unleash Rate Model
+     *
      * @param GetUnleashRateModelRequest $request
      * @return GetUnleashRateModelResult
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#getunleashratemodel
      */
     public function getUnleashRateModel (
             GetUnleashRateModelRequest $request
@@ -4080,8 +4212,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Unleash Rate Model Masters
+     *
      * @param DescribeUnleashRateModelMastersRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#describeunleashratemodelmasters
      */
     public function describeUnleashRateModelMastersAsync(
             DescribeUnleashRateModelMastersRequest $request
@@ -4095,8 +4230,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * List Unleash Rate Model Masters
+     *
      * @param DescribeUnleashRateModelMastersRequest $request
      * @return DescribeUnleashRateModelMastersResult
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#describeunleashratemodelmasters
      */
     public function describeUnleashRateModelMasters (
             DescribeUnleashRateModelMastersRequest $request
@@ -4107,8 +4245,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Unleash Rate Model Master
+     *
      * @param CreateUnleashRateModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#createunleashratemodelmaster
      */
     public function createUnleashRateModelMasterAsync(
             CreateUnleashRateModelMasterRequest $request
@@ -4122,8 +4263,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Create Unleash Rate Model Master
+     *
      * @param CreateUnleashRateModelMasterRequest $request
      * @return CreateUnleashRateModelMasterResult
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#createunleashratemodelmaster
      */
     public function createUnleashRateModelMaster (
             CreateUnleashRateModelMasterRequest $request
@@ -4134,8 +4278,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Unleash Rate Model Master
+     *
      * @param GetUnleashRateModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#getunleashratemodelmaster
      */
     public function getUnleashRateModelMasterAsync(
             GetUnleashRateModelMasterRequest $request
@@ -4149,8 +4296,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get Unleash Rate Model Master
+     *
      * @param GetUnleashRateModelMasterRequest $request
      * @return GetUnleashRateModelMasterResult
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#getunleashratemodelmaster
      */
     public function getUnleashRateModelMaster (
             GetUnleashRateModelMasterRequest $request
@@ -4161,8 +4311,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Unleash Rate Model Master
+     *
      * @param UpdateUnleashRateModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#updateunleashratemodelmaster
      */
     public function updateUnleashRateModelMasterAsync(
             UpdateUnleashRateModelMasterRequest $request
@@ -4176,8 +4329,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update Unleash Rate Model Master
+     *
      * @param UpdateUnleashRateModelMasterRequest $request
      * @return UpdateUnleashRateModelMasterResult
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#updateunleashratemodelmaster
      */
     public function updateUnleashRateModelMaster (
             UpdateUnleashRateModelMasterRequest $request
@@ -4188,8 +4344,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Unleash Rate Model Master
+     *
      * @param DeleteUnleashRateModelMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#deleteunleashratemodelmaster
      */
     public function deleteUnleashRateModelMasterAsync(
             DeleteUnleashRateModelMasterRequest $request
@@ -4203,8 +4362,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete Unleash Rate Model Master
+     *
      * @param DeleteUnleashRateModelMasterRequest $request
      * @return DeleteUnleashRateModelMasterResult
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#deleteunleashratemodelmaster
      */
     public function deleteUnleashRateModelMaster (
             DeleteUnleashRateModelMasterRequest $request
@@ -4215,8 +4377,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Perform enhancements
+     *
      * @param DirectEnhanceRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#directenhance
      */
     public function directEnhanceAsync(
             DirectEnhanceRequest $request
@@ -4230,8 +4395,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Perform enhancements
+     *
      * @param DirectEnhanceRequest $request
      * @return DirectEnhanceResult
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#directenhance
      */
     public function directEnhance (
             DirectEnhanceRequest $request
@@ -4242,8 +4410,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Perform enhancement by User ID
+     *
      * @param DirectEnhanceByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#directenhancebyuserid
      */
     public function directEnhanceByUserIdAsync(
             DirectEnhanceByUserIdRequest $request
@@ -4257,8 +4428,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Perform enhancement by User ID
+     *
      * @param DirectEnhanceByUserIdRequest $request
      * @return DirectEnhanceByUserIdResult
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#directenhancebyuserid
      */
     public function directEnhanceByUserId (
             DirectEnhanceByUserIdRequest $request
@@ -4269,8 +4443,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute enhancement as an acquire action
+     *
      * @param DirectEnhanceByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/stamp_sheet/#gs2enhancedirectenhancebyuserid
      */
     public function directEnhanceByStampSheetAsync(
             DirectEnhanceByStampSheetRequest $request
@@ -4284,8 +4461,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute enhancement as an acquire action
+     *
      * @param DirectEnhanceByStampSheetRequest $request
      * @return DirectEnhanceByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/enhance/stamp_sheet/#gs2enhancedirectenhancebyuserid
      */
     public function directEnhanceByStampSheet (
             DirectEnhanceByStampSheetRequest $request
@@ -4296,8 +4476,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Perform unleash
+     *
      * @param UnleashRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#unleash
      */
     public function unleashAsync(
             UnleashRequest $request
@@ -4311,8 +4494,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Perform unleash
+     *
      * @param UnleashRequest $request
      * @return UnleashResult
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#unleash
      */
     public function unleash (
             UnleashRequest $request
@@ -4323,8 +4509,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Perform unleash by User ID
+     *
      * @param UnleashByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#unleashbyuserid
      */
     public function unleashByUserIdAsync(
             UnleashByUserIdRequest $request
@@ -4338,8 +4527,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Perform unleash by User ID
+     *
      * @param UnleashByUserIdRequest $request
      * @return UnleashByUserIdResult
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#unleashbyuserid
      */
     public function unleashByUserId (
             UnleashByUserIdRequest $request
@@ -4350,8 +4542,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute unleash as an acquire action
+     *
      * @param UnleashByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/stamp_sheet/#gs2enhanceunleashbyuserid
      */
     public function unleashByStampSheetAsync(
             UnleashByStampSheetRequest $request
@@ -4365,8 +4560,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute unleash as an acquire action
+     *
      * @param UnleashByStampSheetRequest $request
      * @return UnleashByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/enhance/stamp_sheet/#gs2enhanceunleashbyuserid
      */
     public function unleashByStampSheet (
             UnleashByStampSheetRequest $request
@@ -4377,8 +4575,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Start enhancement by User ID
+     *
      * @param CreateProgressByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#createprogressbyuserid
      */
     public function createProgressByUserIdAsync(
             CreateProgressByUserIdRequest $request
@@ -4392,8 +4593,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Start enhancement by User ID
+     *
      * @param CreateProgressByUserIdRequest $request
      * @return CreateProgressByUserIdResult
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#createprogressbyuserid
      */
     public function createProgressByUserId (
             CreateProgressByUserIdRequest $request
@@ -4404,8 +4608,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Retrieve running enhancements
+     *
      * @param GetProgressRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#getprogress
      */
     public function getProgressAsync(
             GetProgressRequest $request
@@ -4419,8 +4626,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Retrieve running enhancements
+     *
      * @param GetProgressRequest $request
      * @return GetProgressResult
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#getprogress
      */
     public function getProgress (
             GetProgressRequest $request
@@ -4431,8 +4641,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get running enhancements by User ID
+     *
      * @param GetProgressByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#getprogressbyuserid
      */
     public function getProgressByUserIdAsync(
             GetProgressByUserIdRequest $request
@@ -4446,8 +4659,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get running enhancements by User ID
+     *
      * @param GetProgressByUserIdRequest $request
      * @return GetProgressByUserIdResult
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#getprogressbyuserid
      */
     public function getProgressByUserId (
             GetProgressByUserIdRequest $request
@@ -4458,8 +4674,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Start enhancement
+     *
      * @param StartRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#start
      */
     public function startAsync(
             StartRequest $request
@@ -4473,8 +4692,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Start enhancement
+     *
      * @param StartRequest $request
      * @return StartResult
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#start
      */
     public function start (
             StartRequest $request
@@ -4485,8 +4707,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Start enhancement by User ID
+     *
      * @param StartByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#startbyuserid
      */
     public function startByUserIdAsync(
             StartByUserIdRequest $request
@@ -4500,8 +4725,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Start enhancement by User ID
+     *
      * @param StartByUserIdRequest $request
      * @return StartByUserIdResult
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#startbyuserid
      */
     public function startByUserId (
             StartByUserIdRequest $request
@@ -4512,8 +4740,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Complete enhancement
+     *
      * @param EndRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#end
      */
     public function endAsync(
             EndRequest $request
@@ -4527,8 +4758,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Complete enhancement
+     *
      * @param EndRequest $request
      * @return EndResult
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#end
      */
     public function end (
             EndRequest $request
@@ -4539,8 +4773,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Complete enhancement by User ID
+     *
      * @param EndByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#endbyuserid
      */
     public function endByUserIdAsync(
             EndByUserIdRequest $request
@@ -4554,8 +4791,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Complete enhancement by User ID
+     *
      * @param EndByUserIdRequest $request
      * @return EndByUserIdResult
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#endbyuserid
      */
     public function endByUserId (
             EndByUserIdRequest $request
@@ -4566,8 +4806,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete running enhancement
+     *
      * @param DeleteProgressRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#deleteprogress
      */
     public function deleteProgressAsync(
             DeleteProgressRequest $request
@@ -4581,8 +4824,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete running enhancement
+     *
      * @param DeleteProgressRequest $request
      * @return DeleteProgressResult
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#deleteprogress
      */
     public function deleteProgress (
             DeleteProgressRequest $request
@@ -4593,8 +4839,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete running enhancement by User ID
+     *
      * @param DeleteProgressByUserIdRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#deleteprogressbyuserid
      */
     public function deleteProgressByUserIdAsync(
             DeleteProgressByUserIdRequest $request
@@ -4608,8 +4857,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete running enhancement by User ID
+     *
      * @param DeleteProgressByUserIdRequest $request
      * @return DeleteProgressByUserIdResult
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#deleteprogressbyuserid
      */
     public function deleteProgressByUserId (
             DeleteProgressByUserIdRequest $request
@@ -4620,8 +4872,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the enhancement initiation process as an acquire action
+     *
      * @param CreateProgressByStampSheetRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/stamp_sheet/#gs2enhancecreateprogressbyuserid
      */
     public function createProgressByStampSheetAsync(
             CreateProgressByStampSheetRequest $request
@@ -4635,8 +4890,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Execute the enhancement initiation process as an acquire action
+     *
      * @param CreateProgressByStampSheetRequest $request
      * @return CreateProgressByStampSheetResult
+     * @see https://docs.gs2.io/api_reference/enhance/stamp_sheet/#gs2enhancecreateprogressbyuserid
      */
     public function createProgressByStampSheet (
             CreateProgressByStampSheetRequest $request
@@ -4647,8 +4905,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete running enhancement as a consume action
+     *
      * @param DeleteProgressByStampTaskRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/stamp_sheet/#gs2enhancedeleteprogressbyuserid
      */
     public function deleteProgressByStampTaskAsync(
             DeleteProgressByStampTaskRequest $request
@@ -4662,8 +4923,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Delete running enhancement as a consume action
+     *
      * @param DeleteProgressByStampTaskRequest $request
      * @return DeleteProgressByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/enhance/stamp_sheet/#gs2enhancedeleteprogressbyuserid
      */
     public function deleteProgressByStampTask (
             DeleteProgressByStampTaskRequest $request
@@ -4674,8 +4938,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Rate Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#exportmaster
      */
     public function exportMasterAsync(
             ExportMasterRequest $request
@@ -4689,8 +4956,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Export Rate Model Master in a master data format that can be activated
+     *
      * @param ExportMasterRequest $request
      * @return ExportMasterResult
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#exportmaster
      */
     public function exportMaster (
             ExportMasterRequest $request
@@ -4701,8 +4971,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Rate Model master data
+     *
      * @param GetCurrentRateMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#getcurrentratemaster
      */
     public function getCurrentRateMasterAsync(
             GetCurrentRateMasterRequest $request
@@ -4716,8 +4989,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Get currently active Rate Model master data
+     *
      * @param GetCurrentRateMasterRequest $request
      * @return GetCurrentRateMasterResult
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#getcurrentratemaster
      */
     public function getCurrentRateMaster (
             GetCurrentRateMasterRequest $request
@@ -4728,8 +5004,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Rate Model master data (3-phase version)
+     *
      * @param PreUpdateCurrentRateMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#preupdatecurrentratemaster
      */
     public function preUpdateCurrentRateMasterAsync(
             PreUpdateCurrentRateMasterRequest $request
@@ -4743,8 +5022,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Rate Model master data (3-phase version)
+     *
      * @param PreUpdateCurrentRateMasterRequest $request
      * @return PreUpdateCurrentRateMasterResult
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#preupdatecurrentratemaster
      */
     public function preUpdateCurrentRateMaster (
             PreUpdateCurrentRateMasterRequest $request
@@ -4755,8 +5037,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Rate Model master data
+     *
      * @param UpdateCurrentRateMasterRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#updatecurrentratemaster
      */
     public function updateCurrentRateMasterAsync(
             UpdateCurrentRateMasterRequest $request
@@ -4770,8 +5055,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Rate Model master data
+     *
      * @param UpdateCurrentRateMasterRequest $request
      * @return UpdateCurrentRateMasterResult
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#updatecurrentratemaster
      */
     public function updateCurrentRateMaster (
             UpdateCurrentRateMasterRequest $request
@@ -4782,8 +5070,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Rate Model master data from GitHub
+     *
      * @param UpdateCurrentRateMasterFromGitHubRequest $request
      * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#updatecurrentratemasterfromgithub
      */
     public function updateCurrentRateMasterFromGitHubAsync(
             UpdateCurrentRateMasterFromGitHubRequest $request
@@ -4797,8 +5088,11 @@ class Gs2EnhanceRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Update currently active Rate Model master data from GitHub
+     *
      * @param UpdateCurrentRateMasterFromGitHubRequest $request
      * @return UpdateCurrentRateMasterFromGitHubResult
+     * @see https://docs.gs2.io/api_reference/enhance/sdk/#updatecurrentratemasterfromgithub
      */
     public function updateCurrentRateMasterFromGitHub (
             UpdateCurrentRateMasterFromGitHubRequest $request

@@ -23,156 +23,231 @@ use Gs2\Inventory\Model\TransactionSettingV2;
 use Gs2\Inventory\Model\ScriptSetting;
 use Gs2\Inventory\Model\LogSetting;
 
+/**
+ * Request for updateNamespace: Update Namespace
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#updatenamespace
+ */
 class UpdateNamespaceRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Description */
     private $description;
-    /** @var TransactionSetting */
+    /** @var TransactionSetting Transaction Setting */
     private $transactionSetting;
-    /** @var TransactionSettingV2 */
+    /** @var TransactionSettingV2 Transaction Setting (V2) */
     private $transactionSettingV2;
-    /** @var ScriptSetting */
+    /** @var ScriptSetting Script setting to be executed when an Items is acquired */
     private $acquireScript;
-    /** @var ScriptSetting */
+    /** @var ScriptSetting Script setting to execute when unable to obtain due to reaching the acquisition limit */
     private $overflowScript;
-    /** @var ScriptSetting */
+    /** @var ScriptSetting Script setting to be executed when consuming Items */
     private $consumeScript;
-    /** @var ScriptSetting */
+    /** @var ScriptSetting Script setting to be executed when acquiring Simple Items */
     private $simpleItemAcquireScript;
-    /** @var ScriptSetting */
+    /** @var ScriptSetting Script setting to be executed when consuming Simple Items */
     private $simpleItemConsumeScript;
-    /** @var ScriptSetting */
+    /** @var ScriptSetting Script setting to be executed when acquiring Big Items */
     private $bigItemAcquireScript;
-    /** @var ScriptSetting */
+    /** @var ScriptSetting Script setting to be executed when consuming Big Items */
     private $bigItemConsumeScript;
-    /** @var LogSetting */
+    /** @var LogSetting Log Output Setting */
     private $logSetting;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return UpdateNamespaceRequest
+     */
 	public function withNamespaceName(?string $namespaceName): UpdateNamespaceRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return UpdateNamespaceRequest
+     */
 	public function withDescription(?string $description): UpdateNamespaceRequest {
 		$this->description = $description;
 		return $this;
 	}
     /**
+     * @return TransactionSetting|null Transaction Setting
      * @deprecated
      */
 	public function getTransactionSetting(): ?TransactionSetting {
 		return $this->transactionSetting;
 	}
     /**
+     * @param TransactionSetting|null $transactionSetting Transaction Setting
      * @deprecated
      */
 	public function setTransactionSetting(?TransactionSetting $transactionSetting) {
 		$this->transactionSetting = $transactionSetting;
 	}
     /**
+     * @param TransactionSetting|null $transactionSetting Transaction Setting
+     * @return UpdateNamespaceRequest
      * @deprecated
      */
 	public function withTransactionSetting(?TransactionSetting $transactionSetting): UpdateNamespaceRequest {
 		$this->transactionSetting = $transactionSetting;
 		return $this;
 	}
+    /** @return TransactionSettingV2|null Transaction Setting (V2) */
 	public function getTransactionSettingV2(): ?TransactionSettingV2 {
 		return $this->transactionSettingV2;
 	}
+    /** @param TransactionSettingV2|null $transactionSettingV2 Transaction Setting (V2) */
 	public function setTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2) {
 		$this->transactionSettingV2 = $transactionSettingV2;
 	}
+    /**
+     * @param TransactionSettingV2|null $transactionSettingV2 Transaction Setting (V2)
+     * @return UpdateNamespaceRequest
+     */
 	public function withTransactionSettingV2(?TransactionSettingV2 $transactionSettingV2): UpdateNamespaceRequest {
 		$this->transactionSettingV2 = $transactionSettingV2;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to be executed when an Items is acquired */
 	public function getAcquireScript(): ?ScriptSetting {
 		return $this->acquireScript;
 	}
+    /** @param ScriptSetting|null $acquireScript Script setting to be executed when an Items is acquired */
 	public function setAcquireScript(?ScriptSetting $acquireScript) {
 		$this->acquireScript = $acquireScript;
 	}
+    /**
+     * @param ScriptSetting|null $acquireScript Script setting to be executed when an Items is acquired
+     * @return UpdateNamespaceRequest
+     */
 	public function withAcquireScript(?ScriptSetting $acquireScript): UpdateNamespaceRequest {
 		$this->acquireScript = $acquireScript;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to execute when unable to obtain due to reaching the acquisition limit */
 	public function getOverflowScript(): ?ScriptSetting {
 		return $this->overflowScript;
 	}
+    /** @param ScriptSetting|null $overflowScript Script setting to execute when unable to obtain due to reaching the acquisition limit */
 	public function setOverflowScript(?ScriptSetting $overflowScript) {
 		$this->overflowScript = $overflowScript;
 	}
+    /**
+     * @param ScriptSetting|null $overflowScript Script setting to execute when unable to obtain due to reaching the acquisition limit
+     * @return UpdateNamespaceRequest
+     */
 	public function withOverflowScript(?ScriptSetting $overflowScript): UpdateNamespaceRequest {
 		$this->overflowScript = $overflowScript;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to be executed when consuming Items */
 	public function getConsumeScript(): ?ScriptSetting {
 		return $this->consumeScript;
 	}
+    /** @param ScriptSetting|null $consumeScript Script setting to be executed when consuming Items */
 	public function setConsumeScript(?ScriptSetting $consumeScript) {
 		$this->consumeScript = $consumeScript;
 	}
+    /**
+     * @param ScriptSetting|null $consumeScript Script setting to be executed when consuming Items
+     * @return UpdateNamespaceRequest
+     */
 	public function withConsumeScript(?ScriptSetting $consumeScript): UpdateNamespaceRequest {
 		$this->consumeScript = $consumeScript;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to be executed when acquiring Simple Items */
 	public function getSimpleItemAcquireScript(): ?ScriptSetting {
 		return $this->simpleItemAcquireScript;
 	}
+    /** @param ScriptSetting|null $simpleItemAcquireScript Script setting to be executed when acquiring Simple Items */
 	public function setSimpleItemAcquireScript(?ScriptSetting $simpleItemAcquireScript) {
 		$this->simpleItemAcquireScript = $simpleItemAcquireScript;
 	}
+    /**
+     * @param ScriptSetting|null $simpleItemAcquireScript Script setting to be executed when acquiring Simple Items
+     * @return UpdateNamespaceRequest
+     */
 	public function withSimpleItemAcquireScript(?ScriptSetting $simpleItemAcquireScript): UpdateNamespaceRequest {
 		$this->simpleItemAcquireScript = $simpleItemAcquireScript;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to be executed when consuming Simple Items */
 	public function getSimpleItemConsumeScript(): ?ScriptSetting {
 		return $this->simpleItemConsumeScript;
 	}
+    /** @param ScriptSetting|null $simpleItemConsumeScript Script setting to be executed when consuming Simple Items */
 	public function setSimpleItemConsumeScript(?ScriptSetting $simpleItemConsumeScript) {
 		$this->simpleItemConsumeScript = $simpleItemConsumeScript;
 	}
+    /**
+     * @param ScriptSetting|null $simpleItemConsumeScript Script setting to be executed when consuming Simple Items
+     * @return UpdateNamespaceRequest
+     */
 	public function withSimpleItemConsumeScript(?ScriptSetting $simpleItemConsumeScript): UpdateNamespaceRequest {
 		$this->simpleItemConsumeScript = $simpleItemConsumeScript;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to be executed when acquiring Big Items */
 	public function getBigItemAcquireScript(): ?ScriptSetting {
 		return $this->bigItemAcquireScript;
 	}
+    /** @param ScriptSetting|null $bigItemAcquireScript Script setting to be executed when acquiring Big Items */
 	public function setBigItemAcquireScript(?ScriptSetting $bigItemAcquireScript) {
 		$this->bigItemAcquireScript = $bigItemAcquireScript;
 	}
+    /**
+     * @param ScriptSetting|null $bigItemAcquireScript Script setting to be executed when acquiring Big Items
+     * @return UpdateNamespaceRequest
+     */
 	public function withBigItemAcquireScript(?ScriptSetting $bigItemAcquireScript): UpdateNamespaceRequest {
 		$this->bigItemAcquireScript = $bigItemAcquireScript;
 		return $this;
 	}
+    /** @return ScriptSetting|null Script setting to be executed when consuming Big Items */
 	public function getBigItemConsumeScript(): ?ScriptSetting {
 		return $this->bigItemConsumeScript;
 	}
+    /** @param ScriptSetting|null $bigItemConsumeScript Script setting to be executed when consuming Big Items */
 	public function setBigItemConsumeScript(?ScriptSetting $bigItemConsumeScript) {
 		$this->bigItemConsumeScript = $bigItemConsumeScript;
 	}
+    /**
+     * @param ScriptSetting|null $bigItemConsumeScript Script setting to be executed when consuming Big Items
+     * @return UpdateNamespaceRequest
+     */
 	public function withBigItemConsumeScript(?ScriptSetting $bigItemConsumeScript): UpdateNamespaceRequest {
 		$this->bigItemConsumeScript = $bigItemConsumeScript;
 		return $this;
 	}
+    /** @return LogSetting|null Log Output Setting */
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
 	}
+    /** @param LogSetting|null $logSetting Log Output Setting */
 	public function setLogSetting(?LogSetting $logSetting) {
 		$this->logSetting = $logSetting;
 	}
+    /**
+     * @param LogSetting|null $logSetting Log Output Setting
+     * @return UpdateNamespaceRequest
+     */
 	public function withLogSetting(?LogSetting $logSetting): UpdateNamespaceRequest {
 		$this->logSetting = $logSetting;
 		return $this;

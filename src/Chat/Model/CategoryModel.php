@@ -20,45 +20,68 @@ namespace Gs2\Chat\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Message Category Model
+ *
+ * @see https://docs.gs2.io/api_reference/chat/sdk/#categorymodel
+ */
 class CategoryModel implements IModel {
 	/**
-     * @var string
+     * @var string Message Category Model GRN
 	 */
 	private $categoryModelId;
 	/**
-     * @var int
+     * @var int Category
 	 */
 	private $category;
 	/**
-     * @var string
+     * @var string Reject posts made using player access tokens
 	 */
 	private $rejectAccessTokenPost;
+    /** @return string|null Message Category Model GRN */
 	public function getCategoryModelId(): ?string {
 		return $this->categoryModelId;
 	}
+    /** @param string|null $categoryModelId Message Category Model GRN */
 	public function setCategoryModelId(?string $categoryModelId) {
 		$this->categoryModelId = $categoryModelId;
 	}
+    /**
+     * @param string|null $categoryModelId Message Category Model GRN
+     * @return CategoryModel
+     */
 	public function withCategoryModelId(?string $categoryModelId): CategoryModel {
 		$this->categoryModelId = $categoryModelId;
 		return $this;
 	}
+    /** @return int|null Category */
 	public function getCategory(): ?int {
 		return $this->category;
 	}
+    /** @param int|null $category Category */
 	public function setCategory(?int $category) {
 		$this->category = $category;
 	}
+    /**
+     * @param int|null $category Category
+     * @return CategoryModel
+     */
 	public function withCategory(?int $category): CategoryModel {
 		$this->category = $category;
 		return $this;
 	}
+    /** @return string|null Reject posts made using player access tokens */
 	public function getRejectAccessTokenPost(): ?string {
 		return $this->rejectAccessTokenPost;
 	}
+    /** @param string|null $rejectAccessTokenPost Reject posts made using player access tokens */
 	public function setRejectAccessTokenPost(?string $rejectAccessTokenPost) {
 		$this->rejectAccessTokenPost = $rejectAccessTokenPost;
 	}
+    /**
+     * @param string|null $rejectAccessTokenPost Reject posts made using player access tokens
+     * @return CategoryModel
+     */
 	public function withRejectAccessTokenPost(?string $rejectAccessTokenPost): CategoryModel {
 		$this->rejectAccessTokenPost = $rejectAccessTokenPost;
 		return $this;

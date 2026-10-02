@@ -20,185 +20,264 @@ namespace Gs2\Project\Model;
 use Gs2\Core\Model\IModel;
 
 
+/** Billing */
 class Billing implements IModel {
 	/**
-     * @var string
+     * @var string Usage Status GRN
 	 */
 	private $billingId;
 	/**
-     * @var string
+     * @var string Project Name
 	 */
 	private $projectName;
 	/**
-     * @var int
+     * @var int Year the event occurred
 	 */
 	private $year;
 	/**
-     * @var int
+     * @var int Month the event occurred
 	 */
 	private $month;
 	/**
-     * @var string
+     * @var string Region
 	 */
 	private $region;
 	/**
-     * @var string
+     * @var string Service
 	 */
 	private $service;
 	/**
-     * @var string
+     * @var string Event
 	 */
 	private $activityType;
 	/**
-     * @var float
+     * @var float Count
 	 */
 	private $unit;
 	/**
-     * @var string
+     * @var string Unit
 	 */
 	private $unitName;
 	/**
-     * @var float
+     * @var float Price
 	 */
 	private $price;
 	/**
-     * @var string
+     * @var string Currency
 	 */
 	private $currency;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
+    /** @return string|null Usage Status GRN */
 	public function getBillingId(): ?string {
 		return $this->billingId;
 	}
+    /** @param string|null $billingId Usage Status GRN */
 	public function setBillingId(?string $billingId) {
 		$this->billingId = $billingId;
 	}
+    /**
+     * @param string|null $billingId Usage Status GRN
+     * @return Billing
+     */
 	public function withBillingId(?string $billingId): Billing {
 		$this->billingId = $billingId;
 		return $this;
 	}
+    /** @return string|null Project Name */
 	public function getProjectName(): ?string {
 		return $this->projectName;
 	}
+    /** @param string|null $projectName Project Name */
 	public function setProjectName(?string $projectName) {
 		$this->projectName = $projectName;
 	}
+    /**
+     * @param string|null $projectName Project Name
+     * @return Billing
+     */
 	public function withProjectName(?string $projectName): Billing {
 		$this->projectName = $projectName;
 		return $this;
 	}
+    /** @return int|null Year the event occurred */
 	public function getYear(): ?int {
 		return $this->year;
 	}
+    /** @param int|null $year Year the event occurred */
 	public function setYear(?int $year) {
 		$this->year = $year;
 	}
+    /**
+     * @param int|null $year Year the event occurred
+     * @return Billing
+     */
 	public function withYear(?int $year): Billing {
 		$this->year = $year;
 		return $this;
 	}
+    /** @return int|null Month the event occurred */
 	public function getMonth(): ?int {
 		return $this->month;
 	}
+    /** @param int|null $month Month the event occurred */
 	public function setMonth(?int $month) {
 		$this->month = $month;
 	}
+    /**
+     * @param int|null $month Month the event occurred
+     * @return Billing
+     */
 	public function withMonth(?int $month): Billing {
 		$this->month = $month;
 		return $this;
 	}
+    /** @return string|null Region */
 	public function getRegion(): ?string {
 		return $this->region;
 	}
+    /** @param string|null $region Region */
 	public function setRegion(?string $region) {
 		$this->region = $region;
 	}
+    /**
+     * @param string|null $region Region
+     * @return Billing
+     */
 	public function withRegion(?string $region): Billing {
 		$this->region = $region;
 		return $this;
 	}
+    /** @return string|null Service */
 	public function getService(): ?string {
 		return $this->service;
 	}
+    /** @param string|null $service Service */
 	public function setService(?string $service) {
 		$this->service = $service;
 	}
+    /**
+     * @param string|null $service Service
+     * @return Billing
+     */
 	public function withService(?string $service): Billing {
 		$this->service = $service;
 		return $this;
 	}
+    /** @return string|null Event */
 	public function getActivityType(): ?string {
 		return $this->activityType;
 	}
+    /** @param string|null $activityType Event */
 	public function setActivityType(?string $activityType) {
 		$this->activityType = $activityType;
 	}
+    /**
+     * @param string|null $activityType Event
+     * @return Billing
+     */
 	public function withActivityType(?string $activityType): Billing {
 		$this->activityType = $activityType;
 		return $this;
 	}
+    /** @return float|null Count */
 	public function getUnit(): ?float {
 		return $this->unit;
 	}
+    /** @param float|null $unit Count */
 	public function setUnit(?float $unit) {
 		$this->unit = $unit;
 	}
+    /**
+     * @param float|null $unit Count
+     * @return Billing
+     */
 	public function withUnit(?float $unit): Billing {
 		$this->unit = $unit;
 		return $this;
 	}
+    /** @return string|null Unit */
 	public function getUnitName(): ?string {
 		return $this->unitName;
 	}
+    /** @param string|null $unitName Unit */
 	public function setUnitName(?string $unitName) {
 		$this->unitName = $unitName;
 	}
+    /**
+     * @param string|null $unitName Unit
+     * @return Billing
+     */
 	public function withUnitName(?string $unitName): Billing {
 		$this->unitName = $unitName;
 		return $this;
 	}
+    /** @return float|null Price */
 	public function getPrice(): ?float {
 		return $this->price;
 	}
+    /** @param float|null $price Price */
 	public function setPrice(?float $price) {
 		$this->price = $price;
 	}
+    /**
+     * @param float|null $price Price
+     * @return Billing
+     */
 	public function withPrice(?float $price): Billing {
 		$this->price = $price;
 		return $this;
 	}
+    /** @return string|null Currency */
 	public function getCurrency(): ?string {
 		return $this->currency;
 	}
+    /** @param string|null $currency Currency */
 	public function setCurrency(?string $currency) {
 		$this->currency = $currency;
 	}
+    /**
+     * @param string|null $currency Currency
+     * @return Billing
+     */
 	public function withCurrency(?string $currency): Billing {
 		$this->currency = $currency;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return Billing
+     */
 	public function withCreatedAt(?int $createdAt): Billing {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return Billing
+     */
 	public function withUpdatedAt(?int $updatedAt): Billing {
 		$this->updatedAt = $updatedAt;
 		return $this;

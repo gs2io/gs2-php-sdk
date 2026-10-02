@@ -23,33 +23,50 @@ use Gs2\Showcase\Model\ConsumeAction;
 use Gs2\Showcase\Model\AcquireAction;
 use Gs2\Showcase\Model\RandomDisplayItem;
 
+/**
+ * Result of incrementPurchaseCountByStampTask: Execute the addition of the number of purchases as a consume action
+ *
+ * @see https://docs.gs2.io/api_reference/showcase/stamp_sheet/#gs2showcaseincrementpurchasecountbyuserid
+ */
 class IncrementPurchaseCountByStampTaskResult implements IResult {
-    /** @var RandomDisplayItem */
+    /** @var RandomDisplayItem Random Displayed Items after purchase counts are added */
     private $item;
-    /** @var string */
+    /** @var string Context recording the execution results of Consume Actions */
     private $newContextStack;
 
+    /** @return RandomDisplayItem|null Random Displayed Items after purchase counts are added */
 	public function getItem(): ?RandomDisplayItem {
 		return $this->item;
 	}
 
+    /** @param RandomDisplayItem|null $item Random Displayed Items after purchase counts are added */
 	public function setItem(?RandomDisplayItem $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param RandomDisplayItem|null $item Random Displayed Items after purchase counts are added
+     * @return IncrementPurchaseCountByStampTaskResult
+     */
 	public function withItem(?RandomDisplayItem $item): IncrementPurchaseCountByStampTaskResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null Context recording the execution results of Consume Actions */
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
+    /** @param string|null $newContextStack Context recording the execution results of Consume Actions */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
+    /**
+     * @param string|null $newContextStack Context recording the execution results of Consume Actions
+     * @return IncrementPurchaseCountByStampTaskResult
+     */
 	public function withNewContextStack(?string $newContextStack): IncrementPurchaseCountByStampTaskResult {
 		$this->newContextStack = $newContextStack;
 		return $this;

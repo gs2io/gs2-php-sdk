@@ -20,18 +20,29 @@ namespace Gs2\StateMachine\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\StateMachine\Model\StateMachineMaster;
 
+/**
+ * Result of updateStateMachineMaster: Create or update a new State Machine Master
+ *
+ * @see https://docs.gs2.io/api_reference/state_machine/sdk/#updatestatemachinemaster
+ */
 class UpdateStateMachineMasterResult implements IResult {
-    /** @var StateMachineMaster */
+    /** @var StateMachineMaster Created State Machine Master */
     private $item;
 
+    /** @return StateMachineMaster|null Created State Machine Master */
 	public function getItem(): ?StateMachineMaster {
 		return $this->item;
 	}
 
+    /** @param StateMachineMaster|null $item Created State Machine Master */
 	public function setItem(?StateMachineMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param StateMachineMaster|null $item Created State Machine Master
+     * @return UpdateStateMachineMasterResult
+     */
 	public function withItem(?StateMachineMaster $item): UpdateStateMachineMasterResult {
 		$this->item = $item;
 		return $this;

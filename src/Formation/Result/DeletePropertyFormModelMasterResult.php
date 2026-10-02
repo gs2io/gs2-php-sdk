@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Formation\Model\SlotModel;
 use Gs2\Formation\Model\PropertyFormModelMaster;
 
+/**
+ * Result of deletePropertyFormModelMaster: Delete Property Form Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/formation/sdk/#deletepropertyformmodelmaster
+ */
 class DeletePropertyFormModelMasterResult implements IResult {
-    /** @var PropertyFormModelMaster */
+    /** @var PropertyFormModelMaster Form Model Master deleted */
     private $item;
 
+    /** @return PropertyFormModelMaster|null Form Model Master deleted */
 	public function getItem(): ?PropertyFormModelMaster {
 		return $this->item;
 	}
 
+    /** @param PropertyFormModelMaster|null $item Form Model Master deleted */
 	public function setItem(?PropertyFormModelMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param PropertyFormModelMaster|null $item Form Model Master deleted
+     * @return DeletePropertyFormModelMasterResult
+     */
 	public function withItem(?PropertyFormModelMaster $item): DeletePropertyFormModelMasterResult {
 		$this->item = $item;
 		return $this;

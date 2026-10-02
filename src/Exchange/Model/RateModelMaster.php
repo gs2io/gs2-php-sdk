@@ -20,171 +20,248 @@ namespace Gs2\Exchange\Model;
 use Gs2\Core\Model\IModel;
 
 
+/**
+ * Exchange Rate Model Master
+ *
+ * @see https://docs.gs2.io/api_reference/exchange/sdk/#ratemodelmaster
+ */
 class RateModelMaster implements IModel {
 	/**
-     * @var string
+     * @var string Exchange Rate Model Master GRN
 	 */
 	private $rateModelId;
 	/**
-     * @var string
+     * @var string Exchange Rate Model name
 	 */
 	private $name;
 	/**
-     * @var string
+     * @var string Description
 	 */
 	private $description;
 	/**
-     * @var string
+     * @var string Metadata
 	 */
 	private $metadata;
 	/**
-     * @var array
+     * @var array List of Verify Actions
 	 */
 	private $verifyActions;
 	/**
-     * @var array
+     * @var array List of Consume Actions
 	 */
 	private $consumeActions;
 	/**
-     * @var string
+     * @var string Type of exchange
 	 */
 	private $timingType;
 	/**
-     * @var int
+     * @var int Waiting time (minutes) from the execution of the exchange until the reward is actually received
 	 */
 	private $lockTime;
 	/**
-     * @var array
+     * @var array List of Acquire Actions
 	 */
 	private $acquireActions;
 	/**
-     * @var int
+     * @var int Creation Timestamp
 	 */
 	private $createdAt;
 	/**
-     * @var int
+     * @var int Last Updated Timestamp
 	 */
 	private $updatedAt;
 	/**
-     * @var int
+     * @var int Revision
 	 */
 	private $revision;
+    /** @return string|null Exchange Rate Model Master GRN */
 	public function getRateModelId(): ?string {
 		return $this->rateModelId;
 	}
+    /** @param string|null $rateModelId Exchange Rate Model Master GRN */
 	public function setRateModelId(?string $rateModelId) {
 		$this->rateModelId = $rateModelId;
 	}
+    /**
+     * @param string|null $rateModelId Exchange Rate Model Master GRN
+     * @return RateModelMaster
+     */
 	public function withRateModelId(?string $rateModelId): RateModelMaster {
 		$this->rateModelId = $rateModelId;
 		return $this;
 	}
+    /** @return string|null Exchange Rate Model name */
 	public function getName(): ?string {
 		return $this->name;
 	}
+    /** @param string|null $name Exchange Rate Model name */
 	public function setName(?string $name) {
 		$this->name = $name;
 	}
+    /**
+     * @param string|null $name Exchange Rate Model name
+     * @return RateModelMaster
+     */
 	public function withName(?string $name): RateModelMaster {
 		$this->name = $name;
 		return $this;
 	}
+    /** @return string|null Description */
 	public function getDescription(): ?string {
 		return $this->description;
 	}
+    /** @param string|null $description Description */
 	public function setDescription(?string $description) {
 		$this->description = $description;
 	}
+    /**
+     * @param string|null $description Description
+     * @return RateModelMaster
+     */
 	public function withDescription(?string $description): RateModelMaster {
 		$this->description = $description;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return RateModelMaster
+     */
 	public function withMetadata(?string $metadata): RateModelMaster {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return array|null List of Verify Actions */
 	public function getVerifyActions(): ?array {
 		return $this->verifyActions;
 	}
+    /** @param array|null $verifyActions List of Verify Actions */
 	public function setVerifyActions(?array $verifyActions) {
 		$this->verifyActions = $verifyActions;
 	}
+    /**
+     * @param array|null $verifyActions List of Verify Actions
+     * @return RateModelMaster
+     */
 	public function withVerifyActions(?array $verifyActions): RateModelMaster {
 		$this->verifyActions = $verifyActions;
 		return $this;
 	}
+    /** @return array|null List of Consume Actions */
 	public function getConsumeActions(): ?array {
 		return $this->consumeActions;
 	}
+    /** @param array|null $consumeActions List of Consume Actions */
 	public function setConsumeActions(?array $consumeActions) {
 		$this->consumeActions = $consumeActions;
 	}
+    /**
+     * @param array|null $consumeActions List of Consume Actions
+     * @return RateModelMaster
+     */
 	public function withConsumeActions(?array $consumeActions): RateModelMaster {
 		$this->consumeActions = $consumeActions;
 		return $this;
 	}
+    /** @return string|null Type of exchange */
 	public function getTimingType(): ?string {
 		return $this->timingType;
 	}
+    /** @param string|null $timingType Type of exchange */
 	public function setTimingType(?string $timingType) {
 		$this->timingType = $timingType;
 	}
+    /**
+     * @param string|null $timingType Type of exchange
+     * @return RateModelMaster
+     */
 	public function withTimingType(?string $timingType): RateModelMaster {
 		$this->timingType = $timingType;
 		return $this;
 	}
+    /** @return int|null Waiting time (minutes) from the execution of the exchange until the reward is actually received */
 	public function getLockTime(): ?int {
 		return $this->lockTime;
 	}
+    /** @param int|null $lockTime Waiting time (minutes) from the execution of the exchange until the reward is actually received */
 	public function setLockTime(?int $lockTime) {
 		$this->lockTime = $lockTime;
 	}
+    /**
+     * @param int|null $lockTime Waiting time (minutes) from the execution of the exchange until the reward is actually received
+     * @return RateModelMaster
+     */
 	public function withLockTime(?int $lockTime): RateModelMaster {
 		$this->lockTime = $lockTime;
 		return $this;
 	}
+    /** @return array|null List of Acquire Actions */
 	public function getAcquireActions(): ?array {
 		return $this->acquireActions;
 	}
+    /** @param array|null $acquireActions List of Acquire Actions */
 	public function setAcquireActions(?array $acquireActions) {
 		$this->acquireActions = $acquireActions;
 	}
+    /**
+     * @param array|null $acquireActions List of Acquire Actions
+     * @return RateModelMaster
+     */
 	public function withAcquireActions(?array $acquireActions): RateModelMaster {
 		$this->acquireActions = $acquireActions;
 		return $this;
 	}
+    /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
 	}
+    /** @param int|null $createdAt Creation Timestamp */
 	public function setCreatedAt(?int $createdAt) {
 		$this->createdAt = $createdAt;
 	}
+    /**
+     * @param int|null $createdAt Creation Timestamp
+     * @return RateModelMaster
+     */
 	public function withCreatedAt(?int $createdAt): RateModelMaster {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Last Updated Timestamp */
 	public function getUpdatedAt(): ?int {
 		return $this->updatedAt;
 	}
+    /** @param int|null $updatedAt Last Updated Timestamp */
 	public function setUpdatedAt(?int $updatedAt) {
 		$this->updatedAt = $updatedAt;
 	}
+    /**
+     * @param int|null $updatedAt Last Updated Timestamp
+     * @return RateModelMaster
+     */
 	public function withUpdatedAt(?int $updatedAt): RateModelMaster {
 		$this->updatedAt = $updatedAt;
 		return $this;
 	}
+    /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
 	}
+    /** @param int|null $revision Revision */
 	public function setRevision(?int $revision) {
 		$this->revision = $revision;
 	}
+    /**
+     * @param int|null $revision Revision
+     * @return RateModelMaster
+     */
 	public function withRevision(?int $revision): RateModelMaster {
 		$this->revision = $revision;
 		return $this;

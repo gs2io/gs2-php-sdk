@@ -19,18 +19,29 @@ namespace Gs2\Key\Result;
 
 use Gs2\Core\Model\IResult;
 
+/**
+ * Result of encrypt: Encrypt data
+ *
+ * @see https://docs.gs2.io/api_reference/key/sdk/#encrypt
+ */
 class EncryptResult implements IResult {
-    /** @var string */
+    /** @var string Encrypted Data */
     private $data;
 
+    /** @return string|null Encrypted Data */
 	public function getData(): ?string {
 		return $this->data;
 	}
 
+    /** @param string|null $data Encrypted Data */
 	public function setData(?string $data) {
 		$this->data = $data;
 	}
 
+    /**
+     * @param string|null $data Encrypted Data
+     * @return EncryptResult
+     */
 	public function withData(?string $data): EncryptResult {
 		$this->data = $data;
 		return $this;

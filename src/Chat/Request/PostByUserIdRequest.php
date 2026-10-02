@@ -19,89 +19,136 @@ namespace Gs2\Chat\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for postByUserId: Post Message by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/chat/sdk/#postbyuserid
+ */
 class PostByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Room name */
     private $roomName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var int */
+    /** @var int Category number for classifying messages */
     private $category;
-    /** @var string */
+    /** @var string Metadata */
     private $metadata;
-    /** @var string */
+    /** @var string Password */
     private $password;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return PostByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): PostByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Room name */
 	public function getRoomName(): ?string {
 		return $this->roomName;
 	}
+    /** @param string|null $roomName Room name */
 	public function setRoomName(?string $roomName) {
 		$this->roomName = $roomName;
 	}
+    /**
+     * @param string|null $roomName Room name
+     * @return PostByUserIdRequest
+     */
 	public function withRoomName(?string $roomName): PostByUserIdRequest {
 		$this->roomName = $roomName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return PostByUserIdRequest
+     */
 	public function withUserId(?string $userId): PostByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return int|null Category number for classifying messages */
 	public function getCategory(): ?int {
 		return $this->category;
 	}
+    /** @param int|null $category Category number for classifying messages */
 	public function setCategory(?int $category) {
 		$this->category = $category;
 	}
+    /**
+     * @param int|null $category Category number for classifying messages
+     * @return PostByUserIdRequest
+     */
 	public function withCategory(?int $category): PostByUserIdRequest {
 		$this->category = $category;
 		return $this;
 	}
+    /** @return string|null Metadata */
 	public function getMetadata(): ?string {
 		return $this->metadata;
 	}
+    /** @param string|null $metadata Metadata */
 	public function setMetadata(?string $metadata) {
 		$this->metadata = $metadata;
 	}
+    /**
+     * @param string|null $metadata Metadata
+     * @return PostByUserIdRequest
+     */
 	public function withMetadata(?string $metadata): PostByUserIdRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return string|null Password */
 	public function getPassword(): ?string {
 		return $this->password;
 	}
+    /** @param string|null $password Password */
 	public function setPassword(?string $password) {
 		$this->password = $password;
 	}
+    /**
+     * @param string|null $password Password
+     * @return PostByUserIdRequest
+     */
 	public function withPassword(?string $password): PostByUserIdRequest {
 		$this->password = $password;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return PostByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): PostByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

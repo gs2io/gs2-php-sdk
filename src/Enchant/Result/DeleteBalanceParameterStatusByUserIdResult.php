@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Enchant\Model\BalanceParameterValue;
 use Gs2\Enchant\Model\BalanceParameterStatus;
 
+/**
+ * Result of deleteBalanceParameterStatusByUserId: Delete Balance Parameter Status
+ *
+ * @see https://docs.gs2.io/api_reference/enchant/sdk/#deletebalanceparameterstatusbyuserid
+ */
 class DeleteBalanceParameterStatusByUserIdResult implements IResult {
-    /** @var BalanceParameterStatus */
+    /** @var BalanceParameterStatus Balance Parameter Status deleted */
     private $item;
 
+    /** @return BalanceParameterStatus|null Balance Parameter Status deleted */
 	public function getItem(): ?BalanceParameterStatus {
 		return $this->item;
 	}
 
+    /** @param BalanceParameterStatus|null $item Balance Parameter Status deleted */
 	public function setItem(?BalanceParameterStatus $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param BalanceParameterStatus|null $item Balance Parameter Status deleted
+     * @return DeleteBalanceParameterStatusByUserIdResult
+     */
 	public function withItem(?BalanceParameterStatus $item): DeleteBalanceParameterStatusByUserIdResult {
 		$this->item = $item;
 		return $this;

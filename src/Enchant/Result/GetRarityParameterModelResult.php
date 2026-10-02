@@ -22,18 +22,29 @@ use Gs2\Enchant\Model\RarityParameterCountModel;
 use Gs2\Enchant\Model\RarityParameterValueModel;
 use Gs2\Enchant\Model\RarityParameterModel;
 
+/**
+ * Result of getRarityParameterModel: Get Rarity Parameter Model
+ *
+ * @see https://docs.gs2.io/api_reference/enchant/sdk/#getrarityparametermodel
+ */
 class GetRarityParameterModelResult implements IResult {
-    /** @var RarityParameterModel */
+    /** @var RarityParameterModel Rarity Parameter Model */
     private $item;
 
+    /** @return RarityParameterModel|null Rarity Parameter Model */
 	public function getItem(): ?RarityParameterModel {
 		return $this->item;
 	}
 
+    /** @param RarityParameterModel|null $item Rarity Parameter Model */
 	public function setItem(?RarityParameterModel $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param RarityParameterModel|null $item Rarity Parameter Model
+     * @return GetRarityParameterModelResult
+     */
 	public function withItem(?RarityParameterModel $item): GetRarityParameterModelResult {
 		$this->item = $item;
 		return $this;

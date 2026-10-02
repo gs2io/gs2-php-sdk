@@ -22,33 +22,50 @@ use Gs2\Guild\Model\RoleModel;
 use Gs2\Guild\Model\Member;
 use Gs2\Guild\Model\Guild;
 
+/**
+ * Result of decreaseMaximumCurrentMaximumMemberCountByStampTask: Execute subtraction of the maximum number of members as a consume action
+ *
+ * @see https://docs.gs2.io/api_reference/guild/stamp_sheet/#gs2guilddecreasemaximumcurrentmaximummembercountbyguildname
+ */
 class DecreaseMaximumCurrentMaximumMemberCountByStampTaskResult implements IResult {
-    /** @var Guild */
+    /** @var Guild Guild updated */
     private $item;
-    /** @var string */
+    /** @var string Context recording the execution results of Consume Actions */
     private $newContextStack;
 
+    /** @return Guild|null Guild updated */
 	public function getItem(): ?Guild {
 		return $this->item;
 	}
 
+    /** @param Guild|null $item Guild updated */
 	public function setItem(?Guild $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Guild|null $item Guild updated
+     * @return DecreaseMaximumCurrentMaximumMemberCountByStampTaskResult
+     */
 	public function withItem(?Guild $item): DecreaseMaximumCurrentMaximumMemberCountByStampTaskResult {
 		$this->item = $item;
 		return $this;
 	}
 
+    /** @return string|null Context recording the execution results of Consume Actions */
 	public function getNewContextStack(): ?string {
 		return $this->newContextStack;
 	}
 
+    /** @param string|null $newContextStack Context recording the execution results of Consume Actions */
 	public function setNewContextStack(?string $newContextStack) {
 		$this->newContextStack = $newContextStack;
 	}
 
+    /**
+     * @param string|null $newContextStack Context recording the execution results of Consume Actions
+     * @return DecreaseMaximumCurrentMaximumMemberCountByStampTaskResult
+     */
 	public function withNewContextStack(?string $newContextStack): DecreaseMaximumCurrentMaximumMemberCountByStampTaskResult {
 		$this->newContextStack = $newContextStack;
 		return $this;

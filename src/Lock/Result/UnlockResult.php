@@ -20,18 +20,29 @@ namespace Gs2\Lock\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Lock\Model\Mutex;
 
+/**
+ * Result of unlock: Release Mutex
+ *
+ * @see https://docs.gs2.io/api_reference/lock/sdk/#unlock
+ */
 class UnlockResult implements IResult {
-    /** @var Mutex */
+    /** @var Mutex Mutex */
     private $item;
 
+    /** @return Mutex|null Mutex */
 	public function getItem(): ?Mutex {
 		return $this->item;
 	}
 
+    /** @param Mutex|null $item Mutex */
 	public function setItem(?Mutex $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param Mutex|null $item Mutex
+     * @return UnlockResult
+     */
 	public function withItem(?Mutex $item): UnlockResult {
 		$this->item = $item;
 		return $this;

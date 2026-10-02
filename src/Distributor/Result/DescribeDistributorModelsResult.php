@@ -20,18 +20,29 @@ namespace Gs2\Distributor\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Distributor\Model\DistributorModel;
 
+/**
+ * Result of describeDistributorModels: List Distributor Models
+ *
+ * @see https://docs.gs2.io/api_reference/distributor/sdk/#describedistributormodels
+ */
 class DescribeDistributorModelsResult implements IResult {
-    /** @var array */
+    /** @var array List of Distributor Models */
     private $items;
 
+    /** @return array|null List of Distributor Models */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of Distributor Models */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of Distributor Models
+     * @return DescribeDistributorModelsResult
+     */
 	public function withItems(?array $items): DescribeDistributorModelsResult {
 		$this->items = $items;
 		return $this;

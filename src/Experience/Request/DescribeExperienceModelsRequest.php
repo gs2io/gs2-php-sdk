@@ -19,15 +19,26 @@ namespace Gs2\Experience\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for describeExperienceModels: List Experience Models
+ *
+ * @see https://docs.gs2.io/api_reference/experience/sdk/#describeexperiencemodels
+ */
 class DescribeExperienceModelsRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return DescribeExperienceModelsRequest
+     */
 	public function withNamespaceName(?string $namespaceName): DescribeExperienceModelsRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;

@@ -23,18 +23,29 @@ use Gs2\Showcase\Model\ConsumeAction;
 use Gs2\Showcase\Model\AcquireAction;
 use Gs2\Showcase\Model\RandomDisplayItem;
 
+/**
+ * Result of decrementPurchaseCountByStampSheet: Execute the subtraction of the number of purchases as an acquire action
+ *
+ * @see https://docs.gs2.io/api_reference/showcase/stamp_sheet/#gs2showcasedecrementpurchasecountbyuserid
+ */
 class DecrementPurchaseCountByStampSheetResult implements IResult {
-    /** @var RandomDisplayItem */
+    /** @var RandomDisplayItem Random Displayed Item after purchase counts are subtracted */
     private $item;
 
+    /** @return RandomDisplayItem|null Random Displayed Item after purchase counts are subtracted */
 	public function getItem(): ?RandomDisplayItem {
 		return $this->item;
 	}
 
+    /** @param RandomDisplayItem|null $item Random Displayed Item after purchase counts are subtracted */
 	public function setItem(?RandomDisplayItem $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param RandomDisplayItem|null $item Random Displayed Item after purchase counts are subtracted
+     * @return DecrementPurchaseCountByStampSheetResult
+     */
 	public function withItem(?RandomDisplayItem $item): DecrementPurchaseCountByStampSheetResult {
 		$this->item = $item;
 		return $this;

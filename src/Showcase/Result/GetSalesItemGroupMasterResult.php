@@ -20,18 +20,29 @@ namespace Gs2\Showcase\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Showcase\Model\SalesItemGroupMaster;
 
+/**
+ * Result of getSalesItemGroupMaster: Get Sales Item Group Master
+ *
+ * @see https://docs.gs2.io/api_reference/showcase/sdk/#getsalesitemgroupmaster
+ */
 class GetSalesItemGroupMasterResult implements IResult {
-    /** @var SalesItemGroupMaster */
+    /** @var SalesItemGroupMaster Sales Item Group Master */
     private $item;
 
+    /** @return SalesItemGroupMaster|null Sales Item Group Master */
 	public function getItem(): ?SalesItemGroupMaster {
 		return $this->item;
 	}
 
+    /** @param SalesItemGroupMaster|null $item Sales Item Group Master */
 	public function setItem(?SalesItemGroupMaster $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param SalesItemGroupMaster|null $item Sales Item Group Master
+     * @return GetSalesItemGroupMasterResult
+     */
 	public function withItem(?SalesItemGroupMaster $item): GetSalesItemGroupMasterResult {
 		$this->item = $item;
 		return $this;

@@ -20,33 +20,50 @@ namespace Gs2\Key\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Key\Model\GitHubApiKey;
 
+/**
+ * Result of describeGitHubApiKeys: List GitHub API Keys
+ *
+ * @see https://docs.gs2.io/api_reference/key/sdk/#describegithubapikeys
+ */
 class DescribeGitHubApiKeysResult implements IResult {
-    /** @var array */
+    /** @var array List of GitHub API Keys */
     private $items;
-    /** @var string */
+    /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
+    /** @return array|null List of GitHub API Keys */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
+    /** @param array|null $items List of GitHub API Keys */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
+    /**
+     * @param array|null $items List of GitHub API Keys
+     * @return DescribeGitHubApiKeysResult
+     */
 	public function withItems(?array $items): DescribeGitHubApiKeysResult {
 		$this->items = $items;
 		return $this;
 	}
 
+    /** @return string|null Page token to retrieve the rest of the listing */
 	public function getNextPageToken(): ?string {
 		return $this->nextPageToken;
 	}
 
+    /** @param string|null $nextPageToken Page token to retrieve the rest of the listing */
 	public function setNextPageToken(?string $nextPageToken) {
 		$this->nextPageToken = $nextPageToken;
 	}
 
+    /**
+     * @param string|null $nextPageToken Page token to retrieve the rest of the listing
+     * @return DescribeGitHubApiKeysResult
+     */
 	public function withNextPageToken(?string $nextPageToken): DescribeGitHubApiKeysResult {
 		$this->nextPageToken = $nextPageToken;
 		return $this;

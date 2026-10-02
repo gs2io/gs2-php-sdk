@@ -19,77 +19,118 @@ namespace Gs2\Inventory\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
+/**
+ * Request for setBigItemByUserId: Set the Big Item by User ID
+ *
+ * @see https://docs.gs2.io/api_reference/inventory/sdk/#setbigitembyuserid
+ */
 class SetBigItemByUserIdRequest extends Gs2BasicRequest {
-    /** @var string */
+    /** @var string Namespace name */
     private $namespaceName;
-    /** @var string */
+    /** @var string Big Inventory Model name */
     private $inventoryName;
-    /** @var string */
+    /** @var string User ID */
     private $userId;
-    /** @var string */
+    /** @var string Big Item Model name */
     private $itemName;
-    /** @var string */
+    /** @var string Quantity of Big Item */
     private $count;
-    /** @var string */
+    /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
     private $duplicationAvoider;
+    /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
 	}
+    /** @param string|null $namespaceName Namespace name */
 	public function setNamespaceName(?string $namespaceName) {
 		$this->namespaceName = $namespaceName;
 	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return SetBigItemByUserIdRequest
+     */
 	public function withNamespaceName(?string $namespaceName): SetBigItemByUserIdRequest {
 		$this->namespaceName = $namespaceName;
 		return $this;
 	}
+    /** @return string|null Big Inventory Model name */
 	public function getInventoryName(): ?string {
 		return $this->inventoryName;
 	}
+    /** @param string|null $inventoryName Big Inventory Model name */
 	public function setInventoryName(?string $inventoryName) {
 		$this->inventoryName = $inventoryName;
 	}
+    /**
+     * @param string|null $inventoryName Big Inventory Model name
+     * @return SetBigItemByUserIdRequest
+     */
 	public function withInventoryName(?string $inventoryName): SetBigItemByUserIdRequest {
 		$this->inventoryName = $inventoryName;
 		return $this;
 	}
+    /** @return string|null User ID */
 	public function getUserId(): ?string {
 		return $this->userId;
 	}
+    /** @param string|null $userId User ID */
 	public function setUserId(?string $userId) {
 		$this->userId = $userId;
 	}
+    /**
+     * @param string|null $userId User ID
+     * @return SetBigItemByUserIdRequest
+     */
 	public function withUserId(?string $userId): SetBigItemByUserIdRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return string|null Big Item Model name */
 	public function getItemName(): ?string {
 		return $this->itemName;
 	}
+    /** @param string|null $itemName Big Item Model name */
 	public function setItemName(?string $itemName) {
 		$this->itemName = $itemName;
 	}
+    /**
+     * @param string|null $itemName Big Item Model name
+     * @return SetBigItemByUserIdRequest
+     */
 	public function withItemName(?string $itemName): SetBigItemByUserIdRequest {
 		$this->itemName = $itemName;
 		return $this;
 	}
+    /** @return string|null Quantity of Big Item */
 	public function getCount(): ?string {
 		return $this->count;
 	}
+    /** @param string|null $count Quantity of Big Item */
 	public function setCount(?string $count) {
 		$this->count = $count;
 	}
+    /**
+     * @param string|null $count Quantity of Big Item
+     * @return SetBigItemByUserIdRequest
+     */
 	public function withCount(?string $count): SetBigItemByUserIdRequest {
 		$this->count = $count;
 		return $this;
 	}
+    /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
 	}
+    /** @param string|null $timeOffsetToken Time offset token */
 	public function setTimeOffsetToken(?string $timeOffsetToken) {
 		$this->timeOffsetToken = $timeOffsetToken;
 	}
+    /**
+     * @param string|null $timeOffsetToken Time offset token
+     * @return SetBigItemByUserIdRequest
+     */
 	public function withTimeOffsetToken(?string $timeOffsetToken): SetBigItemByUserIdRequest {
 		$this->timeOffsetToken = $timeOffsetToken;
 		return $this;

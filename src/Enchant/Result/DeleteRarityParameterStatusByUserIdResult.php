@@ -21,18 +21,29 @@ use Gs2\Core\Model\IResult;
 use Gs2\Enchant\Model\RarityParameterValue;
 use Gs2\Enchant\Model\RarityParameterStatus;
 
+/**
+ * Result of deleteRarityParameterStatusByUserId: Delete Rarity Parameter Status
+ *
+ * @see https://docs.gs2.io/api_reference/enchant/sdk/#deleterarityparameterstatusbyuserid
+ */
 class DeleteRarityParameterStatusByUserIdResult implements IResult {
-    /** @var RarityParameterStatus */
+    /** @var RarityParameterStatus Rarity Parameter Status deleted */
     private $item;
 
+    /** @return RarityParameterStatus|null Rarity Parameter Status deleted */
 	public function getItem(): ?RarityParameterStatus {
 		return $this->item;
 	}
 
+    /** @param RarityParameterStatus|null $item Rarity Parameter Status deleted */
 	public function setItem(?RarityParameterStatus $item) {
 		$this->item = $item;
 	}
 
+    /**
+     * @param RarityParameterStatus|null $item Rarity Parameter Status deleted
+     * @return DeleteRarityParameterStatusByUserIdResult
+     */
 	public function withItem(?RarityParameterStatus $item): DeleteRarityParameterStatusByUserIdResult {
 		$this->item = $item;
 		return $this;

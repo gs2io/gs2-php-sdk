@@ -31,9 +31,17 @@ class UnleashRateEntryModel implements IModel {
 	 */
 	private $gradeValue;
 	/**
+     * @var string Type of material condition
+	 */
+	private $type;
+	/**
      * @var int How many items of the same type to consume
 	 */
 	private $needCount;
+	/**
+     * @var array Recipes
+	 */
+	private $recipes;
     /** @return int|null Target grade */
 	public function getGradeValue(): ?int {
 		return $this->gradeValue;
@@ -48,6 +56,22 @@ class UnleashRateEntryModel implements IModel {
      */
 	public function withGradeValue(?int $gradeValue): UnleashRateEntryModel {
 		$this->gradeValue = $gradeValue;
+		return $this;
+	}
+    /** @return string|null Type of material condition */
+	public function getType(): ?string {
+		return $this->type;
+	}
+    /** @param string|null $type Type of material condition */
+	public function setType(?string $type) {
+		$this->type = $type;
+	}
+    /**
+     * @param string|null $type Type of material condition
+     * @return UnleashRateEntryModel
+     */
+	public function withType(?string $type): UnleashRateEntryModel {
+		$this->type = $type;
 		return $this;
 	}
     /** @return int|null How many items of the same type to consume */
@@ -66,6 +90,22 @@ class UnleashRateEntryModel implements IModel {
 		$this->needCount = $needCount;
 		return $this;
 	}
+    /** @return array|null Recipes */
+	public function getRecipes(): ?array {
+		return $this->recipes;
+	}
+    /** @param array|null $recipes Recipes */
+	public function setRecipes(?array $recipes) {
+		$this->recipes = $recipes;
+	}
+    /**
+     * @param array|null $recipes Recipes
+     * @return UnleashRateEntryModel
+     */
+	public function withRecipes(?array $recipes): UnleashRateEntryModel {
+		$this->recipes = $recipes;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?UnleashRateEntryModel {
         if ($data === null) {
@@ -73,13 +113,27 @@ class UnleashRateEntryModel implements IModel {
         }
         return (new UnleashRateEntryModel())
             ->withGradeValue(array_key_exists('gradeValue', $data) && $data['gradeValue'] !== null ? $data['gradeValue'] : null)
-            ->withNeedCount(array_key_exists('needCount', $data) && $data['needCount'] !== null ? $data['needCount'] : null);
+            ->withType(array_key_exists('type', $data) && $data['type'] !== null ? $data['type'] : null)
+            ->withNeedCount(array_key_exists('needCount', $data) && $data['needCount'] !== null ? $data['needCount'] : null)
+            ->withRecipes(!array_key_exists('recipes', $data) || $data['recipes'] === null ? null : array_map(
+                function ($item) {
+                    return UnleashRecipe::fromJson($item);
+                },
+                $data['recipes']
+            ));
     }
 
     public function toJson(): array {
         return array(
             "gradeValue" => $this->getGradeValue(),
+            "type" => $this->getType(),
             "needCount" => $this->getNeedCount(),
+            "recipes" => $this->getRecipes() === null ? null : array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getRecipes()
+            ),
         );
     }
 }

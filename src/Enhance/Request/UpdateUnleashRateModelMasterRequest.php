@@ -18,6 +18,10 @@
 namespace Gs2\Enhance\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
+use Gs2\Enhance\Model\UnleashIndividualMaterialSetting;
+use Gs2\Enhance\Model\UnleashQuantityMaterialSetting;
+use Gs2\Enhance\Model\UnleashMaterial;
+use Gs2\Enhance\Model\UnleashRecipe;
 use Gs2\Enhance\Model\UnleashRateEntryModel;
 
 /**
@@ -38,6 +42,8 @@ class UpdateUnleashRateModelMasterRequest extends Gs2BasicRequest {
     private $targetInventoryModelId;
     /** @var string Grade Model GRN */
     private $gradeModelId;
+    /** @var array Hierarchy of the JSON data that stores the group key in the ItemModel metadata */
+    private $groupKeyHierarchy;
     /** @var array List of Grade Entry */
     private $gradeEntries;
     /** @return string|null Namespace name */
@@ -136,6 +142,22 @@ class UpdateUnleashRateModelMasterRequest extends Gs2BasicRequest {
 		$this->gradeModelId = $gradeModelId;
 		return $this;
 	}
+    /** @return array|null Hierarchy of the JSON data that stores the group key in the ItemModel metadata */
+	public function getGroupKeyHierarchy(): ?array {
+		return $this->groupKeyHierarchy;
+	}
+    /** @param array|null $groupKeyHierarchy Hierarchy of the JSON data that stores the group key in the ItemModel metadata */
+	public function setGroupKeyHierarchy(?array $groupKeyHierarchy) {
+		$this->groupKeyHierarchy = $groupKeyHierarchy;
+	}
+    /**
+     * @param array|null $groupKeyHierarchy Hierarchy of the JSON data that stores the group key in the ItemModel metadata
+     * @return UpdateUnleashRateModelMasterRequest
+     */
+	public function withGroupKeyHierarchy(?array $groupKeyHierarchy): UpdateUnleashRateModelMasterRequest {
+		$this->groupKeyHierarchy = $groupKeyHierarchy;
+		return $this;
+	}
     /** @return array|null List of Grade Entry */
 	public function getGradeEntries(): ?array {
 		return $this->gradeEntries;
@@ -164,6 +186,12 @@ class UpdateUnleashRateModelMasterRequest extends Gs2BasicRequest {
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
             ->withTargetInventoryModelId(array_key_exists('targetInventoryModelId', $data) && $data['targetInventoryModelId'] !== null ? $data['targetInventoryModelId'] : null)
             ->withGradeModelId(array_key_exists('gradeModelId', $data) && $data['gradeModelId'] !== null ? $data['gradeModelId'] : null)
+            ->withGroupKeyHierarchy(!array_key_exists('groupKeyHierarchy', $data) || $data['groupKeyHierarchy'] === null ? null : array_map(
+                function ($item) {
+                    return $item;
+                },
+                $data['groupKeyHierarchy']
+            ))
             ->withGradeEntries(!array_key_exists('gradeEntries', $data) || $data['gradeEntries'] === null ? null : array_map(
                 function ($item) {
                     return UnleashRateEntryModel::fromJson($item);
@@ -180,6 +208,12 @@ class UpdateUnleashRateModelMasterRequest extends Gs2BasicRequest {
             "metadata" => $this->getMetadata(),
             "targetInventoryModelId" => $this->getTargetInventoryModelId(),
             "gradeModelId" => $this->getGradeModelId(),
+            "groupKeyHierarchy" => $this->getGroupKeyHierarchy() === null ? null : array_map(
+                function ($item) {
+                    return $item;
+                },
+                $this->getGroupKeyHierarchy()
+            ),
             "gradeEntries" => $this->getGradeEntries() === null ? null : array_map(
                 function ($item) {
                     return $item->toJson();

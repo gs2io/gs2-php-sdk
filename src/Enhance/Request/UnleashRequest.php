@@ -18,6 +18,7 @@
 namespace Gs2\Enhance\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
+use Gs2\Enhance\Model\UnleashMaterialSelection;
 use Gs2\Enhance\Model\Config;
 
 /**
@@ -34,8 +35,12 @@ class UnleashRequest extends Gs2BasicRequest {
     private $accessToken;
     /** @var string GRN for the Item Set subject to limit break */
     private $targetItemSetId;
-    /** @var array List of materials that break the limit */
+    /** @var array List of materials that break the limit (used when the grade entry type is "Simple") */
     private $materials;
+    /** @var string Name of the recipe to use (required when the grade entry type is "Recipe") */
+    private $recipeName;
+    /** @var array Item sets assigned to each individual material of the recipe (used when the grade entry type is "Recipe") */
+    private $recipeMaterials;
     /** @var array Configuration values applied to transaction variables */
     private $config;
     /** @var string */
@@ -104,20 +109,52 @@ class UnleashRequest extends Gs2BasicRequest {
 		$this->targetItemSetId = $targetItemSetId;
 		return $this;
 	}
-    /** @return array|null List of materials that break the limit */
+    /** @return array|null List of materials that break the limit (used when the grade entry type is "Simple") */
 	public function getMaterials(): ?array {
 		return $this->materials;
 	}
-    /** @param array|null $materials List of materials that break the limit */
+    /** @param array|null $materials List of materials that break the limit (used when the grade entry type is "Simple") */
 	public function setMaterials(?array $materials) {
 		$this->materials = $materials;
 	}
     /**
-     * @param array|null $materials List of materials that break the limit
+     * @param array|null $materials List of materials that break the limit (used when the grade entry type is "Simple")
      * @return UnleashRequest
      */
 	public function withMaterials(?array $materials): UnleashRequest {
 		$this->materials = $materials;
+		return $this;
+	}
+    /** @return string|null Name of the recipe to use (required when the grade entry type is "Recipe") */
+	public function getRecipeName(): ?string {
+		return $this->recipeName;
+	}
+    /** @param string|null $recipeName Name of the recipe to use (required when the grade entry type is "Recipe") */
+	public function setRecipeName(?string $recipeName) {
+		$this->recipeName = $recipeName;
+	}
+    /**
+     * @param string|null $recipeName Name of the recipe to use (required when the grade entry type is "Recipe")
+     * @return UnleashRequest
+     */
+	public function withRecipeName(?string $recipeName): UnleashRequest {
+		$this->recipeName = $recipeName;
+		return $this;
+	}
+    /** @return array|null Item sets assigned to each individual material of the recipe (used when the grade entry type is "Recipe") */
+	public function getRecipeMaterials(): ?array {
+		return $this->recipeMaterials;
+	}
+    /** @param array|null $recipeMaterials Item sets assigned to each individual material of the recipe (used when the grade entry type is "Recipe") */
+	public function setRecipeMaterials(?array $recipeMaterials) {
+		$this->recipeMaterials = $recipeMaterials;
+	}
+    /**
+     * @param array|null $recipeMaterials Item sets assigned to each individual material of the recipe (used when the grade entry type is "Recipe")
+     * @return UnleashRequest
+     */
+	public function withRecipeMaterials(?array $recipeMaterials): UnleashRequest {
+		$this->recipeMaterials = $recipeMaterials;
 		return $this;
 	}
     /** @return array|null Configuration values applied to transaction variables */
@@ -165,6 +202,13 @@ class UnleashRequest extends Gs2BasicRequest {
                 },
                 $data['materials']
             ))
+            ->withRecipeName(array_key_exists('recipeName', $data) && $data['recipeName'] !== null ? $data['recipeName'] : null)
+            ->withRecipeMaterials(!array_key_exists('recipeMaterials', $data) || $data['recipeMaterials'] === null ? null : array_map(
+                function ($item) {
+                    return UnleashMaterialSelection::fromJson($item);
+                },
+                $data['recipeMaterials']
+            ))
             ->withConfig(!array_key_exists('config', $data) || $data['config'] === null ? null : array_map(
                 function ($item) {
                     return Config::fromJson($item);
@@ -184,6 +228,13 @@ class UnleashRequest extends Gs2BasicRequest {
                     return $item;
                 },
                 $this->getMaterials()
+            ),
+            "recipeName" => $this->getRecipeName(),
+            "recipeMaterials" => $this->getRecipeMaterials() === null ? null : array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getRecipeMaterials()
             ),
             "config" => $this->getConfig() === null ? null : array_map(
                 function ($item) {

@@ -18,6 +18,10 @@
 namespace Gs2\Enhance\Result;
 
 use Gs2\Core\Model\IResult;
+use Gs2\Enhance\Model\UnleashIndividualMaterialSetting;
+use Gs2\Enhance\Model\UnleashQuantityMaterialSetting;
+use Gs2\Enhance\Model\UnleashMaterial;
+use Gs2\Enhance\Model\UnleashRecipe;
 use Gs2\Enhance\Model\UnleashRateEntryModel;
 use Gs2\Enhance\Model\UnleashRateModel;
 

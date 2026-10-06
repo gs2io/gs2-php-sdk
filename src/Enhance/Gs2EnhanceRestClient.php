@@ -1706,6 +1706,14 @@ class CreateUnleashRateModelMasterTask extends Gs2RestSessionTask {
         if ($this->request->getGradeModelId() !== null) {
             $json["gradeModelId"] = $this->request->getGradeModelId();
         }
+        if ($this->request->getGroupKeyHierarchy() !== null) {
+            $array = [];
+            foreach ($this->request->getGroupKeyHierarchy() as $item)
+            {
+                array_push($array, $item);
+            }
+            $json["groupKeyHierarchy"] = $array;
+        }
         if ($this->request->getGradeEntries() !== null) {
             $array = [];
             foreach ($this->request->getGradeEntries() as $item)
@@ -1839,6 +1847,14 @@ class UpdateUnleashRateModelMasterTask extends Gs2RestSessionTask {
         }
         if ($this->request->getGradeModelId() !== null) {
             $json["gradeModelId"] = $this->request->getGradeModelId();
+        }
+        if ($this->request->getGroupKeyHierarchy() !== null) {
+            $array = [];
+            foreach ($this->request->getGroupKeyHierarchy() as $item)
+            {
+                array_push($array, $item);
+            }
+            $json["groupKeyHierarchy"] = $array;
         }
         if ($this->request->getGradeEntries() !== null) {
             $array = [];
@@ -2195,6 +2211,17 @@ class UnleashTask extends Gs2RestSessionTask {
             }
             $json["materials"] = $array;
         }
+        if ($this->request->getRecipeName() !== null) {
+            $json["recipeName"] = $this->request->getRecipeName();
+        }
+        if ($this->request->getRecipeMaterials() !== null) {
+            $array = [];
+            foreach ($this->request->getRecipeMaterials() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["recipeMaterials"] = $array;
+        }
         if ($this->request->getConfig() !== null) {
             $array = [];
             foreach ($this->request->getConfig() as $item)
@@ -2276,6 +2303,17 @@ class UnleashByUserIdTask extends Gs2RestSessionTask {
                 array_push($array, $item);
             }
             $json["materials"] = $array;
+        }
+        if ($this->request->getRecipeName() !== null) {
+            $json["recipeName"] = $this->request->getRecipeName();
+        }
+        if ($this->request->getRecipeMaterials() !== null) {
+            $array = [];
+            foreach ($this->request->getRecipeMaterials() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["recipeMaterials"] = $array;
         }
         if ($this->request->getConfig() !== null) {
             $array = [];

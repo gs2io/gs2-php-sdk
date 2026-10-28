@@ -27,23 +27,23 @@ use Gs2\Core\Model\IModel;
  */
 class TimeseriesValue implements IModel {
 	/**
-     * @var string Group key (\"count\" if no grouping)
+     * @var string Group key ("count" if no grouping)
 	 */
 	private $key;
 	/**
      * @var float Aggregated value
 	 */
 	private $value;
-    /** @return string|null Group key (\"count\" if no grouping) */
+    /** @return string|null Group key ("count" if no grouping) */
 	public function getKey(): ?string {
 		return $this->key;
 	}
-    /** @param string|null $key Group key (\"count\" if no grouping) */
+    /** @param string|null $key Group key ("count" if no grouping) */
 	public function setKey(?string $key) {
 		$this->key = $key;
 	}
     /**
-     * @param string|null $key Group key (\"count\" if no grouping)
+     * @param string|null $key Group key ("count" if no grouping)
      * @return TimeseriesValue
      */
 	public function withKey(?string $key): TimeseriesValue {

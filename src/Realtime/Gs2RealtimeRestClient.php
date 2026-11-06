@@ -170,6 +170,15 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
         if ($this->request->getServerSpec() !== null) {
             $json["serverSpec"] = $this->request->getServerSpec();
         }
+        if ($this->request->getObjectCatalog() !== null) {
+            $json["objectCatalog"] = $this->request->getObjectCatalog();
+        }
+        if ($this->request->getStateMachineNamespaceId() !== null) {
+            $json["stateMachineNamespaceId"] = $this->request->getStateMachineNamespaceId();
+        }
+        if ($this->request->getStateMachineVersion() !== null) {
+            $json["stateMachineVersion"] = $this->request->getStateMachineVersion();
+        }
         if ($this->request->getCreateNotification() !== null) {
             $json["createNotification"] = $this->request->getCreateNotification()->toJson();
         }
@@ -359,6 +368,15 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
         }
         if ($this->request->getServerSpec() !== null) {
             $json["serverSpec"] = $this->request->getServerSpec();
+        }
+        if ($this->request->getObjectCatalog() !== null) {
+            $json["objectCatalog"] = $this->request->getObjectCatalog();
+        }
+        if ($this->request->getStateMachineNamespaceId() !== null) {
+            $json["stateMachineNamespaceId"] = $this->request->getStateMachineNamespaceId();
+        }
+        if ($this->request->getStateMachineVersion() !== null) {
+            $json["stateMachineVersion"] = $this->request->getStateMachineVersion();
         }
         if ($this->request->getCreateNotification() !== null) {
             $json["createNotification"] = $this->request->getCreateNotification()->toJson();

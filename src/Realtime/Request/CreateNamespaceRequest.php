@@ -20,6 +20,8 @@ namespace Gs2\Realtime\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Realtime\Model\TransactionSetting;
 use Gs2\Realtime\Model\TransactionSettingV2;
+use Gs2\Realtime\Model\SyncSetting;
+use Gs2\Realtime\Model\StateMachineSetting;
 use Gs2\Realtime\Model\MobileNotificationMessage;
 use Gs2\Realtime\Model\NotificationSetting;
 use Gs2\Realtime\Model\LogSetting;
@@ -42,12 +44,10 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
     private $serverType;
     /** @var string Server Spec */
     private $serverSpec;
-    /** @var string Object catalog */
-    private $objectCatalog;
-    /** @var string GS2-StateMachine Namespace GRN that stores the room rules */
-    private $stateMachineNamespaceId;
-    /** @var int Room rule version */
-    private $stateMachineVersion;
+    /** @var SyncSetting Object synchronization setting */
+    private $syncSetting;
+    /** @var StateMachineSetting Server-side state machine setting */
+    private $stateMachineSetting;
     /** @var NotificationSetting Create Notification */
     private $createNotification;
     /** @var LogSetting Log Setting */
@@ -155,52 +155,36 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
 		$this->serverSpec = $serverSpec;
 		return $this;
 	}
-    /** @return string|null Object catalog */
-	public function getObjectCatalog(): ?string {
-		return $this->objectCatalog;
+    /** @return SyncSetting|null Object synchronization setting */
+	public function getSyncSetting(): ?SyncSetting {
+		return $this->syncSetting;
 	}
-    /** @param string|null $objectCatalog Object catalog */
-	public function setObjectCatalog(?string $objectCatalog) {
-		$this->objectCatalog = $objectCatalog;
+    /** @param SyncSetting|null $syncSetting Object synchronization setting */
+	public function setSyncSetting(?SyncSetting $syncSetting) {
+		$this->syncSetting = $syncSetting;
 	}
     /**
-     * @param string|null $objectCatalog Object catalog
+     * @param SyncSetting|null $syncSetting Object synchronization setting
      * @return CreateNamespaceRequest
      */
-	public function withObjectCatalog(?string $objectCatalog): CreateNamespaceRequest {
-		$this->objectCatalog = $objectCatalog;
+	public function withSyncSetting(?SyncSetting $syncSetting): CreateNamespaceRequest {
+		$this->syncSetting = $syncSetting;
 		return $this;
 	}
-    /** @return string|null GS2-StateMachine Namespace GRN that stores the room rules */
-	public function getStateMachineNamespaceId(): ?string {
-		return $this->stateMachineNamespaceId;
+    /** @return StateMachineSetting|null Server-side state machine setting */
+	public function getStateMachineSetting(): ?StateMachineSetting {
+		return $this->stateMachineSetting;
 	}
-    /** @param string|null $stateMachineNamespaceId GS2-StateMachine Namespace GRN that stores the room rules */
-	public function setStateMachineNamespaceId(?string $stateMachineNamespaceId) {
-		$this->stateMachineNamespaceId = $stateMachineNamespaceId;
-	}
-    /**
-     * @param string|null $stateMachineNamespaceId GS2-StateMachine Namespace GRN that stores the room rules
-     * @return CreateNamespaceRequest
-     */
-	public function withStateMachineNamespaceId(?string $stateMachineNamespaceId): CreateNamespaceRequest {
-		$this->stateMachineNamespaceId = $stateMachineNamespaceId;
-		return $this;
-	}
-    /** @return int|null Room rule version */
-	public function getStateMachineVersion(): ?int {
-		return $this->stateMachineVersion;
-	}
-    /** @param int|null $stateMachineVersion Room rule version */
-	public function setStateMachineVersion(?int $stateMachineVersion) {
-		$this->stateMachineVersion = $stateMachineVersion;
+    /** @param StateMachineSetting|null $stateMachineSetting Server-side state machine setting */
+	public function setStateMachineSetting(?StateMachineSetting $stateMachineSetting) {
+		$this->stateMachineSetting = $stateMachineSetting;
 	}
     /**
-     * @param int|null $stateMachineVersion Room rule version
+     * @param StateMachineSetting|null $stateMachineSetting Server-side state machine setting
      * @return CreateNamespaceRequest
      */
-	public function withStateMachineVersion(?int $stateMachineVersion): CreateNamespaceRequest {
-		$this->stateMachineVersion = $stateMachineVersion;
+	public function withStateMachineSetting(?StateMachineSetting $stateMachineSetting): CreateNamespaceRequest {
+		$this->stateMachineSetting = $stateMachineSetting;
 		return $this;
 	}
     /** @return NotificationSetting|null Create Notification */
@@ -247,9 +231,8 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
             ->withTransactionSettingV2(array_key_exists('transactionSettingV2', $data) && $data['transactionSettingV2'] !== null ? TransactionSettingV2::fromJson($data['transactionSettingV2']) : null)
             ->withServerType(array_key_exists('serverType', $data) && $data['serverType'] !== null ? $data['serverType'] : null)
             ->withServerSpec(array_key_exists('serverSpec', $data) && $data['serverSpec'] !== null ? $data['serverSpec'] : null)
-            ->withObjectCatalog(array_key_exists('objectCatalog', $data) && $data['objectCatalog'] !== null ? $data['objectCatalog'] : null)
-            ->withStateMachineNamespaceId(array_key_exists('stateMachineNamespaceId', $data) && $data['stateMachineNamespaceId'] !== null ? $data['stateMachineNamespaceId'] : null)
-            ->withStateMachineVersion(array_key_exists('stateMachineVersion', $data) && $data['stateMachineVersion'] !== null ? $data['stateMachineVersion'] : null)
+            ->withSyncSetting(array_key_exists('syncSetting', $data) && $data['syncSetting'] !== null ? SyncSetting::fromJson($data['syncSetting']) : null)
+            ->withStateMachineSetting(array_key_exists('stateMachineSetting', $data) && $data['stateMachineSetting'] !== null ? StateMachineSetting::fromJson($data['stateMachineSetting']) : null)
             ->withCreateNotification(array_key_exists('createNotification', $data) && $data['createNotification'] !== null ? NotificationSetting::fromJson($data['createNotification']) : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null);
     }
@@ -262,9 +245,8 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
             "transactionSettingV2" => $this->getTransactionSettingV2() !== null ? $this->getTransactionSettingV2()->toJson() : null,
             "serverType" => $this->getServerType(),
             "serverSpec" => $this->getServerSpec(),
-            "objectCatalog" => $this->getObjectCatalog(),
-            "stateMachineNamespaceId" => $this->getStateMachineNamespaceId(),
-            "stateMachineVersion" => $this->getStateMachineVersion(),
+            "syncSetting" => $this->getSyncSetting() !== null ? $this->getSyncSetting()->toJson() : null,
+            "stateMachineSetting" => $this->getStateMachineSetting() !== null ? $this->getStateMachineSetting()->toJson() : null,
             "createNotification" => $this->getCreateNotification() !== null ? $this->getCreateNotification()->toJson() : null,
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
         );

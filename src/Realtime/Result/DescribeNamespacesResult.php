@@ -20,6 +20,8 @@ namespace Gs2\Realtime\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Realtime\Model\TransactionSetting;
 use Gs2\Realtime\Model\TransactionSettingV2;
+use Gs2\Realtime\Model\SyncSetting;
+use Gs2\Realtime\Model\StateMachineSetting;
 use Gs2\Realtime\Model\MobileNotificationMessage;
 use Gs2\Realtime\Model\NotificationSetting;
 use Gs2\Realtime\Model\LogSetting;

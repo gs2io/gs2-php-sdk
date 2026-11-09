@@ -1140,6 +1140,14 @@ class CreateSalesItemMasterTask extends Gs2RestSessionTask {
             }
             $json["acquireActions"] = $array;
         }
+        if ($this->request->getBonuses() !== null) {
+            $array = [];
+            foreach ($this->request->getBonuses() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["bonuses"] = $array;
+        }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }
@@ -1283,6 +1291,14 @@ class UpdateSalesItemMasterTask extends Gs2RestSessionTask {
                 array_push($array, $item->toJson());
             }
             $json["acquireActions"] = $array;
+        }
+        if ($this->request->getBonuses() !== null) {
+            $array = [];
+            foreach ($this->request->getBonuses() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["bonuses"] = $array;
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -2701,6 +2717,9 @@ class BuyByUserIdTask extends Gs2RestSessionTask {
                 array_push($array, $item->toJson());
             }
             $json["config"] = $array;
+        }
+        if ($this->request->getRouteKey() !== null) {
+            $json["routeKey"] = $this->request->getRouteKey();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();

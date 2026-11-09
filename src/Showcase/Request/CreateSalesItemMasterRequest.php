@@ -21,6 +21,7 @@ use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Showcase\Model\VerifyAction;
 use Gs2\Showcase\Model\ConsumeAction;
 use Gs2\Showcase\Model\AcquireAction;
+use Gs2\Showcase\Model\Bonus;
 
 /**
  * Request for createSalesItemMaster: Create Sales Item Master
@@ -42,6 +43,8 @@ class CreateSalesItemMasterRequest extends Gs2BasicRequest {
     private $consumeActions;
     /** @var array List of Acquire Actions */
     private $acquireActions;
+    /** @var array List of Bonuses */
+    private $bonuses;
     /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -154,6 +157,22 @@ class CreateSalesItemMasterRequest extends Gs2BasicRequest {
 		$this->acquireActions = $acquireActions;
 		return $this;
 	}
+    /** @return array|null List of Bonuses */
+	public function getBonuses(): ?array {
+		return $this->bonuses;
+	}
+    /** @param array|null $bonuses List of Bonuses */
+	public function setBonuses(?array $bonuses) {
+		$this->bonuses = $bonuses;
+	}
+    /**
+     * @param array|null $bonuses List of Bonuses
+     * @return CreateSalesItemMasterRequest
+     */
+	public function withBonuses(?array $bonuses): CreateSalesItemMasterRequest {
+		$this->bonuses = $bonuses;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?CreateSalesItemMasterRequest {
         if ($data === null) {
@@ -181,6 +200,12 @@ class CreateSalesItemMasterRequest extends Gs2BasicRequest {
                     return AcquireAction::fromJson($item);
                 },
                 $data['acquireActions']
+            ))
+            ->withBonuses(!array_key_exists('bonuses', $data) || $data['bonuses'] === null ? null : array_map(
+                function ($item) {
+                    return Bonus::fromJson($item);
+                },
+                $data['bonuses']
             ));
     }
 
@@ -207,6 +232,12 @@ class CreateSalesItemMasterRequest extends Gs2BasicRequest {
                     return $item->toJson();
                 },
                 $this->getAcquireActions()
+            ),
+            "bonuses" => $this->getBonuses() === null ? null : array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getBonuses()
             ),
         );
     }

@@ -55,6 +55,10 @@ class SalesItemMaster implements IModel {
 	 */
 	private $acquireActions;
 	/**
+     * @var array List of Bonuses
+	 */
+	private $bonuses;
+	/**
      * @var int Creation Timestamp
 	 */
 	private $createdAt;
@@ -178,6 +182,22 @@ class SalesItemMaster implements IModel {
 		$this->acquireActions = $acquireActions;
 		return $this;
 	}
+    /** @return array|null List of Bonuses */
+	public function getBonuses(): ?array {
+		return $this->bonuses;
+	}
+    /** @param array|null $bonuses List of Bonuses */
+	public function setBonuses(?array $bonuses) {
+		$this->bonuses = $bonuses;
+	}
+    /**
+     * @param array|null $bonuses List of Bonuses
+     * @return SalesItemMaster
+     */
+	public function withBonuses(?array $bonuses): SalesItemMaster {
+		$this->bonuses = $bonuses;
+		return $this;
+	}
     /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
@@ -254,6 +274,12 @@ class SalesItemMaster implements IModel {
                 },
                 $data['acquireActions']
             ))
+            ->withBonuses(!array_key_exists('bonuses', $data) || $data['bonuses'] === null ? null : array_map(
+                function ($item) {
+                    return Bonus::fromJson($item);
+                },
+                $data['bonuses']
+            ))
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withUpdatedAt(array_key_exists('updatedAt', $data) && $data['updatedAt'] !== null ? $data['updatedAt'] : null)
             ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
@@ -282,6 +308,12 @@ class SalesItemMaster implements IModel {
                     return $item->toJson();
                 },
                 $this->getAcquireActions()
+            ),
+            "bonuses" => $this->getBonuses() === null ? null : array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getBonuses()
             ),
             "createdAt" => $this->getCreatedAt(),
             "updatedAt" => $this->getUpdatedAt(),

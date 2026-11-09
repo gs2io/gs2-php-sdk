@@ -46,6 +46,10 @@ class SalesItem implements IModel {
      * @var array List of Acquire Actions
 	 */
 	private $acquireActions;
+	/**
+     * @var array List of Bonuses
+	 */
+	private $bonuses;
     /** @return string|null Sales Item name */
 	public function getName(): ?string {
 		return $this->name;
@@ -126,6 +130,22 @@ class SalesItem implements IModel {
 		$this->acquireActions = $acquireActions;
 		return $this;
 	}
+    /** @return array|null List of Bonuses */
+	public function getBonuses(): ?array {
+		return $this->bonuses;
+	}
+    /** @param array|null $bonuses List of Bonuses */
+	public function setBonuses(?array $bonuses) {
+		$this->bonuses = $bonuses;
+	}
+    /**
+     * @param array|null $bonuses List of Bonuses
+     * @return SalesItem
+     */
+	public function withBonuses(?array $bonuses): SalesItem {
+		$this->bonuses = $bonuses;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?SalesItem {
         if ($data === null) {
@@ -151,6 +171,12 @@ class SalesItem implements IModel {
                     return AcquireAction::fromJson($item);
                 },
                 $data['acquireActions']
+            ))
+            ->withBonuses(!array_key_exists('bonuses', $data) || $data['bonuses'] === null ? null : array_map(
+                function ($item) {
+                    return Bonus::fromJson($item);
+                },
+                $data['bonuses']
             ));
     }
 
@@ -175,6 +201,12 @@ class SalesItem implements IModel {
                     return $item->toJson();
                 },
                 $this->getAcquireActions()
+            ),
+            "bonuses" => $this->getBonuses() === null ? null : array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getBonuses()
             ),
         );
     }

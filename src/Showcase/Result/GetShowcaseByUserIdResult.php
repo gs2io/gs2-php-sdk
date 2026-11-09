@@ -21,6 +21,7 @@ use Gs2\Core\Model\IResult;
 use Gs2\Showcase\Model\VerifyAction;
 use Gs2\Showcase\Model\ConsumeAction;
 use Gs2\Showcase\Model\AcquireAction;
+use Gs2\Showcase\Model\Bonus;
 use Gs2\Showcase\Model\SalesItem;
 use Gs2\Showcase\Model\SalesItemGroup;
 use Gs2\Showcase\Model\DisplayItem;

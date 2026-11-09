@@ -38,6 +38,8 @@ class BuyByUserIdRequest extends Gs2BasicRequest {
     private $quantity;
     /** @var array Configuration values applied to transaction variables */
     private $config;
+    /** @var string Route key */
+    private $routeKey;
     /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
@@ -138,6 +140,22 @@ class BuyByUserIdRequest extends Gs2BasicRequest {
 		$this->config = $config;
 		return $this;
 	}
+    /** @return string|null Route key */
+	public function getRouteKey(): ?string {
+		return $this->routeKey;
+	}
+    /** @param string|null $routeKey Route key */
+	public function setRouteKey(?string $routeKey) {
+		$this->routeKey = $routeKey;
+	}
+    /**
+     * @param string|null $routeKey Route key
+     * @return BuyByUserIdRequest
+     */
+	public function withRouteKey(?string $routeKey): BuyByUserIdRequest {
+		$this->routeKey = $routeKey;
+		return $this;
+	}
     /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
@@ -184,6 +202,7 @@ class BuyByUserIdRequest extends Gs2BasicRequest {
                 },
                 $data['config']
             ))
+            ->withRouteKey(array_key_exists('routeKey', $data) && $data['routeKey'] !== null ? $data['routeKey'] : null)
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
@@ -200,6 +219,7 @@ class BuyByUserIdRequest extends Gs2BasicRequest {
                 },
                 $this->getConfig()
             ),
+            "routeKey" => $this->getRouteKey(),
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }

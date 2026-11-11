@@ -63,6 +63,10 @@ class Namespace_ implements IModel {
 	 */
 	private $stateMachineSetting;
 	/**
+     * @var ParticipantSetting Participant setting
+	 */
+	private $participantSetting;
+	/**
      * @var NotificationSetting Create Notification
 	 */
 	private $createNotification;
@@ -233,6 +237,22 @@ class Namespace_ implements IModel {
 		$this->stateMachineSetting = $stateMachineSetting;
 		return $this;
 	}
+    /** @return ParticipantSetting|null Participant setting */
+	public function getParticipantSetting(): ?ParticipantSetting {
+		return $this->participantSetting;
+	}
+    /** @param ParticipantSetting|null $participantSetting Participant setting */
+	public function setParticipantSetting(?ParticipantSetting $participantSetting) {
+		$this->participantSetting = $participantSetting;
+	}
+    /**
+     * @param ParticipantSetting|null $participantSetting Participant setting
+     * @return Namespace_
+     */
+	public function withParticipantSetting(?ParticipantSetting $participantSetting): Namespace_ {
+		$this->participantSetting = $participantSetting;
+		return $this;
+	}
     /** @return NotificationSetting|null Create Notification */
 	public function getCreateNotification(): ?NotificationSetting {
 		return $this->createNotification;
@@ -328,6 +348,7 @@ class Namespace_ implements IModel {
             ->withServerSpec(array_key_exists('serverSpec', $data) && $data['serverSpec'] !== null ? $data['serverSpec'] : null)
             ->withSyncSetting(array_key_exists('syncSetting', $data) && $data['syncSetting'] !== null ? SyncSetting::fromJson($data['syncSetting']) : null)
             ->withStateMachineSetting(array_key_exists('stateMachineSetting', $data) && $data['stateMachineSetting'] !== null ? StateMachineSetting::fromJson($data['stateMachineSetting']) : null)
+            ->withParticipantSetting(array_key_exists('participantSetting', $data) && $data['participantSetting'] !== null ? ParticipantSetting::fromJson($data['participantSetting']) : null)
             ->withCreateNotification(array_key_exists('createNotification', $data) && $data['createNotification'] !== null ? NotificationSetting::fromJson($data['createNotification']) : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
@@ -346,6 +367,7 @@ class Namespace_ implements IModel {
             "serverSpec" => $this->getServerSpec(),
             "syncSetting" => $this->getSyncSetting() !== null ? $this->getSyncSetting()->toJson() : null,
             "stateMachineSetting" => $this->getStateMachineSetting() !== null ? $this->getStateMachineSetting()->toJson() : null,
+            "participantSetting" => $this->getParticipantSetting() !== null ? $this->getParticipantSetting()->toJson() : null,
             "createNotification" => $this->getCreateNotification() !== null ? $this->getCreateNotification()->toJson() : null,
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
             "createdAt" => $this->getCreatedAt(),

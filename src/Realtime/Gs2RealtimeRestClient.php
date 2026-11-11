@@ -176,6 +176,9 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
         if ($this->request->getStateMachineSetting() !== null) {
             $json["stateMachineSetting"] = $this->request->getStateMachineSetting()->toJson();
         }
+        if ($this->request->getParticipantSetting() !== null) {
+            $json["participantSetting"] = $this->request->getParticipantSetting()->toJson();
+        }
         if ($this->request->getCreateNotification() !== null) {
             $json["createNotification"] = $this->request->getCreateNotification()->toJson();
         }
@@ -371,6 +374,9 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
         }
         if ($this->request->getStateMachineSetting() !== null) {
             $json["stateMachineSetting"] = $this->request->getStateMachineSetting()->toJson();
+        }
+        if ($this->request->getParticipantSetting() !== null) {
+            $json["participantSetting"] = $this->request->getParticipantSetting()->toJson();
         }
         if ($this->request->getCreateNotification() !== null) {
             $json["createNotification"] = $this->request->getCreateNotification()->toJson();

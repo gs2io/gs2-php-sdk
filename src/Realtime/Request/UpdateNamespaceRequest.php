@@ -22,6 +22,7 @@ use Gs2\Realtime\Model\TransactionSetting;
 use Gs2\Realtime\Model\TransactionSettingV2;
 use Gs2\Realtime\Model\SyncSetting;
 use Gs2\Realtime\Model\StateMachineSetting;
+use Gs2\Realtime\Model\ParticipantSetting;
 use Gs2\Realtime\Model\MobileNotificationMessage;
 use Gs2\Realtime\Model\NotificationSetting;
 use Gs2\Realtime\Model\LogSetting;
@@ -48,6 +49,8 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
     private $syncSetting;
     /** @var StateMachineSetting Server-side state machine setting */
     private $stateMachineSetting;
+    /** @var ParticipantSetting Participant setting */
+    private $participantSetting;
     /** @var NotificationSetting Create Notification */
     private $createNotification;
     /** @var LogSetting Log Setting */
@@ -187,6 +190,22 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
 		$this->stateMachineSetting = $stateMachineSetting;
 		return $this;
 	}
+    /** @return ParticipantSetting|null Participant setting */
+	public function getParticipantSetting(): ?ParticipantSetting {
+		return $this->participantSetting;
+	}
+    /** @param ParticipantSetting|null $participantSetting Participant setting */
+	public function setParticipantSetting(?ParticipantSetting $participantSetting) {
+		$this->participantSetting = $participantSetting;
+	}
+    /**
+     * @param ParticipantSetting|null $participantSetting Participant setting
+     * @return UpdateNamespaceRequest
+     */
+	public function withParticipantSetting(?ParticipantSetting $participantSetting): UpdateNamespaceRequest {
+		$this->participantSetting = $participantSetting;
+		return $this;
+	}
     /** @return NotificationSetting|null Create Notification */
 	public function getCreateNotification(): ?NotificationSetting {
 		return $this->createNotification;
@@ -233,6 +252,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
             ->withServerSpec(array_key_exists('serverSpec', $data) && $data['serverSpec'] !== null ? $data['serverSpec'] : null)
             ->withSyncSetting(array_key_exists('syncSetting', $data) && $data['syncSetting'] !== null ? SyncSetting::fromJson($data['syncSetting']) : null)
             ->withStateMachineSetting(array_key_exists('stateMachineSetting', $data) && $data['stateMachineSetting'] !== null ? StateMachineSetting::fromJson($data['stateMachineSetting']) : null)
+            ->withParticipantSetting(array_key_exists('participantSetting', $data) && $data['participantSetting'] !== null ? ParticipantSetting::fromJson($data['participantSetting']) : null)
             ->withCreateNotification(array_key_exists('createNotification', $data) && $data['createNotification'] !== null ? NotificationSetting::fromJson($data['createNotification']) : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null);
     }
@@ -247,6 +267,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
             "serverSpec" => $this->getServerSpec(),
             "syncSetting" => $this->getSyncSetting() !== null ? $this->getSyncSetting()->toJson() : null,
             "stateMachineSetting" => $this->getStateMachineSetting() !== null ? $this->getStateMachineSetting()->toJson() : null,
+            "participantSetting" => $this->getParticipantSetting() !== null ? $this->getParticipantSetting()->toJson() : null,
             "createNotification" => $this->getCreateNotification() !== null ? $this->getCreateNotification()->toJson() : null,
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
         );

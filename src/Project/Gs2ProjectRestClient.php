@@ -3770,7 +3770,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * List Dump User Data Progress
+     * List Export User Data Progress
      *
      * @param DescribeDumpProgressesRequest $request
      * @return PromiseInterface
@@ -3787,7 +3787,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * List Dump User Data Progress
+     * List Export User Data Progress
      *
      * @param DescribeDumpProgressesRequest $request
      * @return DescribeDumpProgressesResult
@@ -3801,7 +3801,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * Get dump user data progress
+     * Get export user data progress
      *
      * @param GetDumpProgressRequest $request
      * @return PromiseInterface
@@ -3818,7 +3818,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * Get dump user data progress
+     * Get export user data progress
      *
      * @param GetDumpProgressRequest $request
      * @return GetDumpProgressResult
@@ -3832,7 +3832,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * Wait for the completion of user data dump
+     * Wait for the completion of user data export
      *
      * @param WaitDumpUserDataRequest $request
      * @return PromiseInterface
@@ -3849,7 +3849,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * Wait for the completion of user data dump
+     * Wait for the completion of user data export
      *
      * @param WaitDumpUserDataRequest $request
      * @return WaitDumpUserDataResult
@@ -3863,7 +3863,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * Archive for the completion of user data dump
+     * Archive for the completion of user data export
      *
      * @param ArchiveDumpUserDataRequest $request
      * @return PromiseInterface
@@ -3880,7 +3880,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * Archive for the completion of user data dump
+     * Archive for the completion of user data export
      *
      * @param ArchiveDumpUserDataRequest $request
      * @return ArchiveDumpUserDataResult
@@ -3894,7 +3894,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * Start dump user data
+     * Start exporting user data
      *
      * @param DumpUserDataRequest $request
      * @return PromiseInterface
@@ -3911,7 +3911,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * Start dump user data
+     * Start exporting user data
      *
      * @param DumpUserDataRequest $request
      * @return DumpUserDataResult
@@ -3925,7 +3925,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * Start dump user data
+     * Get the URL of the exported user data
      *
      * @param GetDumpUserDataRequest $request
      * @return PromiseInterface
@@ -3942,7 +3942,7 @@ class Gs2ProjectRestClient extends AbstractGs2Client {
     }
 
     /**
-     * Start dump user data
+     * Get the URL of the exported user data
      *
      * @param GetDumpUserDataRequest $request
      * @return GetDumpUserDataResult

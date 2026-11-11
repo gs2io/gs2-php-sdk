@@ -19,7 +19,7 @@ namespace Gs2\Project\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/** Request for dumpUserData: Start dump user data */
+/** Request for dumpUserData: Start exporting user data */
 class DumpUserDataRequest extends Gs2BasicRequest {
     /** @var string User ID */
     private $userId;

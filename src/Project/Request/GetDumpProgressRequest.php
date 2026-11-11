@@ -19,7 +19,7 @@ namespace Gs2\Project\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/** Request for getDumpProgress: Get dump user data progress */
+/** Request for getDumpProgress: Get export user data progress */
 class GetDumpProgressRequest extends Gs2BasicRequest {
     /** @var string Transaction ID */
     private $transactionId;

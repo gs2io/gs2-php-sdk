@@ -19,7 +19,7 @@ namespace Gs2\Project\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/** Request for waitDumpUserData: Wait for the completion of user data dump */
+/** Request for waitDumpUserData: Wait for the completion of user data export */
 class WaitDumpUserDataRequest extends Gs2BasicRequest {
     /** @var string Owner ID */
     private $ownerId;

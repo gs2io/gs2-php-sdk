@@ -20,25 +20,25 @@ namespace Gs2\Project\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Project\Model\DumpProgress;
 
-/** Result of describeDumpProgresses: List Dump User Data Progress */
+/** Result of describeDumpProgresses: List Export User Data Progress */
 class DescribeDumpProgressesResult implements IResult {
-    /** @var array List of Dump User Data Progress */
+    /** @var array List of Export User Data Progress */
     private $items;
     /** @var string Page token to retrieve the rest of the listing */
     private $nextPageToken;
 
-    /** @return array|null List of Dump User Data Progress */
+    /** @return array|null List of Export User Data Progress */
 	public function getItems(): ?array {
 		return $this->items;
 	}
 
-    /** @param array|null $items List of Dump User Data Progress */
+    /** @param array|null $items List of Export User Data Progress */
 	public function setItems(?array $items) {
 		$this->items = $items;
 	}
 
     /**
-     * @param array|null $items List of Dump User Data Progress
+     * @param array|null $items List of Export User Data Progress
      * @return DescribeDumpProgressesResult
      */
 	public function withItems(?array $items): DescribeDumpProgressesResult {

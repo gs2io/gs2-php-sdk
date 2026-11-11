@@ -3194,6 +3194,9 @@ class SendRequestTask extends Gs2RestSessionTask {
         $url = str_replace("{targetUserId}", $this->request->getTargetUserId() === null|| strlen($this->request->getTargetUserId()) == 0 ? "null" : $this->request->getTargetUserId(), $url);
 
         $json = [];
+        if ($this->request->getWithProfile() !== null) {
+            $json["withProfile"] = $this->request->getWithProfile();
+        }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }
@@ -3257,6 +3260,9 @@ class SendRequestByUserIdTask extends Gs2RestSessionTask {
         $url = str_replace("{targetUserId}", $this->request->getTargetUserId() === null|| strlen($this->request->getTargetUserId()) == 0 ? "null" : $this->request->getTargetUserId(), $url);
 
         $json = [];
+        if ($this->request->getWithProfile() !== null) {
+            $json["withProfile"] = $this->request->getWithProfile();
+        }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }

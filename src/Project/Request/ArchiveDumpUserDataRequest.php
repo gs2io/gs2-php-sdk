@@ -19,7 +19,7 @@ namespace Gs2\Project\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/** Request for archiveDumpUserData: Archive for the completion of user data dump */
+/** Request for archiveDumpUserData: Archive for the completion of user data export */
 class ArchiveDumpUserDataRequest extends Gs2BasicRequest {
     /** @var string Owner ID */
     private $ownerId;

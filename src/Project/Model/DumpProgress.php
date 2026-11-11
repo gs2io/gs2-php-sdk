@@ -20,10 +20,10 @@ namespace Gs2\Project\Model;
 use Gs2\Core\Model\IModel;
 
 
-/** Dump User Data Progress */
+/** Export User Data Progress */
 class DumpProgress implements IModel {
 	/**
-     * @var string Dump User Data Progress GRN
+     * @var string Export User Data Progress GRN
 	 */
 	private $dumpProgressId;
 	/**
@@ -35,7 +35,7 @@ class DumpProgress implements IModel {
 	 */
 	private $userId;
 	/**
-     * @var int Number of dumped microservices
+     * @var int Number of exported microservices
 	 */
 	private $dumped;
 	/**
@@ -54,16 +54,16 @@ class DumpProgress implements IModel {
      * @var int Revision
 	 */
 	private $revision;
-    /** @return string|null Dump User Data Progress GRN */
+    /** @return string|null Export User Data Progress GRN */
 	public function getDumpProgressId(): ?string {
 		return $this->dumpProgressId;
 	}
-    /** @param string|null $dumpProgressId Dump User Data Progress GRN */
+    /** @param string|null $dumpProgressId Export User Data Progress GRN */
 	public function setDumpProgressId(?string $dumpProgressId) {
 		$this->dumpProgressId = $dumpProgressId;
 	}
     /**
-     * @param string|null $dumpProgressId Dump User Data Progress GRN
+     * @param string|null $dumpProgressId Export User Data Progress GRN
      * @return DumpProgress
      */
 	public function withDumpProgressId(?string $dumpProgressId): DumpProgress {
@@ -102,16 +102,16 @@ class DumpProgress implements IModel {
 		$this->userId = $userId;
 		return $this;
 	}
-    /** @return int|null Number of dumped microservices */
+    /** @return int|null Number of exported microservices */
 	public function getDumped(): ?int {
 		return $this->dumped;
 	}
-    /** @param int|null $dumped Number of dumped microservices */
+    /** @param int|null $dumped Number of exported microservices */
 	public function setDumped(?int $dumped) {
 		$this->dumped = $dumped;
 	}
     /**
-     * @param int|null $dumped Number of dumped microservices
+     * @param int|null $dumped Number of exported microservices
      * @return DumpProgress
      */
 	public function withDumped(?int $dumped): DumpProgress {

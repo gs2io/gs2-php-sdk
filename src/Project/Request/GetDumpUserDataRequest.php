@@ -19,7 +19,7 @@ namespace Gs2\Project\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/** Request for getDumpUserData: Start dump user data */
+/** Request for getDumpUserData: Get the URL of the exported user data */
 class GetDumpUserDataRequest extends Gs2BasicRequest {
     /** @var string Transaction ID */
     private $transactionId;

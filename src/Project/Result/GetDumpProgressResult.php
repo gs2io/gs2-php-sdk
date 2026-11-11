@@ -20,7 +20,7 @@ namespace Gs2\Project\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Project\Model\DumpProgress;
 
-/** Result of getDumpProgress: Get dump user data progress */
+/** Result of getDumpProgress: Get export user data progress */
 class GetDumpProgressResult implements IResult {
     /** @var DumpProgress DumpProgress */
     private $item;

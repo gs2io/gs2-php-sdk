@@ -20,7 +20,7 @@ namespace Gs2\Project\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Project\Model\DumpProgress;
 
-/** Result of waitDumpUserData: Wait for the completion of user data dump */
+/** Result of waitDumpUserData: Wait for the completion of user data export */
 class WaitDumpUserDataResult implements IResult {
     /** @var DumpProgress DumpProgress */
     private $item;

@@ -19,7 +19,7 @@ namespace Gs2\Project\Request;
 
 use Gs2\Core\Control\Gs2BasicRequest;
 
-/** Request for describeDumpProgresses: List Dump User Data Progress */
+/** Request for describeDumpProgresses: List Export User Data Progress */
 class DescribeDumpProgressesRequest extends Gs2BasicRequest {
     /** @var string Token specifying the position from which to start acquiring data */
     private $pageToken;

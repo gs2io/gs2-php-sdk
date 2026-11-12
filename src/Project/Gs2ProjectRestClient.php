@@ -2379,6 +2379,14 @@ class WaitCleanUserDataTask extends Gs2RestSessionTask {
         if ($this->request->getUserId() !== null) {
             $json["userId"] = $this->request->getUserId();
         }
+        if ($this->request->getExcludeMicroservices() !== null) {
+            $array = [];
+            foreach ($this->request->getExcludeMicroservices() as $item)
+            {
+                array_push($array, $item);
+            }
+            $json["excludeMicroservices"] = $array;
+        }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }
@@ -2440,6 +2448,14 @@ class CleanUserDataTask extends Gs2RestSessionTask {
         $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
 
         $json = [];
+        if ($this->request->getExcludeMicroservices() !== null) {
+            $array = [];
+            foreach ($this->request->getExcludeMicroservices() as $item)
+            {
+                array_push($array, $item);
+            }
+            $json["excludeMicroservices"] = $array;
+        }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }

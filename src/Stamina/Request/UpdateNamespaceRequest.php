@@ -36,7 +36,7 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
     private $transactionSetting;
     /** @var TransactionSettingV2 Transaction Setting (V2) */
     private $transactionSettingV2;
-    /** @var string Overflow Trigger Script */
+    /** @var string GRN of the script executed when stamina overflows during recovery */
     private $overflowTriggerScript;
     /** @var LogSetting Log Output Setting */
     private $logSetting;
@@ -111,16 +111,16 @@ class UpdateNamespaceRequest extends Gs2BasicRequest {
 		$this->transactionSettingV2 = $transactionSettingV2;
 		return $this;
 	}
-    /** @return string|null Overflow Trigger Script */
+    /** @return string|null GRN of the script executed when stamina overflows during recovery */
 	public function getOverflowTriggerScript(): ?string {
 		return $this->overflowTriggerScript;
 	}
-    /** @param string|null $overflowTriggerScript Overflow Trigger Script */
+    /** @param string|null $overflowTriggerScript GRN of the script executed when stamina overflows during recovery */
 	public function setOverflowTriggerScript(?string $overflowTriggerScript) {
 		$this->overflowTriggerScript = $overflowTriggerScript;
 	}
     /**
-     * @param string|null $overflowTriggerScript Overflow Trigger Script
+     * @param string|null $overflowTriggerScript GRN of the script executed when stamina overflows during recovery
      * @return UpdateNamespaceRequest
      */
 	public function withOverflowTriggerScript(?string $overflowTriggerScript): UpdateNamespaceRequest {

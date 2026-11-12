@@ -27,6 +27,8 @@ class WaitCleanUserDataRequest extends Gs2BasicRequest {
     private $transactionId;
     /** @var string User ID */
     private $userId;
+    /** @var array Microservices to exclude from the deletion */
+    private $excludeMicroservices;
     /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
@@ -79,6 +81,22 @@ class WaitCleanUserDataRequest extends Gs2BasicRequest {
 		$this->userId = $userId;
 		return $this;
 	}
+    /** @return array|null Microservices to exclude from the deletion */
+	public function getExcludeMicroservices(): ?array {
+		return $this->excludeMicroservices;
+	}
+    /** @param array|null $excludeMicroservices Microservices to exclude from the deletion */
+	public function setExcludeMicroservices(?array $excludeMicroservices) {
+		$this->excludeMicroservices = $excludeMicroservices;
+	}
+    /**
+     * @param array|null $excludeMicroservices Microservices to exclude from the deletion
+     * @return WaitCleanUserDataRequest
+     */
+	public function withExcludeMicroservices(?array $excludeMicroservices): WaitCleanUserDataRequest {
+		$this->excludeMicroservices = $excludeMicroservices;
+		return $this;
+	}
     /** @return string|null Time offset token */
 	public function getTimeOffsetToken(): ?string {
 		return $this->timeOffsetToken;
@@ -117,6 +135,12 @@ class WaitCleanUserDataRequest extends Gs2BasicRequest {
             ->withOwnerId(array_key_exists('ownerId', $data) && $data['ownerId'] !== null ? $data['ownerId'] : null)
             ->withTransactionId(array_key_exists('transactionId', $data) && $data['transactionId'] !== null ? $data['transactionId'] : null)
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withExcludeMicroservices(!array_key_exists('excludeMicroservices', $data) || $data['excludeMicroservices'] === null ? null : array_map(
+                function ($item) {
+                    return $item;
+                },
+                $data['excludeMicroservices']
+            ))
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
@@ -125,6 +149,12 @@ class WaitCleanUserDataRequest extends Gs2BasicRequest {
             "ownerId" => $this->getOwnerId(),
             "transactionId" => $this->getTransactionId(),
             "userId" => $this->getUserId(),
+            "excludeMicroservices" => $this->getExcludeMicroservices() === null ? null : array_map(
+                function ($item) {
+                    return $item;
+                },
+                $this->getExcludeMicroservices()
+            ),
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }

@@ -21,6 +21,7 @@ use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Account\Model\TransactionSetting;
 use Gs2\Account\Model\TransactionSettingV2;
 use Gs2\Account\Model\ScriptSetting;
+use Gs2\Account\Model\AccountDeletionSetting;
 use Gs2\Account\Model\LogSetting;
 
 /**
@@ -53,6 +54,14 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
     private $banScript;
     /** @var ScriptSetting Script setting to be executed when removing Account Ban Status */
     private $unBanScript;
+    /** @var AccountDeletionSetting Account Deletion Setting */
+    private $accountDeletionSetting;
+    /** @var ScriptSetting Script setting to be executed when account deletion is requested */
+    private $requestDeletionScript;
+    /** @var ScriptSetting Script setting to be executed when an account deletion request is cancelled */
+    private $cancelDeletionScript;
+    /** @var ScriptSetting Script setting to be executed when an account is deleted after the grace period */
+    private $executeDeletionScript;
     /** @var LogSetting Log Output Setting */
     private $logSetting;
     /** @return string|null Namespace name */
@@ -254,6 +263,70 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
 		$this->unBanScript = $unBanScript;
 		return $this;
 	}
+    /** @return AccountDeletionSetting|null Account Deletion Setting */
+	public function getAccountDeletionSetting(): ?AccountDeletionSetting {
+		return $this->accountDeletionSetting;
+	}
+    /** @param AccountDeletionSetting|null $accountDeletionSetting Account Deletion Setting */
+	public function setAccountDeletionSetting(?AccountDeletionSetting $accountDeletionSetting) {
+		$this->accountDeletionSetting = $accountDeletionSetting;
+	}
+    /**
+     * @param AccountDeletionSetting|null $accountDeletionSetting Account Deletion Setting
+     * @return CreateNamespaceRequest
+     */
+	public function withAccountDeletionSetting(?AccountDeletionSetting $accountDeletionSetting): CreateNamespaceRequest {
+		$this->accountDeletionSetting = $accountDeletionSetting;
+		return $this;
+	}
+    /** @return ScriptSetting|null Script setting to be executed when account deletion is requested */
+	public function getRequestDeletionScript(): ?ScriptSetting {
+		return $this->requestDeletionScript;
+	}
+    /** @param ScriptSetting|null $requestDeletionScript Script setting to be executed when account deletion is requested */
+	public function setRequestDeletionScript(?ScriptSetting $requestDeletionScript) {
+		$this->requestDeletionScript = $requestDeletionScript;
+	}
+    /**
+     * @param ScriptSetting|null $requestDeletionScript Script setting to be executed when account deletion is requested
+     * @return CreateNamespaceRequest
+     */
+	public function withRequestDeletionScript(?ScriptSetting $requestDeletionScript): CreateNamespaceRequest {
+		$this->requestDeletionScript = $requestDeletionScript;
+		return $this;
+	}
+    /** @return ScriptSetting|null Script setting to be executed when an account deletion request is cancelled */
+	public function getCancelDeletionScript(): ?ScriptSetting {
+		return $this->cancelDeletionScript;
+	}
+    /** @param ScriptSetting|null $cancelDeletionScript Script setting to be executed when an account deletion request is cancelled */
+	public function setCancelDeletionScript(?ScriptSetting $cancelDeletionScript) {
+		$this->cancelDeletionScript = $cancelDeletionScript;
+	}
+    /**
+     * @param ScriptSetting|null $cancelDeletionScript Script setting to be executed when an account deletion request is cancelled
+     * @return CreateNamespaceRequest
+     */
+	public function withCancelDeletionScript(?ScriptSetting $cancelDeletionScript): CreateNamespaceRequest {
+		$this->cancelDeletionScript = $cancelDeletionScript;
+		return $this;
+	}
+    /** @return ScriptSetting|null Script setting to be executed when an account is deleted after the grace period */
+	public function getExecuteDeletionScript(): ?ScriptSetting {
+		return $this->executeDeletionScript;
+	}
+    /** @param ScriptSetting|null $executeDeletionScript Script setting to be executed when an account is deleted after the grace period */
+	public function setExecuteDeletionScript(?ScriptSetting $executeDeletionScript) {
+		$this->executeDeletionScript = $executeDeletionScript;
+	}
+    /**
+     * @param ScriptSetting|null $executeDeletionScript Script setting to be executed when an account is deleted after the grace period
+     * @return CreateNamespaceRequest
+     */
+	public function withExecuteDeletionScript(?ScriptSetting $executeDeletionScript): CreateNamespaceRequest {
+		$this->executeDeletionScript = $executeDeletionScript;
+		return $this;
+	}
     /** @return LogSetting|null Log Output Setting */
 	public function getLogSetting(): ?LogSetting {
 		return $this->logSetting;
@@ -288,6 +361,10 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
             ->withDoTakeOverScript(array_key_exists('doTakeOverScript', $data) && $data['doTakeOverScript'] !== null ? ScriptSetting::fromJson($data['doTakeOverScript']) : null)
             ->withBanScript(array_key_exists('banScript', $data) && $data['banScript'] !== null ? ScriptSetting::fromJson($data['banScript']) : null)
             ->withUnBanScript(array_key_exists('unBanScript', $data) && $data['unBanScript'] !== null ? ScriptSetting::fromJson($data['unBanScript']) : null)
+            ->withAccountDeletionSetting(array_key_exists('accountDeletionSetting', $data) && $data['accountDeletionSetting'] !== null ? AccountDeletionSetting::fromJson($data['accountDeletionSetting']) : null)
+            ->withRequestDeletionScript(array_key_exists('requestDeletionScript', $data) && $data['requestDeletionScript'] !== null ? ScriptSetting::fromJson($data['requestDeletionScript']) : null)
+            ->withCancelDeletionScript(array_key_exists('cancelDeletionScript', $data) && $data['cancelDeletionScript'] !== null ? ScriptSetting::fromJson($data['cancelDeletionScript']) : null)
+            ->withExecuteDeletionScript(array_key_exists('executeDeletionScript', $data) && $data['executeDeletionScript'] !== null ? ScriptSetting::fromJson($data['executeDeletionScript']) : null)
             ->withLogSetting(array_key_exists('logSetting', $data) && $data['logSetting'] !== null ? LogSetting::fromJson($data['logSetting']) : null);
     }
 
@@ -305,6 +382,10 @@ class CreateNamespaceRequest extends Gs2BasicRequest {
             "doTakeOverScript" => $this->getDoTakeOverScript() !== null ? $this->getDoTakeOverScript()->toJson() : null,
             "banScript" => $this->getBanScript() !== null ? $this->getBanScript()->toJson() : null,
             "unBanScript" => $this->getUnBanScript() !== null ? $this->getUnBanScript()->toJson() : null,
+            "accountDeletionSetting" => $this->getAccountDeletionSetting() !== null ? $this->getAccountDeletionSetting()->toJson() : null,
+            "requestDeletionScript" => $this->getRequestDeletionScript() !== null ? $this->getRequestDeletionScript()->toJson() : null,
+            "cancelDeletionScript" => $this->getCancelDeletionScript() !== null ? $this->getCancelDeletionScript()->toJson() : null,
+            "executeDeletionScript" => $this->getExecuteDeletionScript() !== null ? $this->getExecuteDeletionScript()->toJson() : null,
             "logSetting" => $this->getLogSetting() !== null ? $this->getLogSetting()->toJson() : null,
         );
     }

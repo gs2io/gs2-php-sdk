@@ -55,6 +55,14 @@ class Account implements IModel {
 	 */
 	private $lastAuthenticatedAt;
 	/**
+     * @var int Account deletion requested time
+	 */
+	private $deletionRequestedAt;
+	/**
+     * @var int Account deletion scheduled time
+	 */
+	private $deletionScheduledAt;
+	/**
      * @var int Creation Timestamp
 	 */
 	private $createdAt;
@@ -174,6 +182,38 @@ class Account implements IModel {
 		$this->lastAuthenticatedAt = $lastAuthenticatedAt;
 		return $this;
 	}
+    /** @return int|null Account deletion requested time */
+	public function getDeletionRequestedAt(): ?int {
+		return $this->deletionRequestedAt;
+	}
+    /** @param int|null $deletionRequestedAt Account deletion requested time */
+	public function setDeletionRequestedAt(?int $deletionRequestedAt) {
+		$this->deletionRequestedAt = $deletionRequestedAt;
+	}
+    /**
+     * @param int|null $deletionRequestedAt Account deletion requested time
+     * @return Account
+     */
+	public function withDeletionRequestedAt(?int $deletionRequestedAt): Account {
+		$this->deletionRequestedAt = $deletionRequestedAt;
+		return $this;
+	}
+    /** @return int|null Account deletion scheduled time */
+	public function getDeletionScheduledAt(): ?int {
+		return $this->deletionScheduledAt;
+	}
+    /** @param int|null $deletionScheduledAt Account deletion scheduled time */
+	public function setDeletionScheduledAt(?int $deletionScheduledAt) {
+		$this->deletionScheduledAt = $deletionScheduledAt;
+	}
+    /**
+     * @param int|null $deletionScheduledAt Account deletion scheduled time
+     * @return Account
+     */
+	public function withDeletionScheduledAt(?int $deletionScheduledAt): Account {
+		$this->deletionScheduledAt = $deletionScheduledAt;
+		return $this;
+	}
     /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
@@ -224,6 +264,8 @@ class Account implements IModel {
             ))
             ->withBanned(array_key_exists('banned', $data) ? $data['banned'] : null)
             ->withLastAuthenticatedAt(array_key_exists('lastAuthenticatedAt', $data) && $data['lastAuthenticatedAt'] !== null ? $data['lastAuthenticatedAt'] : null)
+            ->withDeletionRequestedAt(array_key_exists('deletionRequestedAt', $data) && $data['deletionRequestedAt'] !== null ? $data['deletionRequestedAt'] : null)
+            ->withDeletionScheduledAt(array_key_exists('deletionScheduledAt', $data) && $data['deletionScheduledAt'] !== null ? $data['deletionScheduledAt'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
     }
@@ -242,6 +284,8 @@ class Account implements IModel {
             ),
             "banned" => $this->getBanned(),
             "lastAuthenticatedAt" => $this->getLastAuthenticatedAt(),
+            "deletionRequestedAt" => $this->getDeletionRequestedAt(),
+            "deletionScheduledAt" => $this->getDeletionScheduledAt(),
             "createdAt" => $this->getCreatedAt(),
             "revision" => $this->getRevision(),
         );

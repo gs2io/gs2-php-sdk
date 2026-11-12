@@ -47,7 +47,7 @@ class Namespace_ implements IModel {
 	 */
 	private $transactionSettingV2;
 	/**
-     * @var string Overflow Trigger Script
+     * @var string GRN of the script executed when stamina overflows during recovery
 	 */
 	private $overflowTriggerScript;
 	/**
@@ -153,16 +153,16 @@ class Namespace_ implements IModel {
 		$this->transactionSettingV2 = $transactionSettingV2;
 		return $this;
 	}
-    /** @return string|null Overflow Trigger Script */
+    /** @return string|null GRN of the script executed when stamina overflows during recovery */
 	public function getOverflowTriggerScript(): ?string {
 		return $this->overflowTriggerScript;
 	}
-    /** @param string|null $overflowTriggerScript Overflow Trigger Script */
+    /** @param string|null $overflowTriggerScript GRN of the script executed when stamina overflows during recovery */
 	public function setOverflowTriggerScript(?string $overflowTriggerScript) {
 		$this->overflowTriggerScript = $overflowTriggerScript;
 	}
     /**
-     * @param string|null $overflowTriggerScript Overflow Trigger Script
+     * @param string|null $overflowTriggerScript GRN of the script executed when stamina overflows during recovery
      * @return Namespace_
      */
 	public function withOverflowTriggerScript(?string $overflowTriggerScript): Namespace_ {

@@ -75,6 +75,16 @@ use Gs2\Account\Request\DeleteAccountRequest;
 use Gs2\Account\Result\DeleteAccountResult;
 use Gs2\Account\Request\AuthenticationRequest;
 use Gs2\Account\Result\AuthenticationResult;
+use Gs2\Account\Request\RequestDeletionRequest;
+use Gs2\Account\Result\RequestDeletionResult;
+use Gs2\Account\Request\RequestDeletionByUserIdRequest;
+use Gs2\Account\Result\RequestDeletionByUserIdResult;
+use Gs2\Account\Request\CancelDeletionRequest;
+use Gs2\Account\Result\CancelDeletionResult;
+use Gs2\Account\Request\CancelDeletionByUserIdRequest;
+use Gs2\Account\Result\CancelDeletionByUserIdResult;
+use Gs2\Account\Request\ExecuteDeletionByUserIdRequest;
+use Gs2\Account\Result\ExecuteDeletionByUserIdResult;
 use Gs2\Account\Request\DescribeTakeOversRequest;
 use Gs2\Account\Result\DescribeTakeOversResult;
 use Gs2\Account\Request\DescribeTakeOversByUserIdRequest;
@@ -294,6 +304,18 @@ class CreateNamespaceTask extends Gs2RestSessionTask {
         if ($this->request->getUnBanScript() !== null) {
             $json["unBanScript"] = $this->request->getUnBanScript()->toJson();
         }
+        if ($this->request->getAccountDeletionSetting() !== null) {
+            $json["accountDeletionSetting"] = $this->request->getAccountDeletionSetting()->toJson();
+        }
+        if ($this->request->getRequestDeletionScript() !== null) {
+            $json["requestDeletionScript"] = $this->request->getRequestDeletionScript()->toJson();
+        }
+        if ($this->request->getCancelDeletionScript() !== null) {
+            $json["cancelDeletionScript"] = $this->request->getCancelDeletionScript()->toJson();
+        }
+        if ($this->request->getExecuteDeletionScript() !== null) {
+            $json["executeDeletionScript"] = $this->request->getExecuteDeletionScript()->toJson();
+        }
         if ($this->request->getLogSetting() !== null) {
             $json["logSetting"] = $this->request->getLogSetting()->toJson();
         }
@@ -495,6 +517,18 @@ class UpdateNamespaceTask extends Gs2RestSessionTask {
         }
         if ($this->request->getUnBanScript() !== null) {
             $json["unBanScript"] = $this->request->getUnBanScript()->toJson();
+        }
+        if ($this->request->getAccountDeletionSetting() !== null) {
+            $json["accountDeletionSetting"] = $this->request->getAccountDeletionSetting()->toJson();
+        }
+        if ($this->request->getRequestDeletionScript() !== null) {
+            $json["requestDeletionScript"] = $this->request->getRequestDeletionScript()->toJson();
+        }
+        if ($this->request->getCancelDeletionScript() !== null) {
+            $json["cancelDeletionScript"] = $this->request->getCancelDeletionScript()->toJson();
+        }
+        if ($this->request->getExecuteDeletionScript() !== null) {
+            $json["executeDeletionScript"] = $this->request->getExecuteDeletionScript()->toJson();
         }
         if ($this->request->getLogSetting() !== null) {
             $json["logSetting"] = $this->request->getLogSetting()->toJson();
@@ -1602,6 +1636,320 @@ class AuthenticationTask extends Gs2RestSessionTask {
         $this->builder->setBody($json);
 
         $this->builder->setMethod("PUT")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class RequestDeletionTask extends Gs2RestSessionTask {
+
+    /**
+     * @var RequestDeletionRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * RequestDeletionTask constructor.
+     * @param Gs2RestSession $session
+     * @param RequestDeletionRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        RequestDeletionRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            RequestDeletionResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "account", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/account/me/deletion";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class RequestDeletionByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var RequestDeletionByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * RequestDeletionByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param RequestDeletionByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        RequestDeletionByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            RequestDeletionByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "account", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/account/{userId}/deletion";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class CancelDeletionTask extends Gs2RestSessionTask {
+
+    /**
+     * @var CancelDeletionRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * CancelDeletionTask constructor.
+     * @param Gs2RestSession $session
+     * @param CancelDeletionRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        CancelDeletionRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            CancelDeletionResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "account", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/account/{userId}/deletion/cancel";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getPassword() !== null) {
+            $json["password"] = $this->request->getPassword();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class CancelDeletionByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var CancelDeletionByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * CancelDeletionByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param CancelDeletionByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        CancelDeletionByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            CancelDeletionByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "account", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/account/{userId}/deletion";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $queryStrings = [];
+        if ($this->request->getContextStack() !== null) {
+            $queryStrings["contextStack"] = $this->request->getContextStack();
+        }
+
+        if (count($queryStrings) > 0) {
+            $url .= '?'. http_build_query($queryStrings);
+        }
+
+        $this->builder->setMethod("DELETE")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class ExecuteDeletionByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var ExecuteDeletionByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * ExecuteDeletionByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param ExecuteDeletionByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        ExecuteDeletionByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            ExecuteDeletionByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "account", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/account/{userId}/deletion/execute";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
             ->setUrl($url)
             ->setHeader("Content-Type", "application/json")
             ->setHttpResponseHandler($this);
@@ -5073,6 +5421,171 @@ class Gs2AccountRestClient extends AbstractGs2Client {
             AuthenticationRequest $request
     ): AuthenticationResult {
         return $this->authenticationAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * Request deletion of the Game Player Account
+     *
+     * @param RequestDeletionRequest $request
+     * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#requestdeletion
+     */
+    public function requestDeletionAsync(
+            RequestDeletionRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new RequestDeletionTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * Request deletion of the Game Player Account
+     *
+     * @param RequestDeletionRequest $request
+     * @return RequestDeletionResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#requestdeletion
+     */
+    public function requestDeletion (
+            RequestDeletionRequest $request
+    ): RequestDeletionResult {
+        return $this->requestDeletionAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * Request deletion of the Game Player Account by User ID
+     *
+     * @param RequestDeletionByUserIdRequest $request
+     * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#requestdeletionbyuserid
+     */
+    public function requestDeletionByUserIdAsync(
+            RequestDeletionByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new RequestDeletionByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * Request deletion of the Game Player Account by User ID
+     *
+     * @param RequestDeletionByUserIdRequest $request
+     * @return RequestDeletionByUserIdResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#requestdeletionbyuserid
+     */
+    public function requestDeletionByUserId (
+            RequestDeletionByUserIdRequest $request
+    ): RequestDeletionByUserIdResult {
+        return $this->requestDeletionByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * Cancel the deletion request of the Game Player Account
+     *
+     * @param CancelDeletionRequest $request
+     * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#canceldeletion
+     */
+    public function cancelDeletionAsync(
+            CancelDeletionRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new CancelDeletionTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * Cancel the deletion request of the Game Player Account
+     *
+     * @param CancelDeletionRequest $request
+     * @return CancelDeletionResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#canceldeletion
+     */
+    public function cancelDeletion (
+            CancelDeletionRequest $request
+    ): CancelDeletionResult {
+        return $this->cancelDeletionAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * Cancel the deletion request of the Game Player Account by User ID
+     *
+     * @param CancelDeletionByUserIdRequest $request
+     * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#canceldeletionbyuserid
+     */
+    public function cancelDeletionByUserIdAsync(
+            CancelDeletionByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new CancelDeletionByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * Cancel the deletion request of the Game Player Account by User ID
+     *
+     * @param CancelDeletionByUserIdRequest $request
+     * @return CancelDeletionByUserIdResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#canceldeletionbyuserid
+     */
+    public function cancelDeletionByUserId (
+            CancelDeletionByUserIdRequest $request
+    ): CancelDeletionByUserIdResult {
+        return $this->cancelDeletionByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * Execute the deletion of the Game Player Account by User ID without waiting for the grace period
+     *
+     * @param ExecuteDeletionByUserIdRequest $request
+     * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#executedeletionbyuserid
+     */
+    public function executeDeletionByUserIdAsync(
+            ExecuteDeletionByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new ExecuteDeletionByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * Execute the deletion of the Game Player Account by User ID without waiting for the grace period
+     *
+     * @param ExecuteDeletionByUserIdRequest $request
+     * @return ExecuteDeletionByUserIdResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#executedeletionbyuserid
+     */
+    public function executeDeletionByUserId (
+            ExecuteDeletionByUserIdRequest $request
+    ): ExecuteDeletionByUserIdResult {
+        return $this->executeDeletionByUserIdAsync(
             $request
         )->wait();
     }

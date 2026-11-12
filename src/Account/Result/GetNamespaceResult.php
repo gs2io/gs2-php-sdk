@@ -21,6 +21,7 @@ use Gs2\Core\Model\IResult;
 use Gs2\Account\Model\TransactionSetting;
 use Gs2\Account\Model\TransactionSettingV2;
 use Gs2\Account\Model\ScriptSetting;
+use Gs2\Account\Model\AccountDeletionSetting;
 use Gs2\Account\Model\LogSetting;
 use Gs2\Account\Model\Namespace_;
 

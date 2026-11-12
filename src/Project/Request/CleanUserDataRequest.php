@@ -23,6 +23,8 @@ use Gs2\Core\Control\Gs2BasicRequest;
 class CleanUserDataRequest extends Gs2BasicRequest {
     /** @var string User ID */
     private $userId;
+    /** @var array Microservices to exclude from the deletion */
+    private $excludeMicroservices;
     /** @var string Time offset token */
     private $timeOffsetToken;
     /** @var string */
@@ -41,6 +43,22 @@ class CleanUserDataRequest extends Gs2BasicRequest {
      */
 	public function withUserId(?string $userId): CleanUserDataRequest {
 		$this->userId = $userId;
+		return $this;
+	}
+    /** @return array|null Microservices to exclude from the deletion */
+	public function getExcludeMicroservices(): ?array {
+		return $this->excludeMicroservices;
+	}
+    /** @param array|null $excludeMicroservices Microservices to exclude from the deletion */
+	public function setExcludeMicroservices(?array $excludeMicroservices) {
+		$this->excludeMicroservices = $excludeMicroservices;
+	}
+    /**
+     * @param array|null $excludeMicroservices Microservices to exclude from the deletion
+     * @return CleanUserDataRequest
+     */
+	public function withExcludeMicroservices(?array $excludeMicroservices): CleanUserDataRequest {
+		$this->excludeMicroservices = $excludeMicroservices;
 		return $this;
 	}
     /** @return string|null Time offset token */
@@ -79,12 +97,24 @@ class CleanUserDataRequest extends Gs2BasicRequest {
         }
         return (new CleanUserDataRequest())
             ->withUserId(array_key_exists('userId', $data) && $data['userId'] !== null ? $data['userId'] : null)
+            ->withExcludeMicroservices(!array_key_exists('excludeMicroservices', $data) || $data['excludeMicroservices'] === null ? null : array_map(
+                function ($item) {
+                    return $item;
+                },
+                $data['excludeMicroservices']
+            ))
             ->withTimeOffsetToken(array_key_exists('timeOffsetToken', $data) && $data['timeOffsetToken'] !== null ? $data['timeOffsetToken'] : null);
     }
 
     public function toJson(): array {
         return array(
             "userId" => $this->getUserId(),
+            "excludeMicroservices" => $this->getExcludeMicroservices() === null ? null : array_map(
+                function ($item) {
+                    return $item;
+                },
+                $this->getExcludeMicroservices()
+            ),
             "timeOffsetToken" => $this->getTimeOffsetToken(),
         );
     }

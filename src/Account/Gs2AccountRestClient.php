@@ -75,6 +75,10 @@ use Gs2\Account\Request\DeleteAccountRequest;
 use Gs2\Account\Result\DeleteAccountResult;
 use Gs2\Account\Request\AuthenticationRequest;
 use Gs2\Account\Result\AuthenticationResult;
+use Gs2\Account\Request\PreviewTakeOverRequest;
+use Gs2\Account\Result\PreviewTakeOverResult;
+use Gs2\Account\Request\PreviewTakeOverOpenIdConnectRequest;
+use Gs2\Account\Result\PreviewTakeOverOpenIdConnectResult;
 use Gs2\Account\Request\RequestDeletionRequest;
 use Gs2\Account\Result\RequestDeletionResult;
 use Gs2\Account\Request\RequestDeletionByUserIdRequest;
@@ -1648,6 +1652,127 @@ class AuthenticationTask extends Gs2RestSessionTask {
         }
         if ($this->request->getTimeOffsetToken() !== null) {
             $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class PreviewTakeOverTask extends Gs2RestSessionTask {
+
+    /**
+     * @var PreviewTakeOverRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * PreviewTakeOverTask constructor.
+     * @param Gs2RestSession $session
+     * @param PreviewTakeOverRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        PreviewTakeOverRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            PreviewTakeOverResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "account", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/takeover/type/{type}/preview";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{type}", $this->request->getType() === null ? "null" : $this->request->getType(), $url);
+
+        $json = [];
+        if ($this->request->getUserIdentifier() !== null) {
+            $json["userIdentifier"] = $this->request->getUserIdentifier();
+        }
+        if ($this->request->getPassword() !== null) {
+            $json["password"] = $this->request->getPassword();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class PreviewTakeOverOpenIdConnectTask extends Gs2RestSessionTask {
+
+    /**
+     * @var PreviewTakeOverOpenIdConnectRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * PreviewTakeOverOpenIdConnectTask constructor.
+     * @param Gs2RestSession $session
+     * @param PreviewTakeOverOpenIdConnectRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        PreviewTakeOverOpenIdConnectRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            PreviewTakeOverOpenIdConnectResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "account", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/takeover/type/{type}/openIdConnect/preview";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{type}", $this->request->getType() === null ? "null" : $this->request->getType(), $url);
+
+        $json = [];
+        if ($this->request->getIdToken() !== null) {
+            $json["idToken"] = $this->request->getIdToken();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
 
         return parent::executeImpl();
@@ -5421,6 +5546,72 @@ class Gs2AccountRestClient extends AbstractGs2Client {
             AuthenticationRequest $request
     ): AuthenticationResult {
         return $this->authenticationAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * Preview Account Takeover
+     *
+     * @param PreviewTakeOverRequest $request
+     * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#previewtakeover
+     */
+    public function previewTakeOverAsync(
+            PreviewTakeOverRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new PreviewTakeOverTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * Preview Account Takeover
+     *
+     * @param PreviewTakeOverRequest $request
+     * @return PreviewTakeOverResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#previewtakeover
+     */
+    public function previewTakeOver (
+            PreviewTakeOverRequest $request
+    ): PreviewTakeOverResult {
+        return $this->previewTakeOverAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * Preview Account Takeover using OpenID Connect
+     *
+     * @param PreviewTakeOverOpenIdConnectRequest $request
+     * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#previewtakeoveropenidconnect
+     */
+    public function previewTakeOverOpenIdConnectAsync(
+            PreviewTakeOverOpenIdConnectRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new PreviewTakeOverOpenIdConnectTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * Preview Account Takeover using OpenID Connect
+     *
+     * @param PreviewTakeOverOpenIdConnectRequest $request
+     * @return PreviewTakeOverOpenIdConnectResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#previewtakeoveropenidconnect
+     */
+    public function previewTakeOverOpenIdConnect (
+            PreviewTakeOverOpenIdConnectRequest $request
+    ): PreviewTakeOverOpenIdConnectResult {
+        return $this->previewTakeOverOpenIdConnectAsync(
             $request
         )->wait();
     }

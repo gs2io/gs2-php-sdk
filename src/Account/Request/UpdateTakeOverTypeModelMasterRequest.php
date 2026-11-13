@@ -20,6 +20,7 @@ namespace Gs2\Account\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Account\Model\ScopeValue;
 use Gs2\Account\Model\OpenIdConnectSetting;
+use Gs2\Account\Model\IssuedCodeSetting;
 
 /**
  * Request for updateTakeOverTypeModelMaster: Update Takeover Type Model Master
@@ -35,8 +36,12 @@ class UpdateTakeOverTypeModelMasterRequest extends Gs2BasicRequest {
     private $description;
     /** @var string Metadata */
     private $metadata;
+    /** @var string Takeover Method */
+    private $takeOverMethod;
     /** @var OpenIdConnectSetting OpenID Connect Configuration */
     private $openIdConnectSetting;
+    /** @var IssuedCodeSetting Issued Takeover Code Configuration */
+    private $issuedCodeSetting;
     /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -101,6 +106,22 @@ class UpdateTakeOverTypeModelMasterRequest extends Gs2BasicRequest {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return string|null Takeover Method */
+	public function getTakeOverMethod(): ?string {
+		return $this->takeOverMethod;
+	}
+    /** @param string|null $takeOverMethod Takeover Method */
+	public function setTakeOverMethod(?string $takeOverMethod) {
+		$this->takeOverMethod = $takeOverMethod;
+	}
+    /**
+     * @param string|null $takeOverMethod Takeover Method
+     * @return UpdateTakeOverTypeModelMasterRequest
+     */
+	public function withTakeOverMethod(?string $takeOverMethod): UpdateTakeOverTypeModelMasterRequest {
+		$this->takeOverMethod = $takeOverMethod;
+		return $this;
+	}
     /** @return OpenIdConnectSetting|null OpenID Connect Configuration */
 	public function getOpenIdConnectSetting(): ?OpenIdConnectSetting {
 		return $this->openIdConnectSetting;
@@ -117,6 +138,22 @@ class UpdateTakeOverTypeModelMasterRequest extends Gs2BasicRequest {
 		$this->openIdConnectSetting = $openIdConnectSetting;
 		return $this;
 	}
+    /** @return IssuedCodeSetting|null Issued Takeover Code Configuration */
+	public function getIssuedCodeSetting(): ?IssuedCodeSetting {
+		return $this->issuedCodeSetting;
+	}
+    /** @param IssuedCodeSetting|null $issuedCodeSetting Issued Takeover Code Configuration */
+	public function setIssuedCodeSetting(?IssuedCodeSetting $issuedCodeSetting) {
+		$this->issuedCodeSetting = $issuedCodeSetting;
+	}
+    /**
+     * @param IssuedCodeSetting|null $issuedCodeSetting Issued Takeover Code Configuration
+     * @return UpdateTakeOverTypeModelMasterRequest
+     */
+	public function withIssuedCodeSetting(?IssuedCodeSetting $issuedCodeSetting): UpdateTakeOverTypeModelMasterRequest {
+		$this->issuedCodeSetting = $issuedCodeSetting;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?UpdateTakeOverTypeModelMasterRequest {
         if ($data === null) {
@@ -127,7 +164,9 @@ class UpdateTakeOverTypeModelMasterRequest extends Gs2BasicRequest {
             ->withType(array_key_exists('type', $data) && $data['type'] !== null ? $data['type'] : null)
             ->withDescription(array_key_exists('description', $data) && $data['description'] !== null ? $data['description'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
-            ->withOpenIdConnectSetting(array_key_exists('openIdConnectSetting', $data) && $data['openIdConnectSetting'] !== null ? OpenIdConnectSetting::fromJson($data['openIdConnectSetting']) : null);
+            ->withTakeOverMethod(array_key_exists('takeOverMethod', $data) && $data['takeOverMethod'] !== null ? $data['takeOverMethod'] : null)
+            ->withOpenIdConnectSetting(array_key_exists('openIdConnectSetting', $data) && $data['openIdConnectSetting'] !== null ? OpenIdConnectSetting::fromJson($data['openIdConnectSetting']) : null)
+            ->withIssuedCodeSetting(array_key_exists('issuedCodeSetting', $data) && $data['issuedCodeSetting'] !== null ? IssuedCodeSetting::fromJson($data['issuedCodeSetting']) : null);
     }
 
     public function toJson(): array {
@@ -136,7 +175,9 @@ class UpdateTakeOverTypeModelMasterRequest extends Gs2BasicRequest {
             "type" => $this->getType(),
             "description" => $this->getDescription(),
             "metadata" => $this->getMetadata(),
+            "takeOverMethod" => $this->getTakeOverMethod(),
             "openIdConnectSetting" => $this->getOpenIdConnectSetting() !== null ? $this->getOpenIdConnectSetting()->toJson() : null,
+            "issuedCodeSetting" => $this->getIssuedCodeSetting() !== null ? $this->getIssuedCodeSetting()->toJson() : null,
         );
     }
 }

@@ -39,9 +39,17 @@ class TakeOverTypeModel implements IModel {
 	 */
 	private $metadata;
 	/**
+     * @var string Takeover Method
+	 */
+	private $takeOverMethod;
+	/**
      * @var OpenIdConnectSetting OpenID Connect Configuration
 	 */
 	private $openIdConnectSetting;
+	/**
+     * @var IssuedCodeSetting Issued Takeover Code Configuration
+	 */
+	private $issuedCodeSetting;
     /** @return string|null Takeover Type Model GRN */
 	public function getTakeOverTypeModelId(): ?string {
 		return $this->takeOverTypeModelId;
@@ -90,6 +98,22 @@ class TakeOverTypeModel implements IModel {
 		$this->metadata = $metadata;
 		return $this;
 	}
+    /** @return string|null Takeover Method */
+	public function getTakeOverMethod(): ?string {
+		return $this->takeOverMethod;
+	}
+    /** @param string|null $takeOverMethod Takeover Method */
+	public function setTakeOverMethod(?string $takeOverMethod) {
+		$this->takeOverMethod = $takeOverMethod;
+	}
+    /**
+     * @param string|null $takeOverMethod Takeover Method
+     * @return TakeOverTypeModel
+     */
+	public function withTakeOverMethod(?string $takeOverMethod): TakeOverTypeModel {
+		$this->takeOverMethod = $takeOverMethod;
+		return $this;
+	}
     /** @return OpenIdConnectSetting|null OpenID Connect Configuration */
 	public function getOpenIdConnectSetting(): ?OpenIdConnectSetting {
 		return $this->openIdConnectSetting;
@@ -106,6 +130,22 @@ class TakeOverTypeModel implements IModel {
 		$this->openIdConnectSetting = $openIdConnectSetting;
 		return $this;
 	}
+    /** @return IssuedCodeSetting|null Issued Takeover Code Configuration */
+	public function getIssuedCodeSetting(): ?IssuedCodeSetting {
+		return $this->issuedCodeSetting;
+	}
+    /** @param IssuedCodeSetting|null $issuedCodeSetting Issued Takeover Code Configuration */
+	public function setIssuedCodeSetting(?IssuedCodeSetting $issuedCodeSetting) {
+		$this->issuedCodeSetting = $issuedCodeSetting;
+	}
+    /**
+     * @param IssuedCodeSetting|null $issuedCodeSetting Issued Takeover Code Configuration
+     * @return TakeOverTypeModel
+     */
+	public function withIssuedCodeSetting(?IssuedCodeSetting $issuedCodeSetting): TakeOverTypeModel {
+		$this->issuedCodeSetting = $issuedCodeSetting;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?TakeOverTypeModel {
         if ($data === null) {
@@ -115,7 +155,9 @@ class TakeOverTypeModel implements IModel {
             ->withTakeOverTypeModelId(array_key_exists('takeOverTypeModelId', $data) && $data['takeOverTypeModelId'] !== null ? $data['takeOverTypeModelId'] : null)
             ->withType(array_key_exists('type', $data) && $data['type'] !== null ? $data['type'] : null)
             ->withMetadata(array_key_exists('metadata', $data) && $data['metadata'] !== null ? $data['metadata'] : null)
-            ->withOpenIdConnectSetting(array_key_exists('openIdConnectSetting', $data) && $data['openIdConnectSetting'] !== null ? OpenIdConnectSetting::fromJson($data['openIdConnectSetting']) : null);
+            ->withTakeOverMethod(array_key_exists('takeOverMethod', $data) && $data['takeOverMethod'] !== null ? $data['takeOverMethod'] : null)
+            ->withOpenIdConnectSetting(array_key_exists('openIdConnectSetting', $data) && $data['openIdConnectSetting'] !== null ? OpenIdConnectSetting::fromJson($data['openIdConnectSetting']) : null)
+            ->withIssuedCodeSetting(array_key_exists('issuedCodeSetting', $data) && $data['issuedCodeSetting'] !== null ? IssuedCodeSetting::fromJson($data['issuedCodeSetting']) : null);
     }
 
     public function toJson(): array {
@@ -123,7 +165,9 @@ class TakeOverTypeModel implements IModel {
             "takeOverTypeModelId" => $this->getTakeOverTypeModelId(),
             "type" => $this->getType(),
             "metadata" => $this->getMetadata(),
+            "takeOverMethod" => $this->getTakeOverMethod(),
             "openIdConnectSetting" => $this->getOpenIdConnectSetting() !== null ? $this->getOpenIdConnectSetting()->toJson() : null,
+            "issuedCodeSetting" => $this->getIssuedCodeSetting() !== null ? $this->getIssuedCodeSetting()->toJson() : null,
         );
     }
 }

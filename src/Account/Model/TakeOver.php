@@ -51,6 +51,14 @@ class TakeOver implements IModel {
 	 */
 	private $createdAt;
 	/**
+     * @var int Expiration datetime
+	 */
+	private $expiresAt;
+	/**
+     * @var int Number of Failed Attempts
+	 */
+	private $failedAttempts;
+	/**
      * @var int Revision
 	 */
 	private $revision;
@@ -150,6 +158,38 @@ class TakeOver implements IModel {
 		$this->createdAt = $createdAt;
 		return $this;
 	}
+    /** @return int|null Expiration datetime */
+	public function getExpiresAt(): ?int {
+		return $this->expiresAt;
+	}
+    /** @param int|null $expiresAt Expiration datetime */
+	public function setExpiresAt(?int $expiresAt) {
+		$this->expiresAt = $expiresAt;
+	}
+    /**
+     * @param int|null $expiresAt Expiration datetime
+     * @return TakeOver
+     */
+	public function withExpiresAt(?int $expiresAt): TakeOver {
+		$this->expiresAt = $expiresAt;
+		return $this;
+	}
+    /** @return int|null Number of Failed Attempts */
+	public function getFailedAttempts(): ?int {
+		return $this->failedAttempts;
+	}
+    /** @param int|null $failedAttempts Number of Failed Attempts */
+	public function setFailedAttempts(?int $failedAttempts) {
+		$this->failedAttempts = $failedAttempts;
+	}
+    /**
+     * @param int|null $failedAttempts Number of Failed Attempts
+     * @return TakeOver
+     */
+	public function withFailedAttempts(?int $failedAttempts): TakeOver {
+		$this->failedAttempts = $failedAttempts;
+		return $this;
+	}
     /** @return int|null Revision */
 	public function getRevision(): ?int {
 		return $this->revision;
@@ -178,6 +218,8 @@ class TakeOver implements IModel {
             ->withUserIdentifier(array_key_exists('userIdentifier', $data) && $data['userIdentifier'] !== null ? $data['userIdentifier'] : null)
             ->withPassword(array_key_exists('password', $data) && $data['password'] !== null ? $data['password'] : null)
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
+            ->withExpiresAt(array_key_exists('expiresAt', $data) && $data['expiresAt'] !== null ? $data['expiresAt'] : null)
+            ->withFailedAttempts(array_key_exists('failedAttempts', $data) && $data['failedAttempts'] !== null ? $data['failedAttempts'] : null)
             ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
     }
 
@@ -189,6 +231,8 @@ class TakeOver implements IModel {
             "userIdentifier" => $this->getUserIdentifier(),
             "password" => $this->getPassword(),
             "createdAt" => $this->getCreatedAt(),
+            "expiresAt" => $this->getExpiresAt(),
+            "failedAttempts" => $this->getFailedAttempts(),
             "revision" => $this->getRevision(),
         );
     }

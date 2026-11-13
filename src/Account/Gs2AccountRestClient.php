@@ -97,6 +97,10 @@ use Gs2\Account\Request\CreateTakeOverRequest;
 use Gs2\Account\Result\CreateTakeOverResult;
 use Gs2\Account\Request\CreateTakeOverByUserIdRequest;
 use Gs2\Account\Result\CreateTakeOverByUserIdResult;
+use Gs2\Account\Request\IssueTakeOverCodeRequest;
+use Gs2\Account\Result\IssueTakeOverCodeResult;
+use Gs2\Account\Request\IssueTakeOverCodeByUserIdRequest;
+use Gs2\Account\Result\IssueTakeOverCodeByUserIdResult;
 use Gs2\Account\Request\CreateTakeOverOpenIdConnectRequest;
 use Gs2\Account\Result\CreateTakeOverOpenIdConnectResult;
 use Gs2\Account\Request\CreateTakeOverOpenIdConnectAndByUserIdRequest;
@@ -2367,6 +2371,125 @@ class CreateTakeOverByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class IssueTakeOverCodeTask extends Gs2RestSessionTask {
+
+    /**
+     * @var IssueTakeOverCodeRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * IssueTakeOverCodeTask constructor.
+     * @param Gs2RestSession $session
+     * @param IssueTakeOverCodeRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        IssueTakeOverCodeRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            IssueTakeOverCodeResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "account", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/account/me/takeover/type/{type}/issue";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{type}", $this->request->getType() === null ? "null" : $this->request->getType(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class IssueTakeOverCodeByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var IssueTakeOverCodeByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * IssueTakeOverCodeByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param IssueTakeOverCodeByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        IssueTakeOverCodeByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            IssueTakeOverCodeByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "account", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/account/{userId}/takeover/type/{type}/issue";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{type}", $this->request->getType() === null ? "null" : $this->request->getType(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class CreateTakeOverOpenIdConnectTask extends Gs2RestSessionTask {
 
     /**
@@ -4258,8 +4381,14 @@ class CreateTakeOverTypeModelMasterTask extends Gs2RestSessionTask {
         if ($this->request->getMetadata() !== null) {
             $json["metadata"] = $this->request->getMetadata();
         }
+        if ($this->request->getTakeOverMethod() !== null) {
+            $json["takeOverMethod"] = $this->request->getTakeOverMethod();
+        }
         if ($this->request->getOpenIdConnectSetting() !== null) {
             $json["openIdConnectSetting"] = $this->request->getOpenIdConnectSetting()->toJson();
+        }
+        if ($this->request->getIssuedCodeSetting() !== null) {
+            $json["issuedCodeSetting"] = $this->request->getIssuedCodeSetting()->toJson();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -4381,8 +4510,14 @@ class UpdateTakeOverTypeModelMasterTask extends Gs2RestSessionTask {
         if ($this->request->getMetadata() !== null) {
             $json["metadata"] = $this->request->getMetadata();
         }
+        if ($this->request->getTakeOverMethod() !== null) {
+            $json["takeOverMethod"] = $this->request->getTakeOverMethod();
+        }
         if ($this->request->getOpenIdConnectSetting() !== null) {
             $json["openIdConnectSetting"] = $this->request->getOpenIdConnectSetting()->toJson();
+        }
+        if ($this->request->getIssuedCodeSetting() !== null) {
+            $json["issuedCodeSetting"] = $this->request->getIssuedCodeSetting()->toJson();
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
@@ -5909,6 +6044,72 @@ class Gs2AccountRestClient extends AbstractGs2Client {
             CreateTakeOverByUserIdRequest $request
     ): CreateTakeOverByUserIdResult {
         return $this->createTakeOverByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * Issue Takeover Code
+     *
+     * @param IssueTakeOverCodeRequest $request
+     * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#issuetakeovercode
+     */
+    public function issueTakeOverCodeAsync(
+            IssueTakeOverCodeRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new IssueTakeOverCodeTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * Issue Takeover Code
+     *
+     * @param IssueTakeOverCodeRequest $request
+     * @return IssueTakeOverCodeResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#issuetakeovercode
+     */
+    public function issueTakeOverCode (
+            IssueTakeOverCodeRequest $request
+    ): IssueTakeOverCodeResult {
+        return $this->issueTakeOverCodeAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * Issue Takeover Code by User ID
+     *
+     * @param IssueTakeOverCodeByUserIdRequest $request
+     * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/account/sdk/#issuetakeovercodebyuserid
+     */
+    public function issueTakeOverCodeByUserIdAsync(
+            IssueTakeOverCodeByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new IssueTakeOverCodeByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * Issue Takeover Code by User ID
+     *
+     * @param IssueTakeOverCodeByUserIdRequest $request
+     * @return IssueTakeOverCodeByUserIdResult
+     * @see https://docs.gs2.io/api_reference/account/sdk/#issuetakeovercodebyuserid
+     */
+    public function issueTakeOverCodeByUserId (
+            IssueTakeOverCodeByUserIdRequest $request
+    ): IssueTakeOverCodeByUserIdResult {
+        return $this->issueTakeOverCodeByUserIdAsync(
             $request
         )->wait();
     }

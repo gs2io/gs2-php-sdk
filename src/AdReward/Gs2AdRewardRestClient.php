@@ -67,10 +67,16 @@ use Gs2\AdReward\Request\ConsumePointRequest;
 use Gs2\AdReward\Result\ConsumePointResult;
 use Gs2\AdReward\Request\ConsumePointByUserIdRequest;
 use Gs2\AdReward\Result\ConsumePointByUserIdResult;
+use Gs2\AdReward\Request\VerifyPointRequest;
+use Gs2\AdReward\Result\VerifyPointResult;
+use Gs2\AdReward\Request\VerifyPointByUserIdRequest;
+use Gs2\AdReward\Result\VerifyPointByUserIdResult;
 use Gs2\AdReward\Request\DeletePointByUserIdRequest;
 use Gs2\AdReward\Result\DeletePointByUserIdResult;
 use Gs2\AdReward\Request\ConsumePointByStampTaskRequest;
 use Gs2\AdReward\Result\ConsumePointByStampTaskResult;
+use Gs2\AdReward\Request\VerifyPointByStampTaskRequest;
+use Gs2\AdReward\Result\VerifyPointByStampTaskResult;
 use Gs2\AdReward\Request\AcquirePointByStampSheetRequest;
 use Gs2\AdReward\Result\AcquirePointByStampSheetResult;
 
@@ -1276,6 +1282,143 @@ class ConsumePointByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class VerifyPointTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyPointRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyPointTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyPointRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyPointRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyPointResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "ad-reward", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/point/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getPoint() !== null) {
+            $json["point"] = $this->request->getPoint();
+        }
+        if ($this->request->getMultiplyValueSpecifyingQuantity() !== null) {
+            $json["multiplyValueSpecifyingQuantity"] = $this->request->getMultiplyValueSpecifyingQuantity();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyPointByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyPointByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyPointByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyPointByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyPointByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyPointByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "ad-reward", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/point/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getPoint() !== null) {
+            $json["point"] = $this->request->getPoint();
+        }
+        if ($this->request->getMultiplyValueSpecifyingQuantity() !== null) {
+            $json["multiplyValueSpecifyingQuantity"] = $this->request->getMultiplyValueSpecifyingQuantity();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class DeletePointByUserIdTask extends Gs2RestSessionTask {
 
     /**
@@ -1370,6 +1513,65 @@ class ConsumePointByStampTaskTask extends Gs2RestSessionTask {
     public function executeImpl(): PromiseInterface {
 
         $url = str_replace('{service}', "ad-reward", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/point/consume";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyPointByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyPointByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyPointByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyPointByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyPointByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyPointByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "ad-reward", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/point/verify";
 
         $json = [];
         if ($this->request->getStampTask() !== null) {
@@ -2095,6 +2297,72 @@ class Gs2AdRewardRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify Points
+     *
+     * @param VerifyPointRequest $request
+     * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#verifypoint
+     */
+    public function verifyPointAsync(
+            VerifyPointRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyPointTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * Verify Points
+     *
+     * @param VerifyPointRequest $request
+     * @return VerifyPointResult
+     * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#verifypoint
+     */
+    public function verifyPoint (
+            VerifyPointRequest $request
+    ): VerifyPointResult {
+        return $this->verifyPointAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * Verify Points by User ID
+     *
+     * @param VerifyPointByUserIdRequest $request
+     * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#verifypointbyuserid
+     */
+    public function verifyPointByUserIdAsync(
+            VerifyPointByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyPointByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * Verify Points by User ID
+     *
+     * @param VerifyPointByUserIdRequest $request
+     * @return VerifyPointByUserIdResult
+     * @see https://docs.gs2.io/api_reference/ad_reward/sdk/#verifypointbyuserid
+     */
+    public function verifyPointByUserId (
+            VerifyPointByUserIdRequest $request
+    ): VerifyPointByUserIdResult {
+        return $this->verifyPointByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * Delete Points by User ID
      *
      * @param DeletePointByUserIdRequest $request
@@ -2156,6 +2424,39 @@ class Gs2AdRewardRestClient extends AbstractGs2Client {
             ConsumePointByStampTaskRequest $request
     ): ConsumePointByStampTaskResult {
         return $this->consumePointByStampTaskAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * Verify Points as a verify action
+     *
+     * @param VerifyPointByStampTaskRequest $request
+     * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/ad_reward/stamp_sheet/#gs2adrewardverifypointbyuserid
+     */
+    public function verifyPointByStampTaskAsync(
+            VerifyPointByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyPointByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * Verify Points as a verify action
+     *
+     * @param VerifyPointByStampTaskRequest $request
+     * @return VerifyPointByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/ad_reward/stamp_sheet/#gs2adrewardverifypointbyuserid
+     */
+    public function verifyPointByStampTask (
+            VerifyPointByStampTaskRequest $request
+    ): VerifyPointByStampTaskResult {
+        return $this->verifyPointByStampTaskAsync(
             $request
         )->wait();
     }

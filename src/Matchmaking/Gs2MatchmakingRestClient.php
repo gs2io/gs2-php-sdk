@@ -161,10 +161,16 @@ use Gs2\Matchmaking\Request\GetRatingRequest;
 use Gs2\Matchmaking\Result\GetRatingResult;
 use Gs2\Matchmaking\Request\GetRatingByUserIdRequest;
 use Gs2\Matchmaking\Result\GetRatingByUserIdResult;
+use Gs2\Matchmaking\Request\VerifyRatingRequest;
+use Gs2\Matchmaking\Result\VerifyRatingResult;
+use Gs2\Matchmaking\Request\VerifyRatingByUserIdRequest;
+use Gs2\Matchmaking\Result\VerifyRatingByUserIdResult;
 use Gs2\Matchmaking\Request\PutResultRequest;
 use Gs2\Matchmaking\Result\PutResultResult;
 use Gs2\Matchmaking\Request\DeleteRatingRequest;
 use Gs2\Matchmaking\Result\DeleteRatingResult;
+use Gs2\Matchmaking\Request\VerifyRatingByStampTaskRequest;
+use Gs2\Matchmaking\Result\VerifyRatingByStampTaskResult;
 use Gs2\Matchmaking\Request\GetBallotRequest;
 use Gs2\Matchmaking\Result\GetBallotResult;
 use Gs2\Matchmaking\Request\GetBallotByUserIdRequest;
@@ -4503,6 +4509,139 @@ class GetRatingByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class VerifyRatingTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyRatingRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyRatingTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyRatingRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyRatingRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyRatingResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/rating/{ratingName}/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{ratingName}", $this->request->getRatingName() === null|| strlen($this->request->getRatingName()) == 0 ? "null" : $this->request->getRatingName(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getRateValue() !== null) {
+            $json["rateValue"] = $this->request->getRateValue();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyRatingByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyRatingByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyRatingByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyRatingByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyRatingByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyRatingByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/rating/{ratingName}/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{ratingName}", $this->request->getRatingName() === null|| strlen($this->request->getRatingName()) == 0 ? "null" : $this->request->getRatingName(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getRateValue() !== null) {
+            $json["rateValue"] = $this->request->getRateValue();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class PutResultTask extends Gs2RestSessionTask {
 
     /**
@@ -4626,6 +4765,65 @@ class DeleteRatingTask extends Gs2RestSessionTask {
         }
         if ($this->request->getTimeOffsetToken() !== null) {
             $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyRatingByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyRatingByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyRatingByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyRatingByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyRatingByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyRatingByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "matchmaking", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/rating/verify";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
 
         return parent::executeImpl();
@@ -7158,6 +7356,72 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify Rating
+     *
+     * @param VerifyRatingRequest $request
+     * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#verifyrating
+     */
+    public function verifyRatingAsync(
+            VerifyRatingRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyRatingTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * Verify Rating
+     *
+     * @param VerifyRatingRequest $request
+     * @return VerifyRatingResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#verifyrating
+     */
+    public function verifyRating (
+            VerifyRatingRequest $request
+    ): VerifyRatingResult {
+        return $this->verifyRatingAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * Verify Rating by User ID
+     *
+     * @param VerifyRatingByUserIdRequest $request
+     * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#verifyratingbyuserid
+     */
+    public function verifyRatingByUserIdAsync(
+            VerifyRatingByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyRatingByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * Verify Rating by User ID
+     *
+     * @param VerifyRatingByUserIdRequest $request
+     * @return VerifyRatingByUserIdResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/sdk/#verifyratingbyuserid
+     */
+    public function verifyRatingByUserId (
+            VerifyRatingByUserIdRequest $request
+    ): VerifyRatingByUserIdResult {
+        return $this->verifyRatingByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * Recalculate rating values
      *
      * @param PutResultRequest $request
@@ -7219,6 +7483,39 @@ class Gs2MatchmakingRestClient extends AbstractGs2Client {
             DeleteRatingRequest $request
     ): DeleteRatingResult {
         return $this->deleteRatingAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * Verify Rating as a verify action
+     *
+     * @param VerifyRatingByStampTaskRequest $request
+     * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/matchmaking/stamp_sheet/#gs2matchmakingverifyratingbyuserid
+     */
+    public function verifyRatingByStampTaskAsync(
+            VerifyRatingByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyRatingByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * Verify Rating as a verify action
+     *
+     * @param VerifyRatingByStampTaskRequest $request
+     * @return VerifyRatingByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/matchmaking/stamp_sheet/#gs2matchmakingverifyratingbyuserid
+     */
+    public function verifyRatingByStampTask (
+            VerifyRatingByStampTaskRequest $request
+    ): VerifyRatingByStampTaskResult {
+        return $this->verifyRatingByStampTaskAsync(
             $request
         )->wait();
     }

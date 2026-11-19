@@ -93,6 +93,10 @@ use Gs2\SkillTree\Request\GetStatusRequest;
 use Gs2\SkillTree\Result\GetStatusResult;
 use Gs2\SkillTree\Request\GetStatusByUserIdRequest;
 use Gs2\SkillTree\Result\GetStatusByUserIdResult;
+use Gs2\SkillTree\Request\VerifyStatusRequest;
+use Gs2\SkillTree\Result\VerifyStatusResult;
+use Gs2\SkillTree\Request\VerifyStatusByUserIdRequest;
+use Gs2\SkillTree\Result\VerifyStatusByUserIdResult;
 use Gs2\SkillTree\Request\ResetRequest;
 use Gs2\SkillTree\Result\ResetResult;
 use Gs2\SkillTree\Request\ResetByUserIdRequest;
@@ -101,6 +105,8 @@ use Gs2\SkillTree\Request\MarkReleaseByStampSheetRequest;
 use Gs2\SkillTree\Result\MarkReleaseByStampSheetResult;
 use Gs2\SkillTree\Request\MarkRestrainByStampTaskRequest;
 use Gs2\SkillTree\Result\MarkRestrainByStampTaskResult;
+use Gs2\SkillTree\Request\VerifyStatusByStampTaskRequest;
+use Gs2\SkillTree\Result\VerifyStatusByStampTaskResult;
 use Gs2\SkillTree\Request\ExportMasterRequest;
 use Gs2\SkillTree\Result\ExportMasterResult;
 use Gs2\SkillTree\Request\GetCurrentTreeMasterRequest;
@@ -2224,6 +2230,135 @@ class GetStatusByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class VerifyStatusTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyStatusRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyStatusTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyStatusRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyStatusRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyStatusResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "skill-tree", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/status/{propertyId}/node/{nodeModelName}/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{propertyId}", $this->request->getPropertyId() === null|| strlen($this->request->getPropertyId()) == 0 ? "null" : $this->request->getPropertyId(), $url);
+        $url = str_replace("{nodeModelName}", $this->request->getNodeModelName() === null|| strlen($this->request->getNodeModelName()) == 0 ? "null" : $this->request->getNodeModelName(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyStatusByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyStatusByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyStatusByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyStatusByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyStatusByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyStatusByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "skill-tree", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/status/{propertyId}/node/{nodeModelName}/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{propertyId}", $this->request->getPropertyId() === null|| strlen($this->request->getPropertyId()) == 0 ? "null" : $this->request->getPropertyId(), $url);
+        $url = str_replace("{nodeModelName}", $this->request->getNodeModelName() === null|| strlen($this->request->getNodeModelName()) == 0 ? "null" : $this->request->getNodeModelName(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class ResetTask extends Gs2RestSessionTask {
 
     /**
@@ -2450,6 +2585,65 @@ class MarkRestrainByStampTaskTask extends Gs2RestSessionTask {
     public function executeImpl(): PromiseInterface {
 
         $url = str_replace('{service}', "skill-tree", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/status/restrain";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyStatusByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyStatusByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyStatusByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyStatusByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyStatusByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyStatusByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "skill-tree", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/status/verify";
 
         $json = [];
         if ($this->request->getStampTask() !== null) {
@@ -3864,6 +4058,72 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify Status
+     *
+     * @param VerifyStatusRequest $request
+     * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#verifystatus
+     */
+    public function verifyStatusAsync(
+            VerifyStatusRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyStatusTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * Verify Status
+     *
+     * @param VerifyStatusRequest $request
+     * @return VerifyStatusResult
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#verifystatus
+     */
+    public function verifyStatus (
+            VerifyStatusRequest $request
+    ): VerifyStatusResult {
+        return $this->verifyStatusAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * Verify Status by User ID
+     *
+     * @param VerifyStatusByUserIdRequest $request
+     * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#verifystatusbyuserid
+     */
+    public function verifyStatusByUserIdAsync(
+            VerifyStatusByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyStatusByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * Verify Status by User ID
+     *
+     * @param VerifyStatusByUserIdRequest $request
+     * @return VerifyStatusByUserIdResult
+     * @see https://docs.gs2.io/api_reference/skill_tree/sdk/#verifystatusbyuserid
+     */
+    public function verifyStatusByUserId (
+            VerifyStatusByUserIdRequest $request
+    ): VerifyStatusByUserIdResult {
+        return $this->verifyStatusByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * Reset status
      *
      * @param ResetRequest $request
@@ -3991,6 +4251,39 @@ class Gs2SkillTreeRestClient extends AbstractGs2Client {
             MarkRestrainByStampTaskRequest $request
     ): MarkRestrainByStampTaskResult {
         return $this->markRestrainByStampTaskAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * Verify Status as a verify action
+     *
+     * @param VerifyStatusByStampTaskRequest $request
+     * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/skill_tree/stamp_sheet/#gs2skilltreeverifystatusbyuserid
+     */
+    public function verifyStatusByStampTaskAsync(
+            VerifyStatusByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyStatusByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * Verify Status as a verify action
+     *
+     * @param VerifyStatusByStampTaskRequest $request
+     * @return VerifyStatusByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/skill_tree/stamp_sheet/#gs2skilltreeverifystatusbyuserid
+     */
+    public function verifyStatusByStampTask (
+            VerifyStatusByStampTaskRequest $request
+    ): VerifyStatusByStampTaskResult {
+        return $this->verifyStatusByStampTaskAsync(
             $request
         )->wait();
     }

@@ -1,4 +1,4 @@
-[⇒README in English](README-en.md)
+**日本語** | [English](README-en.md) | [한국어](README-ko.md)
 
 # gs2-php-sdk
 
@@ -21,7 +21,7 @@ SDKを利用するには GS2 のクレデンシャルが必要です。
 
 ### 動作条件
 
-- PHP7.1+
+- PHP 8.0 以上
 
 [⇒GS2の利用を開始 - SDK - 各種プログラミング言語](https://docs.gs2.io/ja/get_start/#%E5%90%84%E7%A8%AE%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E8%A8%80%E8%AA%9E)
 
@@ -108,15 +108,8 @@ $promise = $client->createNamespaceAsync(
     }
 );
 
-try {
-    // Promise を wait することで処理が実行される。戻り値には成功時の結果が返り、失敗時には例外が発生する。
-    $result = $promise->wait();
-    Assert::assertNotNull($result->getItem());
-    Assert::assertEquals('namespace-0001', $result->getItem()->getName());
-    Assert::assertEquals('script-0001', $result->getItem()->getAuthenticationScript()->getTriggerScriptId());
-} catch (Gs2Exception $e) {
-    Assert::fail($e->getMessage());
-}
+// リクエストとコールバックの処理が完了するまで待機します。
+$promise->wait();
 ```
 
 Promise に関するドキュメントは https://github.com/guzzle/promises こちらをご確認ください。

@@ -1,4 +1,4 @@
-[⇒日本語のREADMEへ](README.md)
+[日本語](README.md) | **English** | [한국어](README-ko.md)
 
 # gs2-php-sdk
 
@@ -21,7 +21,7 @@ Follow the instructions in [GS2 Setup](https://docs.gs2.io/en/get_start/tutorial
 
 ### Requirements
 
-- PHP7.1+
+- PHP 8.0 or later
 
 [⇒Start using GS2 - SDK - Various programming languages](https://docs.gs2.io/en/get_start/#various-programming-languages)
 
@@ -108,15 +108,8 @@ $promise = $client->createNamespaceAsync(
     }
 );
 
-try {
-    // Waiting for a Promise executes the process. The return value is the result on success, and an exception is raised on failure.
-    $result = $promise->wait();
-    Assert::assertNotNull($result->getItem());
-    Assert::assertEquals('namespace-0001', $result->getItem()->getName());
-    Assert::assertEquals('script-0001', $result->getItem()->getAuthenticationScript()->getTriggerScriptId());
-} catch (Gs2Exception $e) {
-    Assert::fail($e->getMessage());
-}
+// Wait for the request and its callback to complete.
+$promise->wait();
 ```
 
 For documentation on Promise, please see https://github.com/guzzle/promises here.
@@ -130,9 +123,5 @@ For details on the API for each service and communication method, please refer t
 For information on the initialization process, please refer to the
 
  [⇒API Reference - Initialization process](https://docs.gs2.io/en/api_reference/initialize/) page.
-
-## GS2-SDK for UE5 Blueprint Tutorial
-
-https://docs.gs2.io/en/get_start/blueprint/
 
 *All code in this project is automatically generated except for gs2-php-sdk-core, so we cannot respond to individual pull-requests. *

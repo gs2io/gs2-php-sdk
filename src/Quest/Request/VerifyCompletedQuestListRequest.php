@@ -1,0 +1,155 @@
+<?php
+/*
+ * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License").
+ * You may not use this file except in compliance with the License.
+ * A copy of the License is located at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * or in the "license" file accompanying this file. This file is distributed
+ * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+ * express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+
+namespace Gs2\Quest\Request;
+
+use Gs2\Core\Control\Gs2BasicRequest;
+
+/**
+ * Request for verifyCompletedQuestList: Verify Completed Quest List
+ *
+ * @see https://docs.gs2.io/api_reference/quest/sdk/#verifycompletedquestlist
+ */
+class VerifyCompletedQuestListRequest extends Gs2BasicRequest {
+    /** @var string Namespace name */
+    private $namespaceName;
+    /** @var string User ID */
+    private $accessToken;
+    /** @var string Quest Group Model Name */
+    private $questGroupName;
+    /** @var string Quest Model name */
+    private $questName;
+    /** @var string Type of verification */
+    private $verifyType;
+    /** @var string */
+    private $duplicationAvoider;
+    /** @return string|null Namespace name */
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+    /** @param string|null $namespaceName Namespace name */
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return VerifyCompletedQuestListRequest
+     */
+	public function withNamespaceName(?string $namespaceName): VerifyCompletedQuestListRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+    /** @return string|null User ID */
+	public function getAccessToken(): ?string {
+		return $this->accessToken;
+	}
+    /** @param string|null $accessToken User ID */
+	public function setAccessToken(?string $accessToken) {
+		$this->accessToken = $accessToken;
+	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return VerifyCompletedQuestListRequest
+     */
+	public function withAccessToken(?string $accessToken): VerifyCompletedQuestListRequest {
+		$this->accessToken = $accessToken;
+		return $this;
+	}
+    /** @return string|null Quest Group Model Name */
+	public function getQuestGroupName(): ?string {
+		return $this->questGroupName;
+	}
+    /** @param string|null $questGroupName Quest Group Model Name */
+	public function setQuestGroupName(?string $questGroupName) {
+		$this->questGroupName = $questGroupName;
+	}
+    /**
+     * @param string|null $questGroupName Quest Group Model Name
+     * @return VerifyCompletedQuestListRequest
+     */
+	public function withQuestGroupName(?string $questGroupName): VerifyCompletedQuestListRequest {
+		$this->questGroupName = $questGroupName;
+		return $this;
+	}
+    /** @return string|null Quest Model name */
+	public function getQuestName(): ?string {
+		return $this->questName;
+	}
+    /** @param string|null $questName Quest Model name */
+	public function setQuestName(?string $questName) {
+		$this->questName = $questName;
+	}
+    /**
+     * @param string|null $questName Quest Model name
+     * @return VerifyCompletedQuestListRequest
+     */
+	public function withQuestName(?string $questName): VerifyCompletedQuestListRequest {
+		$this->questName = $questName;
+		return $this;
+	}
+    /** @return string|null Type of verification */
+	public function getVerifyType(): ?string {
+		return $this->verifyType;
+	}
+    /** @param string|null $verifyType Type of verification */
+	public function setVerifyType(?string $verifyType) {
+		$this->verifyType = $verifyType;
+	}
+    /**
+     * @param string|null $verifyType Type of verification
+     * @return VerifyCompletedQuestListRequest
+     */
+	public function withVerifyType(?string $verifyType): VerifyCompletedQuestListRequest {
+		$this->verifyType = $verifyType;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): VerifyCompletedQuestListRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?VerifyCompletedQuestListRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new VerifyCompletedQuestListRequest())
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
+            ->withQuestGroupName(array_key_exists('questGroupName', $data) && $data['questGroupName'] !== null ? $data['questGroupName'] : null)
+            ->withQuestName(array_key_exists('questName', $data) && $data['questName'] !== null ? $data['questName'] : null)
+            ->withVerifyType(array_key_exists('verifyType', $data) && $data['verifyType'] !== null ? $data['verifyType'] : null);
+    }
+
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "accessToken" => $this->getAccessToken(),
+            "questGroupName" => $this->getQuestGroupName(),
+            "questName" => $this->getQuestName(),
+            "verifyType" => $this->getVerifyType(),
+        );
+    }
+}

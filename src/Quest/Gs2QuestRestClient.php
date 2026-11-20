@@ -119,8 +119,14 @@ use Gs2\Quest\Request\GetCompletedQuestListRequest;
 use Gs2\Quest\Result\GetCompletedQuestListResult;
 use Gs2\Quest\Request\GetCompletedQuestListByUserIdRequest;
 use Gs2\Quest\Result\GetCompletedQuestListByUserIdResult;
+use Gs2\Quest\Request\VerifyCompletedQuestListRequest;
+use Gs2\Quest\Result\VerifyCompletedQuestListResult;
+use Gs2\Quest\Request\VerifyCompletedQuestListByUserIdRequest;
+use Gs2\Quest\Result\VerifyCompletedQuestListByUserIdResult;
 use Gs2\Quest\Request\DeleteCompletedQuestListByUserIdRequest;
 use Gs2\Quest\Result\DeleteCompletedQuestListByUserIdResult;
+use Gs2\Quest\Request\VerifyCompletedQuestListByStampTaskRequest;
+use Gs2\Quest\Result\VerifyCompletedQuestListByStampTaskResult;
 use Gs2\Quest\Request\DescribeQuestGroupModelsRequest;
 use Gs2\Quest\Result\DescribeQuestGroupModelsResult;
 use Gs2\Quest\Request\GetQuestGroupModelRequest;
@@ -3126,6 +3132,135 @@ class GetCompletedQuestListByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class VerifyCompletedQuestListTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyCompletedQuestListRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyCompletedQuestListTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyCompletedQuestListRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyCompletedQuestListRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyCompletedQuestListResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "quest", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/completed/group/{questGroupName}/quest/{questName}/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{questGroupName}", $this->request->getQuestGroupName() === null|| strlen($this->request->getQuestGroupName()) == 0 ? "null" : $this->request->getQuestGroupName(), $url);
+        $url = str_replace("{questName}", $this->request->getQuestName() === null|| strlen($this->request->getQuestName()) == 0 ? "null" : $this->request->getQuestName(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyCompletedQuestListByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyCompletedQuestListByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyCompletedQuestListByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyCompletedQuestListByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyCompletedQuestListByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyCompletedQuestListByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "quest", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/completed/group/{questGroupName}/quest/{questName}/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{questGroupName}", $this->request->getQuestGroupName() === null|| strlen($this->request->getQuestGroupName()) == 0 ? "null" : $this->request->getQuestGroupName(), $url);
+        $url = str_replace("{questName}", $this->request->getQuestName() === null|| strlen($this->request->getQuestName()) == 0 ? "null" : $this->request->getQuestName(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class DeleteCompletedQuestListByUserIdTask extends Gs2RestSessionTask {
 
     /**
@@ -3185,6 +3320,65 @@ class DeleteCompletedQuestListByUserIdTask extends Gs2RestSessionTask {
         }
         if ($this->request->getTimeOffsetToken() !== null) {
             $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyCompletedQuestListByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyCompletedQuestListByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyCompletedQuestListByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyCompletedQuestListByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyCompletedQuestListByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyCompletedQuestListByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "quest", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/completed/verify";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
 
         return parent::executeImpl();
@@ -4920,6 +5114,72 @@ class Gs2QuestRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify Completed Quest List
+     *
+     * @param VerifyCompletedQuestListRequest $request
+     * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#verifycompletedquestlist
+     */
+    public function verifyCompletedQuestListAsync(
+            VerifyCompletedQuestListRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyCompletedQuestListTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * Verify Completed Quest List
+     *
+     * @param VerifyCompletedQuestListRequest $request
+     * @return VerifyCompletedQuestListResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#verifycompletedquestlist
+     */
+    public function verifyCompletedQuestList (
+            VerifyCompletedQuestListRequest $request
+    ): VerifyCompletedQuestListResult {
+        return $this->verifyCompletedQuestListAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * Verify Completed Quest List by User ID
+     *
+     * @param VerifyCompletedQuestListByUserIdRequest $request
+     * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#verifycompletedquestlistbyuserid
+     */
+    public function verifyCompletedQuestListByUserIdAsync(
+            VerifyCompletedQuestListByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyCompletedQuestListByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * Verify Completed Quest List by User ID
+     *
+     * @param VerifyCompletedQuestListByUserIdRequest $request
+     * @return VerifyCompletedQuestListByUserIdResult
+     * @see https://docs.gs2.io/api_reference/quest/sdk/#verifycompletedquestlistbyuserid
+     */
+    public function verifyCompletedQuestListByUserId (
+            VerifyCompletedQuestListByUserIdRequest $request
+    ): VerifyCompletedQuestListByUserIdResult {
+        return $this->verifyCompletedQuestListByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * Delete Completed Quest List by User ID
      *
      * @param DeleteCompletedQuestListByUserIdRequest $request
@@ -4948,6 +5208,39 @@ class Gs2QuestRestClient extends AbstractGs2Client {
             DeleteCompletedQuestListByUserIdRequest $request
     ): DeleteCompletedQuestListByUserIdResult {
         return $this->deleteCompletedQuestListByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * Verify Completed Quest List as a verify action
+     *
+     * @param VerifyCompletedQuestListByStampTaskRequest $request
+     * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/quest/stamp_sheet/#gs2questverifycompletedquestlistbyuserid
+     */
+    public function verifyCompletedQuestListByStampTaskAsync(
+            VerifyCompletedQuestListByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyCompletedQuestListByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * Verify Completed Quest List as a verify action
+     *
+     * @param VerifyCompletedQuestListByStampTaskRequest $request
+     * @return VerifyCompletedQuestListByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/quest/stamp_sheet/#gs2questverifycompletedquestlistbyuserid
+     */
+    public function verifyCompletedQuestListByStampTask (
+            VerifyCompletedQuestListByStampTaskRequest $request
+    ): VerifyCompletedQuestListByStampTaskResult {
+        return $this->verifyCompletedQuestListByStampTaskAsync(
             $request
         )->wait();
     }

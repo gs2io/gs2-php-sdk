@@ -103,6 +103,10 @@ use Gs2\Enchant\Request\GetBalanceParameterStatusRequest;
 use Gs2\Enchant\Result\GetBalanceParameterStatusResult;
 use Gs2\Enchant\Request\GetBalanceParameterStatusByUserIdRequest;
 use Gs2\Enchant\Result\GetBalanceParameterStatusByUserIdResult;
+use Gs2\Enchant\Request\VerifyBalanceParameterStatusRequest;
+use Gs2\Enchant\Result\VerifyBalanceParameterStatusResult;
+use Gs2\Enchant\Request\VerifyBalanceParameterStatusByUserIdRequest;
+use Gs2\Enchant\Result\VerifyBalanceParameterStatusByUserIdResult;
 use Gs2\Enchant\Request\DeleteBalanceParameterStatusByUserIdRequest;
 use Gs2\Enchant\Result\DeleteBalanceParameterStatusByUserIdResult;
 use Gs2\Enchant\Request\ReDrawBalanceParameterStatusByUserIdRequest;
@@ -113,6 +117,8 @@ use Gs2\Enchant\Request\SetBalanceParameterStatusByUserIdRequest;
 use Gs2\Enchant\Result\SetBalanceParameterStatusByUserIdResult;
 use Gs2\Enchant\Request\SetBalanceParameterStatusByStampSheetRequest;
 use Gs2\Enchant\Result\SetBalanceParameterStatusByStampSheetResult;
+use Gs2\Enchant\Request\VerifyBalanceParameterStatusByStampTaskRequest;
+use Gs2\Enchant\Result\VerifyBalanceParameterStatusByStampTaskResult;
 use Gs2\Enchant\Request\DescribeRarityParameterStatusesRequest;
 use Gs2\Enchant\Result\DescribeRarityParameterStatusesResult;
 use Gs2\Enchant\Request\DescribeRarityParameterStatusesByUserIdRequest;
@@ -2475,6 +2481,147 @@ class GetBalanceParameterStatusByUserIdTask extends Gs2RestSessionTask {
     }
 }
 
+class VerifyBalanceParameterStatusTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyBalanceParameterStatusRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyBalanceParameterStatusTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyBalanceParameterStatusRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyBalanceParameterStatusRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyBalanceParameterStatusResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "enchant", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/status/balance/{parameterName}/{propertyId}/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{parameterName}", $this->request->getParameterName() === null|| strlen($this->request->getParameterName()) == 0 ? "null" : $this->request->getParameterName(), $url);
+        $url = str_replace("{propertyId}", $this->request->getPropertyId() === null|| strlen($this->request->getPropertyId()) == 0 ? "null" : $this->request->getPropertyId(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getParameterValueName() !== null) {
+            $json["parameterValueName"] = $this->request->getParameterValueName();
+        }
+        if ($this->request->getParameterValue() !== null) {
+            $json["parameterValue"] = $this->request->getParameterValue();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyBalanceParameterStatusByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyBalanceParameterStatusByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyBalanceParameterStatusByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyBalanceParameterStatusByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyBalanceParameterStatusByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyBalanceParameterStatusByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "enchant", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/status/balance/{parameterName}/{propertyId}/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{parameterName}", $this->request->getParameterName() === null|| strlen($this->request->getParameterName()) == 0 ? "null" : $this->request->getParameterName(), $url);
+        $url = str_replace("{propertyId}", $this->request->getPropertyId() === null|| strlen($this->request->getPropertyId()) == 0 ? "null" : $this->request->getPropertyId(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getParameterValueName() !== null) {
+            $json["parameterValueName"] = $this->request->getParameterValueName();
+        }
+        if ($this->request->getParameterValue() !== null) {
+            $json["parameterValue"] = $this->request->getParameterValue();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class DeleteBalanceParameterStatusByUserIdTask extends Gs2RestSessionTask {
 
     /**
@@ -2780,6 +2927,65 @@ class SetBalanceParameterStatusByStampSheetTask extends Gs2RestSessionTask {
         $json = [];
         if ($this->request->getStampSheet() !== null) {
             $json["stampSheet"] = $this->request->getStampSheet();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyBalanceParameterStatusByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyBalanceParameterStatusByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyBalanceParameterStatusByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyBalanceParameterStatusByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyBalanceParameterStatusByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyBalanceParameterStatusByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "enchant", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/balance/parameter/verify";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
         }
         if ($this->request->getKeyId() !== null) {
             $json["keyId"] = $this->request->getKeyId();
@@ -4960,6 +5166,72 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify Balance Parameter Status
+     *
+     * @param VerifyBalanceParameterStatusRequest $request
+     * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#verifybalanceparameterstatus
+     */
+    public function verifyBalanceParameterStatusAsync(
+            VerifyBalanceParameterStatusRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyBalanceParameterStatusTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * Verify Balance Parameter Status
+     *
+     * @param VerifyBalanceParameterStatusRequest $request
+     * @return VerifyBalanceParameterStatusResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#verifybalanceparameterstatus
+     */
+    public function verifyBalanceParameterStatus (
+            VerifyBalanceParameterStatusRequest $request
+    ): VerifyBalanceParameterStatusResult {
+        return $this->verifyBalanceParameterStatusAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * Verify Balance Parameter Status by User ID
+     *
+     * @param VerifyBalanceParameterStatusByUserIdRequest $request
+     * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#verifybalanceparameterstatusbyuserid
+     */
+    public function verifyBalanceParameterStatusByUserIdAsync(
+            VerifyBalanceParameterStatusByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyBalanceParameterStatusByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * Verify Balance Parameter Status by User ID
+     *
+     * @param VerifyBalanceParameterStatusByUserIdRequest $request
+     * @return VerifyBalanceParameterStatusByUserIdResult
+     * @see https://docs.gs2.io/api_reference/enchant/sdk/#verifybalanceparameterstatusbyuserid
+     */
+    public function verifyBalanceParameterStatusByUserId (
+            VerifyBalanceParameterStatusByUserIdRequest $request
+    ): VerifyBalanceParameterStatusByUserIdResult {
+        return $this->verifyBalanceParameterStatusByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * Delete Balance Parameter Status
      *
      * @param DeleteBalanceParameterStatusByUserIdRequest $request
@@ -5120,6 +5392,39 @@ class Gs2EnchantRestClient extends AbstractGs2Client {
             SetBalanceParameterStatusByStampSheetRequest $request
     ): SetBalanceParameterStatusByStampSheetResult {
         return $this->setBalanceParameterStatusByStampSheetAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * Execute verification of balance parameter as a verify action
+     *
+     * @param VerifyBalanceParameterStatusByStampTaskRequest $request
+     * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/enchant/stamp_sheet/#gs2enchantverifybalanceparameterstatusbyuserid
+     */
+    public function verifyBalanceParameterStatusByStampTaskAsync(
+            VerifyBalanceParameterStatusByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyBalanceParameterStatusByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * Execute verification of balance parameter as a verify action
+     *
+     * @param VerifyBalanceParameterStatusByStampTaskRequest $request
+     * @return VerifyBalanceParameterStatusByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/enchant/stamp_sheet/#gs2enchantverifybalanceparameterstatusbyuserid
+     */
+    public function verifyBalanceParameterStatusByStampTask (
+            VerifyBalanceParameterStatusByStampTaskRequest $request
+    ): VerifyBalanceParameterStatusByStampTaskResult {
+        return $this->verifyBalanceParameterStatusByStampTaskAsync(
             $request
         )->wait();
     }

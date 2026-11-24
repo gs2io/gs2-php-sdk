@@ -1,0 +1,195 @@
+<?php
+/*
+ * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License").
+ * You may not use this file except in compliance with the License.
+ * A copy of the License is located at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * or in the "license" file accompanying this file. This file is distributed
+ * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+ * express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+
+namespace Gs2\Enchant\Request;
+
+use Gs2\Core\Control\Gs2BasicRequest;
+
+/**
+ * Request for verifyBalanceParameterStatus: Verify Balance Parameter Status
+ *
+ * @see https://docs.gs2.io/api_reference/enchant/sdk/#verifybalanceparameterstatus
+ */
+class VerifyBalanceParameterStatusRequest extends Gs2BasicRequest {
+    /** @var string Namespace name */
+    private $namespaceName;
+    /** @var string User ID */
+    private $accessToken;
+    /** @var string Balance Parameter Model name */
+    private $parameterName;
+    /** @var string Property ID of the resource that owns the parameter */
+    private $propertyId;
+    /** @var string Name */
+    private $parameterValueName;
+    /** @var string Type of verification */
+    private $verifyType;
+    /** @var int Value to compare with the parameter value */
+    private $parameterValue;
+    /** @var string */
+    private $duplicationAvoider;
+    /** @return string|null Namespace name */
+	public function getNamespaceName(): ?string {
+		return $this->namespaceName;
+	}
+    /** @param string|null $namespaceName Namespace name */
+	public function setNamespaceName(?string $namespaceName) {
+		$this->namespaceName = $namespaceName;
+	}
+    /**
+     * @param string|null $namespaceName Namespace name
+     * @return VerifyBalanceParameterStatusRequest
+     */
+	public function withNamespaceName(?string $namespaceName): VerifyBalanceParameterStatusRequest {
+		$this->namespaceName = $namespaceName;
+		return $this;
+	}
+    /** @return string|null User ID */
+	public function getAccessToken(): ?string {
+		return $this->accessToken;
+	}
+    /** @param string|null $accessToken User ID */
+	public function setAccessToken(?string $accessToken) {
+		$this->accessToken = $accessToken;
+	}
+    /**
+     * @param string|null $accessToken User ID
+     * @return VerifyBalanceParameterStatusRequest
+     */
+	public function withAccessToken(?string $accessToken): VerifyBalanceParameterStatusRequest {
+		$this->accessToken = $accessToken;
+		return $this;
+	}
+    /** @return string|null Balance Parameter Model name */
+	public function getParameterName(): ?string {
+		return $this->parameterName;
+	}
+    /** @param string|null $parameterName Balance Parameter Model name */
+	public function setParameterName(?string $parameterName) {
+		$this->parameterName = $parameterName;
+	}
+    /**
+     * @param string|null $parameterName Balance Parameter Model name
+     * @return VerifyBalanceParameterStatusRequest
+     */
+	public function withParameterName(?string $parameterName): VerifyBalanceParameterStatusRequest {
+		$this->parameterName = $parameterName;
+		return $this;
+	}
+    /** @return string|null Property ID of the resource that owns the parameter */
+	public function getPropertyId(): ?string {
+		return $this->propertyId;
+	}
+    /** @param string|null $propertyId Property ID of the resource that owns the parameter */
+	public function setPropertyId(?string $propertyId) {
+		$this->propertyId = $propertyId;
+	}
+    /**
+     * @param string|null $propertyId Property ID of the resource that owns the parameter
+     * @return VerifyBalanceParameterStatusRequest
+     */
+	public function withPropertyId(?string $propertyId): VerifyBalanceParameterStatusRequest {
+		$this->propertyId = $propertyId;
+		return $this;
+	}
+    /** @return string|null Name */
+	public function getParameterValueName(): ?string {
+		return $this->parameterValueName;
+	}
+    /** @param string|null $parameterValueName Name */
+	public function setParameterValueName(?string $parameterValueName) {
+		$this->parameterValueName = $parameterValueName;
+	}
+    /**
+     * @param string|null $parameterValueName Name
+     * @return VerifyBalanceParameterStatusRequest
+     */
+	public function withParameterValueName(?string $parameterValueName): VerifyBalanceParameterStatusRequest {
+		$this->parameterValueName = $parameterValueName;
+		return $this;
+	}
+    /** @return string|null Type of verification */
+	public function getVerifyType(): ?string {
+		return $this->verifyType;
+	}
+    /** @param string|null $verifyType Type of verification */
+	public function setVerifyType(?string $verifyType) {
+		$this->verifyType = $verifyType;
+	}
+    /**
+     * @param string|null $verifyType Type of verification
+     * @return VerifyBalanceParameterStatusRequest
+     */
+	public function withVerifyType(?string $verifyType): VerifyBalanceParameterStatusRequest {
+		$this->verifyType = $verifyType;
+		return $this;
+	}
+    /** @return int|null Value to compare with the parameter value */
+	public function getParameterValue(): ?int {
+		return $this->parameterValue;
+	}
+    /** @param int|null $parameterValue Value to compare with the parameter value */
+	public function setParameterValue(?int $parameterValue) {
+		$this->parameterValue = $parameterValue;
+	}
+    /**
+     * @param int|null $parameterValue Value to compare with the parameter value
+     * @return VerifyBalanceParameterStatusRequest
+     */
+	public function withParameterValue(?int $parameterValue): VerifyBalanceParameterStatusRequest {
+		$this->parameterValue = $parameterValue;
+		return $this;
+	}
+
+	public function getDuplicationAvoider(): ?string {
+		return $this->duplicationAvoider;
+	}
+
+	public function setDuplicationAvoider(?string $duplicationAvoider) {
+		$this->duplicationAvoider = $duplicationAvoider;
+	}
+
+	public function withDuplicationAvoider(?string $duplicationAvoider): VerifyBalanceParameterStatusRequest {
+		$this->duplicationAvoider = $duplicationAvoider;
+		return $this;
+	}
+
+    public static function fromJson(?array $data): ?VerifyBalanceParameterStatusRequest {
+        if ($data === null) {
+            return null;
+        }
+        return (new VerifyBalanceParameterStatusRequest())
+            ->withNamespaceName(array_key_exists('namespaceName', $data) && $data['namespaceName'] !== null ? $data['namespaceName'] : null)
+            ->withAccessToken(array_key_exists('accessToken', $data) && $data['accessToken'] !== null ? $data['accessToken'] : null)
+            ->withParameterName(array_key_exists('parameterName', $data) && $data['parameterName'] !== null ? $data['parameterName'] : null)
+            ->withPropertyId(array_key_exists('propertyId', $data) && $data['propertyId'] !== null ? $data['propertyId'] : null)
+            ->withParameterValueName(array_key_exists('parameterValueName', $data) && $data['parameterValueName'] !== null ? $data['parameterValueName'] : null)
+            ->withVerifyType(array_key_exists('verifyType', $data) && $data['verifyType'] !== null ? $data['verifyType'] : null)
+            ->withParameterValue(array_key_exists('parameterValue', $data) && $data['parameterValue'] !== null ? $data['parameterValue'] : null);
+    }
+
+    public function toJson(): array {
+        return array(
+            "namespaceName" => $this->getNamespaceName(),
+            "accessToken" => $this->getAccessToken(),
+            "parameterName" => $this->getParameterName(),
+            "propertyId" => $this->getPropertyId(),
+            "parameterValueName" => $this->getParameterValueName(),
+            "verifyType" => $this->getVerifyType(),
+            "parameterValue" => $this->getParameterValue(),
+        );
+    }
+}

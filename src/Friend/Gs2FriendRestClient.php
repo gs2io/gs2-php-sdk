@@ -69,10 +69,28 @@ use Gs2\Friend\Request\DeleteProfileByUserIdRequest;
 use Gs2\Friend\Result\DeleteProfileByUserIdResult;
 use Gs2\Friend\Request\UpdateProfileByStampSheetRequest;
 use Gs2\Friend\Result\UpdateProfileByStampSheetResult;
+use Gs2\Friend\Request\VerifyFollowRequest;
+use Gs2\Friend\Result\VerifyFollowResult;
+use Gs2\Friend\Request\VerifyFollowByUserIdRequest;
+use Gs2\Friend\Result\VerifyFollowByUserIdResult;
+use Gs2\Friend\Request\VerifyFollowByStampTaskRequest;
+use Gs2\Friend\Result\VerifyFollowByStampTaskResult;
 use Gs2\Friend\Request\DescribeFriendsRequest;
 use Gs2\Friend\Result\DescribeFriendsResult;
 use Gs2\Friend\Request\DescribeFriendsByUserIdRequest;
 use Gs2\Friend\Result\DescribeFriendsByUserIdResult;
+use Gs2\Friend\Request\VerifyFriendRequest;
+use Gs2\Friend\Result\VerifyFriendResult;
+use Gs2\Friend\Request\VerifyFriendByUserIdRequest;
+use Gs2\Friend\Result\VerifyFriendByUserIdResult;
+use Gs2\Friend\Request\VerifyFriendByStampTaskRequest;
+use Gs2\Friend\Result\VerifyFriendByStampTaskResult;
+use Gs2\Friend\Request\VerifyFriendCountRequest;
+use Gs2\Friend\Result\VerifyFriendCountResult;
+use Gs2\Friend\Request\VerifyFriendCountByUserIdRequest;
+use Gs2\Friend\Result\VerifyFriendCountByUserIdResult;
+use Gs2\Friend\Request\VerifyFriendCountByStampTaskRequest;
+use Gs2\Friend\Result\VerifyFriendCountByStampTaskResult;
 use Gs2\Friend\Request\DescribeBlackListRequest;
 use Gs2\Friend\Result\DescribeBlackListResult;
 use Gs2\Friend\Request\DescribeBlackListByUserIdRequest;
@@ -1458,6 +1476,192 @@ class UpdateProfileByStampSheetTask extends Gs2RestSessionTask {
     }
 }
 
+class VerifyFollowTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyFollowRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyFollowTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyFollowRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyFollowRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyFollowResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "friend", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/follow/{targetUserId}/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{targetUserId}", $this->request->getTargetUserId() === null|| strlen($this->request->getTargetUserId()) == 0 ? "null" : $this->request->getTargetUserId(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyFollowByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyFollowByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyFollowByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyFollowByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyFollowByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyFollowByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "friend", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/follow/{targetUserId}/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{targetUserId}", $this->request->getTargetUserId() === null|| strlen($this->request->getTargetUserId()) == 0 ? "null" : $this->request->getTargetUserId(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyFollowByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyFollowByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyFollowByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyFollowByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyFollowByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyFollowByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "friend", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/follow/verify";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class DescribeFriendsTask extends Gs2RestSessionTask {
 
     /**
@@ -1591,6 +1795,382 @@ class DescribeFriendsByUserIdTask extends Gs2RestSessionTask {
         }
         if ($this->request->getTimeOffsetToken() !== null) {
             $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyFriendTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyFriendRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyFriendTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyFriendRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyFriendRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyFriendResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "friend", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/friend/{targetUserId}/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{targetUserId}", $this->request->getTargetUserId() === null|| strlen($this->request->getTargetUserId()) == 0 ? "null" : $this->request->getTargetUserId(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyFriendByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyFriendByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyFriendByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyFriendByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyFriendByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyFriendByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "friend", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/friend/{targetUserId}/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{targetUserId}", $this->request->getTargetUserId() === null|| strlen($this->request->getTargetUserId()) == 0 ? "null" : $this->request->getTargetUserId(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyFriendByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyFriendByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyFriendByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyFriendByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyFriendByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyFriendByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "friend", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/friend/verify";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyFriendCountTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyFriendCountRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyFriendCountTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyFriendCountRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyFriendCountRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyFriendCountResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "friend", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/friendCount/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getCount() !== null) {
+            $json["count"] = $this->request->getCount();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyFriendCountByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyFriendCountByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyFriendCountByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyFriendCountByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyFriendCountByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyFriendCountByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "friend", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/friendCount/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getCount() !== null) {
+            $json["count"] = $this->request->getCount();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyFriendCountByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyFriendCountByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyFriendCountByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyFriendCountByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyFriendCountByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyFriendCountByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "friend", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/friend/count/verify";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
         }
 
         return parent::executeImpl();
@@ -4672,6 +5252,105 @@ class Gs2FriendRestClient extends AbstractGs2Client {
     }
 
     /**
+     * Verify a followed user
+     *
+     * @param VerifyFollowRequest $request
+     * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#verifyfollow
+     */
+    public function verifyFollowAsync(
+            VerifyFollowRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyFollowTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * Verify a followed user
+     *
+     * @param VerifyFollowRequest $request
+     * @return VerifyFollowResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#verifyfollow
+     */
+    public function verifyFollow (
+            VerifyFollowRequest $request
+    ): VerifyFollowResult {
+        return $this->verifyFollowAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * Verify a followed user by User ID
+     *
+     * @param VerifyFollowByUserIdRequest $request
+     * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#verifyfollowbyuserid
+     */
+    public function verifyFollowByUserIdAsync(
+            VerifyFollowByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyFollowByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * Verify a followed user by User ID
+     *
+     * @param VerifyFollowByUserIdRequest $request
+     * @return VerifyFollowByUserIdResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#verifyfollowbyuserid
+     */
+    public function verifyFollowByUserId (
+            VerifyFollowByUserIdRequest $request
+    ): VerifyFollowByUserIdResult {
+        return $this->verifyFollowByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * Execute verification of a followed user as a verify action
+     *
+     * @param VerifyFollowByStampTaskRequest $request
+     * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/stamp_sheet/#gs2friendverifyfollowbyuserid
+     */
+    public function verifyFollowByStampTaskAsync(
+            VerifyFollowByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyFollowByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * Execute verification of a followed user as a verify action
+     *
+     * @param VerifyFollowByStampTaskRequest $request
+     * @return VerifyFollowByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/friend/stamp_sheet/#gs2friendverifyfollowbyuserid
+     */
+    public function verifyFollowByStampTask (
+            VerifyFollowByStampTaskRequest $request
+    ): VerifyFollowByStampTaskResult {
+        return $this->verifyFollowByStampTaskAsync(
+            $request
+        )->wait();
+    }
+
+    /**
      * List Friends
      *
      * @param DescribeFriendsRequest $request
@@ -4733,6 +5412,204 @@ class Gs2FriendRestClient extends AbstractGs2Client {
             DescribeFriendsByUserIdRequest $request
     ): DescribeFriendsByUserIdResult {
         return $this->describeFriendsByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * Verify a friend
+     *
+     * @param VerifyFriendRequest $request
+     * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#verifyfriend
+     */
+    public function verifyFriendAsync(
+            VerifyFriendRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyFriendTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * Verify a friend
+     *
+     * @param VerifyFriendRequest $request
+     * @return VerifyFriendResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#verifyfriend
+     */
+    public function verifyFriend (
+            VerifyFriendRequest $request
+    ): VerifyFriendResult {
+        return $this->verifyFriendAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * Verify a friend by User ID
+     *
+     * @param VerifyFriendByUserIdRequest $request
+     * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#verifyfriendbyuserid
+     */
+    public function verifyFriendByUserIdAsync(
+            VerifyFriendByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyFriendByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * Verify a friend by User ID
+     *
+     * @param VerifyFriendByUserIdRequest $request
+     * @return VerifyFriendByUserIdResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#verifyfriendbyuserid
+     */
+    public function verifyFriendByUserId (
+            VerifyFriendByUserIdRequest $request
+    ): VerifyFriendByUserIdResult {
+        return $this->verifyFriendByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * Execute verification of a friend as a verify action
+     *
+     * @param VerifyFriendByStampTaskRequest $request
+     * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/stamp_sheet/#gs2friendverifyfriendbyuserid
+     */
+    public function verifyFriendByStampTaskAsync(
+            VerifyFriendByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyFriendByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * Execute verification of a friend as a verify action
+     *
+     * @param VerifyFriendByStampTaskRequest $request
+     * @return VerifyFriendByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/friend/stamp_sheet/#gs2friendverifyfriendbyuserid
+     */
+    public function verifyFriendByStampTask (
+            VerifyFriendByStampTaskRequest $request
+    ): VerifyFriendByStampTaskResult {
+        return $this->verifyFriendByStampTaskAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * Verify the number of friends
+     *
+     * @param VerifyFriendCountRequest $request
+     * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#verifyfriendcount
+     */
+    public function verifyFriendCountAsync(
+            VerifyFriendCountRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyFriendCountTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * Verify the number of friends
+     *
+     * @param VerifyFriendCountRequest $request
+     * @return VerifyFriendCountResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#verifyfriendcount
+     */
+    public function verifyFriendCount (
+            VerifyFriendCountRequest $request
+    ): VerifyFriendCountResult {
+        return $this->verifyFriendCountAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * Verify the number of friends by User ID
+     *
+     * @param VerifyFriendCountByUserIdRequest $request
+     * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#verifyfriendcountbyuserid
+     */
+    public function verifyFriendCountByUserIdAsync(
+            VerifyFriendCountByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyFriendCountByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * Verify the number of friends by User ID
+     *
+     * @param VerifyFriendCountByUserIdRequest $request
+     * @return VerifyFriendCountByUserIdResult
+     * @see https://docs.gs2.io/api_reference/friend/sdk/#verifyfriendcountbyuserid
+     */
+    public function verifyFriendCountByUserId (
+            VerifyFriendCountByUserIdRequest $request
+    ): VerifyFriendCountByUserIdResult {
+        return $this->verifyFriendCountByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * Execute verification of the number of friends as a verify action
+     *
+     * @param VerifyFriendCountByStampTaskRequest $request
+     * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/friend/stamp_sheet/#gs2friendverifyfriendcountbyuserid
+     */
+    public function verifyFriendCountByStampTaskAsync(
+            VerifyFriendCountByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyFriendCountByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * Execute verification of the number of friends as a verify action
+     *
+     * @param VerifyFriendCountByStampTaskRequest $request
+     * @return VerifyFriendCountByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/friend/stamp_sheet/#gs2friendverifyfriendcountbyuserid
+     */
+    public function verifyFriendCountByStampTask (
+            VerifyFriendCountByStampTaskRequest $request
+    ): VerifyFriendCountByStampTaskResult {
+        return $this->verifyFriendCountByStampTaskAsync(
             $request
         )->wait();
     }

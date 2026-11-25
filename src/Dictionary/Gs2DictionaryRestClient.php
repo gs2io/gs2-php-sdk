@@ -101,6 +101,12 @@ use Gs2\Dictionary\Request\DeleteEntriesByStampTaskRequest;
 use Gs2\Dictionary\Result\DeleteEntriesByStampTaskResult;
 use Gs2\Dictionary\Request\VerifyEntryByStampTaskRequest;
 use Gs2\Dictionary\Result\VerifyEntryByStampTaskResult;
+use Gs2\Dictionary\Request\VerifyEntryCountRequest;
+use Gs2\Dictionary\Result\VerifyEntryCountResult;
+use Gs2\Dictionary\Request\VerifyEntryCountByUserIdRequest;
+use Gs2\Dictionary\Result\VerifyEntryCountByUserIdResult;
+use Gs2\Dictionary\Request\VerifyEntryCountByStampTaskRequest;
+use Gs2\Dictionary\Result\VerifyEntryCountByStampTaskResult;
 use Gs2\Dictionary\Request\DescribeLikesRequest;
 use Gs2\Dictionary\Result\DescribeLikesResult;
 use Gs2\Dictionary\Request\DescribeLikesByUserIdRequest;
@@ -2370,6 +2376,212 @@ class VerifyEntryByStampTaskTask extends Gs2RestSessionTask {
     }
 }
 
+class VerifyEntryCountTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyEntryCountRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyEntryCountTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyEntryCountRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyEntryCountRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyEntryCountResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "dictionary", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/entryCount/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getEntryModelNames() !== null) {
+            $array = [];
+            foreach ($this->request->getEntryModelNames() as $item)
+            {
+                array_push($array, $item);
+            }
+            $json["entryModelNames"] = $array;
+        }
+        if ($this->request->getCount() !== null) {
+            $json["count"] = $this->request->getCount();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyEntryCountByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyEntryCountByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyEntryCountByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyEntryCountByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyEntryCountByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyEntryCountByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "dictionary", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/entryCount/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getEntryModelNames() !== null) {
+            $array = [];
+            foreach ($this->request->getEntryModelNames() as $item)
+            {
+                array_push($array, $item);
+            }
+            $json["entryModelNames"] = $array;
+        }
+        if ($this->request->getCount() !== null) {
+            $json["count"] = $this->request->getCount();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyEntryCountByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyEntryCountByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyEntryCountByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyEntryCountByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyEntryCountByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyEntryCountByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "dictionary", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/entry/count/verify";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class DescribeLikesTask extends Gs2RestSessionTask {
 
     /**
@@ -4545,6 +4757,105 @@ class Gs2DictionaryRestClient extends AbstractGs2Client {
             VerifyEntryByStampTaskRequest $request
     ): VerifyEntryByStampTaskResult {
         return $this->verifyEntryByStampTaskAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * Verify the number of collected entries
+     *
+     * @param VerifyEntryCountRequest $request
+     * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#verifyentrycount
+     */
+    public function verifyEntryCountAsync(
+            VerifyEntryCountRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyEntryCountTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * Verify the number of collected entries
+     *
+     * @param VerifyEntryCountRequest $request
+     * @return VerifyEntryCountResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#verifyentrycount
+     */
+    public function verifyEntryCount (
+            VerifyEntryCountRequest $request
+    ): VerifyEntryCountResult {
+        return $this->verifyEntryCountAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * Verify the number of collected entries by User ID
+     *
+     * @param VerifyEntryCountByUserIdRequest $request
+     * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#verifyentrycountbyuserid
+     */
+    public function verifyEntryCountByUserIdAsync(
+            VerifyEntryCountByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyEntryCountByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * Verify the number of collected entries by User ID
+     *
+     * @param VerifyEntryCountByUserIdRequest $request
+     * @return VerifyEntryCountByUserIdResult
+     * @see https://docs.gs2.io/api_reference/dictionary/sdk/#verifyentrycountbyuserid
+     */
+    public function verifyEntryCountByUserId (
+            VerifyEntryCountByUserIdRequest $request
+    ): VerifyEntryCountByUserIdResult {
+        return $this->verifyEntryCountByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * Execute verification of the number of collected entries as a verify action
+     *
+     * @param VerifyEntryCountByStampTaskRequest $request
+     * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/dictionary/stamp_sheet/#gs2dictionaryverifyentrycountbyuserid
+     */
+    public function verifyEntryCountByStampTaskAsync(
+            VerifyEntryCountByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyEntryCountByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * Execute verification of the number of collected entries as a verify action
+     *
+     * @param VerifyEntryCountByStampTaskRequest $request
+     * @return VerifyEntryCountByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/dictionary/stamp_sheet/#gs2dictionaryverifyentrycountbyuserid
+     */
+    public function verifyEntryCountByStampTask (
+            VerifyEntryCountByStampTaskRequest $request
+    ): VerifyEntryCountByStampTaskResult {
+        return $this->verifyEntryCountByStampTaskAsync(
             $request
         )->wait();
     }

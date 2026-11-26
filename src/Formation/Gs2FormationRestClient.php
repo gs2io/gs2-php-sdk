@@ -161,6 +161,12 @@ use Gs2\Formation\Request\AcquireActionToFormPropertiesByStampSheetRequest;
 use Gs2\Formation\Result\AcquireActionToFormPropertiesByStampSheetResult;
 use Gs2\Formation\Request\SetFormByStampSheetRequest;
 use Gs2\Formation\Result\SetFormByStampSheetResult;
+use Gs2\Formation\Request\VerifyFormRequest;
+use Gs2\Formation\Result\VerifyFormResult;
+use Gs2\Formation\Request\VerifyFormByUserIdRequest;
+use Gs2\Formation\Result\VerifyFormByUserIdResult;
+use Gs2\Formation\Request\VerifyFormByStampTaskRequest;
+use Gs2\Formation\Result\VerifyFormByStampTaskResult;
 use Gs2\Formation\Request\DescribePropertyFormsRequest;
 use Gs2\Formation\Result\DescribePropertyFormsResult;
 use Gs2\Formation\Request\DescribePropertyFormsByUserIdRequest;
@@ -4385,6 +4391,218 @@ class SetFormByStampSheetTask extends Gs2RestSessionTask {
     }
 }
 
+class VerifyFormTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyFormRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyFormTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyFormRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyFormRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyFormResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "formation", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/me/mold/{moldModelName}/form/{index}/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{moldModelName}", $this->request->getMoldModelName() === null|| strlen($this->request->getMoldModelName()) == 0 ? "null" : $this->request->getMoldModelName(), $url);
+        $url = str_replace("{index}", $this->request->getIndex() === null ? "null" : $this->request->getIndex(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getSlotName() !== null) {
+            $json["slotName"] = $this->request->getSlotName();
+        }
+        if ($this->request->getPropertyIdRegex() !== null) {
+            $json["propertyIdRegex"] = $this->request->getPropertyIdRegex();
+        }
+        if ($this->request->getCountType() !== null) {
+            $json["countType"] = $this->request->getCountType();
+        }
+        if ($this->request->getCount() !== null) {
+            $json["count"] = $this->request->getCount();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getAccessToken() !== null) {
+            $this->builder->setHeader("X-GS2-ACCESS-TOKEN", $this->request->getAccessToken());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyFormByUserIdTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyFormByUserIdRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyFormByUserIdTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyFormByUserIdRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyFormByUserIdRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyFormByUserIdResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "formation", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/{namespaceName}/user/{userId}/mold/{moldModelName}/form/{index}/verify/{verifyType}";
+
+        $url = str_replace("{namespaceName}", $this->request->getNamespaceName() === null|| strlen($this->request->getNamespaceName()) == 0 ? "null" : $this->request->getNamespaceName(), $url);
+        $url = str_replace("{userId}", $this->request->getUserId() === null|| strlen($this->request->getUserId()) == 0 ? "null" : $this->request->getUserId(), $url);
+        $url = str_replace("{moldModelName}", $this->request->getMoldModelName() === null|| strlen($this->request->getMoldModelName()) == 0 ? "null" : $this->request->getMoldModelName(), $url);
+        $url = str_replace("{index}", $this->request->getIndex() === null ? "null" : $this->request->getIndex(), $url);
+        $url = str_replace("{verifyType}", $this->request->getVerifyType() === null|| strlen($this->request->getVerifyType()) == 0 ? "null" : $this->request->getVerifyType(), $url);
+
+        $json = [];
+        if ($this->request->getSlotName() !== null) {
+            $json["slotName"] = $this->request->getSlotName();
+        }
+        if ($this->request->getPropertyIdRegex() !== null) {
+            $json["propertyIdRegex"] = $this->request->getPropertyIdRegex();
+        }
+        if ($this->request->getCountType() !== null) {
+            $json["countType"] = $this->request->getCountType();
+        }
+        if ($this->request->getCount() !== null) {
+            $json["count"] = $this->request->getCount();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+        if ($this->request->getDuplicationAvoider() !== null) {
+            $this->builder->setHeader("X-GS2-DUPLICATION-AVOIDER", $this->request->getDuplicationAvoider());
+        }
+        if ($this->request->getTimeOffsetToken() !== null) {
+            $this->builder->setHeader("X-GS2-TIME-OFFSET-TOKEN", $this->request->getTimeOffsetToken());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
+class VerifyFormByStampTaskTask extends Gs2RestSessionTask {
+
+    /**
+     * @var VerifyFormByStampTaskRequest
+     */
+    private $request;
+
+    /**
+     * @var Gs2RestSession
+     */
+    private $session;
+
+    /**
+     * VerifyFormByStampTaskTask constructor.
+     * @param Gs2RestSession $session
+     * @param VerifyFormByStampTaskRequest $request
+     */
+    public function __construct(
+        Gs2RestSession $session,
+        VerifyFormByStampTaskRequest $request
+    ) {
+        parent::__construct(
+            $session,
+            VerifyFormByStampTaskResult::class
+        );
+        $this->session = $session;
+        $this->request = $request;
+    }
+
+    public function executeImpl(): PromiseInterface {
+
+        $url = str_replace('{service}', "formation", str_replace('{region}', $this->session->getRegion(), Gs2RestSession::$endpointHost)) . "/stamp/form/verify";
+
+        $json = [];
+        if ($this->request->getStampTask() !== null) {
+            $json["stampTask"] = $this->request->getStampTask();
+        }
+        if ($this->request->getKeyId() !== null) {
+            $json["keyId"] = $this->request->getKeyId();
+        }
+        if ($this->request->getContextStack() !== null) {
+            $json["contextStack"] = $this->request->getContextStack();
+        }
+
+        $this->builder->setBody($json);
+
+        $this->builder->setMethod("POST")
+            ->setUrl($url)
+            ->setHeader("Content-Type", "application/json")
+            ->setHttpResponseHandler($this);
+
+        if ($this->request->getRequestId() !== null) {
+            $this->builder->setHeader("X-GS2-REQUEST-ID", $this->request->getRequestId());
+        }
+
+        return parent::executeImpl();
+    }
+}
+
 class DescribePropertyFormsTask extends Gs2RestSessionTask {
 
     /**
@@ -7443,6 +7661,105 @@ class Gs2FormationRestClient extends AbstractGs2Client {
             SetFormByStampSheetRequest $request
     ): SetFormByStampSheetResult {
         return $this->setFormByStampSheetAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * Verify a form
+     *
+     * @param VerifyFormRequest $request
+     * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#verifyform
+     */
+    public function verifyFormAsync(
+            VerifyFormRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyFormTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * Verify a form
+     *
+     * @param VerifyFormRequest $request
+     * @return VerifyFormResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#verifyform
+     */
+    public function verifyForm (
+            VerifyFormRequest $request
+    ): VerifyFormResult {
+        return $this->verifyFormAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * Verify a form by User ID
+     *
+     * @param VerifyFormByUserIdRequest $request
+     * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#verifyformbyuserid
+     */
+    public function verifyFormByUserIdAsync(
+            VerifyFormByUserIdRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyFormByUserIdTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * Verify a form by User ID
+     *
+     * @param VerifyFormByUserIdRequest $request
+     * @return VerifyFormByUserIdResult
+     * @see https://docs.gs2.io/api_reference/formation/sdk/#verifyformbyuserid
+     */
+    public function verifyFormByUserId (
+            VerifyFormByUserIdRequest $request
+    ): VerifyFormByUserIdResult {
+        return $this->verifyFormByUserIdAsync(
+            $request
+        )->wait();
+    }
+
+    /**
+     * Execute verification of a form as a verify action
+     *
+     * @param VerifyFormByStampTaskRequest $request
+     * @return PromiseInterface
+     * @see https://docs.gs2.io/api_reference/formation/stamp_sheet/#gs2formationverifyformbyuserid
+     */
+    public function verifyFormByStampTaskAsync(
+            VerifyFormByStampTaskRequest $request
+    ): PromiseInterface {
+        /** @noinspection PhpParamsInspection */
+        $task = new VerifyFormByStampTaskTask(
+            $this->session,
+            $request
+        );
+        return $this->session->execute($task);
+    }
+
+    /**
+     * Execute verification of a form as a verify action
+     *
+     * @param VerifyFormByStampTaskRequest $request
+     * @return VerifyFormByStampTaskResult
+     * @see https://docs.gs2.io/api_reference/formation/stamp_sheet/#gs2formationverifyformbyuserid
+     */
+    public function verifyFormByStampTask (
+            VerifyFormByStampTaskRequest $request
+    ): VerifyFormByStampTaskResult {
+        return $this->verifyFormByStampTaskAsync(
             $request
         )->wait();
     }

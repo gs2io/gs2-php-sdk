@@ -29,7 +29,7 @@ class RegisterBlackListRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string User ID */
     private $accessToken;
-    /** @var string User ID */
+    /** @var string User ID to add to the blacklist */
     private $targetUserId;
     /** @var string */
     private $duplicationAvoider;
@@ -65,16 +65,16 @@ class RegisterBlackListRequest extends Gs2BasicRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-    /** @return string|null User ID */
+    /** @return string|null User ID to add to the blacklist */
 	public function getTargetUserId(): ?string {
 		return $this->targetUserId;
 	}
-    /** @param string|null $targetUserId User ID */
+    /** @param string|null $targetUserId User ID to add to the blacklist */
 	public function setTargetUserId(?string $targetUserId) {
 		$this->targetUserId = $targetUserId;
 	}
     /**
-     * @param string|null $targetUserId User ID
+     * @param string|null $targetUserId User ID to add to the blacklist
      * @return RegisterBlackListRequest
      */
 	public function withTargetUserId(?string $targetUserId): RegisterBlackListRequest {

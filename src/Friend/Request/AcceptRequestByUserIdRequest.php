@@ -29,7 +29,7 @@ class AcceptRequestByUserIdRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string User ID */
     private $userId;
-    /** @var string User ID */
+    /** @var string User ID of the sender of the friend request to accept */
     private $fromUserId;
     /** @var string Time offset token */
     private $timeOffsetToken;
@@ -67,16 +67,16 @@ class AcceptRequestByUserIdRequest extends Gs2BasicRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-    /** @return string|null User ID */
+    /** @return string|null User ID of the sender of the friend request to accept */
 	public function getFromUserId(): ?string {
 		return $this->fromUserId;
 	}
-    /** @param string|null $fromUserId User ID */
+    /** @param string|null $fromUserId User ID of the sender of the friend request to accept */
 	public function setFromUserId(?string $fromUserId) {
 		$this->fromUserId = $fromUserId;
 	}
     /**
-     * @param string|null $fromUserId User ID
+     * @param string|null $fromUserId User ID of the sender of the friend request to accept
      * @return AcceptRequestByUserIdRequest
      */
 	public function withFromUserId(?string $fromUserId): AcceptRequestByUserIdRequest {

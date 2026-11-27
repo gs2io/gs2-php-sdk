@@ -29,7 +29,7 @@ class AcceptRequestRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string User ID */
     private $accessToken;
-    /** @var string User ID */
+    /** @var string User ID of the sender of the friend request to accept */
     private $fromUserId;
     /** @var string */
     private $duplicationAvoider;
@@ -65,16 +65,16 @@ class AcceptRequestRequest extends Gs2BasicRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-    /** @return string|null User ID */
+    /** @return string|null User ID of the sender of the friend request to accept */
 	public function getFromUserId(): ?string {
 		return $this->fromUserId;
 	}
-    /** @param string|null $fromUserId User ID */
+    /** @param string|null $fromUserId User ID of the sender of the friend request to accept */
 	public function setFromUserId(?string $fromUserId) {
 		$this->fromUserId = $fromUserId;
 	}
     /**
-     * @param string|null $fromUserId User ID
+     * @param string|null $fromUserId User ID of the sender of the friend request to accept
      * @return AcceptRequestRequest
      */
 	public function withFromUserId(?string $fromUserId): AcceptRequestRequest {

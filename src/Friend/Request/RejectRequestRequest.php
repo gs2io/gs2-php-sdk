@@ -29,7 +29,7 @@ class RejectRequestRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string User ID */
     private $accessToken;
-    /** @var string User ID */
+    /** @var string User ID of the sender of the friend request to reject */
     private $fromUserId;
     /** @var string */
     private $duplicationAvoider;
@@ -65,16 +65,16 @@ class RejectRequestRequest extends Gs2BasicRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-    /** @return string|null User ID */
+    /** @return string|null User ID of the sender of the friend request to reject */
 	public function getFromUserId(): ?string {
 		return $this->fromUserId;
 	}
-    /** @param string|null $fromUserId User ID */
+    /** @param string|null $fromUserId User ID of the sender of the friend request to reject */
 	public function setFromUserId(?string $fromUserId) {
 		$this->fromUserId = $fromUserId;
 	}
     /**
-     * @param string|null $fromUserId User ID
+     * @param string|null $fromUserId User ID of the sender of the friend request to reject
      * @return RejectRequestRequest
      */
 	public function withFromUserId(?string $fromUserId): RejectRequestRequest {

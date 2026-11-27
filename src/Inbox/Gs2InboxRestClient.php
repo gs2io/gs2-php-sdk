@@ -2709,6 +2709,14 @@ class CreateGlobalMessageMasterTask extends Gs2RestSessionTask {
         if ($this->request->getMessageReceptionPeriodEventId() !== null) {
             $json["messageReceptionPeriodEventId"] = $this->request->getMessageReceptionPeriodEventId();
         }
+        if ($this->request->getVerifyActions() !== null) {
+            $array = [];
+            foreach ($this->request->getVerifyActions() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["verifyActions"] = $array;
+        }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();
         }
@@ -2842,6 +2850,14 @@ class UpdateGlobalMessageMasterTask extends Gs2RestSessionTask {
         }
         if ($this->request->getMessageReceptionPeriodEventId() !== null) {
             $json["messageReceptionPeriodEventId"] = $this->request->getMessageReceptionPeriodEventId();
+        }
+        if ($this->request->getVerifyActions() !== null) {
+            $array = [];
+            foreach ($this->request->getVerifyActions() as $item)
+            {
+                array_push($array, $item->toJson());
+            }
+            $json["verifyActions"] = $array;
         }
         if ($this->request->getContextStack() !== null) {
             $json["contextStack"] = $this->request->getContextStack();

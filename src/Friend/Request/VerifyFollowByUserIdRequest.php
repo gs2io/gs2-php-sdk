@@ -29,7 +29,7 @@ class VerifyFollowByUserIdRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string User ID */
     private $userId;
-    /** @var string User ID */
+    /** @var string User ID of the user to verify whether they are followed */
     private $targetUserId;
     /** @var string Type of verification */
     private $verifyType;
@@ -69,16 +69,16 @@ class VerifyFollowByUserIdRequest extends Gs2BasicRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-    /** @return string|null User ID */
+    /** @return string|null User ID of the user to verify whether they are followed */
 	public function getTargetUserId(): ?string {
 		return $this->targetUserId;
 	}
-    /** @param string|null $targetUserId User ID */
+    /** @param string|null $targetUserId User ID of the user to verify whether they are followed */
 	public function setTargetUserId(?string $targetUserId) {
 		$this->targetUserId = $targetUserId;
 	}
     /**
-     * @param string|null $targetUserId User ID
+     * @param string|null $targetUserId User ID of the user to verify whether they are followed
      * @return VerifyFollowByUserIdRequest
      */
 	public function withTargetUserId(?string $targetUserId): VerifyFollowByUserIdRequest {

@@ -55,6 +55,10 @@ class GlobalMessageMaster implements IModel {
 	 */
 	private $messageReceptionPeriodEventId;
 	/**
+     * @var array Verify Actions on Receive
+	 */
+	private $verifyActions;
+	/**
      * @var int Creation Timestamp
 	 */
 	private $createdAt;
@@ -181,6 +185,22 @@ class GlobalMessageMaster implements IModel {
 		$this->messageReceptionPeriodEventId = $messageReceptionPeriodEventId;
 		return $this;
 	}
+    /** @return array|null Verify Actions on Receive */
+	public function getVerifyActions(): ?array {
+		return $this->verifyActions;
+	}
+    /** @param array|null $verifyActions Verify Actions on Receive */
+	public function setVerifyActions(?array $verifyActions) {
+		$this->verifyActions = $verifyActions;
+	}
+    /**
+     * @param array|null $verifyActions Verify Actions on Receive
+     * @return GlobalMessageMaster
+     */
+	public function withVerifyActions(?array $verifyActions): GlobalMessageMaster {
+		$this->verifyActions = $verifyActions;
+		return $this;
+	}
     /** @return int|null Creation Timestamp */
 	public function getCreatedAt(): ?int {
 		return $this->createdAt;
@@ -231,6 +251,12 @@ class GlobalMessageMaster implements IModel {
             ->withExpiresTimeSpan(array_key_exists('expiresTimeSpan', $data) && $data['expiresTimeSpan'] !== null ? TimeSpan::fromJson($data['expiresTimeSpan']) : null)
             ->withExpiresAt(array_key_exists('expiresAt', $data) && $data['expiresAt'] !== null ? $data['expiresAt'] : null)
             ->withMessageReceptionPeriodEventId(array_key_exists('messageReceptionPeriodEventId', $data) && $data['messageReceptionPeriodEventId'] !== null ? $data['messageReceptionPeriodEventId'] : null)
+            ->withVerifyActions(!array_key_exists('verifyActions', $data) || $data['verifyActions'] === null ? null : array_map(
+                function ($item) {
+                    return VerifyAction::fromJson($item);
+                },
+                $data['verifyActions']
+            ))
             ->withCreatedAt(array_key_exists('createdAt', $data) && $data['createdAt'] !== null ? $data['createdAt'] : null)
             ->withRevision(array_key_exists('revision', $data) && $data['revision'] !== null ? $data['revision'] : null);
     }
@@ -249,6 +275,12 @@ class GlobalMessageMaster implements IModel {
             "expiresTimeSpan" => $this->getExpiresTimeSpan() !== null ? $this->getExpiresTimeSpan()->toJson() : null,
             "expiresAt" => $this->getExpiresAt(),
             "messageReceptionPeriodEventId" => $this->getMessageReceptionPeriodEventId(),
+            "verifyActions" => $this->getVerifyActions() === null ? null : array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getVerifyActions()
+            ),
             "createdAt" => $this->getCreatedAt(),
             "revision" => $this->getRevision(),
         );

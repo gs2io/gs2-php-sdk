@@ -29,7 +29,7 @@ class RegisterBlackListByUserIdRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string User ID */
     private $userId;
-    /** @var string User ID */
+    /** @var string User ID to add to the blacklist */
     private $targetUserId;
     /** @var string Time offset token */
     private $timeOffsetToken;
@@ -67,16 +67,16 @@ class RegisterBlackListByUserIdRequest extends Gs2BasicRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-    /** @return string|null User ID */
+    /** @return string|null User ID to add to the blacklist */
 	public function getTargetUserId(): ?string {
 		return $this->targetUserId;
 	}
-    /** @param string|null $targetUserId User ID */
+    /** @param string|null $targetUserId User ID to add to the blacklist */
 	public function setTargetUserId(?string $targetUserId) {
 		$this->targetUserId = $targetUserId;
 	}
     /**
-     * @param string|null $targetUserId User ID
+     * @param string|null $targetUserId User ID to add to the blacklist
      * @return RegisterBlackListByUserIdRequest
      */
 	public function withTargetUserId(?string $targetUserId): RegisterBlackListByUserIdRequest {

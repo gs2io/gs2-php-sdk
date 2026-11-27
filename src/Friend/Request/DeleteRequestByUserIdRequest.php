@@ -29,7 +29,7 @@ class DeleteRequestByUserIdRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string User ID */
     private $userId;
-    /** @var string User ID */
+    /** @var string User ID of the user to cancel the friend request to */
     private $targetUserId;
     /** @var string Time offset token */
     private $timeOffsetToken;
@@ -67,16 +67,16 @@ class DeleteRequestByUserIdRequest extends Gs2BasicRequest {
 		$this->userId = $userId;
 		return $this;
 	}
-    /** @return string|null User ID */
+    /** @return string|null User ID of the user to cancel the friend request to */
 	public function getTargetUserId(): ?string {
 		return $this->targetUserId;
 	}
-    /** @param string|null $targetUserId User ID */
+    /** @param string|null $targetUserId User ID of the user to cancel the friend request to */
 	public function setTargetUserId(?string $targetUserId) {
 		$this->targetUserId = $targetUserId;
 	}
     /**
-     * @param string|null $targetUserId User ID
+     * @param string|null $targetUserId User ID of the user to cancel the friend request to
      * @return DeleteRequestByUserIdRequest
      */
 	public function withTargetUserId(?string $targetUserId): DeleteRequestByUserIdRequest {

@@ -20,6 +20,7 @@ namespace Gs2\Inbox\Result;
 use Gs2\Core\Model\IResult;
 use Gs2\Inbox\Model\AcquireAction;
 use Gs2\Inbox\Model\TimeSpan;
+use Gs2\Inbox\Model\VerifyAction;
 use Gs2\Inbox\Model\GlobalMessage;
 
 /**

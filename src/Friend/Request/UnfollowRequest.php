@@ -29,7 +29,7 @@ class UnfollowRequest extends Gs2BasicRequest {
     private $namespaceName;
     /** @var string User ID */
     private $accessToken;
-    /** @var string User ID */
+    /** @var string User ID of the user to unfollow */
     private $targetUserId;
     /** @var string */
     private $duplicationAvoider;
@@ -65,16 +65,16 @@ class UnfollowRequest extends Gs2BasicRequest {
 		$this->accessToken = $accessToken;
 		return $this;
 	}
-    /** @return string|null User ID */
+    /** @return string|null User ID of the user to unfollow */
 	public function getTargetUserId(): ?string {
 		return $this->targetUserId;
 	}
-    /** @param string|null $targetUserId User ID */
+    /** @param string|null $targetUserId User ID of the user to unfollow */
 	public function setTargetUserId(?string $targetUserId) {
 		$this->targetUserId = $targetUserId;
 	}
     /**
-     * @param string|null $targetUserId User ID
+     * @param string|null $targetUserId User ID of the user to unfollow
      * @return UnfollowRequest
      */
 	public function withTargetUserId(?string $targetUserId): UnfollowRequest {

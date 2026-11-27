@@ -20,6 +20,7 @@ namespace Gs2\Inbox\Request;
 use Gs2\Core\Control\Gs2BasicRequest;
 use Gs2\Inbox\Model\AcquireAction;
 use Gs2\Inbox\Model\TimeSpan;
+use Gs2\Inbox\Model\VerifyAction;
 
 /**
  * Request for createGlobalMessageMaster: Create Global Message Master
@@ -41,6 +42,8 @@ class CreateGlobalMessageMasterRequest extends Gs2BasicRequest {
     private $expiresAt;
     /** @var string Message Reception Period Event ID */
     private $messageReceptionPeriodEventId;
+    /** @var array Verify Actions on Receive */
+    private $verifyActions;
     /** @return string|null Namespace name */
 	public function getNamespaceName(): ?string {
 		return $this->namespaceName;
@@ -160,6 +163,22 @@ class CreateGlobalMessageMasterRequest extends Gs2BasicRequest {
 		$this->messageReceptionPeriodEventId = $messageReceptionPeriodEventId;
 		return $this;
 	}
+    /** @return array|null Verify Actions on Receive */
+	public function getVerifyActions(): ?array {
+		return $this->verifyActions;
+	}
+    /** @param array|null $verifyActions Verify Actions on Receive */
+	public function setVerifyActions(?array $verifyActions) {
+		$this->verifyActions = $verifyActions;
+	}
+    /**
+     * @param array|null $verifyActions Verify Actions on Receive
+     * @return CreateGlobalMessageMasterRequest
+     */
+	public function withVerifyActions(?array $verifyActions): CreateGlobalMessageMasterRequest {
+		$this->verifyActions = $verifyActions;
+		return $this;
+	}
 
     public static function fromJson(?array $data): ?CreateGlobalMessageMasterRequest {
         if ($data === null) {
@@ -177,7 +196,13 @@ class CreateGlobalMessageMasterRequest extends Gs2BasicRequest {
             ))
             ->withExpiresTimeSpan(array_key_exists('expiresTimeSpan', $data) && $data['expiresTimeSpan'] !== null ? TimeSpan::fromJson($data['expiresTimeSpan']) : null)
             ->withExpiresAt(array_key_exists('expiresAt', $data) && $data['expiresAt'] !== null ? $data['expiresAt'] : null)
-            ->withMessageReceptionPeriodEventId(array_key_exists('messageReceptionPeriodEventId', $data) && $data['messageReceptionPeriodEventId'] !== null ? $data['messageReceptionPeriodEventId'] : null);
+            ->withMessageReceptionPeriodEventId(array_key_exists('messageReceptionPeriodEventId', $data) && $data['messageReceptionPeriodEventId'] !== null ? $data['messageReceptionPeriodEventId'] : null)
+            ->withVerifyActions(!array_key_exists('verifyActions', $data) || $data['verifyActions'] === null ? null : array_map(
+                function ($item) {
+                    return VerifyAction::fromJson($item);
+                },
+                $data['verifyActions']
+            ));
     }
 
     public function toJson(): array {
@@ -194,6 +219,12 @@ class CreateGlobalMessageMasterRequest extends Gs2BasicRequest {
             "expiresTimeSpan" => $this->getExpiresTimeSpan() !== null ? $this->getExpiresTimeSpan()->toJson() : null,
             "expiresAt" => $this->getExpiresAt(),
             "messageReceptionPeriodEventId" => $this->getMessageReceptionPeriodEventId(),
+            "verifyActions" => $this->getVerifyActions() === null ? null : array_map(
+                function ($item) {
+                    return $item->toJson();
+                },
+                $this->getVerifyActions()
+            ),
         );
     }
 }
